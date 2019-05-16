@@ -1,5 +1,5 @@
 //
-//  FirstViewController.swift
+//  SecondViewController.swift
 //  TreeSapIOS
 //
 //  Created by Summer2019 on 5/16/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ButtonViewController: UIViewController {
+class CoordinatesViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

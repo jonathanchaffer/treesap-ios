@@ -1,5 +1,5 @@
 //
-//  SecondViewController.swift
+//  SettingsViewController.swift
 //  TreeSapIOS
 //
 //  Created by Summer2019 on 5/16/19.
@@ -8,13 +8,12 @@
 
 import UIKit
 
-class SecondViewController: UIViewController {
+class SettingsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         // Do any additional setup after loading the view.
     }
 
-
 }
-

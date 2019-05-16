@@ -8,12 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		CBBCE82B228DD76B008F7225 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBCE82A228DD76B008F7225 /* AppDelegate.swift */; };
-		CBBCE82D228DD76B008F7225 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBCE82C228DD76B008F7225 /* FirstViewController.swift */; };
-		CBBCE82F228DD76B008F7225 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBCE82E228DD76B008F7225 /* SecondViewController.swift */; };
+		CBBCE82D228DD76B008F7225 /* ButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBCE82C228DD76B008F7225 /* ButtonViewController.swift */; };
+		CBBCE82F228DD76B008F7225 /* CoordinatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBCE82E228DD76B008F7225 /* CoordinatesViewController.swift */; };
 		CBBCE832228DD76B008F7225 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBBCE830228DD76B008F7225 /* Main.storyboard */; };
 		CBBCE834228DD777008F7225 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBBCE833228DD777008F7225 /* Assets.xcassets */; };
 		CBBCE837228DD777008F7225 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBBCE835228DD777008F7225 /* LaunchScreen.storyboard */; };
 		CBBCE842228DD777008F7225 /* TreeSapIOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBCE841228DD777008F7225 /* TreeSapIOSTests.swift */; };
+		CBBCE84D228DD847008F7225 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBCE84C228DD847008F7225 /* MapViewController.swift */; };
+		CBBCE84F228DD93E008F7225 /* QRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBCE84E228DD93E008F7225 /* QRCodeViewController.swift */; };
+		CBBCE851228DD9B1008F7225 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBCE850228DD9B1008F7225 /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,8 +32,8 @@
 /* Begin PBXFileReference section */
 		CBBCE827228DD76B008F7225 /* TreeSapIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TreeSapIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBBCE82A228DD76B008F7225 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CBBCE82C228DD76B008F7225 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		CBBCE82E228DD76B008F7225 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		CBBCE82C228DD76B008F7225 /* ButtonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonViewController.swift; sourceTree = "<group>"; };
+		CBBCE82E228DD76B008F7225 /* CoordinatesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatesViewController.swift; sourceTree = "<group>"; };
 		CBBCE831228DD76B008F7225 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CBBCE833228DD777008F7225 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CBBCE836228DD777008F7225 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -38,6 +41,9 @@
 		CBBCE83D228DD777008F7225 /* TreeSapIOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TreeSapIOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBBCE841228DD777008F7225 /* TreeSapIOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeSapIOSTests.swift; sourceTree = "<group>"; };
 		CBBCE843228DD777008F7225 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CBBCE84C228DD847008F7225 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		CBBCE84E228DD93E008F7225 /* QRCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeViewController.swift; sourceTree = "<group>"; };
+		CBBCE850228DD9B1008F7225 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,8 +86,11 @@
 			isa = PBXGroup;
 			children = (
 				CBBCE82A228DD76B008F7225 /* AppDelegate.swift */,
-				CBBCE82C228DD76B008F7225 /* FirstViewController.swift */,
-				CBBCE82E228DD76B008F7225 /* SecondViewController.swift */,
+				CBBCE82C228DD76B008F7225 /* ButtonViewController.swift */,
+				CBBCE82E228DD76B008F7225 /* CoordinatesViewController.swift */,
+				CBBCE84C228DD847008F7225 /* MapViewController.swift */,
+				CBBCE84E228DD93E008F7225 /* QRCodeViewController.swift */,
+				CBBCE850228DD9B1008F7225 /* SettingsViewController.swift */,
 				CBBCE830228DD76B008F7225 /* Main.storyboard */,
 				CBBCE833228DD777008F7225 /* Assets.xcassets */,
 				CBBCE835228DD777008F7225 /* LaunchScreen.storyboard */,
@@ -200,9 +209,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CBBCE82F228DD76B008F7225 /* SecondViewController.swift in Sources */,
+				CBBCE82F228DD76B008F7225 /* CoordinatesViewController.swift in Sources */,
 				CBBCE82B228DD76B008F7225 /* AppDelegate.swift in Sources */,
-				CBBCE82D228DD76B008F7225 /* FirstViewController.swift in Sources */,
+				CBBCE82D228DD76B008F7225 /* ButtonViewController.swift in Sources */,
+				CBBCE84D228DD847008F7225 /* MapViewController.swift in Sources */,
+				CBBCE84F228DD93E008F7225 /* QRCodeViewController.swift in Sources */,
+				CBBCE851228DD9B1008F7225 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
