@@ -224,7 +224,6 @@
         <!--Button-->
         <scene sceneID="CPm-Ef-C0O">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1Qk-Td-yMo" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4Ug-bz-zxq" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Button" image="filledButton" id="acW-dT-cKf"/>
                     <toolbarItems/>
@@ -237,13 +236,13 @@
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="rootViewController" id="NFK-Ug-Ues"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1Qk-Td-yMo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2142" y="-242"/>
         </scene>
         <!--Coordinates-->
         <scene sceneID="xia-Sp-4pR">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="b2J-Ua-hdc" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="IMJ-BY-ByW" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Coordinates" image="compass" id="cPa-gy-q4n"/>
                     <toolbarItems/>
@@ -256,6 +255,7 @@
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="rootViewController" id="hrm-WN-Xf1"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b2J-Ua-hdc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1443" y="-242"/>
         </scene>
@@ -281,7 +281,6 @@
         <!--QR Code-->
         <scene sceneID="YKP-cd-EwL">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fuc-gD-spj" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jXj-nW-j4p" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="QR Code" image="qrCode" id="E9J-nk-CCZ"/>
                     <toolbarItems/>
@@ -294,13 +293,13 @@
                         <segue destination="g0N-u1-Eri" kind="relationship" relationship="rootViewController" id="eL5-Fk-CyO"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fuc-gD-spj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-70" y="-242"/>
         </scene>
         <!--Settings-->
         <scene sceneID="2m0-rM-w1V">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="OfI-a0-ZqM" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ROl-BY-TYM" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Settings" image="settings" id="HF1-Os-07k"/>
                     <toolbarItems/>
@@ -313,6 +312,7 @@
                         <segue destination="j5D-hs-526" kind="relationship" relationship="rootViewController" id="z3R-rf-wOS"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OfI-a0-ZqM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="619" y="-242"/>
         </scene>
