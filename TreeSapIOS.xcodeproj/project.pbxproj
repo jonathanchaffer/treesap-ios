@@ -11,6 +11,8 @@
 		CB12C94D228DF5C4000C74C3 /* SimpleDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB12C94C228DF5C4000C74C3 /* SimpleDisplayViewController.swift */; };
 		CB12C94F228DF85D000C74C3 /* TreeDetailPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB12C94E228DF85D000C74C3 /* TreeDetailPageViewController.swift */; };
 		CB12C951228DFA12000C74C3 /* PieChartDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB12C950228DFA12000C74C3 /* PieChartDisplayViewController.swift */; };
+		CB6953B8228EE8720002024B /* Tree.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6953B7228EE8720002024B /* Tree.swift */; };
+		CB6953BA228EE9530002024B /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6953B9228EE9530002024B /* DataSource.swift */; };
 		CBBCE82B228DD76B008F7225 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBCE82A228DD76B008F7225 /* AppDelegate.swift */; };
 		CBBCE82D228DD76B008F7225 /* ButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBCE82C228DD76B008F7225 /* ButtonViewController.swift */; };
 		CBBCE82F228DD76B008F7225 /* CoordinatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBCE82E228DD76B008F7225 /* CoordinatesViewController.swift */; };
@@ -38,6 +40,8 @@
 		CB12C94C228DF5C4000C74C3 /* SimpleDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleDisplayViewController.swift; sourceTree = "<group>"; };
 		CB12C94E228DF85D000C74C3 /* TreeDetailPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeDetailPageViewController.swift; sourceTree = "<group>"; };
 		CB12C950228DFA12000C74C3 /* PieChartDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartDisplayViewController.swift; sourceTree = "<group>"; };
+		CB6953B7228EE8720002024B /* Tree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tree.swift; sourceTree = "<group>"; };
+		CB6953B9228EE9530002024B /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 		CBBCE827228DD76B008F7225 /* TreeSapIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TreeSapIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBBCE82A228DD76B008F7225 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CBBCE82C228DD76B008F7225 /* ButtonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonViewController.swift; sourceTree = "<group>"; };
@@ -72,6 +76,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CB6953B4228EE4300002024B /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				CBBCE82C228DD76B008F7225 /* ButtonViewController.swift */,
+				CBBCE82E228DD76B008F7225 /* CoordinatesViewController.swift */,
+				CBBCE84C228DD847008F7225 /* MapViewController.swift */,
+				CBBCE84E228DD93E008F7225 /* QRCodeViewController.swift */,
+				CBBCE850228DD9B1008F7225 /* SettingsViewController.swift */,
+				CB12C94E228DF85D000C74C3 /* TreeDetailPageViewController.swift */,
+				CB12C94C228DF5C4000C74C3 /* SimpleDisplayViewController.swift */,
+				CB12C950228DFA12000C74C3 /* PieChartDisplayViewController.swift */,
+				CB12C94A228DF508000C74C3 /* BenefitsDisplayViewController.swift */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		CB6953B5228EE4AE0002024B /* model */ = {
+			isa = PBXGroup;
+			children = (
+				CB6953B7228EE8720002024B /* Tree.swift */,
+				CB6953B9228EE9530002024B /* DataSource.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		CB6953B6228EE4C30002024B /* view */ = {
+			isa = PBXGroup;
+			children = (
+				CBBCE835228DD777008F7225 /* LaunchScreen.storyboard */,
+				CBBCE830228DD76B008F7225 /* Main.storyboard */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
 		CBBCE81E228DD76B008F7225 = {
 			isa = PBXGroup;
 			children = (
@@ -94,18 +132,10 @@
 			isa = PBXGroup;
 			children = (
 				CBBCE82A228DD76B008F7225 /* AppDelegate.swift */,
-				CBBCE82C228DD76B008F7225 /* ButtonViewController.swift */,
-				CBBCE82E228DD76B008F7225 /* CoordinatesViewController.swift */,
-				CBBCE84C228DD847008F7225 /* MapViewController.swift */,
-				CBBCE84E228DD93E008F7225 /* QRCodeViewController.swift */,
-				CBBCE850228DD9B1008F7225 /* SettingsViewController.swift */,
-				CB12C94E228DF85D000C74C3 /* TreeDetailPageViewController.swift */,
-				CB12C94C228DF5C4000C74C3 /* SimpleDisplayViewController.swift */,
-				CB12C950228DFA12000C74C3 /* PieChartDisplayViewController.swift */,
-				CB12C94A228DF508000C74C3 /* BenefitsDisplayViewController.swift */,
-				CBBCE830228DD76B008F7225 /* Main.storyboard */,
+				CB6953B5228EE4AE0002024B /* model */,
+				CB6953B6228EE4C30002024B /* view */,
+				CB6953B4228EE4300002024B /* controller */,
 				CBBCE833228DD777008F7225 /* Assets.xcassets */,
-				CBBCE835228DD777008F7225 /* LaunchScreen.storyboard */,
 				CBBCE838228DD777008F7225 /* Info.plist */,
 			);
 			path = TreeSapIOS;
@@ -227,6 +257,8 @@
 				CBBCE82B228DD76B008F7225 /* AppDelegate.swift in Sources */,
 				CBBCE82D228DD76B008F7225 /* ButtonViewController.swift in Sources */,
 				CBBCE84D228DD847008F7225 /* MapViewController.swift in Sources */,
+				CB6953BA228EE9530002024B /* DataSource.swift in Sources */,
+				CB6953B8228EE8720002024B /* Tree.swift in Sources */,
 				CBBCE84F228DD93E008F7225 /* QRCodeViewController.swift in Sources */,
 				CB12C94D228DF5C4000C74C3 /* SimpleDisplayViewController.swift in Sources */,
 				CB12C94B228DF508000C74C3 /* BenefitsDisplayViewController.swift in Sources */,

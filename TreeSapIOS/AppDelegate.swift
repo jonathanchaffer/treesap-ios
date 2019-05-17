@@ -16,6 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        let hollandDataSource = DataSource(internetFilename: "CoH_Tree_Inventory_6_12_18.csv")
+        hollandDataSource.printData()
         return true
     }
 
