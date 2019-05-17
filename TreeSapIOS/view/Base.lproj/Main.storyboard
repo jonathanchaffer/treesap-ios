@@ -146,16 +146,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="yXm-z2-qyl">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="yXm-z2-qyl">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="3H3-jO-XTg" firstAttribute="trailing" secondItem="yXm-z2-qyl" secondAttribute="trailing" id="5bi-Ir-Xw3"/>
                             <constraint firstItem="yXm-z2-qyl" firstAttribute="leading" secondItem="3H3-jO-XTg" secondAttribute="leading" id="N8c-ah-s0I"/>
-                            <constraint firstItem="3H3-jO-XTg" firstAttribute="bottom" secondItem="yXm-z2-qyl" secondAttribute="bottom" id="YMA-g4-oYT"/>
-                            <constraint firstItem="yXm-z2-qyl" firstAttribute="top" secondItem="3H3-jO-XTg" secondAttribute="top" id="jcI-VP-jWT"/>
+                            <constraint firstAttribute="bottom" secondItem="yXm-z2-qyl" secondAttribute="bottom" id="YMA-g4-oYT"/>
+                            <constraint firstItem="yXm-z2-qyl" firstAttribute="top" secondItem="CLA-iC-6jW" secondAttribute="top" id="jcI-VP-jWT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3H3-jO-XTg"/>
                     </view>

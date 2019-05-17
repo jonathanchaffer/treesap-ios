@@ -16,6 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+		
+		// Import tree data
         var dataSources = [DataSource]()
         dataSources.append(DataSource(internetFilename: "CoH_Tree_Inventory_6_12_18.csv", localFilename: "holland.csv"))
         dataSources.append(DataSource(internetFilename: "iTreeExport_119_HopeTrees_7may2018.csv", localFilename: "itree.csv"))
@@ -23,6 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         for dataSource in dataSources {
             dataSource.retrieveData()
         }
+		
         return true
     }
 
