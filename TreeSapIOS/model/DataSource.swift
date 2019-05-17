@@ -12,10 +12,12 @@ class DataSource {
     let internetFilebase: String = "https://faculty.hope.edu/jipping/treesap/"
     let internetFilename: String
     let localFilename: String
+    let dataSourceName: String
     
-    init(internetFilename: String, localFilename: String) {
+    init(internetFilename: String, localFilename: String, dataSourceName: String) {
         self.internetFilename = internetFilename
         self.localFilename = localFilename
+        self.dataSourceName = dataSourceName
     }
     
     // TODO: Add better error handling
