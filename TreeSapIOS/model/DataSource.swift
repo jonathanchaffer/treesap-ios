@@ -18,6 +18,7 @@ class DataSource {
         self.localFilename = localFilename
     }
     
+    // TODO: Add better error handling
     func retrieveData() {
         // Retrieve the data from the URL
         let url = URL(string: self.internetFilebase + self.internetFilename)
@@ -26,7 +27,6 @@ class DataSource {
                 print(error!)
             } else {
                 guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
-                    // TODO: Need better error handling
                     print("Server error")
                     return
                 }
