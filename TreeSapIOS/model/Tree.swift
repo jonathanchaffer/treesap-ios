@@ -19,4 +19,8 @@ class Tree {
         self.scientificName = scientificName
         self.location = location
     }
+	
+	func getLocation() -> CLLocationCoordinate2D {
+		return self.location
+	}
 }
