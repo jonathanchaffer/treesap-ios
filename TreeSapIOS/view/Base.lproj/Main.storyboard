@@ -124,10 +124,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="h6i-se-d12">
-                                <rect key="frame" x="65" y="395" width="284.5" height="106"/>
+                                <rect key="frame" x="20" y="370.5" width="374" height="155"/>
                                 <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter GPS coordinates below to get information on the nearest tree." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n0h-iJ-9i9">
+                                        <rect key="frame" x="3.5" y="0.0" width="367" height="41"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="bdD-S5-wwf">
-                                        <rect key="frame" x="0.0" y="0.0" width="284.5" height="68"/>
+                                        <rect key="frame" x="45" y="49" width="284.5" height="68"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="hZF-oL-wAM">
                                                 <rect key="frame" x="0.0" y="0.0" width="284.5" height="30"/>
@@ -145,7 +151,7 @@
                                                         </constraints>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" returnKeyType="next"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numbersAndPunctuation" returnKeyType="next" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                                     </textField>
                                                 </subviews>
                                                 <constraints>
@@ -168,7 +174,7 @@
                                                         </constraints>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" returnKeyType="go"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numbersAndPunctuation" returnKeyType="go" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                                     </textField>
                                                 </subviews>
                                                 <constraints>
@@ -178,7 +184,7 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aht-Pu-Wky">
-                                        <rect key="frame" x="94.5" y="76" width="95" height="30"/>
+                                        <rect key="frame" x="139.5" y="125" width="95" height="30"/>
                                         <state key="normal" title="Get Tree Data"/>
                                         <connections>
                                             <segue destination="vGI-b1-1Rv" kind="show" id="KU6-vZ-jMN"/>
@@ -190,7 +196,9 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="h6i-se-d12" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="Dna-mH-Ocn"/>
+                            <constraint firstAttribute="trailing" secondItem="h6i-se-d12" secondAttribute="trailing" constant="20" id="Zdz-5J-LVX"/>
                             <constraint firstItem="h6i-se-d12" firstAttribute="centerY" secondItem="QS5-Rx-YEW" secondAttribute="centerY" id="bXs-z7-y9L"/>
+                            <constraint firstItem="h6i-se-d12" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" constant="20" id="p8O-eu-HUG"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
@@ -206,6 +214,10 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="latitudeTextField" destination="epB-LM-1T6" id="o8W-6W-dr2"/>
+                        <outlet property="longitudeTextField" destination="boU-We-VEg" id="piL-hf-rhX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
@@ -680,8 +692,8 @@
         <image name="xButton" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Ynx-wO-HBK"/>
-        <segue reference="cac-nU-E74"/>
+        <segue reference="txq-mR-ZcU"/>
+        <segue reference="NRC-p1-lpH"/>
         <segue reference="KU6-vZ-jMN"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.37254901959999998" green="0.71764705880000002" blue="0.30588235289999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
