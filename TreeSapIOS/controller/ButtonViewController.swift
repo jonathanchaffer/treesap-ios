@@ -9,12 +9,13 @@
 import UIKit
 
 class ButtonViewController: UIViewController {
-
+	// MARK: Properties
+	@IBOutlet weak var bigButton: UIButton!
+	
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+		bigButton.layer.cornerRadius = 150
     }
-
 
 }
 
