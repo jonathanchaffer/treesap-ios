@@ -50,6 +50,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             dataSource.retrieveOnlineData()
         }
     }
+    
+    func getDataSets() -> [[Tree]] {
+        var dataSets = [[Tree]]()
+        for dataSource in self.dataSources {
+            dataSets.append(dataSource.getTreeList())
+        }
+        return dataSets
+    }
 
 }
 
