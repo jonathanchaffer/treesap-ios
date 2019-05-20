@@ -9,6 +9,9 @@
 //
 
 import Foundation
+import CSVImporter
+import MapKit
+
 /// A class that contains the tree data from a source. The data is read in from an online database and is stored in a file
 class DataSource {
     /// the URL of the database where the tree data sets are stored
@@ -18,11 +21,15 @@ class DataSource {
     /// the name the created file that contains the data is/will be given
     let localFilename: String
     let dataSourceName: String
+	let csvFormat: CSVFormat
+	var trees: [Tree]
     
-    init(internetFilename: String, localFilename: String, dataSourceName: String) {
+	init(internetFilename: String, localFilename: String, dataSourceName: String, csvFormat: CSVFormat) {
         self.internetFilename = internetFilename
         self.localFilename = localFilename
         self.dataSourceName = dataSourceName
+		self.csvFormat = csvFormat
+		self.trees = [Tree]()
     }
     
     /**
@@ -69,4 +76,35 @@ class DataSource {
         
         return isErrorFree
     }
+	
+	/**
+	Creates Tree objects based on the file in the Documents directory with filename localFilename. Tree objects are stored in the trees array.
+	*/
+	func createTrees() {
+		// Create a file manager and get the path for the local file
+		let fileManager = FileManager.default
+		let documentsURL = try! fileManager.url(for:.documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+		let filepath = documentsURL.appendingPathComponent(self.localFilename).path
+		// Create an importer for the local file
+		let importer = CSVImporter<[String]>(path: filepath)
+		importer.startImportingRecords { $0 }.onFinish { importedRecords in
+			// Create a Tree object for each imported record
+			for record in importedRecords {
+				let commonName = record[self.csvFormat.commonNameIndex()]
+				let scientificName = record[self.csvFormat.scientificNameIndex()]
+				let latitude = Double(record[self.csvFormat.latitudeIndex()])
+				let longitude = Double(record[self.csvFormat.longitudeIndex()])
+				if (latitude != nil && longitude != nil) {
+					let tree = Tree(
+						commonName: commonName,
+						scientificName: scientificName,
+						location:CLLocationCoordinate2D(
+							latitude: latitude! as CLLocationDegrees,
+							longitude: longitude! as CLLocationDegrees
+					))
+					self.trees.append(tree)
+				}
+			}
+		}
+	}
 }
