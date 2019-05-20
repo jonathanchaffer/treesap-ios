@@ -15,5 +15,10 @@ class SettingsViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
-
+    
+    @IBAction func closeSettings(_ sender: UIBarButtonItem) {
+        navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
+    }
+    
 }
