@@ -69,8 +69,4 @@ class DataSource {
         
         return isErrorFree
     }
-    
-    func alertUser(message: String){
-        
-    }
 }
