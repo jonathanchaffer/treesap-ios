@@ -46,6 +46,11 @@
                         <viewLayoutGuide key="safeArea" id="1Bp-B6-NSN"/>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="cii-Eg-aYs">
+                        <barButtonItem key="leftBarButtonItem" title="Add" image="plus" id="0eV-a4-MqC">
+                            <connections>
+                                <segue destination="3fr-83-nON" kind="presentation" id="Gyh-Sj-jD4"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Settings" image="settings" id="3I4-Xv-9NB">
                             <connections>
                                 <segue destination="ROl-BY-TYM" kind="presentation" id="ZtF-HV-Gmw"/>
@@ -94,6 +99,11 @@
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
                     <navigationItem key="navigationItem" title="Button" id="VgC-2a-nIk">
+                        <barButtonItem key="leftBarButtonItem" title="Add" image="plus" id="acI-1u-hf1">
+                            <connections>
+                                <segue destination="3fr-83-nON" kind="presentation" id="Osm-ne-69B"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Item" image="settings" id="ix8-wC-AH8">
                             <connections>
                                 <segue destination="ROl-BY-TYM" kind="presentation" id="M3K-1N-Vy6"/>
@@ -114,10 +124,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="h6i-se-d12">
-                                <rect key="frame" x="65" y="395" width="284.5" height="106"/>
+                                <rect key="frame" x="20" y="370.5" width="374" height="155"/>
                                 <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter GPS coordinates below to get information on the nearest tree." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n0h-iJ-9i9">
+                                        <rect key="frame" x="3.5" y="0.0" width="367" height="41"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="bdD-S5-wwf">
-                                        <rect key="frame" x="0.0" y="0.0" width="284.5" height="68"/>
+                                        <rect key="frame" x="45" y="49" width="284.5" height="68"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="hZF-oL-wAM">
                                                 <rect key="frame" x="0.0" y="0.0" width="284.5" height="30"/>
@@ -135,7 +151,7 @@
                                                         </constraints>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" returnKeyType="next"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numbersAndPunctuation" returnKeyType="next" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                                     </textField>
                                                 </subviews>
                                                 <constraints>
@@ -158,7 +174,7 @@
                                                         </constraints>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" returnKeyType="go"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numbersAndPunctuation" returnKeyType="go" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                                     </textField>
                                                 </subviews>
                                                 <constraints>
@@ -168,7 +184,7 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aht-Pu-Wky">
-                                        <rect key="frame" x="94.5" y="76" width="95" height="30"/>
+                                        <rect key="frame" x="139.5" y="125" width="95" height="30"/>
                                         <state key="normal" title="Get Tree Data"/>
                                         <connections>
                                             <segue destination="vGI-b1-1Rv" kind="show" id="KU6-vZ-jMN"/>
@@ -180,17 +196,28 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="h6i-se-d12" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="Dna-mH-Ocn"/>
+                            <constraint firstAttribute="trailing" secondItem="h6i-se-d12" secondAttribute="trailing" constant="20" id="Zdz-5J-LVX"/>
                             <constraint firstItem="h6i-se-d12" firstAttribute="centerY" secondItem="QS5-Rx-YEW" secondAttribute="centerY" id="bXs-z7-y9L"/>
+                            <constraint firstItem="h6i-se-d12" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" constant="20" id="p8O-eu-HUG"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Coordinates" id="DS0-I7-gGL">
+                        <barButtonItem key="leftBarButtonItem" title="Add" image="plus" id="xsn-9f-w7g">
+                            <connections>
+                                <segue destination="3fr-83-nON" kind="presentation" id="txq-mR-ZcU"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Settings" image="settings" id="UZJ-DA-jmx">
                             <connections>
                                 <segue destination="ROl-BY-TYM" kind="presentation" id="NRC-p1-lpH"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="latitudeTextField" destination="epB-LM-1T6" id="o8W-6W-dr2"/>
+                        <outlet property="longitudeTextField" destination="boU-We-VEg" id="piL-hf-rhX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
@@ -218,6 +245,11 @@
                         <viewLayoutGuide key="safeArea" id="3H3-jO-XTg"/>
                     </view>
                     <navigationItem key="navigationItem" title="Map" id="8hd-Zn-4Yc">
+                        <barButtonItem key="leftBarButtonItem" title="Add" image="plus" id="09G-xy-Q3b">
+                            <connections>
+                                <segue destination="3fr-83-nON" kind="presentation" id="Vm4-eg-tTZ"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Settings" image="settings" id="YSQ-eH-Gkg">
                             <connections>
                                 <segue destination="ROl-BY-TYM" kind="presentation" id="Kwz-yv-nBo"/>
@@ -235,7 +267,7 @@
                 <pageViewController autoresizesArchivedViewToFullSize="NO" hidesBottomBarWhenPushed="YES" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="vGI-b1-1Rv" customClass="TreeDetailPageViewController" customModule="TreeSapIOS" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LS7-dc-Xjh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-68" y="1355"/>
+            <point key="canvasLocation" x="155" y="1359"/>
         </scene>
         <!--Simple Display View Controller-->
         <scene sceneID="XhK-KP-Osq">
@@ -270,7 +302,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JH4-oc-K2P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-755" y="2073"/>
+            <point key="canvasLocation" x="-532" y="2077"/>
         </scene>
         <!--Pie Chart Display View Controller-->
         <scene sceneID="wyz-Xs-Ixi">
@@ -305,7 +337,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r1j-zC-oy6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-65" y="2073"/>
+            <point key="canvasLocation" x="158" y="2077"/>
         </scene>
         <!--Benefits Display View Controller-->
         <scene sceneID="c72-WP-SK7">
@@ -340,7 +372,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XCc-DU-1MA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="619" y="2073"/>
+            <point key="canvasLocation" x="842" y="2077"/>
         </scene>
         <!--QR Code-->
         <scene sceneID="89T-WE-ojm">
@@ -377,6 +409,11 @@
                         <viewLayoutGuide key="safeArea" id="8HX-R7-d1V"/>
                     </view>
                     <navigationItem key="navigationItem" title="QR Code" id="vy0-tZ-wQc">
+                        <barButtonItem key="leftBarButtonItem" title="Add" image="plus" id="cZ6-kW-QbJ">
+                            <connections>
+                                <segue destination="3fr-83-nON" kind="presentation" id="Ynx-wO-HBK"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Settings" image="settings" id="nL0-ee-Huz">
                             <connections>
                                 <segue destination="ROl-BY-TYM" kind="presentation" id="cac-nU-E74"/>
@@ -387,6 +424,53 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SG5-Wd-OUh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="839.13043478260875" y="498.88392857142856"/>
+        </scene>
+        <!--Add Tree-->
+        <scene sceneID="lBN-bd-vkw">
+            <objects>
+                <viewController id="V4z-B1-CQ0" customClass="AddTreeViewController" customModule="TreeSapIOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BmM-ZO-jVY">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="F34-hu-dHz">
+                                <rect key="frame" x="97" y="414" width="220" height="68"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Add Tree View" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="p7D-5I-oXh">
+                                        <rect key="frame" x="0.0" y="0.0" width="220" height="43"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loaded by AddTreeViewController" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NgR-32-ZZ3">
+                                        <rect key="frame" x="0.0" y="51" width="220" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="F34-hu-dHz" firstAttribute="centerX" secondItem="BmM-ZO-jVY" secondAttribute="centerX" id="ciH-JJ-Fyc"/>
+                            <constraint firstItem="F34-hu-dHz" firstAttribute="centerY" secondItem="BmM-ZO-jVY" secondAttribute="centerY" id="zrK-y3-BIL"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="jgC-zg-Npi"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Add Tree" id="wvW-I7-vqV">
+                        <barButtonItem key="backBarButtonItem" title="Cancel" id="F6j-Cw-9Jd"/>
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" image="xButton" id="5Vu-8W-E3V">
+                            <connections>
+                                <action selector="closeAddTree:" destination="V4z-B1-CQ0" id="eRt-O1-FB7"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rkj-gx-ofX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1923" y="2077"/>
         </scene>
         <!--Settings-->
         <scene sceneID="TIa-A1-Du2">
@@ -432,7 +516,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xG1-Qv-Tsk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1923" y="2073"/>
+            <point key="canvasLocation" x="-1232" y="2077"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -459,7 +543,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-755" y="-1066"/>
+            <point key="canvasLocation" x="-533" y="-1069"/>
         </scene>
         <!--Button-->
         <scene sceneID="CPm-Ef-C0O">
@@ -557,7 +641,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OfI-a0-ZqM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1923" y="1355"/>
+            <point key="canvasLocation" x="-1232" y="1359"/>
         </scene>
         <!--Home-->
         <scene sceneID="tor-R9-cHy">
@@ -578,18 +662,38 @@
             </objects>
             <point key="canvasLocation" x="-1923" y="-242"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="rNQ-1x-mCj">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3fr-83-nON" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="UgP-us-wop">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="V4z-B1-CQ0" kind="relationship" relationship="rootViewController" id="Zgg-Mh-PaH"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mQ4-Uk-sPa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1923" y="1359"/>
+        </scene>
     </scenes>
     <resources>
         <image name="compass" width="30" height="30"/>
         <image name="filledButton" width="30" height="30"/>
         <image name="home" width="30" height="30"/>
         <image name="map" width="30" height="30"/>
+        <image name="plus" width="30" height="30"/>
         <image name="qrCode" width="30" height="30"/>
         <image name="settings" width="30" height="30"/>
         <image name="xButton" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cac-nU-E74"/>
+        <segue reference="txq-mR-ZcU"/>
+        <segue reference="NRC-p1-lpH"/>
         <segue reference="KU6-vZ-jMN"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.37254901959999998" green="0.71764705880000002" blue="0.30588235289999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
