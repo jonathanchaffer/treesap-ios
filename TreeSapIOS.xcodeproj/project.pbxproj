@@ -27,6 +27,7 @@
 		CBBCE84F228DD93E008F7225 /* QRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBCE84E228DD93E008F7225 /* QRCodeViewController.swift */; };
 		CBBCE851228DD9B1008F7225 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBCE850228DD9B1008F7225 /* SettingsViewController.swift */; };
 		D76D617F22931990003FFD24 /* CSVFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76D617E22931990003FFD24 /* CSVFormat.swift */; };
+		D76D618122931F79003FFD24 /* MoreInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76D618022931F79003FFD24 /* MoreInformationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		CBBCE84E228DD93E008F7225 /* QRCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeViewController.swift; sourceTree = "<group>"; };
 		CBBCE850228DD9B1008F7225 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		D76D617E22931990003FFD24 /* CSVFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVFormat.swift; sourceTree = "<group>"; };
+		D76D618022931F79003FFD24 /* MoreInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreInformationViewController.swift; sourceTree = "<group>"; };
 		D7755F6722DA6B48E552032C /* Pods-TreeSapIOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreeSapIOS.debug.xcconfig"; path = "Target Support Files/Pods-TreeSapIOS/Pods-TreeSapIOS.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -114,6 +116,7 @@
 				CBBCE84E228DD93E008F7225 /* QRCodeViewController.swift */,
 				CBBCE850228DD9B1008F7225 /* SettingsViewController.swift */,
 				CB7021922292FDCD00D11B0F /* AddTreeViewController.swift */,
+				D76D618022931F79003FFD24 /* MoreInformationViewController.swift */,
 				CB12C94E228DF85D000C74C3 /* TreeDetailPageViewController.swift */,
 				CB12C94C228DF5C4000C74C3 /* SimpleDisplayViewController.swift */,
 				CB12C950228DFA12000C74C3 /* PieChartDisplayViewController.swift */,
@@ -316,6 +319,7 @@
 				CBBCE82B228DD76B008F7225 /* AppDelegate.swift in Sources */,
 				CBBCE82D228DD76B008F7225 /* ButtonViewController.swift in Sources */,
 				CBBCE84D228DD847008F7225 /* MapViewController.swift in Sources */,
+				D76D618122931F79003FFD24 /* MoreInformationViewController.swift in Sources */,
 				CB7021932292FDCD00D11B0F /* AddTreeViewController.swift in Sources */,
 				CB6953BA228EE9530002024B /* DataSource.swift in Sources */,
 				CB6953B8228EE8720002024B /* Tree.swift in Sources */,
