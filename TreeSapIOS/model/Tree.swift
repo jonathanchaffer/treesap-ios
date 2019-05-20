@@ -20,7 +20,16 @@ class Tree {
         self.location = location
     }
 	
+	func getCommonName() -> String {
+		return self.commonName
+	}
+	
+	func getScientificName() -> String {
+		return self.scientificName
+	}
+	
 	func getLocation() -> CLLocationCoordinate2D {
 		return self.location
 	}
+	
 }

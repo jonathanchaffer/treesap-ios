@@ -67,6 +67,11 @@ class DataSource {
                     isErrorFree = false
                     return
                 }
+				
+				// Create Tree objects for the data
+				DispatchQueue.main.async {
+					self.createTrees()
+				}
             }
         }
         
@@ -106,5 +111,9 @@ class DataSource {
 				}
 			}
 		}
+	}
+	
+	func getTreeList() -> [Tree] {
+		return trees
 	}
 }
