@@ -47,7 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.dataSources.append(DataSource(internetFilename: "iTreeExport_119_HopeTrees_7may2018.csv", localFilename: "itree.csv", dataSourceName: "iTree"))
         self.dataSources.append(DataSource(internetFilename: "dataExport_119_HopeTrees_7may2018.csv", localFilename: "hope.csv", dataSourceName: "Hope College"))
         for dataSource in self.dataSources {
-            dataSource.retrieveData()
+            dataSource.retrieveOnlineData()
         }
     }
 
