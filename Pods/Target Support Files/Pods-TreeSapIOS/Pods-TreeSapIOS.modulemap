@@ -1,0 +1,6 @@
+module Pods_TreeSapIOS {
+  umbrella header "Pods-TreeSapIOS-umbrella.h"
+
+  export *
+  module * { export * }
+}

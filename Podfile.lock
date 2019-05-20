@@ -1,0 +1,20 @@
+PODS:
+  - CSVImporter (1.9.1):
+    - HandySwift (~> 2.5)
+  - HandySwift (2.8.0)
+
+DEPENDENCIES:
+  - CSVImporter
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - CSVImporter
+    - HandySwift
+
+SPEC CHECKSUMS:
+  CSVImporter: 1543192354ecf8abccd2cc77947d190fd9cf2b18
+  HandySwift: 0a32500215166a56a58f972f7ce1641361307e8b
+
+PODFILE CHECKSUM: 84a667280b867e02fc489c32f50caa7f3944aca4
+
+COCOAPODS: 1.6.1

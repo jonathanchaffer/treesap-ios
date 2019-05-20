@@ -1,0 +1,808 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		00081F1F82B936BA360971B6CF0DFF6F /* HandySwift-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = EE68DA901186C047A0BCDB4D66E61F80 /* HandySwift-dummy.m */; };
+		14CE90A48BB012034F7072F566CEA6CB /* FileSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42318B3805B2C69744133FA97796E595 /* FileSource.swift */; };
+		184A1947AB43433B33E9A7C4291DE4DA /* DictionaryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEEEC43BA30F58CE7EEFBDFFA2645D96 /* DictionaryExtension.swift */; };
+		1B1F526C54FED684E6349F28CBD9FA80 /* Unowned.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD60195720E15E12B491C97D82EFD6D8 /* Unowned.swift */; };
+		1EE35713BA47D1C63D3EBF826134B2D7 /* SortedArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA972DD1B643C0144A10D542552D883 /* SortedArray.swift */; };
+		2549645442EF4E75C9D1AB15026B84E6 /* FrequencyTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F91B12F6B52792CEA67B0C3A40CCEC /* FrequencyTable.swift */; };
+		3723CEC87F458626F6CFAC50EB0DEFCF /* CSVImporter-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A6055121E998D0F8774D495B14616737 /* CSVImporter-dummy.m */; };
+		377D046A847939DCCAAD913772A574BC /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6602BB12DBAC828CED6FB8FA122FAD20 /* ArrayExtension.swift */; };
+		377F449373B85658F48010AC5D348589 /* IntExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A7A2D7BE7CBA98DC68D6EAC7ED6F7B /* IntExtension.swift */; };
+		40478374AFA388B3195D7FE83FF99558 /* DispatchTimeIntervalExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA885E31CDA84D3BE2A8882B131D01B3 /* DispatchTimeIntervalExtension.swift */; };
+		51F272602F326817401101B3DF48D0B2 /* HandySwift-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = BE53C70818BDDD22DED06FEB617904B2 /* HandySwift-umbrella.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		54F780664648850434567B4F293C20EA /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500DC77FC3A25127A8C587A6280ABE4D /* StringExtension.swift */; };
+		56C198CFFDC3B4BBDDF091B86E8E0EB7 /* NSRangeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D06039D2DB916C197557D86BFA914DB /* NSRangeExtension.swift */; };
+		5C210D966470F247089C59E4429D116D /* CSVImporter-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = EF9F0EFD131493672DDDC7A281E369EC /* CSVImporter-umbrella.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		7BB5DFB457157D71CCB46BDE6DF9577E /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4D414FC190F77FFAC681D08D238F70 /* Globals.swift */; };
+		8AD5BD7FD9B50DD65A330603958D7539 /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87F22869B153BCF28CF246E82EC32CD /* Regex.swift */; };
+		981A04B267D2CA1CB35BEA6027870AB0 /* Pods-TreeSapIOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 36DC0464DB89530B3902A4D95F9E6EF7 /* Pods-TreeSapIOS-dummy.m */; };
+		9F60369827D0920F4E895BB8EC046046 /* TextFileStreamReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13507DBAC2E75AA74F7CA517187228D /* TextFileStreamReader.swift */; };
+		CBBFB9979299F25C10E8AD401FC579DD /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A156FD94F6C5D8DA5272A817F21A2B /* Globals.swift */; };
+		D3EC54D5EDCC283C3E65C163C5321D75 /* TimeIntervalExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F193C38345C65F528B7B7FAC3D6D973E /* TimeIntervalExtension.swift */; };
+		D3FAA37EB60DF6F2F76F332F9D4AF512 /* Pods-TreeSapIOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F017EAE4798236F5F72E9CEDC9D8E70 /* Pods-TreeSapIOS-umbrella.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		E754802A6950E108AF2DC294932D2D20 /* CollectionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C855969977BBBE0F90E0A3CD949B0231 /* CollectionExtension.swift */; };
+		EA3E657804D176D3D9E8602353A085F0 /* Source.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDA8A5BA4B1AEA28FC6E96783206D90 /* Source.swift */; };
+		EBB3341864518F628EEEE660B89A4DBC /* Weak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790DF24B0FAAA397318249863ABFF7E2 /* Weak.swift */; };
+		FAEBB2A705AE9BDFE2CAFBBD926A7701 /* CSVImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12806973110AB9EB6A66712F4CBD3C51 /* CSVImporter.swift */; };
+		FB1F7282B1875ADCEB299137CEF71EFF /* TextFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E412A0A0C12468D50D899D7C897AF1C4 /* TextFile.swift */; };
+		FD579503E4D6ADCC9223416022F5243B /* StringSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AB455666C18A9022F5A8EC7832EBBD /* StringSource.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6FE9A4BE0352C29D7385F5392ED063C9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E15EB66DA942D8801C5BD140B8895AA5;
+			remoteInfo = HandySwift;
+		};
+		8F6D658C8615F359F074D2E77AFA8CEC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3ACD17739EA69175ABD7B3622A0CAC10;
+			remoteInfo = CSVImporter;
+		};
+		9FDA202C878F21D5E6DB3E5EF384723C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E15EB66DA942D8801C5BD140B8895AA5;
+			remoteInfo = HandySwift;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0B4D414FC190F77FFAC681D08D238F70 /* Globals.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Globals.swift; path = Frameworks/CSVImporter/Globals.swift; sourceTree = "<group>"; };
+		0CDA8A5BA4B1AEA28FC6E96783206D90 /* Source.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Source.swift; path = Frameworks/CSVImporter/Source.swift; sourceTree = "<group>"; };
+		12806973110AB9EB6A66712F4CBD3C51 /* CSVImporter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CSVImporter.swift; path = Frameworks/CSVImporter/CSVImporter.swift; sourceTree = "<group>"; };
+		1527515BC006AB5D77BAB1C43209F470 /* HandySwift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = HandySwift.modulemap; sourceTree = "<group>"; };
+		186759D2FFD5D059D06E4D9ADA97BF00 /* Pods-TreeSapIOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-TreeSapIOS.modulemap"; sourceTree = "<group>"; };
+		2035D0CCCEF29F9ACA78198844EEF225 /* libHandySwift.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libHandySwift.a; path = libHandySwift.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		2CA972DD1B643C0144A10D542552D883 /* SortedArray.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SortedArray.swift; path = Frameworks/HandySwift/Structs/SortedArray.swift; sourceTree = "<group>"; };
+		2D06039D2DB916C197557D86BFA914DB /* NSRangeExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NSRangeExtension.swift; path = Frameworks/HandySwift/Extensions/NSRangeExtension.swift; sourceTree = "<group>"; };
+		2FD6D648F87668348116671787D605EC /* CSVImporter.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = CSVImporter.modulemap; sourceTree = "<group>"; };
+		31E0785F095541BE7D43D9CA836CFD93 /* Pods-TreeSapIOS-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-TreeSapIOS-acknowledgements.plist"; sourceTree = "<group>"; };
+		36DC0464DB89530B3902A4D95F9E6EF7 /* Pods-TreeSapIOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-TreeSapIOS-dummy.m"; sourceTree = "<group>"; };
+		42318B3805B2C69744133FA97796E595 /* FileSource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FileSource.swift; path = Frameworks/CSVImporter/FileSource.swift; sourceTree = "<group>"; };
+		500DC77FC3A25127A8C587A6280ABE4D /* StringExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StringExtension.swift; path = Frameworks/HandySwift/Extensions/StringExtension.swift; sourceTree = "<group>"; };
+		61E4A725DAAFF25356417E3DA929D052 /* CSVImporter.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CSVImporter.xcconfig; sourceTree = "<group>"; };
+		6602BB12DBAC828CED6FB8FA122FAD20 /* ArrayExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ArrayExtension.swift; path = Frameworks/HandySwift/Extensions/ArrayExtension.swift; sourceTree = "<group>"; };
+		790DF24B0FAAA397318249863ABFF7E2 /* Weak.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Weak.swift; path = Frameworks/HandySwift/Structs/Weak.swift; sourceTree = "<group>"; };
+		7CC33991E0ADA500AB6DAB719272AAE5 /* HandySwift-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "HandySwift-prefix.pch"; sourceTree = "<group>"; };
+		7F017EAE4798236F5F72E9CEDC9D8E70 /* Pods-TreeSapIOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-TreeSapIOS-umbrella.h"; sourceTree = "<group>"; };
+		804242095FD3A07CA86CFE8BF032D31A /* libPods-TreeSapIOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-TreeSapIOS.a"; path = "libPods-TreeSapIOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		89F91B12F6B52792CEA67B0C3A40CCEC /* FrequencyTable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FrequencyTable.swift; path = Frameworks/HandySwift/Structs/FrequencyTable.swift; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A6055121E998D0F8774D495B14616737 /* CSVImporter-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CSVImporter-dummy.m"; sourceTree = "<group>"; };
+		A6D7788FD39467368161CECF0988C772 /* Pods-TreeSapIOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TreeSapIOS.release.xcconfig"; sourceTree = "<group>"; };
+		B0A156FD94F6C5D8DA5272A817F21A2B /* Globals.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Globals.swift; path = Frameworks/HandySwift/Globals.swift; sourceTree = "<group>"; };
+		B449FA2593CAB57AD822CD29CA1A5FF3 /* Pods-TreeSapIOS-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-TreeSapIOS-acknowledgements.markdown"; sourceTree = "<group>"; };
+		B87F22869B153BCF28CF246E82EC32CD /* Regex.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Regex.swift; path = Frameworks/HandySwift/Structs/Regex.swift; sourceTree = "<group>"; };
+		BAD88C462429ECA2046F3C560AED0EB4 /* HandySwift.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = HandySwift.xcconfig; sourceTree = "<group>"; };
+		BE4C9919592A72E5F3BCE08790C25184 /* CSVImporter-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CSVImporter-prefix.pch"; sourceTree = "<group>"; };
+		BE53C70818BDDD22DED06FEB617904B2 /* HandySwift-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "HandySwift-umbrella.h"; sourceTree = "<group>"; };
+		C855969977BBBE0F90E0A3CD949B0231 /* CollectionExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CollectionExtension.swift; path = Frameworks/HandySwift/Extensions/CollectionExtension.swift; sourceTree = "<group>"; };
+		CA7CC55293DE69F1AE97B2DD380EAE1F /* libCSVImporter.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libCSVImporter.a; path = libCSVImporter.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB3B896CCFCE5A94DA99E2C1D514F33B /* Pods-TreeSapIOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TreeSapIOS.debug.xcconfig"; sourceTree = "<group>"; };
+		D8A7A2D7BE7CBA98DC68D6EAC7ED6F7B /* IntExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IntExtension.swift; path = Frameworks/HandySwift/Extensions/IntExtension.swift; sourceTree = "<group>"; };
+		E412A0A0C12468D50D899D7C897AF1C4 /* TextFile.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TextFile.swift; path = Frameworks/CSVImporter/TextFile.swift; sourceTree = "<group>"; };
+		EA885E31CDA84D3BE2A8882B131D01B3 /* DispatchTimeIntervalExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DispatchTimeIntervalExtension.swift; path = Frameworks/HandySwift/Extensions/DispatchTimeIntervalExtension.swift; sourceTree = "<group>"; };
+		EE68DA901186C047A0BCDB4D66E61F80 /* HandySwift-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "HandySwift-dummy.m"; sourceTree = "<group>"; };
+		EEEEC43BA30F58CE7EEFBDFFA2645D96 /* DictionaryExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DictionaryExtension.swift; path = Frameworks/HandySwift/Extensions/DictionaryExtension.swift; sourceTree = "<group>"; };
+		EF9F0EFD131493672DDDC7A281E369EC /* CSVImporter-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CSVImporter-umbrella.h"; sourceTree = "<group>"; };
+		F13507DBAC2E75AA74F7CA517187228D /* TextFileStreamReader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TextFileStreamReader.swift; path = Frameworks/CSVImporter/TextFileStreamReader.swift; sourceTree = "<group>"; };
+		F193C38345C65F528B7B7FAC3D6D973E /* TimeIntervalExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TimeIntervalExtension.swift; path = Frameworks/HandySwift/Extensions/TimeIntervalExtension.swift; sourceTree = "<group>"; };
+		F6AB455666C18A9022F5A8EC7832EBBD /* StringSource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StringSource.swift; path = Frameworks/CSVImporter/StringSource.swift; sourceTree = "<group>"; };
+		FD60195720E15E12B491C97D82EFD6D8 /* Unowned.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Unowned.swift; path = Frameworks/HandySwift/Structs/Unowned.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		29E99E04AF8068100635401C6F57740E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		78D4CC595040B060774390998FB1175D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B99B98A53E9A32442EF303679407411A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0ECE60BD80CEDEDC514EAAF63E076650 /* HandySwift */ = {
+			isa = PBXGroup;
+			children = (
+				6602BB12DBAC828CED6FB8FA122FAD20 /* ArrayExtension.swift */,
+				C855969977BBBE0F90E0A3CD949B0231 /* CollectionExtension.swift */,
+				EEEEC43BA30F58CE7EEFBDFFA2645D96 /* DictionaryExtension.swift */,
+				EA885E31CDA84D3BE2A8882B131D01B3 /* DispatchTimeIntervalExtension.swift */,
+				89F91B12F6B52792CEA67B0C3A40CCEC /* FrequencyTable.swift */,
+				B0A156FD94F6C5D8DA5272A817F21A2B /* Globals.swift */,
+				D8A7A2D7BE7CBA98DC68D6EAC7ED6F7B /* IntExtension.swift */,
+				2D06039D2DB916C197557D86BFA914DB /* NSRangeExtension.swift */,
+				B87F22869B153BCF28CF246E82EC32CD /* Regex.swift */,
+				2CA972DD1B643C0144A10D542552D883 /* SortedArray.swift */,
+				500DC77FC3A25127A8C587A6280ABE4D /* StringExtension.swift */,
+				F193C38345C65F528B7B7FAC3D6D973E /* TimeIntervalExtension.swift */,
+				FD60195720E15E12B491C97D82EFD6D8 /* Unowned.swift */,
+				790DF24B0FAAA397318249863ABFF7E2 /* Weak.swift */,
+				6D275E7D26B4FA000B92B54104805418 /* Support Files */,
+			);
+			name = HandySwift;
+			path = HandySwift;
+			sourceTree = "<group>";
+		};
+		3AA24F59BFB335AFF1CE9CBE53A20535 /* CSVImporter */ = {
+			isa = PBXGroup;
+			children = (
+				12806973110AB9EB6A66712F4CBD3C51 /* CSVImporter.swift */,
+				42318B3805B2C69744133FA97796E595 /* FileSource.swift */,
+				0B4D414FC190F77FFAC681D08D238F70 /* Globals.swift */,
+				0CDA8A5BA4B1AEA28FC6E96783206D90 /* Source.swift */,
+				F6AB455666C18A9022F5A8EC7832EBBD /* StringSource.swift */,
+				E412A0A0C12468D50D899D7C897AF1C4 /* TextFile.swift */,
+				F13507DBAC2E75AA74F7CA517187228D /* TextFileStreamReader.swift */,
+				E73D639148179C686C1E541F401214C5 /* Support Files */,
+			);
+			name = CSVImporter;
+			path = CSVImporter;
+			sourceTree = "<group>";
+		};
+		43287F09DAF7E809DD7F70A509C13D53 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3AA24F59BFB335AFF1CE9CBE53A20535 /* CSVImporter */,
+				0ECE60BD80CEDEDC514EAAF63E076650 /* HandySwift */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		63A85B23C1DA3021957EC1FA348EA14B /* Pods-TreeSapIOS */ = {
+			isa = PBXGroup;
+			children = (
+				186759D2FFD5D059D06E4D9ADA97BF00 /* Pods-TreeSapIOS.modulemap */,
+				B449FA2593CAB57AD822CD29CA1A5FF3 /* Pods-TreeSapIOS-acknowledgements.markdown */,
+				31E0785F095541BE7D43D9CA836CFD93 /* Pods-TreeSapIOS-acknowledgements.plist */,
+				36DC0464DB89530B3902A4D95F9E6EF7 /* Pods-TreeSapIOS-dummy.m */,
+				7F017EAE4798236F5F72E9CEDC9D8E70 /* Pods-TreeSapIOS-umbrella.h */,
+				CB3B896CCFCE5A94DA99E2C1D514F33B /* Pods-TreeSapIOS.debug.xcconfig */,
+				A6D7788FD39467368161CECF0988C772 /* Pods-TreeSapIOS.release.xcconfig */,
+			);
+			name = "Pods-TreeSapIOS";
+			path = "Target Support Files/Pods-TreeSapIOS";
+			sourceTree = "<group>";
+		};
+		6D275E7D26B4FA000B92B54104805418 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				1527515BC006AB5D77BAB1C43209F470 /* HandySwift.modulemap */,
+				BAD88C462429ECA2046F3C560AED0EB4 /* HandySwift.xcconfig */,
+				EE68DA901186C047A0BCDB4D66E61F80 /* HandySwift-dummy.m */,
+				7CC33991E0ADA500AB6DAB719272AAE5 /* HandySwift-prefix.pch */,
+				BE53C70818BDDD22DED06FEB617904B2 /* HandySwift-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/HandySwift";
+			sourceTree = "<group>";
+		};
+		6E612354779CBF61D7F80A2AD04002B4 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				63A85B23C1DA3021957EC1FA348EA14B /* Pods-TreeSapIOS */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		C20A1FC2B540CCE4A2D3D94A638714D7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CA7CC55293DE69F1AE97B2DD380EAE1F /* libCSVImporter.a */,
+				2035D0CCCEF29F9ACA78198844EEF225 /* libHandySwift.a */,
+				804242095FD3A07CA86CFE8BF032D31A /* libPods-TreeSapIOS.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				D89477F20FB1DE18A04690586D7808C4 /* Frameworks */,
+				43287F09DAF7E809DD7F70A509C13D53 /* Pods */,
+				C20A1FC2B540CCE4A2D3D94A638714D7 /* Products */,
+				6E612354779CBF61D7F80A2AD04002B4 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		D89477F20FB1DE18A04690586D7808C4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E73D639148179C686C1E541F401214C5 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				2FD6D648F87668348116671787D605EC /* CSVImporter.modulemap */,
+				61E4A725DAAFF25356417E3DA929D052 /* CSVImporter.xcconfig */,
+				A6055121E998D0F8774D495B14616737 /* CSVImporter-dummy.m */,
+				BE4C9919592A72E5F3BCE08790C25184 /* CSVImporter-prefix.pch */,
+				EF9F0EFD131493672DDDC7A281E369EC /* CSVImporter-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/CSVImporter";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		37CE153954A2B9F0CB331E398CA33736 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D3FAA37EB60DF6F2F76F332F9D4AF512 /* Pods-TreeSapIOS-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BDD6583B363C8B35024207C6CD90A733 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5C210D966470F247089C59E4429D116D /* CSVImporter-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E318F16F3B5E7B5F6CA47ABA8400E3C7 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				51F272602F326817401101B3DF48D0B2 /* HandySwift-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		3ACD17739EA69175ABD7B3622A0CAC10 /* CSVImporter */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B14AE9D1EFCB169F3FE40B42B7E90EC8 /* Build configuration list for PBXNativeTarget "CSVImporter" */;
+			buildPhases = (
+				BDD6583B363C8B35024207C6CD90A733 /* Headers */,
+				E49E9BFACE7B0AB8CAB2D857E92C56D4 /* Sources */,
+				B99B98A53E9A32442EF303679407411A /* Frameworks */,
+				DDFC172A0999E552896D062559D1D653 /* Copy generated compatibility header */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9D795487A300B09AA11B442BC343F26C /* PBXTargetDependency */,
+			);
+			name = CSVImporter;
+			productName = CSVImporter;
+			productReference = CA7CC55293DE69F1AE97B2DD380EAE1F /* libCSVImporter.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		AA9A47335E61937EC169BBDF85180A71 /* Pods-TreeSapIOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 127BEA40F09E6C1E24AE511C5327913A /* Build configuration list for PBXNativeTarget "Pods-TreeSapIOS" */;
+			buildPhases = (
+				37CE153954A2B9F0CB331E398CA33736 /* Headers */,
+				475462016FED713CE559B7889CC741FB /* Sources */,
+				29E99E04AF8068100635401C6F57740E /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				172AB666FE6605DCEF82EF04E358FD8B /* PBXTargetDependency */,
+				515AF5E160FB32C24955AC6859F4CA4D /* PBXTargetDependency */,
+			);
+			name = "Pods-TreeSapIOS";
+			productName = "Pods-TreeSapIOS";
+			productReference = 804242095FD3A07CA86CFE8BF032D31A /* libPods-TreeSapIOS.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		E15EB66DA942D8801C5BD140B8895AA5 /* HandySwift */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B2B6E9181EF95AB785F746399A434D39 /* Build configuration list for PBXNativeTarget "HandySwift" */;
+			buildPhases = (
+				E318F16F3B5E7B5F6CA47ABA8400E3C7 /* Headers */,
+				2EA15F4318AC1EF7AE8DBBE530BA8810 /* Sources */,
+				78D4CC595040B060774390998FB1175D /* Frameworks */,
+				754775A729A36C76266AD2132C2CD328 /* Copy generated compatibility header */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HandySwift;
+			productName = HandySwift;
+			productReference = 2035D0CCCEF29F9ACA78198844EEF225 /* libHandySwift.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1020;
+				LastUpgradeCheck = 1020;
+			};
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = C20A1FC2B540CCE4A2D3D94A638714D7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3ACD17739EA69175ABD7B3622A0CAC10 /* CSVImporter */,
+				E15EB66DA942D8801C5BD140B8895AA5 /* HandySwift */,
+				AA9A47335E61937EC169BBDF85180A71 /* Pods-TreeSapIOS */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		754775A729A36C76266AD2132C2CD328 /* Copy generated compatibility header */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DERIVED_SOURCES_DIR}/${PRODUCT_MODULE_NAME}-Swift.h",
+				"${PODS_ROOT}/Headers/Public/HandySwift/HandySwift.modulemap",
+				"${PODS_ROOT}/Headers/Public/HandySwift/HandySwift-umbrella.h",
+			);
+			name = "Copy generated compatibility header";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${BUILT_PRODUCTS_DIR}/${PRODUCT_MODULE_NAME}.modulemap",
+				"${BUILT_PRODUCTS_DIR}/HandySwift-umbrella.h",
+				"${BUILT_PRODUCTS_DIR}/Swift Compatibility Header/${PRODUCT_MODULE_NAME}-Swift.h",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "COMPATIBILITY_HEADER_PATH=\"${BUILT_PRODUCTS_DIR}/Swift Compatibility Header/${PRODUCT_MODULE_NAME}-Swift.h\"\nMODULE_MAP_PATH=\"${BUILT_PRODUCTS_DIR}/${PRODUCT_MODULE_NAME}.modulemap\"\n\nditto \"${DERIVED_SOURCES_DIR}/${PRODUCT_MODULE_NAME}-Swift.h\" \"${COMPATIBILITY_HEADER_PATH}\"\nditto \"${PODS_ROOT}/Headers/Public/HandySwift/HandySwift.modulemap\" \"${MODULE_MAP_PATH}\"\nditto \"${PODS_ROOT}/Headers/Public/HandySwift/HandySwift-umbrella.h\" \"${BUILT_PRODUCTS_DIR}\"\nprintf \"\\n\\nmodule ${PRODUCT_MODULE_NAME}.Swift {\\n  header \\\"${COMPATIBILITY_HEADER_PATH}\\\"\\n  requires objc\\n}\\n\" >> \"${MODULE_MAP_PATH}\"\n";
+		};
+		DDFC172A0999E552896D062559D1D653 /* Copy generated compatibility header */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DERIVED_SOURCES_DIR}/${PRODUCT_MODULE_NAME}-Swift.h",
+				"${PODS_ROOT}/Headers/Public/CSVImporter/CSVImporter.modulemap",
+				"${PODS_ROOT}/Headers/Public/CSVImporter/CSVImporter-umbrella.h",
+			);
+			name = "Copy generated compatibility header";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${BUILT_PRODUCTS_DIR}/${PRODUCT_MODULE_NAME}.modulemap",
+				"${BUILT_PRODUCTS_DIR}/CSVImporter-umbrella.h",
+				"${BUILT_PRODUCTS_DIR}/Swift Compatibility Header/${PRODUCT_MODULE_NAME}-Swift.h",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "COMPATIBILITY_HEADER_PATH=\"${BUILT_PRODUCTS_DIR}/Swift Compatibility Header/${PRODUCT_MODULE_NAME}-Swift.h\"\nMODULE_MAP_PATH=\"${BUILT_PRODUCTS_DIR}/${PRODUCT_MODULE_NAME}.modulemap\"\n\nditto \"${DERIVED_SOURCES_DIR}/${PRODUCT_MODULE_NAME}-Swift.h\" \"${COMPATIBILITY_HEADER_PATH}\"\nditto \"${PODS_ROOT}/Headers/Public/CSVImporter/CSVImporter.modulemap\" \"${MODULE_MAP_PATH}\"\nditto \"${PODS_ROOT}/Headers/Public/CSVImporter/CSVImporter-umbrella.h\" \"${BUILT_PRODUCTS_DIR}\"\nprintf \"\\n\\nmodule ${PRODUCT_MODULE_NAME}.Swift {\\n  header \\\"${COMPATIBILITY_HEADER_PATH}\\\"\\n  requires objc\\n}\\n\" >> \"${MODULE_MAP_PATH}\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2EA15F4318AC1EF7AE8DBBE530BA8810 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				377D046A847939DCCAAD913772A574BC /* ArrayExtension.swift in Sources */,
+				E754802A6950E108AF2DC294932D2D20 /* CollectionExtension.swift in Sources */,
+				184A1947AB43433B33E9A7C4291DE4DA /* DictionaryExtension.swift in Sources */,
+				40478374AFA388B3195D7FE83FF99558 /* DispatchTimeIntervalExtension.swift in Sources */,
+				2549645442EF4E75C9D1AB15026B84E6 /* FrequencyTable.swift in Sources */,
+				CBBFB9979299F25C10E8AD401FC579DD /* Globals.swift in Sources */,
+				00081F1F82B936BA360971B6CF0DFF6F /* HandySwift-dummy.m in Sources */,
+				377F449373B85658F48010AC5D348589 /* IntExtension.swift in Sources */,
+				56C198CFFDC3B4BBDDF091B86E8E0EB7 /* NSRangeExtension.swift in Sources */,
+				8AD5BD7FD9B50DD65A330603958D7539 /* Regex.swift in Sources */,
+				1EE35713BA47D1C63D3EBF826134B2D7 /* SortedArray.swift in Sources */,
+				54F780664648850434567B4F293C20EA /* StringExtension.swift in Sources */,
+				D3EC54D5EDCC283C3E65C163C5321D75 /* TimeIntervalExtension.swift in Sources */,
+				1B1F526C54FED684E6349F28CBD9FA80 /* Unowned.swift in Sources */,
+				EBB3341864518F628EEEE660B89A4DBC /* Weak.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		475462016FED713CE559B7889CC741FB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				981A04B267D2CA1CB35BEA6027870AB0 /* Pods-TreeSapIOS-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E49E9BFACE7B0AB8CAB2D857E92C56D4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3723CEC87F458626F6CFAC50EB0DEFCF /* CSVImporter-dummy.m in Sources */,
+				FAEBB2A705AE9BDFE2CAFBBD926A7701 /* CSVImporter.swift in Sources */,
+				14CE90A48BB012034F7072F566CEA6CB /* FileSource.swift in Sources */,
+				7BB5DFB457157D71CCB46BDE6DF9577E /* Globals.swift in Sources */,
+				EA3E657804D176D3D9E8602353A085F0 /* Source.swift in Sources */,
+				FD579503E4D6ADCC9223416022F5243B /* StringSource.swift in Sources */,
+				FB1F7282B1875ADCEB299137CEF71EFF /* TextFile.swift in Sources */,
+				9F60369827D0920F4E895BB8EC046046 /* TextFileStreamReader.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		172AB666FE6605DCEF82EF04E358FD8B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = CSVImporter;
+			target = 3ACD17739EA69175ABD7B3622A0CAC10 /* CSVImporter */;
+			targetProxy = 8F6D658C8615F359F074D2E77AFA8CEC /* PBXContainerItemProxy */;
+		};
+		515AF5E160FB32C24955AC6859F4CA4D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = HandySwift;
+			target = E15EB66DA942D8801C5BD140B8895AA5 /* HandySwift */;
+			targetProxy = 9FDA202C878F21D5E6DB3E5EF384723C /* PBXContainerItemProxy */;
+		};
+		9D795487A300B09AA11B442BC343F26C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = HandySwift;
+			target = E15EB66DA942D8801C5BD140B8895AA5 /* HandySwift */;
+			targetProxy = 6FE9A4BE0352C29D7385F5392ED063C9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		443C4F25FF288667295F97511463A9CE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BAD88C462429ECA2046F3C560AED0EB4 /* HandySwift.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/HandySwift/HandySwift-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MODULEMAP_FILE = Headers/Public/HandySwift/HandySwift.modulemap;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = HandySwift;
+				PRODUCT_NAME = HandySwift;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4AABF854ADFD0318ED6D9D052376E9CF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BAD88C462429ECA2046F3C560AED0EB4 /* HandySwift.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/HandySwift/HandySwift-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MODULEMAP_FILE = Headers/Public/HandySwift/HandySwift.modulemap;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = HandySwift;
+				PRODUCT_NAME = HandySwift;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8DA1E35A44FC20207AAAB57FB3E3F1BB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.3;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		9997920E19B1E4A1EE13EC2EB7A5506D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 61E4A725DAAFF25356417E3DA929D052 /* CSVImporter.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/CSVImporter/CSVImporter-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MODULEMAP_FILE = Headers/Public/CSVImporter/CSVImporter.modulemap;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = CSVImporter;
+				PRODUCT_NAME = CSVImporter;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B13423993B5AE831C450973E20414142 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		C410F68AE75CA877B8A7A6A9FF7757F3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A6D7788FD39467368161CECF0988C772 /* Pods-TreeSapIOS.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.3;
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-TreeSapIOS/Pods-TreeSapIOS.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E2F6D97D923057DAB0FDDB592AECA984 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CB3B896CCFCE5A94DA99E2C1D514F33B /* Pods-TreeSapIOS.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.3;
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-TreeSapIOS/Pods-TreeSapIOS.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		FC42F4381E450CCDFC099A46CC3D32EF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 61E4A725DAAFF25356417E3DA929D052 /* CSVImporter.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/CSVImporter/CSVImporter-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MODULEMAP_FILE = Headers/Public/CSVImporter/CSVImporter.modulemap;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = CSVImporter;
+				PRODUCT_NAME = CSVImporter;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		127BEA40F09E6C1E24AE511C5327913A /* Build configuration list for PBXNativeTarget "Pods-TreeSapIOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E2F6D97D923057DAB0FDDB592AECA984 /* Debug */,
+				C410F68AE75CA877B8A7A6A9FF7757F3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8DA1E35A44FC20207AAAB57FB3E3F1BB /* Debug */,
+				B13423993B5AE831C450973E20414142 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B14AE9D1EFCB169F3FE40B42B7E90EC8 /* Build configuration list for PBXNativeTarget "CSVImporter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FC42F4381E450CCDFC099A46CC3D32EF /* Debug */,
+				9997920E19B1E4A1EE13EC2EB7A5506D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B2B6E9181EF95AB785F746399A434D39 /* Build configuration list for PBXNativeTarget "HandySwift" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				443C4F25FF288667295F97511463A9CE /* Debug */,
+				4AABF854ADFD0318ED6D9D052376E9CF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+}

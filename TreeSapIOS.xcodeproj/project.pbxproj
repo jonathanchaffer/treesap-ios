@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		61E1EFDD5187EC1C7241B025 /* libPods-TreeSapIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B77358D36DBDDED4196CADD2 /* libPods-TreeSapIOS.a */; };
 		CB091E712292EBCF00F0CB06 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB091E702292EBCF00F0CB06 /* HomeViewController.swift */; };
 		CB12C94B228DF508000C74C3 /* BenefitsDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB12C94A228DF508000C74C3 /* BenefitsDisplayViewController.swift */; };
 		CB12C94D228DF5C4000C74C3 /* SimpleDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB12C94C228DF5C4000C74C3 /* SimpleDisplayViewController.swift */; };
@@ -38,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		657C7C57D15B44ECCED1E51C /* Pods-TreeSapIOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreeSapIOS.release.xcconfig"; path = "Target Support Files/Pods-TreeSapIOS/Pods-TreeSapIOS.release.xcconfig"; sourceTree = "<group>"; };
+		B77358D36DBDDED4196CADD2 /* libPods-TreeSapIOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TreeSapIOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB091E702292EBCF00F0CB06 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		CB12C94A228DF508000C74C3 /* BenefitsDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BenefitsDisplayViewController.swift; sourceTree = "<group>"; };
 		CB12C94C228DF5C4000C74C3 /* SimpleDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleDisplayViewController.swift; sourceTree = "<group>"; };
@@ -60,6 +63,7 @@
 		CBBCE84C228DD847008F7225 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		CBBCE84E228DD93E008F7225 /* QRCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeViewController.swift; sourceTree = "<group>"; };
 		CBBCE850228DD9B1008F7225 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		D7755F6722DA6B48E552032C /* Pods-TreeSapIOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreeSapIOS.debug.xcconfig"; path = "Target Support Files/Pods-TreeSapIOS/Pods-TreeSapIOS.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				61E1EFDD5187EC1C7241B025 /* libPods-TreeSapIOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,6 +85,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6513C0878CC415B2C584B34B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B77358D36DBDDED4196CADD2 /* libPods-TreeSapIOS.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9C9A1EE661337DC862C941EA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D7755F6722DA6B48E552032C /* Pods-TreeSapIOS.debug.xcconfig */,
+				657C7C57D15B44ECCED1E51C /* Pods-TreeSapIOS.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		CB6953B4228EE4300002024B /* controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -122,6 +145,8 @@
 				CBBCE829228DD76B008F7225 /* TreeSapIOS */,
 				CBBCE840228DD777008F7225 /* TreeSapIOSTests */,
 				CBBCE828228DD76B008F7225 /* Products */,
+				9C9A1EE661337DC862C941EA /* Pods */,
+				6513C0878CC415B2C584B34B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -163,6 +188,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CBBCE846228DD777008F7225 /* Build configuration list for PBXNativeTarget "TreeSapIOS" */;
 			buildPhases = (
+				80D7DD2DD60237A802BA7AE6 /* [CP] Check Pods Manifest.lock */,
 				CBBCE823228DD76B008F7225 /* Sources */,
 				CBBCE824228DD76B008F7225 /* Frameworks */,
 				CBBCE825228DD76B008F7225 /* Resources */,
@@ -251,6 +277,31 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		80D7DD2DD60237A802BA7AE6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TreeSapIOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CBBCE823228DD76B008F7225 /* Sources */ = {
@@ -430,6 +481,7 @@
 		};
 		CBBCE847228DD777008F7225 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D7755F6722DA6B48E552032C /* Pods-TreeSapIOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = appIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -448,6 +500,7 @@
 		};
 		CBBCE848228DD777008F7225 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 657C7C57D15B44ECCED1E51C /* Pods-TreeSapIOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = appIcon;
 				CODE_SIGN_STYLE = Automatic;
