@@ -93,10 +93,19 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
     }
     
     func getTreeFromString(stringResult: String){
-        alertUser(title: "Result", message: stringResult)
+        let resultParts: [Substring] = stringResult.split(separator: "_")
+        if(resultParts.count != 2){
+            alertUser(title: "", message: "The code you scanned is not the code for a tree.")
+            return
+        }
         
-        //get index of underscore that separates the tree ID and the data source
-        //let underscoreIndex: Int = stringResult.firstIndex(of: "_")
+        guard let treeID: Int = Int(String(resultParts[0])) else {
+            alertUser(title: "", message: "The code you scanned is not the code for a tree.")
+            return
+        }
+        
+        let practiceResult: String = "Data Source: " + String(resultParts[1]) + ", Tree ID: " + String(treeID)
+        alertUser(title: "Result", message: practiceResult)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
