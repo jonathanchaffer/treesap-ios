@@ -8,8 +8,8 @@
 
 import UIKit
 
-class PieChartDisplayViewController: UIViewController {
-
+class PieChartDisplayViewController: TreeDisplayViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

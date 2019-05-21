@@ -8,12 +8,16 @@
 
 import UIKit
 
-class SimpleDisplayViewController: UIViewController {
-
+class SimpleDisplayViewController: TreeDisplayViewController {
+    @IBOutlet weak var commonNameLabel: UILabel!
+    @IBOutlet weak var scientificNameLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.commonNameLabel.text = self.displayedTree?.commonName
+        self.scientificNameLabel.text = self.displayedTree?.scientificName
     }
 
 }
