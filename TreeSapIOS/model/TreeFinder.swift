@@ -30,4 +30,35 @@ class TreeFinder {
 		let locationTo = CLLocation(latitude: to.latitude, longitude: to.longitude)
 		return locationFrom.distance(from: locationTo)
 	}
+    
+    /**
+    Searches for a Tree object in the DataSource with the given name (.dataSourceName) using the ID of the Tree (.id)
+ 
+     - Parameters:
+     - treeId: the ID of the tree that is to be searched for
+     - dataSourceName: the name of the DataSource object that contains the Tree object, if it exists
+     - dataSources: an array of Datasources which includes the given DataSource object, if it exists
+    */
+    class func findTree(treeID: Int, dataSourceName: String, dataSources: [DataSource]) -> Tree?{
+        //Find the DataSource in which the tree is to be found based on the name
+        var dataSource: DataSource!
+        var isFound: Bool = false
+        for source in dataSources{
+            if(source.dataSourceName == dataSourceName){
+                dataSource = source
+                isFound = true
+            }
+        }
+        if(!isFound){
+            return nil
+        }
+        
+        //Find the tree in the data source based on the ID of the tree
+        for tree in dataSource.trees{
+            if(tree.id == treeID){
+                return tree
+            }
+        }
+        return nil
+    }
 }

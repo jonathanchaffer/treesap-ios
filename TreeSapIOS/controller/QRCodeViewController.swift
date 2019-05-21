@@ -69,13 +69,6 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
         captureSession.startRunning()
     }
     
-    /// Makes an alert appear with the given argument and message. The alert will have an "Ok" buton
-    func alertUser(title: String, message: String){
-        let alertController: UIAlertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
-        alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
-        present(alertController, animated: true, completion: nil)
-    }
-    
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         if let metadatObject: AVMetadataObject = metadataObjects.first{
             guard let readableObject = metadatObject as? AVMetadataMachineReadableCodeObject else{
@@ -84,28 +77,51 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
             }
             
             guard let stringOutput: String = readableObject.stringValue else{
-                alertUser(title: "Error", message: "QR code coud not be scanned")
+                alertUser(title: "Error", message: "QR code could not be scanned")
                 return
             }
             
-            getTreeFromString(stringResult: stringOutput)
+            guard let resultTree: Tree = getTreeFromString(stringResult: stringOutput) else{
+                alertUser(title: "", message: "No tree with the scanned code was found.")
+                return
+            }
+            
+            displayTreeResults(tree: resultTree)
         }
     }
     
-    func getTreeFromString(stringResult: String){
+    /**
+    Gets the tree that corresponds to the given encoded String
+     
+     - Parameter stringResult: the encodedString
+     
+     - Returns: the Tree object that corresponds to the given String
+    */
+    func getTreeFromString(stringResult: String) -> Tree?{
         let resultParts: [Substring] = stringResult.split(separator: "_")
         if(resultParts.count != 2){
-            alertUser(title: "", message: "The code you scanned is not the code for a tree.")
-            return
+            alertUser(title: "", message: "The scanned code is not the code for a tree.")
+            return nil
         }
         
         guard let treeID: Int = Int(String(resultParts[0])) else {
-            alertUser(title: "", message: "The code you scanned is not the code for a tree.")
-            return
+            alertUser(title: "", message: "The scanned code is not the code for a tree.")
+            return nil
         }
         
-        let practiceResult: String = "Data Source: " + String(resultParts[1]) + ", Tree ID: " + String(treeID)
-        alertUser(title: "Result", message: practiceResult)
+        guard let tree: Tree = TreeFinder.findTree(treeID: treeID, dataSourceName: String(resultParts[1]), dataSources: appDelegate.getDataSources()) else{
+            alertUser(title: "", message: "No tree with the scanned code was found.")
+            return nil
+        }
+        
+        return tree
+    }
+    
+    ///brings up the tree display for the given Tree object
+    func displayTreeResults(tree: Tree){
+            let pages = TreeDetailPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
+            pages.displayedTree = tree
+            navigationController?.pushViewController(pages, animated: true)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -143,4 +159,12 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
         //change the space the QR scanner occupies
         previewLayer.frame = view.layer.bounds
     }
+    
+    /// Makes an alert appear with the given argument and message. The alert will have an "Ok" buton
+    func alertUser(title: String, message: String){
+        let alertController: UIAlertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+        present(alertController, animated: true, completion: nil)
+    }
+
 }
