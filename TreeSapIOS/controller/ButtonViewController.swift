@@ -45,7 +45,6 @@ class ButtonViewController: UIViewController {
     
     @IBAction func handleBigButtonPressed(_ sender: UIButton) {
         if let treeToDisplay = getTreeDataByGPS() {
-            print(treeToDisplay.commonName)
             let pages = TreeDetailPageViewController(nibName: "TreeDetailPageViewController", bundle: nil)
             pages.displayedTree = treeToDisplay
             navigationController?.pushViewController(pages, animated: true)
