@@ -60,12 +60,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return dataSets
     }
     
+    func getDataSources() -> [DataSource]{
+        return dataSources
+    }
+    
     func enableLocationFeatures() {
         self.locationFeaturesEnabled = true
     }
     
     func disableLocationFeatures() {
         self.locationFeaturesEnabled = false
+    }
+    
+    /// Makes an alert appear with the given argument and message. The alert will have an "Ok" buton
+    func alertUser(title: String, message: String){
+        let alertController: UIAlertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+        present(alertController, animated: true, completion: nil)
     }
 
 }
