@@ -90,7 +90,7 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
     }
     
     func getTreeFromString(stringResult: String){
-        alertUser(title: "Result", message: stringOutput)
+        alertUser(title: "Result", message: stringResult)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
