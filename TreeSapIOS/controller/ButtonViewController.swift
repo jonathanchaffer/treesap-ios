@@ -21,7 +21,7 @@ class ButtonViewController: UIViewController {
 		bigButton.layer.cornerRadius = 150
 		locationManager.delegate = self
 		locationManager.desiredAccuracy = kCLLocationAccuracyBest
-		locationManager.distanceFilter = 2
+		locationManager.distanceFilter = 1
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
