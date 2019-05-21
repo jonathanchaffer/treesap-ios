@@ -12,10 +12,13 @@ import AVKit
 class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
+    var appDelegate: AppDelegate!
     
     //creates the QR code scanner and makes it start capturing input
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        appDelegate = UIApplication.shared.delegate as! AppDelegate
         
         captureSession = AVCaptureSession()
         
@@ -91,6 +94,8 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
     
     func getTreeFromString(stringResult: String){
         alertUser(title: "Result", message: stringResult)
+        
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {

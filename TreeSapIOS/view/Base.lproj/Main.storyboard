@@ -409,11 +409,20 @@
         <scene sceneID="89T-WE-ojm">
             <objects>
                 <viewController id="g0N-u1-Eri" customClass="QRCodeViewController" customModule="TreeSapIOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8Si-jz-nRS">
+                    <view key="view" contentMode="scaleToFill" id="RIs-wL-ip9">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="QRCodeOverlay" translatesAutoresizingMaskIntoConstraints="NO" id="RN5-Tc-OBc">
+                                <rect key="frame" x="-1785" y="-1544" width="3984" height="3984"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="8HX-R7-d1V"/>
+                        <constraints>
+                            <constraint firstItem="RN5-Tc-OBc" firstAttribute="centerX" secondItem="RIs-wL-ip9" secondAttribute="centerX" id="lG4-JI-LPf"/>
+                            <constraint firstItem="RN5-Tc-OBc" firstAttribute="centerY" secondItem="RIs-wL-ip9" secondAttribute="centerY" id="llM-s1-h21"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="xwd-N2-aq5"/>
                     </view>
                     <navigationItem key="navigationItem" title="QR Code" id="vy0-tZ-wQc">
                         <barButtonItem key="leftBarButtonItem" title="Add" image="plus" id="cZ6-kW-QbJ">
@@ -740,6 +749,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="QRCodeOverlay" width="3984" height="3984"/>
         <image name="compass" width="30" height="30"/>
         <image name="filledButton" width="30" height="30"/>
         <image name="home" width="30" height="30"/>
