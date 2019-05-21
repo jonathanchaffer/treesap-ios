@@ -61,7 +61,6 @@ class DataSource {
                     let documentDirectory = try fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
                     let fileURL = documentDirectory.appendingPathComponent(self.localFilename)
                     try data!.write(to: fileURL)
-                    print("Wrote " + self.internetFilename + " to " + documentDirectory.relativePath + " as " + self.localFilename)
                 } catch {
                     print(error)
                     isErrorFree = false
