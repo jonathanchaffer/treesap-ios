@@ -95,7 +95,8 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
     func getTreeFromString(stringResult: String){
         alertUser(title: "Result", message: stringResult)
         
-        
+        //get index of underscore that separates the tree ID and the data source
+        //let underscoreIndex: Int = stringResult.firstIndex(of: "_")
     }
     
     override func viewWillDisappear(_ animated: Bool) {
