@@ -218,7 +218,7 @@
                                         <rect key="frame" x="139.5" y="125" width="95" height="30"/>
                                         <state key="normal" title="Get Tree Data"/>
                                         <connections>
-                                            <action selector="handleCoordinatesButtonPressed:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="OUq-wM-loZ"/>
+                                            <action selector="handleCoordinatesButtonPressed:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="LGI-jT-RdZ"/>
                                         </connections>
                                     </button>
                                 </subviews>
