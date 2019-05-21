@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -474,19 +474,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="QRCodeOverlay" translatesAutoresizingMaskIntoConstraints="NO" id="RN5-Tc-OBc">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="QRCodeOverlay" highlightedImage="QRCodeOverlay" translatesAutoresizingMaskIntoConstraints="NO" id="tLf-oU-uzz">
                                 <rect key="frame" x="20" y="261" width="374" height="374"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="RN5-Tc-OBc" secondAttribute="height" multiplier="1:1" id="b71-Bg-c6P"/>
+                                    <constraint firstAttribute="width" secondItem="tLf-oU-uzz" secondAttribute="height" multiplier="1:1" id="nBa-MU-vRJ"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="RN5-Tc-OBc" firstAttribute="centerX" secondItem="RIs-wL-ip9" secondAttribute="centerX" id="lG4-JI-LPf"/>
-                            <constraint firstItem="RN5-Tc-OBc" firstAttribute="centerY" secondItem="RIs-wL-ip9" secondAttribute="centerY" id="llM-s1-h21"/>
-                            <constraint firstAttribute="trailing" secondItem="RN5-Tc-OBc" secondAttribute="trailing" constant="20" id="wDi-Gz-1GT"/>
-                            <constraint firstItem="RN5-Tc-OBc" firstAttribute="leading" secondItem="RIs-wL-ip9" secondAttribute="leading" constant="20" id="zfa-5u-2zf"/>
+                            <constraint firstItem="tLf-oU-uzz" firstAttribute="top" relation="greaterThanOrEqual" secondItem="xwd-N2-aq5" secondAttribute="top" priority="750" constant="20" id="8lr-7c-iFi"/>
+                            <constraint firstItem="xwd-N2-aq5" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="tLf-oU-uzz" secondAttribute="bottom" priority="750" constant="20" id="FQk-IG-A9d"/>
+                            <constraint firstItem="tLf-oU-uzz" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="RIs-wL-ip9" secondAttribute="leading" constant="20" id="PGp-tP-uH5"/>
+                            <constraint firstItem="tLf-oU-uzz" firstAttribute="centerY" secondItem="RIs-wL-ip9" secondAttribute="centerY" id="Q2X-aY-FN4"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="tLf-oU-uzz" secondAttribute="trailing" constant="20" id="QFC-vn-hzY"/>
+                            <constraint firstItem="tLf-oU-uzz" firstAttribute="centerX" secondItem="RIs-wL-ip9" secondAttribute="centerX" id="y8d-Ke-JK7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xwd-N2-aq5"/>
                     </view>
@@ -502,6 +504,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="QROverlay" destination="tLf-oU-uzz" id="nOK-Kc-1AJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SG5-Wd-OUh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -827,8 +832,8 @@
         <image name="xButton" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="txq-mR-ZcU"/>
-        <segue reference="NRC-p1-lpH"/>
+        <segue reference="Ynx-wO-HBK"/>
+        <segue reference="cac-nU-E74"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.37254901959999998" green="0.71764705880000002" blue="0.30588235289999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

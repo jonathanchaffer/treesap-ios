@@ -12,13 +12,12 @@ import AVKit
 class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
-    var appDelegate: AppDelegate!
+    var appDelegate: AppDelegate! = (UIApplication.shared.delegate as! AppDelegate)
+    @IBOutlet weak var QROverlay: UIImageView!
     
     //creates the QR code scanner and makes it start capturing input
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        appDelegate = UIApplication.shared.delegate as! AppDelegate
         
         captureSession = AVCaptureSession()
         
@@ -65,6 +64,9 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
         previewLayer.frame = view.layer.bounds
         previewLayer.videoGravity = AVLayerVideoGravity.resizeAspect
         view.layer.addSublayer(previewLayer)
+        
+        self.view.bringSubviewToFront(QROverlay)    //puts overlay in front of the QR scanner display
+        QROverlay.alpha = 0.5
         
         captureSession.startRunning()
     }
