@@ -29,8 +29,8 @@ class TreeDetailPageViewController: UIPageViewController {
         self.dataSource = self
         self.delegate = self
         
-        for treeDisplay in pages {
-            treeDisplay.displayedTree = self.displayedTree
+        for page in pages {
+            page.displayedTree = self.displayedTree
         }
         
         if let firstVC = pages.first
