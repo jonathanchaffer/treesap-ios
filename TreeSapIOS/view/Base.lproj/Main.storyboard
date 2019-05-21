@@ -298,7 +298,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ipL-BB-jbu">
-                                <rect key="frame" x="119.5" y="418" width="175.5" height="60"/>
+                                <rect key="frame" x="119.5" y="404" width="175.5" height="88.5"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Common Name" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Ek1-bl-4CV">
                                         <rect key="frame" x="0.0" y="0.0" width="175.5" height="31.5"/>
@@ -309,6 +309,12 @@
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scientific Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zP6-P1-77X">
                                         <rect key="frame" x="27.5" y="39.5" width="120" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tree ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Rl-5q-zVB">
+                                        <rect key="frame" x="60.5" y="68" width="54.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -333,6 +339,7 @@
                     <connections>
                         <outlet property="commonNameLabel" destination="Ek1-bl-4CV" id="wFm-Fk-iUw"/>
                         <outlet property="scientificNameLabel" destination="zP6-P1-77X" id="Ks1-t4-1NG"/>
+                        <outlet property="treeIDLabel" destination="3Rl-5q-zVB" id="pIT-bE-VCw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JH4-oc-K2P" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -418,7 +425,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="QRCodeOverlay" translatesAutoresizingMaskIntoConstraints="NO" id="RN5-Tc-OBc">
-                                <rect key="frame" x="20" y="261" width="374" height="374"/>
+                                <rect key="frame" x="20" y="261" width="374.00000000000091" height="374.00000000000091"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="RN5-Tc-OBc" secondAttribute="height" multiplier="1:1" id="b71-Bg-c6P"/>
                                 </constraints>

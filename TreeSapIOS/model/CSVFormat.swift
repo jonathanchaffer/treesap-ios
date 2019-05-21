@@ -10,6 +10,17 @@ import Foundation
 
 enum CSVFormat {
 	case holland, itree, hope
+    
+    func idIndex() -> Int {
+        switch self {
+        case .holland:
+            return 0
+        case .itree:
+            return 0
+        case .hope:
+            return 0
+        }
+    }
 	
 	func commonNameIndex() -> Int {
 		switch self {

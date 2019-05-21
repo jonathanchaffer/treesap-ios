@@ -11,13 +11,15 @@ import UIKit
 class SimpleDisplayViewController: TreeDisplayViewController {
     @IBOutlet weak var commonNameLabel: UILabel!
     @IBOutlet weak var scientificNameLabel: UILabel!
+    @IBOutlet weak var treeIDLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.commonNameLabel.text = self.displayedTree?.commonName
-        self.scientificNameLabel.text = self.displayedTree?.scientificName
+        self.commonNameLabel.text = self.displayedTree!.commonName
+        self.scientificNameLabel.text = self.displayedTree!.scientificName
+        self.treeIDLabel.text = "Tree ID: " + String(self.displayedTree!.id)
     }
 
 }

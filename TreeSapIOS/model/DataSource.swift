@@ -94,12 +94,14 @@ class DataSource {
 		importer.startImportingRecords { $0 }.onFinish { importedRecords in
 			// Create a Tree object for each imported record
 			for record in importedRecords {
+                let id = Int(record[self.csvFormat.idIndex()])
 				let commonName = record[self.csvFormat.commonNameIndex()]
 				let scientificName = record[self.csvFormat.scientificNameIndex()]
 				let latitude = Double(record[self.csvFormat.latitudeIndex()])
 				let longitude = Double(record[self.csvFormat.longitudeIndex()])
-				if (latitude != nil && longitude != nil) {
+				if (latitude != nil && longitude != nil && id != nil) {
 					let tree = Tree(
+                        id: id!,
 						commonName: commonName,
 						scientificName: scientificName,
 						location:CLLocationCoordinate2D(
