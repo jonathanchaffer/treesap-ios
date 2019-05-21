@@ -13,6 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var dataSources: [DataSource] = [DataSource]()
+    var locationFeaturesEnabled: Bool = false
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -57,6 +58,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             dataSets.append(dataSource.getTreeList())
         }
         return dataSets
+    }
+    
+    func enableLocationFeatures() {
+        self.locationFeaturesEnabled = true
+    }
+    
+    func disableLocationFeatures() {
+        self.locationFeaturesEnabled = false
     }
 
 }

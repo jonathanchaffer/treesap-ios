@@ -1,14 +1,16 @@
 //
-//  NutritionFactsViewController.swift
+//  GeneralDisplayViewController.swift
 //  TreeSapIOS
 //
-//  Created by Summer2019 on 5/16/19.
+//  Created by Summer2019 on 5/21/19.
 //  Copyright © 2019 Hope CS. All rights reserved.
 //
 
 import UIKit
 
-class BenefitsDisplayViewController: TreeDisplayViewController {
+class TreeDisplayViewController: UIViewController {
+    // MARK: Properties
+    var displayedTree: Tree? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()

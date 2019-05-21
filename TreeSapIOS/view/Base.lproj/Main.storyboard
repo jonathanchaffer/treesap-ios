@@ -93,7 +93,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="j4M-0K-1bx">
-                                <rect key="frame" x="20" y="243.5" width="374" height="409.5"/>
+                                <rect key="frame" x="20" y="265.5" width="374" height="365"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hold your phone up to a tree and press the button to get information on that tree." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uaR-XX-Idm">
                                         <rect key="frame" x="21.5" y="0.0" width="331.5" height="41"/>
@@ -111,16 +111,9 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                         <state key="normal" title="Press me!"/>
                                         <connections>
-                                            <action selector="handleBigButtonPressed:" destination="9pv-A4-QxB" eventType="touchUpInside" id="jka-Mb-OkK"/>
-                                            <segue destination="vGI-b1-1Rv" kind="show" id="nNk-kn-J3u"/>
+                                            <action selector="handleBigButtonPressed:" destination="9pv-A4-QxB" eventType="touchUpInside" id="iD5-H1-1Zb"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Common Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bjz-1h-PIe">
-                                        <rect key="frame" x="127.5" y="389" width="119" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -147,7 +140,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="bigButton" destination="T2U-ko-uFs" id="dvi-fg-trW"/>
-                        <outlet property="commonNameLabel" destination="Bjz-1h-PIe" id="Hkw-FC-MVb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
@@ -225,9 +217,6 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aht-Pu-Wky">
                                         <rect key="frame" x="139.5" y="125" width="95" height="30"/>
                                         <state key="normal" title="Get Tree Data"/>
-                                        <connections>
-                                            <segue destination="vGI-b1-1Rv" kind="show" id="KU6-vZ-jMN"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -300,14 +289,6 @@
             </objects>
             <point key="canvasLocation" x="155.07246376811597" y="498.88392857142856"/>
         </scene>
-        <!--Tree Detail Page View Controller-->
-        <scene sceneID="OPC-ro-Onh">
-            <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" hidesBottomBarWhenPushed="YES" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="vGI-b1-1Rv" customClass="TreeDetailPageViewController" customModule="TreeSapIOS" customModuleProvider="target" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="LS7-dc-Xjh" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="155" y="1359"/>
-        </scene>
         <!--Simple Display View Controller-->
         <scene sceneID="XhK-KP-Osq">
             <objects>
@@ -316,28 +297,42 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Simple Display" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Ek1-bl-4CV">
-                                <rect key="frame" x="124.5" y="432.5" width="165.5" height="31.5"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="fxz-SV-EYd">
                                 <rect key="frame" x="187.5" y="825" width="39" height="37"/>
                                 <color key="pageIndicatorTintColor" red="0.37254901959999998" green="0.71764705880000002" blue="0.30588235289999999" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="currentPageIndicatorTintColor" red="0.37254901959999998" green="0.71764705880000002" blue="0.30588235289999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </pageControl>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="jrJ-PD-kpJ">
+                                <rect key="frame" x="121.5" y="418" width="171.5" height="60"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Common name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Zg-9M-8eZ">
+                                        <rect key="frame" x="0.0" y="0.0" width="171.5" height="31.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scientific name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GpM-UT-Xr8">
+                                        <rect key="frame" x="27" y="39.5" width="117.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="jrJ-PD-kpJ" firstAttribute="centerY" secondItem="WFu-sL-Zjo" secondAttribute="centerY" id="8SA-Nd-iMV"/>
                             <constraint firstItem="fxz-SV-EYd" firstAttribute="centerX" secondItem="WFu-sL-Zjo" secondAttribute="centerX" id="Bzf-V3-enF"/>
-                            <constraint firstItem="Ek1-bl-4CV" firstAttribute="centerY" secondItem="WFu-sL-Zjo" secondAttribute="centerY" id="ENc-8k-zCT"/>
-                            <constraint firstItem="Ek1-bl-4CV" firstAttribute="centerX" secondItem="WFu-sL-Zjo" secondAttribute="centerX" id="FIA-0U-OM5"/>
+                            <constraint firstItem="jrJ-PD-kpJ" firstAttribute="centerX" secondItem="WFu-sL-Zjo" secondAttribute="centerX" id="XXV-Bh-Www"/>
                             <constraint firstItem="fxz-SV-EYd" firstAttribute="bottom" secondItem="lSL-kl-hg2" secondAttribute="bottom" id="sb3-T2-ozg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="lSL-kl-hg2"/>
                     </view>
+                    <connections>
+                        <outlet property="commonNameLabel" destination="5Zg-9M-8eZ" id="N7o-c3-y3L"/>
+                        <outlet property="scientificNameLabel" destination="GpM-UT-Xr8" id="HEC-Df-oY8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JH4-oc-K2P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -783,9 +778,8 @@
         <image name="xButton" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Osm-ne-69B"/>
-        <segue reference="M3K-1N-Vy6"/>
-        <segue reference="nNk-kn-J3u"/>
+        <segue reference="Gyh-Sj-jD4"/>
+        <segue reference="ZtF-HV-Gmw"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.37254901959999998" green="0.71764705880000002" blue="0.30588235289999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

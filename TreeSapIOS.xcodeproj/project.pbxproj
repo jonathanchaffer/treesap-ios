@@ -13,6 +13,7 @@
 		CB12C94D228DF5C4000C74C3 /* SimpleDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB12C94C228DF5C4000C74C3 /* SimpleDisplayViewController.swift */; };
 		CB12C94F228DF85D000C74C3 /* TreeDetailPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB12C94E228DF85D000C74C3 /* TreeDetailPageViewController.swift */; };
 		CB12C951228DFA12000C74C3 /* PieChartDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB12C950228DFA12000C74C3 /* PieChartDisplayViewController.swift */; };
+		CB672F1B229434DA00622B59 /* TreeDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB672F1A229434DA00622B59 /* TreeDisplayViewController.swift */; };
 		CB6953B8228EE8720002024B /* Tree.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6953B7228EE8720002024B /* Tree.swift */; };
 		CB6953BA228EE9530002024B /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6953B9228EE9530002024B /* DataSource.swift */; };
 		CB7021932292FDCD00D11B0F /* AddTreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7021922292FDCD00D11B0F /* AddTreeViewController.swift */; };
@@ -49,6 +50,7 @@
 		CB12C94C228DF5C4000C74C3 /* SimpleDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleDisplayViewController.swift; sourceTree = "<group>"; };
 		CB12C94E228DF85D000C74C3 /* TreeDetailPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeDetailPageViewController.swift; sourceTree = "<group>"; };
 		CB12C950228DFA12000C74C3 /* PieChartDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartDisplayViewController.swift; sourceTree = "<group>"; };
+		CB672F1A229434DA00622B59 /* TreeDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeDisplayViewController.swift; sourceTree = "<group>"; };
 		CB6953B7228EE8720002024B /* Tree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tree.swift; sourceTree = "<group>"; };
 		CB6953B9228EE9530002024B /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 		CB7021922292FDCD00D11B0F /* AddTreeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTreeViewController.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 				CB7021922292FDCD00D11B0F /* AddTreeViewController.swift */,
 				D76D618022931F79003FFD24 /* MoreInformationViewController.swift */,
 				CB12C94E228DF85D000C74C3 /* TreeDetailPageViewController.swift */,
+				CB672F1A229434DA00622B59 /* TreeDisplayViewController.swift */,
 				CB12C94C228DF5C4000C74C3 /* SimpleDisplayViewController.swift */,
 				CB12C950228DFA12000C74C3 /* PieChartDisplayViewController.swift */,
 				CB12C94A228DF508000C74C3 /* BenefitsDisplayViewController.swift */,
@@ -332,6 +335,7 @@
 				D76D617F22931990003FFD24 /* CSVFormat.swift in Sources */,
 				CB12C94B228DF508000C74C3 /* BenefitsDisplayViewController.swift in Sources */,
 				CB091E712292EBCF00F0CB06 /* HomeViewController.swift in Sources */,
+				CB672F1B229434DA00622B59 /* TreeDisplayViewController.swift in Sources */,
 				CBBCE851228DD9B1008F7225 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -10,39 +10,48 @@ import UIKit
 import MapKit
 
 class ButtonViewController: UIViewController {
-	// MARK: Properties
-    @IBOutlet weak var commonNameLabel: UILabel!
+    // MARK: Properties
     @IBOutlet weak var bigButton: UIButton!
     let locationManager = CLLocationManager()
-	
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-		bigButton.layer.cornerRadius = 150
-    }
-    
-    @IBAction func handleBigButtonPressed(_ sender: UIButton) {
+        bigButton.layer.cornerRadius = 150
         switch CLLocationManager.authorizationStatus() {
-        case .notDetermined:
-            locationManager.requestWhenInUseAuthorization()
-            self.getTreeData()
-            break
-        case .restricted, .denied:
-            // disable location features
-            break
-        case .authorizedWhenInUse, .authorizedAlways:
-            // enable location features
-            self.getTreeData()
-            break
-        default:
-            break
+            case .notDetermined:
+                locationManager.requestWhenInUseAuthorization()
+                break
+            case .restricted, .denied:
+                appDelegate.disableLocationFeatures()
+                break
+            case .authorizedWhenInUse, .authorizedAlways:
+                appDelegate.enableLocationFeatures()
+                break
+            default:
+                break
         }
     }
     
-    func getTreeData() {
-        let location = locationManager.location!.coordinate
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let dataSets = appDelegate.getDataSets()
-        commonNameLabel.text = TreeFinder.findTree(location: location, dataSets: dataSets)!.commonName
+    func getTreeDataByGPS() -> Tree? {
+        if appDelegate.locationFeaturesEnabled {
+            let location = locationManager.location!.coordinate
+            let dataSets = appDelegate.getDataSets()
+            return TreeFinder.findTree(location: location, dataSets: dataSets)
+        } else {
+            return nil
+        }
+    }
+    
+    @IBAction func handleBigButtonPressed(_ sender: UIButton) {
+        if let treeToDisplay = getTreeDataByGPS() {
+            print(treeToDisplay.commonName)
+            let pages = TreeDetailPageViewController(nibName: "TreeDetailPageViewController", bundle: nil)
+            pages.displayedTree = treeToDisplay
+            navigationController?.pushViewController(pages, animated: true)
+        } else {
+            print("Location not enabled")
+        }
     }
     
 }
