@@ -69,6 +69,7 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
         captureSession.startRunning()
     }
     
+    ///This function takes the String that was encoded in the QR code, finds a tree that corresponds to that code using a call to getTreeFromString, and displays the results using a call to displayTreeResults
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         if let metadatObject: AVMetadataObject = metadataObjects.first{
             guard let readableObject = metadatObject as? AVMetadataMachineReadableCodeObject else{
@@ -98,7 +99,7 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
      - Returns: the Tree object that corresponds to the given String
     */
     func getTreeFromString(stringResult: String) -> Tree?{
-        let resultParts: [Substring] = stringResult.split(separator: "_")
+        let resultParts: [Substring] = stringResult.split(separator: "_", maxSplits: 1, omittingEmptySubsequences: true)
         if(resultParts.count != 2){
             alertUser(title: "", message: "The scanned code is not the code for a tree.")
             return nil
