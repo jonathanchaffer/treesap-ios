@@ -73,6 +73,7 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
     
     ///This function takes the String that was encoded in the QR code, finds a tree that corresponds to that code using a call to getTreeFromString, and displays the results using a call to displayTreeResults
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
+        
         if let metadatObject: AVMetadataObject = metadataObjects.first{
             guard let readableObject = metadatObject as? AVMetadataMachineReadableCodeObject else{
                 alertUser(title: "Error", message: "QR code coud not be scanned")
@@ -89,6 +90,7 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
                 return
             }
             
+            captureSession.stopRunning()
             displayTreeResults(tree: resultTree)
         }
     }
