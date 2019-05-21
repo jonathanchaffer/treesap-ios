@@ -12,6 +12,9 @@ class SimpleDisplayViewController: TreeDisplayViewController {
     @IBOutlet weak var commonNameLabel: UILabel!
     @IBOutlet weak var scientificNameLabel: UILabel!
     @IBOutlet weak var treeIDLabel: UILabel!
+	@IBOutlet weak var latitudeLabel: UILabel!
+	@IBOutlet weak var longitudeLabel: UILabel!
+	
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,7 +22,9 @@ class SimpleDisplayViewController: TreeDisplayViewController {
         // Do any additional setup after loading the view.
         self.commonNameLabel.text = self.displayedTree!.commonName
         self.scientificNameLabel.text = self.displayedTree!.scientificName
-        self.treeIDLabel.text = "Tree ID: " + String(self.displayedTree!.id)
+        self.treeIDLabel.text = String(self.displayedTree!.id)
+		self.latitudeLabel.text = String(self.displayedTree!.location.latitude)
+		self.longitudeLabel.text = String(self.displayedTree!.location.longitude)
     }
 
 }
