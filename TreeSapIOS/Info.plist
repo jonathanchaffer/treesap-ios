@@ -59,6 +59,8 @@
 		<true/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>Used for QR code scanner</string>
+	<string>This will allow you to identify trees using the QR code scanner.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>This will allow you to identify trees based on your GPS location.</string>
 </dict>
 </plist>
