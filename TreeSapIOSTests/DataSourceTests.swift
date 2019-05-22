@@ -26,18 +26,41 @@ class DataSourceTests: XCTestCase {
     }
     
     func testHollandSource(){
-        print(readInFile(fileName: hollandSource.localFilename))
+        guard let fileText: String = readInFile(fileName: hollandSource.localFilename) else{
+            XCTFail("The local City of Holland file could not be found.")
+            return
+        }
+        
+        guard fileText.contains(hollandTextStart) else{
+            XCTFail("The local City of Holland file does not contain the text at the beginning of the online City of Holland file.")
+            return
+        }
+        
+        guard fileText.contains(hollandTextEnd) else{
+            XCTFail("The local City of Holland file does not contain the text at the end of the online City of Holland file.")
+            return
+        }
+        
+        guard fileText.contains(hollandTextMiddle) else{
+            XCTFail("The local City of Holland file does not contain the text in the middle of the online City of Holland file.")
+            return
+        }
     }
     
     //based on code from https://www.seemuapps.com/read-to-and-write-from-a-text-file-in-swift
-    func readInFile(fileName: String) -> String{
+    func readInFile(fileName: String) -> String?{
         
-//        let documentDirectoryURL: NSURL = FileManager.default.url(for: FileManager.SearchPathDirectory.documentDirectory, in: FileManager.SearchPathDomainMask.userDomainMask, appropriateFor: nil, create: false)
-//
-//        let fileURL: URL = documentDirectoryURL.appendingPathComponent(fileName)
-//
-//        let fileText: String = String.init(contentsOf: fileURL)
-        return ""
+        guard let documentDirectoryURL: URL = try? FileManager.default.url(for: FileManager.SearchPathDirectory.documentDirectory, in: FileManager.SearchPathDomainMask.userDomainMask, appropriateFor: nil, create: false) else{
+            return nil
+        }
+
+        let fileURL: URL = documentDirectoryURL.appendingPathComponent(fileName)
+
+        guard let fileText: String = try? String.init(contentsOf: fileURL) else{
+            return nil
+        }
+        
+        return fileText
     }
     
     //MARK: Copied File Text
