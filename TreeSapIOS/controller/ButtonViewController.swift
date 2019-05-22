@@ -18,11 +18,14 @@ class ButtonViewController: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		bigButton.layer.cornerRadius = 150
 		locationManager.delegate = self
 		locationManager.desiredAccuracy = kCLLocationAccuracyBest
 		locationManager.distanceFilter = 1
 	}
+    
+    override func viewDidLayoutSubviews() {
+        configureButton()
+    }
 	
 	override func viewWillAppear(_ animated: Bool) {
 		locationManager.startUpdatingLocation()
@@ -75,6 +78,11 @@ class ButtonViewController: UIViewController {
 		let dataSets = appDelegate.getDataSets()
 		return TreeFinder.findTree(location: location, dataSets: dataSets)
 	}
+    
+    private func configureButton() {
+        bigButton.layer.cornerRadius = 0.5 * bigButton.bounds.size.width
+        bigButton.clipsToBounds = true
+    }
 }
 
 extension ButtonViewController: CLLocationManagerDelegate {

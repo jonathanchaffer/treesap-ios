@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -93,20 +93,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="j4M-0K-1bx">
-                                <rect key="frame" x="20" y="265.5" width="374" height="365"/>
+                                <rect key="frame" x="0.0" y="221.5" width="414" height="458"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hold your phone up to a tree and press the button to get information on that tree." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uaR-XX-Idm">
-                                        <rect key="frame" x="21.5" y="0.0" width="331.5" height="41"/>
+                                        <rect key="frame" x="20" y="0.0" width="374" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="0SE-4G-nlt"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T2U-ko-uFs">
-                                        <rect key="frame" x="37" y="65" width="300" height="300"/>
+                                        <rect key="frame" x="20" y="84" width="374" height="374"/>
                                         <color key="backgroundColor" red="0.45217963862880095" green="0.70991438627243042" blue="0.35023947781911907" alpha="0.14999999999999999" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="T2U-ko-uFs" secondAttribute="height" multiplier="1:1" id="6QK-DR-cel"/>
-                                            <constraint firstAttribute="width" constant="300" id="xLy-sy-bVa"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                         <state key="normal" title="Press me!"/>
@@ -115,14 +117,22 @@
                                         </connections>
                                     </button>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="uaR-XX-Idm" firstAttribute="leading" secondItem="j4M-0K-1bx" secondAttribute="leading" constant="20" id="4Be-4s-MWf"/>
+                                    <constraint firstItem="T2U-ko-uFs" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="j4M-0K-1bx" secondAttribute="leading" constant="20" id="ee1-Te-Mar"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="T2U-ko-uFs" secondAttribute="trailing" constant="20" id="nXH-Lv-JKB"/>
+                                    <constraint firstAttribute="trailing" secondItem="uaR-XX-Idm" secondAttribute="trailing" constant="20" id="ozR-kG-Q71"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="j4M-0K-1bx" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" constant="20" symbolic="YES" id="9Ji-zc-ixb"/>
-                            <constraint firstAttribute="trailing" secondItem="j4M-0K-1bx" secondAttribute="trailing" constant="20" symbolic="YES" id="JNU-cl-whi"/>
-                            <constraint firstItem="j4M-0K-1bx" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="UdF-To-Zah"/>
-                            <constraint firstItem="j4M-0K-1bx" firstAttribute="centerY" secondItem="tsR-hK-woN" secondAttribute="centerY" id="aAR-c0-AfX"/>
+                            <constraint firstItem="j4M-0K-1bx" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="9Ji-zc-ixb"/>
+                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="j4M-0K-1bx" secondAttribute="trailing" id="JNU-cl-whi"/>
+                            <constraint firstItem="j4M-0K-1bx" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" priority="750" constant="20" id="SBr-RU-isr"/>
+                            <constraint firstItem="j4M-0K-1bx" firstAttribute="centerX" secondItem="PQr-Ze-W5v" secondAttribute="centerX" id="UdF-To-Zah"/>
+                            <constraint firstItem="j4M-0K-1bx" firstAttribute="centerY" secondItem="PQr-Ze-W5v" secondAttribute="centerY" id="aAR-c0-AfX"/>
+                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="bottom" secondItem="j4M-0K-1bx" secondAttribute="bottom" priority="750" constant="20" id="w1A-Ui-xCG"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
@@ -478,7 +488,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" image="QRCodeOverlay" highlightedImage="QRCodeOverlay" translatesAutoresizingMaskIntoConstraints="NO" id="tLf-oU-uzz">
-                                <rect key="frame" x="82" y="325.5" width="250" height="250"/>
+                                <rect key="frame" x="199" y="442.5" width="16" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="250" id="BuD-2o-2Ff"/>
                                     <constraint firstAttribute="width" secondItem="tLf-oU-uzz" secondAttribute="height" multiplier="1:1" id="nBa-MU-vRJ"/>
@@ -836,8 +846,8 @@
         <image name="xButton" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Ynx-wO-HBK"/>
-        <segue reference="cac-nU-E74"/>
+        <segue reference="Osm-ne-69B"/>
+        <segue reference="M3K-1N-Vy6"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.37254901959999998" green="0.71764705880000002" blue="0.30588235289999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
