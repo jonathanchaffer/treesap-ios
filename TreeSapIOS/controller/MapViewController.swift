@@ -22,6 +22,7 @@ class MapViewController: UIViewController {
         super.viewDidLoad()
         let dataSets = appDelegate.getDataSets()
         mapView.delegate = self
+        mapView.tintColor = UIColor(red: 0.30, green: 0.66, blue: 0.28, alpha: 1)
         if #available(iOS 11.0, *) {
             mapView.register(TreeAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
         } else {
