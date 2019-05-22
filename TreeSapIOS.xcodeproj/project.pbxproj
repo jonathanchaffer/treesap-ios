@@ -13,6 +13,7 @@
 		CB12C94D228DF5C4000C74C3 /* SimpleDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB12C94C228DF5C4000C74C3 /* SimpleDisplayViewController.swift */; };
 		CB12C94F228DF85D000C74C3 /* TreeDetailPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB12C94E228DF85D000C74C3 /* TreeDetailPageViewController.swift */; };
 		CB12C951228DFA12000C74C3 /* PieChartDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB12C950228DFA12000C74C3 /* PieChartDisplayViewController.swift */; };
+		CB2D4DA522958548006DAC37 /* TreeAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2D4DA422958548006DAC37 /* TreeAnnotationView.swift */; };
 		CB672F1B229434DA00622B59 /* TreeDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB672F1A229434DA00622B59 /* TreeDisplayViewController.swift */; };
 		CB6953B8228EE8720002024B /* Tree.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6953B7228EE8720002024B /* Tree.swift */; };
 		CB6953BA228EE9530002024B /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6953B9228EE9530002024B /* DataSource.swift */; };
@@ -27,6 +28,7 @@
 		CBBCE84D228DD847008F7225 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBCE84C228DD847008F7225 /* MapViewController.swift */; };
 		CBBCE84F228DD93E008F7225 /* QRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBCE84E228DD93E008F7225 /* QRCodeViewController.swift */; };
 		CBBCE851228DD9B1008F7225 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBCE850228DD9B1008F7225 /* SettingsViewController.swift */; };
+		CBE8789022957A1300C06E69 /* TreeAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE8788F22957A1300C06E69 /* TreeAnnotation.swift */; };
 		D76D617F22931990003FFD24 /* CSVFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76D617E22931990003FFD24 /* CSVFormat.swift */; };
 		D76D618122931F79003FFD24 /* MoreInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76D618022931F79003FFD24 /* MoreInformationViewController.swift */; };
 		D76D6183229321E7003FFD24 /* TreeFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76D6182229321E7003FFD24 /* TreeFinder.swift */; };
@@ -50,6 +52,7 @@
 		CB12C94C228DF5C4000C74C3 /* SimpleDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleDisplayViewController.swift; sourceTree = "<group>"; };
 		CB12C94E228DF85D000C74C3 /* TreeDetailPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeDetailPageViewController.swift; sourceTree = "<group>"; };
 		CB12C950228DFA12000C74C3 /* PieChartDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartDisplayViewController.swift; sourceTree = "<group>"; };
+		CB2D4DA422958548006DAC37 /* TreeAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeAnnotationView.swift; sourceTree = "<group>"; };
 		CB672F1A229434DA00622B59 /* TreeDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeDisplayViewController.swift; sourceTree = "<group>"; };
 		CB6953B7228EE8720002024B /* Tree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tree.swift; sourceTree = "<group>"; };
 		CB6953B9228EE9530002024B /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
@@ -68,6 +71,7 @@
 		CBBCE84C228DD847008F7225 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		CBBCE84E228DD93E008F7225 /* QRCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeViewController.swift; sourceTree = "<group>"; };
 		CBBCE850228DD9B1008F7225 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		CBE8788F22957A1300C06E69 /* TreeAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeAnnotation.swift; sourceTree = "<group>"; };
 		D76D617E22931990003FFD24 /* CSVFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVFormat.swift; sourceTree = "<group>"; };
 		D76D618022931F79003FFD24 /* MoreInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreInformationViewController.swift; sourceTree = "<group>"; };
 		D76D6182229321E7003FFD24 /* TreeFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeFinder.swift; sourceTree = "<group>"; };
@@ -137,6 +141,8 @@
 				CB6953B9228EE9530002024B /* DataSource.swift */,
 				D76D617E22931990003FFD24 /* CSVFormat.swift */,
 				D76D6182229321E7003FFD24 /* TreeFinder.swift */,
+				CBE8788F22957A1300C06E69 /* TreeAnnotation.swift */,
+				CB2D4DA422958548006DAC37 /* TreeAnnotationView.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -326,11 +332,13 @@
 				CBBCE82B228DD76B008F7225 /* AppDelegate.swift in Sources */,
 				CBBCE82D228DD76B008F7225 /* ButtonViewController.swift in Sources */,
 				CBBCE84D228DD847008F7225 /* MapViewController.swift in Sources */,
+				CBE8789022957A1300C06E69 /* TreeAnnotation.swift in Sources */,
 				D76D618122931F79003FFD24 /* MoreInformationViewController.swift in Sources */,
 				CB7021932292FDCD00D11B0F /* AddTreeViewController.swift in Sources */,
 				CB6953BA228EE9530002024B /* DataSource.swift in Sources */,
 				CB6953B8228EE8720002024B /* Tree.swift in Sources */,
 				CBBCE84F228DD93E008F7225 /* QRCodeViewController.swift in Sources */,
+				CB2D4DA522958548006DAC37 /* TreeAnnotationView.swift in Sources */,
 				CB12C94D228DF5C4000C74C3 /* SimpleDisplayViewController.swift in Sources */,
 				D76D617F22931990003FFD24 /* CSVFormat.swift in Sources */,
 				CB12C94B228DF508000C74C3 /* BenefitsDisplayViewController.swift in Sources */,
@@ -502,7 +510,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WX97JD2WLV;
 				INFOPLIST_FILE = TreeSapIOS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -522,7 +530,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WX97JD2WLV;
 				INFOPLIST_FILE = TreeSapIOS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
