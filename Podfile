@@ -1,4 +1,4 @@
-platform :ios, '12.3'
+platform :ios, '12.2'
 target "TreeSapIOS" do
   pod 'CSVImporter'
 end 
