@@ -9,6 +9,7 @@
 import Foundation
 import MapKit
 
+@available(iOS 11.0, *)
 class TreeAnnotationView: MKMarkerAnnotationView {
     override var annotation: MKAnnotation? {
         willSet {

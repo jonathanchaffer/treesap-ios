@@ -10,6 +10,8 @@
 import UIKit
 import MapKit
 
+
+@available(iOS 11.0, *)
 class MapViewController: UIViewController {
     // MARK: Properties
     @IBOutlet weak var mapView: MKMapView!
@@ -65,6 +67,7 @@ class MapViewController: UIViewController {
     }
 }
 
+@available(iOS 11.0, *)
 extension MapViewController: MKMapViewDelegate {
     // This function gets called whenever the info button is pressed on a map callout
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView,
