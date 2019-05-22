@@ -38,7 +38,13 @@ class TreeDetailPageViewController: UIPageViewController {
             setViewControllers([firstVC], direction: .forward, animated: true, completion: nil)
         }
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = false
+    }
 }
+
+
 
 extension TreeDetailPageViewController: UIPageViewControllerDataSource {
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {

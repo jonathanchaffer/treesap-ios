@@ -122,7 +122,11 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
         return tree
     }
     
-    ///brings up the tree display for the given Tree object
+    /**
+     Brings up the tree display for the given Tree object
+     
+     - Parameter tree: the Tree object that contains the tree data to display
+     */
     func displayTreeResults(tree: Tree){
             let pages = TreeDetailPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
             pages.displayedTree = tree
@@ -165,7 +169,13 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
         previewLayer.frame = view.layer.bounds
     }
     
-    /// Makes an alert appear with the given argument and message. The alert will have an "Ok" buton
+    /**
+     Makes an alert appear with the given argument and message. The alert will have an "Ok" buton
+     
+     - Parameters:
+        - title: the title of the alert
+        - message: the message of the alert
+     */
     func alertUser(title: String, message: String){
         let alertController: UIAlertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
