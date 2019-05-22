@@ -478,9 +478,9 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" image="QRCodeOverlay" highlightedImage="QRCodeOverlay" translatesAutoresizingMaskIntoConstraints="NO" id="tLf-oU-uzz">
-                                <rect key="frame" x="57" y="300.5" width="300" height="300"/>
+                                <rect key="frame" x="82" y="325.5" width="250" height="250"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="BuD-2o-2Ff"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="250" id="BuD-2o-2Ff"/>
                                     <constraint firstAttribute="width" secondItem="tLf-oU-uzz" secondAttribute="height" multiplier="1:1" id="nBa-MU-vRJ"/>
                                 </constraints>
                             </imageView>
