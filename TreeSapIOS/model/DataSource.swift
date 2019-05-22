@@ -96,7 +96,7 @@ class DataSource {
 			for record in importedRecords {
                 let id = Int(record[self.csvFormat.idIndex()])
 				let commonName = NameFormatter.formatCommonName(commonName: record[self.csvFormat.commonNameIndex()])
-				let scientificName = record[self.csvFormat.scientificNameIndex()]
+                let scientificName = NameFormatter.formatScientificName(scientificName: record[self.csvFormat.scientificNameIndex()])
 				let latitude = Double(record[self.csvFormat.latitudeIndex()])
 				let longitude = Double(record[self.csvFormat.longitudeIndex()])
 				if (latitude != nil && longitude != nil && id != nil) {
