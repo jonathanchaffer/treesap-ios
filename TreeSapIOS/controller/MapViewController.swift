@@ -11,7 +11,6 @@ import UIKit
 import MapKit
 
 
-@available(iOS 11.0, *)
 class MapViewController: UIViewController {
     // MARK: Properties
     @IBOutlet weak var mapView: MKMapView!
@@ -23,7 +22,11 @@ class MapViewController: UIViewController {
         super.viewDidLoad()
         let dataSets = appDelegate.getDataSets()
         mapView.delegate = self
-        mapView.register(TreeAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
+        if #available(iOS 11.0, *) {
+            mapView.register(TreeAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
+        } else {
+            // Fallback on earlier versions
+        }
         for dataSet in dataSets {
             for tree in dataSet {
                 mapView.addAnnotation(TreeAnnotation(tree: tree))
@@ -67,7 +70,6 @@ class MapViewController: UIViewController {
     }
 }
 
-@available(iOS 11.0, *)
 extension MapViewController: MKMapViewDelegate {
     // This function gets called whenever the info button is pressed on a map callout
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView,

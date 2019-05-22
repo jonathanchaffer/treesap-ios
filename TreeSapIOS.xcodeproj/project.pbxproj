@@ -32,6 +32,7 @@
 		CBBCE851228DD9B1008F7225 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBCE850228DD9B1008F7225 /* SettingsViewController.swift */; };
 		CBE8789022957A1300C06E69 /* TreeAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE8788F22957A1300C06E69 /* TreeAnnotation.swift */; };
 		CBFD63C12295A1E800804DC4 /* NameFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFD63C02295A1E800804DC4 /* NameFormatter.swift */; };
+		CBFD63C92295BB0700804DC4 /* TreePointAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFD63C82295BB0700804DC4 /* TreePointAnnotationView.swift */; };
 		D76D617F22931990003FFD24 /* CSVFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76D617E22931990003FFD24 /* CSVFormat.swift */; };
 		D76D618122931F79003FFD24 /* MoreInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76D618022931F79003FFD24 /* MoreInformationViewController.swift */; };
 		D76D6183229321E7003FFD24 /* TreeFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76D6182229321E7003FFD24 /* TreeFinder.swift */; };
@@ -80,6 +81,7 @@
 		CBBCE850228DD9B1008F7225 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		CBE8788F22957A1300C06E69 /* TreeAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeAnnotation.swift; sourceTree = "<group>"; };
 		CBFD63C02295A1E800804DC4 /* NameFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameFormatter.swift; sourceTree = "<group>"; };
+		CBFD63C82295BB0700804DC4 /* TreePointAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreePointAnnotationView.swift; sourceTree = "<group>"; };
 		D76D617E22931990003FFD24 /* CSVFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVFormat.swift; sourceTree = "<group>"; };
 		D76D618022931F79003FFD24 /* MoreInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreInformationViewController.swift; sourceTree = "<group>"; };
 		D76D6182229321E7003FFD24 /* TreeFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeFinder.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 				D76D6182229321E7003FFD24 /* TreeFinder.swift */,
 				CBE8788F22957A1300C06E69 /* TreeAnnotation.swift */,
 				CB2D4DA422958548006DAC37 /* TreeAnnotationView.swift */,
+				CBFD63C82295BB0700804DC4 /* TreePointAnnotationView.swift */,
 				CBFD63C02295A1E800804DC4 /* NameFormatter.swift */,
 			);
 			path = model;
@@ -380,6 +383,7 @@
 				D76D617F22931990003FFD24 /* CSVFormat.swift in Sources */,
 				CB12C94B228DF508000C74C3 /* BenefitsDisplayViewController.swift in Sources */,
 				CBFD63C12295A1E800804DC4 /* NameFormatter.swift in Sources */,
+				CBFD63C92295BB0700804DC4 /* TreePointAnnotationView.swift in Sources */,
 				CB091E712292EBCF00F0CB06 /* HomeViewController.swift in Sources */,
 				CB672F1B229434DA00622B59 /* TreeDisplayViewController.swift in Sources */,
 				CBBCE851228DD9B1008F7225 /* SettingsViewController.swift in Sources */,
