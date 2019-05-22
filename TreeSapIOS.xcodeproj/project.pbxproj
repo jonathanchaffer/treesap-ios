@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B85D9CFEC2032A626AC6A93 /* libPods-TreeSapIOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 04069877CBA1FE325848DCEC /* libPods-TreeSapIOSTests.a */; };
 		61E1EFDD5187EC1C7241B025 /* libPods-TreeSapIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B77358D36DBDDED4196CADD2 /* libPods-TreeSapIOS.a */; };
 		CB091E712292EBCF00F0CB06 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB091E702292EBCF00F0CB06 /* HomeViewController.swift */; };
 		CB12C94B228DF508000C74C3 /* BenefitsDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB12C94A228DF508000C74C3 /* BenefitsDisplayViewController.swift */; };
@@ -45,7 +46,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		032803B715E7C1F1944B7370 /* Pods-TreeSapIOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreeSapIOSTests.release.xcconfig"; path = "Target Support Files/Pods-TreeSapIOSTests/Pods-TreeSapIOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		04069877CBA1FE325848DCEC /* libPods-TreeSapIOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TreeSapIOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		657C7C57D15B44ECCED1E51C /* Pods-TreeSapIOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreeSapIOS.release.xcconfig"; path = "Target Support Files/Pods-TreeSapIOS/Pods-TreeSapIOS.release.xcconfig"; sourceTree = "<group>"; };
+		69FCB8763D3803D7045729DF /* Pods-TreeSapIOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreeSapIOSTests.debug.xcconfig"; path = "Target Support Files/Pods-TreeSapIOSTests/Pods-TreeSapIOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B77358D36DBDDED4196CADD2 /* libPods-TreeSapIOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TreeSapIOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB091E702292EBCF00F0CB06 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		CB12C94A228DF508000C74C3 /* BenefitsDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BenefitsDisplayViewController.swift; sourceTree = "<group>"; };
@@ -91,6 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B85D9CFEC2032A626AC6A93 /* libPods-TreeSapIOSTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				B77358D36DBDDED4196CADD2 /* libPods-TreeSapIOS.a */,
+				04069877CBA1FE325848DCEC /* libPods-TreeSapIOSTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -110,6 +116,8 @@
 			children = (
 				D7755F6722DA6B48E552032C /* Pods-TreeSapIOS.debug.xcconfig */,
 				657C7C57D15B44ECCED1E51C /* Pods-TreeSapIOS.release.xcconfig */,
+				69FCB8763D3803D7045729DF /* Pods-TreeSapIOSTests.debug.xcconfig */,
+				032803B715E7C1F1944B7370 /* Pods-TreeSapIOSTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -223,6 +231,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CBBCE849228DD777008F7225 /* Build configuration list for PBXNativeTarget "TreeSapIOSTests" */;
 			buildPhases = (
+				44C2AD8A95FA7814CA01F241 /* [CP] Check Pods Manifest.lock */,
 				CBBCE839228DD777008F7225 /* Sources */,
 				CBBCE83A228DD777008F7225 /* Frameworks */,
 				CBBCE83B228DD777008F7225 /* Resources */,
@@ -296,6 +305,28 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		44C2AD8A95FA7814CA01F241 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TreeSapIOSTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		80D7DD2DD60237A802BA7AE6 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -544,6 +575,7 @@
 		};
 		CBBCE84A228DD777008F7225 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 69FCB8763D3803D7045729DF /* Pods-TreeSapIOSTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -564,6 +596,7 @@
 		};
 		CBBCE84B228DD777008F7225 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 032803B715E7C1F1944B7370 /* Pods-TreeSapIOSTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
