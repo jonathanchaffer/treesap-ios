@@ -7,6 +7,8 @@
 //
 
 import XCTest
+@testable import TreeSapIOS
+import CSVImporter
 
 class DataSourceTests: XCTestCase {
     var hollandSource: DataSource!
@@ -18,11 +20,11 @@ class DataSourceTests: XCTestCase {
         iTreeSource = DataSource(internetFilename: "iTreeExport_119_HopeTrees_7may2018.csv", localFilename: "itree.csv", dataSourceName: "iTree", csvFormat: CSVFormat.itree)
         hopeSource = DataSource(internetFilename: "dataExport_119_HopeTrees_7may2018.csv", localFilename: "hope.csv", dataSourceName: "Hope College", csvFormat: CSVFormat.hope)
     }
-
+    
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-
+    
     func testHollandSource(){
         print(readInFile(fileName: hollandSource.localFilename))
     }
@@ -30,11 +32,12 @@ class DataSourceTests: XCTestCase {
     //based on code from https://www.seemuapps.com/read-to-and-write-from-a-text-file-in-swift
     func readInFile(fileName: String) -> String{
         
-        let documentDirectoryURL: NSURL = FileManager.default.url(for: FileManager.SearchPathDirectory.documentDirectory, in: FileManager.SearchPathDomainMask.userDomainMask, appropriateFor: nil, create: false)
-        
-        let fileURL: URL = documentDirectoryURL.appendingPathComponent(fileName)
-        
-        let fileText: String = String.init(contentsOf: fileURL)
+//        let documentDirectoryURL: NSURL = FileManager.default.url(for: FileManager.SearchPathDirectory.documentDirectory, in: FileManager.SearchPathDomainMask.userDomainMask, appropriateFor: nil, create: false)
+//
+//        let fileURL: URL = documentDirectoryURL.appendingPathComponent(fileName)
+//
+//        let fileText: String = String.init(contentsOf: fileURL)
+        return ""
     }
     
     //MARK: Copied File Text
