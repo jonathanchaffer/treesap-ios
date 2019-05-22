@@ -34,6 +34,6 @@ class NameFormatter {
     }
     
     class func trim(_ string: Substring) -> String {
-        return string.trimmingCharacters(in: CharacterSet(charactersIn:"    "))
+        return string.trimmingCharacters(in: CharacterSet(charactersIn:" "))
     }
 }
