@@ -14,7 +14,7 @@ class MapViewController: UIViewController {
     // MARK: Properties
     @IBOutlet weak var mapView: MKMapView!
     let locationManager = CLLocationManager()
-    let regionRadius: CLLocationDistance = 500
+    let regionRadius: CLLocationDistance = 200
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     override func viewDidLoad() {

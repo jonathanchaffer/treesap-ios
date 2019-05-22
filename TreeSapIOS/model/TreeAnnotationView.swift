@@ -21,7 +21,6 @@ class TreeAnnotationView: MKMarkerAnnotationView {
             glyphImage = UIImage(named: "tree")
             titleVisibility = .hidden
             subtitleVisibility = .hidden
-            //clusteringIdentifier = nil
             displayPriority = .required
         }
     }
