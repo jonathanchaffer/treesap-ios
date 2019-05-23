@@ -11,7 +11,7 @@ import AVKit
 
 class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     var captureSession: AVCaptureSession!
-    var previewLayer: AVCaptureVideoPreviewLayer!
+    var previewLayer: AVCaptureVideoPreviewLayer?
     var appDelegate: AppDelegate! = (UIApplication.shared.delegate as! AppDelegate)
     @IBOutlet weak var QROverlay: UIImageView!
     
@@ -61,9 +61,9 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
         
         //sets up the layer in which the video is displayed
         previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-        previewLayer.frame = view.layer.bounds
-        previewLayer.videoGravity = AVLayerVideoGravity.resizeAspect
-        view.layer.addSublayer(previewLayer)
+        previewLayer!.frame = view.layer.bounds
+        previewLayer!.videoGravity = AVLayerVideoGravity.resizeAspect
+        view.layer.addSublayer(previewLayer!)
         
         self.view.bringSubviewToFront(QROverlay)    //puts overlay in front of the QR scanner display
         QROverlay.alpha = 0.5
@@ -148,8 +148,13 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
     //change orientation of QR scanner when device rotates
     override func viewWillLayoutSubviews() {
 
-        //change the orientation of the QR scanner
-        guard let AVConnection: AVCaptureConnection = previewLayer.connection else{
+        //Only change the orientation if there is a AVCaptureVideoPreviewLayer. This prevents the app from crashing due to the forced unwrapping of the previewLayer variable
+        guard (previewLayer != nil) else{
+            return
+        }
+        
+        //Change the orientation of the QR scanner
+        guard let AVConnection: AVCaptureConnection = previewLayer!.connection else{//MARK: error here
             return
         }
         let currentOrientation: UIDeviceOrientation = UIDevice.current.orientation
@@ -165,8 +170,8 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
             AVConnection.videoOrientation = AVCaptureVideoOrientation.portrait
         }
         
-        //change the space the QR scanner occupies
-        previewLayer.frame = view.layer.bounds
+        //Change the space the QR scanner occupies
+        previewLayer!.frame = view.layer.bounds
     }
     
     /**
