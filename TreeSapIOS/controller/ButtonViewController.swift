@@ -68,7 +68,7 @@ class ButtonViewController: UIViewController {
 				pages.displayedTree = treeToDisplay
 				navigationController?.pushViewController(pages, animated: true)
 			} else {
-				let alert = UIAlertController(title: "No trees found", message: "There were no trees found near your location.", preferredStyle: .alert)
+				let alert = UIAlertController(title: "No trees found", message: "There were no trees found near your location. You can update the identification distance in Settings.", preferredStyle: .alert)
 				alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
 				self.present(alert, animated: true)
 			}
