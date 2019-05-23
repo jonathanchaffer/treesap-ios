@@ -28,9 +28,9 @@ class MapViewController: UIViewController {
             mapView.register(TreeAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
         }
         // Add annotations to the map.
-        let dataSets = appDelegate.getDataSets()
-        for dataSet in dataSets {
-            for tree in dataSet {
+        let dataSources = appDelegate.getDataSources()
+        for dataSource in dataSources {
+            for tree in dataSource.getTreeList() {
                 mapView.addAnnotation(TreeAnnotation(tree: tree))
             }
         }

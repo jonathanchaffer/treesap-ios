@@ -13,11 +13,11 @@ class TreeFinder {
     /**
      Searches for a Tree object by location.
      */
-    class func findTreeByLocation(location: CLLocationCoordinate2D, dataSets: [[Tree]], cutoffDistance: Double) -> Tree? {
+    class func findTreeByLocation(location: CLLocationCoordinate2D, dataSources: [DataSource], cutoffDistance: Double) -> Tree? {
         var closestTree: Tree? = nil
         var closestDistance: CLLocationDistance? = nil
-        for set in dataSets {
-            for tree in set {
+        for dataSource in dataSources {
+            for tree in dataSource.getTreeList() {
                 let treeDistance = distanceBetween(from: location, to: tree.getLocation())
                 if (treeDistance <= cutoffDistance) {
                     if (closestTree == nil || treeDistance < closestDistance!) {

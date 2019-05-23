@@ -83,8 +83,7 @@ class CoordinatesViewController: UIViewController, UITextFieldDelegate {
 	// MARK: Private methods
 	private func getTreeDataByCoords(latitude: Double, longitude: Double) -> Tree? {
 		let location = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-		let dataSets = appDelegate.getDataSets()
-		return TreeFinder.findTreeByLocation(location: location, dataSets: dataSets, cutoffDistance: appDelegate.cutoffDistance)
+		return TreeFinder.findTreeByLocation(location: location, dataSources: appDelegate.getDataSources(), cutoffDistance: appDelegate.cutoffDistance)
 	}
 }
 

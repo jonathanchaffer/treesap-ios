@@ -58,14 +58,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    func getDataSets() -> [[Tree]] {
-        var dataSets = [[Tree]]()
-        for dataSource in self.dataSources {
-            dataSets.append(dataSource.getTreeList())
-        }
-        return dataSets
-    }
-    
     func getDataSources() -> [DataSource]{
         return dataSources
     }
