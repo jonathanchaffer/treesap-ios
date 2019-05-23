@@ -10,21 +10,21 @@ import UIKit
 import MapKit
 
 class ButtonViewController: UIViewController {
-	
 	// MARK: Properties
-	@IBOutlet weak var bigButton: UIButton!
+    @IBOutlet weak var bigButton: UIButton!
 	let locationManager = CLLocationManager()
 	let appDelegate = UIApplication.shared.delegate as! AppDelegate
 	
-	override func viewDidLoad() {
+    // MARK: Overrides
+    override func viewDidLoad() {
 		super.viewDidLoad()
-		locationManager.delegate = self
 		locationManager.desiredAccuracy = kCLLocationAccuracyBest
 		locationManager.distanceFilter = 1
 	}
     
     override func viewDidLayoutSubviews() {
-        configureButton()
+        // Update the big button's corner radius whenever the orientation changes.
+        bigButton.layer.cornerRadius = 0.5 * bigButton.bounds.size.width
     }
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -36,6 +36,10 @@ class ButtonViewController: UIViewController {
 	}
 	
 	// MARK: Actions
+    
+    /**
+     Function that gets called when the big button is pressed. Checks the location authorization status and enables/disables location features accordingly, then displays tree data for the tree closest to the user's location, if any, and alerts the user otherwise.
+     */
 	@IBAction func handleBigButtonPressed(_ sender: UIButton) {
 		// Check authorization status.
 		switch CLLocationManager.authorizationStatus() {
@@ -73,20 +77,12 @@ class ButtonViewController: UIViewController {
 	}
 	
 	// MARK: Private methods
+    /**
+     - Returns: The nearest tree based on the user's current GPS location.
+     */
 	private func getTreeDataByGPS() -> Tree? {
 		let location = locationManager.location!.coordinate
 		let dataSets = appDelegate.getDataSets()
 		return TreeFinder.findTree(location: location, dataSets: dataSets)
-	}
-    
-    private func configureButton() {
-        bigButton.layer.cornerRadius = 0.5 * bigButton.bounds.size.width
-        bigButton.clipsToBounds = true
-    }
-}
-
-extension ButtonViewController: CLLocationManagerDelegate {
-	func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-		print("Updated location")
 	}
 }
