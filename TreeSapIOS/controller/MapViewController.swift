@@ -20,13 +20,17 @@ class MapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         mapView.delegate = self
+        
         // Set the tint color for the user location.
         mapView.tintColor = UIColor(red: 0.30, green: 0.66, blue: 0.28, alpha: 1)
+        
         // If iOS 11 or above is available, register the custom annotation view.
         if #available(iOS 11.0, *) {
             mapView.register(TreeAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
         }
+        
         // Add annotations to the map.
         let dataSources = appDelegate.getDataSources()
         for dataSource in dataSources {
@@ -34,9 +38,11 @@ class MapViewController: UIViewController {
                 mapView.addAnnotation(TreeAnnotation(tree: tree))
             }
         }
+        
         // Check authorization status.
         checkLocationAuthorization()
-        // If location use is authorized, set starting location to current location. Otherwise, use Centennial Park as a default.
+        
+        // If location use is authorized, set starting location to current location. Otherwise, use Centennial Park (in Holland, Michigan) as a default.
         if (appDelegate.locationFeaturesEnabled && locationManager.location != nil) {
             centerMapOnLocation(location: locationManager.location!.coordinate)
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -73,15 +79,12 @@ class MapViewController: UIViewController {
         switch CLLocationManager.authorizationStatus() {
         case .notDetermined:
             locationManager.requestWhenInUseAuthorization()
-            break
         case .restricted, .denied:
             appDelegate.disableLocationFeatures()
-            break
         case .authorizedWhenInUse, .authorizedAlways:
             appDelegate.enableLocationFeatures()
-            break
         default:
-            break
+            return
         }
     }
 }
