@@ -34,31 +34,21 @@ class MapViewController: UIViewController {
                 mapView.addAnnotation(TreeAnnotation(tree: tree))
             }
         }
-        // If location use is authorized, set starting location to current location. Otherwise, use Hope College as a default.
+        // Check authorization status.
+        checkLocationAuthorization()
+        // If location use is authorized, set starting location to current location. Otherwise, use Centennial Park as a default.
         if (appDelegate.locationFeaturesEnabled && locationManager.location != nil) {
             centerMapOnLocation(location: locationManager.location!.coordinate)
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.distanceFilter = 1
         } else {
-            centerMapOnLocation(location: CLLocationCoordinate2D(latitude: 42.787283, longitude: -86.103612))
+            centerMapOnLocation(location: CLLocationCoordinate2D(latitude: 42.787586, longitude: -86.108110))
         }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         // Check authorization status.
-        switch CLLocationManager.authorizationStatus() {
-        case .notDetermined:
-            locationManager.requestWhenInUseAuthorization()
-            break
-        case .restricted, .denied:
-            appDelegate.disableLocationFeatures()
-            break
-        case .authorizedWhenInUse, .authorizedAlways:
-            appDelegate.enableLocationFeatures()
-            break
-        default:
-            break
-        }
+        checkLocationAuthorization()
         // Show or hide user location based on the option in Settings.
         if (appDelegate.showingUserLocation) {
             mapView.showsUserLocation = true
@@ -77,6 +67,22 @@ class MapViewController: UIViewController {
         let pages = TreeDetailPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
         pages.displayedTree = treeToDisplay
         navigationController?.pushViewController(pages, animated: true)
+    }
+    
+    private func checkLocationAuthorization() {
+        switch CLLocationManager.authorizationStatus() {
+        case .notDetermined:
+            locationManager.requestWhenInUseAuthorization()
+            break
+        case .restricted, .denied:
+            appDelegate.disableLocationFeatures()
+            break
+        case .authorizedWhenInUse, .authorizedAlways:
+            appDelegate.enableLocationFeatures()
+            break
+        default:
+            break
+        }
     }
 }
 
