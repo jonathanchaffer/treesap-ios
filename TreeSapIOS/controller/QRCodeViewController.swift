@@ -114,7 +114,7 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
             return nil
         }
         
-        guard let tree: Tree = TreeFinder.findTree(treeID: treeID, dataSourceName: String(resultParts[1]), dataSources: appDelegate.getDataSources()) else{
+        guard let tree: Tree = TreeFinder.findTreeByID(treeID: treeID, dataSourceName: String(resultParts[1]), dataSources: appDelegate.getDataSources()) else{
             alertUser(title: "", message: "No tree with the scanned code was found.")
             return nil
         }
