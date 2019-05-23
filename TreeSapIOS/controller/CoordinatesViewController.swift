@@ -20,6 +20,11 @@ class CoordinatesViewController: UIViewController {
         // Do any additional setup after loading the view.
         latitudeTextField.delegate = self
         longitudeTextField.delegate = self
+        
+        //Set up gesture recognizer that will dismiss the keyboard when the user taps outside of it
+        let gestureRecognizer: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(stopEditingText))
+        gestureRecognizer.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(gestureRecognizer)
     }
 	
 	// MARK: Actions
@@ -52,6 +57,12 @@ class CoordinatesViewController: UIViewController {
 		let dataSets = appDelegate.getDataSets()
 		return TreeFinder.findTree(location: location, dataSets: dataSets)
 	}
+    
+    ///Makes all included text fields (which will probably be all the text fields that this class has as properties) stop editting, dismissing the keyboard
+    @objc func stopEditingText(){
+        longitudeTextField.endEditing(true)
+        latitudeTextField.endEditing(true)
+    }
 	
 }
 
