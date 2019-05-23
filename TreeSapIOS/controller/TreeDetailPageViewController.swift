@@ -20,7 +20,11 @@ class TreeDetailPageViewController: UIPageViewController {
         ]
     }()
     
-    fileprivate func getViewController(withIdentifier identifier: String) -> TreeDisplayViewController {
+    /**
+    Instantiates and returns a TreeDisplayViewController based on the identifier of the view controller in the storyboard. This function will probably cause the program to crash if no identifier matching the provided identifier is found.
+     - Parameter identifier: the storyboard ID of the view controller that is to be instantiated and returned
+     */
+    private func getViewController(withIdentifier identifier: String) -> TreeDisplayViewController {
         return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: identifier) as! TreeDisplayViewController
     }
     
@@ -54,6 +58,7 @@ class TreeDetailPageViewController: UIPageViewController {
 
 
 extension TreeDetailPageViewController: UIPageViewControllerDataSource {
+    
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         guard let viewControllerIndex = pages.firstIndex(of: viewController as! TreeDisplayViewController) else { return nil }
         let previousIndex = viewControllerIndex - 1
