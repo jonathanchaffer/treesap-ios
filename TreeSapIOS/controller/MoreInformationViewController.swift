@@ -16,6 +16,7 @@ class MoreInformationViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 	
+    ///closes the modal (a page thing that appears in front of the previous view) that shows the additional information
 	@IBAction func closeMoreInformation(_ sender: UIBarButtonItem) {
 		navigationController?.popViewController(animated: true)
 		dismiss(animated: true, completion: nil)

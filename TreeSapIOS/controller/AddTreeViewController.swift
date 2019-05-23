@@ -16,7 +16,7 @@ class AddTreeViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    ///closes the modal (i.e. the page thing that appears in front of the previous view)
+    ///closes the modal that has the settings options on it
     @IBAction func closeAddTree(_ sender: UIBarButtonItem) {
         navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)
