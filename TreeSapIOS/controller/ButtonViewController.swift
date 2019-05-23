@@ -25,6 +25,7 @@ class ButtonViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         // Update the big button's corner radius whenever the orientation changes.
+        // Using the dispatch queue makes the text in the trailing closure execute after this method (i.e. viewDidLayoutSubviews) finishes so that the width of the button is the reformatted width instead of the width of the button before it is resized
         DispatchQueue.main.asyncAfter(deadline: .now()) {
             self.bigButton.layer.cornerRadius = 0.5 * self.bigButton.bounds.size.width
         }
