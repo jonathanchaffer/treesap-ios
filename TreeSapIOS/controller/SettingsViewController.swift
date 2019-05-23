@@ -35,6 +35,11 @@ class SettingsViewController: UITableViewController {
         appDelegate.toggleShowingUserLocation()
     }
     
+    /**
+     Updates the cutoff distance, which is how close a tree must be to location given by the coordinates used to find a tree in order to be found
+     
+     - Parameter sender: the UITextField that caused this function call
+     */
     @IBAction func updateCutoffDistance(_ sender: UITextField) {
         if let dist = Double(cutoffDistanceTextField.text!) {
             appDelegate.cutoffDistance = dist
@@ -60,6 +65,7 @@ extension SettingsViewController {
 }
 
 extension SettingsViewController: UITextFieldDelegate {
+    ///Causes the the keyboard to be dismissed upon pressing the enter button when the text field is selected
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return false
