@@ -81,6 +81,14 @@ class CoordinatesViewController: UIViewController, UITextFieldDelegate {
     }
     
 	// MARK: Private methods
+    
+    /**
+     Returns a Tree object that corresponds to the tree closest to and within the cutoff distance of the given location, which is specified by GPS coordinates, or returns nil if no such Tree object was found
+     
+     - Parameters:
+     - latitude: the latitude value in the coordinates used to specify a location
+     - longitude: the latitude value in the coordinates used to specify a location
+     */
 	private func getTreeDataByCoords(latitude: Double, longitude: Double) -> Tree? {
 		let location = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
 		return TreeFinder.findTreeByLocation(location: location, dataSources: appDelegate.getDataSources(), cutoffDistance: appDelegate.cutoffDistance)
