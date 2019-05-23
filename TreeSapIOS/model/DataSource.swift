@@ -23,13 +23,15 @@ class DataSource {
     let dataSourceName: String
 	let csvFormat: CSVFormat
 	var trees: [Tree]
+    var isActive: Bool
     
-	init(internetFilename: String, localFilename: String, dataSourceName: String, csvFormat: CSVFormat) {
+    init(internetFilename: String, localFilename: String, dataSourceName: String, csvFormat: CSVFormat, isActive: Bool) {
         self.internetFilename = internetFilename
         self.localFilename = localFilename
         self.dataSourceName = dataSourceName
 		self.csvFormat = csvFormat
 		self.trees = [Tree]()
+        self.isActive = isActive
     }
     
     /**
