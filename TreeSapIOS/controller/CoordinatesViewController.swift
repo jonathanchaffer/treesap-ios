@@ -28,6 +28,7 @@ class CoordinatesViewController: UIViewController, UITextFieldDelegate {
         self.view.addGestureRecognizer(gestureRecognizer)
     }
     
+    ///Brings up the tree display for the tree closest to the coordinates in the longitude and latitude text fields or alerts the user if invalid coordinates are in the two text fields
     func handleCoordinates(){
         // Convert the inputs to Double. If the conversion failed, alert the user.
         let latitude = Double(latitudeTextField.text!)
@@ -52,6 +53,7 @@ class CoordinatesViewController: UIViewController, UITextFieldDelegate {
     }
 	
 	// MARK: Actions
+    /// calls the handleCoordinates method
 	@IBAction func handleCoordinatesButtonPressed(_ sender: UIButton) {
 		handleCoordinates()
 	}
@@ -64,9 +66,7 @@ class CoordinatesViewController: UIViewController, UITextFieldDelegate {
         latitudeTextField.endEditing(true)
     }
     
-    /**
-     
-    */
+    //If the text field is the first/latitude text field, the second/longitude text field becomes first responder (so it becomes selected). If the text field is the second/longitude text field, then the handleCoordinates method is called. Otherwise, nothing happens.
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField{
         case latitudeTextField:
