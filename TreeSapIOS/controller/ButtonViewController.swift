@@ -46,19 +46,7 @@ class ButtonViewController: UIViewController {
      */
 	@IBAction func handleBigButtonPressed(_ sender: UIButton) {
 		// Check authorization status.
-		switch CLLocationManager.authorizationStatus() {
-		case .notDetermined:
-			locationManager.requestWhenInUseAuthorization()
-			break
-		case .restricted, .denied:
-			appDelegate.disableLocationFeatures()
-			break
-		case .authorizedWhenInUse, .authorizedAlways:
-			appDelegate.enableLocationFeatures()
-			break
-		default:
-			break
-		}
+		checkLocationAuthorization()
 		
 		// If authorized, get tree data. Otherwise, alert the user.
 		if (appDelegate.locationFeaturesEnabled && locationManager.location != nil) {
@@ -88,4 +76,17 @@ class ButtonViewController: UIViewController {
 		let location = locationManager.location!.coordinate
 		return TreeFinder.findTreeByLocation(location: location, dataSources: appDelegate.getDataSources(), cutoffDistance: appDelegate.cutoffDistance)
 	}
+    
+    private func checkLocationAuthorization() {
+        switch CLLocationManager.authorizationStatus() {
+        case .notDetermined:
+            locationManager.requestWhenInUseAuthorization()
+        case .restricted, .denied:
+            appDelegate.disableLocationFeatures()
+        case .authorizedWhenInUse, .authorizedAlways:
+            appDelegate.enableLocationFeatures()
+        default:
+            return
+        }
+    }
 }
