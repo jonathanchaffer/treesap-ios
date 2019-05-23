@@ -183,7 +183,7 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
      */
     func alertUser(title: String, message: String){
         let alertController: UIAlertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
-        alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
         present(alertController, animated: true, completion: nil)
     }
 
