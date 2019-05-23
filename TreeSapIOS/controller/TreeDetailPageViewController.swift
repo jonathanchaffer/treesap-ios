@@ -29,6 +29,9 @@ class TreeDetailPageViewController: UIPageViewController {
         self.dataSource = self
         self.delegate = self
         
+        //Makes the background white so it is not noticed when flipping quickly between the different tree displays
+        self.view.backgroundColor = UIColor.white
+        
         for page in pages {
             page.displayedTree = self.displayedTree
         }
