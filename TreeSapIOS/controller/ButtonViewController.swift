@@ -20,11 +20,14 @@ class ButtonViewController: UIViewController {
 		super.viewDidLoad()
 		locationManager.desiredAccuracy = kCLLocationAccuracyBest
 		locationManager.distanceFilter = 1
+        self.bigButton.layer.cornerRadius = 0.5 * self.bigButton.bounds.size.width
 	}
     
     override func viewDidLayoutSubviews() {
         // Update the big button's corner radius whenever the orientation changes.
-        bigButton.layer.cornerRadius = 0.5 * bigButton.bounds.size.width
+        DispatchQueue.main.asyncAfter(deadline: .now()) {
+            self.bigButton.layer.cornerRadius = 0.5 * self.bigButton.bounds.size.width
+        }
     }
 	
 	override func viewWillAppear(_ animated: Bool) {
