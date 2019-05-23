@@ -10,12 +10,14 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    // MARK: Properties
     var window: UIWindow?
     var dataSources: [DataSource] = [DataSource]()
     var locationFeaturesEnabled: Bool = false
     var showingUserLocation: Bool = true
+    var cutoffDistance: Double = 100.0
 
+    // MARK: App delegate methods
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
 		self.importTreeData()
@@ -44,12 +46,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
+    // MARK: Other methods
     func importTreeData() {
 		self.dataSources.append(DataSource(internetFilename: "CoH_Tree_Inventory_6_12_18.csv", localFilename: "holland.csv", dataSourceName: "City of Holland", csvFormat: CSVFormat.holland))
         self.dataSources.append(DataSource(internetFilename: "iTreeExport_119_HopeTrees_7may2018.csv", localFilename: "itree.csv", dataSourceName: "iTree", csvFormat: CSVFormat.itree))
         self.dataSources.append(DataSource(internetFilename: "dataExport_119_HopeTrees_7may2018.csv", localFilename: "hope.csv", dataSourceName: "Hope College", csvFormat: CSVFormat.hope))
         for dataSource in self.dataSources {
-            dataSource.retrieveOnlineData()
+            if !dataSource.retrieveOnlineData() {
+                print("Error retrieving " + dataSource.dataSourceName + " data from online")
+            }
         }
     }
     
@@ -73,7 +78,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.locationFeaturesEnabled = false
     }
     
-    func toggleLocationOnMap() {
+    func toggleShowingUserLocation() {
         if self.showingUserLocation {
             self.showingUserLocation = false
         } else {

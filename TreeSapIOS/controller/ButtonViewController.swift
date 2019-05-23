@@ -86,6 +86,6 @@ class ButtonViewController: UIViewController {
 	private func getTreeDataByGPS() -> Tree? {
 		let location = locationManager.location!.coordinate
 		let dataSets = appDelegate.getDataSets()
-		return TreeFinder.findTree(location: location, dataSets: dataSets)
+		return TreeFinder.findTree(location: location, dataSets: dataSets, cutoffDistance: appDelegate.cutoffDistance)
 	}
 }

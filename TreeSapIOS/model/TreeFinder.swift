@@ -10,16 +10,18 @@ import Foundation
 import MapKit
 
 class TreeFinder {
-	class func findTree(location: CLLocationCoordinate2D, dataSets: [[Tree]]) -> Tree? {
+class func findTree(location: CLLocationCoordinate2D, dataSets: [[Tree]], cutoffDistance: Double) -> Tree? {
 		var closestTree: Tree? = nil
 		var closestDistance: CLLocationDistance? = nil
 		for set in dataSets {
 			for tree in set {
 				let treeDistance = distanceBetween(from: location, to: tree.getLocation())
-				if (closestTree == nil || treeDistance < closestDistance!) {
-					closestTree = tree
-					closestDistance = treeDistance
-				}
+                if (treeDistance <= cutoffDistance) {
+                    if (closestTree == nil || treeDistance < closestDistance!) {
+                        closestTree = tree
+                        closestDistance = treeDistance
+                    }
+                }
 			}
 		}
 		return closestTree
