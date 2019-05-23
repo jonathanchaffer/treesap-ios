@@ -20,19 +20,31 @@ class MapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let dataSets = appDelegate.getDataSets()
         mapView.delegate = self
+        // Set the tint color for the user location.
         mapView.tintColor = UIColor(red: 0.30, green: 0.66, blue: 0.28, alpha: 1)
+        // If iOS 11 or above is available, register the custom annotation view.
         if #available(iOS 11.0, *) {
             mapView.register(TreeAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
-        } else {
-            // Fallback on earlier versions
         }
+        // Add annotations to the map.
+        let dataSets = appDelegate.getDataSets()
         for dataSet in dataSets {
             for tree in dataSet {
                 mapView.addAnnotation(TreeAnnotation(tree: tree))
             }
         }
+        // If location use is authorized, set starting location to current location. Otherwise, use Hope College as a default.
+        if (appDelegate.locationFeaturesEnabled && locationManager.location != nil) {
+            centerMapOnLocation(location: locationManager.location!.coordinate)
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.distanceFilter = 1
+        } else {
+            centerMapOnLocation(location: CLLocationCoordinate2D(latitude: 42.787283, longitude: -86.103612))
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         // Check authorization status.
         switch CLLocationManager.authorizationStatus() {
         case .notDetermined:
@@ -47,14 +59,11 @@ class MapViewController: UIViewController {
         default:
             break
         }
-        // If authorized, set starting location to current location and show current location. Otherwise, use Hope College as a default.
-        if (appDelegate.locationFeaturesEnabled && locationManager.location != nil) {
-            centerMapOnLocation(location: locationManager.location!.coordinate)
+        // Show or hide user location based on the option in Settings.
+        if (appDelegate.showingUserLocation) {
             mapView.showsUserLocation = true
-            locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            locationManager.distanceFilter = 1
         } else {
-            centerMapOnLocation(location: CLLocationCoordinate2D(latitude: 42.787283, longitude: -86.103612))
+            mapView.showsUserLocation = false
         }
     }
     
