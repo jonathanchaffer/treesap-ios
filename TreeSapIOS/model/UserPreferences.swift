@@ -12,11 +12,19 @@ import Foundation
 ///Used to encode and decode the users preferences
 class UserPreferences: NSCoder, NSCoding {
     ///The maximum distance a tree can be from the location used in a search and still be found in the search
-    var maxIDDistance: Int
+    var cutoffDistance: Double
     ///A dictionary that maps the names of data sources to booleans that indicate whether or not the data sources are active
     var dataSources: [String: Bool]
     ///Whether or not the user's location will be shown on the map
-    var showLocation: Bool
+    var showUserLocation: Bool
+    
+    //properties that store defaults
+    ///default value for cutoffDistance property
+    private static let cutoffDistanceDefault: Double = 100.0
+    ///default value for dataSources property
+    private static let dataSourcesDefault: [String: Bool] = ["City of Holland Tree Inventory": true, "Hope College i-Tree Data": true, "Hope College Trees": true]
+    ///Default value for showUserLocation property
+    private static let showUserLocationDefault: Bool = true
     
     ///This contains the strings that should be used as keys to encode and decode the instance variable of the UserPreferences class
     struct preferenceKeys{
@@ -25,28 +33,32 @@ class UserPreferences: NSCoder, NSCoding {
         static let showLocation = "showLocation"
     }
     
-    init(maxIDDistance: Int, dataSources: [String: Bool], showLocation: Bool) {
-        self.maxIDDistance = maxIDDistance
+    init(maxIDDistance: Double, dataSources: [String: Bool], showLocation: Bool) {
+        self.cutoffDistance = maxIDDistance
         self.dataSources = dataSources
-        self.showLocation = showLocation
+        self.showUserLocation = showLocation
         super.init()
     }
     
-    func encode(with aCoder: NSCoder) {
-        aCoder.encode(maxIDDistance, forKey: preferenceKeys.maxIDDistance)
-        aCoder.encode(dataSources, forKey: preferenceKeys.dataSources)
-        aCoder.encode(showLocation, forKey: preferenceKeys.showLocation)
-    }
-    
     required init?(coder aDecoder: NSCoder) {
-        maxIDDistance = aDecoder.decodeInteger(forKey: preferenceKeys.maxIDDistance)
+        cutoffDistance = aDecoder.decodeDouble(forKey: preferenceKeys.maxIDDistance)
         guard let tempDataSources = aDecoder.decodeObject(forKey: preferenceKeys.dataSources) as? [String: Bool] else{
             return nil
         }
         dataSources = tempDataSources
-        showLocation = aDecoder.decodeBool(forKey: preferenceKeys.showLocation)
+        showUserLocation = aDecoder.decodeBool(forKey: preferenceKeys.showLocation)
         super.init()
     }
     
+    override init(){
+        cutoffDistance = UserPreferences.cutoffDistanceDefault
+        dataSources = UserPreferences.dataSourcesDefault
+        showUserLocation = UserPreferences.showUserLocationDefault
+    }
     
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(cutoffDistance, forKey: preferenceKeys.maxIDDistance)
+        aCoder.encode(dataSources, forKey: preferenceKeys.dataSources)
+        aCoder.encode(showUserLocation, forKey: preferenceKeys.showLocation)
+    }
 }
