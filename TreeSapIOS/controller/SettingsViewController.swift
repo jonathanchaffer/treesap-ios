@@ -18,6 +18,12 @@ class SettingsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         cutoffDistanceTextField.delegate = self
+        
+        //Set up gesture recognizer that will dismiss the keyboard when the user taps outside of it
+        //Based on code from https://medium.com/@KaushElsewhere/how-to-dismiss-keyboard-in-a-view-controller-of-ios-3b1bfe973ad1 and https://www.bignerdranch.com/blog/hannibal-selector/#tl-dr
+        let gestureRecognizer: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(stopEditingText))
+        gestureRecognizer.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(gestureRecognizer)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -37,6 +43,11 @@ class SettingsViewController: UITableViewController {
     
     @IBAction func toggleLocationOnMap(_ sender: UISwitch) {
         appDelegate.toggleShowingUserLocation()
+    }
+    
+    ///Makes text fields stop getting edited, dismissing the keyboard if they are being edited
+    @objc func stopEditingText(){
+        cutoffDistanceTextField.endEditing(true)
     }
     
     /**
