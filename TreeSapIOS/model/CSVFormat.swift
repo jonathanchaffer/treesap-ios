@@ -65,4 +65,15 @@ enum CSVFormat {
 			return 5
 		}
 	}
+    
+    func dbhIndex() -> Int {
+        switch self {
+        case .holland:
+            return 3
+        case .itree:
+            return 10
+        case .hope:
+            return 10
+        }
+    }
 }

@@ -23,9 +23,9 @@ class DataSource {
     /// A string representation of the data source's name, for user readability.
     let dataSourceName: String
     /// The format of CSV data contained in the data source. The CSV file will be parsed differently depending on this value.
-	let csvFormat: CSVFormat
+    let csvFormat: CSVFormat
     /// An array of Tree objects collected by this data source.
-	var trees: [Tree]
+    var trees: [Tree]
     /// Whether the data source should be included in searches, maps, etc.
     var isActive: Bool
     
@@ -33,8 +33,8 @@ class DataSource {
         self.internetFilename = internetFilename
         self.localFilename = localFilename
         self.dataSourceName = dataSourceName
-		self.csvFormat = csvFormat
-		self.trees = [Tree]()
+        self.csvFormat = csvFormat
+        self.trees = [Tree]()
         self.isActive = isActive
     }
     
@@ -72,11 +72,11 @@ class DataSource {
                     isErrorFree = false
                     return
                 }
-				
-				// Create Tree objects for the data
-				DispatchQueue.main.async {
-					self.createTrees()
-				}
+                
+                // Create Tree objects for the data
+                DispatchQueue.main.async {
+                    self.createTrees()
+                }
             }
         }
         
@@ -86,41 +86,42 @@ class DataSource {
         
         return isErrorFree
     }
-	
-	/**
-	Creates Tree objects based on the file in the Documents directory with filename localFilename. Tree objects are stored in the trees array.
-	*/
-	func createTrees() {
-		// Create a file manager and get the path for the local file
-		let fileManager = FileManager.default
-		let documentsURL = try! fileManager.url(for:.documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
-		let filepath = documentsURL.appendingPathComponent(self.localFilename).path
-		// Create an importer for the local file
-		let importer = CSVImporter<[String]>(path: filepath)
-		importer.startImportingRecords { $0 }.onFinish { importedRecords in
-			// Create a Tree object for each imported record
-			for record in importedRecords {
+    
+    /**
+     Creates Tree objects based on the file in the Documents directory with filename localFilename. Tree objects are stored in the trees array.
+     */
+    func createTrees() {
+        // Create a file manager and get the path for the local file
+        let fileManager = FileManager.default
+        let documentsURL = try! fileManager.url(for:.documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+        let filepath = documentsURL.appendingPathComponent(self.localFilename).path
+        // Create an importer for the local file
+        let importer = CSVImporter<[String]>(path: filepath)
+        importer.startImportingRecords { $0 }.onFinish { importedRecords in
+            // Create a Tree object for each imported record
+            for record in importedRecords {
                 let id = Int(record[self.csvFormat.idIndex()])
-				let commonName = NameFormatter.formatCommonName(commonName: record[self.csvFormat.commonNameIndex()])
+                let commonName = NameFormatter.formatCommonName(commonName: record[self.csvFormat.commonNameIndex()])
                 let scientificName = NameFormatter.formatScientificName(scientificName: record[self.csvFormat.scientificNameIndex()])
-				let latitude = Double(record[self.csvFormat.latitudeIndex()])
-				let longitude = Double(record[self.csvFormat.longitudeIndex()])
-				if (latitude != nil && longitude != nil && id != nil) {
-					let tree = Tree(
+                let latitude = Double(record[self.csvFormat.latitudeIndex()])
+                let longitude = Double(record[self.csvFormat.longitudeIndex()])
+                let dbh = Double(record[self.csvFormat.dbhIndex()])
+                if (latitude != nil && longitude != nil && id != nil) {
+                    let tree = Tree(
                         id: id!,
-						commonName: commonName,
-						scientificName: scientificName,
-						location:CLLocationCoordinate2D(
-							latitude: latitude! as CLLocationDegrees,
-							longitude: longitude! as CLLocationDegrees
-					))
-					self.trees.append(tree)
-				}
-			}
-		}
-	}
-	
-	func getTreeList() -> [Tree] {
-		return trees
-	}
+                        commonName: commonName,
+                        scientificName: scientificName,
+                        location:CLLocationCoordinate2D(
+                            latitude: latitude! as CLLocationDegrees,
+                            longitude: longitude! as CLLocationDegrees
+                    ), dbh: dbh!)
+                    self.trees.append(tree)
+                }
+            }
+        }
+    }
+    
+    func getTreeList() -> [Tree] {
+        return trees
+    }
 }

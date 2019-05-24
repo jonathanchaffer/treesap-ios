@@ -18,7 +18,7 @@ class TreeFinder {
         var closestDistance: CLLocationDistance? = nil
         for dataSource in dataSources {
             for tree in dataSource.getTreeList() {
-                let treeDistance = distanceBetween(from: location, to: tree.getLocation())
+                let treeDistance = distanceBetween(from: location, to: tree.location)
                 if (treeDistance <= cutoffDistance) {
                     if (closestTree == nil || treeDistance < closestDistance!) {
                         closestTree = tree

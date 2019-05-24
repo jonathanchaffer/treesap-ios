@@ -14,24 +14,13 @@ class Tree {
     let commonName: String
     let scientificName: String
     let location: CLLocationCoordinate2D
+    let dbh: Double
     
-    init(id: Int, commonName: String, scientificName: String, location: CLLocationCoordinate2D) {
+    init(id: Int, commonName: String, scientificName: String, location: CLLocationCoordinate2D, dbh: Double) {
         self.id = id
         self.commonName = commonName
         self.scientificName = scientificName
         self.location = location
+        self.dbh = dbh
     }
-	
-	func getCommonName() -> String {
-		return self.commonName
-	}
-	
-	func getScientificName() -> String {
-		return self.scientificName
-	}
-	
-	func getLocation() -> CLLocationCoordinate2D {
-		return self.location
-	}
-	
 }
