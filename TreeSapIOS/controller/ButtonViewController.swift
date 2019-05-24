@@ -74,7 +74,7 @@ class ButtonViewController: UIViewController {
      */
 	private func getTreeDataByGPS() -> Tree? {
 		let location = locationManager.location!.coordinate
-		return TreeFinder.findTreeByLocation(location: location, dataSources: appDelegate.getDataSources(), cutoffDistance: appDelegate.cutoffDistance)
+		return TreeFinder.findTreeByLocation(location: location, dataSources: appDelegate.getActiveDataSources(), cutoffDistance: appDelegate.cutoffDistance)
 	}
     
     private func checkLocationAuthorization() {

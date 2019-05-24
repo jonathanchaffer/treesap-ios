@@ -32,7 +32,7 @@ class MapViewController: UIViewController {
         }
         
         // Add annotations to the map.
-        let dataSources = appDelegate.getDataSources()
+        let dataSources = appDelegate.getActiveDataSources()
         for dataSource in dataSources {
             for tree in dataSource.getTreeList() {
                 mapView.addAnnotation(TreeAnnotation(tree: tree))
