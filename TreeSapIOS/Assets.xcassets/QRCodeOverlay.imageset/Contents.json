@@ -2,7 +2,18 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "qrCodeOverlay.png"
+      "filename" : "qrCodeOverlay_150.png",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "qrCodeOverlay_300.png",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "qrCodeOverlay_450.png",
+      "scale" : "3x"
     }
   ],
   "info" : {
