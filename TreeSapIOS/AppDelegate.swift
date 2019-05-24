@@ -66,6 +66,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
+    // TODO: should be renamed to getActiveDataSources
     func getDataSources() -> [DataSource]{
         var activeDataSources = [DataSource]()
         for dataSource in dataSources {
