@@ -8,6 +8,7 @@
 
 import UIKit
 import AVKit
+import CoreLocation
 
 class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     var captureSession: AVCaptureSession!
@@ -96,7 +97,7 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
     }
     
     /**
-    Gets the tree that corresponds to the given encoded String
+    Gets the tree that corresponds to the given encoded String. A valid string has the format "[latitude]_[longitude]" (without the quotation marks or square brackets).
      
      - Parameter stringResult: the encodedString
      
@@ -109,17 +110,24 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
             return nil
         }
         
-        guard let treeID: Int = Int(String(resultParts[0])) else {
+        guard let treeLatitude: Double = Double(String(resultParts[0])) else {
             alertUser(title: "", message: "The scanned code is not the code for a tree.")
             return nil
         }
         
-        guard let tree: Tree = TreeFinder.findTreeByID(treeID: treeID, dataSourceName: String(resultParts[1]), dataSources: appDelegate.getDataSources()) else{
-            alertUser(title: "", message: "No tree with the scanned code was found.")
+        guard let treeLongitude: Double = Double(String(resultParts[1])) else{
+            alertUser(title: "", message: "The scanned code is not the code for a tree.")
             return nil
         }
         
-        return tree
+        let treeCoordinates = CLLocationCoordinate2D(latitude: treeLatitude, longitude: treeLongitude)
+        
+        guard let resultTree: Tree = TreeFinder.findTreeByLocation(location: treeCoordinates, dataSources: appDelegate.getActiveDataSources(), cutoffDistance: appDelegate.cutoffDistance) else{
+                alertUser(title: "", message: "No tree with the scanned code was found.")
+                return nil
+        }
+        
+        return resultTree
     }
     
     /**
