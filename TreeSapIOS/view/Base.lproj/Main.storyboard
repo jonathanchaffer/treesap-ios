@@ -577,7 +577,7 @@
         <scene sceneID="8KI-2H-SKk">
             <objects>
                 <tableViewController id="fLH-Mh-jqL" customClass="SettingsViewController" customModule="TreeSapIOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="9i1-BO-e03">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="9i1-BO-e03">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -660,7 +660,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Active data sources" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bhJ-zN-YY8">
-                                                    <rect key="frame" x="20" y="11.5" width="151" height="21"/>
+                                                    <rect key="frame" x="20" y="11.5" width="340" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -668,6 +668,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="bhJ-zN-YY8" firstAttribute="centerY" secondItem="b4X-jD-yxj" secondAttribute="centerY" id="J1k-La-1Tx"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="bhJ-zN-YY8" secondAttribute="trailing" constant="8" id="QUY-Vd-Xfd"/>
                                                 <constraint firstItem="bhJ-zN-YY8" firstAttribute="leading" secondItem="b4X-jD-yxj" secondAttribute="leadingMargin" id="U4E-Iw-D3a"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -703,13 +704,13 @@
         <scene sceneID="czZ-nX-dXC">
             <objects>
                 <tableViewController id="YoR-i1-rej" customClass="DataSourceTableViewController" customModule="TreeSapIOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="oyG-Yk-AGM">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="oyG-Yk-AGM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="dataSourceCell" id="Z9w-AZ-dHc">
-                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="55.5" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Z9w-AZ-dHc" id="OzR-l7-OwT">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
