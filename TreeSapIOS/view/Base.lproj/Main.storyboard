@@ -650,10 +650,10 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Data Settings" id="r5l-Pf-BO7">
+                            <tableViewSection headerTitle="Data Settings" footerTitle="Select which data sources will be displayed on the map and included in coordinate searches." id="r5l-Pf-BO7">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="TPC-8t-JY7">
-                                        <rect key="frame" x="0.0" y="227.5" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="235" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TPC-8t-JY7" id="b4X-jD-yxj">
                                             <rect key="frame" x="0.0" y="0.0" width="376" height="43.5"/>
