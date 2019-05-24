@@ -58,6 +58,7 @@ class DataSourceTableViewController: UITableViewController {
         } else {
             tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
         }
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
 }

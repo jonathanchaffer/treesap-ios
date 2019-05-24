@@ -25,6 +25,10 @@ class SettingsViewController: UITableViewController {
         cutoffDistanceTextField.text = String(appDelegate.cutoffDistance)
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
     // MARK: Actions
     @IBAction func closeSettings(_ sender: UIBarButtonItem) {
         navigationController?.popViewController(animated: true)
