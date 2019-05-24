@@ -12,9 +12,13 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: Properties
     var window: UIWindow?
-    var dataSources: [DataSource] = [DataSource]()
-    var locationFeaturesEnabled: Bool = false
-    var showingUserLocation: Bool = true
+    /// Array of data sources.
+    var dataSources = [DataSource]()
+    /// Whether location features are enabled.
+    var locationFeaturesEnabled = false
+    /// Whether the user's location should be shown on the map.
+    var showingUserLocation = true
+    /// The max distance from which trees can be identified via coordinates or GPS.
     var cutoffDistance: Double = 100.0
 
     // MARK: App delegate methods
@@ -47,6 +51,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     // MARK: Other methods
+    
+    /**
+     Create data sources and import their tree data.
+     */
     func importTreeData() {
 		self.dataSources.append(DataSource(internetFilename: "CoH_Tree_Inventory_6_12_18.csv", localFilename: "holland.csv", dataSourceName: "City of Holland", csvFormat: CSVFormat.holland, isActive: true))
         self.dataSources.append(DataSource(internetFilename: "iTreeExport_119_HopeTrees_7may2018.csv", localFilename: "itree.csv", dataSourceName: "iTree", csvFormat: CSVFormat.itree, isActive: true))
@@ -59,7 +67,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func getDataSources() -> [DataSource]{
-        return dataSources
+        var activeDataSources = [DataSource]()
+        for dataSource in dataSources {
+            if dataSource.isActive {
+                activeDataSources.append(dataSource)
+            }
+        }
+        return activeDataSources
     }
     
     func enableLocationFeatures() {
