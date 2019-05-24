@@ -54,9 +54,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     /// Create data sources and import their tree data.
     func importTreeData() {
-        self.dataSources.append(DataSource(internetFilename: "CoH_Tree_Inventory_6_12_18.csv", localFilename: "holland.csv", dataSourceName: "City of Holland", csvFormat: CSVFormat.holland, isActive: true))
-        self.dataSources.append(DataSource(internetFilename: "iTreeExport_119_HopeTrees_7may2018.csv", localFilename: "itree.csv", dataSourceName: "iTree", csvFormat: CSVFormat.itree, isActive: true))
-        self.dataSources.append(DataSource(internetFilename: "dataExport_119_HopeTrees_7may2018.csv", localFilename: "hope.csv", dataSourceName: "Hope College", csvFormat: CSVFormat.hope, isActive: true))
+        self.dataSources.append(DataSource(internetFilename: "CoH_Tree_Inventory_6_12_18.csv", localFilename: "holland.csv", dataSourceName: "City of Holland Tree Inventory", csvFormat: CSVFormat.holland, isActive: true))
+        self.dataSources.append(DataSource(internetFilename: "iTreeExport_119_HopeTrees_7may2018.csv", localFilename: "itree.csv", dataSourceName: "Hope College i-Tree Data", csvFormat: CSVFormat.itree, isActive: true))
+        self.dataSources.append(DataSource(internetFilename: "dataExport_119_HopeTrees_7may2018.csv", localFilename: "hope.csv", dataSourceName: "Hope College Trees", csvFormat: CSVFormat.hope, isActive: true))
         for dataSource in self.dataSources {
             if !dataSource.retrieveOnlineData() {
                 print("Error retrieving " + dataSource.dataSourceName + " data from online")
