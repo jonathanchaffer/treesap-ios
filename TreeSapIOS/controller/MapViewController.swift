@@ -31,13 +31,9 @@ class MapViewController: UIViewController {
             mapView.register(TreeAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
         }
         
-        // Add annotations to the map.
-        let dataSources = appDelegate.getActiveDataSources()
-        for dataSource in dataSources {
-            for tree in dataSource.getTreeList() {
-                mapView.addAnnotation(TreeAnnotation(tree: tree))
-            }
-        }
+        // Set attributes of the location manager.
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.distanceFilter = 1
         
         // Check authorization status.
         checkLocationAuthorization()
@@ -45,8 +41,6 @@ class MapViewController: UIViewController {
         // If location use is authorized, set starting location to current location. Otherwise, use Centennial Park (in Holland, Michigan) as a default.
         if (appDelegate.locationFeaturesEnabled && locationManager.location != nil) {
             centerMapOnLocation(location: locationManager.location!.coordinate)
-            locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            locationManager.distanceFilter = 1
         } else {
             centerMapOnLocation(location: CLLocationCoordinate2D(latitude: 42.787586, longitude: -86.108110))
         }
@@ -55,11 +49,21 @@ class MapViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         // Check authorization status.
         checkLocationAuthorization()
+        
         // Show or hide user location based on the option in Settings.
         if (appDelegate.showingUserLocation) {
             mapView.showsUserLocation = true
         } else {
             mapView.showsUserLocation = false
+        }
+        
+        // Add annotations to the map.
+        mapView.removeAnnotations(mapView.annotations)
+        let dataSources = appDelegate.getActiveDataSources()
+        for dataSource in dataSources {
+            for tree in dataSource.getTreeList() {
+                mapView.addAnnotation(TreeAnnotation(tree: tree))
+            }
         }
     }
     

@@ -97,5 +97,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.showingUserLocation = true
         }
     }
+    
+    /**
+     Sets the active status to true for the data source with the specified name.
+     - Parameters:
+        - dataSourceName: The name of the data source to be compared against the dataSourceName property of existing DataSource objects.
+     */
+    func activateDataSource(dataSourceName: String) {
+        for dataSource in dataSources {
+            if dataSource.dataSourceName == dataSourceName {
+                dataSource.isActive = true
+            }
+        }
+    }
+    
+    /**
+     Sets the active status to false for the data source with the specified name.
+     - Parameters:
+     - dataSourceName: The name of the data source to be compared against the dataSourceName property of existing DataSource objects.
+     */
+    func deactivateDataSource(dataSourceName: String) {
+        for dataSource in dataSources {
+            if dataSource.dataSourceName == dataSourceName {
+                dataSource.isActive = false
+            }
+        }
+    }
 }
 
