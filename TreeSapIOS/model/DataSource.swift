@@ -14,15 +14,19 @@ import MapKit
 
 /// A class that contains the tree data from a source. The data is read in from an online database and is stored in a file
 class DataSource {
-    /// the URL of the database where the tree data sets are stored
+    /// The URL of the database where the tree data sets are stored.
     let internetFilebase: String = "https://faculty.hope.edu/jipping/treesap/"
-    /// the name of the file that contains the data that is used by this class
+    /// The filename (and extension) of the file that contains the online tree data.
     let internetFilename: String
-    /// the name the created file that contains the data is/will be given
+    /// The filename (and extension) of the local file.
     let localFilename: String
+    /// A string representation of the data source's name, for user readability.
     let dataSourceName: String
+    /// The format of CSV data contained in the data source. The CSV file will be parsed differently depending on this value.
 	let csvFormat: CSVFormat
+    /// An array of Tree objects collected by this data source.
 	var trees: [Tree]
+    /// Whether the data source should be included in searches, maps, etc.
     var isActive: Bool
     
     init(internetFilename: String, localFilename: String, dataSourceName: String, csvFormat: CSVFormat, isActive: Bool) {
