@@ -14,7 +14,7 @@ class SimpleDisplayViewController: TreeDisplayViewController {
     @IBOutlet weak var treeIDLabel: UILabel!
 	@IBOutlet weak var latitudeLabel: UILabel!
 	@IBOutlet weak var longitudeLabel: UILabel!
-	
+    @IBOutlet weak var dbhLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +25,7 @@ class SimpleDisplayViewController: TreeDisplayViewController {
         self.treeIDLabel.text = String(self.displayedTree!.id)
 		self.latitudeLabel.text = String(self.displayedTree!.location.latitude)
 		self.longitudeLabel.text = String(self.displayedTree!.location.longitude)
+        self.dbhLabel.text = String(self.displayedTree!.dbh)
     }
 
 }

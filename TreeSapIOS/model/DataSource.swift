@@ -106,7 +106,7 @@ class DataSource {
                 let latitude = Double(record[self.csvFormat.latitudeIndex()])
                 let longitude = Double(record[self.csvFormat.longitudeIndex()])
                 let dbh = Double(record[self.csvFormat.dbhIndex()])
-                if (latitude != nil && longitude != nil && id != nil) {
+                if (latitude != nil && longitude != nil && id != nil && dbh != nil) {
                     let tree = Tree(
                         id: id!,
                         commonName: commonName,
