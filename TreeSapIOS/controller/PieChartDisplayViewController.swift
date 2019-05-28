@@ -40,8 +40,8 @@ class PieChartDisplayViewController: TreeDisplayViewController, ChartViewDelegat
         set.colors = []
         for i in 0..<4 {
             let redOffset = CGFloat(Double(i) * -0.2)
-            let greenOffset = CGFloat(Double(i) * -0.15)
-            let blueOffset = CGFloat(Double(i) * -0.2)
+            let greenOffset = CGFloat(Double(i) * -0.1)
+            let blueOffset = CGFloat(Double(i) * 0.01)
             set.colors.append(UIColor(red: 0.373 + redOffset, green: 0.718 + greenOffset, blue: 0.306 + blueOffset, alpha: 1.0))
         }
         
