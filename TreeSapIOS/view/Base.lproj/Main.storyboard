@@ -679,6 +679,14 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection id="J1g-2d-Dw7">
+                                <string key="footerTitle" base64-UTF8="YES">
+VGhpcyBzb2Z0d2FyZSBpcyDCqSBIb3BlIENvbGxlZ2UsIDIwMTkuIANXcml0dGVuIGJ5IE1pa2UgSmlw
+cGluZywgSm9uYXRoYW4gQ2hhZmZlciwgYW5kIEpvc2lhaCBCcmV0dC4gQWxsIHJpZ2h0cyByZXNlcnZl
+ZC4
+</string>
+                                <cells/>
+                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="fLH-Mh-jqL" id="33R-9N-9B1"/>
