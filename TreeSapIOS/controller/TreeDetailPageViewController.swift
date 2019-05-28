@@ -61,6 +61,8 @@ class TreeDetailPageViewController: UIPageViewController {
         self.pageControl!.currentPage = pages.index(of: pageContentViewController as! TreeDisplayViewController)!
     }
     
+    // MARK: Private methods
+    
     /**
      Instantiates and returns a TreeDisplayViewController based on the identifier of the view controller in the storyboard.
      - Parameter identifier: the storyboard ID of the view controller that is to be instantiated and returned.
@@ -69,7 +71,6 @@ class TreeDetailPageViewController: UIPageViewController {
         return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: identifier) as! TreeDisplayViewController
     }
     
-    // MARK: Private methods
     /// Sets up the dot indicator that shows the current page.
     private func configurePageControl() {
         pageControl = UIPageControl(frame: CGRect(x: 0, y: UIScreen.main.bounds.maxY - 50, width: UIScreen.main.bounds.width, height: 50))
