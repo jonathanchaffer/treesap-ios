@@ -13,22 +13,25 @@ class CoordinatesViewController: UIViewController, UITextFieldDelegate {
 	// MARK: Properties
     @IBOutlet weak var latitudeTextField: UITextField!
     @IBOutlet weak var longitudeTextField: UITextField!
-	let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    @IBOutlet weak var getTreeDataButton: UIButton!
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         latitudeTextField.delegate = self
         longitudeTextField.delegate = self
         
-        //Set up gesture recognizer that will dismiss the keyboard when the user taps outside of it
-        //Based on code from https://medium.com/@KaushElsewhere/how-to-dismiss-keyboard-in-a-view-controller-of-ios-3b1bfe973ad1 and https://www.bignerdranch.com/blog/hannibal-selector/#tl-dr
+        getTreeDataButton.contentEdgeInsets = UIEdgeInsets(top: 8.0, left: 8.0, bottom: 8.0, right: 8.0)
+        getTreeDataButton.layer.cornerRadius = 8.0
+        
+        // Set up gesture recognizer that will dismiss the keyboard when the user taps outside of it
+        // Based on code from https://medium.com/@KaushElsewhere/how-to-dismiss-keyboard-in-a-view-controller-of-ios-3b1bfe973ad1 and https://www.bignerdranch.com/blog/hannibal-selector/#tl-dr
         let gestureRecognizer: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(stopEditingText))
         gestureRecognizer.cancelsTouchesInView = false
         self.view.addGestureRecognizer(gestureRecognizer)
     }
     
-    ///Brings up the tree display for the tree closest to the coordinates in the longitude and latitude text fields or alerts the user if invalid coordinates are in the two text fields
+    /// Brings up the tree display for the tree closest to the coordinates in the longitude and latitude text fields or alerts the user if invalid coordinates are in the two text fields.
     func handleCoordinates(){
         // Convert the inputs to Double. If the conversion failed, alert the user.
         let latitude = Double(latitudeTextField.text!)
@@ -53,20 +56,20 @@ class CoordinatesViewController: UIViewController, UITextFieldDelegate {
     }
 	
 	// MARK: Actions
-    /// calls the handleCoordinates method
+    /// Calls the handleCoordinates method.
 	@IBAction func handleCoordinatesButtonPressed(_ sender: UIButton) {
 		handleCoordinates()
 	}
 	
-    //MARK: Text-Field-Related Functions
-    //Based on code from https://medium.com/@KaushElsewhere/how-to-dismiss-keyboard-in-a-view-controller-of-ios-3b1bfe973ad1
-    ///Makes all included text fields (which will probably be all the text fields that this class has as properties) stop editting, dismissing the keyboard
+    // MARK: Text-Field-Related Functions
+    // Based on code from https://medium.com/@KaushElsewhere/how-to-dismiss-keyboard-in-a-view-controller-of-ios-3b1bfe973ad1
+    /// Makes all included text fields (which will probably be all the text fields that this class has as properties) stop editting, dismissing the keyboard
     @objc func stopEditingText(){
         longitudeTextField.endEditing(true)
         latitudeTextField.endEditing(true)
     }
     
-    //If the text field is the first/latitude text field, the second/longitude text field becomes first responder (so it becomes selected). If the text field is the second/longitude text field, then the handleCoordinates method is called. Otherwise, nothing happens.
+    // If the text field is the first/latitude text field, the second/longitude text field becomes first responder (so it becomes selected). If the text field is the second/longitude text field, then the handleCoordinates method is called. Otherwise, nothing happens.
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField{
         case latitudeTextField:
