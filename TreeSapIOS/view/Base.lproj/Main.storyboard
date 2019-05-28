@@ -881,10 +881,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Ne-79-b1a">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="248.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="268.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="LT9-vO-uxm">
-                                                <rect key="frame" x="20" y="20" width="374" height="208.5"/>
+                                                <rect key="frame" x="20" y="20" width="374" height="228.5"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash" translatesAutoresizingMaskIntoConstraints="NO" id="i4c-Mw-gCF">
                                                         <rect key="frame" x="127" y="0.0" width="120" height="120"/>
@@ -899,8 +899,13 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Created by Mike Jipping, Jonathan Chaffer, and Josiah Brett" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jwX-Tm-gJZ">
-                                                        <rect key="frame" x="3.5" y="167.5" width="367" height="41"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jwX-Tm-gJZ">
+                                                        <rect key="frame" x="6" y="167.5" width="362" height="61"/>
+                                                        <string key="text" base64-UTF8="YES">
+VGhpcyBzb2Z0d2FyZSBpcyDCqSBIb3BlIENvbGxlZ2UsIDIwMTkuIANXcml0dGVuIGJ5IE1pa2UgSmlw
+cGluZywgSm9uYXRoYW4gQ2hhZmZlciwgYW5kIEpvc2lhaCBCcmV0dC4gQWxsIHJpZ2h0cyByZXNlcnZl
+ZC4
+</string>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
