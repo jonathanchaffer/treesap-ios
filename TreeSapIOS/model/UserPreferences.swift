@@ -33,6 +33,8 @@ class UserPreferences: NSCoder, NSCoding {
         static let showLocation = "showLocation"
     }
     
+    
+    ///Used to make and instance of the UserPreferences class with the specified user preferences
     init(maxIDDistance: Double, dataSources: [String: Bool], showLocation: Bool) {
         self.cutoffDistance = maxIDDistance
         self.dataSources = dataSources
@@ -40,6 +42,7 @@ class UserPreferences: NSCoder, NSCoding {
         super.init()
     }
     
+    ///Used to make an instance of the UserPreferences class using the encoded user prefences
     required init?(coder aDecoder: NSCoder) {
         cutoffDistance = aDecoder.decodeDouble(forKey: preferenceKeys.maxIDDistance)
         guard let tempDataSources = aDecoder.decodeObject(forKey: preferenceKeys.dataSources) as? [String: Bool] else{
@@ -50,10 +53,12 @@ class UserPreferences: NSCoder, NSCoding {
         super.init()
     }
     
+    ///Used to make an instance of the UserPreferences class with the default user preferences
     override init(){
         cutoffDistance = UserPreferences.cutoffDistanceDefault
         dataSources = UserPreferences.dataSourcesDefault
         showUserLocation = UserPreferences.showUserLocationDefault
+        super.init()
     }
     
     func encode(with aCoder: NSCoder) {
