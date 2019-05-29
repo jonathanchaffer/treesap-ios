@@ -43,11 +43,11 @@ class DataSource {
      
      - Returns: true if there is no error and false if there was an error
      */
-    func retrieveOnlineData() -> Bool{
-        // Flag for if there is an error (needed for errors in void function)
-        var isErrorFree: Bool = true
+    func retrieveOnlineData() -> Bool {
+        // Flag that keeps track of whether there was an error
+        var isErrorFree = true
         
-        // Retrieve the data from the URL
+        // Create a task to retrieve data from the URL
         let url = URL(string: self.internetFilebase + self.internetFilename)
         let task = URLSession.shared.dataTask(with: url!) { (data, response, error) in
             if (error != nil) {
@@ -60,30 +60,25 @@ class DataSource {
                     isErrorFree = false
                     return
                 }
-                
                 // Write the data to the documents directory
                 let fileManager = FileManager.default
                 do {
-                    let documentDirectory = try fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
-                    let fileURL = documentDirectory.appendingPathComponent(self.localFilename)
+                    let documentsURL = try fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+                    let fileURL = documentsURL.appendingPathComponent(self.localFilename)
                     try data!.write(to: fileURL)
                 } catch {
                     print(error)
                     isErrorFree = false
                     return
                 }
-                
                 // Create Tree objects for the data
                 DispatchQueue.main.async {
                     self.createTrees()
                 }
             }
         }
-        
-        if(isErrorFree){
-            task.resume()
-        }
-        
+        // Start the task
+        task.resume()
         return isErrorFree
     }
     
@@ -97,26 +92,25 @@ class DataSource {
         let filepath = documentsURL.appendingPathComponent(self.localFilename).path
         // Create an importer for the local file
         let importer = CSVImporter<[String]>(path: filepath)
-        importer.startImportingRecords { $0 }.onFinish { importedRecords in
-            // Create a Tree object for each imported record
-            for record in importedRecords {
-                let id = Int(record[self.csvFormat.idIndex()])
-                let commonName = NameFormatter.formatCommonName(commonName: record[self.csvFormat.commonNameIndex()])
-                let scientificName = NameFormatter.formatScientificName(scientificName: record[self.csvFormat.scientificNameIndex()])
-                let latitude = Double(record[self.csvFormat.latitudeIndex()])
-                let longitude = Double(record[self.csvFormat.longitudeIndex()])
-                let dbh = Double(record[self.csvFormat.dbhIndex()])
-                if (latitude != nil && longitude != nil && id != nil && dbh != nil) {
-                    let tree = Tree(
-                        id: id!,
-                        commonName: commonName,
-                        scientificName: scientificName,
-                        location:CLLocationCoordinate2D(
-                            latitude: latitude! as CLLocationDegrees,
-                            longitude: longitude! as CLLocationDegrees
-                    ), dbh: dbh!)
-                    self.trees.append(tree)
-                }
+        let importedRecords = importer.importRecords { $0 }
+        // Create a Tree object for each imported record
+        for record in importedRecords {
+            let id = Int(record[self.csvFormat.idIndex()])
+            let commonName = NameFormatter.formatCommonName(commonName: record[self.csvFormat.commonNameIndex()])
+            let scientificName = NameFormatter.formatScientificName(scientificName: record[self.csvFormat.scientificNameIndex()])
+            let latitude = Double(record[self.csvFormat.latitudeIndex()])
+            let longitude = Double(record[self.csvFormat.longitudeIndex()])
+            let dbh = Double(record[self.csvFormat.dbhIndex()])
+            if (latitude != nil && longitude != nil && id != nil && dbh != nil) {
+                let tree = Tree(
+                    id: id!,
+                    commonName: commonName,
+                    scientificName: scientificName,
+                    location:CLLocationCoordinate2D(
+                        latitude: latitude! as CLLocationDegrees,
+                        longitude: longitude! as CLLocationDegrees
+                ), dbh: dbh!)
+                self.trees.append(tree)
             }
         }
     }

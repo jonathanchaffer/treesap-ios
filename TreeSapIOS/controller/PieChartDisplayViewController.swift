@@ -29,10 +29,22 @@ class PieChartDisplayViewController: TreeDisplayViewController, ChartViewDelegat
     
     // MARK: - Private methods
     private func updateChartData() {
-        let entries = (0..<4).map { (i) -> PieChartDataEntry in
-            return PieChartDataEntry(value: Double.random(in: 0...100), label: "test")
+        var entries: [PieChartDataEntry] = []
+        if (self.totalAnnualBenefits != nil) {
+            print(self.avoidedRunoffValue!)
+            print(self.pollutionValue!)
+            print(self.totalEnergySavings!)
+            if (self.avoidedRunoffValue! >= 0) {
+                entries.append(PieChartDataEntry(value: self.avoidedRunoffValue!, label: "Avoided Runoff"))
+            }
+            if (self.pollutionValue! >= 0) {
+                entries.append(PieChartDataEntry(value: self.pollutionValue!, label: "Pollution"))
+            }
+            if (self.totalEnergySavings! >= 0) {
+                entries.append(PieChartDataEntry(value: self.totalEnergySavings!, label: "Energy Savings"))
+            }
         }
-        
+
         let set = PieChartDataSet(entries: entries, label: "")
         set.drawIconsEnabled = false
         set.sliceSpace = 2

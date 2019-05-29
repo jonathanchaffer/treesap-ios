@@ -8,9 +8,10 @@
 //  https://spin.atomicobject.com/2015/12/23/swift-uipageviewcontroller-tutorial/
 
 import UIKit
+import CSVImporter
 
 class TreeDetailPageViewController: UIPageViewController {
-    // MARK: Properties
+    // MARK: - Properties
     /// The tree that will be displayed in the tree detail views.
     var displayedTree: Tree? = nil
     /// The dot indicator that shows the current page.
@@ -24,13 +25,14 @@ class TreeDetailPageViewController: UIPageViewController {
         ]
     }()
     
-    // MARK: Overrides
+    // MARK: - Overrides
     override func viewDidLoad() {
         super.viewDidLoad()
         self.dataSource = self
         self.delegate = self
         
         self.configurePageControl()
+        self.configureBenefits()
         
         // Set the background color to white so it is not noticed when flipping quickly between the different tree displays
         self.view.backgroundColor = UIColor.white
@@ -61,7 +63,7 @@ class TreeDetailPageViewController: UIPageViewController {
         self.pageControl!.currentPage = pages.index(of: pageContentViewController as! TreeDisplayViewController)!
     }
     
-    // MARK: Private methods
+    // MARK: - Private methods
     
     /**
      Instantiates and returns a TreeDisplayViewController based on the identifier of the view controller in the storyboard.
@@ -80,10 +82,77 @@ class TreeDetailPageViewController: UIPageViewController {
         pageControl!.pageIndicatorTintColor = UIColor(red: 0.373, green: 0.718, blue: 0.306, alpha: 0.3)
         self.view.addSubview(pageControl!)
     }
+    
+    private func retrieveOnlineData() -> Bool {
+        // Flag that keeps track of whether there was an error
+        var isErrorFree = true
+        
+        // Create a task to retrieve data from the URL
+        let url = URL(string: "https://faculty.hope.edu/jipping/treesap/katelyn.csv")
+        let task = URLSession.shared.dataTask(with: url!) { (data, response, error) in
+            if (error != nil) {
+                print(error!)
+                isErrorFree = false
+                return
+            } else {
+                guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
+                    print("Server error")
+                    isErrorFree = false
+                    return
+                }
+                // Write the data to the documents directory
+                let fileManager = FileManager.default
+                do {
+                    let documentsURL = try fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+                    let fileURL = documentsURL.appendingPathComponent("katelyn.csv")
+                    try data!.write(to: fileURL)
+                } catch {
+                    print(error)
+                    isErrorFree = false
+                    return
+                }
+                // Set benefit information
+                DispatchQueue.main.async {
+                    self.configureBenefits()
+                }
+            }
+        }
+        // Start the task
+        task.resume()
+        return isErrorFree
+    }
+    
+    private func configureBenefits() {
+        // Create a file manager and get the path for the local file
+        let fileManager = FileManager.default
+        let documentsURL = try! fileManager.url(for:.documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+        let filepath = documentsURL.appendingPathComponent("katelyn.csv").path
+        // Create an importer for the local file
+        let importer = CSVImporter<[String]>(path: filepath)
+        let importedRecords = importer.importRecords { $0 }
+        for record in importedRecords {
+            // Check whether latitude and longitude match to 11 decimal places
+            let recordLatitude = Double(record[CSVFormat.benefits.latitudeIndex()])
+            let recordLongitude = Double(record[CSVFormat.benefits.longitudeIndex()])
+            if (recordLatitude != nil && recordLongitude != nil) {
+                print(String(format:"%.10f", recordLatitude!))
+                if (String(format:"%.10f", recordLatitude!) == String(format:"%.10f", self.displayedTree!.location.latitude)) {
+                    if (String(format:"%.10f", recordLongitude!) == String(format: "%.10f", self.displayedTree!.location.longitude)) {
+                        for page in self.pages {
+                            page.totalAnnualBenefits = Double(record[CSVFormat.benefits.totalAnnualBenefitsIndex()])
+                            page.avoidedRunoffValue = Double(record[CSVFormat.benefits.avoidedRunoffValueIndex()])
+                            page.pollutionValue = Double(record[CSVFormat.benefits.pollutionValueIndex()])
+                            page.totalEnergySavings = Double(record[CSVFormat.benefits.totalEnergySavingsIndex()])
+                        }
+                        print("Updated benefits")
+                    }
+                }
+            }
+        }
+    }
 }
 
-
-
+// MARK: - Extensions
 extension TreeDetailPageViewController: UIPageViewControllerDataSource {
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         guard let viewControllerIndex = pages.firstIndex(of: viewController as! TreeDisplayViewController) else { return nil }

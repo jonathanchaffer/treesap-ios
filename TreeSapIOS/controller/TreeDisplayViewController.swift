@@ -9,9 +9,14 @@
 import UIKit
 
 class TreeDisplayViewController: UIViewController {
-    // MARK: Properties
+    // MARK: - Properties
     var displayedTree: Tree? = nil
+    var totalAnnualBenefits: Double? = nil
+    var avoidedRunoffValue: Double? = nil
+    var pollutionValue: Double? = nil
+    var totalEnergySavings: Double? = nil
     
+    // MARK: - Overrides
     override func viewDidLoad() {
         super.viewDidLoad()
     }
