@@ -30,6 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         self.importTreeData()
+        UserPreferenceKeys.loadPreferences()
         return true
     }
     
@@ -75,7 +76,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var activeDataSources = [DataSource]()
         for dataSource in dataSources {
             let availibility: Bool? = UserPreferenceKeys.dataSourceAvailibility[dataSource.dataSourceName]
-            if (availibility != nil && availibility){
+            if (availibility != nil && availibility!){
                 activeDataSources.append(dataSource)
             }
         }
@@ -108,7 +109,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         - dataSourceName: The name of the data source to be compared against the dataSourceName property of existing DataSource objects.
      */
     func activateDataSource(dataSourceName: String) {
-        if(UserPreferenceKeys.dataSourceAvailibility[dataSourceName] ){
+        if(UserPreferenceKeys.dataSourceAvailibility[dataSourceName] != nil){
             return
         }
         
@@ -121,7 +122,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
      - dataSourceName: The name of the data source to be compared against the dataSourceName property of existing DataSource objects.
      */
     func deactivateDataSource(dataSourceName: String) {
-        if(UserPreferenceKeys.dataSourceAvailibility[dataSourceName]){
+        if(UserPreferenceKeys.dataSourceAvailibility[dataSourceName] != nil){
             return
         }
         
