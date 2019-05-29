@@ -32,7 +32,8 @@ class TreeDetailPageViewController: UIPageViewController {
         self.delegate = self
         
         self.configurePageControl()
-        self.configureBenefits()
+        // TODO: Move this method call to AppDelegate
+        self.retrieveOnlineBenefitData()
         
         // Set the background color to white so it is not noticed when flipping quickly between the different tree displays
         self.view.backgroundColor = UIColor.white
@@ -83,6 +84,7 @@ class TreeDetailPageViewController: UIPageViewController {
         self.view.addSubview(pageControl!)
     }
     
+    // TODO: Move this method to AppDelegate
     private func retrieveOnlineBenefitData() -> Bool {
         // Flag that keeps track of whether there was an error
         var isErrorFree = true
