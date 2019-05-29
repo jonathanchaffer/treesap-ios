@@ -59,8 +59,8 @@ class PieChartDisplayViewController: TreeDisplayViewController, ChartViewDelegat
         set.colors = []
         set.colors.append(UIColor(red: 95/255, green: 184/255, blue: 78/255, alpha: 1.0))
         set.colors.append(UIColor(red: 33/255, green: 104/255, blue: 105/255, alpha: 1.0))
-        set.colors.append(UIColor(red: 156/255, green: 197/255, blue: 161/255, alpha: 1.0))
-        set.colors.append(UIColor(red: 56/255, green: 84/255, blue: 61/255, alpha: 1.0))
+        set.colors.append(UIColor(red: 129/255, green: 196/255, blue: 137/255, alpha: 1.0))
+        set.colors.append(UIColor(red: 56/255, green: 85/255, blue: 81/255, alpha: 1.0))
         
         var data: PieChartData? = nil
         if (entries != []) {
