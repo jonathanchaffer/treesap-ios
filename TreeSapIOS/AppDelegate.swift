@@ -16,12 +16,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var dataSources = [DataSource]()
     /// Whether location features are enabled.
     var locationFeaturesEnabled = false
-    ///Stores the user preferences, default preferences, and keys for storing user preferences
-    let userPreferenceKeys = UserPreferenceKeys()
     
     /// Whether the user's location should be shown on the map.
     var showingUserLocation: Bool{
-        return UserPreferenceKeys.showingUserLocation
+        return UserPreferenceKeys.showUserLocation
     }
     /// The max distance from which trees can be identified via coordinates or GPS.
     var cutoffDistance: Double {
@@ -76,7 +74,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func getActiveDataSources() -> [DataSource]{
         var activeDataSources = [DataSource]()
         for dataSource in dataSources {
-            if dataSource.isActive {
+            if UserPreferenceKeys.dataSourceAvailibility[dataSource.dataSourceName] {
                 activeDataSources.append(dataSource)
             }
         }
@@ -98,11 +96,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
      Note: If location features are disabled, the user's location will not be shown on the map, regardless of this setting.
      */
     func toggleShowingUserLocation() {
-        if self.showingUserLocation {
-            self.showingUserLocation = false
-        } else {
-            self.showingUserLocation = true
-        }
+        let newValue: Bool = !UserPreferenceKeys.showUserLocation
+        UserPreferenceKeys.showUserLocation = newValue
+        UserDefaults.standard.set(newValue, forKey: UserPreferenceKeys.showUserLocationKey)
     }
     
     /**
@@ -111,11 +107,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         - dataSourceName: The name of the data source to be compared against the dataSourceName property of existing DataSource objects.
      */
     func activateDataSource(dataSourceName: String) {
-        for dataSource in dataSources {
-            if dataSource.dataSourceName == dataSourceName {
-                dataSource.isActive = true
-            }
+        guard UserPreferenceKeys.dataSourceAvailibility[dataSourceName] is Bool else{
+            return
         }
+        
+        UserPreferenceKeys.dataSourceAvailibility[dataSourceName] = true
     }
     
     /**
@@ -124,11 +120,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
      - dataSourceName: The name of the data source to be compared against the dataSourceName property of existing DataSource objects.
      */
     func deactivateDataSource(dataSourceName: String) {
-        for dataSource in dataSources {
-            if dataSource.dataSourceName == dataSourceName {
-                dataSource.isActive = false
-            }
+        guard UserPreferenceKeys.dataSourceAvailibility[dataSourceName] is Bool else{
+            return
         }
+        
+        UserPreferenceKeys.dataSourceAvailibility[dataSourceName] = false
     }
 }
 
