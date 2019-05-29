@@ -16,10 +16,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var dataSources = [DataSource]()
     /// Whether location features are enabled.
     var locationFeaturesEnabled = false
+    ///Stores the user preferences, default preferences, and keys for storing user preferences
+    let userPreferenceKeys = UserPreferenceKeys()
+    
     /// Whether the user's location should be shown on the map.
-    var showingUserLocation = true
+    var showingUserLocation: Bool{
+        return UserPreferenceKeys.showingUserLocation
+    }
     /// The max distance from which trees can be identified via coordinates or GPS.
-    var cutoffDistance: Double = 100.0
+    var cutoffDistance: Double {
+        return UserPreferenceKeys.cutoffDistance
+    }
     
     // MARK: App delegate methods
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {

@@ -8,18 +8,52 @@
 
 ///Used to store the keys that are used to store the user preferences and default preferences
 struct UserPreferenceKeys{
-    //Keys used for storage
-    let cutoffDistanceKey = "cutoffDistanceKey"
-    let dataSourceAvailibilityKey = "dataSourcesAvailibilityKey"
-    let showUserLocationKey = "showUserLocationKey"
+    //Keys used for storage of user preferences
+    static let cutoffDistanceKey = "cutoffDistanceKey"
+    static let dataSourceAvailibilityKey = "dataSourcesAvailibilityKey"
+    static let showUserLocationKey = "showUserLocationKey"
     
     //constants that store the default preferences
-    let cutoffdistanceDefault = 100.0
-    let dataSourceAvailibilityDefault = ["City of Holland Tree Inventory": true, "Hope College i-Tree Data": true, "Hope College Trees": true]
-    let showUserLocation = true
+    static let cutoffDistanceDefault = 100.0
+    static let dataSourceAvailibilityDefault = ["City of Holland Tree Inventory": true, "Hope College i-Tree Data": true, "Hope College Trees": true]
+    static let showUserLocationDefault = true
     
     //variables that store the current user preferences
-    var cutoffDistance: Double
-    var dataSourceAvailibility: [String: bool]
-    var showUserLocation: Bool
+    static var cutoffDistance: Double = cutoffDistanceDefault
+    static var dataSourceAvailibility: [String: bool] = dataSourceAvailibilityDefault
+    static var showUserLocation: Bool = showUserLocationDefault
+
+    ///Set the user preferences to the default settings
+    static func restoreDefaults(){
+        cutoffdistance = cutoffDistanceDefault
+        UserDefaults.standard.set(cutoffDistanceDefault, forKey: cutoffDistanceKey)
+        dataSourceAvailibility = dataSourceAvailibilityDefault
+        UserDefaults.standard.set(dataSourceAvailibilityDefault, forKey: dataSourceAvailibilityKey)
+        showUserLocation = showUserLocationDefault
+        UserDefaults.standard.set(showUserLocationDefault, forKey: showUserLocationKey)
+    }
+    
+    ///Set the current user preferences to be the same as the stored user preferences
+    static func loadPreferences(){
+        cutoffDistance = UserDefaults.standard.Double(forKey: cutoffDistanceKey)
+        if(cutoffDistance == 0){
+            cutoffDistance = cutoffDistanceDefault
+        }
+        
+        tempDataSourceAvailibility = UserDefaults.standard.object(forKey: dataSourceAvailibilityKey)
+        if(tempDataSourceAvailibility == nil){
+            dataSourceAvailibility = dataSourceAvailibilityDefault
+        }
+        else{
+            dataSourceAvailibility = tempDataSourceAvailibility
+        }
+        
+        tempShowUserLocation = UserDefaults.standard.object(forKey: showUserLocationKey)
+        if(tempShowUserLocation == nil){
+            showUserLocation = showUserLocationDefault
+        }
+        else{
+            showUserLocation = tempShowUserLocation
+        }
+    }
 }
