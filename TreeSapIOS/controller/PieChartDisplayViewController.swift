@@ -18,7 +18,10 @@ class PieChartDisplayViewController: TreeDisplayViewController, ChartViewDelegat
         super.viewDidLoad()
 
         chartView.delegate = self
-        chartView.drawHoleEnabled = false
+        chartView.drawHoleEnabled = true
+        chartView.transparentCircleRadiusPercent = 0
+        chartView.rotationEnabled = true
+        chartView.rotationWithTwoFingers = true
         let legend = chartView.legend
         legend.verticalAlignment = .top
         legend.orientation = .vertical
@@ -54,18 +57,22 @@ class PieChartDisplayViewController: TreeDisplayViewController, ChartViewDelegat
         set.sliceSpace = 2
         
         set.colors = []
-        for i in 0..<4 {
-            let redOffset = CGFloat(Double(i) * -0.2)
-            let greenOffset = CGFloat(Double(i) * -0.1)
-            let blueOffset = CGFloat(Double(i) * 0.01)
-            set.colors.append(UIColor(red: 0.373 + redOffset, green: 0.718 + greenOffset, blue: 0.306 + blueOffset, alpha: 1.0))
+        for i in 1..<4 {
+            let alphaOffset = CGFloat(Double(i) * 0.2)
+            set.colors.append(UIColor(red: 0.373, green: 0.718, blue: 0.306, alpha: 0.8 - alphaOffset))
         }
         
         var data: PieChartData? = nil
         if (entries != []) {
             data = PieChartData(dataSet: set)
             data!.setValueFont(.systemFont(ofSize: 17, weight: .regular))
-            data!.setValueTextColor(.white)
+            data!.setValueTextColor(UIColor(red: 0.373, green: 0.718, blue: 0.306, alpha: 1.0))
+            let dollarFormatter = NumberFormatter()
+            dollarFormatter.numberStyle = .currency
+            dollarFormatter.maximumFractionDigits = 2
+            dollarFormatter.multiplier = 1
+            dollarFormatter.currencySymbol = "$"
+            data!.setValueFormatter(DefaultValueFormatter(formatter: dollarFormatter))
         }
         
         chartView.data = data
