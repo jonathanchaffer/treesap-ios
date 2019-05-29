@@ -22,6 +22,10 @@ class PieChartDisplayViewController: TreeDisplayViewController, ChartViewDelegat
         let legend = chartView.legend
         legend.verticalAlignment = .top
         legend.orientation = .vertical
+        chartView.noDataText = "A pie chart could not be displayed for this tree."
+        chartView.noDataFont = .systemFont(ofSize: 17, weight: .regular)
+        chartView.noDataTextColor = .black
+        chartView.noDataTextAlignment = .center
         legend.font = .systemFont(ofSize: 17, weight: .regular)
         self.updateChartData()
         chartView.animate(yAxisDuration: 1, easingOption: .easeOutBounce)
@@ -57,10 +61,12 @@ class PieChartDisplayViewController: TreeDisplayViewController, ChartViewDelegat
             set.colors.append(UIColor(red: 0.373 + redOffset, green: 0.718 + greenOffset, blue: 0.306 + blueOffset, alpha: 1.0))
         }
         
-        let data = PieChartData(dataSet: set)
-        
-        data.setValueFont(.systemFont(ofSize: 17, weight: .regular))
-        data.setValueTextColor(.white)
+        var data: PieChartData? = nil
+        if (entries != []) {
+            data = PieChartData(dataSet: set)
+            data!.setValueFont(.systemFont(ofSize: 17, weight: .regular))
+            data!.setValueTextColor(.white)
+        }
         
         chartView.data = data
         chartView.highlightValues(nil)
