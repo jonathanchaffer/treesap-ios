@@ -109,6 +109,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return UserPreferenceKeys.dataSourceAvailibility
     }
     
+    ///- Returns: The default preference for whether the user's location will be shown on the map
+    func accessShowUserLocationDefault(){
+        return UserPreferenceKeys.showUserLocationDefault
+    }
+    
+    ///- Returns: the default value for the max distance from which trees will be identified by coordinates or GPS (the cutoff distance)
+    func accessCutoffDistanceDefault(){
+        return UserPreferenceKeys.cutoffDistanceDefault
+    }
+    
+    ///- Returns: the dictionary that maps the database names to their default availibility
+    func accessDataSourceAvailibilityDefault(){
+        return UserPreferenceKeys.dataSourceAvailibilityDefault
+    }
+    
     /**
      Toggles whether the user's location should be shown on the map.
      Note: If location features are disabled, the user's location will not be shown on the map, regardless of this setting.
