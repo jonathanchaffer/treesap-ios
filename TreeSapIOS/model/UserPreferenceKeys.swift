@@ -8,10 +8,18 @@
 
 ///Used to store the keys that are used to store the user preferences and default preferences
 struct UserPreferenceKeys{
-    let cutoffDistance = "cutoffDistance"
-    let cutoffDistanceDefault = "cutoffDistanceDefault"
-    let dataSources = "dataSources"
-    let dataSourcesDefault = "dataSourcesDefault"
-    let showUserLocation = "showUserLocation"
-    let showUserLocationDefault = "showUserLocationDefault"
+    //Keys used for storage
+    let cutoffDistanceKey = "cutoffDistanceKey"
+    let dataSourceAvailibilityKey = "dataSourcesAvailibilityKey"
+    let showUserLocationKey = "showUserLocationKey"
+    
+    //constants that store the default preferences
+    let cutoffdistanceDefault = 100.0
+    let dataSourceAvailibilityDefault = ["City of Holland Tree Inventory": true, "Hope College i-Tree Data": true, "Hope College Trees": true]
+    let showUserLocation = true
+    
+    //variables that store the current user preferences
+    var cutoffDistance: Double
+    var dataSourceAvailibility: [String: bool]
+    var showUserLocation: Bool
 }
