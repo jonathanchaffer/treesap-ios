@@ -83,7 +83,7 @@ class TreeDetailPageViewController: UIPageViewController {
         self.view.addSubview(pageControl!)
     }
     
-    private func retrieveOnlineData() -> Bool {
+    private func retrieveOnlineBenefitData() -> Bool {
         // Flag that keeps track of whether there was an error
         var isErrorFree = true
         
@@ -131,20 +131,21 @@ class TreeDetailPageViewController: UIPageViewController {
         let importer = CSVImporter<[String]>(path: filepath)
         let importedRecords = importer.importRecords { $0 }
         for record in importedRecords {
-            // Check whether latitude and longitude match to 11 decimal places
+            // Check whether latitude and longitude match to 4 decimal places
             let recordLatitude = Double(record[CSVFormat.benefits.latitudeIndex()])
             let recordLongitude = Double(record[CSVFormat.benefits.longitudeIndex()])
             if (recordLatitude != nil && recordLongitude != nil) {
-                print(String(format:"%.10f", recordLatitude!))
-                if (String(format:"%.10f", recordLatitude!) == String(format:"%.10f", self.displayedTree!.location.latitude)) {
-                    if (String(format:"%.10f", recordLongitude!) == String(format: "%.10f", self.displayedTree!.location.longitude)) {
+                print("lat: " + String(format:"%.4f", recordLatitude!))
+                print("long:" + String(format:"%.4f", recordLongitude!))
+                if (String(format:"%.4f", recordLatitude!) == String(format:"%.4f", self.displayedTree!.location.latitude)) {
+                    if (String(format:"%.4f", recordLongitude!) == String(format: "%.4f", self.displayedTree!.location.longitude)) {
                         for page in self.pages {
+                            page.foundBenefitData = true
                             page.totalAnnualBenefits = Double(record[CSVFormat.benefits.totalAnnualBenefitsIndex()])
                             page.avoidedRunoffValue = Double(record[CSVFormat.benefits.avoidedRunoffValueIndex()])
                             page.pollutionValue = Double(record[CSVFormat.benefits.pollutionValueIndex()])
                             page.totalEnergySavings = Double(record[CSVFormat.benefits.totalEnergySavingsIndex()])
                         }
-                        print("Updated benefits")
                     }
                 }
             }

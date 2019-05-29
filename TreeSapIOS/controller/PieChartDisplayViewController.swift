@@ -30,7 +30,7 @@ class PieChartDisplayViewController: TreeDisplayViewController, ChartViewDelegat
     // MARK: - Private methods
     private func updateChartData() {
         var entries: [PieChartDataEntry] = []
-        if (self.totalAnnualBenefits != nil) {
+        if (self.foundBenefitData) {
             print(self.avoidedRunoffValue!)
             print(self.pollutionValue!)
             print(self.totalEnergySavings!)

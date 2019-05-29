@@ -11,6 +11,7 @@ import UIKit
 class TreeDisplayViewController: UIViewController {
     // MARK: - Properties
     var displayedTree: Tree? = nil
+    var foundBenefitData: Bool = false
     var totalAnnualBenefits: Double? = nil
     var avoidedRunoffValue: Double? = nil
     var pollutionValue: Double? = nil
