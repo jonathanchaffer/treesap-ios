@@ -42,13 +42,13 @@ class PieChartDisplayViewController: TreeDisplayViewController, ChartViewDelegat
             print(self.pollutionValue!)
             print(self.totalEnergySavings!)
             if (self.avoidedRunoffValue! >= 0) {
-                entries.append(PieChartDataEntry(value: self.avoidedRunoffValue!, label: "Avoided Runoff"))
+                entries.append(PieChartDataEntry(value: self.avoidedRunoffValue!, label: "Rainwater"))
             }
             if (self.pollutionValue! >= 0) {
-                entries.append(PieChartDataEntry(value: self.pollutionValue!, label: "Pollution"))
+                entries.append(PieChartDataEntry(value: self.pollutionValue!, label: "CO2"))
             }
             if (self.totalEnergySavings! >= 0) {
-                entries.append(PieChartDataEntry(value: self.totalEnergySavings!, label: "Energy Savings"))
+                entries.append(PieChartDataEntry(value: self.totalEnergySavings!, label: "Energy"))
             }
         }
 
@@ -57,16 +57,16 @@ class PieChartDisplayViewController: TreeDisplayViewController, ChartViewDelegat
         set.sliceSpace = 2
         
         set.colors = []
-        for i in 1..<4 {
-            let alphaOffset = CGFloat(Double(i) * 0.2)
-            set.colors.append(UIColor(red: 0.373, green: 0.718, blue: 0.306, alpha: 0.8 - alphaOffset))
-        }
+        set.colors.append(UIColor(red: 95/255, green: 184/255, blue: 78/255, alpha: 1.0))
+        set.colors.append(UIColor(red: 33/255, green: 104/255, blue: 105/255, alpha: 1.0))
+        set.colors.append(UIColor(red: 156/255, green: 197/255, blue: 161/255, alpha: 1.0))
+        set.colors.append(UIColor(red: 56/255, green: 84/255, blue: 61/255, alpha: 1.0))
         
         var data: PieChartData? = nil
         if (entries != []) {
             data = PieChartData(dataSet: set)
-            data!.setValueFont(.systemFont(ofSize: 17, weight: .regular))
-            data!.setValueTextColor(UIColor(red: 0.373, green: 0.718, blue: 0.306, alpha: 1.0))
+            data!.setValueFont(.systemFont(ofSize: 17, weight: .bold))
+            data!.setValueTextColor(.white)
             let dollarFormatter = NumberFormatter()
             dollarFormatter.numberStyle = .currency
             dollarFormatter.maximumFractionDigits = 2
