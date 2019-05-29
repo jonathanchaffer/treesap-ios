@@ -6,6 +6,8 @@
 //  Copyright © 2019 Hope CS. All rights reserved.
 //
 
+import Foundation
+
 ///Used to store the keys that are used to store the user preferences and default preferences
 struct UserPreferenceKeys{
     //Keys used for storage of user preferences
@@ -20,12 +22,12 @@ struct UserPreferenceKeys{
     
     //variables that store the current user preferences
     static var cutoffDistance: Double = cutoffDistanceDefault
-    static var dataSourceAvailibility: [String: bool] = dataSourceAvailibilityDefault
+    static var dataSourceAvailibility: [String: Bool] = dataSourceAvailibilityDefault
     static var showUserLocation: Bool = showUserLocationDefault
 
     ///Set the user preferences to the default settings
     static func restoreDefaults(){
-        cutoffdistance = cutoffDistanceDefault
+        cutoffDistance = cutoffDistanceDefault
         UserDefaults.standard.set(cutoffDistanceDefault, forKey: cutoffDistanceKey)
         dataSourceAvailibility = dataSourceAvailibilityDefault
         UserDefaults.standard.set(dataSourceAvailibilityDefault, forKey: dataSourceAvailibilityKey)
