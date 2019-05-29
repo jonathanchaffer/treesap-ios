@@ -47,7 +47,7 @@ struct UserPreferenceKeys{
             dataSourceAvailibility = dataSourceAvailibilityDefault
         }
         else{
-            dataSourceAvailibility = tempDataSourceAvailibility
+            dataSourceAvailibility = tempDataSourceAvailibility!
         }
         
         let tempShowUserLocation = UserDefaults.standard.object(forKey: showUserLocationKey)
@@ -55,7 +55,7 @@ struct UserPreferenceKeys{
             showUserLocation = showUserLocationDefault
         }
         else{
-            showUserLocation = tempShowUserLocation
+            showUserLocation = tempShowUserLocation!
         }
     }
 }

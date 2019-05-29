@@ -95,32 +95,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     //MARK: Modify or Access User Preferences
     
     ///- Returns: whether the user's location will be shown on the map
-    func accessShowUserLocation(){
+    func accessShowUserLocation() -> Bool{
         return UserPreferenceKeys.showUserLocation
     }
     
     ///- Returns: the max distance from which trees will be identified by coordinates or GPS (the cutoff distance)
-    func accessCutoffDistance(){
+    func accessCutoffDistance() -> Double{
         return UserPreferenceKeys.cutoffDistance
     }
     
     ///- Returns: the dictionary that maps the database names to their availibility
-    func accessDataSourceAvailibility(){
+    func accessDataSourceAvailibility() -> [String: Bool]{
         return UserPreferenceKeys.dataSourceAvailibility
     }
     
     ///- Returns: The default preference for whether the user's location will be shown on the map
-    func accessShowUserLocationDefault(){
+    func accessShowUserLocationDefault() -> Bool{
         return UserPreferenceKeys.showUserLocationDefault
     }
     
     ///- Returns: the default value for the max distance from which trees will be identified by coordinates or GPS (the cutoff distance)
-    func accessCutoffDistanceDefault(){
+    func accessCutoffDistanceDefault() -> Double{
         return UserPreferenceKeys.cutoffDistanceDefault
     }
     
     ///- Returns: the dictionary that maps the database names to their default availibility
-    func accessDataSourceAvailibilityDefault(){
+    func accessDataSourceAvailibilityDefault() ->  [String: Bool]{
         return UserPreferenceKeys.dataSourceAvailibilityDefault
     }
     
