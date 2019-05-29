@@ -74,7 +74,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func getActiveDataSources() -> [DataSource]{
         var activeDataSources = [DataSource]()
         for dataSource in dataSources {
-            if UserPreferenceKeys.dataSourceAvailibility[dataSource.dataSourceName] {
+            let availibility: Bool? = UserPreferenceKeys.dataSourceAvailibility[dataSource.dataSourceName]
+            if (availibility != nil && availibility){
                 activeDataSources.append(dataSource)
             }
         }
@@ -107,7 +108,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         - dataSourceName: The name of the data source to be compared against the dataSourceName property of existing DataSource objects.
      */
     func activateDataSource(dataSourceName: String) {
-        guard UserPreferenceKeys.dataSourceAvailibility[dataSourceName] is Bool else{
+        if(UserPreferenceKeys.dataSourceAvailibility[dataSourceName] ){
             return
         }
         
@@ -120,7 +121,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
      - dataSourceName: The name of the data source to be compared against the dataSourceName property of existing DataSource objects.
      */
     func deactivateDataSource(dataSourceName: String) {
-        guard UserPreferenceKeys.dataSourceAvailibility[dataSourceName] is Bool else{
+        if(UserPreferenceKeys.dataSourceAvailibility[dataSourceName]){
             return
         }
         

@@ -37,7 +37,7 @@ struct UserPreferenceKeys{
     
     ///Set the current user preferences to be the same as the stored user preferences
     static func loadPreferences(){
-        cutoffDistance = UserDefaults.standard.Double(forKey: cutoffDistanceKey)
+        cutoffDistance = UserDefaults.standard.double(forKey: cutoffDistanceKey)
         if(cutoffDistance == 0){
             cutoffDistance = cutoffDistanceDefault
         }
