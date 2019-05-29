@@ -42,7 +42,7 @@ struct UserPreferenceKeys{
             cutoffDistance = cutoffDistanceDefault
         }
         
-        tempDataSourceAvailibility = UserDefaults.standard.object(forKey: dataSourceAvailibilityKey)
+        let tempDataSourceAvailibility = UserDefaults.standard.object(forKey: dataSourceAvailibilityKey)
         if(tempDataSourceAvailibility == nil){
             dataSourceAvailibility = dataSourceAvailibilityDefault
         }
@@ -50,7 +50,7 @@ struct UserPreferenceKeys{
             dataSourceAvailibility = tempDataSourceAvailibility
         }
         
-        tempShowUserLocation = UserDefaults.standard.object(forKey: showUserLocationKey)
+        let tempShowUserLocation = UserDefaults.standard.object(forKey: showUserLocationKey)
         if(tempShowUserLocation == nil){
             showUserLocation = showUserLocationDefault
         }

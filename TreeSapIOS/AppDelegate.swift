@@ -70,7 +70,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    // TODO: should be renamed to getActiveDataSources
     /// - Returns: An array containing the active data sources.
     func getActiveDataSources() -> [DataSource]{
         var activeDataSources = [DataSource]()
@@ -91,6 +90,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     /// Disables location features so trees cannot be identified by GPS and the user's location won't show up on the map.
     func disableLocationFeatures() {
         self.locationFeaturesEnabled = false
+    }
+    
+    //MARK: Modify or Access User Preferences
+    
+    ///- Returns: whether the user's location will be shown on the map
+    func accessShowUserLocation(){
+        return UserPreferenceKeys.showUserLocation
+    }
+    
+    ///- Returns: the max distance from which trees will be identified by coordinates or GPS (the cutoff distance)
+    func accessCutoffDistance(){
+        return UserPreferenceKeys.cutoffDistance
+    }
+    
+    ///- Returns: the dictionary that maps the database names to their availibility
+    func accessDataSourceAvailibility(){
+        return UserPreferenceKeys.dataSourceAvailibility
     }
     
     /**
