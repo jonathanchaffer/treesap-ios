@@ -952,7 +952,7 @@
                     <tabBarItem key="tabBarItem" title="Coordinates" image="compass" id="cPa-gy-q4n"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="l9p-uL-oKy">
-                        <rect key="frame" x="0.0" y="20" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1055,10 +1055,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Ne-79-b1a">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="289"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="510.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="LT9-vO-uxm">
-                                                <rect key="frame" x="20" y="20" width="280" height="249"/>
+                                                <rect key="frame" x="20" y="20" width="280" height="470.5"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash" translatesAutoresizingMaskIntoConstraints="NO" id="i4c-Mw-gCF">
                                                         <rect key="frame" x="80" y="0.0" width="120" height="120"/>
@@ -1084,6 +1084,45 @@ ZC4
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Acknowledgments" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dVZ-Vv-4zq">
+                                                        <rect key="frame" x="36" y="257" width="208.5" height="31.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="acknowledgments stuff" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fiy-pM-syd">
+                                                        <rect key="frame" x="50.5" y="296.5" width="179.5" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Resources" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PrZ-AW-1AU">
+                                                        <rect key="frame" x="81" y="325" width="118" height="31.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aA5-lo-qBo">
+                                                        <rect key="frame" x="85.5" y="364.5" width="109" height="30"/>
+                                                        <state key="normal" title="iTree Web Tools"/>
+                                                        <connections>
+                                                            <action selector="openITreeWebTools:" destination="xku-UJ-vwW" eventType="touchUpInside" id="P5q-xr-VoV"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WCO-xD-Jdl">
+                                                        <rect key="frame" x="31.5" y="402.5" width="217" height="30"/>
+                                                        <state key="normal" title="National Tree Benefit Calculator"/>
+                                                        <connections>
+                                                            <action selector="openNationalTreeBenefitCalculator:" destination="xku-UJ-vwW" eventType="touchUpInside" id="I5x-mh-POD"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8hq-v8-Q4s">
+                                                        <rect key="frame" x="105" y="440.5" width="70" height="30"/>
+                                                        <state key="normal" title="iNaturalist"/>
+                                                        <connections>
+                                                            <action selector="openINaturalist:" destination="xku-UJ-vwW" eventType="touchUpInside" id="m33-X6-CYX"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <constraints>
                                                     <constraint firstItem="i4c-Mw-gCF" firstAttribute="centerX" secondItem="LT9-vO-uxm" secondAttribute="centerX" id="Z5O-yB-8Kr"/>
@@ -1120,7 +1159,7 @@ ZC4
                     <navigationItem key="navigationItem" title="More Information" id="Qrx-E5-vc1">
                         <barButtonItem key="leftBarButtonItem" title="Close" image="xButton" id="BVA-QD-QKX">
                             <connections>
-                                <action selector="closeMoreInformation:" destination="xku-UJ-vwW" id="eRZ-CM-S9J"/>
+                                <action selector="closeModal:" destination="xku-UJ-vwW" id="g8r-aC-Uf4"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
