@@ -84,6 +84,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return activeDataSources
     }
     
+    /**
+     - Parameter name: The name of the data source to find
+     - Returns: a DataSource object that has the given name
+     */
+    func getDataSourceWithName(name: String) -> DataSource?{
+        for dataSource in self.dataSources{
+            if(dataSource.dataSourceName == name){
+                return dataSource
+            }
+        }
+        
+        return nil
+    }
+    
     /// Enables location features so trees can be identified by GPS and the user's location can show up on the map.
     func enableLocationFeatures() {
         self.locationFeaturesEnabled = true
@@ -141,7 +155,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
      */
     func isActive(dataSource: String) -> Bool {
         if (UserPreferenceKeys.dataSourceAvailibility[dataSource] == nil) {
-            print(dataSource)
             return false
         }
         return UserPreferenceKeys.dataSourceAvailibility[dataSource]!

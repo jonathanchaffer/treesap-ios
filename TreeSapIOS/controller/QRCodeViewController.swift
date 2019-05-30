@@ -104,27 +104,38 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
      - Returns: the Tree object that corresponds to the given String
     */
     func getTreeFromString(stringResult: String) -> Tree?{
+        //Split the encoded string on the first two commas
         let resultParts: [Substring] = stringResult.split(separator: ",", maxSplits: 2, omittingEmptySubsequences: false)
         if(resultParts.count != 3){
             alertUser(title: "", message: "The scanned code is not the code for a tree.")
             return nil
         }
         
+        //get the latitude, longitude, and data source name from each of the three portions of the string
         guard let treeLatitude: Double = Double(String(resultParts[0])) else {
             alertUser(title: "", message: "The scanned code is not the code for a tree.")
             return nil
         }
-        
         guard let treeLongitude: Double = Double(String(resultParts[1])) else{
             alertUser(title: "", message: "The scanned code is not the code for a tree.")
             return nil
         }
+        let dataSourceName: String = String(resultParts[2])
         
-        let databaseName: String = String(resultParts[2])
-        print(databaseName)
+        //Find the data source with the data source name encoded int the QR code
         let treeCoordinates = CLLocationCoordinate2D(latitude: treeLatitude, longitude: treeLongitude)
+        guard let dataSourceToSearch: DataSource = appDelegate.getDataSourceWithName(name: dataSourceName) else{
+            alertUser(title: "", message: "The scanned code is not the code for a tree")
+            return nil
+        }
         
-        guard let resultTree: Tree = TreeFinder.findTreeByLocation(location: treeCoordinates, dataSources: appDelegate.getActiveDataSources(), cutoffDistance: appDelegate.cutoffDistance) else{
+        //Check if the data source with the given name is active
+        guard appDelegate.isActive(dataSource: dataSourceName) else{
+            alertUser(title: "", message: "The data source that contains the data for this tree is turned off. If you would like to view the tree data for this code, turn on the data source \"" + String(dataSourceName) + "\" in the settings menu.")
+            return nil
+        }
+        
+        guard let resultTree: Tree = TreeFinder.findTreeByLocation(location: treeCoordinates, dataSources: [dataSourceToSearch], cutoffDistance: appDelegate.cutoffDistance) else{
                 alertUser(title: "", message: "No tree with the scanned code was found.")
                 return nil
         }
