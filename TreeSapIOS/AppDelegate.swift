@@ -133,7 +133,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
      - Parameter dataSource: the name of the data source
      - Returns: a Bool that indicates whether the data source is available
      */
-    func isActive(dataSource: String){
+    func isActive(dataSource: String) -> Bool{
         return UserPreferenceKeys.dataSourceAvailibility[dataSource]
     }
     
