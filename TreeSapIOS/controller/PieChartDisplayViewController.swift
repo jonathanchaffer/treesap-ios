@@ -50,6 +50,12 @@ class PieChartDisplayViewController: TreeDisplayViewController, ChartViewDelegat
                 entries.append(PieChartDataEntry(value: self.displayedTree!.totalEnergySavings!, label: "Energy"))
             }
         }
+        
+        // Uncomment the following to use dummy data
+//        entries: [PieChartDataEntry] = []
+//        for _ in 0..<10 {
+//            entries.append(PieChartDataEntry(value: 1, label: "Test"))
+//        }
 
         // Create a data set for the entries
         let set = PieChartDataSet(values: entries, label: "")
@@ -61,10 +67,10 @@ class PieChartDisplayViewController: TreeDisplayViewController, ChartViewDelegat
         // Add colors to the data set
         set.colors = []
         set.colors.append(UIColor(red: 95/255, green: 184/255, blue: 78/255, alpha: 1.0))
-        set.colors.append(UIColor(red: 33/255, green: 104/255, blue: 105/255, alpha: 1.0))
-        set.colors.append(UIColor(red: 129/255, green: 196/255, blue: 137/255, alpha: 1.0))
-        set.colors.append(UIColor(red: 56/255, green: 85/255, blue: 81/255, alpha: 1.0))
         set.colors.append(UIColor(red: 190/255, green: 223/255, blue: 192/255, alpha: 1.0))
+        set.colors.append(UIColor(red: 33/255, green: 104/255, blue: 105/255, alpha: 1.0))
+        set.colors.append(UIColor(red: 134/255, green: 201/255, blue: 142/255, alpha: 1.0))
+        set.colors.append(UIColor(red: 56/255, green: 85/255, blue: 81/255, alpha: 1.0))
         
         // Create and configure the pie chart data
         var data: PieChartData? = nil
