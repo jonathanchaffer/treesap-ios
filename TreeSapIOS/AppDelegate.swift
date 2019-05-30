@@ -127,6 +127,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     ///- Parameter cutoffDistance: the value the maximum distance trees will be identified via coordinates or GPS will be set to
     func modifyCutoffDistance(cutoffDistance: Double){
         UserPreferenceKeys.cutoffDistance = cutoffDistance
+        UserDefaults.standard.set(cutoffDistance, forKey: UserPreferenceKeys.cutoffDistanceKey)
     }
     
     /**
@@ -134,7 +135,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
      - Returns: a Bool that indicates whether the data source is available
      */
     func isActive(dataSource: String) -> Bool{
-        return UserPreferenceKeys.dataSourceAvailibility[dataSource]
+        return UserPreferenceKeys.dataSourceAvailibility[dataSource]!
     }
     
     /**
@@ -153,11 +154,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         - dataSourceName: The name of the data source to be compared against the dataSourceName property of existing DataSource objects.
      */
     func activateDataSource(dataSourceName: String) {
-        if(UserPreferenceKeys.dataSourceAvailibility[dataSourceName] != nil){
+        if(UserPreferenceKeys.dataSourceAvailibility[dataSourceName] == nil){
             return
         }
         
         UserPreferenceKeys.dataSourceAvailibility[dataSourceName] = true
+        UserDefaults.standard.set(UserPreferenceKeys.dataSourceAvailibility, forKey: UserPreferenceKeys.dataSourceAvailibilityKey)
     }
     
     /**
@@ -166,11 +168,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
      - dataSourceName: The name of the data source to be compared against the dataSourceName property of existing DataSource objects.
      */
     func deactivateDataSource(dataSourceName: String) {
-        if(UserPreferenceKeys.dataSourceAvailibility[dataSourceName] != nil){
+        if(UserPreferenceKeys.dataSourceAvailibility[dataSourceName] == nil){
             return
         }
         
         UserPreferenceKeys.dataSourceAvailibility[dataSourceName] = false
+        UserDefaults.standard.set(UserPreferenceKeys.dataSourceAvailibility, forKey: UserPreferenceKeys.dataSourceAvailibilityKey)
+
     }
 }
 

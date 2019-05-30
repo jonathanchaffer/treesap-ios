@@ -21,7 +21,7 @@ class DataSourceTableViewController: UITableViewController {
         DispatchQueue.main.async {
             for i in 0 ..< self.dataSources.count {
                 let indexPath = NSIndexPath(row: i, section: 0)
-                if appDelegate.isActive(dataSource: self.dataSources[i].dataSourceName) {
+                if self.appDelegate.isActive(dataSource: self.dataSources[i].dataSourceName) {
                     self.tableView.cellForRow(at: indexPath as IndexPath)?.accessoryType = .checkmark
                 } else {
                     self.tableView.cellForRow(at: indexPath as IndexPath)?.accessoryType = .none
