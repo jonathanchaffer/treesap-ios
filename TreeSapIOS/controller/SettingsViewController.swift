@@ -57,10 +57,10 @@ class SettingsViewController: UITableViewController {
      */
     @IBAction func updateCutoffDistance(_ sender: UITextField) {
         if let dist = Double(cutoffDistanceTextField.text!) {
-            UserPreferenceKeys.cutoffDistance = dist
+            appDelegate.modifyCutoffDistance(cutoffDistance: dist)
         } else {
             let defaultCutoff: Double = appDelegate.accessCutoffDistanceDefault()
-            UserPreferenceKeys.cutoffDistance = defaultCutoff
+            appDelegate.modifyCutoffDistance(cutoffDistance: defaultCutoff)
             cutoffDistanceTextField.text = String(defaultCutoff)
             let alert = UIAlertController(title: "Invalid number", message: "Distance has been reset to " + String(defaultCutoff), preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))

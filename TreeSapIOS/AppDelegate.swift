@@ -124,6 +124,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return UserPreferenceKeys.dataSourceAvailibilityDefault
     }
     
+    ///- Parameter cutoffDistance: the value the maximum distance trees will be identified via coordinates or GPS will be set to
+    func modifyCutoffDistance(cutoffDistance: Double){
+        UserPreferenceKeys.cutoffDistance = cutoffDistance
+    }
+    
+    /**
+     - Parameter dataSource: the name of the data source
+     - Returns: a Bool that indicates whether the data source is available
+     */
+    func isActive(dataSource: String){
+        return UserPreferenceKeys.dataSourceAvailibility[dataSource]
+    }
+    
     /**
      Toggles whether the user's location should be shown on the map.
      Note: If location features are disabled, the user's location will not be shown on the map, regardless of this setting.
