@@ -31,6 +31,11 @@ class TreeDetailPageViewController: UIPageViewController {
         self.delegate = self
         
         self.configurePageControl()
+<<<<<<< HEAD
+=======
+        // TODO: Move this method call to AppDelegate
+        self.retrieveOnlineBenefitData()
+>>>>>>> master
         
         // Set the background color to white so it is not noticed when flipping quickly between the different tree displays
         self.view.backgroundColor = UIColor.white
@@ -80,6 +85,79 @@ class TreeDetailPageViewController: UIPageViewController {
         pageControl!.pageIndicatorTintColor = UIColor(red: 0.373, green: 0.718, blue: 0.306, alpha: 0.3)
         self.view.addSubview(pageControl!)
     }
+<<<<<<< HEAD
+=======
+    
+    // TODO: Move this method to AppDelegate
+    private func retrieveOnlineBenefitData() -> Bool {
+        // Flag that keeps track of whether there was an error
+        var isErrorFree = true
+        
+        // Create a task to retrieve data from the URL
+        let url = URL(string: "https://faculty.hope.edu/jipping/treesap/katelyn.csv")
+        let task = URLSession.shared.dataTask(with: url!) { (data, response, error) in
+            if (error != nil) {
+                print(error!)
+                isErrorFree = false
+                return
+            } else {
+                guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
+                    print("Server error")
+                    isErrorFree = false
+                    return
+                }
+                // Write the data to the documents directory
+                let fileManager = FileManager.default
+                do {
+                    let documentsURL = try fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+                    let fileURL = documentsURL.appendingPathComponent("katelyn.csv")
+                    try data!.write(to: fileURL)
+                } catch {
+                    print(error)
+                    isErrorFree = false
+                    return
+                }
+                // Set benefit information
+                DispatchQueue.main.async {
+                    self.configureBenefits()
+                }
+            }
+        }
+        // Start the task
+        task.resume()
+        return isErrorFree
+    }
+    
+    private func configureBenefits() {
+        // Create a file manager and get the path for the local file
+        let fileManager = FileManager.default
+        let documentsURL = try! fileManager.url(for:.documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+        let filepath = documentsURL.appendingPathComponent("katelyn.csv").path
+        // Create an importer for the local file
+        let importer = CSVImporter<[String]>(path: filepath)
+        let importedRecords = importer.importRecords { $0 }
+        for record in importedRecords {
+            // Check whether latitude and longitude match to 4 decimal places
+            let recordLatitude = Double(record[CSVFormat.benefits.latitudeIndex()])
+            let recordLongitude = Double(record[CSVFormat.benefits.longitudeIndex()])
+            if (recordLatitude != nil && recordLongitude != nil) {
+                print("lat: " + String(format:"%.4f", recordLatitude!))
+                print("long:" + String(format:"%.4f", recordLongitude!))
+                if (String(format:"%.4f", recordLatitude!) == String(format:"%.4f", self.displayedTree!.location.latitude)) {
+                    if (String(format:"%.4f", recordLongitude!) == String(format: "%.4f", self.displayedTree!.location.longitude)) {
+                        for page in self.pages {
+                            page.foundBenefitData = true
+                            page.totalAnnualBenefits = Double(record[CSVFormat.benefits.totalAnnualBenefitsIndex()])
+                            page.avoidedRunoffValue = Double(record[CSVFormat.benefits.avoidedRunoffValueIndex()])
+                            page.pollutionValue = Double(record[CSVFormat.benefits.pollutionValueIndex()])
+                            page.totalEnergySavings = Double(record[CSVFormat.benefits.totalEnergySavingsIndex()])
+                        }
+                    }
+                }
+            }
+        }
+    }
+>>>>>>> master
 }
 
 

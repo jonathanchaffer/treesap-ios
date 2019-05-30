@@ -33,6 +33,8 @@
 		CBBCE84D228DD847008F7225 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBCE84C228DD847008F7225 /* MapViewController.swift */; };
 		CBBCE84F228DD93E008F7225 /* QRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBCE84E228DD93E008F7225 /* QRCodeViewController.swift */; };
 		CBBCE851228DD9B1008F7225 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBCE850228DD9B1008F7225 /* SettingsViewController.swift */; };
+		CBDDBF1E22A0080D009A64D7 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBDDBF1B22A00804009A64D7 /* Charts.framework */; };
+		CBDDBF1F22A0080D009A64D7 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CBDDBF1B22A00804009A64D7 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CBE8789022957A1300C06E69 /* TreeAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE8788F22957A1300C06E69 /* TreeAnnotation.swift */; };
 		CBFD63C12295A1E800804DC4 /* NameFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFD63C02295A1E800804DC4 /* NameFormatter.swift */; };
 		CBFD63C92295BB0700804DC4 /* TreePointAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFD63C82295BB0700804DC4 /* TreePointAnnotationView.swift */; };
@@ -49,7 +51,42 @@
 			remoteGlobalIDString = CBBCE826228DD76B008F7225;
 			remoteInfo = TreeSapIOS;
 		};
+		CBDDBF1A22A00804009A64D7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CBDDBF1522A00804009A64D7 /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 65AD9E95D9ED4DC0BD73A743;
+			remoteInfo = Charts;
+		};
+		CBDDBF1C22A00804009A64D7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CBDDBF1522A00804009A64D7 /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1CBBC58C6CE1EBEE9852CE41;
+			remoteInfo = ChartsTests;
+		};
+		CBDDBF2022A0080D009A64D7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CBDDBF1522A00804009A64D7 /* Charts.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = A58A4ED274A941CA248EA921;
+			remoteInfo = Charts;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		CBDDBF2222A0080D009A64D7 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				CBDDBF1F22A0080D009A64D7 /* Charts.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		032803B715E7C1F1944B7370 /* Pods-TreeSapIOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreeSapIOSTests.release.xcconfig"; path = "Target Support Files/Pods-TreeSapIOSTests/Pods-TreeSapIOSTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -85,6 +122,7 @@
 		CBBCE84C228DD847008F7225 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		CBBCE84E228DD93E008F7225 /* QRCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeViewController.swift; sourceTree = "<group>"; };
 		CBBCE850228DD9B1008F7225 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		CBDDBF1522A00804009A64D7 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = "../../../../Downloads/Charts-3.2.0/Charts.xcodeproj"; sourceTree = "<group>"; };
 		CBE8788F22957A1300C06E69 /* TreeAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeAnnotation.swift; sourceTree = "<group>"; };
 		CBFD63C02295A1E800804DC4 /* NameFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameFormatter.swift; sourceTree = "<group>"; };
 		CBFD63C82295BB0700804DC4 /* TreePointAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreePointAnnotationView.swift; sourceTree = "<group>"; };
@@ -100,6 +138,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				61E1EFDD5187EC1C7241B025 /* libPods-TreeSapIOS.a in Frameworks */,
+				CBDDBF1E22A0080D009A64D7 /* Charts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -184,6 +223,7 @@
 		CBBCE81E228DD76B008F7225 = {
 			isa = PBXGroup;
 			children = (
+				CBDDBF1522A00804009A64D7 /* Charts.xcodeproj */,
 				CBBCE829228DD76B008F7225 /* TreeSapIOS */,
 				CBBCE840228DD777008F7225 /* TreeSapIOSTests */,
 				CBBCE828228DD76B008F7225 /* Products */,
@@ -224,6 +264,15 @@
 			path = TreeSapIOSTests;
 			sourceTree = "<group>";
 		};
+		CBDDBF1622A00804009A64D7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CBDDBF1B22A00804009A64D7 /* Charts.framework */,
+				CBDDBF1D22A00804009A64D7 /* ChartsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -235,10 +284,12 @@
 				CBBCE823228DD76B008F7225 /* Sources */,
 				CBBCE824228DD76B008F7225 /* Frameworks */,
 				CBBCE825228DD76B008F7225 /* Resources */,
+				CBDDBF2222A0080D009A64D7 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				CBDDBF2122A0080D009A64D7 /* PBXTargetDependency */,
 			);
 			name = TreeSapIOS;
 			productName = TreeSapIOS;
@@ -294,6 +345,12 @@
 			mainGroup = CBBCE81E228DD76B008F7225;
 			productRefGroup = CBBCE828228DD76B008F7225 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = CBDDBF1622A00804009A64D7 /* Products */;
+					ProjectRef = CBDDBF1522A00804009A64D7 /* Charts.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				CBBCE826228DD76B008F7225 /* TreeSapIOS */,
@@ -301,6 +358,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		CBDDBF1B22A00804009A64D7 /* Charts.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Charts.framework;
+			remoteRef = CBDDBF1A22A00804009A64D7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		CBDDBF1D22A00804009A64D7 /* ChartsTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ChartsTests.xctest;
+			remoteRef = CBDDBF1C22A00804009A64D7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		CBBCE825228DD76B008F7225 /* Resources */ = {
@@ -418,6 +492,11 @@
 			isa = PBXTargetDependency;
 			target = CBBCE826228DD76B008F7225 /* TreeSapIOS */;
 			targetProxy = CBBCE83E228DD777008F7225 /* PBXContainerItemProxy */;
+		};
+		CBDDBF2122A0080D009A64D7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Charts;
+			targetProxy = CBDDBF2022A0080D009A64D7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -561,6 +640,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D7755F6722DA6B48E552032C /* Pods-TreeSapIOS.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = appIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WX97JD2WLV;
@@ -581,6 +661,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 657C7C57D15B44ECCED1E51C /* Pods-TreeSapIOS.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = appIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WX97JD2WLV;

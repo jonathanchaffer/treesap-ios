@@ -1,11 +1,11 @@
 ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-LIBRARY_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/CSVImporter" "${PODS_CONFIGURATION_BUILD_DIR}/Charts" "${PODS_CONFIGURATION_BUILD_DIR}/HandySwift"
-OTHER_CFLAGS = $(inherited) -fmodule-map-file="${PODS_CONFIGURATION_BUILD_DIR}/CSVImporter/CSVImporter.modulemap" -fmodule-map-file="${PODS_CONFIGURATION_BUILD_DIR}/Charts/Charts.modulemap" -fmodule-map-file="${PODS_CONFIGURATION_BUILD_DIR}/HandySwift/HandySwift.modulemap"
-OTHER_LDFLAGS = $(inherited) -ObjC -l"CSVImporter" -l"Charts" -l"HandySwift" -framework "Foundation"
-OTHER_SWIFT_FLAGS = $(inherited) -D COCOAPODS -Xcc -fmodule-map-file="${PODS_CONFIGURATION_BUILD_DIR}/CSVImporter/CSVImporter.modulemap" -Xcc -fmodule-map-file="${PODS_CONFIGURATION_BUILD_DIR}/Charts/Charts.modulemap" -Xcc -fmodule-map-file="${PODS_CONFIGURATION_BUILD_DIR}/HandySwift/HandySwift.modulemap"
+LIBRARY_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/CSVImporter" "${PODS_CONFIGURATION_BUILD_DIR}/HandySwift"
+OTHER_CFLAGS = $(inherited) -fmodule-map-file="${PODS_CONFIGURATION_BUILD_DIR}/CSVImporter/CSVImporter.modulemap" -fmodule-map-file="${PODS_CONFIGURATION_BUILD_DIR}/HandySwift/HandySwift.modulemap"
+OTHER_LDFLAGS = $(inherited) -ObjC -l"CSVImporter" -l"HandySwift" -framework "Foundation"
+OTHER_SWIFT_FLAGS = $(inherited) -D COCOAPODS -Xcc -fmodule-map-file="${PODS_CONFIGURATION_BUILD_DIR}/CSVImporter/CSVImporter.modulemap" -Xcc -fmodule-map-file="${PODS_CONFIGURATION_BUILD_DIR}/HandySwift/HandySwift.modulemap"
 PODS_BUILD_DIR = ${BUILD_DIR}
 PODS_CONFIGURATION_BUILD_DIR = ${PODS_BUILD_DIR}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
 PODS_PODFILE_DIR_PATH = ${SRCROOT}/.
 PODS_ROOT = ${SRCROOT}/Pods
-SWIFT_INCLUDE_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/CSVImporter" "${PODS_CONFIGURATION_BUILD_DIR}/Charts" "${PODS_CONFIGURATION_BUILD_DIR}/HandySwift"
+SWIFT_INCLUDE_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/CSVImporter" "${PODS_CONFIGURATION_BUILD_DIR}/HandySwift"
