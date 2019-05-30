@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina3_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -460,21 +460,34 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Benefits Display" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="uUY-DH-bC0">
-                                <rect key="frame" x="69.5" y="224.5" width="181" height="31.5"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0mu-rx-Fl9">
+                                <rect key="frame" x="20" y="40" width="280" height="420"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="BXd-H5-qG7">
+                                        <rect key="frame" x="8" y="8" width="264" height="404"/>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="BXd-H5-qG7" firstAttribute="leading" secondItem="0mu-rx-Fl9" secondAttribute="leading" constant="8" id="Nyo-Yz-XPm"/>
+                                    <constraint firstItem="BXd-H5-qG7" firstAttribute="top" secondItem="0mu-rx-Fl9" secondAttribute="top" constant="8" id="VFK-C2-Hiz"/>
+                                    <constraint firstAttribute="bottom" secondItem="BXd-H5-qG7" secondAttribute="bottom" constant="8" id="Zeg-cW-DjK"/>
+                                    <constraint firstAttribute="trailing" secondItem="BXd-H5-qG7" secondAttribute="trailing" constant="8" id="yHF-Nk-qlD"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="uUY-DH-bC0" firstAttribute="centerY" secondItem="bb4-Bc-EGx" secondAttribute="centerY" id="X57-6k-VDX"/>
-                            <constraint firstItem="uUY-DH-bC0" firstAttribute="centerX" secondItem="bb4-Bc-EGx" secondAttribute="centerX" id="d9c-zy-5Dl"/>
+                            <constraint firstItem="KSJ-VS-Z4B" firstAttribute="bottom" secondItem="0mu-rx-Fl9" secondAttribute="bottom" constant="20" id="HiX-Tm-xYl"/>
+                            <constraint firstItem="0mu-rx-Fl9" firstAttribute="leading" secondItem="KSJ-VS-Z4B" secondAttribute="leading" constant="20" id="WsQ-UQ-s7y"/>
+                            <constraint firstItem="KSJ-VS-Z4B" firstAttribute="trailing" secondItem="0mu-rx-Fl9" secondAttribute="trailing" constant="20" id="iLR-28-yai"/>
+                            <constraint firstItem="0mu-rx-Fl9" firstAttribute="top" secondItem="KSJ-VS-Z4B" secondAttribute="top" constant="20" id="pYQ-kG-bVi"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="KSJ-VS-Z4B"/>
                     </view>
+                    <connections>
+                        <outlet property="benefitsDisplay" destination="0mu-rx-Fl9" id="roC-1o-i2S"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XCc-DU-1MA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
