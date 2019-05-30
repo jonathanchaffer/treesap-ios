@@ -8,6 +8,7 @@
 //  https://spin.atomicobject.com/2015/12/23/swift-uipageviewcontroller-tutorial/
 
 import UIKit
+import CSVImporter
 
 class TreeDetailPageViewController: UIPageViewController {
     // MARK: Properties
@@ -31,11 +32,8 @@ class TreeDetailPageViewController: UIPageViewController {
         self.delegate = self
         
         self.configurePageControl()
-<<<<<<< HEAD
-=======
         // TODO: Move this method call to AppDelegate
         self.retrieveOnlineBenefitData()
->>>>>>> master
         
         // Set the background color to white so it is not noticed when flipping quickly between the different tree displays
         self.view.backgroundColor = UIColor.white
@@ -85,8 +83,6 @@ class TreeDetailPageViewController: UIPageViewController {
         pageControl!.pageIndicatorTintColor = UIColor(red: 0.373, green: 0.718, blue: 0.306, alpha: 0.3)
         self.view.addSubview(pageControl!)
     }
-<<<<<<< HEAD
-=======
     
     // TODO: Move this method to AppDelegate
     private func retrieveOnlineBenefitData() -> Bool {
@@ -157,10 +153,7 @@ class TreeDetailPageViewController: UIPageViewController {
             }
         }
     }
->>>>>>> master
 }
-
-
 
 extension TreeDetailPageViewController: UIPageViewControllerDataSource {
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
