@@ -97,15 +97,15 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
     }
     
     /**
-    Gets the tree that corresponds to the given encoded String. A valid string has the format "[latitude]_[longitude]" (without the quotation marks or square brackets).
+    Gets the tree that corresponds to the given encoded String. A valid string has the format "[latitude],[longitude],[database name]" (without the quotation marks or square brackets).
      
      - Parameter stringResult: the encodedString
      
      - Returns: the Tree object that corresponds to the given String
     */
     func getTreeFromString(stringResult: String) -> Tree?{
-        let resultParts: [Substring] = stringResult.split(separator: "_", maxSplits: 1, omittingEmptySubsequences: true)
-        if(resultParts.count != 2){
+        let resultParts: [Substring] = stringResult.split(separator: ",", maxSplits: 2, omittingEmptySubsequences: false)
+        if(resultParts.count != 3){
             alertUser(title: "", message: "The scanned code is not the code for a tree.")
             return nil
         }
@@ -120,6 +120,8 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
             return nil
         }
         
+        let databaseName: String = String(resultParts[2])
+        print(databaseName)
         let treeCoordinates = CLLocationCoordinate2D(latitude: treeLatitude, longitude: treeLongitude)
         
         guard let resultTree: Tree = TreeFinder.findTreeByLocation(location: treeCoordinates, dataSources: appDelegate.getActiveDataSources(), cutoffDistance: appDelegate.cutoffDistance) else{
@@ -183,7 +185,7 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
     }
     
     /**
-     Makes an alert appear with the given argument and message. The alert will have an "Ok" buton
+     Makes an alert appear with the given argument and message. The alert will have an "OK" buton
      
      - Parameters:
         - title: the title of the alert
