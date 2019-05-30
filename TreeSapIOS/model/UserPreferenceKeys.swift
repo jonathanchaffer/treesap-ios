@@ -17,7 +17,7 @@ struct UserPreferenceKeys{
     
     //constants that store the default preferences
     static let cutoffDistanceDefault = 100.0
-    static let dataSourceAvailibilityDefault = ["City of Holland Tree Inventory": true, "Hope College i-Tree Data": true, "Hope College Trees": true]
+    static let dataSourceAvailibilityDefault = ["City of Holland Tree Inventory": true, "Hope College i-Tree Data": true, "Hope College Trees": true, "Tree Benefit Data": true]
     static let showUserLocationDefault = true
     
     //variables that store the current user preferences

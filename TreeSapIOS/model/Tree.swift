@@ -10,13 +10,13 @@ import Foundation
 import MapKit
 
 class Tree {
-    let id: Int
-    let commonName: String
-    let scientificName: String
+    let id: Int?
+    let commonName: String?
+    let scientificName: String?
     let location: CLLocationCoordinate2D
-    let dbh: Double
+    let dbh: Double?
     
-    init(id: Int, commonName: String, scientificName: String, location: CLLocationCoordinate2D, dbh: Double) {
+    init(id: Int?, commonName: String?, scientificName: String?, location: CLLocationCoordinate2D, dbh: Double?) {
         self.id = id
         self.commonName = commonName
         self.scientificName = scientificName
