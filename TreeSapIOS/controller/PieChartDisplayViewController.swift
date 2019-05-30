@@ -37,13 +37,6 @@ class PieChartDisplayViewController: TreeDisplayViewController, ChartViewDelegat
     
     // MARK: - Private methods
     private func updateChartData() {
-<<<<<<< HEAD
-        let entries = (0..<4).map { (i) -> PieChartDataEntry in
-            return PieChartDataEntry(value: Double.random(in: 0...100), label: "test")
-        }
-        
-        let set = PieChartDataSet(entries: entries, label: "")
-=======
         // Initialize data entries
         var entries: [PieChartDataEntry] = []
         if (self.foundBenefitData) {
@@ -62,7 +55,6 @@ class PieChartDisplayViewController: TreeDisplayViewController, ChartViewDelegat
         let set = PieChartDataSet(values: entries, label: "")
         
         // Configure the data set
->>>>>>> master
         set.drawIconsEnabled = false
         set.sliceSpace = 2
         
