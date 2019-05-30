@@ -89,37 +89,46 @@ enum CSVFormat {
         }
     }
     
-    func totalAnnualBenefitsIndex() -> Int {
+    func co2DollarsIndex() -> Int {
+        switch self {
+        case .benefits:
+            return 20
+        default:
+            return -1
+        }
+    }
+    
+    func rainfallDollarsIndex() -> Int {
+        switch self {
+        case .benefits:
+            return 22
+        default:
+            return -1
+        }
+    }
+    
+    func pollutionDollarsIndex() -> Int {
+        switch self {
+        case .benefits:
+            return 26
+        default:
+            return -1
+        }
+    }
+    
+    func energySavingsDollarsIndex() -> Int {
+        switch self {
+        case .benefits:
+            return 27
+        default:
+            return -1
+        }
+    }
+    
+    func totalAnnualBenefitsDollarsIndex() -> Int {
         switch self {
         case .benefits:
             return 28
-        default:
-            return -1
-        }
-    }
-    
-    func avoidedRunoffValueIndex() -> Int {
-        switch self {
-        case .benefits:
-            return 35
-        default:
-            return -1
-        }
-    }
-    
-    func pollutionValueIndex() -> Int {
-        switch self {
-        case .benefits:
-            return 50
-        default:
-            return -1
-        }
-    }
-    
-    func totalEnergySavingsIndex() -> Int {
-        switch self {
-        case .benefits:
-            return 59
         default:
             return -1
         }

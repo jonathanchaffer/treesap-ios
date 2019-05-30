@@ -129,38 +129,32 @@ class DataSource {
                 if (self.csvFormat.dbhIndex() >= 0) {
                     dbh = Double(record[self.csvFormat.dbhIndex()])
                 }
-                // Set totalAnnualBenefits (optional)
-                var totalAnnualBenefits: Double? = nil
-                if (self.csvFormat.totalAnnualBenefitsIndex() >= 0) {
-                    totalAnnualBenefits = Double(record[self.csvFormat.totalAnnualBenefitsIndex()])
-                }
-                // Set avoidedRunoffValue (optional)
-                var avoidedRunoffValue: Double? = nil
-                if (self.csvFormat.avoidedRunoffValueIndex() >= 0) {
-                    avoidedRunoffValue = Double(record[self.csvFormat.avoidedRunoffValueIndex()])
-                }
-                // Set pollutionValue (optional)
-                var pollutionValue: Double? = nil
-                if (self.csvFormat.pollutionValueIndex() >= 0) {
-                    pollutionValue = Double(record[self.csvFormat.pollutionValueIndex()])
-                }
-                // Set totalEnergySavings (optional)
-                var totalEnergySavings: Double? = nil
-                if (self.csvFormat.totalEnergySavingsIndex() >= 0) {
-                    totalEnergySavings = Double(record[self.csvFormat.totalEnergySavingsIndex()])
-                }
-                // Create the Tree object
                 if (latitude != nil && longitude != nil) {
+                    // Create the Tree object
                     let tree = Tree(
                         id: id,
                         commonName: commonName,
                         scientificName: scientificName,
                         location:CLLocationCoordinate2D(latitude: latitude! as CLLocationDegrees, longitude: longitude! as CLLocationDegrees),
-                        dbh: dbh,
-                        totalAnnualBenefits: totalAnnualBenefits,
-                        avoidedRunoffValue: avoidedRunoffValue,
-                        pollutionValue: pollutionValue,
-                        totalEnergySavings: totalEnergySavings)
+                        dbh: dbh)
+                    
+                    // Set benefit information
+                    if (self.csvFormat.co2DollarsIndex() >= 0) {
+                        tree.setOtherInfo(key: "co2Dollars", value: Double(record[self.csvFormat.co2DollarsIndex()])!)
+                    }
+                    if (self.csvFormat.rainfallDollarsIndex() >= 0) {
+                        tree.setOtherInfo(key: "rainfallDollars", value: Double(record[self.csvFormat.rainfallDollarsIndex()])!)
+                    }
+                    if (self.csvFormat.pollutionDollarsIndex() >= 0) {
+                        tree.setOtherInfo(key: "pollutionDollars", value: Double(record[self.csvFormat.pollutionDollarsIndex()])!)
+                    }
+                    if (self.csvFormat.energySavingsDollarsIndex() >= 0) {
+                        tree.setOtherInfo(key: "energySavingsDollars", value: Double(record[self.csvFormat.energySavingsDollarsIndex()])!)
+                    }
+                    if (self.csvFormat.totalAnnualBenefitsDollarsIndex() >= 0) {
+                        tree.setOtherInfo(key: "totalAnnualBenefitsDollars", value: Double(record[self.csvFormat.totalAnnualBenefitsDollarsIndex()])!)
+                    }
+                    
                     self.trees.append(tree)
                 }
             }

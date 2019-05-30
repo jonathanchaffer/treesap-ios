@@ -12,14 +12,15 @@ import Charts
 class PieChartDisplayViewController: TreeDisplayViewController, ChartViewDelegate {
     // MARK: - Properties
     @IBOutlet weak var chartView: PieChartView!
-
+    
     // MARK: - Overrides
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Configure the pie chart
         chartView.delegate = self
         chartView.drawHoleEnabled = true
+        chartView.holeRadiusPercent = 0.33
         chartView.transparentCircleRadiusPercent = 0
         chartView.rotationEnabled = true
         chartView.rotationWithTwoFingers = true
@@ -33,30 +34,36 @@ class PieChartDisplayViewController: TreeDisplayViewController, ChartViewDelegat
         chartView.noDataTextAlignment = .center
         self.updateChartData()
         chartView.animate(yAxisDuration: 1, easingOption: .easeOutBounce)
+        
+//        // Set the total annual benefits label
+//        if (self.displayedTree!.otherInfo["totalAnnualBenefitsDollars"] != nil) {
+//            self.totalAnnualBenefitsLabel.text = "$" + String(format: "%.2f", self.displayedTree!.otherInfo["totalAnnualBenefitsDollars"]!)
+//        }
     }
     
     // MARK: - Private methods
     private func updateChartData() {
         // Initialize data entries
         var entries: [PieChartDataEntry] = []
-        if (self.displayedTree!.totalAnnualBenefits != nil) {
-            if (self.displayedTree!.avoidedRunoffValue! > 0) {
-                entries.append(PieChartDataEntry(value: self.displayedTree!.avoidedRunoffValue!, label: "Rainwater"))
-            }
-            if (self.displayedTree!.pollutionValue! > 0) {
-                entries.append(PieChartDataEntry(value: self.displayedTree!.pollutionValue!, label: "CO2"))
-            }
-            if (self.displayedTree!.totalEnergySavings! > 0) {
-                entries.append(PieChartDataEntry(value: self.displayedTree!.totalEnergySavings!, label: "Energy"))
-            }
+        if (self.displayedTree!.otherInfo["rainfallDollars"] != nil && self.displayedTree!.otherInfo["rainfallDollars"]! > 0) {
+            entries.append(PieChartDataEntry(value: self.displayedTree!.otherInfo["rainfallDollars"]!, label: "Rainwater"))
+        }
+        if (self.displayedTree!.otherInfo["pollutionDollars"] != nil && self.displayedTree!.otherInfo["pollutionDollars"]! > 0) {
+            entries.append(PieChartDataEntry(value: self.displayedTree!.otherInfo["pollutionDollars"]!, label: "Air Quality"))
+        }
+        if (self.displayedTree!.otherInfo["co2Dollars"] != nil && self.displayedTree!.otherInfo["co2Dollars"]! > 0) {
+            entries.append(PieChartDataEntry(value: self.displayedTree!.otherInfo["co2Dollars"]!, label: "CO2"))
+        }
+        if (self.displayedTree!.otherInfo["energySavingsDollars"] != nil && self.displayedTree!.otherInfo["energySavingsDollars"]! > 0) {
+            entries.append(PieChartDataEntry(value: self.displayedTree!.otherInfo["energySavingsDollars"]!, label: "Energy"))
         }
         
         // Uncomment the following to use dummy data
-//        entries: [PieChartDataEntry] = []
-//        for _ in 0..<10 {
-//            entries.append(PieChartDataEntry(value: 1, label: "Test"))
-//        }
-
+        //        entries: [PieChartDataEntry] = []
+        //        for _ in 0..<10 {
+        //            entries.append(PieChartDataEntry(value: 1, label: "Test"))
+        //        }
+        
         // Create a data set for the entries
         let set = PieChartDataSet(values: entries, label: "")
         
