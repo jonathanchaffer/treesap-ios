@@ -10,11 +10,16 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    // MARK: Properties
+    // MARK: - Properties
     var window: UIWindow?
-    /// Array of data sources.
-    var dataSources = [DataSource]()
-    /// Whether location features are enabled.
+    /// Array of data sources. This is where all data sources are initialized. Add to this array to add additional data sources.
+    var dataSources: [DataSource] = [
+        DataSource(internetFilename: "CoH_Tree_Inventory_6_12_18.csv", localFilename: "holland.csv", dataSourceName: "City of Holland Tree Inventory", csvFormat: .holland),
+        DataSource(internetFilename: "iTreeExport_119_HopeTrees_7may2018.csv", localFilename: "itree.csv", dataSourceName: "Hope College i-Tree Data", csvFormat: .itree),
+        DataSource(internetFilename: "dataExport_119_HopeTrees_7may2018.csv", localFilename: "hope.csv", dataSourceName: "Hope College Trees", csvFormat: .hope),
+        DataSource(internetFilename: "katelyn.csv", localFilename: "benefits.csv", dataSourceName: "Tree Benefit Data", csvFormat: .benefits)
+    ]
+    /// Whether location features are enabled. Note: This is not a user preference; it is a flag that keeps track of whether the user has allowed access to device location.
     var locationFeaturesEnabled = false
     
     /// Whether the user's location should be shown on the map.
@@ -26,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return UserPreferenceKeys.cutoffDistance
     }
     
-    // MARK: App delegate methods
+    // MARK: - App delegate methods
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         self.importTreeData()
@@ -56,13 +61,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
-    // MARK: Other methods
+    // MARK: - Other methods
     
-    /// Create data sources and import their tree data.
+    /// Import each data source's tree data.
     func importTreeData() {
-        self.dataSources.append(DataSource(internetFilename: "CoH_Tree_Inventory_6_12_18.csv", localFilename: "holland.csv", dataSourceName: "City of Holland Tree Inventory", csvFormat: CSVFormat.holland, isActive: true))
-        self.dataSources.append(DataSource(internetFilename: "iTreeExport_119_HopeTrees_7may2018.csv", localFilename: "itree.csv", dataSourceName: "Hope College i-Tree Data", csvFormat: CSVFormat.itree, isActive: true))
-        self.dataSources.append(DataSource(internetFilename: "dataExport_119_HopeTrees_7may2018.csv", localFilename: "hope.csv", dataSourceName: "Hope College Trees", csvFormat: CSVFormat.hope, isActive: true))
         for dataSource in self.dataSources {
             if !dataSource.retrieveOnlineData() {
                 print("Error retrieving " + dataSource.dataSourceName + " data from online")
@@ -92,49 +94,56 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.locationFeaturesEnabled = false
     }
     
-    //MARK: Modify or Access User Preferences
+    // MARK: - User preferences accesors and modifiers
     
-    ///- Returns: whether the user's location will be shown on the map
-    func accessShowUserLocation() -> Bool{
+    /// - Returns: Whether the user's location will be shown on the map.
+    func accessShowUserLocation() -> Bool {
         return UserPreferenceKeys.showUserLocation
     }
     
-    ///- Returns: the max distance from which trees will be identified by coordinates or GPS (the cutoff distance)
-    func accessCutoffDistance() -> Double{
+    /// - Returns: The max distance from which trees will be identified by coordinates or GPS (the cutoff distance).
+    func accessCutoffDistance() -> Double {
         return UserPreferenceKeys.cutoffDistance
     }
     
-    ///- Returns: the dictionary that maps the database names to their availibility
-    func accessDataSourceAvailibility() -> [String: Bool]{
+    /// - Returns: The dictionary that maps the database names to their availibility.
+    func accessDataSourceAvailibility() -> [String: Bool] {
         return UserPreferenceKeys.dataSourceAvailibility
     }
     
-    ///- Returns: The default preference for whether the user's location will be shown on the map
-    func accessShowUserLocationDefault() -> Bool{
+    /// - Returns: The default preference for whether the user's location will be shown on the map.
+    func accessShowUserLocationDefault() -> Bool {
         return UserPreferenceKeys.showUserLocationDefault
     }
     
-    ///- Returns: the default value for the max distance from which trees will be identified by coordinates or GPS (the cutoff distance)
-    func accessCutoffDistanceDefault() -> Double{
+    /// - Returns: The default value for the max distance from which trees will be identified by coordinates or GPS (the cutoff distance).
+    func accessCutoffDistanceDefault() -> Double {
         return UserPreferenceKeys.cutoffDistanceDefault
     }
     
-    ///- Returns: the dictionary that maps the database names to their default availibility
-    func accessDataSourceAvailibilityDefault() ->  [String: Bool]{
+    /// - Returns: The dictionary that maps the database names to their default availibility.
+    func accessDataSourceAvailibilityDefault() ->  [String: Bool] {
         return UserPreferenceKeys.dataSourceAvailibilityDefault
     }
     
-    ///- Parameter cutoffDistance: the value the maximum distance trees will be identified via coordinates or GPS will be set to
-    func modifyCutoffDistance(cutoffDistance: Double){
+    /**
+     Updates the cutoff distance preference.
+     - Parameter cutoffDistance: The value the maximum distance trees will be identified via coordinates or GPS will be set to.
+     */
+    func modifyCutoffDistance(cutoffDistance: Double) {
         UserPreferenceKeys.cutoffDistance = cutoffDistance
         UserDefaults.standard.set(cutoffDistance, forKey: UserPreferenceKeys.cutoffDistanceKey)
     }
     
     /**
      - Parameter dataSource: the name of the data source
-     - Returns: a Bool that indicates whether the data source is available
+     - Returns: A Bool indicating whether the data source is active.
      */
-    func isActive(dataSource: String) -> Bool{
+    func isActive(dataSource: String) -> Bool {
+        if (UserPreferenceKeys.dataSourceAvailibility[dataSource] == nil) {
+            print(dataSource)
+            return false
+        }
         return UserPreferenceKeys.dataSourceAvailibility[dataSource]!
     }
     
@@ -150,8 +159,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     /**
      Sets the active status to true for the data source with the specified name.
-     - Parameters:
-        - dataSourceName: The name of the data source to be compared against the dataSourceName property of existing DataSource objects.
+     - Parameter dataSourceName: The name of the data source to be compared against the dataSourceName property of existing DataSource objects.
      */
     func activateDataSource(dataSourceName: String) {
         if(UserPreferenceKeys.dataSourceAvailibility[dataSourceName] == nil){
@@ -164,8 +172,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     /**
      Sets the active status to false for the data source with the specified name.
-     - Parameters:
-     - dataSourceName: The name of the data source to be compared against the dataSourceName property of existing DataSource objects.
+     - Parameter dataSourceName: The name of the data source to be compared against the dataSourceName property of existing DataSource objects.
      */
     func deactivateDataSource(dataSourceName: String) {
         if(UserPreferenceKeys.dataSourceAvailibility[dataSourceName] == nil){

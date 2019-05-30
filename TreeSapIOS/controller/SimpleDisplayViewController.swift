@@ -19,13 +19,32 @@ class SimpleDisplayViewController: TreeDisplayViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-        self.commonNameLabel.text = self.displayedTree!.commonName
-        self.scientificNameLabel.text = self.displayedTree!.scientificName
-        self.treeIDLabel.text = String(self.displayedTree!.id)
+        // Set common name label
+        if (self.displayedTree!.commonName != nil) {
+            self.commonNameLabel.text = self.displayedTree!.commonName
+        } else {
+            self.commonNameLabel.text = "N/A"
+        }
+        // Set scientific name label
+        if (self.displayedTree!.scientificName != nil) {
+            self.scientificNameLabel.text = self.displayedTree!.scientificName
+        } else {
+            self.scientificNameLabel.text = "N/A"
+        }
+        // Set tree ID label
+        if (self.displayedTree!.id != nil) {
+            self.treeIDLabel.text = String(self.displayedTree!.id!)
+        } else {
+            self.treeIDLabel.text = "N/A"
+        }
+        // Set latitude and longitude labels
 		self.latitudeLabel.text = String(self.displayedTree!.location.latitude)
 		self.longitudeLabel.text = String(self.displayedTree!.location.longitude)
-        self.dbhLabel.text = String(self.displayedTree!.dbh)
+        // Set DBH label
+        if (self.displayedTree!.dbh != nil) {
+            self.dbhLabel.text = String(self.displayedTree!.dbh!)
+        } else {
+            self.dbhLabel.text = "N/A"
+        }
     }
-
 }
