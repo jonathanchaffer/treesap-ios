@@ -129,6 +129,26 @@ class DataSource {
                 if (self.csvFormat.dbhIndex() >= 0) {
                     dbh = Double(record[self.csvFormat.dbhIndex()])
                 }
+                // Set totalAnnualBenefits (optional)
+                var totalAnnualBenefits: Double? = nil
+                if (self.csvFormat.totalAnnualBenefitsIndex() >= 0) {
+                    totalAnnualBenefits = Double(record[self.csvFormat.totalAnnualBenefitsIndex()])
+                }
+                // Set avoidedRunoffValue (optional)
+                var avoidedRunoffValue: Double? = nil
+                if (self.csvFormat.avoidedRunoffValueIndex() >= 0) {
+                    avoidedRunoffValue = Double(record[self.csvFormat.avoidedRunoffValueIndex()])
+                }
+                // Set pollutionValue (optional)
+                var pollutionValue: Double? = nil
+                if (self.csvFormat.pollutionValueIndex() >= 0) {
+                    pollutionValue = Double(record[self.csvFormat.pollutionValueIndex()])
+                }
+                // Set totalEnergySavings (optional)
+                var totalEnergySavings: Double? = nil
+                if (self.csvFormat.totalEnergySavingsIndex() >= 0) {
+                    totalEnergySavings = Double(record[self.csvFormat.totalEnergySavingsIndex()])
+                }
                 // Create the Tree object
                 if (latitude != nil && longitude != nil) {
                     let tree = Tree(
@@ -136,7 +156,11 @@ class DataSource {
                         commonName: commonName,
                         scientificName: scientificName,
                         location:CLLocationCoordinate2D(latitude: latitude! as CLLocationDegrees, longitude: longitude! as CLLocationDegrees),
-                        dbh: dbh)
+                        dbh: dbh,
+                        totalAnnualBenefits: totalAnnualBenefits,
+                        avoidedRunoffValue: avoidedRunoffValue,
+                        pollutionValue: pollutionValue,
+                        totalEnergySavings: totalEnergySavings)
                     self.trees.append(tree)
                 }
             }

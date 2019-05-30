@@ -39,15 +39,15 @@ class PieChartDisplayViewController: TreeDisplayViewController, ChartViewDelegat
     private func updateChartData() {
         // Initialize data entries
         var entries: [PieChartDataEntry] = []
-        if (self.foundBenefitData) {
-            if (self.avoidedRunoffValue! >= 0) {
-                entries.append(PieChartDataEntry(value: self.avoidedRunoffValue!, label: "Rainwater"))
+        if (self.displayedTree!.totalAnnualBenefits != nil) {
+            if (self.displayedTree!.avoidedRunoffValue! > 0) {
+                entries.append(PieChartDataEntry(value: self.displayedTree!.avoidedRunoffValue!, label: "Rainwater"))
             }
-            if (self.pollutionValue! >= 0) {
-                entries.append(PieChartDataEntry(value: self.pollutionValue!, label: "CO2"))
+            if (self.displayedTree!.pollutionValue! > 0) {
+                entries.append(PieChartDataEntry(value: self.displayedTree!.pollutionValue!, label: "CO2"))
             }
-            if (self.totalEnergySavings! >= 0) {
-                entries.append(PieChartDataEntry(value: self.totalEnergySavings!, label: "Energy"))
+            if (self.displayedTree!.totalEnergySavings! > 0) {
+                entries.append(PieChartDataEntry(value: self.displayedTree!.totalEnergySavings!, label: "Energy"))
             }
         }
 
