@@ -14,12 +14,12 @@ class TreeAnnotation: NSObject, MKAnnotation {
     let title: String?
     let subtitle: String?
     let coordinate: CLLocationCoordinate2D
-    
+
     init(tree: Tree) {
         self.tree = tree
-        self.coordinate = tree.location
-        self.title = tree.commonName
-        self.subtitle = tree.scientificName
+        coordinate = tree.location
+        title = tree.commonName
+        subtitle = tree.scientificName
         super.init()
     }
 }

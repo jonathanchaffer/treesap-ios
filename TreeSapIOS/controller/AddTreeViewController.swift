@@ -9,9 +9,9 @@
 import UIKit
 
 class AddTreeViewController: UIViewController {
-    @IBOutlet weak var useDeviceLocationButton: UIButton!
-    @IBOutlet weak var addTreeButton: UIButton!
-    
+    @IBOutlet var useDeviceLocationButton: UIButton!
+    @IBOutlet var addTreeButton: UIButton!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,9 +21,9 @@ class AddTreeViewController: UIViewController {
         addTreeButton.contentEdgeInsets = UIEdgeInsets(top: 8.0, left: 8.0, bottom: 8.0, right: 8.0)
         addTreeButton.layer.cornerRadius = 8.0
     }
-    
+
     /// Closes the modal when the X button is tapped.
-    @IBAction func closeAddTree(_ sender: UIBarButtonItem) {
+    @IBAction func closeAddTree(_: UIBarButtonItem) {
         navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)
     }

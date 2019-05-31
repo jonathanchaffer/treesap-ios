@@ -16,7 +16,7 @@ class Tree {
     let location: CLLocationCoordinate2D
     let dbh: Double?
     var otherInfo: [String: Double] = [:]
-    
+
     init(id: Int?, commonName: String?, scientificName: String?, location: CLLocationCoordinate2D, dbh: Double?) {
         // Initialize basic information
         self.id = id
@@ -25,7 +25,7 @@ class Tree {
         self.location = location
         self.dbh = dbh
     }
-    
+
     func setOtherInfo(key: String, value: Double) {
         otherInfo[key] = value
     }

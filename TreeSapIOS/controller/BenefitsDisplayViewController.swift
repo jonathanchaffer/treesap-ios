@@ -10,8 +10,9 @@ import UIKit
 
 class BenefitsDisplayViewController: TreeDisplayViewController {
     // MARK: - Properties
+
 //    @IBOutlet weak var benefitsDisplay: UIView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 //        // Configure the benefits display
@@ -19,5 +20,4 @@ class BenefitsDisplayViewController: TreeDisplayViewController {
 //        benefitsDisplay.layer.borderWidth = 6
 //        benefitsDisplay.layer.cornerRadius = 3
     }
-    
 }

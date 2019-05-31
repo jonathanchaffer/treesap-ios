@@ -10,7 +10,7 @@ import Foundation
 
 enum CSVFormat {
     case holland, itree, hope, benefits
-    
+
     func idIndex() -> Int {
         switch self {
         case .holland:
@@ -23,7 +23,7 @@ enum CSVFormat {
             return 0
         }
     }
-    
+
     func commonNameIndex() -> Int {
         switch self {
         case .holland:
@@ -36,7 +36,7 @@ enum CSVFormat {
             return 1
         }
     }
-    
+
     func scientificNameIndex() -> Int {
         switch self {
         case .holland:
@@ -49,7 +49,7 @@ enum CSVFormat {
             return -1
         }
     }
-    
+
     func latitudeIndex() -> Int {
         switch self {
         case .holland:
@@ -62,7 +62,7 @@ enum CSVFormat {
             return 4
         }
     }
-    
+
     func longitudeIndex() -> Int {
         switch self {
         case .holland:
@@ -75,7 +75,7 @@ enum CSVFormat {
             return 3
         }
     }
-    
+
     func dbhIndex() -> Int {
         switch self {
         case .holland:
@@ -88,7 +88,7 @@ enum CSVFormat {
             return 2
         }
     }
-    
+
     func co2DollarsIndex() -> Int {
         switch self {
         case .benefits:
@@ -97,7 +97,7 @@ enum CSVFormat {
             return -1
         }
     }
-    
+
     func rainfallDollarsIndex() -> Int {
         switch self {
         case .benefits:
@@ -106,7 +106,7 @@ enum CSVFormat {
             return -1
         }
     }
-    
+
     func pollutionDollarsIndex() -> Int {
         switch self {
         case .benefits:
@@ -115,7 +115,7 @@ enum CSVFormat {
             return -1
         }
     }
-    
+
     func energySavingsDollarsIndex() -> Int {
         switch self {
         case .benefits:
@@ -124,7 +124,7 @@ enum CSVFormat {
             return -1
         }
     }
-    
+
     func totalAnnualBenefitsDollarsIndex() -> Int {
         switch self {
         case .benefits:
