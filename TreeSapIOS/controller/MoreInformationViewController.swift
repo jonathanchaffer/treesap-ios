@@ -12,14 +12,6 @@ class MoreInformationViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-	
-    
-    @IBAction func closeModal(_ sender: UIBarButtonItem) {
-        navigationController?.popViewController(animated: true) //What does this line do?
-        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func openITreeWebTools(_ sender: UIButton) {
