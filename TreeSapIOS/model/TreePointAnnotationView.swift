@@ -9,6 +9,8 @@
 import Foundation
 import MapKit
 
+// NOTE: This class is not currently used. It is meant to be a MapKit annotation view for devices with iOS 10 and older.
+
 class TreePointAnnotationView: MKAnnotationView {
     override var annotation: MKAnnotation? {
         willSet {
