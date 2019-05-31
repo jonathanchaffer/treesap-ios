@@ -7,63 +7,64 @@
 //
 //  https://spin.atomicobject.com/2015/12/23/swift-uipageviewcontroller-tutorial/
 
-import UIKit
 import CSVImporter
+import UIKit
 
 class TreeDetailPageViewController: UIPageViewController {
     // MARK: Properties
+
     /// The tree that will be displayed in the tree detail views.
-    var displayedTree: Tree? = nil
+    var displayedTree: Tree?
     /// The dot indicator that shows the current page.
     var pageControl: UIPageControl?
     /// The pages to be displayed in the page view.
     fileprivate lazy var pages: [TreeDisplayViewController] = {
-        return [
+        [
             self.getViewController(withIdentifier: "simpleDisplay"),
             self.getViewController(withIdentifier: "pieChartDisplay"),
-            self.getViewController(withIdentifier: "benefitsDisplay")
+            self.getViewController(withIdentifier: "benefitsDisplay"),
         ]
     }()
-    
+
     // MARK: Overrides
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.dataSource = self
-        self.delegate = self
-        
-        self.configurePageControl()
-        
+        dataSource = self
+        delegate = self
+
+        configurePageControl()
+
         // Set the background color to white so it is not noticed when flipping quickly between the different tree displays
-        self.view.backgroundColor = UIColor.white
-        
+        view.backgroundColor = UIColor.white
+
         // Set the displayed tree for each of the tree detail views.
         for page in pages {
-            page.displayedTree = self.displayedTree
+            page.displayedTree = displayedTree
         }
-        
-        if let firstVC = pages.first
-        {
+
+        if let firstVC = pages.first {
             setViewControllers([firstVC], direction: .forward, animated: true, completion: nil)
         }
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
+
+    override func viewWillAppear(_: Bool) {
         // Hide the tab bar when the detail display will appear.
-        self.tabBarController?.tabBar.isHidden = true
+        tabBarController?.tabBar.isHidden = true
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {
+
+    override func viewWillDisappear(_: Bool) {
         // Show the tab bar when the detail display will disappear.
-        self.tabBarController?.tabBar.isHidden = false
+        tabBarController?.tabBar.isHidden = false
     }
-    
-    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating _: Bool, previousViewControllers _: [UIViewController], transitionCompleted _: Bool) {
         let pageContentViewController = pageViewController.viewControllers![0]
-        self.pageControl!.currentPage = pages.index(of: pageContentViewController as! TreeDisplayViewController)!
+        pageControl!.currentPage = pages.index(of: pageContentViewController as! TreeDisplayViewController)!
     }
-    
+
     // MARK: Private methods
-    
+
     /**
      Instantiates and returns a TreeDisplayViewController based on the identifier of the view controller in the storyboard.
      - Parameter identifier: the storyboard ID of the view controller that is to be instantiated and returned.
@@ -71,7 +72,7 @@ class TreeDetailPageViewController: UIPageViewController {
     private func getViewController(withIdentifier identifier: String) -> TreeDisplayViewController {
         return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: identifier) as! TreeDisplayViewController
     }
-    
+
     /// Sets up the dot indicator that shows the current page.
     private func configurePageControl() {
         pageControl = UIPageControl(frame: CGRect(x: 0, y: UIScreen.main.bounds.maxY - 50, width: UIScreen.main.bounds.width, height: 50))
@@ -79,9 +80,9 @@ class TreeDetailPageViewController: UIPageViewController {
         pageControl!.currentPage = 0
         pageControl!.currentPageIndicatorTintColor = UIColor(red: 0.373, green: 0.718, blue: 0.306, alpha: 1.0)
         pageControl!.pageIndicatorTintColor = UIColor(red: 0.373, green: 0.718, blue: 0.306, alpha: 0.3)
-        self.view.addSubview(pageControl!)
+        view.addSubview(pageControl!)
     }
-    
+
 //    private func configureBenefitsByLocation() {
 //        // Create a file manager and get the path for the local file
 //        let fileManager = FileManager.default
@@ -114,16 +115,15 @@ class TreeDetailPageViewController: UIPageViewController {
 }
 
 extension TreeDetailPageViewController: UIPageViewControllerDataSource {
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+    func pageViewController(_: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         guard let viewControllerIndex = pages.firstIndex(of: viewController as! TreeDisplayViewController) else { return nil }
         let previousIndex = viewControllerIndex - 1
         guard previousIndex >= 0 else { return pages.last }
         guard pages.count > previousIndex else { return nil }
         return pages[previousIndex]
     }
-    
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController?
-    {
+
+    func pageViewController(_: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         guard let viewControllerIndex = pages.firstIndex(of: viewController as! TreeDisplayViewController) else { return nil }
         let nextIndex = viewControllerIndex + 1
         guard nextIndex < pages.count else { return pages.first }
@@ -132,4 +132,4 @@ extension TreeDetailPageViewController: UIPageViewControllerDataSource {
     }
 }
 
-extension TreeDetailPageViewController: UIPageViewControllerDelegate { }
+extension TreeDetailPageViewController: UIPageViewControllerDelegate {}

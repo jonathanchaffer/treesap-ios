@@ -10,9 +10,11 @@ import UIKit
 
 class TreeDisplayViewController: UIViewController {
     // MARK: - Properties
-    var displayedTree: Tree? = nil
-    
+
+    var displayedTree: Tree?
+
     // MARK: - Overrides
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }

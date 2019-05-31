@@ -6,181 +6,176 @@
 //  Copyright © 2019 Hope CS. All rights reserved.
 //  This code was based of code from https://www.hackingwithswift.com/example-code/media/how-to-scan-a-qr-code
 
-import UIKit
 import AVKit
 import CoreLocation
+import UIKit
 
 class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer?
     var appDelegate: AppDelegate! = (UIApplication.shared.delegate as! AppDelegate)
-    @IBOutlet weak var QROverlay: UIImageView!
-    
-    //creates the QR code scanner and makes it start capturing input
+    @IBOutlet var QROverlay: UIImageView!
+
+    // creates the QR code scanner and makes it start capturing input
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         captureSession = AVCaptureSession()
-        
-        //get default video capture device
-        guard let captureDevice = AVCaptureDevice.default(for: AVMediaType.video) else{
+
+        // get default video capture device
+        guard let captureDevice = AVCaptureDevice.default(for: AVMediaType.video) else {
             alertUser(title: "", message: "No camera is available for use on your device.")
             return
         }
-        
-        //set up an audio-visual capture input
+
+        // set up an audio-visual capture input
         let videoInput: AVCaptureInput
-        do{
+        do {
             videoInput = try AVCaptureDeviceInput(device: captureDevice)
-        }
-        catch{
+        } catch {
             alertUser(title: "", message: "QR Scanning is not available. Please make sure that this app has access to your camera in the settings on your device.")
             return
         }
-        
-        //add the input to the capture session
-        if(captureSession.canAddInput(videoInput)){
+
+        // add the input to the capture session
+        if captureSession.canAddInput(videoInput) {
             captureSession.addInput(videoInput)
-        }
-        else{
+        } else {
             alertUser(title: "", message: "QR Scanning is not available. Please make sure that this app has access to your camera in the settings on your device.")
             return
         }
-        
-        //set up metadata output and add it to the capture session
+
+        // set up metadata output and add it to the capture session
         let metadataOutput: AVCaptureMetadataOutput = AVCaptureMetadataOutput()
-        if(captureSession.canAddOutput(metadataOutput)){
+        if captureSession.canAddOutput(metadataOutput) {
             captureSession.addOutput(metadataOutput)
-            
+
             metadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
             metadataOutput.metadataObjectTypes = [.qr]
-        }
-        else{
+        } else {
             alertUser(title: "", message: "QR Scanning is not available. Please make sure that this app has access to your camera in the settings on your device.")
             return
         }
-        
-        //sets up the layer in which the video is displayed
+
+        // sets up the layer in which the video is displayed
         previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         previewLayer!.frame = view.layer.bounds
         previewLayer!.videoGravity = AVLayerVideoGravity.resizeAspect
         view.layer.addSublayer(previewLayer!)
-        
-        self.view.bringSubviewToFront(QROverlay)    //puts overlay in front of the QR scanner display
+
+        view.bringSubviewToFront(QROverlay) // puts overlay in front of the QR scanner display
         QROverlay.alpha = 0.5
-        
+
         captureSession.startRunning()
     }
-    
-    ///This function takes the String that was encoded in the QR code, finds a tree that corresponds to that code using a call to getTreeFromString, and displays the results using a call to displayTreeResults
-    func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
-        
-        if let metadatObject: AVMetadataObject = metadataObjects.first{
-            guard let readableObject = metadatObject as? AVMetadataMachineReadableCodeObject else{
+
+    /// This function takes the String that was encoded in the QR code, finds a tree that corresponds to that code using a call to getTreeFromString, and displays the results using a call to displayTreeResults
+    func metadataOutput(_: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from _: AVCaptureConnection) {
+        if let metadatObject: AVMetadataObject = metadataObjects.first {
+            guard let readableObject = metadatObject as? AVMetadataMachineReadableCodeObject else {
                 alertUser(title: "Error", message: "QR code coud not be scanned")
                 return
             }
-            
-            guard let stringOutput: String = readableObject.stringValue else{
+
+            guard let stringOutput: String = readableObject.stringValue else {
                 alertUser(title: "Error", message: "QR code could not be scanned")
                 return
             }
-            
-            guard let resultTree: Tree = getTreeFromString(stringResult: stringOutput) else{
+
+            guard let resultTree: Tree = getTreeFromString(stringResult: stringOutput) else {
                 alertUser(title: "", message: "No tree with the scanned code was found.")
                 return
             }
-            
+
             captureSession.stopRunning()
             displayTreeResults(tree: resultTree)
         }
     }
-    
+
     /**
-    Gets the tree that corresponds to the given encoded String. A valid string has the format "[latitude],[longitude],[database name]" (without the quotation marks or square brackets).
-     
-     - Parameter stringResult: the encodedString
-     
-     - Returns: the Tree object that corresponds to the given String
-    */
-    func getTreeFromString(stringResult: String) -> Tree?{
-        //Split the encoded string on the first two commas
+     Gets the tree that corresponds to the given encoded String. A valid string has the format "[latitude],[longitude],[database name]" (without the quotation marks or square brackets).
+
+      - Parameter stringResult: the encodedString
+
+      - Returns: the Tree object that corresponds to the given String
+     */
+    func getTreeFromString(stringResult: String) -> Tree? {
+        // Split the encoded string on the first two commas
         let resultParts: [Substring] = stringResult.split(separator: ",", maxSplits: 2, omittingEmptySubsequences: false)
-        if(resultParts.count != 3){
+        if resultParts.count != 3 {
             alertUser(title: "", message: "The scanned code is not the code for a tree.")
             return nil
         }
-        
-        //get the latitude, longitude, and data source name from each of the three portions of the string
+
+        // get the latitude, longitude, and data source name from each of the three portions of the string
         guard let treeLatitude: Double = Double(String(resultParts[0])) else {
             alertUser(title: "", message: "The scanned code is not the code for a tree.")
             return nil
         }
-        guard let treeLongitude: Double = Double(String(resultParts[1])) else{
+        guard let treeLongitude: Double = Double(String(resultParts[1])) else {
             alertUser(title: "", message: "The scanned code is not the code for a tree.")
             return nil
         }
         let dataSourceName: String = String(resultParts[2])
-        
-        //Find the data source with the data source name encoded int the QR code
+
+        // Find the data source with the data source name encoded int the QR code
         let treeCoordinates = CLLocationCoordinate2D(latitude: treeLatitude, longitude: treeLongitude)
-        guard let dataSourceToSearch: DataSource = appDelegate.getDataSourceWithName(name: dataSourceName) else{
+        guard let dataSourceToSearch: DataSource = appDelegate.getDataSourceWithName(name: dataSourceName) else {
             alertUser(title: "", message: "The scanned code is not the code for a tree")
             return nil
         }
-        
-        //Check if the data source with the given name is active
-        guard appDelegate.isActive(dataSource: dataSourceName) else{
+
+        // Check if the data source with the given name is active
+        guard appDelegate.isActive(dataSource: dataSourceName) else {
             alertUser(title: "", message: "The data source that contains the data for this tree is turned off. If you would like to view the tree data for this code, turn on the data source \"" + String(dataSourceName) + "\" in the settings menu.")
             return nil
         }
-        
-        guard let resultTree: Tree = TreeFinder.findTreeByLocation(location: treeCoordinates, dataSources: [dataSourceToSearch], cutoffDistance: appDelegate.cutoffDistance) else{
-                alertUser(title: "", message: "No tree with the scanned code was found.")
-                return nil
+
+        guard let resultTree: Tree = TreeFinder.findTreeByLocation(location: treeCoordinates, dataSources: [dataSourceToSearch], cutoffDistance: appDelegate.cutoffDistance) else {
+            alertUser(title: "", message: "No tree with the scanned code was found.")
+            return nil
         }
-        
+
         return resultTree
     }
-    
+
     /**
      Brings up the tree display for the given Tree object
-     
+
      - Parameter tree: the Tree object that contains the tree data to display
      */
-    func displayTreeResults(tree: Tree){
-            let pages = TreeDetailPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
-            pages.displayedTree = tree
-            navigationController?.pushViewController(pages, animated: true)
+    func displayTreeResults(tree: Tree) {
+        let pages = TreeDetailPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
+        pages.displayedTree = tree
+        navigationController?.pushViewController(pages, animated: true)
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        if(captureSession.isRunning){
+
+    override func viewWillDisappear(_: Bool) {
+        if captureSession.isRunning {
             captureSession.stopRunning()
         }
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        if(!captureSession.isRunning){
+
+    override func viewWillAppear(_: Bool) {
+        if !captureSession.isRunning {
             captureSession.startRunning()
         }
     }
-    
-    //change orientation of QR scanner when device rotates
-    override func viewWillLayoutSubviews() {
 
-        //Only change the orientation if there is a AVCaptureVideoPreviewLayer. This prevents the app from crashing due to the forced unwrapping of the previewLayer variable
-        guard (previewLayer != nil) else{
+    // change orientation of QR scanner when device rotates
+    override func viewWillLayoutSubviews() {
+        // Only change the orientation if there is a AVCaptureVideoPreviewLayer. This prevents the app from crashing due to the forced unwrapping of the previewLayer variable
+        guard previewLayer != nil else {
             return
         }
-        
-        //Change the orientation of the QR scanner
-        guard let AVConnection: AVCaptureConnection = previewLayer!.connection else{//MARK: error here
+
+        // Change the orientation of the QR scanner
+        guard let AVConnection: AVCaptureConnection = previewLayer!.connection else { // MARK: error here
             return
         }
         let currentOrientation: UIDeviceOrientation = UIDevice.current.orientation
-        
-        switch currentOrientation{
+
+        switch currentOrientation {
         case UIDeviceOrientation.landscapeLeft:
             AVConnection.videoOrientation = AVCaptureVideoOrientation.landscapeRight
         case UIDeviceOrientation.portrait:
@@ -190,22 +185,21 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
         default:
             AVConnection.videoOrientation = AVCaptureVideoOrientation.portrait
         }
-        
-        //Change the space the QR scanner occupies
+
+        // Change the space the QR scanner occupies
         previewLayer!.frame = view.layer.bounds
     }
-    
+
     /**
      Makes an alert appear with the given argument and message. The alert will have an "OK" buton
-     
+
      - Parameters:
         - title: the title of the alert
         - message: the message of the alert
      */
-    func alertUser(title: String, message: String){
+    func alertUser(title: String, message: String) {
         let alertController: UIAlertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
         present(alertController, animated: true, completion: nil)
     }
-
 }

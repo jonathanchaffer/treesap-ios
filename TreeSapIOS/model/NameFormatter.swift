@@ -15,14 +15,14 @@ class NameFormatter {
             let hyphenSplit = newCommonName.split(separator: "-")
             newCommonName = trim(hyphenSplit[1]) + " " + trim(hyphenSplit[0])
         }
-        return newCommonName;
+        return newCommonName
     }
-    
+
     class func formatScientificName(scientificName: String) -> String {
         var newScientificName = scientificName
         let spaceSplit = newScientificName.split(separator: " ")
         if spaceSplit.count >= 3 {
-            if spaceSplit[0].last! >= Character("0") && spaceSplit[0].last! <= Character("Z") {
+            if spaceSplit[0].last! >= Character("0"), spaceSplit[0].last! <= Character("Z") {
                 newScientificName = ""
                 for i in 1 ..< spaceSplit.count - 1 {
                     newScientificName += spaceSplit[i] + " "
@@ -32,8 +32,8 @@ class NameFormatter {
         }
         return newScientificName
     }
-    
+
     class func trim(_ string: Substring) -> String {
-        return string.trimmingCharacters(in: CharacterSet(charactersIn:" "))
+        return string.trimmingCharacters(in: CharacterSet(charactersIn: " "))
     }
 }

@@ -10,10 +10,12 @@ import UIKit
 
 class DataSourceTableViewController: UITableViewController {
     // MARK: Properties
+
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var dataSources = [DataSource]()
 
     // MARK: Overrides
+
     override func viewDidLoad() {
         super.viewDidLoad()
         dataSources = appDelegate.dataSources
@@ -29,8 +31,8 @@ class DataSourceTableViewController: UITableViewController {
             }
         }
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {
+
+    override func viewWillDisappear(_: Bool) {
         for i in 0 ..< dataSources.count {
             let indexPath = NSIndexPath(row: i, section: 0)
             let cell = tableView.cellForRow(at: indexPath as IndexPath)
@@ -41,17 +43,17 @@ class DataSourceTableViewController: UITableViewController {
             }
         }
     }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+
+    override func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         return dataSources.count
     }
-    
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "dataSourceCell", for: indexPath)
         cell.textLabel?.text = dataSources[indexPath.row].dataSourceName
         return cell
     }
-    
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView.cellForRow(at: indexPath)?.accessoryType == .checkmark {
             tableView.cellForRow(at: indexPath)?.accessoryType = .none
@@ -60,5 +62,4 @@ class DataSourceTableViewController: UITableViewController {
         }
         tableView.deselectRow(at: indexPath, animated: true)
     }
-    
 }

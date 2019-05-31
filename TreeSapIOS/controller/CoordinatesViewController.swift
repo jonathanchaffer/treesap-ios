@@ -6,66 +6,68 @@
 //  Copyright © 2019 Hope CS. All rights reserved.
 //
 
-import UIKit
 import MapKit
+import UIKit
 
 class CoordinatesViewController: UIViewController, UITextFieldDelegate {
-	// MARK: - Properties
-    @IBOutlet weak var latitudeTextField: UITextField!
-    @IBOutlet weak var longitudeTextField: UITextField!
-    @IBOutlet weak var getTreeDataButton: UIButton!
+    // MARK: - Properties
+
+    @IBOutlet var latitudeTextField: UITextField!
+    @IBOutlet var longitudeTextField: UITextField!
+    @IBOutlet var getTreeDataButton: UIButton!
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         latitudeTextField.delegate = self
         longitudeTextField.delegate = self
-        
+
         getTreeDataButton.contentEdgeInsets = UIEdgeInsets(top: 8.0, left: 8.0, bottom: 8.0, right: 8.0)
         getTreeDataButton.layer.cornerRadius = 8.0
-        
+
         // Set up gesture recognizer that will dismiss the keyboard when the user taps outside of it
         // Based on code from https://medium.com/@KaushElsewhere/how-to-dismiss-keyboard-in-a-view-controller-of-ios-3b1bfe973ad1 and https://www.bignerdranch.com/blog/hannibal-selector/#tl-dr
         let gestureRecognizer: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(stopEditingText))
         gestureRecognizer.cancelsTouchesInView = false
-        self.view.addGestureRecognizer(gestureRecognizer)
+        view.addGestureRecognizer(gestureRecognizer)
     }
-	
-	// MARK: - Actions
+
+    // MARK: - Actions
+
     /// Calls handleCoordinates when the Get Tree Data button is pressed.
-	@IBAction func handleCoordinatesButtonPressed(_ sender: UIButton) {
-		handleCoordinates()
-	}
-    
-	// MARK: - Methods
-    
+    @IBAction func handleCoordinatesButtonPressed(_: UIButton) {
+        handleCoordinates()
+    }
+
+    // MARK: - Methods
+
     /// Displays tree information for the inputted coordinates or alerts the user if invalid coordinates were entered.
-    private func handleCoordinates(){
+    private func handleCoordinates() {
         // Convert the inputs to Double. If the conversion failed, alert the user.
         let latitude = Double(latitudeTextField.text!)
         let longitude = Double(longitudeTextField.text!)
-        if (latitude != nil && longitude != nil) {
+        if latitude != nil, longitude != nil {
             // If tree data was found, display it. Otherwise, alert the user.
-            let treeToDisplay = self.getTreeDataByCoords(latitude: latitude!, longitude: longitude!)
-            if (treeToDisplay != nil) {
+            let treeToDisplay = getTreeDataByCoords(latitude: latitude!, longitude: longitude!)
+            if treeToDisplay != nil {
                 let pages = TreeDetailPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
                 pages.displayedTree = treeToDisplay
                 navigationController?.pushViewController(pages, animated: true)
             } else {
                 let alert = UIAlertController(title: "No trees found", message: "There were no trees found near that location. You can update the identification distance in Settings.", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-                self.present(alert, animated: true)
+                present(alert, animated: true)
             }
         } else {
             let alert = UIAlertController(title: "Invalid coordinates", message: "Please make sure that you input valid coordinates.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-            self.present(alert, animated: true)
+            present(alert, animated: true)
         }
     }
-    
+
     // If the text field is the first/latitude text field, the second/longitude text field becomes first responder (so it becomes selected). If the text field is the second/longitude text field, then the handleCoordinates method is called. Otherwise, nothing happens.
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        switch textField{
+        switch textField {
         case latitudeTextField:
             longitudeTextField.becomeFirstResponder()
         case longitudeTextField:
@@ -75,31 +77,31 @@ class CoordinatesViewController: UIViewController, UITextFieldDelegate {
         }
         return true
     }
-    
+
     // Based on code from https://medium.com/@KaushElsewhere/how-to-dismiss-keyboard-in-a-view-controller-of-ios-3b1bfe973ad1
     /// Makes all included text fields (which will probably be all the text fields that this class has as properties) stop editting, dismissing the keyboard
-    @objc func stopEditingText(){
+    @objc func stopEditingText() {
         longitudeTextField.endEditing(true)
         latitudeTextField.endEditing(true)
     }
-    
+
     /**
      - Returns: A Tree object that corresponds to the tree closest to and within the cutoff distance of the given location, or nil if no such tree was found.
-     
+
      - Parameter latitude: The latitude value.
      - Parameter longitude: The longitude value.
      */
-	private func getTreeDataByCoords(latitude: Double, longitude: Double) -> Tree? {
-		let location = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-		return TreeFinder.findTreeByLocation(location: location, dataSources: appDelegate.getActiveDataSources(), cutoffDistance: appDelegate.accessCutoffDistance())
-	}
+    private func getTreeDataByCoords(latitude: Double, longitude: Double) -> Tree? {
+        let location = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        return TreeFinder.findTreeByLocation(location: location, dataSources: appDelegate.getActiveDataSources(), cutoffDistance: appDelegate.accessCutoffDistance())
+    }
 }
 
 // Extension that makes the text fields allow only numbers, dashes, and dots.
 // https://stackoverflow.com/questions/30973044/how-to-restrict-uitextfield-to-take-only-numbers-in-swift
 extension CoordinatesViewController {
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let allowedCharacters = CharacterSet(charactersIn:"-.0123456789")
+    func textField(_: UITextField, shouldChangeCharactersIn _: NSRange, replacementString string: String) -> Bool {
+        let allowedCharacters = CharacterSet(charactersIn: "-.0123456789")
         let characterSet = CharacterSet(charactersIn: string)
         return allowedCharacters.isSuperset(of: characterSet)
     }

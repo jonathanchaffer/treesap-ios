@@ -9,20 +9,19 @@
 import UIKit
 
 class MoreInformationViewController: UIViewController {
-
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
-    @IBAction func openITreeWebTools(_ sender: UIButton) {
+
+    @IBAction func openITreeWebTools(_: UIButton) {
         UIApplication.shared.open(URL(string: "https://www.itreetools.org")! as URL, options: [:], completionHandler: nil)
     }
-    
-    @IBAction func openNationalTreeBenefitCalculator(_ sender: UIButton) {
+
+    @IBAction func openNationalTreeBenefitCalculator(_: UIButton) {
         UIApplication.shared.open(URL(string: "http://www.treebenefits.com/calculator/")! as URL, options: [:], completionHandler: nil)
     }
-    
-    @IBAction func openINaturalist(_ sender: UIButton) {
+
+    @IBAction func openINaturalist(_: UIButton) {
         UIApplication.shared.open(URL(string: "https://www.inaturalist.org")! as URL, options: [:], completionHandler: nil)
     }
 }
