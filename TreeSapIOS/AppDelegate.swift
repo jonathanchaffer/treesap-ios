@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MapKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -22,6 +23,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     ]
     /// Whether location features are enabled. Note: This is not a user preference; it is a flag that keeps track of whether the user has allowed access to device location.
     var locationFeaturesEnabled = false
+    
+    /// CLLocationManager instance for the entire class.
+    let locationManager = CLLocationManager()
 
     /// Whether the user's location should be shown on the map.
     var showingUserLocation: Bool {

@@ -14,7 +14,6 @@ class MapViewController: UIViewController {
     // MARK: Properties
 
     @IBOutlet var mapView: MKMapView!
-    let locationManager = CLLocationManager()
     let regionRadius: CLLocationDistance = 200
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
@@ -32,15 +31,15 @@ class MapViewController: UIViewController {
         }
 
         // Set attributes of the location manager.
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.distanceFilter = 1
+        appDelegate.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        appDelegate.locationManager.distanceFilter = 1
 
         // Check authorization status.
         checkLocationAuthorization()
 
         // If location use is authorized, set starting location to current location. Otherwise, use Centennial Park (in Holland, Michigan) as a default.
-        if appDelegate.locationFeaturesEnabled, locationManager.location != nil {
-            centerMapOnLocation(location: locationManager.location!.coordinate)
+        if appDelegate.locationFeaturesEnabled, appDelegate.locationManager.location != nil {
+            centerMapOnLocation(location: appDelegate.locationManager.location!.coordinate)
         } else {
             centerMapOnLocation(location: CLLocationCoordinate2D(latitude: 42.787586, longitude: -86.108110))
         }
@@ -83,7 +82,7 @@ class MapViewController: UIViewController {
     private func checkLocationAuthorization() {
         switch CLLocationManager.authorizationStatus() {
         case .notDetermined:
-            locationManager.requestWhenInUseAuthorization()
+            appDelegate.locationManager.requestWhenInUseAuthorization()
         case .restricted, .denied:
             appDelegate.disableLocationFeatures()
         case .authorizedWhenInUse, .authorizedAlways:

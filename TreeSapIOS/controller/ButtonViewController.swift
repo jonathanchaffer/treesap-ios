@@ -10,18 +10,17 @@ import MapKit
 import UIKit
 
 class ButtonViewController: UIViewController {
-    // MARK: Properties
+    // MARK: - Properties
 
     @IBOutlet var bigButton: UIButton!
-    let locationManager = CLLocationManager()
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
-    // MARK: Overrides
+    // MARK: - Overrides
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.distanceFilter = 1
+        appDelegate.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        appDelegate.locationManager.distanceFilter = 1
         bigButton.layer.cornerRadius = 0.5 * bigButton.bounds.size.width
     }
 
@@ -34,14 +33,14 @@ class ButtonViewController: UIViewController {
     }
 
     override func viewWillAppear(_: Bool) {
-        locationManager.startUpdatingLocation()
+        appDelegate.locationManager.startUpdatingLocation()
     }
 
-    override func viewDidDisappear(_: Bool) {
-        locationManager.stopUpdatingLocation()
+    override func viewWillDisappear(_: Bool) {
+        appDelegate.locationManager.stopUpdatingLocation()
     }
 
-    // MARK: Actions
+    // MARK: - Actions
 
     /**
      Function that gets called when the big button is pressed. Checks the location authorization status and enables/disables location features accordingly, then displays tree data for the tree closest to the user's location, if any, and alerts the user otherwise.
@@ -51,7 +50,7 @@ class ButtonViewController: UIViewController {
         checkLocationAuthorization()
 
         // If authorized, get tree data. Otherwise, alert the user.
-        if appDelegate.locationFeaturesEnabled, locationManager.location != nil {
+        if appDelegate.locationFeaturesEnabled, appDelegate.locationManager.location != nil {
             // If tree data was found, display it. Otherwise, alert the user.
             let treeToDisplay = getTreeDataByGPS()
             if treeToDisplay != nil {
@@ -70,20 +69,20 @@ class ButtonViewController: UIViewController {
         }
     }
 
-    // MARK: Private methods
+    // MARK: - Private methods
 
     /**
      - Returns: The nearest tree based on the user's current GPS location.
      */
     private func getTreeDataByGPS() -> Tree? {
-        let location = locationManager.location!.coordinate
+        let location = appDelegate.locationManager.location!.coordinate
         return TreeFinder.findTreeByLocation(location: location, dataSources: appDelegate.getActiveDataSources(), cutoffDistance: appDelegate.accessCutoffDistance())
     }
 
     private func checkLocationAuthorization() {
         switch CLLocationManager.authorizationStatus() {
         case .notDetermined:
-            locationManager.requestWhenInUseAuthorization()
+            appDelegate.locationManager.requestWhenInUseAuthorization()
         case .restricted, .denied:
             appDelegate.disableLocationFeatures()
         case .authorizedWhenInUse, .authorizedAlways:
