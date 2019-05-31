@@ -15,7 +15,7 @@ import MapKit
 /// A class that contains the tree data from a source. The data is read in from an online database and is stored in a file
 class DataSource {
     // MARK: - Properties
-
+    
     /// The URL of the database where the tree data sets are stored.
     let internetFilebase: String = "https://faculty.hope.edu/jipping/treesap/"
     /// The filename (and extension) of the file that contains the online tree data.
@@ -28,7 +28,7 @@ class DataSource {
     let csvFormat: CSVFormat
     /// An array of Tree objects collected by this data source.
     var trees: [Tree]
-
+    
     init(internetFilename: String, localFilename: String, dataSourceName: String, csvFormat: CSVFormat) {
         self.internetFilename = internetFilename
         self.localFilename = localFilename
@@ -36,18 +36,18 @@ class DataSource {
         self.csvFormat = csvFormat
         trees = [Tree]()
     }
-
+    
     // MARK: - Methods
-
+    
     /**
      Retrieves online tree data from the URL specified using the internet filename and internet filebase properties. Stops if there is an error, but catches the error. Used code from https://developer.apple.com/documentation/foundation/url_loading_system/fetching_website_data_into_memory as a reference.
-
+     
      - Returns: true if there is no error and false if there was an error
      */
     func retrieveOnlineData() -> Bool {
         // Flag for if there is an error (needed for errors in void function)
         var isErrorFree: Bool = true
-
+        
         // Retrieve the data from the URL
         let url = URL(string: internetFilebase + internetFilename)
         let task = URLSession.shared.dataTask(with: url!) { data, response, error in
@@ -61,7 +61,7 @@ class DataSource {
                     isErrorFree = false
                     return
                 }
-
+                
                 // Write the data to the documents directory
                 let fileManager = FileManager.default
                 do {
@@ -73,27 +73,27 @@ class DataSource {
                     isErrorFree = false
                     return
                 }
-
+                
                 // Create Tree objects for the data
                 DispatchQueue.main.async {
                     self.createTrees()
                 }
             }
         }
-
+        
         if isErrorFree {
             task.resume()
         }
-
+        
         return isErrorFree
     }
-
+    
     func getTreeList() -> [Tree] {
         return trees
     }
-
+    
     // MARK: - Private methods
-
+    
     /**
      Creates Tree objects based on the file in the Documents directory with filename localFilename. Tree objects are stored in the trees array.
      */
@@ -107,59 +107,63 @@ class DataSource {
         importer.startImportingRecords { $0 }.onFinish { importedRecords in
             // Create a Tree object for each imported record
             for record in importedRecords {
-                // Set ID (optional)
-                var id: Int?
-                if self.csvFormat.idIndex() >= 0 {
-                    id = Int(record[self.csvFormat.idIndex()])
-                }
-                // Set common name (optional)
-                var commonName: String?
-                if self.csvFormat.commonNameIndex() >= 0 {
-                    commonName = NameFormatter.formatCommonName(commonName: record[self.csvFormat.commonNameIndex()])
-                }
-                // Set scientific name (optional)
-                var scientificName: String?
-                if self.csvFormat.scientificNameIndex() >= 0 {
-                    scientificName = NameFormatter.formatScientificName(scientificName: record[self.csvFormat.scientificNameIndex()])
-                }
-                // Set latitude and longitude (required)
-                let latitude = Double(record[self.csvFormat.latitudeIndex()])
-                let longitude = Double(record[self.csvFormat.longitudeIndex()])
-                // Set DBH (optional)
-                var dbh: Double?
-                if self.csvFormat.dbhIndex() >= 0 {
-                    dbh = Double(record[self.csvFormat.dbhIndex()])
-                }
-                if latitude != nil, longitude != nil {
-                    // Create the Tree object
-                    let tree = Tree(
-                        id: id,
-                        commonName: commonName,
-                        scientificName: scientificName,
-                        location: CLLocationCoordinate2D(latitude: latitude! as CLLocationDegrees, longitude: longitude! as CLLocationDegrees),
-                        dbh: dbh
-                    )
-
-                    // Set benefit information
-                    if self.csvFormat.co2DollarsIndex() >= 0 {
-                        tree.setOtherInfo(key: "co2Dollars", value: Double(record[self.csvFormat.co2DollarsIndex()])!)
-                    }
-                    if self.csvFormat.rainfallDollarsIndex() >= 0 {
-                        tree.setOtherInfo(key: "rainfallDollars", value: Double(record[self.csvFormat.rainfallDollarsIndex()])!)
-                    }
-                    if self.csvFormat.pollutionDollarsIndex() >= 0 {
-                        tree.setOtherInfo(key: "pollutionDollars", value: Double(record[self.csvFormat.pollutionDollarsIndex()])!)
-                    }
-                    if self.csvFormat.energySavingsDollarsIndex() >= 0 {
-                        tree.setOtherInfo(key: "energySavingsDollars", value: Double(record[self.csvFormat.energySavingsDollarsIndex()])!)
-                    }
-                    if self.csvFormat.totalAnnualBenefitsDollarsIndex() >= 0 {
-                        tree.setOtherInfo(key: "totalAnnualBenefitsDollars", value: Double(record[self.csvFormat.totalAnnualBenefitsDollarsIndex()])!)
-                    }
-
-                    self.trees.append(tree)
-                }
+                self.addTreeForRecord(record: record)
             }
+        }
+    }
+    
+    private func addTreeForRecord(record: [String]) {
+        // Set ID (optional)
+        var id: Int?
+        if self.csvFormat.idIndex() >= 0 {
+            id = Int(record[self.csvFormat.idIndex()])
+        }
+        // Set common name (optional)
+        var commonName: String?
+        if self.csvFormat.commonNameIndex() >= 0 {
+            commonName = NameFormatter.formatCommonName(commonName: record[self.csvFormat.commonNameIndex()])
+        }
+        // Set scientific name (optional)
+        var scientificName: String?
+        if self.csvFormat.scientificNameIndex() >= 0 {
+            scientificName = NameFormatter.formatScientificName(scientificName: record[self.csvFormat.scientificNameIndex()])
+        }
+        // Set latitude and longitude (required)
+        let latitude = Double(record[self.csvFormat.latitudeIndex()])
+        let longitude = Double(record[self.csvFormat.longitudeIndex()])
+        // Set DBH (optional)
+        var dbh: Double?
+        if self.csvFormat.dbhIndex() >= 0 {
+            dbh = Double(record[self.csvFormat.dbhIndex()])
+        }
+        if latitude != nil, longitude != nil {
+            // Create the Tree object
+            let tree = Tree(
+                id: id,
+                commonName: commonName,
+                scientificName: scientificName,
+                location: CLLocationCoordinate2D(latitude: latitude! as CLLocationDegrees, longitude: longitude! as CLLocationDegrees),
+                dbh: dbh
+            )
+            
+            // Set benefit information
+            if self.csvFormat.co2DollarsIndex() >= 0 {
+                tree.setOtherInfo(key: "co2Dollars", value: Double(record[self.csvFormat.co2DollarsIndex()])!)
+            }
+            if self.csvFormat.rainfallDollarsIndex() >= 0 {
+                tree.setOtherInfo(key: "rainfallDollars", value: Double(record[self.csvFormat.rainfallDollarsIndex()])!)
+            }
+            if self.csvFormat.pollutionDollarsIndex() >= 0 {
+                tree.setOtherInfo(key: "pollutionDollars", value: Double(record[self.csvFormat.pollutionDollarsIndex()])!)
+            }
+            if self.csvFormat.energySavingsDollarsIndex() >= 0 {
+                tree.setOtherInfo(key: "energySavingsDollars", value: Double(record[self.csvFormat.energySavingsDollarsIndex()])!)
+            }
+            if self.csvFormat.totalAnnualBenefitsDollarsIndex() >= 0 {
+                tree.setOtherInfo(key: "totalAnnualBenefitsDollars", value: Double(record[self.csvFormat.totalAnnualBenefitsDollarsIndex()])!)
+            }
+            
+            self.trees.append(tree)
         }
     }
 }
