@@ -33,6 +33,7 @@ class TreeDetailPageViewController: UIPageViewController {
         dataSource = self
         delegate = self
 
+        title = "Tree Details"
         configurePageControl()
 
         // Set the background color to white so it is not noticed when flipping quickly between the different tree displays
