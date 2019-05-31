@@ -68,7 +68,7 @@ class PieChartDisplayViewController: TreeDisplayViewController, ChartViewDelegat
         //        }
 
         // Create a data set for the entries
-        let set = PieChartDataSet(values: entries, label: "")
+        let set = PieChartDataSet(entries: entries, label: "")
 
         // Configure the data set
         set.drawIconsEnabled = false
