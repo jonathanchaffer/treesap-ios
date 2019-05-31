@@ -147,11 +147,20 @@ class DataSource {
             )
             
             // Set benefit information
+            if self.csvFormat.co2PoundsIndex() >= 0 {
+                tree.setOtherInfo(key: "co2Pounds", value: Double(record[self.csvFormat.co2PoundsIndex()])!)
+            }
             if self.csvFormat.co2DollarsIndex() >= 0 {
                 tree.setOtherInfo(key: "co2Dollars", value: Double(record[self.csvFormat.co2DollarsIndex()])!)
             }
+            if self.csvFormat.rainfallCubicFeetIndex() >= 0 {
+                tree.setOtherInfo(key: "rainfallCubicFeet", value: Double(record[self.csvFormat.rainfallCubicFeetIndex()])!)
+            }
             if self.csvFormat.rainfallDollarsIndex() >= 0 {
                 tree.setOtherInfo(key: "rainfallDollars", value: Double(record[self.csvFormat.rainfallDollarsIndex()])!)
+            }
+            if self.csvFormat.pollutionOuncesIndex() >= 0 {
+                tree.setOtherInfo(key: "pollutionOunces", value: Double(record[self.csvFormat.pollutionOuncesIndex()])!)
             }
             if self.csvFormat.pollutionDollarsIndex() >= 0 {
                 tree.setOtherInfo(key: "pollutionDollars", value: Double(record[self.csvFormat.pollutionDollarsIndex()])!)
