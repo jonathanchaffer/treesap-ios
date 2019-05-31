@@ -5,4 +5,5 @@ target "TreeSapIOS" do
 end 
 target "TreeSapIOSTests" do
 	pod 'CSVImporter'
+  pod 'Charts'
 end

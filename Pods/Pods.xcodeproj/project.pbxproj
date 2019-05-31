@@ -35,6 +35,7 @@
 		2F1089C393ABA68C220FC798FA7B4836 /* CSVImporter-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA0CEE8641C6033DDA0EC5CFB6AA917 /* CSVImporter-dummy.m */; };
 		2F1597F0B92424182C17DE275E6809C7 /* Pods-TreeSapIOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C9BECB0B8E0FE4ACF0990EB38AB951BD /* Pods-TreeSapIOS-umbrella.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		31D1FF593BE537BD1A3ABE633553509B /* IndexAxisValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E1F67926060D1E76E18F4FEF2A3C25 /* IndexAxisValueFormatter.swift */; };
+		33F2719CEA80AC35AB3F263C02D5D9AD /* Pods-TreeSapIOSTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B22706C57F344ED2DAEE93AC85189205 /* Pods-TreeSapIOSTests-umbrella.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		345FE23EFE2E1CF303DF3BF1858896A0 /* LineRadarChartDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAC129D3F1CFAC6E95836D1AFC27A6C /* LineRadarChartDataSet.swift */; };
 		347C70CBB2AAF6F1CE82EC0CFC205046 /* LineRadarRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002F8CED778FE4A5ACC6A23CE498C09E /* LineRadarRenderer.swift */; };
 		3561E60E005DCDA1953AAE11AA67D922 /* CombinedHighlighter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A330FAC98888A26CF63E760937DC88 /* CombinedHighlighter.swift */; };
@@ -71,7 +72,6 @@
 		60C033F2C009276C44398D5F021240A4 /* CollectionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E34733F8FED12552E475F3C3F5E52D4 /* CollectionExtension.swift */; };
 		61A9D01F31A31D9017E8083FBCB985BF /* RadarChartRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4FA858156747E37221A19683BF753D /* RadarChartRenderer.swift */; };
 		62EA12E2539F59FF873758BB5B3704A6 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C65DBA4AEAD77C2F335286197C463F /* Globals.swift */; };
-		6428178415137B3B7A7EBD963E468112 /* Pods-TreeSapIOSTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B22706C57F344ED2DAEE93AC85189205 /* Pods-TreeSapIOSTests-umbrella.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		66EC88364FBFE778DEF9715AC9129F1F /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984A0C17A0A831851A991CE5AEE995D4 /* Renderer.swift */; };
 		686919F0E246D4F5519C267BBF80F5AB /* TimeIntervalExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C1F25C8B0536F5F3DF36AF483C9DBC /* TimeIntervalExtension.swift */; };
 		6AF7D2E4F8E70B0C1BF0C2348641FA3F /* ScatterChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F89BAD1AE515CC67DE138428143BA9 /* ScatterChartData.swift */; };
@@ -154,7 +154,6 @@
 		D8B83845366BE223A5DA6A2FA306DA21 /* YAxisRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267BECFD1A692F51B2BB83B3C95AA15A /* YAxisRenderer.swift */; };
 		DC320CE617E4F5137665F3F8DD1A7AE0 /* DataApproximator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918B0FE5ACEB9D7C8F6ED598A7DFB15C /* DataApproximator.swift */; };
 		DC3BF1CF4883B9EB07EEA6230E226BD7 /* RadarChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7229D704BE34910BE3DD770BF4393579 /* RadarChartView.swift */; };
-		DE73906026ED58801A684F6098823226 /* Pods-TreeSapIOSTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C98733188874F7F7BE40FD985A78F85D /* Pods-TreeSapIOSTests-dummy.m */; };
 		DF04E546F9AC6A36B133F27F83126263 /* ChartDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91DEFE3200E720A2EB5F37718B59AAEA /* ChartDataSet.swift */; };
 		E2EA0399936CDB86BF581DDD3AE4BBB1 /* CandleStickChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4B4FF34ED702C6A5690FD345694411 /* CandleStickChartView.swift */; };
 		E3F6953192CAE677C090EEC8CE4BBFD6 /* ComponentBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D69A6A3AD34A1496E8A83B2514BA27 /* ComponentBase.swift */; };
@@ -170,6 +169,7 @@
 		F5B071C1EF17302CAC5C03CBEC47A25B /* CandleStickChartRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA8A2D50B0F6F35BA274B4C249108AD /* CandleStickChartRenderer.swift */; };
 		F6618DA93D9FB768694407A6E1653699 /* BarLineScatterCandleBubbleChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F55C0AB54CE15603D3725AF218F29CC /* BarLineScatterCandleBubbleChartData.swift */; };
 		F78A1EA97BE9F9D166B0F7EE2A2498EA /* ScatterChartDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED7870741E426C9DDC8A56E6336B996 /* ScatterChartDataSet.swift */; };
+		F9612C8DD507D9C6D958760A3C1AE6DB /* Pods-TreeSapIOSTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C98733188874F7F7BE40FD985A78F85D /* Pods-TreeSapIOSTests-dummy.m */; };
 		FA81C25ADF3171CEF7B8A5265785CCE6 /* IntExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D01A340CF233A33F0FA10CD2C72E1BB /* IntExtension.swift */; };
 		FC989C533F694CBC60E9DC0F90FBD796 /* DefaultAxisValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68C20F96FE39D3FCBCE7E6A0FA0FAE0 /* DefaultAxisValueFormatter.swift */; };
 		FE866C9871B531A482C4B7A7D10B4ABF /* MoveViewJob.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F33F98D3D8E61E3141B5FF474BA6A8 /* MoveViewJob.swift */; };
@@ -177,14 +177,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		286C10F1176E5169002EBF0A9EED94F4 /* PBXContainerItemProxy */ = {
+		4A691D1211F55BBC681727BBE85DA2A7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 6642408F0B30E5B12B6A36250C7BBE4E;
-			remoteInfo = HandySwift;
+			remoteGlobalIDString = BDF6C29A8B587D558B32E2574B18FB0F;
+			remoteInfo = CSVImporter;
 		};
-		4A691D1211F55BBC681727BBE85DA2A7 /* PBXContainerItemProxy */ = {
+		65ECC3FB34B0F1FD9BAFBE7C5193D52A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
@@ -197,6 +197,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 6642408F0B30E5B12B6A36250C7BBE4E;
 			remoteInfo = HandySwift;
+		};
+		8C88E2657DBFAC11AFEF857DB2B59FD6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BF03B0B2B8B052092CB5F90CC5FB3757;
+			remoteInfo = Charts;
 		};
 		A21FB878437A7FE7F0269ED529BADED2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -212,12 +219,12 @@
 			remoteGlobalIDString = 6642408F0B30E5B12B6A36250C7BBE4E;
 			remoteInfo = HandySwift;
 		};
-		FD5166E7C721B3340CE817853C5B3C9B /* PBXContainerItemProxy */ = {
+		C54545704B45AFA62827AF213CA641F6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = BDF6C29A8B587D558B32E2574B18FB0F;
-			remoteInfo = CSVImporter;
+			remoteGlobalIDString = 6642408F0B30E5B12B6A36250C7BBE4E;
+			remoteInfo = HandySwift;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -424,14 +431,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B580E71DE01A0C119DE872B51D30318C /* Frameworks */ = {
+		B99B98A53E9A32442EF303679407411A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B99B98A53E9A32442EF303679407411A /* Frameworks */ = {
+		CBFD0691E8DFF7AD205A83C96536D80E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -776,14 +783,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0DDC2FCEDB1567D3327A8354BEBFD107 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6428178415137B3B7A7EBD963E468112 /* Pods-TreeSapIOSTests-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		95577DBC1A1300E4B8AD0397CD3837FB /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -797,6 +796,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C210D966470F247089C59E4429D116D /* CSVImporter-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2FACA342394B314EBC8DC5BFD489ADE /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				33F2719CEA80AC35AB3F263C02D5D9AD /* Pods-TreeSapIOSTests-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -833,17 +840,18 @@
 		};
 		3FC04848852B54D3E1DF5619FCBA35BD /* Pods-TreeSapIOSTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B24CA4170C58301338C3162FD162FAC8 /* Build configuration list for PBXNativeTarget "Pods-TreeSapIOSTests" */;
+			buildConfigurationList = C24B594F356014EEE08DDA703584037C /* Build configuration list for PBXNativeTarget "Pods-TreeSapIOSTests" */;
 			buildPhases = (
-				0DDC2FCEDB1567D3327A8354BEBFD107 /* Headers */,
-				63038F851F572AD448286BA9A0AE6794 /* Sources */,
-				B580E71DE01A0C119DE872B51D30318C /* Frameworks */,
+				D2FACA342394B314EBC8DC5BFD489ADE /* Headers */,
+				1FD8D251265520B1C7DE26F2BBB32D15 /* Sources */,
+				CBFD0691E8DFF7AD205A83C96536D80E /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				6E12156BA67177208B010D9616534D1E /* PBXTargetDependency */,
-				610FA07FE0B53E226073F6A76A73BB05 /* PBXTargetDependency */,
+				1AA1257E177B2CB88D6AF82A93228EE7 /* PBXTargetDependency */,
+				762F5EECC71ED05E583DCF9B28460EC5 /* PBXTargetDependency */,
+				6D1E51B1BD50E78412FF7DDECD0453AF /* PBXTargetDependency */,
 			);
 			name = "Pods-TreeSapIOSTests";
 			productName = "Pods-TreeSapIOSTests";
@@ -1048,11 +1056,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		63038F851F572AD448286BA9A0AE6794 /* Sources */ = {
+		1FD8D251265520B1C7DE26F2BBB32D15 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DE73906026ED58801A684F6098823226 /* Pods-TreeSapIOSTests-dummy.m in Sources */,
+				F9612C8DD507D9C6D958760A3C1AE6DB /* Pods-TreeSapIOSTests-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1211,23 +1219,29 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		1AA1257E177B2CB88D6AF82A93228EE7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = CSVImporter;
+			target = BDF6C29A8B587D558B32E2574B18FB0F /* CSVImporter */;
+			targetProxy = 65ECC3FB34B0F1FD9BAFBE7C5193D52A /* PBXContainerItemProxy */;
+		};
 		3A8D0067DDEDE4796AA66A343FEB611E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = CSVImporter;
 			target = BDF6C29A8B587D558B32E2574B18FB0F /* CSVImporter */;
 			targetProxy = 4A691D1211F55BBC681727BBE85DA2A7 /* PBXContainerItemProxy */;
 		};
-		610FA07FE0B53E226073F6A76A73BB05 /* PBXTargetDependency */ = {
+		6D1E51B1BD50E78412FF7DDECD0453AF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = HandySwift;
 			target = 6642408F0B30E5B12B6A36250C7BBE4E /* HandySwift */;
-			targetProxy = 286C10F1176E5169002EBF0A9EED94F4 /* PBXContainerItemProxy */;
+			targetProxy = C54545704B45AFA62827AF213CA641F6 /* PBXContainerItemProxy */;
 		};
-		6E12156BA67177208B010D9616534D1E /* PBXTargetDependency */ = {
+		762F5EECC71ED05E583DCF9B28460EC5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = CSVImporter;
-			target = BDF6C29A8B587D558B32E2574B18FB0F /* CSVImporter */;
-			targetProxy = FD5166E7C721B3340CE817853C5B3C9B /* PBXContainerItemProxy */;
+			name = Charts;
+			target = BF03B0B2B8B052092CB5F90CC5FB3757 /* Charts */;
+			targetProxy = 8C88E2657DBFAC11AFEF857DB2B59FD6 /* PBXContainerItemProxy */;
 		};
 		9C960C25C55376C7FC91CC57A759C8FC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1250,6 +1264,30 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		06BAC7B45949A74B5592ADC30C3D5F4B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 201CFDDC3F74640158AFEA5789EF7694 /* Pods-TreeSapIOSTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-TreeSapIOSTests/Pods-TreeSapIOSTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		07AAC7A21C878FC857EF92DFBCFEFE89 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 53949B1949D935C3460E3E5FEC68455E /* Pods-TreeSapIOS.debug.xcconfig */;
@@ -1388,9 +1426,9 @@
 			};
 			name = Release;
 		};
-		7D03007BF0EBC196330E9C3134518CDE /* Release */ = {
+		4FD6B7B9A5F319242390A31FE8907652 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 201CFDDC3F74640158AFEA5789EF7694 /* Pods-TreeSapIOSTests.release.xcconfig */;
+			baseConfigurationReference = 0B6425D914747D653810E57808685890 /* Pods-TreeSapIOSTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -1408,9 +1446,8 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
 			};
-			name = Release;
+			name = Debug;
 		};
 		80CADD03E32B8BA74A36E9515C37C6A3 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -1573,29 +1610,6 @@
 			};
 			name = Debug;
 		};
-		F4AB7BE237E7CDB5B43F7F531298F796 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0B6425D914747D653810E57808685890 /* Pods-TreeSapIOSTests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-TreeSapIOSTests/Pods-TreeSapIOSTests.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
 		FC42F4381E450CCDFC099A46CC3D32EF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 22AFBDC10F0E2E16C64177408DE61817 /* CSVImporter.xcconfig */;
@@ -1660,20 +1674,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B24CA4170C58301338C3162FD162FAC8 /* Build configuration list for PBXNativeTarget "Pods-TreeSapIOSTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				F4AB7BE237E7CDB5B43F7F531298F796 /* Debug */,
-				7D03007BF0EBC196330E9C3134518CDE /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		B2B6E9181EF95AB785F746399A434D39 /* Build configuration list for PBXNativeTarget "HandySwift" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				443C4F25FF288667295F97511463A9CE /* Debug */,
 				4AABF854ADFD0318ED6D9D052376E9CF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C24B594F356014EEE08DDA703584037C /* Build configuration list for PBXNativeTarget "Pods-TreeSapIOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4FD6B7B9A5F319242390A31FE8907652 /* Debug */,
+				06BAC7B45949A74B5592ADC30C3D5F4B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
