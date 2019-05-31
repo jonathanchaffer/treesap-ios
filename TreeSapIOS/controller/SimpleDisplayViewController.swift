@@ -23,13 +23,13 @@ class SimpleDisplayViewController: TreeDisplayViewController {
         if (self.displayedTree!.commonName != nil) {
             self.commonNameLabel.text = self.displayedTree!.commonName
         } else {
-            self.commonNameLabel.text = "N/A"
+            self.commonNameLabel.text = "Common Name N/A"
         }
         // Set scientific name label
         if (self.displayedTree!.scientificName != nil) {
             self.scientificNameLabel.text = self.displayedTree!.scientificName
         } else {
-            self.scientificNameLabel.text = "N/A"
+            self.scientificNameLabel.text = "Scientific Name N/A"
         }
         // Set tree ID label
         if (self.displayedTree!.id != nil) {
