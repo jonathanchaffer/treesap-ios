@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 
 class CoordinatesViewController: UIViewController, UITextFieldDelegate {
-	// MARK: Properties
+	// MARK: - Properties
     @IBOutlet weak var latitudeTextField: UITextField!
     @IBOutlet weak var longitudeTextField: UITextField!
     @IBOutlet weak var getTreeDataButton: UIButton!
@@ -30,9 +30,17 @@ class CoordinatesViewController: UIViewController, UITextFieldDelegate {
         gestureRecognizer.cancelsTouchesInView = false
         self.view.addGestureRecognizer(gestureRecognizer)
     }
+	
+	// MARK: - Actions
+    /// Calls handleCoordinates when the Get Tree Data button is pressed.
+	@IBAction func handleCoordinatesButtonPressed(_ sender: UIButton) {
+		handleCoordinates()
+	}
     
-    /// Brings up the tree display for the tree closest to the coordinates in the longitude and latitude text fields or alerts the user if invalid coordinates are in the two text fields.
-    func handleCoordinates(){
+	// MARK: - Methods
+    
+    /// Displays tree information for the inputted coordinates or alerts the user if invalid coordinates were entered.
+    private func handleCoordinates(){
         // Convert the inputs to Double. If the conversion failed, alert the user.
         let latitude = Double(latitudeTextField.text!)
         let longitude = Double(longitudeTextField.text!)
@@ -54,20 +62,6 @@ class CoordinatesViewController: UIViewController, UITextFieldDelegate {
             self.present(alert, animated: true)
         }
     }
-	
-	// MARK: Actions
-    /// Calls the handleCoordinates method.
-	@IBAction func handleCoordinatesButtonPressed(_ sender: UIButton) {
-		handleCoordinates()
-	}
-	
-    // MARK: Text-Field-Related Functions
-    // Based on code from https://medium.com/@KaushElsewhere/how-to-dismiss-keyboard-in-a-view-controller-of-ios-3b1bfe973ad1
-    /// Makes all included text fields (which will probably be all the text fields that this class has as properties) stop editting, dismissing the keyboard
-    @objc func stopEditingText(){
-        longitudeTextField.endEditing(true)
-        latitudeTextField.endEditing(true)
-    }
     
     // If the text field is the first/latitude text field, the second/longitude text field becomes first responder (so it becomes selected). If the text field is the second/longitude text field, then the handleCoordinates method is called. Otherwise, nothing happens.
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -79,18 +73,21 @@ class CoordinatesViewController: UIViewController, UITextFieldDelegate {
         default:
             return true
         }
-        
         return true
     }
     
-	// MARK: Private methods
+    // Based on code from https://medium.com/@KaushElsewhere/how-to-dismiss-keyboard-in-a-view-controller-of-ios-3b1bfe973ad1
+    /// Makes all included text fields (which will probably be all the text fields that this class has as properties) stop editting, dismissing the keyboard
+    @objc func stopEditingText(){
+        longitudeTextField.endEditing(true)
+        latitudeTextField.endEditing(true)
+    }
     
     /**
-     Returns a Tree object that corresponds to the tree closest to and within the cutoff distance of the given location, which is specified by GPS coordinates, or returns nil if no such Tree object was found
+     - Returns: A Tree object that corresponds to the tree closest to and within the cutoff distance of the given location, or nil if no such tree was found.
      
-     - Parameters:
-     - latitude: the latitude value in the coordinates used to specify a location
-     - longitude: the latitude value in the coordinates used to specify a location
+     - Parameter latitude: The latitude value.
+     - Parameter longitude: The longitude value.
      */
 	private func getTreeDataByCoords(latitude: Double, longitude: Double) -> Tree? {
 		let location = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
