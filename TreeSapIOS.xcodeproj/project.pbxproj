@@ -12,6 +12,7 @@
 		BC52509D229F0316009C011E /* UserPreferenceKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC52509C229F0316009C011E /* UserPreferenceKeys.swift */; };
 		BCD3846B22A01D6C009581E0 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCD3846822A01D37009581E0 /* Charts.framework */; };
 		BCD3846C22A01D6C009581E0 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BCD3846822A01D37009581E0 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BCECB2CD22A1598A0045C548 /* TreeFinderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCECB2CC22A1598A0045C548 /* TreeFinderTests.swift */; };
 		BCED4D26229888B60058780E /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCED4D25229888B60058780E /* UserPreferences.swift */; };
 		CB091E712292EBCF00F0CB06 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB091E702292EBCF00F0CB06 /* HomeViewController.swift */; };
 		CB12C94B228DF508000C74C3 /* BenefitsDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB12C94A228DF508000C74C3 /* BenefitsDisplayViewController.swift */; };
@@ -95,6 +96,7 @@
 		69FCB8763D3803D7045729DF /* Pods-TreeSapIOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreeSapIOSTests.debug.xcconfig"; path = "Target Support Files/Pods-TreeSapIOSTests/Pods-TreeSapIOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B77358D36DBDDED4196CADD2 /* libPods-TreeSapIOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TreeSapIOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC52509C229F0316009C011E /* UserPreferenceKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPreferenceKeys.swift; sourceTree = "<group>"; };
+		BCECB2CC22A1598A0045C548 /* TreeFinderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeFinderTests.swift; sourceTree = "<group>"; };
 		BCED4D25229888B60058780E /* UserPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
 		CB091E702292EBCF00F0CB06 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		CB12C94A228DF508000C74C3 /* BenefitsDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BenefitsDisplayViewController.swift; sourceTree = "<group>"; };
@@ -182,6 +184,22 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		BCECB2C922A159080045C548 /* Model Tests */ = {
+			isa = PBXGroup;
+			children = (
+				CB2D4DA622959D0E006DAC37 /* DataSourceTests.swift */,
+				BCECB2CC22A1598A0045C548 /* TreeFinderTests.swift */,
+			);
+			path = "Model Tests";
+			sourceTree = "<group>";
+		};
+		BCECB2CB22A159190045C548 /* Controller Tests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Controller Tests";
+			sourceTree = "<group>";
+		};
 		CB6953B4228EE4300002024B /* controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -266,9 +284,10 @@
 		CBBCE840228DD777008F7225 /* TreeSapIOSTests */ = {
 			isa = PBXGroup;
 			children = (
+				BCECB2CB22A159190045C548 /* Controller Tests */,
+				BCECB2C922A159080045C548 /* Model Tests */,
 				CBBCE841228DD777008F7225 /* TreeSapIOSTests.swift */,
 				CBBCE843228DD777008F7225 /* Info.plist */,
-				CB2D4DA622959D0E006DAC37 /* DataSourceTests.swift */,
 			);
 			path = TreeSapIOSTests;
 			sourceTree = "<group>";
@@ -482,6 +501,7 @@
 			files = (
 				CB2D4DA722959D0E006DAC37 /* DataSourceTests.swift in Sources */,
 				CBBCE842228DD777008F7225 /* TreeSapIOSTests.swift in Sources */,
+				BCECB2CD22A1598A0045C548 /* TreeFinderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
