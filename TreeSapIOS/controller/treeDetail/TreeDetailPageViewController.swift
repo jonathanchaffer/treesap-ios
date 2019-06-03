@@ -11,7 +11,7 @@ import CSVImporter
 import UIKit
 
 class TreeDetailPageViewController: UIPageViewController {
-    // MARK: Properties
+    // MARK: - Properties
 
     /// The tree that will be displayed in the tree detail views.
     var displayedTree: Tree?
@@ -26,7 +26,7 @@ class TreeDetailPageViewController: UIPageViewController {
         ]
     }()
 
-    // MARK: Overrides
+    // MARK: - Overrides
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,14 +61,14 @@ class TreeDetailPageViewController: UIPageViewController {
 
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating _: Bool, previousViewControllers _: [UIViewController], transitionCompleted _: Bool) {
         let pageContentViewController = pageViewController.viewControllers![0]
-        pageControl!.currentPage = pages.index(of: pageContentViewController as! TreeDisplayViewController)!
+        pageControl!.currentPage = pages.firstIndex(of: pageContentViewController as! TreeDisplayViewController)!
     }
 
-    // MARK: Private methods
+    // MARK: - Private methods
 
     /**
      Instantiates and returns a TreeDisplayViewController based on the identifier of the view controller in the storyboard.
-     - Parameter identifier: the storyboard ID of the view controller that is to be instantiated and returned.
+     - Parameter identifier: The storyboard ID of the view controller that is to be instantiated and returned.
      */
     private func getViewController(withIdentifier identifier: String) -> TreeDisplayViewController {
         return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: identifier) as! TreeDisplayViewController
