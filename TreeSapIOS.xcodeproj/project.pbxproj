@@ -23,6 +23,7 @@
 		CB6953B8228EE8720002024B /* Tree.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6953B7228EE8720002024B /* Tree.swift */; };
 		CB6953BA228EE9530002024B /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6953B9228EE9530002024B /* DataSource.swift */; };
 		CB7021932292FDCD00D11B0F /* AddTreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7021922292FDCD00D11B0F /* AddTreeViewController.swift */; };
+		CB9F423D22A548D700C97F70 /* NameFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9F423C22A548D700C97F70 /* NameFormatterTests.swift */; };
 		CBB264B822973C6C00C036FB /* DataSourceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB264B722973C6C00C036FB /* DataSourceTableViewController.swift */; };
 		CBBCE82B228DD76B008F7225 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBCE82A228DD76B008F7225 /* AppDelegate.swift */; };
 		CBBCE82D228DD76B008F7225 /* ButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBCE82C228DD76B008F7225 /* ButtonViewController.swift */; };
@@ -85,6 +86,7 @@
 		CB6953B7228EE8720002024B /* Tree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tree.swift; sourceTree = "<group>"; };
 		CB6953B9228EE9530002024B /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 		CB7021922292FDCD00D11B0F /* AddTreeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTreeViewController.swift; sourceTree = "<group>"; };
+		CB9F423C22A548D700C97F70 /* NameFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameFormatterTests.swift; sourceTree = "<group>"; };
 		CBB264B722973C6C00C036FB /* DataSourceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourceTableViewController.swift; sourceTree = "<group>"; };
 		CBBCE827228DD76B008F7225 /* TreeSapIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TreeSapIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBBCE82A228DD76B008F7225 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 			children = (
 				CB2D4DA622959D0E006DAC37 /* DataSourceTests.swift */,
 				BCECB2CC22A1598A0045C548 /* TreeFinderTests.swift */,
+				CB9F423C22A548D700C97F70 /* NameFormatterTests.swift */,
 			);
 			path = "Model Tests";
 			sourceTree = "<group>";
@@ -442,6 +445,7 @@
 				CB2D4DA722959D0E006DAC37 /* DataSourceTests.swift in Sources */,
 				CBBCE842228DD777008F7225 /* TreeSapIOSTests.swift in Sources */,
 				BCECB2CD22A1598A0045C548 /* TreeFinderTests.swift in Sources */,
+				CB9F423D22A548D700C97F70 /* NameFormatterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -607,7 +611,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = edu.hope.cs.ios.TreeSap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -628,7 +632,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = edu.hope.cs.ios.TreeSap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
