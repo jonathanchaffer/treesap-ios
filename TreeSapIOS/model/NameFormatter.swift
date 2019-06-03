@@ -19,12 +19,12 @@ class NameFormatter {
         // Capitalize each word
         let spaceSplit = newCommonName.split(separator: " ")
         newCommonName = ""
-        if spaceSplit.count >= 2 {
+        if spaceSplit.count >= 1 {
             for i in 0 ..< spaceSplit.count - 1 {
                 newCommonName += spaceSplit[i].capitalized + " "
             }
+            newCommonName += spaceSplit[spaceSplit.count - 1].capitalized
         }
-        newCommonName += spaceSplit[spaceSplit.count - 1].capitalized
         // Return the formatted name
         return newCommonName
     }
@@ -45,10 +45,12 @@ class NameFormatter {
         // Capitalize the first word, and lowercase the others
         let spaceSplit2 = newScientificName.split(separator: " ")
         newScientificName = ""
-        newScientificName += spaceSplit2[0].capitalized
-        if spaceSplit2.count >= 2 {
-            for i in 1 ..< spaceSplit2.count {
-                newScientificName += " " + spaceSplit2[i].lowercased()
+        if spaceSplit2.count >= 1 {
+            newScientificName += spaceSplit2[0].capitalized
+            if spaceSplit2.count >= 2 {
+                for i in 1 ..< spaceSplit2.count {
+                    newScientificName += " " + spaceSplit2[i].lowercased()
+                }
             }
         }
         // Return the formatted name

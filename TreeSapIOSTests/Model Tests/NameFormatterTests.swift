@@ -16,6 +16,8 @@ class NameFormatterTests: XCTestCase {
     override func tearDown() { }
 
     func testFormatCommonName() {
+        XCTAssertEqual(NameFormatter.formatCommonName(commonName: ""), "")
+        XCTAssertEqual(NameFormatter.formatCommonName(commonName: "tree"), "Tree")
         XCTAssertEqual(NameFormatter.formatCommonName(commonName: "Sycamore-American"), "American Sycamore")
         XCTAssertEqual(NameFormatter.formatCommonName(commonName: "Big pine tree"), "Big Pine Tree")
         XCTAssertEqual(NameFormatter.formatCommonName(commonName: "Tree-Big ol'"), "Big Ol' Tree")
@@ -24,6 +26,8 @@ class NameFormatterTests: XCTestCase {
     }
     
     func testFormatScientificName() {
+        XCTAssertEqual(NameFormatter.formatScientificName(scientificName: ""), "")
+        XCTAssertEqual(NameFormatter.formatScientificName(scientificName: "tree"), "Tree")
         XCTAssertEqual(NameFormatter.formatScientificName(scientificName: "PLOC Platanus occidentalis"), "Platanus occidentalis")
         XCTAssertEqual(NameFormatter.formatScientificName(scientificName: "Big ol' pine tree"), "Big ol' pine tree")
         XCTAssertEqual(NameFormatter.formatScientificName(scientificName: "acer Saccharum"), "Acer saccharum")
