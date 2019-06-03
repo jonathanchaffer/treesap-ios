@@ -85,7 +85,7 @@
 		B77358D36DBDDED4196CADD2 /* libPods-TreeSapIOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TreeSapIOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC52509C229F0316009C011E /* UserPreferenceKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPreferenceKeys.swift; sourceTree = "<group>"; };
 		BCECB2CC22A1598A0045C548 /* TreeFinderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeFinderTests.swift; sourceTree = "<group>"; };
-		CB091E702292EBCF00F0CB06 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		CB091E702292EBCF00F0CB06 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = ../HomeViewController.swift; sourceTree = "<group>"; };
 		CB12C94A228DF508000C74C3 /* BenefitsDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BenefitsDisplayViewController.swift; sourceTree = "<group>"; };
 		CB12C94C228DF5C4000C74C3 /* SimpleDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleDisplayViewController.swift; sourceTree = "<group>"; };
 		CB12C94E228DF85D000C74C3 /* TreeDetailPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeDetailPageViewController.swift; sourceTree = "<group>"; };
@@ -95,16 +95,16 @@
 		CB672F1A229434DA00622B59 /* TreeDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeDisplayViewController.swift; sourceTree = "<group>"; };
 		CB6953B7228EE8720002024B /* Tree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tree.swift; sourceTree = "<group>"; };
 		CB6953B9228EE9530002024B /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
-		CB7021922292FDCD00D11B0F /* AddTreeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTreeViewController.swift; sourceTree = "<group>"; };
+		CB7021922292FDCD00D11B0F /* AddTreeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddTreeViewController.swift; path = ../AddTreeViewController.swift; sourceTree = "<group>"; };
 		CB9F423C22A548D700C97F70 /* NameFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameFormatterTests.swift; sourceTree = "<group>"; };
 		CB9F424222A55F3A00C97F70 /* TreeSapIOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TreeSapIOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB9F424422A55F3A00C97F70 /* TreeSapIOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeSapIOSUITests.swift; sourceTree = "<group>"; };
 		CB9F424622A55F3A00C97F70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CBB264B722973C6C00C036FB /* DataSourceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourceTableViewController.swift; sourceTree = "<group>"; };
+		CBB264B722973C6C00C036FB /* DataSourceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DataSourceTableViewController.swift; path = ../DataSourceTableViewController.swift; sourceTree = "<group>"; };
 		CBBCE827228DD76B008F7225 /* TreeSapIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TreeSapIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBBCE82A228DD76B008F7225 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CBBCE82C228DD76B008F7225 /* ButtonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonViewController.swift; sourceTree = "<group>"; };
-		CBBCE82E228DD76B008F7225 /* CoordinatesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatesViewController.swift; sourceTree = "<group>"; };
+		CBBCE82C228DD76B008F7225 /* ButtonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ButtonViewController.swift; path = ../ButtonViewController.swift; sourceTree = "<group>"; };
+		CBBCE82E228DD76B008F7225 /* CoordinatesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CoordinatesViewController.swift; path = ../CoordinatesViewController.swift; sourceTree = "<group>"; };
 		CBBCE831228DD76B008F7225 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CBBCE833228DD777008F7225 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CBBCE836228DD777008F7225 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -112,14 +112,14 @@
 		CBBCE83D228DD777008F7225 /* TreeSapIOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TreeSapIOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBBCE841228DD777008F7225 /* TreeSapIOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeSapIOSTests.swift; sourceTree = "<group>"; };
 		CBBCE843228DD777008F7225 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CBBCE84C228DD847008F7225 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		CBBCE84E228DD93E008F7225 /* QRCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeViewController.swift; sourceTree = "<group>"; };
-		CBBCE850228DD9B1008F7225 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		CBBCE84C228DD847008F7225 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MapViewController.swift; path = ../MapViewController.swift; sourceTree = "<group>"; };
+		CBBCE84E228DD93E008F7225 /* QRCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = QRCodeViewController.swift; path = ../QRCodeViewController.swift; sourceTree = "<group>"; };
+		CBBCE850228DD9B1008F7225 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = ../SettingsViewController.swift; sourceTree = "<group>"; };
 		CBE8788F22957A1300C06E69 /* TreeAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeAnnotation.swift; sourceTree = "<group>"; };
 		CBFD63C02295A1E800804DC4 /* NameFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameFormatter.swift; sourceTree = "<group>"; };
 		CBFD63C82295BB0700804DC4 /* TreePointAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreePointAnnotationView.swift; sourceTree = "<group>"; };
 		D76D617E22931990003FFD24 /* CSVFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVFormat.swift; sourceTree = "<group>"; };
-		D76D618022931F79003FFD24 /* MoreInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreInformationViewController.swift; sourceTree = "<group>"; };
+		D76D618022931F79003FFD24 /* MoreInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MoreInformationViewController.swift; path = ../MoreInformationViewController.swift; sourceTree = "<group>"; };
 		D76D6182229321E7003FFD24 /* TreeFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeFinder.swift; sourceTree = "<group>"; };
 		D7755F6722DA6B48E552032C /* Pods-TreeSapIOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreeSapIOS.debug.xcconfig"; path = "Target Support Files/Pods-TreeSapIOS/Pods-TreeSapIOS.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -195,20 +195,10 @@
 		CB6953B4228EE4300002024B /* controller */ = {
 			isa = PBXGroup;
 			children = (
-				CB091E702292EBCF00F0CB06 /* HomeViewController.swift */,
-				CBBCE82C228DD76B008F7225 /* ButtonViewController.swift */,
-				CBBCE82E228DD76B008F7225 /* CoordinatesViewController.swift */,
-				CBBCE84C228DD847008F7225 /* MapViewController.swift */,
-				CBBCE84E228DD93E008F7225 /* QRCodeViewController.swift */,
-				CBBCE850228DD9B1008F7225 /* SettingsViewController.swift */,
-				CBB264B722973C6C00C036FB /* DataSourceTableViewController.swift */,
-				CB7021922292FDCD00D11B0F /* AddTreeViewController.swift */,
-				D76D618022931F79003FFD24 /* MoreInformationViewController.swift */,
-				CB12C94E228DF85D000C74C3 /* TreeDetailPageViewController.swift */,
-				CB672F1A229434DA00622B59 /* TreeDisplayViewController.swift */,
-				CB12C94C228DF5C4000C74C3 /* SimpleDisplayViewController.swift */,
-				CB12C950228DFA12000C74C3 /* PieChartDisplayViewController.swift */,
-				CB12C94A228DF508000C74C3 /* BenefitsDisplayViewController.swift */,
+				CB9F424F22A5AE0B00C97F70 /* tabs */,
+				CB9F424E22A5AE0100C97F70 /* settings */,
+				CB9F424D22A5ADF800C97F70 /* addTree */,
+				CB9F424C22A5ADD200C97F70 /* treeDetail */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -245,6 +235,48 @@
 				CB9F424622A55F3A00C97F70 /* Info.plist */,
 			);
 			path = TreeSapIOSUITests;
+			sourceTree = "<group>";
+		};
+		CB9F424C22A5ADD200C97F70 /* treeDetail */ = {
+			isa = PBXGroup;
+			children = (
+				CB12C94E228DF85D000C74C3 /* TreeDetailPageViewController.swift */,
+				CB672F1A229434DA00622B59 /* TreeDisplayViewController.swift */,
+				CB12C94C228DF5C4000C74C3 /* SimpleDisplayViewController.swift */,
+				CB12C950228DFA12000C74C3 /* PieChartDisplayViewController.swift */,
+				CB12C94A228DF508000C74C3 /* BenefitsDisplayViewController.swift */,
+			);
+			path = treeDetail;
+			sourceTree = "<group>";
+		};
+		CB9F424D22A5ADF800C97F70 /* addTree */ = {
+			isa = PBXGroup;
+			children = (
+				CB7021922292FDCD00D11B0F /* AddTreeViewController.swift */,
+			);
+			path = addTree;
+			sourceTree = "<group>";
+		};
+		CB9F424E22A5AE0100C97F70 /* settings */ = {
+			isa = PBXGroup;
+			children = (
+				CBBCE850228DD9B1008F7225 /* SettingsViewController.swift */,
+				CBB264B722973C6C00C036FB /* DataSourceTableViewController.swift */,
+				D76D618022931F79003FFD24 /* MoreInformationViewController.swift */,
+			);
+			path = settings;
+			sourceTree = "<group>";
+		};
+		CB9F424F22A5AE0B00C97F70 /* tabs */ = {
+			isa = PBXGroup;
+			children = (
+				CB091E702292EBCF00F0CB06 /* HomeViewController.swift */,
+				CBBCE82C228DD76B008F7225 /* ButtonViewController.swift */,
+				CBBCE82E228DD76B008F7225 /* CoordinatesViewController.swift */,
+				CBBCE84C228DD847008F7225 /* MapViewController.swift */,
+				CBBCE84E228DD93E008F7225 /* QRCodeViewController.swift */,
+			);
+			path = tabs;
 			sourceTree = "<group>";
 		};
 		CBBCE81E228DD76B008F7225 = {
