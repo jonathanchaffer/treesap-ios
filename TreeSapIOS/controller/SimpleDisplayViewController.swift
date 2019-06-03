@@ -11,11 +11,13 @@ import UIKit
 class SimpleDisplayViewController: TreeDisplayViewController {
     @IBOutlet var commonNameLabel: UILabel!
     @IBOutlet var scientificNameLabel: UILabel!
+    @IBOutlet weak var treeIDStackView: UIStackView!
     @IBOutlet var treeIDLabel: UILabel!
     @IBOutlet var latitudeLabel: UILabel!
     @IBOutlet var longitudeLabel: UILabel!
+    @IBOutlet weak var dbhStackView: UIStackView!
     @IBOutlet var dbhLabel: UILabel!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -29,13 +31,13 @@ class SimpleDisplayViewController: TreeDisplayViewController {
         if displayedTree!.scientificName != nil {
             scientificNameLabel.text = displayedTree!.scientificName
         } else {
-            scientificNameLabel.text = "Scientific Name N/A"
+            scientificNameLabel.isHidden = true
         }
         // Set tree ID label
         if displayedTree!.id != nil {
             treeIDLabel.text = String(displayedTree!.id!)
         } else {
-            treeIDLabel.text = "N/A"
+            treeIDStackView.isHidden = true
         }
         // Set latitude and longitude labels
         latitudeLabel.text = String(displayedTree!.location.latitude)
@@ -44,7 +46,7 @@ class SimpleDisplayViewController: TreeDisplayViewController {
         if displayedTree!.dbh != nil {
             dbhLabel.text = String(displayedTree!.dbh!)
         } else {
-            dbhLabel.text = "N/A"
+            dbhStackView.isHidden = true
         }
     }
 }

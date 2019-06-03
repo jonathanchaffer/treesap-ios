@@ -429,10 +429,12 @@
                     <connections>
                         <outlet property="commonNameLabel" destination="Ek1-bl-4CV" id="wFm-Fk-iUw"/>
                         <outlet property="dbhLabel" destination="gnY-8y-1PV" id="29E-9W-CNT"/>
+                        <outlet property="dbhStackView" destination="ebM-cf-4Yo" id="jke-GM-J0e"/>
                         <outlet property="latitudeLabel" destination="xne-yf-sAh" id="b1G-rt-14R"/>
                         <outlet property="longitudeLabel" destination="9b0-RR-iww" id="3sh-hL-j7g"/>
                         <outlet property="scientificNameLabel" destination="zP6-P1-77X" id="Ks1-t4-1NG"/>
                         <outlet property="treeIDLabel" destination="3Rl-5q-zVB" id="pIT-bE-VCw"/>
+                        <outlet property="treeIDStackView" destination="xCN-O7-b06" id="hmp-dY-AHT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JH4-oc-K2P" userLabel="First Responder" sceneMemberID="firstResponder"/>
