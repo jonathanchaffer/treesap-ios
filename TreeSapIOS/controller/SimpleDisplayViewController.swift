@@ -27,6 +27,7 @@ class SimpleDisplayViewController: TreeDisplayViewController {
         } else {
             commonNameLabel.text = "Common Name N/A"
         }
+        commonNameLabel.accessibilityValue = "commonNameLabel"
         // Set scientific name label
         if displayedTree!.scientificName != nil {
             scientificNameLabel.text = displayedTree!.scientificName
