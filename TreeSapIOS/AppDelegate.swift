@@ -41,6 +41,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        if CommandLine.arguments.contains("--uitesting") {
+            resetState()
+        }
         importTreeData()
         UserPreferenceKeys.loadPreferences()
         return true
@@ -69,6 +72,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     // MARK: - Other methods
+    
+    /// Resets the state of the app for UI testing purposes.
+    func resetState() {
+        let defaultsName = Bundle.main.bundleIdentifier!
+        UserDefaults.standard.removePersistentDomain(forName: defaultsName)
+    }
 
     /// Import each data source's tree data.
     func importTreeData() {

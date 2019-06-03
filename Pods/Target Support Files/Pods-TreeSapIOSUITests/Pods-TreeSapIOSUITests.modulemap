@@ -1,0 +1,6 @@
+module Pods_TreeSapIOSUITests {
+  umbrella header "Pods-TreeSapIOSUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
