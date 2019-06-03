@@ -12,7 +12,6 @@
 		9325BCC7D7C18D578601373C /* libPods-TreeSapIOSUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84439420E68F648C297A16CA /* libPods-TreeSapIOSUITests.a */; };
 		BC52509D229F0316009C011E /* UserPreferenceKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC52509C229F0316009C011E /* UserPreferenceKeys.swift */; };
 		BCECB2CD22A1598A0045C548 /* TreeFinderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCECB2CC22A1598A0045C548 /* TreeFinderTests.swift */; };
-		BCED4D26229888B60058780E /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCED4D25229888B60058780E /* UserPreferences.swift */; };
 		CB091E712292EBCF00F0CB06 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB091E702292EBCF00F0CB06 /* HomeViewController.swift */; };
 		CB12C94B228DF508000C74C3 /* BenefitsDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB12C94A228DF508000C74C3 /* BenefitsDisplayViewController.swift */; };
 		CB12C94D228DF5C4000C74C3 /* SimpleDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB12C94C228DF5C4000C74C3 /* SimpleDisplayViewController.swift */; };
@@ -86,7 +85,6 @@
 		B77358D36DBDDED4196CADD2 /* libPods-TreeSapIOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TreeSapIOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC52509C229F0316009C011E /* UserPreferenceKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPreferenceKeys.swift; sourceTree = "<group>"; };
 		BCECB2CC22A1598A0045C548 /* TreeFinderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeFinderTests.swift; sourceTree = "<group>"; };
-		BCED4D25229888B60058780E /* UserPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
 		CB091E702292EBCF00F0CB06 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		CB12C94A228DF508000C74C3 /* BenefitsDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BenefitsDisplayViewController.swift; sourceTree = "<group>"; };
 		CB12C94C228DF5C4000C74C3 /* SimpleDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleDisplayViewController.swift; sourceTree = "<group>"; };
@@ -226,7 +224,6 @@
 				CB2D4DA422958548006DAC37 /* TreeAnnotationView.swift */,
 				CBFD63C82295BB0700804DC4 /* TreePointAnnotationView.swift */,
 				CBFD63C02295A1E800804DC4 /* NameFormatter.swift */,
-				BCED4D25229888B60058780E /* UserPreferences.swift */,
 				BC52509C229F0316009C011E /* UserPreferenceKeys.swift */,
 			);
 			path = model;
@@ -509,7 +506,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB12C94F228DF85D000C74C3 /* TreeDetailPageViewController.swift in Sources */,
-				BCED4D26229888B60058780E /* UserPreferences.swift in Sources */,
 				D76D6183229321E7003FFD24 /* TreeFinder.swift in Sources */,
 				CB12C951228DFA12000C74C3 /* PieChartDisplayViewController.swift in Sources */,
 				CBBCE82F228DD76B008F7225 /* CoordinatesViewController.swift in Sources */,
