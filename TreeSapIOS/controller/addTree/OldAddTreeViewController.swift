@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddTreeViewController: UIViewController {
+class OldAddTreeViewController: UIViewController {
     @IBOutlet var useDeviceLocationButton: UIButton!
     @IBOutlet var addTreeButton: UIButton!
 
