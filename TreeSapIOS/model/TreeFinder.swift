@@ -11,7 +11,11 @@ import MapKit
 
 class TreeFinder {
     /**
-     Searches for a Tree object by location.
+     Searches for the Tree object closest to the specified location that is within the specified distance of the location. The search is conducted using the specified data sources. If no trees are found within the cutoff distance of the specified location, the function returns nil.
+     - Parameters:
+     - location: The location that is used in the search
+     - dataSources: An array of DataSource objects that contain the Tree objects that are searched through
+     - cutoffDistance: The cutoff distance for the search
      */
     class func findTreeByLocation(location: CLLocationCoordinate2D, dataSources: [DataSource], cutoffDistance: Double) -> Tree? {
         var closestTree: Tree?
@@ -28,6 +32,19 @@ class TreeFinder {
             }
         }
         return closestTree
+    }
+    
+    /**
+     Searches for the Tree object closest to the specified location that is within the specified distance of the location. The search is conducted using the specified data sources. If no trees are found within the cutoff distance of the specified location, the function returns nil.
+     - Parameters:
+     - latitude: the latitude of the location used in the search
+     - longitude: the longitude of the location used in the search
+     - dataSources: An array of DataSource objects that contain the Tree objects that are searched through
+     - cutoffDistance: the cutoff distance for the search
+     */
+    class func findTreeByLocation(latitude: Double, longitude: Double, dataSources: [DataSource], cutoffDistance: Double) -> Tree?{
+        let locationCoordinates = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        return TreeFinder.findTreeByLocation(location: locationCoordinates, dataSources: dataSources, cutoffDistance: cutoffDistance)
     }
 
     class func distanceBetween(from: CLLocationCoordinate2D, to: CLLocationCoordinate2D) -> CLLocationDistance {
