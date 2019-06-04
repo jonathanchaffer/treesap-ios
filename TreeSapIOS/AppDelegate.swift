@@ -6,14 +6,15 @@
 //  Copyright © 2019 Hope CS. All rights reserved.
 //
 
-import UIKit
 import MapKit
+import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Properties
 
     var window: UIWindow?
+
     /// Array of data sources. This is where all data sources are initialized. Add to this array to add additional data sources.
     var dataSources: [DataSource] = [
         DataSource(internetFilename: "CoH_Tree_Inventory_6_12_18.csv", localFilename: "holland.csv", dataSourceName: "City of Holland Tree Inventory", csvFormat: .holland),
@@ -21,11 +22,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         DataSource(internetFilename: "dataExport_119_HopeTrees_7may2018.csv", localFilename: "hope.csv", dataSourceName: "Hope College Trees", csvFormat: .hope),
         DataSource(internetFilename: "katelyn.csv", localFilename: "benefits.csv", dataSourceName: "Tree Benefit Data", csvFormat: .benefits),
     ]
-    /// Whether location features are enabled. Note: This is not a user preference; it is a flag that keeps track of whether the user has allowed access to device location.
+
+    /// A Bool indicating whether location features are enabled. NOTE: This is not a user preference; it is a flag that keeps track of whether the user has allowed access to device location.
     var locationFeaturesEnabled = false
-    
-    /// CLLocationManager instance for the entire class.
+
+    /// CLLocationManager instance for the entire app.
     let locationManager = CLLocationManager()
+
+    // MARK: - Preferences properties
 
     /// Whether the user's location should be shown on the map.
     var showingUserLocation: Bool {
@@ -37,22 +41,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return UserPreferenceKeys.cutoffDistance
     }
 
-    // MARK: - App delegate methods
+    // MARK: - AppDelegate methods
 
     func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
         // Override point for customization after application launch.
         if CommandLine.arguments.contains("--uitesting") {
             resetState()
         }
-        
+
         // Set attributes of the location manager.
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.distanceFilter = 1
-        
+
         // Start updating location.
         locationManager.startUpdatingLocation()
-        
+
         // Load trees and preferences.
         importTreeData()
         UserPreferenceKeys.loadPreferences()
@@ -81,22 +84,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-    // MARK: - Other methods
-    
-    /// Resets the state of the app for UI testing purposes.
-    func resetState() {
-        let defaultsName = Bundle.main.bundleIdentifier!
-        UserDefaults.standard.removePersistentDomain(forName: defaultsName)
-    }
-
-    /// Import each data source's tree data.
-    func importTreeData() {
-        for dataSource in dataSources {
-            if !dataSource.retrieveOnlineData() {
-                print("Error retrieving " + dataSource.dataSourceName + " data from online")
-            }
-        }
-    }
+    // MARK: - Preferences methods
 
     /// - Returns: An array containing the active data sources.
     func getActiveDataSources() -> [DataSource] {
@@ -109,47 +97,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         return activeDataSources
     }
-
-    /**
-     - Parameter name: The name of the data source to find
-     - Returns: a DataSource object that has the given name
-     */
-    func getDataSourceWithName(name: String) -> DataSource? {
-        for dataSource in dataSources {
-            if dataSource.dataSourceName == name {
-                return dataSource
-            }
-        }
-
-        return nil
-    }
-    
-    /// Checks the authorization status for user location, requesting authorization if needed.
-    func checkLocationAuthorization() {
-        switch CLLocationManager.authorizationStatus() {
-        case .notDetermined:
-            locationManager.requestWhenInUseAuthorization()
-            checkLocationAuthorization()
-        case .restricted, .denied:
-            disableLocationFeatures()
-        case .authorizedWhenInUse, .authorizedAlways:
-            enableLocationFeatures()
-        default:
-            return
-        }
-    }
-
-    /// Enables location features so trees can be identified by GPS and the user's location can show up on the map.
-    func enableLocationFeatures() {
-        locationFeaturesEnabled = true
-    }
-
-    /// Disables location features so trees cannot be identified by GPS and the user's location won't show up on the map.
-    func disableLocationFeatures() {
-        locationFeaturesEnabled = false
-    }
-
-    // MARK: - User preferences accesors and modifiers
 
     /// - Returns: Whether the user's location will be shown on the map.
     func accessShowUserLocation() -> Bool {
@@ -235,5 +182,63 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         UserPreferenceKeys.dataSourceAvailibility[dataSourceName] = false
         UserDefaults.standard.set(UserPreferenceKeys.dataSourceAvailibility, forKey: UserPreferenceKeys.dataSourceAvailibilityKey)
+    }
+
+    // MARK: Location manager methods
+
+    /// Checks the authorization status for user location, requesting authorization if needed.
+    func checkLocationAuthorization() {
+        switch CLLocationManager.authorizationStatus() {
+        case .notDetermined:
+            locationManager.requestWhenInUseAuthorization()
+            checkLocationAuthorization()
+        case .restricted, .denied:
+            disableLocationFeatures()
+        case .authorizedWhenInUse, .authorizedAlways:
+            enableLocationFeatures()
+        default:
+            return
+        }
+    }
+
+    /// Enables location features so trees can be identified by GPS and the user's location can show up on the map.
+    func enableLocationFeatures() {
+        locationFeaturesEnabled = true
+    }
+
+    /// Disables location features so trees cannot be identified by GPS and the user's location won't show up on the map.
+    func disableLocationFeatures() {
+        locationFeaturesEnabled = false
+    }
+
+    // MARK: - Other methods
+
+    /// Import each data source's tree data.
+    func importTreeData() {
+        for dataSource in dataSources {
+            if !dataSource.retrieveOnlineData() {
+                print("Error retrieving " + dataSource.dataSourceName + " data from online")
+            }
+        }
+    }
+
+    /// Resets the state of the app for UI testing purposes.
+    func resetState() {
+        let defaultsName = Bundle.main.bundleIdentifier!
+        UserDefaults.standard.removePersistentDomain(forName: defaultsName)
+    }
+
+    /**
+     - Parameter name: The name of the data source to find
+     - Returns: a DataSource object that has the given name
+     */
+    func getDataSourceWithName(name: String) -> DataSource? {
+        for dataSource in dataSources {
+            if dataSource.dataSourceName == name {
+                return dataSource
+            }
+        }
+
+        return nil
     }
 }
