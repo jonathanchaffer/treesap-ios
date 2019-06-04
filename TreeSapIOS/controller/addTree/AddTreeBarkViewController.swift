@@ -32,6 +32,10 @@ class AddTreeBarkViewController: AddTreePhotoViewController {
         nextPage()
     }
     
+    @IBAction func broadcastSkip(_ sender: UIButton) {
+        nextPage()
+    }
+    
     @IBAction func handlePhotoButtonPressed(_ sender: UIButton) {
         takeOrChoosePhoto()
     }

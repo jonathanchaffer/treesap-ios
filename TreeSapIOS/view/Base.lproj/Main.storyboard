@@ -1587,6 +1587,9 @@ ZC4
                                                     <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ONP-9h-9iO">
                                                         <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                                         <state key="normal" title="Skip"/>
+                                                        <connections>
+                                                            <action selector="broadcastSkip:" destination="vWK-Ed-YnA" eventType="touchUpInside" id="Smf-W6-KDm"/>
+                                                        </connections>
                                                     </button>
                                                     <view contentMode="scaleToFill" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="pwd-Q2-6Ew">
                                                         <rect key="frame" x="30" y="0.0" width="218" height="30"/>
@@ -1697,6 +1700,9 @@ ZC4
                                                     <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rHx-MV-fia">
                                                         <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                                         <state key="normal" title="Skip"/>
+                                                        <connections>
+                                                            <action selector="broadcastSkip:" destination="m5e-m4-Lcs" eventType="touchUpInside" id="LOB-OD-vVq"/>
+                                                        </connections>
                                                     </button>
                                                     <view contentMode="scaleToFill" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="kX5-Tb-NEn">
                                                         <rect key="frame" x="30" y="0.0" width="218" height="30"/>
@@ -1807,6 +1813,9 @@ ZC4
                                                     <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YiA-kY-MFc">
                                                         <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                                         <state key="normal" title="Skip"/>
+                                                        <connections>
+                                                            <action selector="broadcastSkip:" destination="KK5-YB-y2k" eventType="touchUpInside" id="X8g-9v-fBf"/>
+                                                        </connections>
                                                     </button>
                                                     <view contentMode="scaleToFill" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="kEm-m8-Vq8">
                                                         <rect key="frame" x="30" y="0.0" width="218" height="30"/>
@@ -2007,12 +2016,8 @@ ZC4
                                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I2i-qy-uzQ">
                                                         <rect key="frame" x="20" y="20" width="280" height="30"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c0w-gp-glC">
-                                                                <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
-                                                                <state key="normal" title="Skip"/>
-                                                            </button>
                                                             <view contentMode="scaleToFill" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="tvn-3X-3oP">
-                                                                <rect key="frame" x="30" y="0.0" width="213" height="30"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="243" height="30"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </view>
                                                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T6H-OR-H5J" customClass="FilledButton" customModule="TreeSapIOS" customModuleProvider="target">
