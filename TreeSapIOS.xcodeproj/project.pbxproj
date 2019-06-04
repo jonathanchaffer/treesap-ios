@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0B85D9CFEC2032A626AC6A93 /* libPods-TreeSapIOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 04069877CBA1FE325848DCEC /* libPods-TreeSapIOSTests.a */; };
+		4101181C22A6FA5600EDE6D8 /* UserPreferenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4101181B22A6FA5600EDE6D8 /* UserPreferenceTests.swift */; };
 		61E1EFDD5187EC1C7241B025 /* libPods-TreeSapIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B77358D36DBDDED4196CADD2 /* libPods-TreeSapIOS.a */; };
 		9325BCC7D7C18D578601373C /* libPods-TreeSapIOSUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84439420E68F648C297A16CA /* libPods-TreeSapIOSUITests.a */; };
 		BC52509D229F0316009C011E /* UserPreferenceKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC52509C229F0316009C011E /* UserPreferenceKeys.swift */; };
@@ -86,6 +87,7 @@
 /* Begin PBXFileReference section */
 		032803B715E7C1F1944B7370 /* Pods-TreeSapIOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreeSapIOSTests.release.xcconfig"; path = "Target Support Files/Pods-TreeSapIOSTests/Pods-TreeSapIOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		04069877CBA1FE325848DCEC /* libPods-TreeSapIOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TreeSapIOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4101181B22A6FA5600EDE6D8 /* UserPreferenceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPreferenceTests.swift; sourceTree = "<group>"; };
 		51923197E0B1EB112DB21162 /* Pods-TreeSapIOSUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreeSapIOSUITests.release.xcconfig"; path = "Target Support Files/Pods-TreeSapIOSUITests/Pods-TreeSapIOSUITests.release.xcconfig"; sourceTree = "<group>"; };
 		657C7C57D15B44ECCED1E51C /* Pods-TreeSapIOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreeSapIOS.release.xcconfig"; path = "Target Support Files/Pods-TreeSapIOS/Pods-TreeSapIOS.release.xcconfig"; sourceTree = "<group>"; };
 		668AAD7604AA46A0D823F819 /* Pods-TreeSapIOSUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreeSapIOSUITests.debug.xcconfig"; path = "Target Support Files/Pods-TreeSapIOSUITests/Pods-TreeSapIOSUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 				CB2D4DA622959D0E006DAC37 /* DataSourceTests.swift */,
 				BCECB2CC22A1598A0045C548 /* TreeFinderTests.swift */,
 				CB9F423C22A548D700C97F70 /* NameFormatterTests.swift */,
+				4101181B22A6FA5600EDE6D8 /* UserPreferenceTests.swift */,
 			);
 			path = "Model Tests";
 			sourceTree = "<group>";
@@ -607,6 +610,7 @@
 				CB2D4DA722959D0E006DAC37 /* DataSourceTests.swift in Sources */,
 				CBBCE842228DD777008F7225 /* TreeSapIOSTests.swift in Sources */,
 				BCECB2CD22A1598A0045C548 /* TreeFinderTests.swift in Sources */,
+				4101181C22A6FA5600EDE6D8 /* UserPreferenceTests.swift in Sources */,
 				CB9F423D22A548D700C97F70 /* NameFormatterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
