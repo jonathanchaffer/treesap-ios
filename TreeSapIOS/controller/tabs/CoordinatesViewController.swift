@@ -14,16 +14,12 @@ class CoordinatesViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet var latitudeTextField: UITextField!
     @IBOutlet var longitudeTextField: UITextField!
-    @IBOutlet var getTreeDataButton: UIButton!
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
     override func viewDidLoad() {
         super.viewDidLoad()
         latitudeTextField.delegate = self
         longitudeTextField.delegate = self
-
-        getTreeDataButton.contentEdgeInsets = UIEdgeInsets(top: 8.0, left: 8.0, bottom: 8.0, right: 8.0)
-        getTreeDataButton.layer.cornerRadius = 8.0
 
         // Set up gesture recognizer that will dismiss the keyboard when the user taps outside of it
         // Based on code from https://medium.com/@KaushElsewhere/how-to-dismiss-keyboard-in-a-view-controller-of-ios-3b1bfe973ad1 and https://www.bignerdranch.com/blog/hannibal-selector/#tl-dr

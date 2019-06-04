@@ -229,9 +229,8 @@
                                             </stackView>
                                         </subviews>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aht-Pu-Wky">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aht-Pu-Wky" customClass="FilledButton" customModule="TreeSapIOS" customModuleProvider="target">
                                         <rect key="frame" x="120" y="141" width="95" height="30"/>
-                                        <color key="backgroundColor" red="0.37254901959999998" green="0.71764705880000002" blue="0.30588235289999999" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Get Tree Data"/>
                                         <connections>
                                             <action selector="handleCoordinatesButtonPressed:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="LGI-jT-RdZ"/>
@@ -262,7 +261,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="getTreeDataButton" destination="Aht-Pu-Wky" id="1T2-eQ-oU1"/>
                         <outlet property="latitudeTextField" destination="epB-LM-1T6" id="o8W-6W-dr2"/>
                         <outlet property="longitudeTextField" destination="boU-We-VEg" id="piL-hf-rhX"/>
                     </connections>
@@ -467,7 +465,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5lD-lb-eY7">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5lD-lb-eY7" customClass="FilledButton" customModule="TreeSapIOS" customModuleProvider="target">
                                                 <rect key="frame" x="106.5" y="88.5" width="122" height="30"/>
                                                 <state key="normal" title="Get Tree Location"/>
                                             </button>
@@ -511,9 +509,12 @@
                                             <constraint firstAttribute="trailing" secondItem="2f3-3c-VtI" secondAttribute="trailing" id="h9b-2K-RcT"/>
                                         </constraints>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cad-N3-BYe">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cad-N3-BYe" customClass="FilledButton" customModule="TreeSapIOS" customModuleProvider="target">
                                         <rect key="frame" x="303" y="577" width="32" height="30"/>
                                         <state key="normal" title="Next"/>
+                                        <connections>
+                                            <action selector="nextPage:" destination="fgq-z5-hYj" eventType="touchUpInside" id="ZyF-ft-Bb4"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -538,6 +539,7 @@
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GQD-iw-Q3W" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="fgq-z5-hYj" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="838" y="2165"/>
         </scene>
@@ -904,9 +906,8 @@
                                             <constraint firstItem="0j3-4D-TWr" firstAttribute="leading" secondItem="SED-kE-bfQ" secondAttribute="leading" id="G51-Vu-Hes"/>
                                         </constraints>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t6B-7M-VeM">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t6B-7M-VeM" customClass="FilledButton" customModule="TreeSapIOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="128.5" width="335" height="30"/>
-                                        <color key="backgroundColor" red="0.37254901959999998" green="0.71764705880000002" blue="0.30588235289999999" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Use Device Location"/>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="dKb-tG-fWL">
@@ -980,9 +981,8 @@
                                             <constraint firstItem="8FP-or-ozS" firstAttribute="leading" secondItem="bts-8O-MYH" secondAttribute="trailing" priority="250" constant="8" id="yXa-Nd-Jua"/>
                                         </constraints>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GFf-gJ-d9i">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GFf-gJ-d9i" customClass="FilledButton" customModule="TreeSapIOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="312.5" width="335" height="30"/>
-                                        <color key="backgroundColor" red="0.37254901959999998" green="0.71764705880000002" blue="0.30588235289999999" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Add Tree"/>
                                     </button>
                                 </subviews>
@@ -1005,10 +1005,6 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <outlet property="addTreeButton" destination="GFf-gJ-d9i" id="wSe-ql-PK9"/>
-                        <outlet property="useDeviceLocationButton" destination="t6B-7M-VeM" id="BTZ-sd-YbW"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rkj-gx-ofX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1520,7 +1516,7 @@ ZC4
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1NT-6u-SoZ">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1NT-6u-SoZ" customClass="FilledButton" customModule="TreeSapIOS" customModuleProvider="target">
                                                 <rect key="frame" x="100.5" y="108.5" width="134" height="30"/>
                                                 <state key="normal" title="Take/Choose Photo"/>
                                             </button>
@@ -1534,7 +1530,7 @@ ZC4
                                         <rect key="frame" x="0.0" y="577" width="30" height="30"/>
                                         <state key="normal" title="Skip"/>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1q5-lN-87M">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1q5-lN-87M" customClass="FilledButton" customModule="TreeSapIOS" customModuleProvider="target">
                                         <rect key="frame" x="303" y="577" width="32" height="30"/>
                                         <state key="normal" title="Next"/>
                                     </button>
@@ -1592,7 +1588,7 @@ ZC4
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ts-yI-v6h">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ts-yI-v6h" customClass="FilledButton" customModule="TreeSapIOS" customModuleProvider="target">
                                                 <rect key="frame" x="100.5" y="108.5" width="134" height="30"/>
                                                 <state key="normal" title="Take/Choose Photo"/>
                                             </button>
@@ -1606,7 +1602,7 @@ ZC4
                                         <rect key="frame" x="0.0" y="577" width="30" height="30"/>
                                         <state key="normal" title="Skip"/>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Et-cN-eJE">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Et-cN-eJE" customClass="FilledButton" customModule="TreeSapIOS" customModuleProvider="target">
                                         <rect key="frame" x="303" y="577" width="32" height="30"/>
                                         <state key="normal" title="Next"/>
                                     </button>
@@ -1664,7 +1660,7 @@ ZC4
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RDr-VJ-7To">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RDr-VJ-7To" customClass="FilledButton" customModule="TreeSapIOS" customModuleProvider="target">
                                                 <rect key="frame" x="100.5" y="108.5" width="134" height="30"/>
                                                 <state key="normal" title="Take/Choose Photo"/>
                                             </button>
@@ -1678,7 +1674,7 @@ ZC4
                                         <rect key="frame" x="0.0" y="577" width="30" height="30"/>
                                         <state key="normal" title="Skip"/>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mwe-2D-Ee4">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mwe-2D-Ee4" customClass="FilledButton" customModule="TreeSapIOS" customModuleProvider="target">
                                         <rect key="frame" x="303" y="577" width="32" height="30"/>
                                         <state key="normal" title="Next"/>
                                     </button>
@@ -1896,8 +1892,8 @@ ZC4
         <image name="xButton" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Osm-ne-69B"/>
-        <segue reference="M3K-1N-Vy6"/>
+        <segue reference="txq-mR-ZcU"/>
+        <segue reference="NRC-p1-lpH"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.37254901959999998" green="0.71764705880000002" blue="0.30588235289999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
