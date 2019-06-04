@@ -845,6 +845,35 @@
             </objects>
             <point key="canvasLocation" x="2210" y="1346"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="5Td-JP-srG">
+            <objects>
+                <viewController storyboardIdentifier="frog" id="tSX-8y-Qup" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cog-pI-1fa">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="frog" translatesAutoresizingMaskIntoConstraints="NO" id="y4v-0a-L19">
+                                <rect key="frame" x="20" y="144" width="280" height="280"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="y4v-0a-L19" secondAttribute="height" multiplier="1:1" id="s4q-2D-8x3"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="nVf-3J-dUo" firstAttribute="trailing" secondItem="y4v-0a-L19" secondAttribute="trailing" constant="20" id="0nT-RY-Vj6"/>
+                            <constraint firstItem="y4v-0a-L19" firstAttribute="centerX" secondItem="cog-pI-1fa" secondAttribute="centerX" id="cij-WF-adN"/>
+                            <constraint firstItem="y4v-0a-L19" firstAttribute="centerY" secondItem="cog-pI-1fa" secondAttribute="centerY" id="ivN-g7-f6u"/>
+                            <constraint firstItem="y4v-0a-L19" firstAttribute="leading" secondItem="nVf-3J-dUo" secondAttribute="leading" constant="20" id="tZJ-bn-oj8"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="nVf-3J-dUo"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uON-C0-WDG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3572" y="1346"/>
+        </scene>
         <!--QR Code-->
         <scene sceneID="89T-WE-ojm">
             <objects>
@@ -2066,6 +2095,7 @@ ZC4
         <image name="QRCodeOverlay" width="300" height="300"/>
         <image name="compass" width="30" height="30"/>
         <image name="filledButton" width="30" height="30"/>
+        <image name="frog" width="1024" height="1024"/>
         <image name="home" width="30" height="30"/>
         <image name="map" width="30" height="30"/>
         <image name="noPhotoSelected" width="1024" height="1024"/>

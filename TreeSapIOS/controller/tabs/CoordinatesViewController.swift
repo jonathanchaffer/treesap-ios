@@ -43,16 +43,21 @@ class CoordinatesViewController: UIViewController, UITextFieldDelegate {
         let latitude = Double(latitudeTextField.text!)
         let longitude = Double(longitudeTextField.text!)
         if latitude != nil, longitude != nil {
-            // If tree data was found, display it. Otherwise, alert the user.
-            let treeToDisplay = getTreeDataByCoords(latitude: latitude!, longitude: longitude!)
-            if treeToDisplay != nil {
-                let pages = TreeDetailPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
-                pages.displayedTree = treeToDisplay
-                navigationController?.pushViewController(pages, animated: true)
+            // Check for frog
+            if latitude == 42.788211256535, longitude == -86.105942862237 {
+                navigationController?.pushViewController(UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "frog"), animated: true)
             } else {
-                let alert = UIAlertController(title: "No trees found", message: "There were no trees found near that location. You can update the identification distance in Settings.", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-                present(alert, animated: true)
+                // If tree data was found, display it. Otherwise, alert the user.
+                let treeToDisplay = getTreeDataByCoords(latitude: latitude!, longitude: longitude!)
+                if treeToDisplay != nil {
+                    let pages = TreeDetailPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
+                    pages.displayedTree = treeToDisplay
+                    navigationController?.pushViewController(pages, animated: true)
+                } else {
+                    let alert = UIAlertController(title: "No trees found", message: "There were no trees found near that location. You can update the identification distance in Settings.", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                    present(alert, animated: true)
+                }
             }
         } else {
             let alert = UIAlertController(title: "Invalid coordinates", message: "Please make sure that you input valid coordinates.", preferredStyle: .alert)
