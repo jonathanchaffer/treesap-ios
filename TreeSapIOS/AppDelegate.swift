@@ -50,6 +50,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.distanceFilter = 1
         
+        // Start updating location.
+        locationManager.startUpdatingLocation()
+        
         // Load trees and preferences.
         importTreeData()
         UserPreferenceKeys.loadPreferences()

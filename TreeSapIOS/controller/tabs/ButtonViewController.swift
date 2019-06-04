@@ -35,14 +35,6 @@ class ButtonViewController: UIViewController {
         }
     }
 
-    override func viewWillAppear(_: Bool) {
-        appDelegate.locationManager.startUpdatingLocation()
-    }
-
-    override func viewWillDisappear(_: Bool) {
-        appDelegate.locationManager.stopUpdatingLocation()
-    }
-
     // MARK: - Actions
 
     /**

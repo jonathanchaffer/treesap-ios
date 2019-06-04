@@ -55,7 +55,6 @@ class AddTreePageViewController: UIPageViewController {
     }
 
     @objc private func nextPage() {
-        print("action triggered")
         currentPage += 1
         if currentPage >= pages.count {
             currentPage = 0
