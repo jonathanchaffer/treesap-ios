@@ -184,7 +184,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UserDefaults.standard.set(UserPreferenceKeys.dataSourceAvailibility, forKey: UserPreferenceKeys.dataSourceAvailibilityKey)
     }
 
-    // MARK: Location manager methods
+    // MARK: - Location manager methods
 
     /// Checks the authorization status for user location, requesting authorization if needed.
     func checkLocationAuthorization() {
