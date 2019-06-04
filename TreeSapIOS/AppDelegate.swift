@@ -97,49 +97,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         return activeDataSources
     }
-
-    /**
-     - Parameter name: The name of the data source to find
-     - Returns: a DataSource object that has the given name
-     */
-    func getDataSourceWithName(name: String) -> DataSource? {
-        for dataSource in dataSources {
-            if dataSource.dataSourceName == name {
-                return dataSource
-            }
-        }
-
-        return nil
-    }
     
-    /// Checks the authorization status for user location, requesting authorization if needed.
-    func checkLocationAuthorization() {
-        switch CLLocationManager.authorizationStatus() {
-        case .notDetermined:
-            locationManager.requestWhenInUseAuthorization()
-            checkLocationAuthorization()
-        case .restricted, .denied:
-            disableLocationFeatures()
-        case .authorizedWhenInUse, .authorizedAlways:
-            enableLocationFeatures()
-        default:
-            return
-        }
-    }
-
-    /// Enables location features so trees can be identified by GPS and the user's location can show up on the map.
-    func enableLocationFeatures() {
-        locationFeaturesEnabled = true
-    }
-
-    /// Disables location features so trees cannot be identified by GPS and the user's location won't show up on the map.
-    func disableLocationFeatures() {
-        locationFeaturesEnabled = false
-    }
-
-    // MARK: - User preferences accesors and modifiers
-    
-    ///Changes the user preferences to the default user preferences
+    /// Changes the user preferences to the default user preferences.
     func restoreDefaultUserPreferences(){
         UserPreferenceKeys.showUserLocation = UserPreferenceKeys.showUserLocationDefault
         UserDefaults.standard.set(UserPreferenceKeys.showUserLocationDefault, forKey: UserPreferenceKeys.showUserLocationKey)
