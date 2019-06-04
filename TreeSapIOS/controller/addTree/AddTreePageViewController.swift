@@ -9,11 +9,10 @@
 import UIKit
 
 class AddTreePageViewController: UIPageViewController {
-
     // MARK: - Properties
-    
+
     /// The pages to be displayed in the page view.
-    fileprivate lazy var pages: [UIViewController] = {
+    fileprivate lazy var pages: [AddTreeViewController] = {
         [
             self.getViewController(withIdentifier: "addTreeLocation"),
             self.getViewController(withIdentifier: "addTreeBarkPhoto"),
@@ -22,51 +21,46 @@ class AddTreePageViewController: UIPageViewController {
             self.getViewController(withIdentifier: "addTreeOtherInfo"),
         ]
     }()
-    
+
+    /// The current page.
+    var currentPage = 0
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        dataSource = self
-        
         // Set the background color to white so it is not noticed when flipping quickly between the different pages
         view.backgroundColor = UIColor.white
-        
-        if let firstVC = pages.first {
-            setViewControllers([firstVC], direction: .forward, animated: true, completion: nil)
-        }
+
+        // Set the page to be displayed
+        setViewControllers([pages[currentPage]], direction: .forward, animated: true, completion: nil)
+
+        // Create listeners for page events
+        NotificationCenter.default.addObserver(self, selector: #selector(nextPage), name: NSNotification.Name("next"), object: nil)
     }
-    
-    // MARK - Actions
+
+    // MARK: - Actions
+
     @IBAction func closeAddTree(_: UIBarButtonItem) {
         navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)
     }
-    
+
     // MARK: - Private methods
-    
+
     /**
      Instantiates and returns a UIViewController based on the identifier of the view controller in the storyboard.
      - Parameter identifier: The storyboard ID of the view controller that is to be instantiated and returned.
      */
-    private func getViewController(withIdentifier identifier: String) -> UIViewController {
-        return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: identifier)
+    private func getViewController(withIdentifier identifier: String) -> AddTreeViewController {
+        return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: identifier) as! AddTreeViewController
     }
 
-}
-
-extension AddTreePageViewController: UIPageViewControllerDataSource {
-    func pageViewController(_: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        guard let viewControllerIndex = pages.firstIndex(of: viewController) else { return nil }
-        let previousIndex = viewControllerIndex - 1
-        guard previousIndex >= 0 else { return pages.last }
-        guard pages.count > previousIndex else { return nil }
-        return pages[previousIndex]
-    }
-    
-    func pageViewController(_: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        guard let viewControllerIndex = pages.firstIndex(of: viewController) else { return nil }
-        let nextIndex = viewControllerIndex + 1
-        guard nextIndex < pages.count else { return pages.first }
-        guard pages.count > nextIndex else { return nil }
-        return pages[nextIndex]
+    @objc private func nextPage() {
+        print("action triggered")
+        currentPage += 1
+        if currentPage >= pages.count {
+            currentPage = 0
+        }
+        // Set the page to be displayed
+        setViewControllers([pages[currentPage]], direction: .forward, animated: true, completion: nil)
     }
 }

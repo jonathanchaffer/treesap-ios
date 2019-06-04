@@ -18,6 +18,12 @@
 		CB12C94F228DF85D000C74C3 /* TreeDetailPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB12C94E228DF85D000C74C3 /* TreeDetailPageViewController.swift */; };
 		CB12C951228DFA12000C74C3 /* PieChartDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB12C950228DFA12000C74C3 /* PieChartDisplayViewController.swift */; };
 		CB15256A22A69941002D483E /* FilledButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB15256922A69941002D483E /* FilledButton.swift */; };
+		CB15256C22A6A00F002D483E /* AddTreeLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB15256B22A6A00F002D483E /* AddTreeLocationViewController.swift */; };
+		CB15256E22A6A231002D483E /* AddTreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB15256D22A6A231002D483E /* AddTreeViewController.swift */; };
+		CB15257022A6A2F7002D483E /* AddTreeOtherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB15256F22A6A2F7002D483E /* AddTreeOtherViewController.swift */; };
+		CB15257222A6A366002D483E /* AddTreeBarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB15257122A6A366002D483E /* AddTreeBarkViewController.swift */; };
+		CB15257422A6A388002D483E /* AddTreeLeafViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB15257322A6A387002D483E /* AddTreeLeafViewController.swift */; };
+		CB15257622A6A3D5002D483E /* AddTreeEntireViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB15257522A6A3D4002D483E /* AddTreeEntireViewController.swift */; };
 		CB2D4DA522958548006DAC37 /* TreeAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2D4DA422958548006DAC37 /* TreeAnnotationView.swift */; };
 		CB2D4DA722959D0E006DAC37 /* DataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2D4DA622959D0E006DAC37 /* DataSourceTests.swift */; };
 		CB672F1B229434DA00622B59 /* TreeDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB672F1A229434DA00622B59 /* TreeDisplayViewController.swift */; };
@@ -93,6 +99,12 @@
 		CB12C94E228DF85D000C74C3 /* TreeDetailPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeDetailPageViewController.swift; sourceTree = "<group>"; };
 		CB12C950228DFA12000C74C3 /* PieChartDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartDisplayViewController.swift; sourceTree = "<group>"; };
 		CB15256922A69941002D483E /* FilledButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilledButton.swift; sourceTree = "<group>"; };
+		CB15256B22A6A00F002D483E /* AddTreeLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTreeLocationViewController.swift; sourceTree = "<group>"; };
+		CB15256D22A6A231002D483E /* AddTreeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTreeViewController.swift; sourceTree = "<group>"; };
+		CB15256F22A6A2F7002D483E /* AddTreeOtherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTreeOtherViewController.swift; sourceTree = "<group>"; };
+		CB15257122A6A366002D483E /* AddTreeBarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTreeBarkViewController.swift; sourceTree = "<group>"; };
+		CB15257322A6A387002D483E /* AddTreeLeafViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTreeLeafViewController.swift; sourceTree = "<group>"; };
+		CB15257522A6A3D4002D483E /* AddTreeEntireViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTreeEntireViewController.swift; sourceTree = "<group>"; };
 		CB2D4DA422958548006DAC37 /* TreeAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeAnnotationView.swift; sourceTree = "<group>"; };
 		CB2D4DA622959D0E006DAC37 /* DataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourceTests.swift; sourceTree = "<group>"; };
 		CB672F1A229434DA00622B59 /* TreeDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeDisplayViewController.swift; sourceTree = "<group>"; };
@@ -259,6 +271,12 @@
 			children = (
 				CB7021922292FDCD00D11B0F /* OldAddTreeViewController.swift */,
 				CB9F425022A5B0D800C97F70 /* AddTreePageViewController.swift */,
+				CB15256D22A6A231002D483E /* AddTreeViewController.swift */,
+				CB15256B22A6A00F002D483E /* AddTreeLocationViewController.swift */,
+				CB15257122A6A366002D483E /* AddTreeBarkViewController.swift */,
+				CB15257322A6A387002D483E /* AddTreeLeafViewController.swift */,
+				CB15257522A6A3D4002D483E /* AddTreeEntireViewController.swift */,
+				CB15256F22A6A2F7002D483E /* AddTreeOtherViewController.swift */,
 			);
 			path = addTree;
 			sourceTree = "<group>";
@@ -549,22 +567,28 @@
 				CB12C951228DFA12000C74C3 /* PieChartDisplayViewController.swift in Sources */,
 				CBBCE82F228DD76B008F7225 /* CoordinatesViewController.swift in Sources */,
 				CB15256A22A69941002D483E /* FilledButton.swift in Sources */,
+				CB15256E22A6A231002D483E /* AddTreeViewController.swift in Sources */,
+				CB15256C22A6A00F002D483E /* AddTreeLocationViewController.swift in Sources */,
 				CBBCE82B228DD76B008F7225 /* AppDelegate.swift in Sources */,
 				CBBCE82D228DD76B008F7225 /* ButtonViewController.swift in Sources */,
 				CBB264B822973C6C00C036FB /* DataSourceTableViewController.swift in Sources */,
 				CBBCE84D228DD847008F7225 /* MapViewController.swift in Sources */,
 				CBE8789022957A1300C06E69 /* TreeAnnotation.swift in Sources */,
+				CB15257422A6A388002D483E /* AddTreeLeafViewController.swift in Sources */,
 				D76D618122931F79003FFD24 /* MoreInformationViewController.swift in Sources */,
 				CB7021932292FDCD00D11B0F /* OldAddTreeViewController.swift in Sources */,
 				CB6953BA228EE9530002024B /* DataSource.swift in Sources */,
 				CB6953B8228EE8720002024B /* Tree.swift in Sources */,
 				CBBCE84F228DD93E008F7225 /* QRCodeViewController.swift in Sources */,
+				CB15257222A6A366002D483E /* AddTreeBarkViewController.swift in Sources */,
 				CB2D4DA522958548006DAC37 /* TreeAnnotationView.swift in Sources */,
 				CB12C94D228DF5C4000C74C3 /* SimpleDisplayViewController.swift in Sources */,
 				BC52509D229F0316009C011E /* UserPreferenceKeys.swift in Sources */,
 				D76D617F22931990003FFD24 /* CSVFormat.swift in Sources */,
 				CB12C94B228DF508000C74C3 /* BenefitsDisplayViewController.swift in Sources */,
+				CB15257022A6A2F7002D483E /* AddTreeOtherViewController.swift in Sources */,
 				CBFD63C12295A1E800804DC4 /* NameFormatter.swift in Sources */,
+				CB15257622A6A3D5002D483E /* AddTreeEntireViewController.swift in Sources */,
 				CBFD63C92295BB0700804DC4 /* TreePointAnnotationView.swift in Sources */,
 				CB091E712292EBCF00F0CB06 /* HomeViewController.swift in Sources */,
 				CB672F1B229434DA00622B59 /* TreeDisplayViewController.swift in Sources */,
