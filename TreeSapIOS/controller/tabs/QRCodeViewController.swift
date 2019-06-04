@@ -24,7 +24,7 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
 
         // get default video capture device
         guard let captureDevice = AVCaptureDevice.default(for: AVMediaType.video) else {
-            alertUser(title: "", message: "No camera is available for use on your device.")
+            alertUser(title: "No camera found", message: "No camera is available for use on your device.")
             return
         }
 
@@ -33,7 +33,7 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
         do {
             videoInput = try AVCaptureDeviceInput(device: captureDevice)
         } catch {
-            alertUser(title: "", message: "QR Scanning is not available. Please make sure that this app has access to your camera in the settings on your device.")
+            alertUser(title: "QR code scanning not available", message: "Please make sure that this app has access to your camera.")
             return
         }
 
@@ -41,7 +41,7 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
         if captureSession.canAddInput(videoInput) {
             captureSession.addInput(videoInput)
         } else {
-            alertUser(title: "", message: "QR Scanning is not available. Please make sure that this app has access to your camera in the settings on your device.")
+            alertUser(title: "QR code scanning not available", message: "Please make sure that this app has access to your camera.")
             return
         }
 
@@ -53,7 +53,7 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
             metadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
             metadataOutput.metadataObjectTypes = [.qr]
         } else {
-            alertUser(title: "", message: "QR Scanning is not available. Please make sure that this app has access to your camera in the settings on your device.")
+            alertUser(title: "QR code scanning not available", message: "Please make sure that this app has access to your camera.")
             return
         }
 
@@ -73,17 +73,17 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
     func metadataOutput(_: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from _: AVCaptureConnection) {
         if let metadatObject: AVMetadataObject = metadataObjects.first {
             guard let readableObject = metadatObject as? AVMetadataMachineReadableCodeObject else {
-                alertUser(title: "Error", message: "QR code coud not be scanned")
+                alertUser(title: "Error", message: "QR code coud not be scanned.")
                 return
             }
 
             guard let stringOutput: String = readableObject.stringValue else {
-                alertUser(title: "Error", message: "QR code could not be scanned")
+                alertUser(title: "Error", message: "QR code could not be scanned.")
                 return
             }
 
             guard let resultTree: Tree = getTreeFromString(stringResult: stringOutput) else {
-                alertUser(title: "", message: "No tree with the scanned code was found.")
+                alertUser(title: "No trees found", message: "No tree with the scanned code was found.")
                 return
             }
 
@@ -103,17 +103,17 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
         // Split the encoded string on the first two commas
         let resultParts: [Substring] = stringResult.split(separator: ",", maxSplits: 2, omittingEmptySubsequences: false)
         if resultParts.count != 3 {
-            alertUser(title: "", message: "The scanned code is not the code for a tree.")
+            alertUser(title: "No trees found", message: "The scanned code is not the code for a tree.")
             return nil
         }
 
         // get the latitude, longitude, and data source name from each of the three portions of the string
         guard let treeLatitude: Double = Double(String(resultParts[0])) else {
-            alertUser(title: "", message: "The scanned code is not the code for a tree.")
+            alertUser(title: "No trees found", message: "The scanned code is not the code for a tree.")
             return nil
         }
         guard let treeLongitude: Double = Double(String(resultParts[1])) else {
-            alertUser(title: "", message: "The scanned code is not the code for a tree.")
+            alertUser(title: "No trees found", message: "The scanned code is not the code for a tree.")
             return nil
         }
         let dataSourceName: String = String(resultParts[2])
@@ -121,18 +121,18 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
         // Find the data source with the data source name encoded int the QR code
         let treeCoordinates = CLLocationCoordinate2D(latitude: treeLatitude, longitude: treeLongitude)
         guard let dataSourceToSearch: DataSource = appDelegate.getDataSourceWithName(name: dataSourceName) else {
-            alertUser(title: "", message: "The scanned code is not the code for a tree")
+            alertUser(title: "No trees found", message: "The scanned code is not the code for a tree")
             return nil
         }
 
         // Check if the data source with the given name is active
         guard appDelegate.isActive(dataSource: dataSourceName) else {
-            alertUser(title: "", message: "The data source that contains the data for this tree is turned off. If you would like to view the tree data for this code, turn on the data source \"" + String(dataSourceName) + "\" in the settings menu.")
+            alertUser(title: "Data source disabled", message: "The data source that contains the data for this tree is currently turned off. You can turn on \"" + String(dataSourceName) + "\" in the settings.")
             return nil
         }
 
         guard let resultTree: Tree = TreeFinder.findTreeByLocation(location: treeCoordinates, dataSources: [dataSourceToSearch], cutoffDistance: appDelegate.cutoffDistance) else {
-            alertUser(title: "", message: "No tree with the scanned code was found.")
+            alertUser(title: "No trees found", message: "No tree with the scanned code was found.")
             return nil
         }
 
