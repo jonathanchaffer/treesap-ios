@@ -18,6 +18,7 @@ class DataSourceTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Active Data Sources"
         dataSources = appDelegate.dataSources
         // Set the checkmarks based on the active status of the data sources
         DispatchQueue.main.async {
