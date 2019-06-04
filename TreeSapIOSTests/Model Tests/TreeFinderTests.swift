@@ -13,6 +13,12 @@ import MapKit
 class TreeFinderTests: XCTestCase {
     let distanceBetweenMarginOfError: Double = 0.00001
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
+
+    override func setUp() {
+        for dataSource in appDelegate.dataSources{
+            print("Did retrieve online data: \(dataSource.retrieveOnlineData())")
+        }
+    }
     
     /**
      For each element in the array entered, tests that function findTreeByLocation in the TreeFinder class finds a tree with the specified name, longitude, and latitude when searching through the specified data sources using the specified cutoff distance. If no name is provided, the found tree should lack a name.
