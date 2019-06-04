@@ -28,9 +28,9 @@
 		<true/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>This will allow you to identify trees using the QR code scanner.</string>
+	<string>This will allow you to identify trees using the QR code scanner, as well as add your own trees.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>This will allow you to identify trees based on your GPS location.</string>
+	<string>This will allow you to identify trees based on your GPS location, as well as add your own trees.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

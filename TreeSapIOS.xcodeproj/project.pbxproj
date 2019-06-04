@@ -24,6 +24,7 @@
 		CB15257222A6A366002D483E /* AddTreeBarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB15257122A6A366002D483E /* AddTreeBarkViewController.swift */; };
 		CB15257422A6A388002D483E /* AddTreeLeafViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB15257322A6A387002D483E /* AddTreeLeafViewController.swift */; };
 		CB15257622A6A3D5002D483E /* AddTreeEntireViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB15257522A6A3D4002D483E /* AddTreeEntireViewController.swift */; };
+		CB15257822A6B1DF002D483E /* AddTreePhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB15257722A6B1DF002D483E /* AddTreePhotoViewController.swift */; };
 		CB2D4DA522958548006DAC37 /* TreeAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2D4DA422958548006DAC37 /* TreeAnnotationView.swift */; };
 		CB2D4DA722959D0E006DAC37 /* DataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2D4DA622959D0E006DAC37 /* DataSourceTests.swift */; };
 		CB672F1B229434DA00622B59 /* TreeDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB672F1A229434DA00622B59 /* TreeDisplayViewController.swift */; };
@@ -105,6 +106,7 @@
 		CB15257122A6A366002D483E /* AddTreeBarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTreeBarkViewController.swift; sourceTree = "<group>"; };
 		CB15257322A6A387002D483E /* AddTreeLeafViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTreeLeafViewController.swift; sourceTree = "<group>"; };
 		CB15257522A6A3D4002D483E /* AddTreeEntireViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTreeEntireViewController.swift; sourceTree = "<group>"; };
+		CB15257722A6B1DF002D483E /* AddTreePhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTreePhotoViewController.swift; sourceTree = "<group>"; };
 		CB2D4DA422958548006DAC37 /* TreeAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeAnnotationView.swift; sourceTree = "<group>"; };
 		CB2D4DA622959D0E006DAC37 /* DataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourceTests.swift; sourceTree = "<group>"; };
 		CB672F1A229434DA00622B59 /* TreeDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeDisplayViewController.swift; sourceTree = "<group>"; };
@@ -273,6 +275,7 @@
 				CB9F425022A5B0D800C97F70 /* AddTreePageViewController.swift */,
 				CB15256D22A6A231002D483E /* AddTreeViewController.swift */,
 				CB15256B22A6A00F002D483E /* AddTreeLocationViewController.swift */,
+				CB15257722A6B1DF002D483E /* AddTreePhotoViewController.swift */,
 				CB15257122A6A366002D483E /* AddTreeBarkViewController.swift */,
 				CB15257322A6A387002D483E /* AddTreeLeafViewController.swift */,
 				CB15257522A6A3D4002D483E /* AddTreeEntireViewController.swift */,
@@ -579,6 +582,7 @@
 				CB7021932292FDCD00D11B0F /* OldAddTreeViewController.swift in Sources */,
 				CB6953BA228EE9530002024B /* DataSource.swift in Sources */,
 				CB6953B8228EE8720002024B /* Tree.swift in Sources */,
+				CB15257822A6B1DF002D483E /* AddTreePhotoViewController.swift in Sources */,
 				CBBCE84F228DD93E008F7225 /* QRCodeViewController.swift in Sources */,
 				CB15257222A6A366002D483E /* AddTreeBarkViewController.swift in Sources */,
 				CB2D4DA522958548006DAC37 /* TreeAnnotationView.swift in Sources */,
