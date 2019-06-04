@@ -40,10 +40,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - App delegate methods
 
     func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
         // Override point for customization after application launch.
         if CommandLine.arguments.contains("--uitesting") {
             resetState()
         }
+        
+        // Set attributes of the location manager.
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.distanceFilter = 1
+        
+        // Load trees and preferences.
         importTreeData()
         UserPreferenceKeys.loadPreferences()
         return true
@@ -112,6 +119,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 
         return nil
+    }
+    
+    /// Checks the authorization status for user location, requesting authorization if needed.
+    func checkLocationAuthorization() {
+        switch CLLocationManager.authorizationStatus() {
+        case .notDetermined:
+            locationManager.requestWhenInUseAuthorization()
+            checkLocationAuthorization()
+        case .restricted, .denied:
+            disableLocationFeatures()
+        case .authorizedWhenInUse, .authorizedAlways:
+            enableLocationFeatures()
+        default:
+            return
+        }
     }
 
     /// Enables location features so trees can be identified by GPS and the user's location can show up on the map.

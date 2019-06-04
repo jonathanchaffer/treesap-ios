@@ -19,8 +19,11 @@ class ButtonViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        appDelegate.locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        appDelegate.locationManager.distanceFilter = 1
+        
+        // Check authorization status.
+        appDelegate.checkLocationAuthorization()
+        
+        // Set the styling for the big button
         bigButton.layer.cornerRadius = 0.5 * bigButton.bounds.size.width
     }
 
@@ -46,9 +49,6 @@ class ButtonViewController: UIViewController {
      Function that gets called when the big button is pressed. Checks the location authorization status and enables/disables location features accordingly, then displays tree data for the tree closest to the user's location, if any, and alerts the user otherwise.
      */
     @IBAction func handleBigButtonPressed(_: UIButton) {
-        // Check authorization status.
-        checkLocationAuthorization()
-
         // If authorized, get tree data. Otherwise, alert the user.
         if appDelegate.locationFeaturesEnabled, appDelegate.locationManager.location != nil {
             // If tree data was found, display it. Otherwise, alert the user.
@@ -77,18 +77,5 @@ class ButtonViewController: UIViewController {
     private func getTreeDataByGPS() -> Tree? {
         let location = appDelegate.locationManager.location!.coordinate
         return TreeFinder.findTreeByLocation(location: location, dataSources: appDelegate.getActiveDataSources(), cutoffDistance: appDelegate.accessCutoffDistance())
-    }
-
-    private func checkLocationAuthorization() {
-        switch CLLocationManager.authorizationStatus() {
-        case .notDetermined:
-            appDelegate.locationManager.requestWhenInUseAuthorization()
-        case .restricted, .denied:
-            appDelegate.disableLocationFeatures()
-        case .authorizedWhenInUse, .authorizedAlways:
-            appDelegate.enableLocationFeatures()
-        default:
-            return
-        }
     }
 }

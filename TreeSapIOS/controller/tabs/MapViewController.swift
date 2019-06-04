@@ -30,12 +30,8 @@ class MapViewController: UIViewController {
             mapView.register(TreeAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
         }
 
-        // Set attributes of the location manager.
-        appDelegate.locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        appDelegate.locationManager.distanceFilter = 1
-
         // Check authorization status.
-        checkLocationAuthorization()
+        appDelegate.checkLocationAuthorization()
 
         // If location use is authorized, set starting location to current location. Otherwise, use Centennial Park (in Holland, Michigan) as a default.
         if appDelegate.locationFeaturesEnabled, appDelegate.locationManager.location != nil {
@@ -47,7 +43,7 @@ class MapViewController: UIViewController {
 
     override func viewWillAppear(_: Bool) {
         // Check authorization status.
-        checkLocationAuthorization()
+        appDelegate.checkLocationAuthorization()
 
         // Show or hide user location based on the option in Settings.
         if appDelegate.showingUserLocation {
@@ -77,19 +73,6 @@ class MapViewController: UIViewController {
         let pages = TreeDetailPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
         pages.displayedTree = treeToDisplay
         navigationController?.pushViewController(pages, animated: true)
-    }
-
-    private func checkLocationAuthorization() {
-        switch CLLocationManager.authorizationStatus() {
-        case .notDetermined:
-            appDelegate.locationManager.requestWhenInUseAuthorization()
-        case .restricted, .denied:
-            appDelegate.disableLocationFeatures()
-        case .authorizedWhenInUse, .authorizedAlways:
-            appDelegate.enableLocationFeatures()
-        default:
-            return
-        }
     }
 }
 
