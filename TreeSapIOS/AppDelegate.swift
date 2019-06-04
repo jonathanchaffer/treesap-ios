@@ -147,6 +147,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     // MARK: - User preferences accesors and modifiers
+    
+    ///Changes the user preferences to the default user preferences
+    func restoreDefaultUserPreferences(){
+        UserPreferenceKeys.showUserLocation = UserPreferenceKeys.showUserLocationDefault
+        UserDefaults.standard.set(UserPreferenceKeys.showUserLocationDefault, forKey: UserPreferenceKeys.showUserLocationKey)
+        UserPreferenceKeys.cutoffDistance = UserPreferenceKeys.cutoffDistanceDefault
+        UserDefaults.standard.set(UserPreferenceKeys.cutoffDistance, forKey: UserPreferenceKeys.cutoffDistanceKey)
+        UserPreferenceKeys.dataSourceAvailibility = UserPreferenceKeys.dataSourceAvailibilityDefault
+        UserDefaults.standard.set(UserPreferenceKeys.dataSourceAvailibility, forKey: UserPreferenceKeys.dataSourceAvailibilityKey)
+    }
 
     /// - Returns: Whether the user's location will be shown on the map.
     func accessShowUserLocation() -> Bool {
