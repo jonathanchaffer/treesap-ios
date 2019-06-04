@@ -35,13 +35,13 @@ class AddTreePageViewController: UIPageViewController {
 
         // Create listeners for page events
         NotificationCenter.default.addObserver(self, selector: #selector(nextPage), name: NSNotification.Name("next"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(closeAddTree), name: NSNotification.Name("closeAddTree"), object: nil)
     }
 
     // MARK: - Actions
 
-    @IBAction func closeAddTree(_: UIBarButtonItem) {
-        navigationController?.popViewController(animated: true)
-        dismiss(animated: true, completion: nil)
+    @IBAction func closeAddTreeButton(_: UIBarButtonItem) {
+        closeAddTree()
     }
 
     // MARK: - Private methods
@@ -62,4 +62,10 @@ class AddTreePageViewController: UIPageViewController {
         // Set the page to be displayed
         setViewControllers([pages[currentPage]], direction: .forward, animated: true, completion: nil)
     }
+    
+    @objc private func closeAddTree() {
+        navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
+    }
+    
 }

@@ -1078,7 +1078,7 @@
                     <navigationItem key="navigationItem" title="Add Tree" id="VKd-YW-2EM">
                         <barButtonItem key="leftBarButtonItem" title="Close" image="xButton" id="1fE-3n-xZk">
                             <connections>
-                                <action selector="closeAddTree:" destination="jDM-Rl-77P" id="SZ4-cv-Fhh"/>
+                                <action selector="closeAddTreeButton:" destination="jDM-Rl-77P" id="SZ4-cv-Fhh"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -2055,6 +2055,7 @@ ZC4
                                                                 <connections>
                                                                     <action selector="broadcastNext:" destination="KK5-YB-y2k" eventType="touchUpInside" id="Cnn-ex-U3M"/>
                                                                     <action selector="broadcastNext:" destination="yrU-zm-ABx" eventType="touchUpInside" id="avo-mo-5KI"/>
+                                                                    <action selector="handleDoneButtonPressed:" destination="A3k-Em-hbM" eventType="touchUpInside" id="84P-Nf-GFL"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
