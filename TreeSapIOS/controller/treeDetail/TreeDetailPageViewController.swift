@@ -51,12 +51,18 @@ class TreeDetailPageViewController: UIPageViewController {
 
     override func viewWillAppear(_: Bool) {
         // Hide the tab bar when the detail display will appear.
-        tabBarController?.tabBar.isHidden = true
+        //tabBarController?.tabBar.isHidden = true
     }
 
     override func viewWillDisappear(_: Bool) {
         // Show the tab bar when the detail display will disappear.
-        tabBarController?.tabBar.isHidden = false
+        //tabBarController?.tabBar.isHidden = false
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        // Pop the tree details
+        navigationController?.popViewController(animated: false)
+        dismiss(animated: false, completion: nil)
     }
 
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating _: Bool, previousViewControllers _: [UIViewController], transitionCompleted _: Bool) {
@@ -76,7 +82,7 @@ class TreeDetailPageViewController: UIPageViewController {
 
     /// Sets up the dot indicator that shows the current page.
     private func configurePageControl() {
-        pageControl = UIPageControl(frame: CGRect(x: 0, y: UIScreen.main.bounds.maxY - 50, width: UIScreen.main.bounds.width, height: 50))
+        pageControl = UIPageControl(frame: CGRect(x: 0, y: UIScreen.main.bounds.height - 90, width: UIScreen.main.bounds.width, height: 50))
         pageControl!.numberOfPages = pages.count
         pageControl!.currentPage = 0
         pageControl!.currentPageIndicatorTintColor = UIColor(red: 0.373, green: 0.718, blue: 0.306, alpha: 1.0)
