@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MapKit
 
 class AddTreePageViewController: UIPageViewController {
     // MARK: - Properties
@@ -35,7 +36,7 @@ class AddTreePageViewController: UIPageViewController {
 
         // Create listeners for page events
         NotificationCenter.default.addObserver(self, selector: #selector(nextPage), name: NSNotification.Name("next"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(closeAddTree), name: NSNotification.Name("closeAddTree"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(addTreeDone), name: NSNotification.Name("addTreeDone"), object: nil)
     }
 
     // MARK: - Actions
@@ -63,9 +64,15 @@ class AddTreePageViewController: UIPageViewController {
         setViewControllers([pages[currentPage]], direction: .forward, animated: true, completion: nil)
     }
     
-    @objc private func closeAddTree() {
+    private func closeAddTree() {
         navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)
+    }
+    
+    @objc private func addTreeDone() {
+        let createdTree = Tree(id: nil, commonName: "My Tree", scientificName: "Myus treeus", location: CLLocationCoordinate2D(latitude: 42.0, longitude: -86.0), dbh: nil)
+        print("Created a Tree with location (" + String(createdTree.location.latitude) + ", " + String(createdTree.location.longitude) + ")")
+        closeAddTree()
     }
     
 }

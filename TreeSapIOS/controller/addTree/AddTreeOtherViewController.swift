@@ -26,11 +26,11 @@ class AddTreeOtherViewController: AddTreeViewController {
     
     private func submitTree() {
         let alert = UIAlertController(title: "Success!", message: "Your tree has been submitted for approval. While you wait, your tree will be available in the \"My Trees\" data set on your device.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: {_ in self.broadcastCloseAddTree()}))
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: {_ in self.broadcastAddTreeDone()}))
         present(alert, animated: true)
     }
     
-    private func broadcastCloseAddTree() {
-        NotificationCenter.default.post(name: NSNotification.Name("closeAddTree"), object: nil)
+    private func broadcastAddTreeDone() {
+        NotificationCenter.default.post(name: NSNotification.Name("addTreeDone"), object: nil)
     }
 }
