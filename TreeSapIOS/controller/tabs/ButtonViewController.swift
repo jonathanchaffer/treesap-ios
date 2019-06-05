@@ -13,6 +13,9 @@ class ButtonViewController: UIViewController {
     // MARK: - Properties
 
     @IBOutlet var bigButton: UIButton!
+    var buttonDefaultWidth: CGFloat? = nil
+    var buttonDefaultOrigin: CGPoint? = nil
+    let sizeMultiplier = 0.95
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
     // MARK: - Overrides
@@ -25,6 +28,8 @@ class ButtonViewController: UIViewController {
         
         // Set the styling for the big button
         bigButton.layer.cornerRadius = 0.5 * bigButton.bounds.size.width
+        buttonDefaultWidth = bigButton.frame.size.width
+        buttonDefaultOrigin = bigButton.frame.origin
     }
 
     override func viewDidLayoutSubviews() {
@@ -32,6 +37,8 @@ class ButtonViewController: UIViewController {
         // Using the dispatch queue makes the text in the trailing closure execute after this method (i.e. viewDidLayoutSubviews) finishes so that the width of the button is the reformatted width instead of the width of the button before it is resized
         DispatchQueue.main.asyncAfter(deadline: .now()) {
             self.bigButton.layer.cornerRadius = 0.5 * self.bigButton.bounds.size.width
+            self.buttonDefaultWidth = self.bigButton.frame.size.width
+            self.buttonDefaultOrigin = self.bigButton.frame.origin
         }
     }
 
@@ -60,6 +67,19 @@ class ButtonViewController: UIViewController {
             present(alert, animated: true)
         }
     }
+    
+    @IBAction func touchDown(_ sender: UIButton) {
+        pushDownButton()
+    }
+    
+    @IBAction func touchUpInside(_ sender: UIButton) {
+        pushUpButton()
+    }
+    
+    @IBAction func touchDragExit(_ sender: UIButton) {
+        pushUpButton()
+    }
+    
 
     // MARK: - Private methods
 
@@ -69,5 +89,29 @@ class ButtonViewController: UIViewController {
     private func getTreeDataByGPS() -> Tree? {
         let location = appDelegate.locationManager.location!.coordinate
         return TreeFinder.findTreeByLocation(location: location, dataSources: appDelegate.getActiveDataSources(), cutoffDistance: appDelegate.accessCutoffDistance())
+    }
+    
+    private func pushDownButton() {
+        let newWidth = Double(buttonDefaultWidth!) * sizeMultiplier
+        let offset = (Double(buttonDefaultWidth!) - newWidth) / 2.0
+        UIView.animate(withDuration: 0.1, animations: {
+            self.bigButton.frame = CGRect(
+                x: Double(self.bigButton.frame.origin.x) + offset,
+                y: Double(self.bigButton.frame.origin.y) + offset,
+                width: newWidth,
+                height: newWidth)
+            self.bigButton.layer.cornerRadius = CGFloat(0.5 * newWidth)
+        })
+    }
+    
+    private func pushUpButton() {
+        UIView.animate(withDuration: 0.1, animations: {
+            self.bigButton.frame = CGRect(
+                x: self.buttonDefaultOrigin!.x,
+                y: self.buttonDefaultOrigin!.y,
+                width: self.buttonDefaultWidth!,
+                height: self.buttonDefaultWidth!)
+            self.bigButton.layer.cornerRadius = CGFloat(0.5 * self.buttonDefaultWidth!)
+        })
     }
 }

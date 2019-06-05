@@ -116,6 +116,9 @@
                                         <state key="normal" title="Press me!"/>
                                         <connections>
                                             <action selector="handleBigButtonPressed:" destination="9pv-A4-QxB" eventType="touchUpInside" id="lbb-n8-xtC"/>
+                                            <action selector="touchDown:" destination="9pv-A4-QxB" eventType="touchDown" id="eDz-6d-Ea5"/>
+                                            <action selector="touchDragExit:" destination="9pv-A4-QxB" eventType="touchDragExit" id="cif-Xd-DBf"/>
+                                            <action selector="touchUpInside:" destination="9pv-A4-QxB" eventType="touchUpInside" id="Lq4-Z8-7r2"/>
                                         </connections>
                                     </button>
                                 </subviews>
