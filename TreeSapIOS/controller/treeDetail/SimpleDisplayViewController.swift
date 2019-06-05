@@ -17,6 +17,7 @@ class SimpleDisplayViewController: TreeDisplayViewController {
     @IBOutlet var longitudeLabel: UILabel!
     @IBOutlet weak var dbhStackView: UIStackView!
     @IBOutlet var dbhLabel: UILabel!
+    @IBOutlet weak var backgroundImage: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +49,10 @@ class SimpleDisplayViewController: TreeDisplayViewController {
             dbhLabel.text = String(displayedTree!.dbh!)
         } else {
             dbhStackView.isHidden = true
+        }
+        // Set background image
+        if displayedTree!.commonName != nil, UIImage(named: displayedTree!.commonName!) != nil {
+            backgroundImage.image = UIImage(named: displayedTree!.commonName!)
         }
     }
 }
