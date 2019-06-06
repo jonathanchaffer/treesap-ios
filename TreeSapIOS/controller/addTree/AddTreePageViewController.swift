@@ -70,8 +70,32 @@ class AddTreePageViewController: UIPageViewController {
     }
     
     @objc private func addTreeDone() {
-        let createdTree = Tree(id: nil, commonName: "My Tree", scientificName: "Myus treeus", location: CLLocationCoordinate2D(latitude: 42.0, longitude: -86.0), dbh: nil)
+        // Create a Tree object based on the parameters inputted
+        let createdTree = Tree(
+            id: nil,
+            commonName: NameFormatter.formatCommonName(commonName: (pages[4] as! AddTreeOtherViewController).commonNameTextField.text),
+            scientificName: NameFormatter.formatScientificName(scientificName: (pages[4] as! AddTreeOtherViewController).scientificNameTextField.text),
+            location: CLLocationCoordinate2D(
+                latitude: Double((pages[0] as! AddTreeLocationViewController).latitudeLabel.text!)!,
+                longitude: Double((pages[0] as! AddTreeLocationViewController).longitudeLabel.text!)!),
+            dbh: nil)
+        // Add the images, if any, to the Tree
+        let barkImage = (pages[1] as! AddTreePhotoViewController).selectedImage
+        let leafImage = (pages[2] as! AddTreePhotoViewController).selectedImage
+        let entireImage = (pages[3] as! AddTreePhotoViewController).selectedImage
+        if (entireImage != nil) {
+            createdTree.addImage(entireImage!)
+        }
+        if (leafImage != nil) {
+            createdTree.addImage(leafImage!)
+        }
+        if (barkImage != nil) {
+            createdTree.addImage(barkImage!)
+        }
+        // TODO: Do something with the Tree
         print("Created a Tree with location (" + String(createdTree.location.latitude) + ", " + String(createdTree.location.longitude) + ")")
+        print("common name " + createdTree.commonName! + ", scientific name " + createdTree.scientificName!)
+        // Close the add tree workflow
         closeAddTree()
     }
     

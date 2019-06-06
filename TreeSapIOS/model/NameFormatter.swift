@@ -9,8 +9,12 @@
 import Foundation
 
 class NameFormatter {
-    class func formatCommonName(commonName: String) -> String {
-        var newCommonName = commonName
+    class func formatCommonName(commonName: String?) -> String? {
+        // If nil was passed in, return nil
+        if commonName == nil {
+            return nil
+        }
+        var newCommonName = commonName!
         // If there is a hyphen, flip the two sides and put a space in between
         if newCommonName.contains("-") {
             let hyphenSplit = newCommonName.split(separator: "-")
@@ -51,8 +55,12 @@ class NameFormatter {
         return newCommonName
     }
 
-    class func formatScientificName(scientificName: String) -> String {
-        var newScientificName = scientificName
+    class func formatScientificName(scientificName: String?) -> String? {
+        // If nil was passed in, return nil
+        if scientificName == nil {
+            return nil
+        }
+        var newScientificName = scientificName!
         // If there are at least three words, check whether the first word is an abbreviation
         let spaceSplit = newScientificName.split(separator: " ")
         if spaceSplit.count >= 3 {

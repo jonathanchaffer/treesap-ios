@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kgN-cs-XPB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -1978,6 +1978,12 @@ ZC4
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="9dN-5q-Pyf"/>
                     </view>
+                    <connections>
+                        <outlet property="circumferenceTextField" destination="CuX-eq-lba" id="0DO-64-nTs"/>
+                        <outlet property="commonNameTextField" destination="m2m-Bp-H7E" id="69x-b5-5mN"/>
+                        <outlet property="dbhTextField" destination="i2s-g1-rja" id="0g4-a2-jxf"/>
+                        <outlet property="scientificNameTextField" destination="wf4-v3-NiR" id="5U9-EJ-hsk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EYZ-e3-nYf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

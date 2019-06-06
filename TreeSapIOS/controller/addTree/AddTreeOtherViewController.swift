@@ -9,8 +9,18 @@
 import UIKit
 
 class AddTreeOtherViewController: AddTreeViewController {
+    // MARK: - Properties
+    
+    @IBOutlet weak var commonNameTextField: UITextField!
+    @IBOutlet weak var scientificNameTextField: UITextField!
+    @IBOutlet weak var dbhTextField: UITextField!
+    @IBOutlet weak var circumferenceTextField: UITextField!
+    
+    // MARK: - Overrides
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround()
     }
 
     // MARK: - Actions
@@ -32,5 +42,20 @@ class AddTreeOtherViewController: AddTreeViewController {
     
     private func broadcastAddTreeDone() {
         NotificationCenter.default.post(name: NSNotification.Name("addTreeDone"), object: nil)
+    }
+}
+
+/**
+ Extension that hides the keyboard when it is tapped outside. Simply add 'self.hideKeyboardWhenTappedAround()' to viewDidLoad to bring this extension into effect.
+ */
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
 }
