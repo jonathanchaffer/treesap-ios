@@ -599,22 +599,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HXB-U3-Z9X" customClass="PieChartView" customModule="Charts">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="tao-k5-qM0">
                                 <rect key="frame" x="20" y="40" width="335" height="587"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HXB-U3-Z9X" customClass="PieChartView" customModule="Charts">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="523"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="Ol9-nK-IIg" customClass="HorizontalBarChartView" customModule="Charts">
+                                        <rect key="frame" x="0.0" y="523" width="335" height="64"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="64" id="eUm-wB-fwl"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="cn0-VP-zAi" firstAttribute="trailing" secondItem="HXB-U3-Z9X" secondAttribute="trailing" constant="20" id="3jd-au-jmv"/>
-                            <constraint firstItem="HXB-U3-Z9X" firstAttribute="leading" secondItem="cn0-VP-zAi" secondAttribute="leading" constant="20" id="ZmC-dJ-HUh"/>
-                            <constraint firstItem="cn0-VP-zAi" firstAttribute="bottom" secondItem="HXB-U3-Z9X" secondAttribute="bottom" constant="40" id="oY7-YO-n6l"/>
-                            <constraint firstItem="HXB-U3-Z9X" firstAttribute="top" secondItem="cn0-VP-zAi" secondAttribute="top" constant="20" id="q79-Gm-uC1"/>
+                            <constraint firstItem="tao-k5-qM0" firstAttribute="top" secondItem="cn0-VP-zAi" secondAttribute="top" constant="20" id="54q-r0-fPI"/>
+                            <constraint firstItem="tao-k5-qM0" firstAttribute="leading" secondItem="cn0-VP-zAi" secondAttribute="leading" constant="20" id="UBZ-1L-kZq"/>
+                            <constraint firstItem="cn0-VP-zAi" firstAttribute="bottom" secondItem="tao-k5-qM0" secondAttribute="bottom" constant="40" id="feb-BW-7Rr"/>
+                            <constraint firstItem="cn0-VP-zAi" firstAttribute="trailing" secondItem="tao-k5-qM0" secondAttribute="trailing" constant="20" id="xZh-22-2Ut"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cn0-VP-zAi"/>
                     </view>
                     <connections>
-                        <outlet property="chartView" destination="HXB-U3-Z9X" id="jP2-MJ-dEI"/>
+                        <outlet property="barChartView" destination="Ol9-nK-IIg" id="b5M-td-NkE"/>
+                        <outlet property="pieChartView" destination="HXB-U3-Z9X" id="jP2-MJ-dEI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r1j-zC-oy6" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1127,15 +1140,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Jb3-cp-bVD">
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Jb3-cp-bVD">
                                 <rect key="frame" x="177.5" y="323.5" width="20" height="20"/>
                             </activityIndicatorView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R4V-GO-ELa">
-                                <rect key="frame" x="166.5" y="373.5" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cpW-us-olZ">
                                 <rect key="frame" x="164.5" y="205" width="46" height="30"/>
                                 <state key="normal" title="Button"/>
@@ -1150,8 +1157,6 @@
                             <constraint firstItem="Jb3-cp-bVD" firstAttribute="centerY" secondItem="Uey-ys-2nW" secondAttribute="centerY" id="70J-MV-vwZ"/>
                             <constraint firstItem="cpW-us-olZ" firstAttribute="centerX" secondItem="Uey-ys-2nW" secondAttribute="centerX" id="L2C-y5-SoY"/>
                             <constraint firstItem="Jb3-cp-bVD" firstAttribute="top" secondItem="cpW-us-olZ" secondAttribute="bottom" constant="88.5" id="LUC-od-QCq"/>
-                            <constraint firstItem="R4V-GO-ELa" firstAttribute="centerX" secondItem="Uey-ys-2nW" secondAttribute="centerX" id="Vkr-QC-u2O"/>
-                            <constraint firstItem="R4V-GO-ELa" firstAttribute="top" secondItem="Jb3-cp-bVD" secondAttribute="bottom" constant="30" id="dFO-WQ-g0A"/>
                             <constraint firstItem="Jb3-cp-bVD" firstAttribute="centerX" secondItem="Uey-ys-2nW" secondAttribute="centerX" id="uA7-Ph-RcV"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="AqQ-kD-qw4"/>
