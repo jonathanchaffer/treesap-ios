@@ -1864,11 +1864,17 @@ ZC4
                                                                                 <rect key="frame" x="0.0" y="76" width="335" height="30"/>
                                                                                 <subviews>
                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="DBH (in)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ia3-uM-JBN">
-                                                                                        <rect key="frame" x="0.0" y="0.0" width="142.5" height="30"/>
+                                                                                        <rect key="frame" x="0.0" y="0.0" width="65" height="30"/>
                                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                         <nil key="textColor"/>
                                                                                         <nil key="highlightedColor"/>
                                                                                     </label>
+                                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E0e-rt-2gs">
+                                                                                        <rect key="frame" x="73" y="0.0" width="69.5" height="30"/>
+                                                                                        <connections>
+                                                                                            <segue destination="uVF-BD-555" kind="show" id="b6B-DS-iMg"/>
+                                                                                        </connections>
+                                                                                    </button>
                                                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="e.g. 27.0" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="i2s-g1-rja">
                                                                                         <rect key="frame" x="150.5" y="0.0" width="184.5" height="30"/>
                                                                                         <nil key="textColor"/>
@@ -1988,6 +1994,47 @@ ZC4
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EYZ-e3-nYf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3572" y="2165.6671664167916"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="ifu-2z-pFy">
+            <objects>
+                <viewController id="uVF-BD-555" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="db0-qk-TlT">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="yfv-z1-rzx">
+                                <rect key="frame" x="20" y="232.5" width="335" height="202"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What does DBH mean?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Idy-PK-QdL">
+                                        <rect key="frame" x="31.5" y="0.0" width="272" height="31.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="26"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bMs-eA-tqM">
+                                        <rect key="frame" x="4" y="39.5" width="327" height="162.5"/>
+                                        <string key="text">The DBH of a tree is its Diameter at Breast Height. The exact measurement of breast height is 4.5 feet above the ground. If you know the DBH of a tree, you can enter it and the circumference field will update automatically. Alternatively, you can enter the circumference of a tree and the DBH field will update automatically.</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="yfv-z1-rzx" firstAttribute="centerY" secondItem="db0-qk-TlT" secondAttribute="centerY" id="2Im-E0-sAw"/>
+                            <constraint firstItem="yfv-z1-rzx" firstAttribute="leading" secondItem="db0-qk-TlT" secondAttribute="leading" constant="20" id="WRs-Ze-KuN"/>
+                            <constraint firstItem="yfv-z1-rzx" firstAttribute="centerX" secondItem="db0-qk-TlT" secondAttribute="centerX" id="mTg-s9-jJJ"/>
+                            <constraint firstAttribute="trailing" secondItem="yfv-z1-rzx" secondAttribute="trailing" constant="20" id="pJH-8p-ZdP"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="NjI-rd-szt"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EeW-hN-YJR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3572" y="3018"/>
         </scene>
     </scenes>
     <resources>
