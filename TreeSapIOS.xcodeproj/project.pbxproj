@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0B85D9CFEC2032A626AC6A93 /* libPods-TreeSapIOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 04069877CBA1FE325848DCEC /* libPods-TreeSapIOSTests.a */; };
 		4101181C22A6FA5600EDE6D8 /* UserPreferenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4101181B22A6FA5600EDE6D8 /* UserPreferenceTests.swift */; };
+		418A360D22A83CD3002BF28C /* LoadingScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418A360C22A83CD3002BF28C /* LoadingScreenViewController.swift */; };
 		61E1EFDD5187EC1C7241B025 /* libPods-TreeSapIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B77358D36DBDDED4196CADD2 /* libPods-TreeSapIOS.a */; };
 		9325BCC7D7C18D578601373C /* libPods-TreeSapIOSUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84439420E68F648C297A16CA /* libPods-TreeSapIOSUITests.a */; };
 		BC52509D229F0316009C011E /* UserPreferenceKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC52509C229F0316009C011E /* UserPreferenceKeys.swift */; };
@@ -88,6 +89,7 @@
 		032803B715E7C1F1944B7370 /* Pods-TreeSapIOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreeSapIOSTests.release.xcconfig"; path = "Target Support Files/Pods-TreeSapIOSTests/Pods-TreeSapIOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		04069877CBA1FE325848DCEC /* libPods-TreeSapIOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TreeSapIOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4101181B22A6FA5600EDE6D8 /* UserPreferenceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPreferenceTests.swift; sourceTree = "<group>"; };
+		418A360C22A83CD3002BF28C /* LoadingScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingScreenViewController.swift; sourceTree = "<group>"; };
 		51923197E0B1EB112DB21162 /* Pods-TreeSapIOSUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreeSapIOSUITests.release.xcconfig"; path = "Target Support Files/Pods-TreeSapIOSUITests/Pods-TreeSapIOSUITests.release.xcconfig"; sourceTree = "<group>"; };
 		657C7C57D15B44ECCED1E51C /* Pods-TreeSapIOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreeSapIOS.release.xcconfig"; path = "Target Support Files/Pods-TreeSapIOS/Pods-TreeSapIOS.release.xcconfig"; sourceTree = "<group>"; };
 		668AAD7604AA46A0D823F819 /* Pods-TreeSapIOSUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreeSapIOSUITests.debug.xcconfig"; path = "Target Support Files/Pods-TreeSapIOSUITests/Pods-TreeSapIOSUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -172,6 +174,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		418A360B22A83BEA002BF28C /* loadingScreen */ = {
+			isa = PBXGroup;
+			children = (
+				418A360C22A83CD3002BF28C /* LoadingScreenViewController.swift */,
+			);
+			path = loadingScreen;
+			sourceTree = "<group>";
+		};
 		6513C0878CC415B2C584B34B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -216,6 +226,7 @@
 		CB6953B4228EE4300002024B /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				418A360B22A83BEA002BF28C /* loadingScreen */,
 				CB9F424F22A5AE0B00C97F70 /* tabs */,
 				CB9F424E22A5AE0100C97F70 /* settings */,
 				CB9F424D22A5ADF800C97F70 /* addTree */,
@@ -600,6 +611,7 @@
 				CB091E712292EBCF00F0CB06 /* HomeViewController.swift in Sources */,
 				CB672F1B229434DA00622B59 /* TreeDisplayViewController.swift in Sources */,
 				CBBCE851228DD9B1008F7225 /* SettingsViewController.swift in Sources */,
+				418A360D22A83CD3002BF28C /* LoadingScreenViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -52,12 +52,10 @@ class DataSource {
         let url = URL(string: internetFilebase + internetFilename)
         let task = URLSession.shared.dataTask(with: url!) { data, response, error in
             if error != nil {
-                print(error!)
                 isErrorFree = false
                 return
             } else {
                 guard let httpResponse = response as? HTTPURLResponse, (200 ... 299).contains(httpResponse.statusCode) else {
-                    print("Server error")
                     isErrorFree = false
                     return
                 }
@@ -69,14 +67,17 @@ class DataSource {
                     let fileURL = documentDirectory.appendingPathComponent(self.localFilename)
                     try data!.write(to: fileURL)
                 } catch {
-                    print(error)
                     isErrorFree = false
                     return
                 }
                 
                 // Create Tree objects for the data
-                DispatchQueue.main.async {
-                    self.createTrees()
+                self.createTrees(asynchronous: false)
+                
+                // If it the loading screen is still active, close it
+                let currentViewController = UIApplication.shared.keyWindow?.rootViewController as? LoadingScreenViewController
+                if(currentViewController != nil){
+                    currentViewController!.loadHomeScreen(localDataLoaded: true)
                 }
             }
         }
@@ -96,23 +97,48 @@ class DataSource {
     
     /**
      Creates Tree objects based on the file in the Documents directory with filename localFilename. Tree objects are stored in the trees array.
+     - Parameter asynchronous: Whether the creation of trees should be done asynchronously rather than synchronously
+     - Returns: True if at least one tree was imported from a local file and false otherwise
      */
-    private func createTrees() {
+    public func createTrees(asynchronous: Bool) -> Bool{
         // Create a file manager and get the path for the local file
         let fileManager = FileManager.default
         let documentsURL = try! fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
         let filepath = documentsURL.appendingPathComponent(localFilename).path
+        var newTreeList = [Tree]()
+        
         // Create an importer for the local file
         let importer = CSVImporter<[String]>(path: filepath)
-        importer.startImportingRecords { $0 }.onFinish { importedRecords in
+        if(asynchronous){
+            importer.startImportingRecords { $0 }.onFinish { importedRecords in
+                // Create a Tree object for each imported record
+                for record in importedRecords {
+                    let newTree: Tree? = self.makeTreeForRecord(record: record)
+                    if(newTree != nil){
+                        newTreeList.append(newTree!)
+                    }
+                }
+                
+                //TODO: Potentially add a lock to the trees array during this line of code. If not, this line should be outside of both the if and else blocks
+                self.trees = newTreeList
+            }
+        }else{
+            let importedRecords: [[String]] = importer.importRecords { $0 }
             // Create a Tree object for each imported record
             for record in importedRecords {
-                self.addTreeForRecord(record: record)
+                let newTree: Tree? = self.makeTreeForRecord(record: record)
+                if(newTree != nil){
+                    newTreeList.append(newTree!)
+                }
             }
+            
+            self.trees = newTreeList
         }
+        
+        return (self.trees.count > 0)
     }
     
-    private func addTreeForRecord(record: [String]) {
+    private func makeTreeForRecord(record: [String]) -> Tree?{
         // Set ID (optional)
         var id: Int?
         if self.csvFormat.idIndex() >= 0 {
@@ -172,7 +198,8 @@ class DataSource {
                 tree.setOtherInfo(key: "totalAnnualBenefitsDollars", value: Double(record[self.csvFormat.totalAnnualBenefitsDollarsIndex()])!)
             }
             
-            self.trees.append(tree)
+            return tree
         }
+            return nil
     }
 }
