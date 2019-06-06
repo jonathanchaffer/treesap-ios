@@ -13,7 +13,9 @@ class LoadingScreenViewController: UIViewController{
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     override func viewDidAppear(_ animated: Bool) {
-        // Load trees. If tree data could be loaded adequately from local repositories, exit the loading screen before loading tree data from online repositories. Otherwise, stay in the loading screen until the tree data from online repositories is loaded.
+        //Check if there is internet access
+        
+        // Load trees, assumming there is internet access. If tree data could be loaded adequately from local repositories, exit the loading screen before loading tree data from online repositories. Otherwise, stay in the loading screen until the tree data from online repositories is loaded.
         let allDataSourcesLoaded = appDelegate.importLocalTreeData()
         if(allDataSourcesLoaded){
             loadHomeScreen(localDataLoaded: true)
@@ -21,6 +23,8 @@ class LoadingScreenViewController: UIViewController{
         }else{
             appDelegate.importOnlineTreeData()
         }
+        
+        //Load trees, assumming there is no internet access
     }
     
     /**
