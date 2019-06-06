@@ -55,10 +55,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // Start updating location.
         locationManager.startUpdatingLocation()
-
-        // Load trees and preferences.
-        importTreeData()
+        
+        //Load user preferences
         UserPreferenceKeys.loadPreferences()
+        
         return true
     }
 
@@ -223,13 +223,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // MARK: - Other methods
 
-    /// Import each data source's tree data.
-    func importTreeData() {
+    /**
+     Import each data source's tree data from online. This is done by first downloading the tree data from the online repository into local repositories, then creating Tree objects in the DataSource objects using the data in the local repositories. This is done asynchronously.
+     - Parameter loadingScreenActive: Whether the loading scr
+     */
+    func importOnlineTreeData() {
         for dataSource in dataSources {
             if !dataSource.retrieveOnlineData() {
+                //TODO: Either do something if retrieveOnlineData returns false or don't bother checking
                 print("Error retrieving " + dataSource.dataSourceName + " data from online")
             }
         }
+    }
+    
+    /**
+     Creates Tree objects in each DataSource object using data from the local tree data repositiories. This is done synchronously
+     - Returns: A Bool that indicates whether each of the data sources contained some data
+     */
+    func importLocalTreeData() -> Bool{
+        var allDataPresent = true //indicates whether any of the data sources contain no data (which indicates they could not be loaded)
+        for dataSource in dataSources{
+            if(!dataSource.createTrees(asynchronous: false)){
+                allDataPresent = false
+            }
+        }
+        return allDataPresent
     }
 
     /// Resets the state of the app for UI testing purposes.
