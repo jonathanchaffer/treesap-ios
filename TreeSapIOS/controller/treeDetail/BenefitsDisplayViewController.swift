@@ -18,15 +18,20 @@ class BenefitsDisplayViewController: TreeDisplayViewController {
     @IBOutlet weak var dbhLabel: UILabel!
     @IBOutlet weak var totalAnnualBenefitsStackView: UIStackView!
     @IBOutlet weak var totalAnnualBenefitsDollarsLabel: UILabel!
-    @IBOutlet weak var co2StackView: UIStackView!
-    @IBOutlet weak var co2PoundsLabel: UILabel!
-    @IBOutlet weak var co2DollarsLabel: UILabel!
-    @IBOutlet weak var rainfallStackView: UIStackView!
-    @IBOutlet weak var rainfallGallonsLabel: UILabel!
-    @IBOutlet weak var rainfallDollarsLabel: UILabel!
-    @IBOutlet weak var pollutionStackView: UIStackView!
-    @IBOutlet weak var pollutionOuncesLabel: UILabel!
-    @IBOutlet weak var pollutionDollarsLabel: UILabel!
+    @IBOutlet weak var carbonSequestrationStackView: UIStackView!
+    @IBOutlet weak var carbonSequestrationPoundsLabel: UILabel!
+    @IBOutlet weak var carbonSequestrationDollarsLabel: UILabel!
+    @IBOutlet weak var avoidedRunoffStackView: UIStackView!
+    @IBOutlet weak var avoidedRunoffGallonsLabel: UILabel!
+    @IBOutlet weak var avoidedRunoffDollarsLabel: UILabel!
+    @IBOutlet weak var carbonAvoidedStackView: UIStackView!
+    @IBOutlet weak var carbonAvoidedPoundsLabel: UILabel!
+    @IBOutlet weak var carbonAvoidedDollarsLabel: UILabel!
+    @IBOutlet weak var pollutionRemovalStackView: UIStackView!
+    @IBOutlet weak var pollutionRemovalOuncesLabel: UILabel!
+    @IBOutlet weak var pollutionRemovalDollarsLabel: UILabel!
+    @IBOutlet weak var energySavingsStackView: UIStackView!
+    @IBOutlet weak var energySavingsDollarsLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,35 +78,50 @@ class BenefitsDisplayViewController: TreeDisplayViewController {
         } else {
             totalAnnualBenefitsStackView.isHidden = true
         }
-        if displayedTree!.otherInfo["co2Pounds"] != nil {
-            co2PoundsLabel.text = String(displayedTree!.otherInfo["co2Pounds"]!) + " lbs"
+        if displayedTree!.otherInfo["carbonSequestrationPounds"] != nil {
+            carbonSequestrationPoundsLabel.text = String(displayedTree!.otherInfo["carbonSequestrationPounds"]!) + " lbs"
         } else {
-            co2PoundsLabel.isHidden = true
+            carbonSequestrationPoundsLabel.isHidden = true
         }
-        if displayedTree!.otherInfo["co2Dollars"] != nil {
-            co2DollarsLabel.text = "$" + String(format: "%.2f", displayedTree!.otherInfo["co2Dollars"]!)
+        if displayedTree!.otherInfo["carbonSequestrationDollars"] != nil {
+            carbonSequestrationDollarsLabel.text = "$" + String(format: "%.2f", displayedTree!.otherInfo["carbonSequestrationDollars"]!)
         } else {
-            co2StackView.isHidden = true
+            carbonSequestrationStackView.isHidden = true
         }
-        if displayedTree!.otherInfo["rainfallCubicFeet"] != nil {
-            rainfallGallonsLabel.text = String(format: "%.2f", displayedTree!.otherInfo["rainfallCubicFeet"]! * 7.48052) + " gal"
+        if displayedTree!.otherInfo["avoidedRunoffCubicFeet"] != nil {
+            avoidedRunoffGallonsLabel.text = String(format: "%.2f", displayedTree!.otherInfo["avoidedRunoffCubicFeet"]! * 7.48052) + " gal"
         } else {
-            rainfallGallonsLabel.isHidden = true
+            avoidedRunoffGallonsLabel.isHidden = true
         }
-        if displayedTree!.otherInfo["rainfallDollars"] != nil {
-            rainfallDollarsLabel.text = "$" + String(format: "%.2f", displayedTree!.otherInfo["rainfallDollars"]!)
+        if displayedTree!.otherInfo["avoidedRunoffDollars"] != nil {
+            avoidedRunoffDollarsLabel.text = "$" + String(format: "%.2f", displayedTree!.otherInfo["avoidedRunoffDollars"]!)
         } else {
-            rainfallStackView.isHidden = true
+            avoidedRunoffStackView.isHidden = true
         }
-        if displayedTree!.otherInfo["pollutionOunces"] != nil {
-            pollutionOuncesLabel.text = String(format: "%.2f", displayedTree!.otherInfo["pollutionOunces"]!) + " oz"
+        if displayedTree!.otherInfo["carbonAvoidedPounds"] != nil {
+            carbonAvoidedPoundsLabel.text = String(format: "%.2f", displayedTree!.otherInfo["carbonAvoidedPounds"]!) + " lbs"
         } else {
-            pollutionOuncesLabel.isHidden = true
+            carbonAvoidedPoundsLabel.isHidden = true
         }
-        if displayedTree!.otherInfo["pollutionDollars"] != nil {
-            pollutionDollarsLabel.text = "$" + String(format: "%.2f", displayedTree!.otherInfo["pollutionDollars"]!)
+        if displayedTree!.otherInfo["carbonAvoidedDollars"] != nil {
+            carbonAvoidedDollarsLabel.text = "$" + String(format: "%.2f", displayedTree!.otherInfo["carbonAvoidedDollars"]!)
         } else {
-            pollutionStackView.isHidden = true
+            carbonAvoidedStackView.isHidden = true
+        }
+        if displayedTree!.otherInfo["pollutionRemovalOunces"] != nil {
+            pollutionRemovalOuncesLabel.text = String(format: "%.2f", displayedTree!.otherInfo["pollutionRemovalOunces"]!) + " oz"
+        } else {
+            pollutionRemovalOuncesLabel.isHidden = true
+        }
+        if displayedTree!.otherInfo["pollutionRemovalDollars"] != nil {
+            pollutionRemovalDollarsLabel.text = "$" + String(format: "%.2f", displayedTree!.otherInfo["pollutionRemovalDollars"]!)
+        } else {
+            pollutionRemovalStackView.isHidden = true
+        }
+        if displayedTree!.otherInfo["energySavingsDollars"] != nil {
+            energySavingsDollarsLabel.text = "$" + String(format: "%.2f", displayedTree!.otherInfo["energySavingsDollars"]!)
+        } else {
+            energySavingsStackView.isHidden = true
         }
     }
 }

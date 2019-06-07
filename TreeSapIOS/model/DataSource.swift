@@ -77,7 +77,7 @@ class DataSource {
                 // If it the loading screen is still active, close it
                 let currentViewController = UIApplication.shared.keyWindow?.rootViewController as? LoadingScreenViewController
                 if(currentViewController != nil){
-                    currentViewController!.loadHomeScreen(localDataLoaded: true)
+                    currentViewController!.loadHomeScreen()
                 }
             }
         }
@@ -172,30 +172,52 @@ class DataSource {
                 dbh: dbh
             )
             
-            // Set benefit information
-            if self.csvFormat.co2PoundsIndex() >= 0 {
-                tree.setOtherInfo(key: "co2Pounds", value: Double(record[self.csvFormat.co2PoundsIndex()])!)
+            // Set general benefit information
+            if self.csvFormat.carbonSequestrationPoundsIndex() >= 0 {
+                tree.setOtherInfo(key: "carbonSequestrationPounds", value: Double(record[self.csvFormat.carbonSequestrationPoundsIndex()])!)
             }
-            if self.csvFormat.co2DollarsIndex() >= 0 {
-                tree.setOtherInfo(key: "co2Dollars", value: Double(record[self.csvFormat.co2DollarsIndex()])!)
+            if self.csvFormat.carbonSequestrationDollarsIndex() >= 0 {
+                tree.setOtherInfo(key: "carbonSequestrationDollars", value: Double(record[self.csvFormat.carbonSequestrationDollarsIndex()])!)
             }
-            if self.csvFormat.rainfallCubicFeetIndex() >= 0 {
-                tree.setOtherInfo(key: "rainfallCubicFeet", value: Double(record[self.csvFormat.rainfallCubicFeetIndex()])!)
+            if self.csvFormat.avoidedRunoffCubicFeetIndex() >= 0 {
+                tree.setOtherInfo(key: "avoidedRunoffCubicFeet", value: Double(record[self.csvFormat.avoidedRunoffCubicFeetIndex()])!)
             }
-            if self.csvFormat.rainfallDollarsIndex() >= 0 {
-                tree.setOtherInfo(key: "rainfallDollars", value: Double(record[self.csvFormat.rainfallDollarsIndex()])!)
+            if self.csvFormat.avoidedRunoffDollarsIndex() >= 0 {
+                tree.setOtherInfo(key: "avoidedRunoffDollars", value: Double(record[self.csvFormat.avoidedRunoffDollarsIndex()])!)
             }
-            if self.csvFormat.pollutionOuncesIndex() >= 0 {
-                tree.setOtherInfo(key: "pollutionOunces", value: Double(record[self.csvFormat.pollutionOuncesIndex()])!)
+            if self.csvFormat.carbonAvoidedPoundsIndex() >= 0 {
+                tree.setOtherInfo(key: "carbonAvoidedPounds", value: Double(record[self.csvFormat.carbonAvoidedPoundsIndex()])!)
             }
-            if self.csvFormat.pollutionDollarsIndex() >= 0 {
-                tree.setOtherInfo(key: "pollutionDollars", value: Double(record[self.csvFormat.pollutionDollarsIndex()])!)
+            if self.csvFormat.carbonAvoidedDollarsIndex() >= 0 {
+                tree.setOtherInfo(key: "carbonAvoidedDollars", value: Double(record[self.csvFormat.carbonAvoidedDollarsIndex()])!)
+            }
+            if self.csvFormat.pollutionRemovalOuncesIndex() >= 0 {
+                tree.setOtherInfo(key: "pollutionRemovalOunces", value: Double(record[self.csvFormat.pollutionRemovalOuncesIndex()])!)
+            }
+            if self.csvFormat.pollutionRemovalDollarsIndex() >= 0 {
+                tree.setOtherInfo(key: "pollutionRemovalDollars", value: Double(record[self.csvFormat.pollutionRemovalDollarsIndex()])!)
             }
             if self.csvFormat.energySavingsDollarsIndex() >= 0 {
                 tree.setOtherInfo(key: "energySavingsDollars", value: Double(record[self.csvFormat.energySavingsDollarsIndex()])!)
             }
             if self.csvFormat.totalAnnualBenefitsDollarsIndex() >= 0 {
                 tree.setOtherInfo(key: "totalAnnualBenefitsDollars", value: Double(record[self.csvFormat.totalAnnualBenefitsDollarsIndex()])!)
+            }
+            // Set breakdown benefit information
+            if self.csvFormat.coDollarsIndex() >= 0 {
+                tree.setOtherInfo(key: "coDollars", value: Double(record[self.csvFormat.coDollarsIndex()])!)
+            }
+            if self.csvFormat.o3DollarsIndex() >= 0 {
+                tree.setOtherInfo(key: "o3Dollars", value: Double(record[self.csvFormat.o3DollarsIndex()])!)
+            }
+            if self.csvFormat.no2DollarsIndex() >= 0 {
+                tree.setOtherInfo(key: "no2Dollars", value: Double(record[self.csvFormat.no2DollarsIndex()])!)
+            }
+            if self.csvFormat.so2DollarsIndex() >= 0 {
+                tree.setOtherInfo(key: "so2Dollars", value: Double(record[self.csvFormat.so2DollarsIndex()])!)
+            }
+            if self.csvFormat.pm25DollarsIndex() >= 0 {
+                tree.setOtherInfo(key: "pm25Dollars", value: Double(record[self.csvFormat.pm25DollarsIndex()])!)
             }
             
             return tree
