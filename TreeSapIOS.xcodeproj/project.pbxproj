@@ -32,7 +32,6 @@
 		CB672F1B229434DA00622B59 /* TreeDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB672F1A229434DA00622B59 /* TreeDisplayViewController.swift */; };
 		CB6953B8228EE8720002024B /* Tree.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6953B7228EE8720002024B /* Tree.swift */; };
 		CB6953BA228EE9530002024B /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6953B9228EE9530002024B /* DataSource.swift */; };
-		CB7021932292FDCD00D11B0F /* OldAddTreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7021922292FDCD00D11B0F /* OldAddTreeViewController.swift */; };
 		CB9F423D22A548D700C97F70 /* NameFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9F423C22A548D700C97F70 /* NameFormatterTests.swift */; };
 		CB9F424522A55F3A00C97F70 /* TreeSapIOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9F424422A55F3A00C97F70 /* TreeSapIOSUITests.swift */; };
 		CB9F425122A5B0D800C97F70 /* AddTreePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9F425022A5B0D800C97F70 /* AddTreePageViewController.swift */; };
@@ -116,7 +115,6 @@
 		CB672F1A229434DA00622B59 /* TreeDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeDisplayViewController.swift; sourceTree = "<group>"; };
 		CB6953B7228EE8720002024B /* Tree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tree.swift; sourceTree = "<group>"; };
 		CB6953B9228EE9530002024B /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
-		CB7021922292FDCD00D11B0F /* OldAddTreeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldAddTreeViewController.swift; sourceTree = "<group>"; };
 		CB9F423C22A548D700C97F70 /* NameFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameFormatterTests.swift; sourceTree = "<group>"; };
 		CB9F424222A55F3A00C97F70 /* TreeSapIOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TreeSapIOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB9F424422A55F3A00C97F70 /* TreeSapIOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeSapIOSUITests.swift; sourceTree = "<group>"; };
@@ -285,7 +283,6 @@
 		CB9F424D22A5ADF800C97F70 /* addTree */ = {
 			isa = PBXGroup;
 			children = (
-				CB7021922292FDCD00D11B0F /* OldAddTreeViewController.swift */,
 				CB9F425022A5B0D800C97F70 /* AddTreePageViewController.swift */,
 				CB15256D22A6A231002D483E /* AddTreeViewController.swift */,
 				CB15256B22A6A00F002D483E /* AddTreeLocationViewController.swift */,
@@ -593,7 +590,6 @@
 				CBE8789022957A1300C06E69 /* TreeAnnotation.swift in Sources */,
 				CB15257422A6A388002D483E /* AddTreeLeafViewController.swift in Sources */,
 				D76D618122931F79003FFD24 /* MoreInformationViewController.swift in Sources */,
-				CB7021932292FDCD00D11B0F /* OldAddTreeViewController.swift in Sources */,
 				CB6953BA228EE9530002024B /* DataSource.swift in Sources */,
 				CB6953B8228EE8720002024B /* Tree.swift in Sources */,
 				CB15257822A6B1DF002D483E /* AddTreePhotoViewController.swift in Sources */,
