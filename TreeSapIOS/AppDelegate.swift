@@ -223,11 +223,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         }
     }
 
-    // MARK: Methods that involve loading data
+    // MARK: - Data loading methods
 
     /**
-     Import each data source's tree data from online. This is done by first downloading the tree data from the online repository into local repositories, then creating Tree objects in the DataSource objects using the data in the local repositories. This is done asynchronously.
-     - Parameter loadingScreenActive: Whether the loading screen is active
+     Imports each data source's tree data from online.
+     - Parameter loadingScreenActive: Whether the loading screen is active.
      */
     func importOnlineTreeData(loadingScreenActive: Bool){
         for dataSource in dataSources {

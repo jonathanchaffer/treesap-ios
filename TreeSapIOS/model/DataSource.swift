@@ -39,12 +39,8 @@ class DataSource {
     
     // MARK: - Methods
     
-    /**
-     Retrieves online tree data from the URL specified using the internet filename and internet filebase properties. Stops if there is an error, but catches the error. Used code from https://developer.apple.com/documentation/foundation/url_loading_system/fetching_website_data_into_memory as a reference.
-     
-     - Returns: true if there is no error and false if there was an error
-     */
-    func retrieveOnlineData(loadingScreenActive: Bool){
+    /// Retrieves online tree data from the URL specified using the internet filename and internet filebase properties. Copies the online csv file to the app's documents directory, then creating Tree objects in the data sources using the data in the local repositories.  Stops if there is an error. This is done asynchronously.
+    func retrieveOnlineData(loadingScreenActive: Bool) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
         // Retrieve the data from the URL
