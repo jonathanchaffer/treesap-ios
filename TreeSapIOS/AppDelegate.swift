@@ -22,11 +22,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         DataSource(internetFilename: "dataExport_119_HopeTrees_7may2018.csv", localFilename: "hope.csv", dataSourceName: "Hope College Trees", csvFormat: .hope),
         DataSource(internetFilename: "katelyn.csv", localFilename: "benefits.csv", dataSourceName: "Tree Benefit Data", csvFormat: .benefits),
     ]
-    
-    ///An array that is used to store the result of a data task that reads tree data from an online repository to a local repository. Each element in the array is a tuple that contains the name of the data source that contains the information that was loaded and a Bool that indicates whether the loading of data was successful
+
+    /// Array that stores the result of a data task that reads tree data from an online file to a local file. Each element in the array is a tuple that contains the name of the data source and a Bool that indicates whether the loading of data was successful.
     var reportedData = [(name: String, success: Bool)]()
 
-    /// A Bool indicating whether location features are enabled. NOTE: This is not a user preference; it is a flag that keeps track of whether the user has allowed access to device location.
+    /// Indicates whether location features are enabled. NOTE: This is not a user preference; it is a flag that keeps track of whether the user has allowed access to device location.
     var locationFeaturesEnabled = false
 
     /// CLLocationManager instance for the entire app.
@@ -56,10 +56,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.distanceFilter = 1
-        
-        //Load user preferences
+
+        // Load user preferences
         UserPreferenceKeys.loadPreferences()
-        
+
         return true
     }
 
@@ -98,9 +98,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         }
         return activeDataSources
     }
-    
+
     /// Changes the user preferences to the default user preferences.
-    func restoreDefaultUserPreferences(){
+    func restoreDefaultUserPreferences() {
         UserPreferenceKeys.showUserLocation = UserPreferenceKeys.showUserLocationDefault
         UserDefaults.standard.set(UserPreferenceKeys.showUserLocationDefault, forKey: UserPreferenceKeys.showUserLocationKey)
         UserPreferenceKeys.cutoffDistance = UserPreferenceKeys.cutoffDistanceDefault
@@ -149,14 +149,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     }
 
     /**
-     - Parameter dataSource: the name of the data source
+     - Parameter dataSourceName: The name of the data source.
      - Returns: A Bool indicating whether the data source is active.
      */
-    func isActive(dataSource: String) -> Bool {
-        if UserPreferenceKeys.dataSourceAvailibility[dataSource] == nil {
+    func isActive(dataSourceName: String) -> Bool {
+        if UserPreferenceKeys.dataSourceAvailibility[dataSourceName] == nil {
             return false
         }
-        return UserPreferenceKeys.dataSourceAvailibility[dataSource]!
+        return UserPreferenceKeys.dataSourceAvailibility[dataSourceName]!
     }
 
     /**
@@ -206,9 +206,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             return
         }
     }
-    
+
     /// Function that is called when the location authorization status changes.
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+    func locationManager(_: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {
         case .authorizedWhenInUse, .authorizedAlways:
             // Start updating location.
@@ -229,51 +229,49 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
      Imports each data source's tree data from online.
      - Parameter loadingScreenActive: Whether the loading screen is active.
      */
-    func importOnlineTreeData(loadingScreenActive: Bool){
+    func importOnlineTreeData(loadingScreenActive: Bool) {
         for dataSource in dataSources {
             dataSource.retrieveOnlineData(loadingScreenActive: loadingScreenActive)
         }
         return
     }
-    
+
     /**
-     Creates Tree objects in each DataSource object using data from the local tree data repositiories. This is done synchronously
-     - Returns: A Bool that indicates whether each of the data sources contained some data
+     Creates Tree objects in each DataSource object using data from the local tree data repositiories.
+     - Returns: A Bool that indicates whether each of the data sources contained some data.
      */
-    func importLocalTreeData() -> Bool{
-        var allDataPresent = true //indicates whether any of the data sources contain no data (which indicates they could not be loaded)
-        for dataSource in dataSources{
-            if(!dataSource.createTrees(asynchronous: false)){
+    func importLocalTreeData() -> Bool {
+        var allDataPresent = true // indicates whether any of the data sources contain no data (which indicates they could not be loaded)
+        for dataSource in dataSources {
+            if !dataSource.createTrees() {
                 allDataPresent = false
             }
         }
         return allDataPresent
     }
-    
-    ///Calls handleDataLoadingReportWithLoadingScreen with the given parameters if the loadingScreenActive parameter is true and calls handleDataLoadingReportWithNoLoadingScreen with the given parameters of if the loadingScreenActive if it is false
-    func handleDataLoadingReport(dataSourceName: String, success: Bool, loadingScreenActive: Bool){
-        if(loadingScreenActive){
+
+    /// Calls handleDataLoadingReportWithLoadingScreen with the given parameters if the loadingScreenActive parameter is true and calls handleDataLoadingReportWithNoLoadingScreen with the given parameters of if the loadingScreenActive if it is false
+    func handleDataLoadingReport(dataSourceName: String, success: Bool, loadingScreenActive: Bool) {
+        if loadingScreenActive {
             handleDataLoadingReportWithLoadingScreen(dataSourceName: dataSourceName, success: success)
-        }else{
+        } else {
             handleDataLoadingReportWithNoLoadingScreen(dataSourceName: dataSourceName, success: success)
         }
     }
-    
+
     /**
      Stores the details of a data task that loads tree data from an online. If all of the data tasks that load information from the online data sources have finished, then this function iterates through the result of each of the data tasks and alerts the user if less than all of the data could be loaded properly.
-     - Parameters:
-     - dataSourceName: The name of the data source that the data task is loading information from.
-     - success: Whether the data task successfully loaded tree data from the online repository into the local repository
+     - Parameter dataSourceName: The name of the data source that the data task is loading information from.
+     - Parameter success: Whether the data task successfully loaded tree data from the online file into the local file.
      */
-    func handleDataLoadingReportWithNoLoadingScreen(dataSourceName: String, success: Bool){
+    func handleDataLoadingReportWithNoLoadingScreen(dataSourceName: String, success: Bool) {
         reportedData.append((dataSourceName, success))
-        if(reportedData.count != dataSources.count){
+        if reportedData.count != dataSources.count {
             return
         }
-        
-        for (_, loadResult) in reportedData{
-            if(!loadResult){
-                //UI operations should not be run on a background thread
+
+        for (_, resultsLoaded) in reportedData {
+            if !resultsLoaded {
                 DispatchQueue.main.async {
                     self.alertUser(title: "Online tree data unavailable", message: "Some or all of the online tree data could not be loaded. The tree data stored on your device will be used instead.")
                 }
@@ -281,37 +279,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             }
         }
     }
-    
+
     /**
      Stores the details of a data task that loads tree data from an online. If all of the data tasks that load information from the online data sources have finished, then this function iterates through the result of each of the data tasks and checks if any of them did not load properly. If any did not load properly, the home screen is made the "active screen" if the loading screen is the "active screen" and the user is alerted.
-     - Parameters:
-     - dataSourceName: The name of the data source that the data task is loading information from.
-     - success: Whether the data task successfully loaded tree data from the online repository into the local repository
+     - Parameter dataSourceName: The name of the data source that the data task is loading information from.
+     - Parameter success: Whether the data task successfully loaded tree data from the online file into the local file.
      */
-    func handleDataLoadingReportWithLoadingScreen(dataSourceName: String, success: Bool){
+    func handleDataLoadingReportWithLoadingScreen(dataSourceName: String, success: Bool) {
         reportedData.append((dataSourceName, success))
-        if(reportedData.count != dataSources.count){
+        if reportedData.count != dataSources.count {
             return
         }
-        
-        for (_, loadResult) in reportedData{
-            if(!loadResult){
-                //If there are any issues with loading the onlie data, go to the home screen and alert the user. UI operations should not be run on a background thread
+
+        for (_, resultsLoaded) in reportedData {
+            // If there are any issues with loading the onlie data, go to the home screen and alert the user
+            if !resultsLoaded {
                 DispatchQueue.main.async {
                     let currentViewController = UIApplication.shared.keyWindow?.rootViewController as? LoadingScreenViewController
-                    if(currentViewController != nil){
+                    if currentViewController != nil {
                         currentViewController!.loadHomeScreen()
                     }
-                    
-                    self.alertUser(title: "Tree data unavailable", message: "Some or all of the tree data could not be loaded. Please make sure that your device is connected to the Internet and then restart the app.")
+
+                    self.alertUser(title: "Some tree data unavailable", message: "Some or all of the tree data could not be loaded. Please make sure that your device is connected to the Internet and then restart the app.")
                     return
                 }
             }
         }
-        
-        //If there are not issues with loading the online data, go to the home screen
+
+        // If there are not issues with loading the online data, go to the home screen
         DispatchQueue.main.async {
-            guard let currentViewController = UIApplication.shared.keyWindow?.rootViewController as? LoadingScreenViewController else{
+            guard let currentViewController = UIApplication.shared.keyWindow?.rootViewController as? LoadingScreenViewController else {
                 return
             }
             currentViewController.loadHomeScreen()
@@ -319,7 +316,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     }
 
     // MARK: - Other methods
-    
+
     /// Resets the state of the app for UI testing purposes.
     func resetState() {
         let defaultsName = Bundle.main.bundleIdentifier!
@@ -327,8 +324,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     }
 
     /**
-     - Parameter name: The name of the data source to find
-     - Returns: a DataSource object that has the given name
+     - Parameter name: The name of the data source to retrieve.
+     - Returns: The DataSource with the given name.
      */
     func getDataSourceWithName(name: String) -> DataSource? {
         for dataSource in dataSources {
@@ -339,23 +336,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
 
         return nil
     }
-    
+
     /**
      Makes an alert appear with the given argument and message on the currently active UIViewController. The alert will have an "OK" buton.
-     
-     - Parameters:
-     - title: the title of the alert
-     - message: the message of the alert
+
+     - Parameter title: The title of the alert.
+     - Parameter message: The message of the alert.
      */
-    func alertUser(title: String, message: String){
-        //Create an alert
+    func alertUser(title: String, message: String) {
+        // Create an alert
         let alertController: UIAlertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
 
-        //Get the currently active UIViewController
+        // Get the currently active UIViewController
         let currentViewController: UIViewController? = UIApplication.shared.keyWindow?.rootViewController?.presentedViewController
 
-        if(currentViewController != nil){
+        if currentViewController != nil {
             currentViewController!.present(alertController, animated: true, completion: nil)
         }
     }

@@ -191,7 +191,7 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
         }
 
         // Check if the data source with the given name is active
-        guard appDelegate.isActive(dataSource: dataSourceName) else {
+        guard appDelegate.isActive(dataSourceName: dataSourceName) else {
             alertUser(title: dataSourceDisabledTitle, message: "The data source that contains the data for this tree is currently turned off. You can turn on \"" + String(dataSourceName) + "\" in the settings.")
             return nil
         }
