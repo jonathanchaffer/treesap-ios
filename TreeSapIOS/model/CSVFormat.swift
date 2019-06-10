@@ -11,6 +11,9 @@ import Foundation
 enum CSVFormat {
     case holland, itree, hope, benefits
 
+    // MARK: - Basic tree information
+    
+    /// Returns the index for the tree ID, or -1 if there is none.
     func idIndex() -> Int {
         switch self {
         case .holland:
@@ -24,6 +27,7 @@ enum CSVFormat {
         }
     }
 
+    /// Returns the index for the common name, or -1 if there is none.
     func commonNameIndex() -> Int {
         switch self {
         case .holland:
@@ -37,6 +41,7 @@ enum CSVFormat {
         }
     }
 
+    /// Returns the index for the scientific name, or -1 if there is none.
     func scientificNameIndex() -> Int {
         switch self {
         case .holland:
@@ -50,6 +55,7 @@ enum CSVFormat {
         }
     }
 
+    /// Returns the index for the latitude, or -1 if there is none.
     func latitudeIndex() -> Int {
         switch self {
         case .holland:
@@ -63,6 +69,7 @@ enum CSVFormat {
         }
     }
 
+    /// Returns the index for the longitude, or -1 if there is none.
     func longitudeIndex() -> Int {
         switch self {
         case .holland:
@@ -76,6 +83,7 @@ enum CSVFormat {
         }
     }
 
+    /// Returns the index for the DBH, or -1 if there is none.
     func dbhIndex() -> Int {
         switch self {
         case .holland:
@@ -89,7 +97,10 @@ enum CSVFormat {
         }
     }
     
-    func co2PoundsIndex() -> Int {
+    // MARK: - General benefit information
+    
+    /// Returns the index for carbon sequestration (lbs/yr), or -1 if there is none.
+    func carbonSequestrationPoundsIndex() -> Int {
         switch self {
         case .benefits:
             return 19
@@ -98,7 +109,8 @@ enum CSVFormat {
         }
     }
 
-    func co2DollarsIndex() -> Int {
+    /// Returns the index for carbon sequestration ($/yr), or -1 if there is none.
+    func carbonSequestrationDollarsIndex() -> Int {
         switch self {
         case .benefits:
             return 20
@@ -107,7 +119,8 @@ enum CSVFormat {
         }
     }
     
-    func rainfallCubicFeetIndex() -> Int {
+    /// Returns the index for avoided runoff (ft^3/yr), or -1 if there is none.
+    func avoidedRunoffCubicFeetIndex() -> Int {
         switch self {
         case .benefits:
             return 21
@@ -116,7 +129,8 @@ enum CSVFormat {
         }
     }
 
-    func rainfallDollarsIndex() -> Int {
+    /// Returns the index for avoided runoff ($/yr), or -1 if there is none.
+    func avoidedRunoffDollarsIndex() -> Int {
         switch self {
         case .benefits:
             return 22
@@ -125,7 +139,29 @@ enum CSVFormat {
         }
     }
     
-    func pollutionOuncesIndex() -> Int {
+    
+    /// Returns the index for carbon avoided (lbs/yr), or -1 if there is none.
+    func carbonAvoidedPoundsIndex() -> Int {
+        switch self {
+        case .benefits:
+            return 23
+        default:
+            return -1
+        }
+    }
+    
+    /// Returns the index for carbon avoided ($/yr), or -1 if there is none.
+    func carbonAvoidedDollarsIndex() -> Int {
+        switch self {
+        case .benefits:
+            return 24
+        default:
+            return -1
+        }
+    }
+    
+    /// Returns the index for pollution removal (oz/yr), or -1 if there is none.
+    func pollutionRemovalOuncesIndex() -> Int {
         switch self {
         case .benefits:
             return 25
@@ -134,7 +170,8 @@ enum CSVFormat {
         }
     }
 
-    func pollutionDollarsIndex() -> Int {
+    /// Returns the index for pollution removal ($/yr), or -1 if there is none.
+    func pollutionRemovalDollarsIndex() -> Int {
         switch self {
         case .benefits:
             return 26
@@ -143,6 +180,7 @@ enum CSVFormat {
         }
     }
 
+    /// Returns the index for energy savings ($/yr), or -1 if there is none.
     func energySavingsDollarsIndex() -> Int {
         switch self {
         case .benefits:
@@ -152,10 +190,63 @@ enum CSVFormat {
         }
     }
 
+    /// Returns the index for total annual benefits ($/yr), or -1 if there is none.
     func totalAnnualBenefitsDollarsIndex() -> Int {
         switch self {
         case .benefits:
             return 28
+        default:
+            return -1
+        }
+    }
+    
+    // MARK: - Breakdown benefit information
+    
+    /// Returns the index for CO ($/yr), or -1 if there is none.
+    func coDollarsIndex() -> Int {
+        switch self {
+        case .benefits:
+            return 41
+        default:
+            return -1
+        }
+    }
+    
+    /// Returns the index for O3 ($/yr), or -1 if there is none.
+    func o3DollarsIndex() -> Int {
+        switch self {
+        case .benefits:
+            return 42
+        default:
+            return -1
+        }
+    }
+    
+    /// Returns the index for NO2 ($/yr), or -1 if there is none.
+    func no2DollarsIndex() -> Int {
+        switch self {
+        case .benefits:
+            return 43
+        default:
+            return -1
+        }
+    }
+    
+    /// Returns the index for SO2 ($/yr), or -1 if there is none.
+    func so2DollarsIndex() -> Int {
+        switch self {
+        case .benefits:
+            return 44
+        default:
+            return -1
+        }
+    }
+    
+    /// Returns the index for PM2.5 ($/yr), or -1 if there is none.
+    func pm25DollarsIndex() -> Int {
+        switch self {
+        case .benefits:
+            return 45
         default:
             return -1
         }
