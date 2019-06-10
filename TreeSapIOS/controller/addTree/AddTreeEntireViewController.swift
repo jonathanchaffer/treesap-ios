@@ -36,6 +36,10 @@ class AddTreeEntireViewController: AddTreePhotoViewController {
         nextPage()
     }
     
+    @IBAction func broadcastBack(_ sender: UIButton) {
+        previousPage()
+    }
+    
     @IBAction func handlePhotoButtonPressed(_ sender: UIButton) {
         takeOrChoosePhoto()
     }

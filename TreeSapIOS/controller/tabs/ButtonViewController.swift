@@ -23,13 +23,15 @@ class ButtonViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Check authorization status.
-        appDelegate.checkLocationAuthorization()
-        
         // Set the styling for the big button
         bigButton.layer.cornerRadius = 0.5 * bigButton.bounds.size.width
         buttonDefaultWidth = bigButton.frame.size.width
         buttonDefaultOrigin = bigButton.frame.origin
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        // Check authorization status.
+        appDelegate.checkLocationAuthorization()
     }
 
     override func viewDidLayoutSubviews() {

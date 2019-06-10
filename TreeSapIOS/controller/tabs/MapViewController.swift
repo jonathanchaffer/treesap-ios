@@ -30,9 +30,6 @@ class MapViewController: UIViewController {
             mapView.register(TreeAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
         }
 
-        // Check authorization status.
-        appDelegate.checkLocationAuthorization()
-
         // If location use is authorized, set starting location to current location. Otherwise, use Centennial Park (in Holland, Michigan) as a default.
         if appDelegate.locationFeaturesEnabled, appDelegate.locationManager.location != nil {
             centerMapOnLocation(location: appDelegate.locationManager.location!.coordinate)
@@ -40,11 +37,13 @@ class MapViewController: UIViewController {
             centerMapOnLocation(location: CLLocationCoordinate2D(latitude: 42.787586, longitude: -86.108110))
         }
     }
-
-    override func viewWillAppear(_: Bool) {
+    
+    override func viewDidAppear(_ animated: Bool) {
         // Check authorization status.
         appDelegate.checkLocationAuthorization()
+    }
 
+    override func viewWillAppear(_: Bool) {
         // Show or hide user location based on the option in Settings.
         if appDelegate.showingUserLocation {
             mapView.showsUserLocation = true

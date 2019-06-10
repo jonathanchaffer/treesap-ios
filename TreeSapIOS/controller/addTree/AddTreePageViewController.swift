@@ -36,6 +36,7 @@ class AddTreePageViewController: UIPageViewController {
 
         // Create listeners for page events
         NotificationCenter.default.addObserver(self, selector: #selector(nextPage), name: NSNotification.Name("next"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(previousPage), name: NSNotification.Name("previous"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(addTreeDone), name: NSNotification.Name("addTreeDone"), object: nil)
     }
 
@@ -58,10 +59,19 @@ class AddTreePageViewController: UIPageViewController {
     @objc private func nextPage() {
         currentPage += 1
         if currentPage >= pages.count {
-            currentPage = 0
+            currentPage = pages.count - 1
         }
         // Set the page to be displayed
         setViewControllers([pages[currentPage]], direction: .forward, animated: true, completion: nil)
+    }
+    
+    @objc private func previousPage() {
+        currentPage -= 1
+        if currentPage < 0 {
+            currentPage = 0
+        }
+        // Set the page to be displayed
+        setViewControllers([pages[currentPage]], direction: .reverse, animated: true, completion: nil)
     }
     
     private func closeAddTree() {

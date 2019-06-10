@@ -32,6 +32,10 @@ class AddTreeOtherViewController: AddTreeViewController {
         present(alert, animated: true)
     }
     
+    @IBAction func broadcastBack(_ sender: UIButton) {
+        previousPage()
+    }
+    
     // MARK: - Private methods
     
     private func submitTree() {
