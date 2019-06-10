@@ -89,10 +89,10 @@ class DataSource {
     
     /**
      Creates Tree objects based on the file in the Documents directory with filename localFilename. Tree objects are stored in the trees array.
-     - Parameter asynchronous: Whether the creation of trees should be done asynchronously rather than synchronously
-     - Returns: True if at least one tree was imported from a local file and false otherwise
+     - Parameter asynchronous: Whether the creation of trees should be done asynchronously rather than synchronously.
+     - Returns: True if at least one tree was imported from a local file and false otherwise.
      */
-    public func createTrees(asynchronous: Bool) -> Bool{
+    public func createTrees(asynchronous: Bool) -> Bool {
         // Create a file manager and get the path for the local file
         let fileManager = FileManager.default
         let documentsURL = try! fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
@@ -101,25 +101,25 @@ class DataSource {
         
         // Create an importer for the local file
         let importer = CSVImporter<[String]>(path: filepath)
-        if(asynchronous){
+        if asynchronous {
             importer.startImportingRecords { $0 }.onFinish { importedRecords in
                 // Create a Tree object for each imported record
                 for record in importedRecords {
                     let newTree: Tree? = self.makeTreeForRecord(record: record)
-                    if(newTree != nil){
+                    if(newTree != nil) {
                         newTreeList.append(newTree!)
                     }
                 }
                 
-                //TODO: Potentially add a lock to the trees array during this line of code. If not, this line should be outside of both the if and else blocks
+                // TODO: Potentially add a lock to the trees array during this line of code. If not, this line should be outside of both the if and else blocks
                 self.trees = newTreeList
             }
-        }else{
+        } else {
             let importedRecords: [[String]] = importer.importRecords { $0 }
             // Create a Tree object for each imported record
             for record in importedRecords {
                 let newTree: Tree? = self.makeTreeForRecord(record: record)
-                if(newTree != nil){
+                if(newTree != nil) {
                     newTreeList.append(newTree!)
                 }
             }
@@ -130,7 +130,7 @@ class DataSource {
         return (self.trees.count > 0)
     }
     
-    private func makeTreeForRecord(record: [String]) -> Tree?{
+    private func makeTreeForRecord(record: [String]) -> Tree? {
         // Set ID (optional)
         var id: Int?
         if self.csvFormat.idIndex() >= 0 {
@@ -214,6 +214,6 @@ class DataSource {
             
             return tree
         }
-            return nil
+        return nil
     }
 }
