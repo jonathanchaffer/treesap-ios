@@ -25,6 +25,17 @@ class TreeDetailPageViewController: UIPageViewController {
             self.getViewController(withIdentifier: "benefitsDisplay"),
         ]
     }()
+    
+    // MARK: - Constructors
+    
+    init(tree: Tree) {
+        super.init(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
+        self.displayedTree = tree
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
 
     // MARK: - Overrides
 

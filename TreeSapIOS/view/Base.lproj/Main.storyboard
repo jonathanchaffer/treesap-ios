@@ -901,14 +901,24 @@
                                     <constraint firstAttribute="width" secondItem="tLf-oU-uzz" secondAttribute="height" multiplier="1:1" id="nBa-MU-vRJ"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QR code scanning unavailable. Please ensure that this app has access to your camera." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HdH-YB-5KG">
+                                <rect key="frame" x="20" y="303" width="335" height="61"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="HdH-YB-5KG" firstAttribute="centerX" secondItem="RIs-wL-ip9" secondAttribute="centerX" id="8Ii-0p-jC3"/>
                             <constraint firstItem="tLf-oU-uzz" firstAttribute="top" relation="greaterThanOrEqual" secondItem="xwd-N2-aq5" secondAttribute="top" priority="750" constant="20" id="8lr-7c-iFi"/>
                             <constraint firstItem="xwd-N2-aq5" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="tLf-oU-uzz" secondAttribute="bottom" priority="750" constant="20" id="FQk-IG-A9d"/>
+                            <constraint firstItem="HdH-YB-5KG" firstAttribute="centerY" secondItem="RIs-wL-ip9" secondAttribute="centerY" id="PD7-Mg-ak8"/>
                             <constraint firstItem="tLf-oU-uzz" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="xwd-N2-aq5" secondAttribute="leading" priority="750" constant="20" id="PGp-tP-uH5"/>
                             <constraint firstItem="tLf-oU-uzz" firstAttribute="centerY" secondItem="xwd-N2-aq5" secondAttribute="centerY" id="Q2X-aY-FN4"/>
                             <constraint firstItem="xwd-N2-aq5" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="tLf-oU-uzz" secondAttribute="trailing" priority="750" constant="20" id="QFC-vn-hzY"/>
+                            <constraint firstAttribute="trailing" secondItem="HdH-YB-5KG" secondAttribute="trailing" constant="20" id="XXS-VF-idK"/>
+                            <constraint firstItem="HdH-YB-5KG" firstAttribute="leading" secondItem="xwd-N2-aq5" secondAttribute="leading" constant="20" id="xg4-aJ-gyg"/>
                             <constraint firstItem="tLf-oU-uzz" firstAttribute="centerX" secondItem="xwd-N2-aq5" secondAttribute="centerX" id="y8d-Ke-JK7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xwd-N2-aq5"/>
@@ -926,7 +936,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="QROverlay" destination="tLf-oU-uzz" id="nOK-Kc-1AJ"/>
+                        <outlet property="qrCodeOverlay" destination="tLf-oU-uzz" id="nOK-Kc-1AJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SG5-Wd-OUh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2069,8 +2079,8 @@ ZC4
         <image name="xButton" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Gyh-Sj-jD4"/>
-        <segue reference="ZtF-HV-Gmw"/>
+        <segue reference="Ynx-wO-HBK"/>
+        <segue reference="cac-nU-E74"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.37254901959999998" green="0.71764705880000002" blue="0.30588235289999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

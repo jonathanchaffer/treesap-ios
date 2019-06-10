@@ -11,7 +11,7 @@ import MapKit
 import UIKit
 
 class MapViewController: UIViewController {
-    // MARK: Properties
+    // MARK: - Properties
 
     @IBOutlet var mapView: MKMapView!
     let regionRadius: CLLocationDistance = 200
@@ -38,6 +38,8 @@ class MapViewController: UIViewController {
         }
     }
     
+    // MARK: - Overrides
+    
     override func viewDidAppear(_ animated: Bool) {
         // Check authorization status.
         appDelegate.checkLocationAuthorization()
@@ -61,17 +63,11 @@ class MapViewController: UIViewController {
         }
     }
 
-    // MARK: Private methods
+    // MARK: - Private methods
 
     private func centerMapOnLocation(location: CLLocationCoordinate2D) {
         let coordinateRegion = MKCoordinateRegion(center: location, latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
         mapView.setRegion(coordinateRegion, animated: true)
-    }
-
-    private func displayTreeData(treeToDisplay: Tree) {
-        let pages = TreeDetailPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
-        pages.displayedTree = treeToDisplay
-        navigationController?.pushViewController(pages, animated: true)
     }
 }
 
@@ -80,6 +76,9 @@ extension MapViewController: MKMapViewDelegate {
     func mapView(_: MKMapView, annotationView view: MKAnnotationView,
                  calloutAccessoryControlTapped _: UIControl) {
         let annotation = view.annotation as! TreeAnnotation
-        displayTreeData(treeToDisplay: annotation.tree)
+        
+        // Display tree data
+        let pages = TreeDetailPageViewController(tree: annotation.tree)
+        navigationController?.pushViewController(pages, animated: true)
     }
 }
