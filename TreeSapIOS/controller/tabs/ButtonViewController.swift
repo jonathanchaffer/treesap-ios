@@ -55,8 +55,7 @@ class ButtonViewController: UIViewController {
             // If tree data was found, display it. Otherwise, alert the user.
             let treeToDisplay = getTreeDataByGPS()
             if treeToDisplay != nil {
-                let pages = TreeDetailPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
-                pages.displayedTree = treeToDisplay
+                let pages = TreeDetailPageViewController(tree: treeToDisplay!)
                 navigationController?.pushViewController(pages, animated: true)
             } else {
                 let alert = UIAlertController(title: "No trees found", message: "There were no trees found near your location. You can update the identification distance in Settings.", preferredStyle: .alert)

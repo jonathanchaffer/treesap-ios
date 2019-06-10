@@ -10,7 +10,7 @@ import MapKit
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
     // MARK: - Properties
 
     var window: UIWindow?
@@ -53,11 +53,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 
         // Set attributes of the location manager.
+        locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.distanceFilter = 1
-
-        // Start updating location.
-        locationManager.startUpdatingLocation()
         
         //Load user preferences
         UserPreferenceKeys.loadPreferences()
@@ -204,24 +202,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         switch CLLocationManager.authorizationStatus() {
         case .notDetermined:
             locationManager.requestWhenInUseAuthorization()
-            checkLocationAuthorization()
-        case .restricted, .denied:
-            disableLocationFeatures()
-        case .authorizedWhenInUse, .authorizedAlways:
-            enableLocationFeatures()
         default:
             return
         }
     }
-
-    /// Enables location features so trees can be identified by GPS and the user's location can show up on the map.
-    func enableLocationFeatures() {
-        locationFeaturesEnabled = true
-    }
-
-    /// Disables location features so trees cannot be identified by GPS and the user's location won't show up on the map.
-    func disableLocationFeatures() {
-        locationFeaturesEnabled = false
+    
+    /// Function that is called when the location authorization status changes.
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        switch status {
+        case .authorizedWhenInUse, .authorizedAlways:
+            // Start updating location.
+            locationFeaturesEnabled = true
+            locationManager.startUpdatingLocation()
+        case .restricted, .denied:
+            // Stop updating location.
+            locationFeaturesEnabled = false
+            locationManager.stopUpdatingLocation()
+        default:
+            return
+        }
     }
 
     // MARK: Methods that involve loading data
