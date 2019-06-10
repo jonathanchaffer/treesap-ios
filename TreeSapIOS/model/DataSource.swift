@@ -44,19 +44,21 @@ class DataSource {
      
      - Returns: true if there is no error and false if there was an error
      */
-    func retrieveOnlineData() -> Bool {
-        // Flag for if there is an error (needed for errors in void function)
-        var isErrorFree: Bool = true
+    func retrieveOnlineData(loadingScreenActive: Bool){
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
         // Retrieve the data from the URL
         let url = URL(string: internetFilebase + internetFilename)
         let task = URLSession.shared.dataTask(with: url!) { data, response, error in
+            // Flag for if there is an error
             if error != nil {
-                isErrorFree = false
+                DispatchQueue.main.async {
+                    appDelegate.handleDataLoadingReport(dataSourceName: self.dataSourceName, success: false, loadingScreenActive: loadingScreenActive)
+                }
                 return
             } else {
                 guard let httpResponse = response as? HTTPURLResponse, (200 ... 299).contains(httpResponse.statusCode) else {
-                    isErrorFree = false
+                    appDelegate.handleDataLoadingReport(dataSourceName: self.dataSourceName, success: false, loadingScreenActive: loadingScreenActive)
                     return
                 }
                 
@@ -67,26 +69,20 @@ class DataSource {
                     let fileURL = documentDirectory.appendingPathComponent(self.localFilename)
                     try data!.write(to: fileURL)
                 } catch {
-                    isErrorFree = false
+                    DispatchQueue.main.async {
+                        appDelegate.handleDataLoadingReport(dataSourceName: self.dataSourceName, success: false, loadingScreenActive: loadingScreenActive)
+                    }
                     return
                 }
-                
-                // Create Tree objects for the data
-                self.createTrees(asynchronous: false)
-                
-                // If it the loading screen is still active, close it
-                let currentViewController = UIApplication.shared.keyWindow?.rootViewController as? LoadingScreenViewController
-                if(currentViewController != nil){
-                    currentViewController!.loadHomeScreen(localDataLoaded: true)
-                }
+            }
+            // Create Tree objects for the data
+            let errorFree: Bool = self.createTrees(asynchronous: false)
+            DispatchQueue.main.async {
+                appDelegate.handleDataLoadingReport(dataSourceName: self.dataSourceName, success: errorFree, loadingScreenActive: loadingScreenActive)
             }
         }
         
-        if isErrorFree {
-            task.resume()
-        }
-        
-        return isErrorFree
+        task.resume()
     }
     
     func getTreeList() -> [Tree] {

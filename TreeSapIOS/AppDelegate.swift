@@ -22,6 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         DataSource(internetFilename: "dataExport_119_HopeTrees_7may2018.csv", localFilename: "hope.csv", dataSourceName: "Hope College Trees", csvFormat: .hope),
         DataSource(internetFilename: "katelyn.csv", localFilename: "benefits.csv", dataSourceName: "Tree Benefit Data", csvFormat: .benefits),
     ]
+    
+    ///An array that is used to store the result of a data task that reads tree data from an online repository to a local repository. Each element in the array is a tuple that contains the name of the data source that contains the information that was loaded and a Bool that indicates whether the loading of data was successful
+    var reportedData = [(name: String, success: Bool)]()
 
     /// A Bool indicating whether location features are enabled. NOTE: This is not a user preference; it is a flag that keeps track of whether the user has allowed access to device location.
     var locationFeaturesEnabled = false
@@ -221,19 +224,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         locationFeaturesEnabled = false
     }
 
-    // MARK: - Other methods
+    // MARK: Methods that involve loading data
 
     /**
      Import each data source's tree data from online. This is done by first downloading the tree data from the online repository into local repositories, then creating Tree objects in the DataSource objects using the data in the local repositories. This is done asynchronously.
-     - Parameter loadingScreenActive: Whether the loading scr
+     - Parameter loadingScreenActive: Whether the loading screen is active
      */
-    func importOnlineTreeData() {
+    func importOnlineTreeData(loadingScreenActive: Bool){
         for dataSource in dataSources {
-            if !dataSource.retrieveOnlineData() {
-                //TODO: Either do something if retrieveOnlineData returns false or don't bother checking
-                print("Error retrieving " + dataSource.dataSourceName + " data from online")
-            }
+            dataSource.retrieveOnlineData(loadingScreenActive: loadingScreenActive)
         }
+        return
     }
     
     /**
@@ -249,7 +250,77 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         return allDataPresent
     }
+    
+    ///Calls handleDataLoadingReportWithLoadingScreen with the given parameters if the loadingScreenActive parameter is true and calls handleDataLoadingReportWithNoLoadingScreen with the given parameters of if the loadingScreenActive if it is false
+    func handleDataLoadingReport(dataSourceName: String, success: Bool, loadingScreenActive: Bool){
+        if(loadingScreenActive){
+            handleDataLoadingReportWithLoadingScreen(dataSourceName: dataSourceName, success: success)
+        }else{
+            handleDataLoadingReportWithNoLoadingScreen(dataSourceName: dataSourceName, success: success)
+        }
+    }
+    
+    /**
+     Stores the details of a data task that loads tree data from an online. If all of the data tasks that load information from the online data sources have finished, then this function iterates through the result of each of the data tasks and alerts the user if less than all of the data could be loaded properly.
+     - Parameters:
+     - dataSourceName: The name of the data source that the data task is loading information from.
+     - success: Whether the data task successfully loaded tree data from the online repository into the local repository
+     */
+    func handleDataLoadingReportWithNoLoadingScreen(dataSourceName: String, success: Bool){
+        reportedData.append((dataSourceName, success))
+        if(reportedData.count != dataSources.count){
+            return
+        }
+        
+        for (_, loadResult) in reportedData{
+            if(!loadResult){
+                //UI operations should not be run on a background thread
+                DispatchQueue.main.async {
+                    self.alertUser(title: "Online tree data unavailable", message: "Some or all of the online tree data could not be loaded. The tree data stored on your device will be used instead.")
+                }
+                return
+            }
+        }
+    }
+    
+    /**
+     Stores the details of a data task that loads tree data from an online. If all of the data tasks that load information from the online data sources have finished, then this function iterates through the result of each of the data tasks and checks if any of them did not load properly. If any did not load properly, the home screen is made the "active screen" if the loading screen is the "active screen" and the user is alerted.
+     - Parameters:
+     - dataSourceName: The name of the data source that the data task is loading information from.
+     - success: Whether the data task successfully loaded tree data from the online repository into the local repository
+     */
+    func handleDataLoadingReportWithLoadingScreen(dataSourceName: String, success: Bool){
+        reportedData.append((dataSourceName, success))
+        if(reportedData.count != dataSources.count){
+            return
+        }
+        
+        for (_, loadResult) in reportedData{
+            if(!loadResult){
+                //If there are any issues with loading the onlie data, go to the home screen and alert the user. UI operations should not be run on a background thread
+                DispatchQueue.main.async {
+                    let currentViewController = UIApplication.shared.keyWindow?.rootViewController as? LoadingScreenViewController
+                    if(currentViewController != nil){
+                        currentViewController!.loadHomeScreen()
+                    }
+                    
+                    self.alertUser(title: "Tree data unavailable", message: "Some or all of the tree data could not be loaded. Please make sure that your device is connected to the Internet and then restart the app.")
+                    return
+                }
+            }
+        }
+        
+        //If there are not issues with loading the online data, go to the home screen
+        DispatchQueue.main.async {
+            guard let currentViewController = UIApplication.shared.keyWindow?.rootViewController as? LoadingScreenViewController else{
+                return
+            }
+            currentViewController.loadHomeScreen()
+        }
+    }
 
+    // MARK: - Other methods
+    
     /// Resets the state of the app for UI testing purposes.
     func resetState() {
         let defaultsName = Bundle.main.bundleIdentifier!
@@ -268,5 +339,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 
         return nil
+    }
+    
+    /**
+     Makes an alert appear with the given argument and message on the currently active UIViewController. The alert will have an "OK" buton.
+     
+     - Parameters:
+     - title: the title of the alert
+     - message: the message of the alert
+     */
+    func alertUser(title: String, message: String){
+        //Create an alert
+        let alertController: UIAlertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+
+        //Get the currently active UIViewController
+        let currentViewController: UIViewController? = UIApplication.shared.keyWindow?.rootViewController?.presentedViewController
+
+        if(currentViewController != nil){
+            currentViewController!.present(alertController, animated: true, completion: nil)
+        }
     }
 }
