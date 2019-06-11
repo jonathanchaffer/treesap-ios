@@ -39,9 +39,7 @@ class AddTreeOtherViewController: AddTreeViewController {
     // MARK: - Private functions
 
     private func submitTree() {
-        let alert = UIAlertController(title: "Success!", message: "Your tree has been submitted for approval. While you wait, your tree will be available in the \"My Trees\" data set on your device.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { _ in self.broadcastAddTreeDone() }))
-        present(alert, animated: true)
+        AlertManager.alertUser(title: "Success!", message: "Your tree has been submitted for approval. While you wait, your tree will be available in the \"My Trees\" data set on your device.")
     }
 
     private func broadcastAddTreeDone() {

@@ -10,7 +10,7 @@ import UIKit
 
 class AlertManager {
     /**
-     Shows an alert with the given title and message on the currently active UIViewController.
+     Shows an alert with the given title and message on the currently active UIViewController. NOTE: This is only for alerts with an "OK" button that closes the alert. If custom behavior (multiple options, button handlers, etc) is desired, you must create and present a custom alert.
 
      - Parameter title: The title of the alert.
      - Parameter message: The message of the alert.
@@ -21,7 +21,10 @@ class AlertManager {
         alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
 
         // Get the currently active UIViewController
-        let currentViewController: UIViewController? = UIApplication.shared.keyWindow?.rootViewController?.presentedViewController
+        var currentViewController: UIViewController? = UIApplication.shared.keyWindow?.rootViewController
+        while currentViewController?.presentedViewController != nil {
+            currentViewController = currentViewController?.presentedViewController
+        }
 
         if currentViewController != nil {
             currentViewController!.present(alertController, animated: true, completion: nil)
