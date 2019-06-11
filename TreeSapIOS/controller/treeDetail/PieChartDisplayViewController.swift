@@ -89,7 +89,7 @@ class PieChartDisplayViewController: TreeDisplayViewController, ChartViewDelegat
         pieChartView.animate(yAxisDuration: 1, easingOption: .easeInOutCubic)
     }
 
-    // MARK: - Private methods
+    // MARK: - Private functions
 
     /// Updates the pie chart display.
     private func updatePieChartData() {

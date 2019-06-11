@@ -46,7 +46,7 @@ class AddTreePageViewController: UIPageViewController {
         closeAddTree()
     }
 
-    // MARK: - Private methods
+    // MARK: - Private functions
 
     /**
      Instantiates and returns a UIViewController based on the identifier of the view controller in the storyboard.

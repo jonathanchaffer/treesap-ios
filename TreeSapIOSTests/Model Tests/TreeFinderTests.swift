@@ -24,7 +24,7 @@ class TreeFinderTests: XCTestCase {
      For each element in the array entered, tests that function findTreeByLocation in the TreeFinder class finds a tree with the specified name, longitude, and latitude when searching through the specified data sources using the specified cutoff distance. If no name is provided, the found tree should lack a name.
      - Parameters:
      - trees: An array containing a tuple with the common name, latitude, and longitude, respectively, of each tree that is to be searched for. The common name is optional
-     - dataSources: An array of the dataSources that the findTreeByLocation method searches through
+     - dataSources: An array of the dataSources that the findTreeByLocation function searches through
      - cutoffDistance: The cutoff distance that is to be used in each search. If nil, this defaults to 1
      */
     func findsCorrectTreesByLocation(trees: [(String?, Double, Double)], dataSources: [DataSource], cutoffDistance: Double?){

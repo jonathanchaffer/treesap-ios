@@ -13,7 +13,7 @@ class AddTreeViewController: UIViewController {
         super.viewDidLoad()
     }
 
-    // - MARK: Methods
+    // - MARK: Functions
 
     func nextPage() {
         NotificationCenter.default.post(name: NSNotification.Name("next"), object: nil)

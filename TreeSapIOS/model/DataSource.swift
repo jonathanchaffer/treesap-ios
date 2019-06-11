@@ -37,7 +37,7 @@ class DataSource {
         trees = [Tree]()
     }
 
-    // MARK: - Methods
+    // MARK: - Functions
 
     /// Retrieves online tree data from the URL specified using the internet filename and internet filebase properties. Copies the online csv file to the app's documents directory, then creating Tree objects in the data sources using the data in the local repositories.  Stops if there is an error. This is done asynchronously.
     func retrieveOnlineData(loadingScreenActive: Bool) {
@@ -82,13 +82,11 @@ class DataSource {
         return trees
     }
 
-    // MARK: - Private methods
-
     /**
      Creates Tree objects based on the file in the Documents directory with filename localFilename. Tree objects are stored in the trees array.
      - Returns: True if at least one tree was imported from a local file and false otherwise.
      */
-    public func createTrees() -> Bool {
+    func createTrees() -> Bool {
         // Create a file manager and get the path for the local file
         let fileManager = FileManager.default
         let documentsURL = try! fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
@@ -110,6 +108,8 @@ class DataSource {
 
         return (trees.count > 0)
     }
+    
+    // MARK: - Private functions
 
     private func makeTreeForRecord(record: [String]) -> Tree? {
         // Set ID (optional)

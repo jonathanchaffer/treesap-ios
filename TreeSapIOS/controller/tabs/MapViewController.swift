@@ -62,7 +62,7 @@ class MapViewController: UIViewController {
         }
     }
 
-    // MARK: - Private methods
+    // MARK: - Private functions
 
     private func centerMapOnLocation(location: CLLocationCoordinate2D) {
         let coordinateRegion = MKCoordinateRegion(center: location, latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)

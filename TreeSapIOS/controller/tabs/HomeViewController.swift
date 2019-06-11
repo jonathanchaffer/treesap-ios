@@ -36,7 +36,7 @@ class HomeViewController: UIViewController {
         settingsDescriptionLabel.attributedText = settingsDescription
     }
 
-    // MARK: - Private methods
+    // MARK: - Private functions
 
     /// Creates an image with the specified size. Taken from https://stackoverflow.com/questions/2658738/the-simplest-way-to-resize-an-uiimage
     private func imageWithImage(image: UIImage, scaledToSize newSize: CGSize) -> UIImage {

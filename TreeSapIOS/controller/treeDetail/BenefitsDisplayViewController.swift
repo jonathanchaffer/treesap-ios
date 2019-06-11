@@ -49,7 +49,7 @@ class BenefitsDisplayViewController: TreeDisplayViewController {
         }
     }
 
-    // MARK: - Private methods
+    // MARK: - Private functions
 
     /// Sets the label text for the benefit display, hiding the ones that lack information.
     private func setLabels() {

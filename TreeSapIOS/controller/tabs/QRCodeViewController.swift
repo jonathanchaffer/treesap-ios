@@ -154,7 +154,7 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
         }
     }
 
-    // MARK: - Private methods
+    // MARK: - Private functions
 
     /**
      Gets the tree that corresponds to the given encoded string. A valid string has the format "[latitude],[longitude],[database name]".

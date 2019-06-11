@@ -34,7 +34,7 @@ class CoordinatesViewController: UIViewController, UITextFieldDelegate {
         handleCoordinates()
     }
 
-    // MARK: - Methods
+    // MARK: - Functions
 
     /// Displays tree information for the inputted coordinates or alerts the user if invalid coordinates were entered.
     private func handleCoordinates() {
@@ -60,7 +60,7 @@ class CoordinatesViewController: UIViewController, UITextFieldDelegate {
         }
     }
 
-    // If the text field is the first/latitude text field, the second/longitude text field becomes first responder (so it becomes selected). If the text field is the second/longitude text field, then the handleCoordinates method is called. Otherwise, nothing happens.
+    // If the text field is the first/latitude text field, the second/longitude text field becomes first responder (so it becomes selected). If the text field is the second/longitude text field, then the handleCoordinates function is called. Otherwise, nothing happens.
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField {
         case latitudeTextField:

@@ -81,7 +81,7 @@ class TreeDetailPageViewController: UIPageViewController {
         pageControl!.currentPage = pages.firstIndex(of: pageContentViewController as! TreeDisplayViewController)!
     }
 
-    // MARK: - Private methods
+    // MARK: - Private functions
 
     /**
      Instantiates and returns a TreeDisplayViewController based on the identifier of the view controller in the storyboard.
