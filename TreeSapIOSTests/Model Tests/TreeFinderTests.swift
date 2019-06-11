@@ -12,10 +12,9 @@ import MapKit
 
 class TreeFinderTests: XCTestCase {
     let distanceBetweenMarginOfError: Double = 0.00001
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     override func setUp() {
-        for dataSource in appDelegate.dataSources{
+        for dataSource in DataManager.dataSources{
             dataSource.retrieveOnlineData(loadingScreenActive: false)
         }
     }
@@ -81,7 +80,7 @@ class TreeFinderTests: XCTestCase {
      */
     func returnListedDataSources(dataSourceNames: [String]) -> [DataSource]{
         var dataSourceList: [DataSource] = [DataSource]()
-        for dataSource in appDelegate.dataSources{
+        for dataSource in DataManager.dataSources{
             for name in dataSourceNames{
                 if(dataSource.dataSourceName == name){
                     dataSourceList.append(dataSource)

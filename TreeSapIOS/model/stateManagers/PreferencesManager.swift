@@ -35,32 +35,32 @@ class PreferencesManager {
     // MARK: Getter functions
     
     ///- Returns: Whether or not the user's device location is shown on the map
-    func getShowingUserLocation() -> Bool{
+    class func getShowingUserLocation() -> Bool{
         return PreferencesManager.showingUserLocation
     }
     
     ///- Returns: The cutoff distance to be used for tree searches
-    func getCutoffDistance() -> Double{
+    class func getCutoffDistance() -> Double{
         return PreferencesManager.cutoffDistance
     }
     
     ///- Returns: A dictionary of the availability of each data source
-    func getDataSourceAvailability() -> [String:Bool]{
+    class func getDataSourceAvailability() -> [String:Bool]{
         return PreferencesManager.dataSourceAvailability
     }
     
     ///- Returns: The default value for whether the user's device location is shown on the map
-    func getDefaultShowingUserLocation() -> Bool{
+    class func getDefaultShowingUserLocation() -> Bool{
         return PreferencesManager.defaultShowingUserLocation
     }
     
     ///- Returns: The default value for cutoffDistance
-    func getDefaultCutoffDistance() -> Double{
+    class func getDefaultCutoffDistance() -> Double{
         return PreferencesManager.defaultCutoffDistance
     }
     
     ///- Returns: A dictiionary with the default availibility of each data source
-    func getDefaultDataSourceAvailibility() -> [String:Bool]{
+    class func getDefaultDataSourceAvailability() -> [String:Bool]{
         return PreferencesManager.defaultDataSourceAvailability
     }
     

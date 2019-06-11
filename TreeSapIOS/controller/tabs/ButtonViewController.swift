@@ -83,7 +83,7 @@ class ButtonViewController: UIViewController {
      */
     private func getTreeDataByGPS() -> Tree? {
         let location = LocationManager.getCurrentLocation()!.coordinate
-        return TreeFinder.findTreeByLocation(location: location, dataSources: PreferencesManager.getActiveDataSources(), cutoffDistance: PreferencesManager.cutoffDistance)
+        return TreeFinder.findTreeByLocation(location: location, dataSources: PreferencesManager.getActiveDataSources(), cutoffDistance: PreferencesManager.getCutoffDistance())
     }
 
     private func pushDownButton() {

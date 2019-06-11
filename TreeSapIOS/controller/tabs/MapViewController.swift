@@ -46,7 +46,7 @@ class MapViewController: UIViewController {
 
     override func viewWillAppear(_: Bool) {
         // Show or hide user location based on the option in Settings.
-        if PreferencesManager.showingUserLocation {
+        if PreferencesManager.getShowingUserLocation() {
             mapView.showsUserLocation = true
         } else {
             mapView.showsUserLocation = false
