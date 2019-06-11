@@ -30,8 +30,8 @@ class MapViewController: UIViewController {
         }
 
         // If location use is authorized, set starting location to current location. Otherwise, use Centennial Park (in Holland, Michigan) as a default.
-        if LocationManager.locationFeaturesEnabled, LocationManager.locationManager.location != nil {
-            centerMapOnLocation(location: LocationManager.locationManager.location!.coordinate)
+        if LocationManager.locationFeaturesEnabled, LocationManager.getCurrentLocation() != nil {
+            centerMapOnLocation(location: LocationManager.getCurrentLocation()!.coordinate)
         } else {
             centerMapOnLocation(location: CLLocationCoordinate2D(latitude: 42.787586, longitude: -86.108110))
         }

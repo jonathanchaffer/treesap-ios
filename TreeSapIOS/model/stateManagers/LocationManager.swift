@@ -15,7 +15,7 @@ class LocationManager {
     static var locationFeaturesEnabled = false
 
     /// CLLocationManager instance for the entire app.
-    static let locationManager = CLLocationManager()
+    fileprivate static let locationManager = CLLocationManager()
 
     /// Delegate instance for the location manager.
     static let delegate = LocationManagerDelegate()
@@ -27,6 +27,11 @@ class LocationManager {
         locationManager.delegate = delegate
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.distanceFilter = 1
+    }
+    
+    /// - Returns: The current location.
+    static func getCurrentLocation() -> CLLocation? {
+        return locationManager.location
     }
 
     /// Checks the authorization status for user location, requesting authorization if needed.

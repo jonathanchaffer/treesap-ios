@@ -96,7 +96,7 @@ class DataManager {
                 DispatchQueue.main.async {
                     let currentViewController = UIApplication.shared.keyWindow?.rootViewController as? LoadingScreenViewController
                     if currentViewController != nil {
-                        currentViewController!.loadHomeScreen()
+                        currentViewController!.showHomeScreen()
                     }
 
                     AlertManager.alertUser(title: "Some tree data unavailable", message: "Some or all of the tree data could not be loaded. Please make sure that your device is connected to the Internet and then restart the app.")
@@ -110,7 +110,7 @@ class DataManager {
             guard let currentViewController = UIApplication.shared.keyWindow?.rootViewController as? LoadingScreenViewController else {
                 return
             }
-            currentViewController.loadHomeScreen()
+            currentViewController.showHomeScreen()
         }
     }
 

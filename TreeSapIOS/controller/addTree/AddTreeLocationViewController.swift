@@ -36,8 +36,8 @@ class AddTreeLocationViewController: AddTreeViewController {
     @IBAction func updateLocation(_: UIButton) {
         if LocationManager.locationFeaturesEnabled {
             // Set the text for the location labels
-            latitudeLabel.text = String(Double((LocationManager.locationManager.location?.coordinate.latitude)!))
-            longitudeLabel.text = String(Double((LocationManager.locationManager.location?.coordinate.longitude)!))
+            latitudeLabel.text = String(Double((LocationManager.getCurrentLocation()?.coordinate.latitude)!))
+            longitudeLabel.text = String(Double((LocationManager.getCurrentLocation()?.coordinate.longitude)!))
             // Show the location information and next button
             coordinatesStackView.isHidden = false
             nextButton.isHidden = false

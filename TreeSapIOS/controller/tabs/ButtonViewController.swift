@@ -50,7 +50,7 @@ class ButtonViewController: UIViewController {
      */
     @IBAction func handleBigButtonPressed(_: UIButton) {
         // If authorized, get tree data. Otherwise, alert the user.
-        if LocationManager.locationFeaturesEnabled, LocationManager.locationManager.location != nil {
+        if LocationManager.locationFeaturesEnabled, LocationManager.getCurrentLocation() != nil {
             // If tree data was found, display it. Otherwise, alert the user.
             let treeToDisplay = getTreeDataByGPS()
             if treeToDisplay != nil {
@@ -82,7 +82,7 @@ class ButtonViewController: UIViewController {
      - Returns: The nearest tree based on the user's current GPS location.
      */
     private func getTreeDataByGPS() -> Tree? {
-        let location = LocationManager.locationManager.location!.coordinate
+        let location = LocationManager.getCurrentLocation()!.coordinate
         return TreeFinder.findTreeByLocation(location: location, dataSources: PreferencesManager.getActiveDataSources(), cutoffDistance: PreferencesManager.cutoffDistance)
     }
 

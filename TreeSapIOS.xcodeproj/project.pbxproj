@@ -248,10 +248,7 @@
 		CB6953B5228EE4AE0002024B /* model */ = {
 			isa = PBXGroup;
 			children = (
-				CB80E3BC22AFD578001A78AE /* DataManager.swift */,
-				CB80E3BE22AFD657001A78AE /* AlertManager.swift */,
-				CB80E3C022AFD753001A78AE /* LocationManager.swift */,
-				CB80E3C222AFD909001A78AE /* PreferencesManager.swift */,
+				CB80E3C422AFF19C001A78AE /* stateManagers */,
 				CB6953B7228EE8720002024B /* Tree.swift */,
 				CB6953B9228EE9530002024B /* DataSource.swift */,
 				D76D617E22931990003FFD24 /* CSVFormat.swift */,
@@ -271,6 +268,17 @@
 				CB15256922A69941002D483E /* FilledButton.swift */,
 			);
 			path = view;
+			sourceTree = "<group>";
+		};
+		CB80E3C422AFF19C001A78AE /* stateManagers */ = {
+			isa = PBXGroup;
+			children = (
+				CB80E3BC22AFD578001A78AE /* DataManager.swift */,
+				CB80E3BE22AFD657001A78AE /* AlertManager.swift */,
+				CB80E3C022AFD753001A78AE /* LocationManager.swift */,
+				CB80E3C222AFD909001A78AE /* PreferencesManager.swift */,
+			);
+			path = stateManagers;
 			sourceTree = "<group>";
 		};
 		CB9F424322A55F3A00C97F70 /* TreeSapIOSUITests */ = {
