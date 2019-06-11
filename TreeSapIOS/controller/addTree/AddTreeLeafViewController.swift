@@ -2,7 +2,7 @@
 //  AddTreeLeafViewController.swift
 //  TreeSapIOS
 //
-//  Created by Summer2019 on 6/4/19.
+//  Created by Jonathan Chaffer and Josiah Brett in Summer 2019.
 //  Copyright © 2019 Hope CS. All rights reserved.
 //
 

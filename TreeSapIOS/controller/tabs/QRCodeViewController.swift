@@ -2,9 +2,10 @@
 //  QRCodeViewController.swift
 //  TreeSapIOS
 //
-//  Created by Summer2019 on 5/16/19.
+//  Created by Jonathan Chaffer and Josiah Brett in Summer 2019.
 //  Copyright © 2019 Hope CS. All rights reserved.
-//  This code was based of code from https://www.hackingwithswift.com/example-code/media/how-to-scan-a-qr-code
+//
+//  Used https://www.hackingwithswift.com/example-code/media/how-to-scan-a-qr-code as a reference.
 
 import AVKit
 import CoreLocation

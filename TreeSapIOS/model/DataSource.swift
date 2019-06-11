@@ -2,10 +2,10 @@
 //  DataSource.swift
 //  TreeSapIOS
 //
-//  Created by Summer2019 on 5/17/19.
+//  Created by Jonathan Chaffer and Josiah Brett in Summer 2019.
 //  Copyright © 2019 Hope CS. All rights reserved.
 //
-//  used code from https://developer.apple.com/documentation/foundation/url_loading_system/fetching_website_data_into_memory as a reference
+//  Used https://developer.apple.com/documentation/foundation/url_loading_system/fetching_website_data_into_memory as a reference.
 //
 
 import CSVImporter

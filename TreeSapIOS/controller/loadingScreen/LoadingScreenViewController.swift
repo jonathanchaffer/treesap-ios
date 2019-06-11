@@ -2,7 +2,7 @@
 //  LoadingScreenViewController.swift
 //  TreeSapIOS
 //
-//  Created by Research on 6/5/19.
+//  Created by Jonathan Chaffer and Josiah Brett in Summer 2019.
 //  Copyright © 2019 Hope CS. All rights reserved.
 //
 
