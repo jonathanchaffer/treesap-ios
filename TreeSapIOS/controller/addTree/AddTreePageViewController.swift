@@ -6,8 +6,8 @@
 //  Copyright © 2019 Hope CS. All rights reserved.
 //
 
-import UIKit
 import MapKit
+import UIKit
 
 class AddTreePageViewController: UIPageViewController {
     // MARK: - Properties
@@ -64,7 +64,7 @@ class AddTreePageViewController: UIPageViewController {
         // Set the page to be displayed
         setViewControllers([pages[currentPage]], direction: .forward, animated: true, completion: nil)
     }
-    
+
     @objc private func previousPage() {
         currentPage -= 1
         if currentPage < 0 {
@@ -73,12 +73,12 @@ class AddTreePageViewController: UIPageViewController {
         // Set the page to be displayed
         setViewControllers([pages[currentPage]], direction: .reverse, animated: true, completion: nil)
     }
-    
+
     private func closeAddTree() {
         navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)
     }
-    
+
     @objc private func addTreeDone() {
         // Create a Tree object based on the parameters inputted
         let createdTree = Tree(
@@ -87,19 +87,21 @@ class AddTreePageViewController: UIPageViewController {
             scientificName: NameFormatter.formatScientificName(scientificName: (pages[4] as! AddTreeOtherViewController).scientificNameTextField.text),
             location: CLLocationCoordinate2D(
                 latitude: Double((pages[0] as! AddTreeLocationViewController).latitudeLabel.text!)!,
-                longitude: Double((pages[0] as! AddTreeLocationViewController).longitudeLabel.text!)!),
-            dbh: nil)
+                longitude: Double((pages[0] as! AddTreeLocationViewController).longitudeLabel.text!)!
+            ),
+            dbh: nil
+        )
         // Add the images, if any, to the Tree
         let barkImage = (pages[1] as! AddTreePhotoViewController).selectedImage
         let leafImage = (pages[2] as! AddTreePhotoViewController).selectedImage
         let entireImage = (pages[3] as! AddTreePhotoViewController).selectedImage
-        if (entireImage != nil) {
+        if entireImage != nil {
             createdTree.addImage(entireImage!)
         }
-        if (leafImage != nil) {
+        if leafImage != nil {
             createdTree.addImage(leafImage!)
         }
-        if (barkImage != nil) {
+        if barkImage != nil {
             createdTree.addImage(barkImage!)
         }
         // TODO: Do something with the Tree
@@ -108,5 +110,4 @@ class AddTreePageViewController: UIPageViewController {
         // Close the add tree workflow
         closeAddTree()
     }
-    
 }

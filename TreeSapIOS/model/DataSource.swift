@@ -41,7 +41,6 @@ class DataSource {
 
     /// Retrieves online tree data from the URL specified using the internet filename and internet filebase properties. Copies the online csv file to the app's documents directory, then creating Tree objects in the data sources using the data in the local repositories.  Stops if there is an error. This is done asynchronously.
     func retrieveOnlineData(loadingScreenActive: Bool) {
-
         // Retrieve the data from the URL
         let url = URL(string: internetFilebase + internetFilename)
         let task = URLSession.shared.dataTask(with: url!) { data, response, error in
@@ -99,15 +98,15 @@ class DataSource {
         // Create an importer for the local file
         let importer = CSVImporter<[String]>(path: filepath)
         let importedRecords: [[String]] = importer.importRecords { $0 }
-            // Create a Tree object for each imported record
-            for record in importedRecords {
-                let newTree: Tree? = makeTreeForRecord(record: record)
-                if newTree != nil {
-                    newTreeList.append(newTree!)
-                }
+        // Create a Tree object for each imported record
+        for record in importedRecords {
+            let newTree: Tree? = makeTreeForRecord(record: record)
+            if newTree != nil {
+                newTreeList.append(newTree!)
             }
+        }
 
-            trees = newTreeList
+        trees = newTreeList
 
         return (trees.count > 0)
     }

@@ -30,25 +30,25 @@ class NameFormatter {
             newCommonName += spaceSplit[spaceSplit.count - 1].capitalized
         }
         // Handle special cases
-        if (newCommonName == "Little Leaf Linden"){
+        if newCommonName == "Little Leaf Linden" {
             newCommonName = "Littleleaf Linden"
         }
-        if (newCommonName == "Common Honeylocust") {
+        if newCommonName == "Common Honeylocust" {
             newCommonName = "Honeylocust"
         }
-        if (newCommonName == "Crimson King Maple") {
+        if newCommonName == "Crimson King Maple" {
             newCommonName = "Norway Maple"
         }
-        if (newCommonName == "Japanese Flowering Crabapple") {
+        if newCommonName == "Japanese Flowering Crabapple" {
             newCommonName = "Japanese Flower Crabapple"
         }
-        if (newCommonName == "Flowering Cherry") {
+        if newCommonName == "Flowering Cherry" {
             newCommonName = "Japanese Flowering Cherry"
         }
-        if (newCommonName == "Colorado Blue Spruce") {
+        if newCommonName == "Colorado Blue Spruce" {
             newCommonName = "Blue Spruce"
         }
-        if (newCommonName == "Eastern Redcedar") {
+        if newCommonName == "Eastern Redcedar" {
             newCommonName = "Eastern Red Cedar"
         }
         // Return the formatted name

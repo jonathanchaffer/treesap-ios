@@ -10,17 +10,19 @@ import UIKit
 
 class AddTreeEntireViewController: AddTreePhotoViewController {
     // MARK: - Properties
-    @IBOutlet weak var entireImageView: UIImageView!
-    @IBOutlet weak var nextButton: UIButton!
-    
+
+    @IBOutlet var entireImageView: UIImageView!
+    @IBOutlet var nextButton: UIButton!
+
     // MARK: - Overrides
+
     override func viewDidLoad() {
         super.viewDidLoad()
         nextButton.isHidden = true
     }
-    
+
     override func updateImage() {
-        if (selectedImage != nil) {
+        if selectedImage != nil {
             entireImageView.image = selectedImage
             nextButton.isHidden = false
         }
@@ -31,16 +33,16 @@ class AddTreeEntireViewController: AddTreePhotoViewController {
     @IBAction func broadcastNext(_: UIButton) {
         nextPage()
     }
-    
-    @IBAction func broadcastSkip(_ sender: UIButton) {
+
+    @IBAction func broadcastSkip(_: UIButton) {
         nextPage()
     }
-    
-    @IBAction func broadcastBack(_ sender: UIButton) {
+
+    @IBAction func broadcastBack(_: UIButton) {
         previousPage()
     }
-    
-    @IBAction func handlePhotoButtonPressed(_ sender: UIButton) {
+
+    @IBAction func handlePhotoButtonPressed(_: UIButton) {
         takeOrChoosePhoto()
     }
 }

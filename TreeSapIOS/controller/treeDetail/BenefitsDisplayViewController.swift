@@ -11,31 +11,31 @@ import UIKit
 class BenefitsDisplayViewController: TreeDisplayViewController {
     // MARK: - Properties
 
-    @IBOutlet weak var benefitsContainer: UIView!
-    @IBOutlet weak var noDataContainer: UIView!
-    @IBOutlet weak var commonNameLabel: UILabel!
-    @IBOutlet weak var scientificNameLabel: UILabel!
-    @IBOutlet weak var dbhLabel: UILabel!
-    @IBOutlet weak var totalAnnualBenefitsStackView: UIStackView!
-    @IBOutlet weak var totalAnnualBenefitsDollarsLabel: UILabel!
-    @IBOutlet weak var carbonSequestrationStackView: UIStackView!
-    @IBOutlet weak var carbonSequestrationPoundsLabel: UILabel!
-    @IBOutlet weak var carbonSequestrationDollarsLabel: UILabel!
-    @IBOutlet weak var avoidedRunoffStackView: UIStackView!
-    @IBOutlet weak var avoidedRunoffGallonsLabel: UILabel!
-    @IBOutlet weak var avoidedRunoffDollarsLabel: UILabel!
-    @IBOutlet weak var carbonAvoidedStackView: UIStackView!
-    @IBOutlet weak var carbonAvoidedPoundsLabel: UILabel!
-    @IBOutlet weak var carbonAvoidedDollarsLabel: UILabel!
-    @IBOutlet weak var pollutionRemovalStackView: UIStackView!
-    @IBOutlet weak var pollutionRemovalOuncesLabel: UILabel!
-    @IBOutlet weak var pollutionRemovalDollarsLabel: UILabel!
-    @IBOutlet weak var energySavingsStackView: UIStackView!
-    @IBOutlet weak var energySavingsDollarsLabel: UILabel!
-    
+    @IBOutlet var benefitsContainer: UIView!
+    @IBOutlet var noDataContainer: UIView!
+    @IBOutlet var commonNameLabel: UILabel!
+    @IBOutlet var scientificNameLabel: UILabel!
+    @IBOutlet var dbhLabel: UILabel!
+    @IBOutlet var totalAnnualBenefitsStackView: UIStackView!
+    @IBOutlet var totalAnnualBenefitsDollarsLabel: UILabel!
+    @IBOutlet var carbonSequestrationStackView: UIStackView!
+    @IBOutlet var carbonSequestrationPoundsLabel: UILabel!
+    @IBOutlet var carbonSequestrationDollarsLabel: UILabel!
+    @IBOutlet var avoidedRunoffStackView: UIStackView!
+    @IBOutlet var avoidedRunoffGallonsLabel: UILabel!
+    @IBOutlet var avoidedRunoffDollarsLabel: UILabel!
+    @IBOutlet var carbonAvoidedStackView: UIStackView!
+    @IBOutlet var carbonAvoidedPoundsLabel: UILabel!
+    @IBOutlet var carbonAvoidedDollarsLabel: UILabel!
+    @IBOutlet var pollutionRemovalStackView: UIStackView!
+    @IBOutlet var pollutionRemovalOuncesLabel: UILabel!
+    @IBOutlet var pollutionRemovalDollarsLabel: UILabel!
+    @IBOutlet var energySavingsStackView: UIStackView!
+    @IBOutlet var energySavingsDollarsLabel: UILabel!
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         if displayedTree!.otherInfo != [:] {
             // Set label text
             setLabels()
@@ -47,10 +47,10 @@ class BenefitsDisplayViewController: TreeDisplayViewController {
             benefitsContainer.isHidden = true
             // Show a message saying that the benefits could not be displayed
         }
-}
-    
+    }
+
     // MARK: - Private methods
-    
+
     /// Sets the label text for the benefit display, hiding the ones that lack information.
     private func setLabels() {
         if displayedTree!.commonName != nil {

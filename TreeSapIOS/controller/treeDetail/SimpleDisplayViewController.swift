@@ -11,14 +11,14 @@ import UIKit
 class SimpleDisplayViewController: TreeDisplayViewController {
     @IBOutlet var commonNameLabel: UILabel!
     @IBOutlet var scientificNameLabel: UILabel!
-    @IBOutlet weak var treeIDStackView: UIStackView!
+    @IBOutlet var treeIDStackView: UIStackView!
     @IBOutlet var treeIDLabel: UILabel!
     @IBOutlet var latitudeLabel: UILabel!
     @IBOutlet var longitudeLabel: UILabel!
-    @IBOutlet weak var dbhStackView: UIStackView!
+    @IBOutlet var dbhStackView: UIStackView!
     @IBOutlet var dbhLabel: UILabel!
-    @IBOutlet weak var backgroundImage: UIImageView!
-    
+    @IBOutlet var backgroundImage: UIImageView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 

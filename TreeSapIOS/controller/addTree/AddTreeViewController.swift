@@ -18,7 +18,7 @@ class AddTreeViewController: UIViewController {
     func nextPage() {
         NotificationCenter.default.post(name: NSNotification.Name("next"), object: nil)
     }
-    
+
     func previousPage() {
         NotificationCenter.default.post(name: NSNotification.Name("previous"), object: nil)
     }

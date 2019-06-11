@@ -25,14 +25,14 @@ class TreeDetailPageViewController: UIPageViewController {
             self.getViewController(withIdentifier: "benefitsDisplay"),
         ]
     }()
-    
+
     // MARK: - Constructors
-    
+
     init(tree: Tree) {
         super.init(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
-        self.displayedTree = tree
+        displayedTree = tree
     }
-    
+
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
@@ -69,8 +69,8 @@ class TreeDetailPageViewController: UIPageViewController {
         // Show the tab bar when the detail display will disappear.
         //tabBarController?.tabBar.isHidden = false
     }
-    
-    override func viewDidDisappear(_ animated: Bool) {
+
+    override func viewDidDisappear(_: Bool) {
         // Pop the tree details
         navigationController?.popViewController(animated: false)
         dismiss(animated: false, completion: nil)

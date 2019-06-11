@@ -236,7 +236,7 @@ class PieChartDisplayViewController: TreeDisplayViewController, ChartViewDelegat
             }
         }
     }
-    
+
     func chartValueNothingSelected(_ chartView: ChartViewBase) {
         if chartView is PieChartView {
             updateBarChartData(breakdownData: .none)

@@ -30,8 +30,6 @@ class Tree {
     func setOtherInfo(key: String, value: Double) {
         otherInfo[key] = value
     }
-    
-    func addImage(_ image: UIImage) {
-        
-    }
+
+    func addImage(_: UIImage) {}
 }

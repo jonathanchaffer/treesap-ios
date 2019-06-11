@@ -13,22 +13,22 @@ class ButtonViewController: UIViewController {
     // MARK: - Properties
 
     @IBOutlet var bigButton: UIButton!
-    var buttonDefaultWidth: CGFloat? = nil
-    var buttonDefaultOrigin: CGPoint? = nil
+    var buttonDefaultWidth: CGFloat?
+    var buttonDefaultOrigin: CGPoint?
     let sizeMultiplier = 0.95
 
     // MARK: - Overrides
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // Set the styling for the big button
         bigButton.layer.cornerRadius = 0.5 * bigButton.bounds.size.width
         buttonDefaultWidth = bigButton.frame.size.width
         buttonDefaultOrigin = bigButton.frame.origin
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
+
+    override func viewDidAppear(_: Bool) {
         // Check authorization status.
         LocationManager.checkLocationAuthorization()
     }
@@ -63,19 +63,18 @@ class ButtonViewController: UIViewController {
             AlertManager.alertUser(title: "Location could not be accessed", message: "Please ensure that location services are enabled.")
         }
     }
-    
-    @IBAction func touchDown(_ sender: UIButton) {
+
+    @IBAction func touchDown(_: UIButton) {
         pushDownButton()
     }
-    
-    @IBAction func touchUpInside(_ sender: UIButton) {
+
+    @IBAction func touchUpInside(_: UIButton) {
         pushUpButton()
     }
-    
-    @IBAction func touchDragExit(_ sender: UIButton) {
+
+    @IBAction func touchDragExit(_: UIButton) {
         pushUpButton()
     }
-    
 
     // MARK: - Private methods
 
@@ -86,7 +85,7 @@ class ButtonViewController: UIViewController {
         let location = LocationManager.locationManager.location!.coordinate
         return TreeFinder.findTreeByLocation(location: location, dataSources: PreferencesManager.getActiveDataSources(), cutoffDistance: PreferencesManager.cutoffDistance)
     }
-    
+
     private func pushDownButton() {
         let newWidth = Double(buttonDefaultWidth!) * sizeMultiplier
         let offset = (Double(buttonDefaultWidth!) - newWidth) / 2.0
@@ -95,18 +94,20 @@ class ButtonViewController: UIViewController {
                 x: Double(self.bigButton.frame.origin.x) + offset,
                 y: Double(self.bigButton.frame.origin.y) + offset,
                 width: newWidth,
-                height: newWidth)
+                height: newWidth
+            )
             self.bigButton.layer.cornerRadius = CGFloat(0.5 * newWidth)
         })
     }
-    
+
     private func pushUpButton() {
         UIView.animate(withDuration: 0.1, animations: {
             self.bigButton.frame = CGRect(
                 x: self.buttonDefaultOrigin!.x,
                 y: self.buttonDefaultOrigin!.y,
                 width: self.buttonDefaultWidth!,
-                height: self.buttonDefaultWidth!)
+                height: self.buttonDefaultWidth!
+            )
             self.bigButton.layer.cornerRadius = CGFloat(0.5 * self.buttonDefaultWidth!)
         })
     }

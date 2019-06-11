@@ -10,30 +10,30 @@ import Foundation
 
 class PreferencesManager {
     // MARK: - Properties
-    
+
     // Preferences
     static var showingUserLocation: Bool = defaultShowingUserLocation
     static var cutoffDistance: Double = defaultCutoffDistance
-    static var dataSourceAvailability: [String : Bool] = defaultDataSourceAvailability
-    
+    static var dataSourceAvailability: [String: Bool] = defaultDataSourceAvailability
+
     // Keys for preference names
     static let showingUserLocationKey = "showingUserLocation"
     static let cutoffDistanceKey = "cutoffDistance"
     static let dataSourceAvailabilityKey = "dataSourceAvailability"
-    
+
     // Default preferences
     static let defaultShowingUserLocation = true
     static let defaultCutoffDistance = 100.0
-    static var defaultDataSourceAvailability: [String : Bool] {
-        var dict: [String : Bool] = [:]
+    static var defaultDataSourceAvailability: [String: Bool] {
+        var dict: [String: Bool] = [:]
         for dataSource in DataManager.dataSources {
             dict[dataSource.dataSourceName] = true
         }
         return dict
     }
-    
+
     // MARK: - Static functions
-    
+
     /// Loads user preferences from UserDefaults.
     static func loadPreferences() {
         // Load showing user location
@@ -43,7 +43,7 @@ class PreferencesManager {
         } else {
             showingUserLocation = tempShowingUserLocation!
         }
-        
+
         // Load cutoff distance
         let tempCutoffDistance = UserDefaults.standard.double(forKey: cutoffDistanceKey)
         if tempCutoffDistance == 0 {
@@ -51,16 +51,16 @@ class PreferencesManager {
         } else {
             cutoffDistance = tempCutoffDistance
         }
-        
+
         // Load data source availability
-        let tempDataSourceAvailability = UserDefaults.standard.object(forKey: dataSourceAvailabilityKey) as? [String : Bool]
+        let tempDataSourceAvailability = UserDefaults.standard.object(forKey: dataSourceAvailabilityKey) as? [String: Bool]
         if tempDataSourceAvailability == nil {
             dataSourceAvailability = defaultDataSourceAvailability
         } else {
             dataSourceAvailability = tempDataSourceAvailability!
         }
     }
-    
+
     /// Sets the user preferences to the default settings.
     static func restoreDefaults() {
         showingUserLocation = defaultShowingUserLocation
@@ -70,7 +70,7 @@ class PreferencesManager {
         dataSourceAvailability = defaultDataSourceAvailability
         UserDefaults.standard.set(defaultDataSourceAvailability, forKey: dataSourceAvailabilityKey)
     }
-    
+
     /**
      Toggles whether the user's location should be shown on the map.
      Note: If location features are disabled, the user's location will not be shown on the map, regardless of this setting.
@@ -79,7 +79,7 @@ class PreferencesManager {
         showingUserLocation = !showingUserLocation
         UserDefaults.standard.set(showingUserLocation, forKey: showingUserLocationKey)
     }
-    
+
     /**
      Updates the cutoff distance preference.
      - Parameter cutoffDistance: The value the maximum distance trees will be identified via coordinates or GPS will be set to.
@@ -88,7 +88,7 @@ class PreferencesManager {
         cutoffDistance = newCutoffDistance
         UserDefaults.standard.set(cutoffDistance, forKey: cutoffDistanceKey)
     }
-    
+
     /// - Returns: An array containing the active data sources.
     static func getActiveDataSources() -> [DataSource] {
         var activeDataSources = [DataSource]()
@@ -100,7 +100,7 @@ class PreferencesManager {
         }
         return activeDataSources
     }
-    
+
     /**
      - Parameter dataSourceName: The name of the data source.
      - Returns: A Bool indicating whether the data source is active.
@@ -111,7 +111,7 @@ class PreferencesManager {
         }
         return dataSourceAvailability[dataSourceName]!
     }
-    
+
     /**
      Sets the active status to true for the data source with the specified name.
      - Parameter dataSourceName: The name of the data source to be compared against the dataSourceName property of existing DataSource objects.
@@ -120,11 +120,11 @@ class PreferencesManager {
         if dataSourceAvailability[dataSourceName] == nil {
             return
         }
-        
+
         dataSourceAvailability[dataSourceName] = true
         UserDefaults.standard.set(dataSourceAvailability, forKey: dataSourceAvailabilityKey)
     }
-    
+
     /**
      Sets the active status to false for the data source with the specified name.
      - Parameter dataSourceName: The name of the data source to be compared against the dataSourceName property of existing DataSource objects.
@@ -133,7 +133,7 @@ class PreferencesManager {
         if dataSourceAvailability[dataSourceName] == nil {
             return
         }
-        
+
         dataSourceAvailability[dataSourceName] = false
         UserDefaults.standard.set(dataSourceAvailability, forKey: dataSourceAvailabilityKey)
     }

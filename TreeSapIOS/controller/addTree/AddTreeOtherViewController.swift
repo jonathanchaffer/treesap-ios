@@ -10,40 +10,40 @@ import UIKit
 
 class AddTreeOtherViewController: AddTreeViewController {
     // MARK: - Properties
-    
-    @IBOutlet weak var commonNameTextField: UITextField!
-    @IBOutlet weak var scientificNameTextField: UITextField!
-    @IBOutlet weak var dbhTextField: UITextField!
-    @IBOutlet weak var circumferenceTextField: UITextField!
-    
+
+    @IBOutlet var commonNameTextField: UITextField!
+    @IBOutlet var scientificNameTextField: UITextField!
+    @IBOutlet var dbhTextField: UITextField!
+    @IBOutlet var circumferenceTextField: UITextField!
+
     // MARK: - Overrides
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.hideKeyboardWhenTappedAround()
+        hideKeyboardWhenTappedAround()
     }
 
     // MARK: - Actions
-    
-    @IBAction func handleDoneButtonPressed(_ sender: UIButton) {
+
+    @IBAction func handleDoneButtonPressed(_: UIButton) {
         let alert = UIAlertController(title: "Submit tree for approval?", message: "Your tree will be added to the online tree database if it is approved.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {_ in self.submitTree()}))
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in self.submitTree() }))
         present(alert, animated: true)
     }
-    
-    @IBAction func broadcastBack(_ sender: UIButton) {
+
+    @IBAction func broadcastBack(_: UIButton) {
         previousPage()
     }
-    
+
     // MARK: - Private methods
-    
+
     private func submitTree() {
         let alert = UIAlertController(title: "Success!", message: "Your tree has been submitted for approval. While you wait, your tree will be available in the \"My Trees\" data set on your device.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: {_ in self.broadcastAddTreeDone()}))
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { _ in self.broadcastAddTreeDone() }))
         present(alert, animated: true)
     }
-    
+
     private func broadcastAddTreeDone() {
         NotificationCenter.default.post(name: NSNotification.Name("addTreeDone"), object: nil)
     }
@@ -58,7 +58,7 @@ extension UIViewController {
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
     }
-    
+
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }

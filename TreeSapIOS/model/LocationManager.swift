@@ -10,25 +10,25 @@ import MapKit
 
 class LocationManager {
     // MARK: - Properties
-    
+
     /// Indicates whether location features are enabled. NOTE: This is not a user preference; it is a flag that keeps track of whether the user has allowed access to device location.
     static var locationFeaturesEnabled = false
-    
+
     /// CLLocationManager instance for the entire app.
     static let locationManager = CLLocationManager()
-    
+
     /// Delegate instance for the location manager.
     static let delegate = LocationManagerDelegate()
-    
+
     // MARK: - Static functions
-    
+
     /// Sets up the location manager.
     static func setup() {
         locationManager.delegate = delegate
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.distanceFilter = 1
     }
-    
+
     /// Checks the authorization status for user location, requesting authorization if needed.
     static func checkLocationAuthorization() {
         switch CLLocationManager.authorizationStatus() {

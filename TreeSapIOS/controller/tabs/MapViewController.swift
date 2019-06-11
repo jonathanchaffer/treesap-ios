@@ -36,10 +36,10 @@ class MapViewController: UIViewController {
             centerMapOnLocation(location: CLLocationCoordinate2D(latitude: 42.787586, longitude: -86.108110))
         }
     }
-    
+
     // MARK: - Overrides
-    
-    override func viewDidAppear(_ animated: Bool) {
+
+    override func viewDidAppear(_: Bool) {
         // Check authorization status.
         LocationManager.checkLocationAuthorization()
     }
@@ -75,7 +75,7 @@ extension MapViewController: MKMapViewDelegate {
     func mapView(_: MKMapView, annotationView view: MKAnnotationView,
                  calloutAccessoryControlTapped _: UIControl) {
         let annotation = view.annotation as! TreeAnnotation
-        
+
         // Display tree data
         let pages = TreeDetailPageViewController(tree: annotation.tree)
         navigationController?.pushViewController(pages, animated: true)
