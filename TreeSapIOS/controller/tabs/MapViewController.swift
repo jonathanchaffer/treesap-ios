@@ -15,7 +15,6 @@ class MapViewController: UIViewController {
 
     @IBOutlet var mapView: MKMapView!
     let regionRadius: CLLocationDistance = 200
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,8 +30,8 @@ class MapViewController: UIViewController {
         }
 
         // If location use is authorized, set starting location to current location. Otherwise, use Centennial Park (in Holland, Michigan) as a default.
-        if appDelegate.locationFeaturesEnabled, appDelegate.locationManager.location != nil {
-            centerMapOnLocation(location: appDelegate.locationManager.location!.coordinate)
+        if LocationManager.locationFeaturesEnabled, LocationManager.locationManager.location != nil {
+            centerMapOnLocation(location: LocationManager.locationManager.location!.coordinate)
         } else {
             centerMapOnLocation(location: CLLocationCoordinate2D(latitude: 42.787586, longitude: -86.108110))
         }
@@ -42,12 +41,12 @@ class MapViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         // Check authorization status.
-        appDelegate.checkLocationAuthorization()
+        LocationManager.checkLocationAuthorization()
     }
 
     override func viewWillAppear(_: Bool) {
         // Show or hide user location based on the option in Settings.
-        if appDelegate.showingUserLocation {
+        if PreferencesManager.showingUserLocation {
             mapView.showsUserLocation = true
         } else {
             mapView.showsUserLocation = false
@@ -55,8 +54,8 @@ class MapViewController: UIViewController {
 
         // Add annotations to the map.
         mapView.removeAnnotations(mapView.annotations)
-        let dataSources = appDelegate.getActiveDataSources()
-        for dataSource in dataSources {
+        let dataSources = PreferencesManager.getActiveDataSources()
+        for dataSource in DataManager.dataSources {
             for tree in dataSource.getTreeList() {
                 mapView.addAnnotation(TreeAnnotation(tree: tree))
             }

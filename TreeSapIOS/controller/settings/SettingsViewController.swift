@@ -11,7 +11,6 @@ import UIKit
 class SettingsViewController: UITableViewController {
     // MARK: Properties
 
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     @IBOutlet var locationToggleSwitch: UISwitch!
     @IBOutlet var cutoffDistanceTextField: UITextField!
 
@@ -29,8 +28,8 @@ class SettingsViewController: UITableViewController {
     }
 
     override func viewWillAppear(_: Bool) {
-        locationToggleSwitch.isOn = appDelegate.accessShowUserLocation()
-        cutoffDistanceTextField.text = String(appDelegate.accessCutoffDistance())
+        locationToggleSwitch.isOn = PreferencesManager.accessShowUserLocation()
+        cutoffDistanceTextField.text = String(PreferencesManager.accessCutoffDistance())
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -45,7 +44,7 @@ class SettingsViewController: UITableViewController {
     }
 
     @IBAction func toggleLocationOnMap(_: UISwitch) {
-        appDelegate.toggleShowingUserLocation()
+        PreferencesManager.toggleShowingUserLocation()
     }
 
     /// Makes text fields stop getting edited, dismissing the keyboard if they are being edited
@@ -60,10 +59,10 @@ class SettingsViewController: UITableViewController {
      */
     @IBAction func updateCutoffDistance(_: UITextField) {
         if let dist = Double(cutoffDistanceTextField.text!) {
-            appDelegate.modifyCutoffDistance(cutoffDistance: dist)
+            PreferencesManager.modifyCutoffDistance(cutoffDistance: dist)
         } else {
-            let defaultCutoff: Double = appDelegate.accessCutoffDistanceDefault()
-            appDelegate.modifyCutoffDistance(cutoffDistance: defaultCutoff)
+            let defaultCutoff: Double = PreferencesManager.accessCutoffDistanceDefault()
+            PreferencesManager.modifyCutoffDistance(cutoffDistance: defaultCutoff)
             cutoffDistanceTextField.text = String(defaultCutoff)
             let alert = UIAlertController(title: "Invalid number", message: "Distance has been reset to " + String(defaultCutoff), preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))

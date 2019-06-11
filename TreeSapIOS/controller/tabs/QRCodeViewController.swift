@@ -16,7 +16,6 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
     
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer?
-    var appDelegate: AppDelegate! = (UIApplication.shared.delegate as! AppDelegate)
     @IBOutlet var qrCodeOverlay: UIImageView!
     
     // Alert strings
@@ -133,17 +132,17 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
     func metadataOutput(_: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from _: AVCaptureConnection) {
         if let metadatObject: AVMetadataObject = metadataObjects.first {
             guard let readableObject = metadatObject as? AVMetadataMachineReadableCodeObject else {
-                alertUser(title: scanErrorTitle, message: scanErrorMessage)
+                AlertManager.alertUser(title: scanErrorTitle, message: scanErrorMessage)
                 return
             }
 
             guard let stringOutput: String = readableObject.stringValue else {
-                alertUser(title: scanErrorTitle, message: scanErrorMessage)
+                AlertManager.alertUser(title: scanErrorTitle, message: scanErrorMessage)
                 return
             }
 
             guard let treeToDisplay: Tree = getTreeFromString(encodedString: stringOutput) else {
-                alertUser(title: invalidQRCodeTitle, message: invalidQRCodeMessage)
+                AlertManager.alertUser(title: invalidQRCodeTitle, message: invalidQRCodeMessage)
                 return
             }
 
@@ -168,49 +167,40 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
         
         // If there are not three parts, alert the user
         if resultParts.count != 3 {
-            alertUser(title: invalidQRCodeTitle, message: invalidQRCodeMessage)
+            AlertManager.alertUser(title: invalidQRCodeTitle, message: invalidQRCodeMessage)
             return nil
         }
 
         // Get the latitude, longitude, and data source name from each of the three portions of the string
         guard let treeLatitude: Double = Double(String(resultParts[0])) else {
-            alertUser(title: invalidQRCodeTitle, message: invalidQRCodeMessage)
+            AlertManager.alertUser(title: invalidQRCodeTitle, message: invalidQRCodeMessage)
             return nil
         }
         guard let treeLongitude: Double = Double(String(resultParts[1])) else {
-            alertUser(title: invalidQRCodeTitle, message: invalidQRCodeMessage)
+            AlertManager.alertUser(title: invalidQRCodeTitle, message: invalidQRCodeMessage)
             return nil
         }
         let dataSourceName: String = String(resultParts[2])
 
         // Find the data source with the data source name encoded int the QR code
         let treeCoordinates = CLLocationCoordinate2D(latitude: treeLatitude, longitude: treeLongitude)
-        guard let dataSourceToSearch: DataSource = appDelegate.getDataSourceWithName(name: dataSourceName) else {
-            alertUser(title: invalidQRCodeTitle, message: invalidQRCodeMessage)
+        guard let dataSourceToSearch: DataSource = DataManager.getDataSourceWithName(name: dataSourceName) else {
+            AlertManager.alertUser(title: invalidQRCodeTitle, message: invalidQRCodeMessage)
             return nil
         }
 
         // Check if the data source with the given name is active
-        guard appDelegate.isActive(dataSourceName: dataSourceName) else {
-            alertUser(title: dataSourceDisabledTitle, message: "The data source that contains the data for this tree is currently turned off. You can turn on \"" + String(dataSourceName) + "\" in the settings.")
+        guard PreferencesManager.isActive(dataSourceName: dataSourceName) else {
+            AlertManager.alertUser(title: dataSourceDisabledTitle, message: "The data source that contains the data for this tree is currently turned off. You can turn on \"" + String(dataSourceName) + "\" in the settings.")
             return nil
         }
 
         guard let resultTree: Tree = TreeFinder.findTreeByLocation(location: treeCoordinates, dataSources: [dataSourceToSearch], cutoffDistance: 0.5) else {
-            alertUser(title: noTreesTitle, message: noTreesMessage)
+            AlertManager.alertUser(title: noTreesTitle, message: noTreesMessage)
             return nil
         }
 
         return resultTree
-    }
-
-    /**
-     Displays an alert with the given title and message and an "OK" button.
-     - Parameter title: The title of the alert.
-     - Parameter message: The message of the alert.
-     */
-    private func alertUser(title: String, message: String) {
-        appDelegate.alertUser(title: title, message: message)
     }
     
     private func startCaptureSession() {

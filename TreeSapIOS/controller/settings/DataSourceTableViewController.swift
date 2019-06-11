@@ -11,7 +11,6 @@ import UIKit
 class DataSourceTableViewController: UITableViewController {
     // MARK: Properties
 
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var dataSources = [DataSource]()
 
     // MARK: Overrides
@@ -19,12 +18,12 @@ class DataSourceTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Active Data Sources"
-        dataSources = appDelegate.dataSources
+        dataSources = DataManager.dataSources
         // Set the checkmarks based on the active status of the data sources
         DispatchQueue.main.async {
             for i in 0 ..< self.dataSources.count {
                 let indexPath = NSIndexPath(row: i, section: 0)
-                if self.appDelegate.isActive(dataSourceName: self.dataSources[i].dataSourceName) {
+                if PreferencesManager.isActive(dataSourceName: self.dataSources[i].dataSourceName) {
                     self.tableView.cellForRow(at: indexPath as IndexPath)?.accessoryType = .checkmark
                 } else {
                     self.tableView.cellForRow(at: indexPath as IndexPath)?.accessoryType = .none
@@ -38,9 +37,9 @@ class DataSourceTableViewController: UITableViewController {
             let indexPath = NSIndexPath(row: i, section: 0)
             let cell = tableView.cellForRow(at: indexPath as IndexPath)
             if cell!.accessoryType == .checkmark {
-                appDelegate.activateDataSource(dataSourceName: cell!.textLabel!.text!)
+                PreferencesManager.activateDataSource(dataSourceName: cell!.textLabel!.text!)
             } else {
-                appDelegate.deactivateDataSource(dataSourceName: cell!.textLabel!.text!)
+                PreferencesManager.deactivateDataSource(dataSourceName: cell!.textLabel!.text!)
             }
         }
     }

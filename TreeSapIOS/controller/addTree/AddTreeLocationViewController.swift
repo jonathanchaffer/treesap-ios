@@ -15,13 +15,12 @@ class AddTreeLocationViewController: AddTreeViewController {
     @IBOutlet var latitudeLabel: UILabel!
     @IBOutlet var longitudeLabel: UILabel!
     @IBOutlet var nextButton: UIButton!
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Check location authorization
-        appDelegate.checkLocationAuthorization()
+        LocationManager.checkLocationAuthorization()
 
         // Hide the location information and next button at first
         coordinatesStackView.isHidden = true
@@ -35,17 +34,15 @@ class AddTreeLocationViewController: AddTreeViewController {
     }
 
     @IBAction func updateLocation(_: UIButton) {
-        if appDelegate.locationFeaturesEnabled {
+        if LocationManager.locationFeaturesEnabled {
             // Set the text for the location labels
-            latitudeLabel.text = String(Double((appDelegate.locationManager.location?.coordinate.latitude)!))
-            longitudeLabel.text = String(Double((appDelegate.locationManager.location?.coordinate.longitude)!))
+            latitudeLabel.text = String(Double((LocationManager.locationManager.location?.coordinate.latitude)!))
+            longitudeLabel.text = String(Double((LocationManager.locationManager.location?.coordinate.longitude)!))
             // Show the location information and next button
             coordinatesStackView.isHidden = false
             nextButton.isHidden = false
         } else {
-            let alert = UIAlertController(title: "Location could not be accessed", message: "Please make sure that location services are enabled.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-            present(alert, animated: true)
+            AlertManager.alertUser(title: "Location could not be accessed", message: "Please make sure that location services are enabled.")
         }
     }
 }

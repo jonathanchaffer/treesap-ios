@@ -16,7 +16,6 @@ class ButtonViewController: UIViewController {
     var buttonDefaultWidth: CGFloat? = nil
     var buttonDefaultOrigin: CGPoint? = nil
     let sizeMultiplier = 0.95
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
     // MARK: - Overrides
 
@@ -31,7 +30,7 @@ class ButtonViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         // Check authorization status.
-        appDelegate.checkLocationAuthorization()
+        LocationManager.checkLocationAuthorization()
     }
 
     override func viewDidLayoutSubviews() {
@@ -51,21 +50,17 @@ class ButtonViewController: UIViewController {
      */
     @IBAction func handleBigButtonPressed(_: UIButton) {
         // If authorized, get tree data. Otherwise, alert the user.
-        if appDelegate.locationFeaturesEnabled, appDelegate.locationManager.location != nil {
+        if LocationManager.locationFeaturesEnabled, LocationManager.locationManager.location != nil {
             // If tree data was found, display it. Otherwise, alert the user.
             let treeToDisplay = getTreeDataByGPS()
             if treeToDisplay != nil {
                 let pages = TreeDetailPageViewController(tree: treeToDisplay!)
                 navigationController?.pushViewController(pages, animated: true)
             } else {
-                let alert = UIAlertController(title: "No trees found", message: "There were no trees found near your location. You can update the identification distance in Settings.", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-                present(alert, animated: true)
+                AlertManager.alertUser(title: "No trees found", message: "There were no trees found near your location. You can update the identification distance in Settings.")
             }
         } else {
-            let alert = UIAlertController(title: "Location could not be accessed", message: "Please make sure that location services are enabled.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-            present(alert, animated: true)
+            AlertManager.alertUser(title: "Location could not be accessed", message: "Please ensure that location services are enabled.")
         }
     }
     
@@ -88,8 +83,8 @@ class ButtonViewController: UIViewController {
      - Returns: The nearest tree based on the user's current GPS location.
      */
     private func getTreeDataByGPS() -> Tree? {
-        let location = appDelegate.locationManager.location!.coordinate
-        return TreeFinder.findTreeByLocation(location: location, dataSources: appDelegate.getActiveDataSources(), cutoffDistance: appDelegate.accessCutoffDistance())
+        let location = LocationManager.locationManager.location!.coordinate
+        return TreeFinder.findTreeByLocation(location: location, dataSources: PreferencesManager.getActiveDataSources(), cutoffDistance: PreferencesManager.accessCutoffDistance())
     }
     
     private func pushDownButton() {

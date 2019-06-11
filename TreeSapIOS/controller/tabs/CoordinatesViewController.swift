@@ -14,7 +14,6 @@ class CoordinatesViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet var latitudeTextField: UITextField!
     @IBOutlet var longitudeTextField: UITextField!
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,15 +52,11 @@ class CoordinatesViewController: UIViewController, UITextFieldDelegate {
                     let pages = TreeDetailPageViewController(tree: treeToDisplay!)
                     navigationController?.pushViewController(pages, animated: true)
                 } else {
-                    let alert = UIAlertController(title: "No trees found", message: "There were no trees found near that location. You can update the identification distance in Settings.", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-                    present(alert, animated: true)
+                    AlertManager.alertUser(title: "No trees found", message: "There were no trees found near that location. You can update the identification distance in Settings.")
                 }
             }
         } else {
-            let alert = UIAlertController(title: "Invalid coordinates", message: "Please make sure that you input valid coordinates.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-            present(alert, animated: true)
+            AlertManager.alertUser(title: "Invalid coordinates", message: "Please make sure that you input valid coordinates.")
         }
     }
 
@@ -93,7 +88,7 @@ class CoordinatesViewController: UIViewController, UITextFieldDelegate {
      */
     private func getTreeDataByCoords(latitude: Double, longitude: Double) -> Tree? {
         let location = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-        return TreeFinder.findTreeByLocation(location: location, dataSources: appDelegate.getActiveDataSources(), cutoffDistance: appDelegate.accessCutoffDistance())
+        return TreeFinder.findTreeByLocation(location: location, dataSources: PreferencesManager.getActiveDataSources(), cutoffDistance: PreferencesManager.accessCutoffDistance())
     }
 }
 

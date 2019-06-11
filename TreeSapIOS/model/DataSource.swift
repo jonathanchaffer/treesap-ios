@@ -41,7 +41,6 @@ class DataSource {
 
     /// Retrieves online tree data from the URL specified using the internet filename and internet filebase properties. Copies the online csv file to the app's documents directory, then creating Tree objects in the data sources using the data in the local repositories.  Stops if there is an error. This is done asynchronously.
     func retrieveOnlineData(loadingScreenActive: Bool) {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
         // Retrieve the data from the URL
         let url = URL(string: internetFilebase + internetFilename)
@@ -49,12 +48,12 @@ class DataSource {
             // Flag for if there is an error
             if error != nil {
                 DispatchQueue.main.async {
-                    appDelegate.handleDataLoadingReport(dataSourceName: self.dataSourceName, success: false, loadingScreenActive: loadingScreenActive)
+                    DataManager.handleDataLoadingReport(dataSourceName: self.dataSourceName, success: false, loadingScreenActive: loadingScreenActive)
                 }
                 return
             } else {
                 guard let httpResponse = response as? HTTPURLResponse, (200 ... 299).contains(httpResponse.statusCode) else {
-                    appDelegate.handleDataLoadingReport(dataSourceName: self.dataSourceName, success: false, loadingScreenActive: loadingScreenActive)
+                    DataManager.handleDataLoadingReport(dataSourceName: self.dataSourceName, success: false, loadingScreenActive: loadingScreenActive)
                     return
                 }
 
@@ -66,7 +65,7 @@ class DataSource {
                     try data!.write(to: fileURL)
                 } catch {
                     DispatchQueue.main.async {
-                        appDelegate.handleDataLoadingReport(dataSourceName: self.dataSourceName, success: false, loadingScreenActive: loadingScreenActive)
+                        DataManager.handleDataLoadingReport(dataSourceName: self.dataSourceName, success: false, loadingScreenActive: loadingScreenActive)
                     }
                     return
                 }
@@ -74,7 +73,7 @@ class DataSource {
             // Create Tree objects for the data
             let errorFree: Bool = self.createTrees()
             DispatchQueue.main.async {
-                appDelegate.handleDataLoadingReport(dataSourceName: self.dataSourceName, success: errorFree, loadingScreenActive: loadingScreenActive)
+                DataManager.handleDataLoadingReport(dataSourceName: self.dataSourceName, success: errorFree, loadingScreenActive: loadingScreenActive)
             }
         }
         task.resume()
