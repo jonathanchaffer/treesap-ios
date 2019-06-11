@@ -12,19 +12,19 @@ class PreferencesManager {
     // MARK: - Properties
 
     // Preferences
-    static var showingUserLocation: Bool = defaultShowingUserLocation
-    static var cutoffDistance: Double = defaultCutoffDistance
-    static var dataSourceAvailability: [String: Bool] = defaultDataSourceAvailability
+    private static var showingUserLocation: Bool = defaultShowingUserLocation
+    private static var cutoffDistance: Double = defaultCutoffDistance
+    private static var dataSourceAvailability: [String: Bool] = defaultDataSourceAvailability
 
     // Keys for preference names
-    static let showingUserLocationKey = "showingUserLocation"
-    static let cutoffDistanceKey = "cutoffDistance"
-    static let dataSourceAvailabilityKey = "dataSourceAvailability"
+    private static let showingUserLocationKey = "showingUserLocation"
+    private static let cutoffDistanceKey = "cutoffDistance"
+    private static let dataSourceAvailabilityKey = "dataSourceAvailability"
 
     // Default preferences
-    static let defaultShowingUserLocation = true
-    static let defaultCutoffDistance = 100.0
-    static var defaultDataSourceAvailability: [String: Bool] {
+    private static let defaultShowingUserLocation = true
+    private static let defaultCutoffDistance = 100.0
+    private static var defaultDataSourceAvailability: [String: Bool] {
         var dict: [String: Bool] = [:]
         for dataSource in DataManager.dataSources {
             dict[dataSource.dataSourceName] = true
@@ -32,8 +32,40 @@ class PreferencesManager {
         return dict
     }
 
-    // MARK: - Static functions
-
+    // MARK: Getter functions
+    
+    ///- Returns: Whether or not the user's device location is shown on the map
+    func getShowingUserLocation() -> Bool{
+        return PreferencesManager.showingUserLocation
+    }
+    
+    ///- Returns: The cutoff distance to be used for tree searches
+    func getCutoffDistance() -> Double{
+        return PreferencesManager.cutoffDistance
+    }
+    
+    ///- Returns: A dictionary of the availability of each data source
+    func getDataSourceAvailability() -> [String:Bool]{
+        return PreferencesManager.dataSourceAvailability
+    }
+    
+    ///- Returns: The default value for whether the user's device location is shown on the map
+    func getDefaultShowingUserLocation() -> Bool{
+        return PreferencesManager.defaultShowingUserLocation
+    }
+    
+    ///- Returns: The default value for cutoffDistance
+    func getDefaultCutoffDistance() -> Double{
+        return PreferencesManager.defaultCutoffDistance
+    }
+    
+    ///- Returns: A dictiionary with the default availibility of each data source
+    func getDefaultDataSourceAvailibility() -> [String:Bool]{
+        return PreferencesManager.defaultDataSourceAvailability
+    }
+    
+    //MARK: Other Functions
+    
     /// Loads user preferences from UserDefaults.
     static func loadPreferences() {
         // Load showing user location
