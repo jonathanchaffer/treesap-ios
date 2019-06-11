@@ -52,11 +52,11 @@ class UserPreferenceTests: XCTestCase {
         //Testing the available data sources preference
         for (name, _) in appDelegate.accessDataSourceAvailibility(){
             appDelegate.activateDataSource(dataSourceName: name)
-            XCTAssertEqual(appDelegate.isActive(dataSource: name), true, "Data source \"\(name)\" was not activated.")
+            XCTAssertEqual(appDelegate.isActive(dataSourceName: name), true, "Data source \"\(name)\" was not activated.")
         }
         for (name, _) in appDelegate.accessDataSourceAvailibility(){
             appDelegate.deactivateDataSource(dataSourceName: name)
-            XCTAssertEqual(appDelegate.isActive(dataSource: name), false, "Data source \"\(name)\" was not deactivated.")
+            XCTAssertEqual(appDelegate.isActive(dataSourceName: name), false, "Data source \"\(name)\" was not deactivated.")
         }
     }
     
