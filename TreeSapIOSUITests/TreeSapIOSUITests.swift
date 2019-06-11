@@ -118,6 +118,7 @@ class TreeSapIOSUITests: XCTestCase {
         
     }
     
+    //Only works if one is in the correct location. This is designed to be used from the computer science lab at Hope College
     func testTreeDetailDisplay() {
         
         // Go to the Button tab

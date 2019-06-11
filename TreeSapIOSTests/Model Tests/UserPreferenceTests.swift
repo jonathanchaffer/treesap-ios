@@ -14,7 +14,7 @@ class UserPreferenceTests: XCTestCase {
 
     //Resets the state of the app so that all of the user preferences will be reset (hopefully to the default user preferences)
     override func setUp() {
-        appDelegate.resetState()
+        //appDelegate.resetState()
     }
     
     ///Tests that the user preferences are set to the default user preferences by default,
@@ -52,11 +52,11 @@ class UserPreferenceTests: XCTestCase {
         //Testing the available data sources preference
         for (name, _) in appDelegate.accessDataSourceAvailibility(){
             appDelegate.activateDataSource(dataSourceName: name)
-            XCTAssertEqual(appDelegate.isActive(dataSource: name), true, "Data source \"\(name)\" was not activated.")
+            XCTAssertEqual(appDelegate.isActive(dataSourceName: name), true, "Data source \"\(name)\" was not activated.")
         }
         for (name, _) in appDelegate.accessDataSourceAvailibility(){
             appDelegate.deactivateDataSource(dataSourceName: name)
-            XCTAssertEqual(appDelegate.isActive(dataSource: name), false, "Data source \"\(name)\" was not deactivated.")
+            XCTAssertEqual(appDelegate.isActive(dataSourceName: name), false, "Data source \"\(name)\" was not deactivated.")
         }
     }
     
@@ -83,32 +83,5 @@ class UserPreferenceTests: XCTestCase {
         XCTAssertEqual(appDelegate.accessDataSourceAvailibility(), appDelegate.accessDataSourceAvailibility(), "The data source availibility does not match the default data source availiblity.")
     }
     
-    //This does not work.
-    ///Tests that the user preferences persist when the app is closed. Assumes that the function of the AppDelegate class that modify and acess the user preferences work properly.
-    func testPreferencesPersist(){
-        //Sets the user prefences to something other than the default user preferences
-        let startingLocationSetting: Bool = appDelegate.accessShowUserLocation()
-        appDelegate.toggleShowingUserLocation()
-        //
-        let startingAvailibility: [String: Bool] = appDelegate.accessDataSourceAvailibility()
-        for (name, availibility) in appDelegate.accessDataSourceAvailibility(){
-            if(availibility){
-                appDelegate.activateDataSource(dataSourceName: name)
-            }else{
-                appDelegate.deactivateDataSource(dataSourceName: name)
-            }
-        }
-        //
-        let startingCutoffDistance: Double = appDelegate.accessCutoffDistance()
-        appDelegate.modifyCutoffDistance(cutoffDistance: startingCutoffDistance + 5.3)
-        
-        //Restarts the app
-        
-        //Checks that the changes to the user preferences persisted
-        XCTAssertEqual(appDelegate.accessShowUserLocation(), !startingLocationSetting, "The assigned user preference of \"\(startingLocationSetting)\" for showing the user location did not persist. The value \"\(appDelegate.accessShowUserLocation())\" was found instad.")
-        XCTAssertEqual(appDelegate.accessCutoffDistance(), startingCutoffDistance + 5.3, "The assigned user preferenced of \"\(startingCutoffDistance)\" for the cutoff distance did not persist. The value of \"\(appDelegate.accessCutoffDistance())\" was found instad.")
-        for (name, availibility) in appDelegate.accessDataSourceAvailibility(){
-            XCTAssertEqual(availibility, startingAvailibility[name], "The assigned data source availibility user preference did not persist.")
-        }
-    }
+    //TODO: Check that preferences persist
 }
