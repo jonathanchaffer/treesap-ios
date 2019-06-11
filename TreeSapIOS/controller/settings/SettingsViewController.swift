@@ -28,8 +28,8 @@ class SettingsViewController: UITableViewController {
     }
 
     override func viewWillAppear(_: Bool) {
-        locationToggleSwitch.isOn = PreferencesManager.accessShowUserLocation()
-        cutoffDistanceTextField.text = String(PreferencesManager.accessCutoffDistance())
+        locationToggleSwitch.isOn = PreferencesManager.showingUserLocation
+        cutoffDistanceTextField.text = String(PreferencesManager.cutoffDistance)
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -59,10 +59,10 @@ class SettingsViewController: UITableViewController {
      */
     @IBAction func updateCutoffDistance(_: UITextField) {
         if let dist = Double(cutoffDistanceTextField.text!) {
-            PreferencesManager.modifyCutoffDistance(cutoffDistance: dist)
+            PreferencesManager.setCutoffDistance(dist)
         } else {
-            let defaultCutoff: Double = PreferencesManager.accessCutoffDistanceDefault()
-            PreferencesManager.modifyCutoffDistance(cutoffDistance: defaultCutoff)
+            let defaultCutoff: Double = PreferencesManager.defaultCutoffDistance
+            PreferencesManager.setCutoffDistance(defaultCutoff)
             cutoffDistanceTextField.text = String(defaultCutoff)
             let alert = UIAlertController(title: "Invalid number", message: "Distance has been reset to " + String(defaultCutoff), preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))

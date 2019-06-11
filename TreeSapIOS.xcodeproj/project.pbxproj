@@ -15,7 +15,6 @@
 		41F52F1B22AFE02500E2ACE8 /* SettingsViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F52F1A22AFE02500E2ACE8 /* SettingsViewControllerTests.swift */; };
 		61E1EFDD5187EC1C7241B025 /* libPods-TreeSapIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B77358D36DBDDED4196CADD2 /* libPods-TreeSapIOS.a */; };
 		9325BCC7D7C18D578601373C /* libPods-TreeSapIOSUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84439420E68F648C297A16CA /* libPods-TreeSapIOSUITests.a */; };
-		BC52509D229F0316009C011E /* UserPreferenceKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC52509C229F0316009C011E /* UserPreferenceKeys.swift */; };
 		BCECB2CD22A1598A0045C548 /* TreeFinderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCECB2CC22A1598A0045C548 /* TreeFinderTests.swift */; };
 		CB091E712292EBCF00F0CB06 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB091E702292EBCF00F0CB06 /* HomeViewController.swift */; };
 		CB12C94B228DF508000C74C3 /* BenefitsDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB12C94A228DF508000C74C3 /* BenefitsDisplayViewController.swift */; };
@@ -104,7 +103,6 @@
 		69FCB8763D3803D7045729DF /* Pods-TreeSapIOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreeSapIOSTests.debug.xcconfig"; path = "Target Support Files/Pods-TreeSapIOSTests/Pods-TreeSapIOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		84439420E68F648C297A16CA /* libPods-TreeSapIOSUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TreeSapIOSUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B77358D36DBDDED4196CADD2 /* libPods-TreeSapIOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TreeSapIOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		BC52509C229F0316009C011E /* UserPreferenceKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPreferenceKeys.swift; sourceTree = "<group>"; };
 		BCECB2CC22A1598A0045C548 /* TreeFinderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeFinderTests.swift; sourceTree = "<group>"; };
 		CB091E702292EBCF00F0CB06 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		CB12C94A228DF508000C74C3 /* BenefitsDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BenefitsDisplayViewController.swift; sourceTree = "<group>"; };
@@ -261,7 +259,6 @@
 				CBE8788F22957A1300C06E69 /* TreeAnnotation.swift */,
 				CB2D4DA422958548006DAC37 /* TreeAnnotationView.swift */,
 				CBFD63C02295A1E800804DC4 /* NameFormatter.swift */,
-				BC52509C229F0316009C011E /* UserPreferenceKeys.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -619,7 +616,6 @@
 				CB15257222A6A366002D483E /* AddTreeBarkViewController.swift in Sources */,
 				CB2D4DA522958548006DAC37 /* TreeAnnotationView.swift in Sources */,
 				CB12C94D228DF5C4000C74C3 /* SimpleDisplayViewController.swift in Sources */,
-				BC52509D229F0316009C011E /* UserPreferenceKeys.swift in Sources */,
 				D76D617F22931990003FFD24 /* CSVFormat.swift in Sources */,
 				CB12C94B228DF508000C74C3 /* BenefitsDisplayViewController.swift in Sources */,
 				CB15257022A6A2F7002D483E /* AddTreeOtherViewController.swift in Sources */,
