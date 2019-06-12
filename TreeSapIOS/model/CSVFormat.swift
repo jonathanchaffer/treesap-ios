@@ -250,4 +250,34 @@ enum CSVFormat {
             return -1
         }
     }
+    
+    /// Returns the index for heating(1) ($/yr), or -1 if there is none.
+    func heating1DollarsIndex() -> Int {
+        switch self {
+        case .benefits:
+            return 54
+        default:
+            return -1
+        }
+    }
+    
+    /// Returns the index for heating(2) ($/yr), or -1 if there is none.
+    func heating2DollarsIndex() -> Int {
+        switch self {
+        case .benefits:
+            return 56
+        default:
+            return -1
+        }
+    }
+    
+    /// Returns the index for cooling ($/yr), or -1 if there is none.
+    func coolingDollarsIndex() -> Int {
+        switch self {
+        case .benefits:
+            return 58
+        default:
+            return -1
+        }
+    }
 }

@@ -189,7 +189,16 @@ class PieChartDisplayViewController: TreeDisplayViewController, ChartViewDelegat
             }
             entries.append(BarChartDataEntry(x: 0, yValues: yValues))
         } else if breakdownData == .energySavings {
-            entries.append(BarChartDataEntry(x: 0, yValues: [0.5, 1, 1.5, 2, 2.5]))
+            let heating1Dollars = displayedTree!.otherInfo["heating1Dollars"]
+            let heating2Dollars = displayedTree!.otherInfo["heating2Dollars"]
+            if heating1Dollars != nil, heating2Dollars != nil, heating1Dollars! + heating2Dollars! >= 0 {
+                yValues.append(heating1Dollars! + heating2Dollars!)
+            }
+            let coolingDollars = displayedTree!.otherInfo["coolingDollars"]
+            if coolingDollars != nil, coolingDollars! >= 0 {
+                yValues.append(coolingDollars!)
+            }
+            entries.append(BarChartDataEntry(x: 0, yValues: yValues))
         }
 
         barChartView.leftAxis.axisMaximum = yValues.sum()
