@@ -32,6 +32,7 @@ class SettingsViewController: UITableViewController {
         cutoffDistanceTextField.text = String(PreferencesManager.getCutoffDistance())
     }
 
+	/// Deselects a row when it is selected.
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
@@ -46,28 +47,32 @@ class SettingsViewController: UITableViewController {
     @IBAction func toggleLocationOnMap(_: UISwitch) {
         PreferencesManager.toggleShowingUserLocation()
     }
+	
+	/**
+	Updates the cutoff distance, which is how close a tree must be to location given by the coordinates used to find a tree in order to be found
+	
+	- Parameter sender: the UITextField that caused this function call
+	*/
+	@IBAction func updateCutoffDistance(_: UITextField) {
+		if let dist = Double(cutoffDistanceTextField.text!) {
+			PreferencesManager.setCutoffDistance(dist)
+		} else {
+			let defaultCutoff: Double = PreferencesManager.getDefaultCutoffDistance()
+			PreferencesManager.setCutoffDistance(defaultCutoff)
+			cutoffDistanceTextField.text = String(defaultCutoff)
+			let alert = UIAlertController(title: "Invalid number", message: "Distance has been reset to " + String(defaultCutoff), preferredStyle: .alert)
+			alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+			present(alert, animated: true)
+		}
+	}
+	
+	
+	
+	// MARK: - Other functions
 
     /// Makes text fields stop getting edited, dismissing the keyboard if they are being edited
     @objc func stopEditingText() {
         cutoffDistanceTextField.endEditing(true)
-    }
-
-    /**
-     Updates the cutoff distance, which is how close a tree must be to location given by the coordinates used to find a tree in order to be found
-
-     - Parameter sender: the UITextField that caused this function call
-     */
-    @IBAction func updateCutoffDistance(_: UITextField) {
-        if let dist = Double(cutoffDistanceTextField.text!) {
-            PreferencesManager.setCutoffDistance(dist)
-        } else {
-            let defaultCutoff: Double = PreferencesManager.getDefaultCutoffDistance()
-            PreferencesManager.setCutoffDistance(defaultCutoff)
-            cutoffDistanceTextField.text = String(defaultCutoff)
-            let alert = UIAlertController(title: "Invalid number", message: "Distance has been reset to " + String(defaultCutoff), preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-            present(alert, animated: true)
-        }
     }
 }
 

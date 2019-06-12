@@ -57,6 +57,10 @@
 		D76D617F22931990003FFD24 /* CSVFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76D617E22931990003FFD24 /* CSVFormat.swift */; };
 		D76D618122931F79003FFD24 /* MoreInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76D618022931F79003FFD24 /* MoreInformationViewController.swift */; };
 		D76D6183229321E7003FFD24 /* TreeFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76D6182229321E7003FFD24 /* TreeFinder.swift */; };
+		D77029D622B0449E00671CC0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D77029D522B0449E00671CC0 /* GoogleService-Info.plist */; };
+		D77029DD22B1293A00671CC0 /* AccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77029DC22B1293A00671CC0 /* AccountManager.swift */; };
+		D77029DF22B12C7300671CC0 /* LoginSignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77029DE22B12C7300671CC0 /* LoginSignupViewController.swift */; };
+		D77029E122B16BDD00671CC0 /* AccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77029E022B16BDD00671CC0 /* AccountTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -151,6 +155,10 @@
 		D76D617E22931990003FFD24 /* CSVFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVFormat.swift; sourceTree = "<group>"; };
 		D76D618022931F79003FFD24 /* MoreInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreInformationViewController.swift; sourceTree = "<group>"; };
 		D76D6182229321E7003FFD24 /* TreeFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeFinder.swift; sourceTree = "<group>"; };
+		D77029D522B0449E00671CC0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D77029DC22B1293A00671CC0 /* AccountManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountManager.swift; sourceTree = "<group>"; };
+		D77029DE22B12C7300671CC0 /* LoginSignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSignupViewController.swift; sourceTree = "<group>"; };
+		D77029E022B16BDD00671CC0 /* AccountTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewController.swift; sourceTree = "<group>"; };
 		D7755F6722DA6B48E552032C /* Pods-TreeSapIOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreeSapIOS.debug.xcconfig"; path = "Target Support Files/Pods-TreeSapIOS/Pods-TreeSapIOS.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -277,6 +285,7 @@
 				CB80E3BE22AFD657001A78AE /* AlertManager.swift */,
 				CB80E3C022AFD753001A78AE /* LocationManager.swift */,
 				CB80E3C222AFD909001A78AE /* PreferencesManager.swift */,
+				D77029DC22B1293A00671CC0 /* AccountManager.swift */,
 			);
 			path = stateManagers;
 			sourceTree = "<group>";
@@ -324,6 +333,8 @@
 				CBBCE850228DD9B1008F7225 /* SettingsViewController.swift */,
 				CBB264B722973C6C00C036FB /* DataSourceTableViewController.swift */,
 				D76D618022931F79003FFD24 /* MoreInformationViewController.swift */,
+				D77029E022B16BDD00671CC0 /* AccountTableViewController.swift */,
+				D77029DE22B12C7300671CC0 /* LoginSignupViewController.swift */,
 			);
 			path = settings;
 			sourceTree = "<group>";
@@ -371,6 +382,7 @@
 				CB6953B4228EE4300002024B /* controller */,
 				CBBCE833228DD777008F7225 /* Assets.xcassets */,
 				CBBCE838228DD777008F7225 /* Info.plist */,
+				D77029D522B0449E00671CC0 /* GoogleService-Info.plist */,
 			);
 			path = TreeSapIOS;
 			sourceTree = "<group>";
@@ -502,6 +514,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CBBCE837228DD777008F7225 /* LaunchScreen.storyboard in Resources */,
+				D77029D622B0449E00671CC0 /* GoogleService-Info.plist in Resources */,
 				CBBCE834228DD777008F7225 /* Assets.xcassets in Resources */,
 				CBBCE832228DD76B008F7225 /* Main.storyboard in Resources */,
 			);
@@ -599,6 +612,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D77029DF22B12C7300671CC0 /* LoginSignupViewController.swift in Sources */,
 				CB9F425122A5B0D800C97F70 /* AddTreePageViewController.swift in Sources */,
 				CB12C94F228DF85D000C74C3 /* TreeDetailPageViewController.swift in Sources */,
 				D76D6183229321E7003FFD24 /* TreeFinder.swift in Sources */,
@@ -608,6 +622,7 @@
 				CB80E3BF22AFD657001A78AE /* AlertManager.swift in Sources */,
 				CB80E3C122AFD753001A78AE /* LocationManager.swift in Sources */,
 				CB15256E22A6A231002D483E /* AddTreeViewController.swift in Sources */,
+				D77029E122B16BDD00671CC0 /* AccountTableViewController.swift in Sources */,
 				CB15256C22A6A00F002D483E /* AddTreeLocationViewController.swift in Sources */,
 				CBBCE82B228DD76B008F7225 /* AppDelegate.swift in Sources */,
 				CBBCE82D228DD76B008F7225 /* ButtonViewController.swift in Sources */,
@@ -622,6 +637,7 @@
 				CB15257822A6B1DF002D483E /* AddTreePhotoViewController.swift in Sources */,
 				CBBCE84F228DD93E008F7225 /* QRCodeViewController.swift in Sources */,
 				CB15257222A6A366002D483E /* AddTreeBarkViewController.swift in Sources */,
+				D77029DD22B1293A00671CC0 /* AccountManager.swift in Sources */,
 				CB2D4DA522958548006DAC37 /* TreeAnnotationView.swift in Sources */,
 				CB12C94D228DF5C4000C74C3 /* SimpleDisplayViewController.swift in Sources */,
 				D76D617F22931990003FFD24 /* CSVFormat.swift in Sources */,
