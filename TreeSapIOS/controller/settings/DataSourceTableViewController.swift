@@ -54,11 +54,15 @@ class DataSourceTableViewController: UITableViewController {
         return cell
     }
 
+    /// Function that is called when a table cell is selected.
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if tableView.cellForRow(at: indexPath)?.accessoryType == .checkmark {
-            tableView.cellForRow(at: indexPath)?.accessoryType = .none
+        let cell = tableView.cellForRow(at: indexPath)
+        if cell?.accessoryType == .checkmark {
+            cell?.accessoryType = .none
+            PreferencesManager.deactivateDataSource(dataSourceName: cell!.textLabel!.text!)
         } else {
-            tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+            cell?.accessoryType = .checkmark
+            PreferencesManager.activateDataSource(dataSourceName: cell!.textLabel!.text!)
         }
         tableView.deselectRow(at: indexPath, animated: true)
     }
