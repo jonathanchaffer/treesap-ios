@@ -8,6 +8,7 @@
 
 import MapKit
 import UIKit
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -24,6 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         PreferencesManager.loadPreferences()
         LocationManager.setup()
+		FirebaseApp.configure()
         return true
     }
 
