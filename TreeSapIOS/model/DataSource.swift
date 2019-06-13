@@ -192,6 +192,15 @@ class DataSource {
             if csvFormat.pm25DollarsIndex() >= 0 {
                 tree.setOtherInfo(key: "pm25Dollars", value: Double(record[self.csvFormat.pm25DollarsIndex()])!)
             }
+            if csvFormat.heating1DollarsIndex() >= 0 {
+                tree.setOtherInfo(key: "heating1Dollars", value: Double(record[self.csvFormat.heating1DollarsIndex()])!)
+            }
+            if csvFormat.heating2DollarsIndex() >= 0 {
+                tree.setOtherInfo(key: "heating2Dollars", value: Double(record[self.csvFormat.heating2DollarsIndex()])!)
+            }
+            if csvFormat.coolingDollarsIndex() >= 0 {
+                tree.setOtherInfo(key: "coolingDollars", value: Double(record[self.csvFormat.coolingDollarsIndex()])!)
+            }
 
             return tree
         }

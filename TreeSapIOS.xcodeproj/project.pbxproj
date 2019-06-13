@@ -268,7 +268,6 @@
 				D76D617E22931990003FFD24 /* CSVFormat.swift */,
 				D76D6182229321E7003FFD24 /* TreeFinder.swift */,
 				CBE8788F22957A1300C06E69 /* TreeAnnotation.swift */,
-				CB2D4DA422958548006DAC37 /* TreeAnnotationView.swift */,
 				CBFD63C02295A1E800804DC4 /* NameFormatter.swift */,
 			);
 			path = model;
@@ -280,6 +279,7 @@
 				CBBCE835228DD777008F7225 /* LaunchScreen.storyboard */,
 				CBBCE830228DD76B008F7225 /* Main.storyboard */,
 				CB15256922A69941002D483E /* FilledButton.swift */,
+				CB2D4DA422958548006DAC37 /* TreeAnnotationView.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";

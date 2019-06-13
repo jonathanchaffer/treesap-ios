@@ -53,13 +53,15 @@ class MapViewController: UIViewController {
         }
 
         // Add annotations to the map.
-        mapView.removeAnnotations(mapView.annotations)
-        let dataSources = PreferencesManager.getActiveDataSources()
-        for dataSource in DataManager.dataSources {
+        for dataSource in PreferencesManager.getActiveDataSources() {
             for tree in dataSource.getTreeList() {
                 mapView.addAnnotation(TreeAnnotation(tree: tree))
             }
         }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        mapView.removeAnnotations(mapView.annotations)
     }
 
     // MARK: - Private functions
