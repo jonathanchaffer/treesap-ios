@@ -49,6 +49,8 @@ class AccountManager {
 					AlertManager.alertUser(title: "Incorrect password", message: "The password you entered was incorrect. Please try again.")
 				case AuthErrorCode.invalidEmail.rawValue:
 					AlertManager.alertUser(title: "Invalid email", message: "The email you entered is invalid. Please try again.")
+                case AuthErrorCode.userNotFound.rawValue:
+                    AlertManager.alertUser(title: "User not found", message: "A user with the email you entered was not found in our database. Please try again.")
 				default:
 					AlertManager.alertUser(title: "Error", message: "There was an error logging into your account. Please try again.")
 				}
