@@ -1563,13 +1563,38 @@ ZC4
                                                                     <action selector="updateLocation:" destination="yrU-zm-ABx" eventType="touchUpInside" id="3Ou-sj-PRy"/>
                                                                 </connections>
                                                             </button>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noPhotoSelected" translatesAutoresizingMaskIntoConstraints="NO" id="uPc-QA-hRO">
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Kc-bU-Q48">
                                                                 <rect key="frame" x="0.0" y="126.5" width="335" height="335"/>
-                                                            </imageView>
+                                                                <subviews>
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noPhotoSelected" translatesAutoresizingMaskIntoConstraints="NO" id="uPc-QA-hRO">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="335" height="335"/>
+                                                                    </imageView>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8DX-M9-2hU">
+                                                                        <rect key="frame" x="291" y="12" width="32" height="32"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" secondItem="8DX-M9-2hU" secondAttribute="height" multiplier="1:1" id="IYg-Iz-1fr"/>
+                                                                            <constraint firstAttribute="width" constant="32" id="nim-9F-UEb"/>
+                                                                        </constraints>
+                                                                        <state key="normal" image="deleteImage"/>
+                                                                        <connections>
+                                                                            <action selector="handleDeleteButtonPressed:" destination="vWK-Ed-YnA" eventType="touchUpInside" id="58t-Dk-RSJ"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                </subviews>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="trailing" secondItem="8DX-M9-2hU" secondAttribute="trailing" constant="12" id="5nR-2H-oZR"/>
+                                                                    <constraint firstItem="uPc-QA-hRO" firstAttribute="width" secondItem="uPc-QA-hRO" secondAttribute="height" multiplier="1:1" id="8fV-WP-g8W"/>
+                                                                    <constraint firstItem="uPc-QA-hRO" firstAttribute="leading" secondItem="0Kc-bU-Q48" secondAttribute="leading" id="A3W-al-LN3"/>
+                                                                    <constraint firstItem="8DX-M9-2hU" firstAttribute="top" secondItem="0Kc-bU-Q48" secondAttribute="top" constant="12" id="Aob-jB-l6Y"/>
+                                                                    <constraint firstItem="uPc-QA-hRO" firstAttribute="top" secondItem="0Kc-bU-Q48" secondAttribute="top" id="K1o-PX-lsn"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="uPc-QA-hRO" secondAttribute="trailing" id="ZpR-Ry-D1z"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="uPc-QA-hRO" secondAttribute="bottom" id="qdr-Ra-qd6"/>
+                                                                </constraints>
+                                                            </view>
                                                         </subviews>
                                                         <constraints>
                                                             <constraint firstAttribute="trailing" secondItem="hOF-3b-abF" secondAttribute="trailing" id="Bwm-JE-nzn"/>
-                                                            <constraint firstItem="uPc-QA-hRO" firstAttribute="width" secondItem="uPc-QA-hRO" secondAttribute="height" multiplier="1:1" id="wOu-vP-Zrc"/>
                                                             <constraint firstItem="hOF-3b-abF" firstAttribute="leading" secondItem="cOS-s1-TNB" secondAttribute="leading" id="zbv-jv-lgX"/>
                                                         </constraints>
                                                     </stackView>
@@ -1635,7 +1660,9 @@ ZC4
                     </view>
                     <connections>
                         <outlet property="barkImageView" destination="uPc-QA-hRO" id="3q7-75-Wq5"/>
+                        <outlet property="deleteImageButton" destination="8DX-M9-2hU" id="YgK-XQ-ASu"/>
                         <outlet property="nextButton" destination="vbh-hZ-2Yh" id="Oht-Gi-9RH"/>
+                        <outlet property="skipButton" destination="sLr-Os-ZlL" id="YrG-bR-YK8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FnQ-wk-DVI" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1682,14 +1709,40 @@ ZC4
                                                                     <action selector="updateLocation:" destination="yrU-zm-ABx" eventType="touchUpInside" id="ruu-7N-HL7"/>
                                                                 </connections>
                                                             </button>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noPhotoSelected" translatesAutoresizingMaskIntoConstraints="NO" id="yhh-b7-wLD">
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r1a-WN-aEk">
                                                                 <rect key="frame" x="0.0" y="126.5" width="335" height="335"/>
-                                                            </imageView>
+                                                                <subviews>
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noPhotoSelected" translatesAutoresizingMaskIntoConstraints="NO" id="yhh-b7-wLD">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="335" height="335"/>
+                                                                    </imageView>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Mo-va-5BQ">
+                                                                        <rect key="frame" x="291" y="12" width="32" height="32"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" secondItem="9Mo-va-5BQ" secondAttribute="height" multiplier="1:1" id="YVp-Wt-dBC"/>
+                                                                            <constraint firstAttribute="width" constant="32" id="h3T-2g-jbg"/>
+                                                                        </constraints>
+                                                                        <state key="normal" image="deleteImage"/>
+                                                                        <connections>
+                                                                            <action selector="handleDeleteButtonPressed:" destination="vWK-Ed-YnA" eventType="touchUpInside" id="Jty-8n-L3W"/>
+                                                                            <action selector="handleDeleteImageButtonPressed:" destination="m5e-m4-Lcs" eventType="touchUpInside" id="rWU-2g-SBn"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                </subviews>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <constraints>
+                                                                    <constraint firstItem="yhh-b7-wLD" firstAttribute="width" secondItem="yhh-b7-wLD" secondAttribute="height" multiplier="1:1" id="4au-8M-oJt"/>
+                                                                    <constraint firstItem="yhh-b7-wLD" firstAttribute="leading" secondItem="r1a-WN-aEk" secondAttribute="leading" id="Q1a-9o-W4q"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="yhh-b7-wLD" secondAttribute="bottom" id="RaT-Hz-Q1w"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="9Mo-va-5BQ" secondAttribute="trailing" constant="12" id="YFM-RY-I2o"/>
+                                                                    <constraint firstItem="9Mo-va-5BQ" firstAttribute="top" secondItem="r1a-WN-aEk" secondAttribute="top" constant="12" id="cxY-lD-dpt"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="yhh-b7-wLD" secondAttribute="trailing" id="pkU-hh-zYY"/>
+                                                                    <constraint firstItem="yhh-b7-wLD" firstAttribute="top" secondItem="r1a-WN-aEk" secondAttribute="top" id="sVW-pC-AQ9"/>
+                                                                </constraints>
+                                                            </view>
                                                         </subviews>
                                                         <constraints>
                                                             <constraint firstItem="VG7-l9-Rgl" firstAttribute="leading" secondItem="cNM-FO-DaA" secondAttribute="leading" id="Xg8-ot-XGs"/>
                                                             <constraint firstAttribute="trailing" secondItem="VG7-l9-Rgl" secondAttribute="trailing" id="jq1-Cn-rTy"/>
-                                                            <constraint firstItem="yhh-b7-wLD" firstAttribute="width" secondItem="yhh-b7-wLD" secondAttribute="height" multiplier="1:1" id="wXo-QK-QA9"/>
                                                         </constraints>
                                                     </stackView>
                                                 </subviews>
@@ -1753,8 +1806,10 @@ ZC4
                         <viewLayoutGuide key="safeArea" id="6kw-8Z-hdi"/>
                     </view>
                     <connections>
+                        <outlet property="deleteImageButton" destination="9Mo-va-5BQ" id="cN6-wC-9t7"/>
                         <outlet property="leafImageView" destination="yhh-b7-wLD" id="pG2-XS-iM6"/>
                         <outlet property="nextButton" destination="i7g-8N-csc" id="Urb-Xt-atU"/>
+                        <outlet property="skipButton" destination="rHx-MV-fia" id="HLC-x7-l8B"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kns-eF-cDi" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1801,13 +1856,40 @@ ZC4
                                                                     <action selector="updateLocation:" destination="yrU-zm-ABx" eventType="touchUpInside" id="Srr-rm-5t5"/>
                                                                 </connections>
                                                             </button>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noPhotoSelected" translatesAutoresizingMaskIntoConstraints="NO" id="cs6-ba-FOp">
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H4l-aW-Dyf">
                                                                 <rect key="frame" x="0.0" y="126.5" width="335" height="335"/>
-                                                            </imageView>
+                                                                <subviews>
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noPhotoSelected" translatesAutoresizingMaskIntoConstraints="NO" id="cs6-ba-FOp">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="335" height="335"/>
+                                                                    </imageView>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rK8-qN-QTf">
+                                                                        <rect key="frame" x="291" y="12" width="32" height="32"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" constant="32" id="3ca-iH-9C8"/>
+                                                                            <constraint firstAttribute="width" secondItem="rK8-qN-QTf" secondAttribute="height" multiplier="1:1" id="wmg-DR-LIK"/>
+                                                                        </constraints>
+                                                                        <state key="normal" image="deleteImage"/>
+                                                                        <connections>
+                                                                            <action selector="handleDeleteButtonPressed:" destination="vWK-Ed-YnA" eventType="touchUpInside" id="dtx-jl-bAy"/>
+                                                                            <action selector="handleDeleteImageButtonPressed:" destination="KK5-YB-y2k" eventType="touchUpInside" id="nCV-2u-BFi"/>
+                                                                            <action selector="handleDeleteImageButtonPressed:" destination="m5e-m4-Lcs" eventType="touchUpInside" id="nLj-sC-9QP"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                </subviews>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <constraints>
+                                                                    <constraint firstItem="cs6-ba-FOp" firstAttribute="leading" secondItem="H4l-aW-Dyf" secondAttribute="leading" id="03d-Gq-5jc"/>
+                                                                    <constraint firstItem="cs6-ba-FOp" firstAttribute="top" secondItem="H4l-aW-Dyf" secondAttribute="top" id="R67-yn-vta"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="rK8-qN-QTf" secondAttribute="trailing" constant="12" id="bwt-F5-XoN"/>
+                                                                    <constraint firstItem="rK8-qN-QTf" firstAttribute="top" secondItem="H4l-aW-Dyf" secondAttribute="top" constant="12" id="h4A-Ey-f9o"/>
+                                                                    <constraint firstItem="cs6-ba-FOp" firstAttribute="width" secondItem="cs6-ba-FOp" secondAttribute="height" multiplier="1:1" id="uJW-Yn-D1I"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="cs6-ba-FOp" secondAttribute="bottom" id="ywR-ti-Qah"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="cs6-ba-FOp" secondAttribute="trailing" id="zzv-br-lAg"/>
+                                                                </constraints>
+                                                            </view>
                                                         </subviews>
                                                         <constraints>
                                                             <constraint firstItem="pAv-RD-eOs" firstAttribute="leading" secondItem="0l3-2d-ecW" secondAttribute="leading" id="UYR-UK-k3I"/>
-                                                            <constraint firstItem="cs6-ba-FOp" firstAttribute="width" secondItem="cs6-ba-FOp" secondAttribute="height" multiplier="1:1" id="WUy-ed-aBG"/>
                                                             <constraint firstAttribute="trailing" secondItem="pAv-RD-eOs" secondAttribute="trailing" id="hs7-yX-hb2"/>
                                                         </constraints>
                                                     </stackView>
@@ -1872,8 +1954,10 @@ ZC4
                         <viewLayoutGuide key="safeArea" id="6JK-vO-htN"/>
                     </view>
                     <connections>
+                        <outlet property="deleteImageButton" destination="rK8-qN-QTf" id="wYu-2X-Zhq"/>
                         <outlet property="entireImageView" destination="cs6-ba-FOp" id="rGo-kP-MRd"/>
                         <outlet property="nextButton" destination="Sdi-iB-aym" id="fT6-XC-P9E"/>
+                        <outlet property="skipButton" destination="YiA-kY-MFc" id="lq7-40-dAk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lyo-gC-Dwr" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2143,6 +2227,7 @@ ZC4
         <image name="QRCodeOverlay" width="300" height="300"/>
         <image name="compass" width="30" height="30"/>
         <image name="default" width="1920" height="2560"/>
+        <image name="deleteImage" width="64" height="64"/>
         <image name="filledButton" width="30" height="30"/>
         <image name="frog" width="1024" height="1024"/>
         <image name="home" width="30" height="30"/>
