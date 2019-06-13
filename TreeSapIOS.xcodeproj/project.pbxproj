@@ -57,7 +57,6 @@
 		CBE8789022957A1300C06E69 /* TreeAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE8788F22957A1300C06E69 /* TreeAnnotation.swift */; };
 		CBFD63C12295A1E800804DC4 /* NameFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFD63C02295A1E800804DC4 /* NameFormatter.swift */; };
 		D76D617F22931990003FFD24 /* CSVFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76D617E22931990003FFD24 /* CSVFormat.swift */; };
-		D76D618122931F79003FFD24 /* MoreInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76D618022931F79003FFD24 /* MoreInformationViewController.swift */; };
 		D76D6183229321E7003FFD24 /* TreeFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76D6182229321E7003FFD24 /* TreeFinder.swift */; };
 		D77029D622B0449E00671CC0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D77029D522B0449E00671CC0 /* GoogleService-Info.plist */; };
 		D77029DD22B1293A00671CC0 /* AccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77029DC22B1293A00671CC0 /* AccountManager.swift */; };
@@ -157,7 +156,6 @@
 		CBE8788F22957A1300C06E69 /* TreeAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeAnnotation.swift; sourceTree = "<group>"; };
 		CBFD63C02295A1E800804DC4 /* NameFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameFormatter.swift; sourceTree = "<group>"; };
 		D76D617E22931990003FFD24 /* CSVFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVFormat.swift; sourceTree = "<group>"; };
-		D76D618022931F79003FFD24 /* MoreInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreInformationViewController.swift; sourceTree = "<group>"; };
 		D76D6182229321E7003FFD24 /* TreeFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeFinder.swift; sourceTree = "<group>"; };
 		D77029D522B0449E00671CC0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D77029DC22B1293A00671CC0 /* AccountManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountManager.swift; sourceTree = "<group>"; };
@@ -346,7 +344,6 @@
 			children = (
 				CBBCE850228DD9B1008F7225 /* SettingsViewController.swift */,
 				CBB264B722973C6C00C036FB /* DataSourceTableViewController.swift */,
-				D76D618022931F79003FFD24 /* MoreInformationViewController.swift */,
 				D77029E022B16BDD00671CC0 /* AccountTableViewController.swift */,
 				D77029DE22B12C7300671CC0 /* LoginSignupViewController.swift */,
 			);
@@ -647,7 +644,6 @@
 				CBE8789022957A1300C06E69 /* TreeAnnotation.swift in Sources */,
 				CB15257422A6A388002D483E /* AddTreeLeafViewController.swift in Sources */,
 				CB80E3C322AFD909001A78AE /* PreferencesManager.swift in Sources */,
-				D76D618122931F79003FFD24 /* MoreInformationViewController.swift in Sources */,
 				CB6953BA228EE9530002024B /* DataSource.swift in Sources */,
 				CB6953B8228EE8720002024B /* Tree.swift in Sources */,
 				CB15257822A6B1DF002D483E /* AddTreePhotoViewController.swift in Sources */,
