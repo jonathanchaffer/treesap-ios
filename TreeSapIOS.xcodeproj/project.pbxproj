@@ -13,7 +13,7 @@
 		41F52F1722AFD16200E2ACE8 /* TreeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F52F1622AFD16200E2ACE8 /* TreeTests.swift */; };
 		41F52F1922AFD91B00E2ACE8 /* TreeAnnotationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F52F1822AFD91B00E2ACE8 /* TreeAnnotationTests.swift */; };
 		41F52F1B22AFE02500E2ACE8 /* SettingsViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F52F1A22AFE02500E2ACE8 /* SettingsViewControllerTests.swift */; };
-		41FDCA1B22B277B900257F1C /* MoreInformationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FDCA1A22B277B900257F1C /* MoreInformationTests.swift */; };
+		41FDCA1D22B28DA100257F1C /* MoreInformationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FDCA1C22B28DA100257F1C /* MoreInformationTests.swift */; };
 		41FE11ED22B18C8F00919026 /* DataSourceAvailabilityTableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FE11EC22B18C8F00919026 /* DataSourceAvailabilityTableTests.swift */; };
 		61E1EFDD5187EC1C7241B025 /* libPods-TreeSapIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B77358D36DBDDED4196CADD2 /* libPods-TreeSapIOS.a */; };
 		9325BCC7D7C18D578601373C /* libPods-TreeSapIOSUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84439420E68F648C297A16CA /* libPods-TreeSapIOSUITests.a */; };
@@ -99,7 +99,7 @@
 		41F52F1622AFD16200E2ACE8 /* TreeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeTests.swift; sourceTree = "<group>"; };
 		41F52F1822AFD91B00E2ACE8 /* TreeAnnotationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeAnnotationTests.swift; sourceTree = "<group>"; };
 		41F52F1A22AFE02500E2ACE8 /* SettingsViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewControllerTests.swift; sourceTree = "<group>"; };
-		41FDCA1A22B277B900257F1C /* MoreInformationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreInformationTests.swift; sourceTree = "<group>"; };
+		41FDCA1C22B28DA100257F1C /* MoreInformationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreInformationTests.swift; sourceTree = "<group>"; };
 		41FE11EC22B18C8F00919026 /* DataSourceAvailabilityTableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourceAvailabilityTableTests.swift; sourceTree = "<group>"; };
 		51923197E0B1EB112DB21162 /* Pods-TreeSapIOSUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreeSapIOSUITests.release.xcconfig"; path = "Target Support Files/Pods-TreeSapIOSUITests/Pods-TreeSapIOSUITests.release.xcconfig"; sourceTree = "<group>"; };
 		657C7C57D15B44ECCED1E51C /* Pods-TreeSapIOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreeSapIOS.release.xcconfig"; path = "Target Support Files/Pods-TreeSapIOS/Pods-TreeSapIOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -199,7 +199,7 @@
 			children = (
 				41F52F1A22AFE02500E2ACE8 /* SettingsViewControllerTests.swift */,
 				41FE11EC22B18C8F00919026 /* DataSourceAvailabilityTableTests.swift */,
-				41FDCA1A22B277B900257F1C /* MoreInformationTests.swift */,
+				41FDCA1C22B28DA100257F1C /* MoreInformationTests.swift */,
 			);
 			path = "Settings Tests";
 			sourceTree = "<group>";
@@ -605,7 +605,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB9F424522A55F3A00C97F70 /* TreeSapIOSUITests.swift in Sources */,
-				41FDCA1B22B277B900257F1C /* MoreInformationTests.swift in Sources */,
+				41FDCA1D22B28DA100257F1C /* MoreInformationTests.swift in Sources */,
 				41FE11ED22B18C8F00919026 /* DataSourceAvailabilityTableTests.swift in Sources */,
 				41F52F1B22AFE02500E2ACE8 /* SettingsViewControllerTests.swift in Sources */,
 			);

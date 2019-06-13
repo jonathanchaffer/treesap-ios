@@ -41,23 +41,31 @@ class CoordinatesViewController: UIViewController, UITextFieldDelegate {
         // Convert the inputs to Double. If the conversion failed, alert the user.
         let latitude = Double(latitudeTextField.text!)
         let longitude = Double(longitudeTextField.text!)
-        if latitude != nil, longitude != nil {
-            // Check for frog
-            if latitude == 42.788211256535, longitude == -86.105942862237 {
-                navigationController?.pushViewController(UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "frog"), animated: true)
-            } else {
-                // If tree data was found, display it. Otherwise, alert the user.
-                let treeToDisplay = getTreeDataByCoords(latitude: latitude!, longitude: longitude!)
-                if treeToDisplay != nil {
-                    let pages = TreeDetailPageViewController(tree: treeToDisplay!)
-                    navigationController?.pushViewController(pages, animated: true)
-                } else {
-                    AlertManager.alertUser(title: "No trees found", message: "There were no trees found near that location. You can update the identification distance in Settings.")
-                }
-            }
-        } else {
+        
+        //Check that latitude and longitude values exist
+        if latitude == nil || longitude == nil {
             AlertManager.alertUser(title: "Invalid coordinates", message: "Please make sure that you input valid coordinates.")
+            return
         }
+        //Check that the latitude and longitude values are in the correct ranges
+        if(latitude! < -90.0 || latitude! > 90.0 || longitude! < -180.0 || longitude! > 180.0){
+            AlertManager.alertUser(title: "Coordinates outside of valid range", message: "The latitude must be between -90 and 90. The longitude must be between -180 and 180.")
+        }
+        // Check for frog
+        if latitude == 42.788211256535, longitude == -86.105942862237 {
+            navigationController?.pushViewController(UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "frog"), animated: true)
+            return
+        }
+        
+        // If tree data was found, display it. Otherwise, alert the user.
+        let treeToDisplay = getTreeDataByCoords(latitude: latitude!, longitude: longitude!)
+        if treeToDisplay == nil {
+            AlertManager.alertUser(title: "No trees found", message: "There were no trees found near that location. You can update the identification distance in Settings.")
+            return
+        }
+        
+        let pages = TreeDetailPageViewController(tree: treeToDisplay!)
+        navigationController?.pushViewController(pages, animated: true)
     }
 
     // If the text field is the first/latitude text field, the second/longitude text field becomes first responder (so it becomes selected). If the text field is the second/longitude text field, then the handleCoordinates function is called. Otherwise, nothing happens.

@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import MapKit
 @testable import TreeSapIOS
 
 class TreeSapIOSTests: XCTestCase {
@@ -20,6 +21,9 @@ class TreeSapIOSTests: XCTestCase {
     }
 
     func testExample() {
+        let coordinates = CLLocationCoordinate2D(latitude: 91, longitude: 45)
+        print("Latitude: \(coordinates.latitude)")
+        print("Longitude: \(coordinates.longitude)")
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
