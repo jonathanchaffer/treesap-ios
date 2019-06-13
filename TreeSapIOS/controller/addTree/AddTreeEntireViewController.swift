@@ -13,9 +13,9 @@ class AddTreeEntireViewController: AddTreePhotoViewController {
 
     @IBOutlet var entireImageView: UIImageView!
     @IBOutlet var nextButton: UIButton!
-    @IBOutlet weak var skipButton: UIButton!
-    @IBOutlet weak var deleteImageButton: UIButton!
-    
+    @IBOutlet var skipButton: UIButton!
+    @IBOutlet var deleteImageButton: UIButton!
+
     // MARK: - Overrides
 
     override func viewDidLoad() {
@@ -44,8 +44,8 @@ class AddTreeEntireViewController: AddTreePhotoViewController {
     @IBAction func handlePhotoButtonPressed(_: UIButton) {
         takeOrChoosePhoto()
     }
-    
-    @IBAction func handleDeleteImageButtonPressed(_ sender: UIButton) {
+
+    @IBAction func handleDeleteImageButtonPressed(_: UIButton) {
         deleteImage()
     }
 }

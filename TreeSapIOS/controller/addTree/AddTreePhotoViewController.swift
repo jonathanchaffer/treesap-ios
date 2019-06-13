@@ -27,19 +27,19 @@ class AddTreePhotoViewController: AddTreeViewController {
     func takeOrChoosePhoto() {
         presentAlertController()
     }
-    
+
     /// Deletes the current image.
     func deleteImage() {
         selectedImage = nil
         updateImage()
     }
-    
+
     /// Shows the next button and hides the skip button.
     func showNextButton(nextButton: UIButton, skipButton: UIButton) {
         nextButton.isHidden = false
         skipButton.isHidden = true
     }
-    
+
     /// Shows the skip button and hides the next button.
     func showSkipButton(nextButton: UIButton, skipButton: UIButton) {
         nextButton.isHidden = true
@@ -78,7 +78,7 @@ class AddTreePhotoViewController: AddTreeViewController {
         selectedImage = image
         updateImage()
     }
-    
+
     func updateImage() {}
 
     /// Updates the UIImageView on the current page.

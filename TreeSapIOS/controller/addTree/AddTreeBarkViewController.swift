@@ -13,9 +13,9 @@ class AddTreeBarkViewController: AddTreePhotoViewController {
 
     @IBOutlet var barkImageView: UIImageView!
     @IBOutlet var nextButton: UIButton!
-    @IBOutlet weak var skipButton: UIButton!
-    @IBOutlet weak var deleteImageButton: UIButton!
-    
+    @IBOutlet var skipButton: UIButton!
+    @IBOutlet var deleteImageButton: UIButton!
+
     // MARK: - Overrides
 
     override func viewDidLoad() {
@@ -44,8 +44,8 @@ class AddTreeBarkViewController: AddTreePhotoViewController {
     @IBAction func handlePhotoButtonPressed(_: UIButton) {
         takeOrChoosePhoto()
     }
-    
-    @IBAction func handleDeleteButtonPressed(_ sender: UIButton) {
+
+    @IBAction func handleDeleteButtonPressed(_: UIButton) {
         deleteImage()
     }
 }
