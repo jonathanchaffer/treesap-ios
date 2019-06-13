@@ -1,4 +1,5 @@
 PODS:
+  - APExtensions/ViewState (7.0.1)
   - Charts (3.3.0):
     - Charts/Core (= 3.3.0)
   - Charts/Core (3.3.0)
@@ -61,6 +62,8 @@ PODS:
     - GoogleUtilities/Logger
   - GTMSessionFetcher/Core (1.2.2)
   - HandySwift (2.8.0)
+  - KeyboardAvoidingView (4.0.0):
+    - APExtensions/ViewState (>= 7.0.0)
   - nanopb (0.3.901):
     - nanopb/decode (= 0.3.901)
     - nanopb/encode (= 0.3.901)
@@ -72,9 +75,11 @@ DEPENDENCIES:
   - CSVImporter
   - Firebase/Auth
   - Firebase/Core
+  - KeyboardAvoidingView
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - APExtensions
     - Charts
     - CSVImporter
     - Firebase
@@ -87,9 +92,11 @@ SPEC REPOS:
     - GoogleUtilities
     - GTMSessionFetcher
     - HandySwift
+    - KeyboardAvoidingView
     - nanopb
 
 SPEC CHECKSUMS:
+  APExtensions: 9a7a7b6ff5b9785b245962de89fbbdaf4c10f10e
   Charts: e0dd4cd8f257bccf98407b58183ddca8e8d5b578
   CSVImporter: 1543192354ecf8abccd2cc77947d190fd9cf2b18
   Firebase: 5965bac23e7fcb5fa6d926ed429c9ecef8a2014e
@@ -102,8 +109,9 @@ SPEC CHECKSUMS:
   GoogleUtilities: 996e0db07153674fd1b54b220fda3a3dc3547cba
   GTMSessionFetcher: 61bb0f61a4cb560030f1222021178008a5727a23
   HandySwift: 0a32500215166a56a58f972f7ce1641361307e8b
+  KeyboardAvoidingView: edbfcb705eb522dc080e42d082cb3b28f79f9879
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
 
-PODFILE CHECKSUM: 7992da382539416c1e53261ecb19d884716647de
+PODFILE CHECKSUM: c1f1b0d1ce72704a048b17064f90708ed59a3f7a
 
-COCOAPODS: 1.6.1
+COCOAPODS: 1.7.1
