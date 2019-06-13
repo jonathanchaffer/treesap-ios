@@ -104,7 +104,7 @@ class AddTreePageViewController: UIPageViewController {
                 latitude: Double((pages[0] as! AddTreeLocationViewController).latitudeLabel.text!)!,
                 longitude: Double((pages[0] as! AddTreeLocationViewController).longitudeLabel.text!)!
             ),
-            dbh: nil
+            dbh: Double((pages[4] as! AddTreeOtherViewController).dbhTextField.text!)
         )
         // Add the images, if any, to the Tree
         let barkImage = (pages[1] as! AddTreePhotoViewController).selectedImage
@@ -122,6 +122,7 @@ class AddTreePageViewController: UIPageViewController {
         // TODO: Do something with the Tree
         print("Created a Tree with location (" + String(createdTree.location.latitude) + ", " + String(createdTree.location.longitude) + ")")
         print("common name " + createdTree.commonName! + ", scientific name " + createdTree.scientificName!)
+        DataManager.getLocalDataSource()?.addTree(createdTree)
         // Close the add tree workflow
         closeAddTree()
     }

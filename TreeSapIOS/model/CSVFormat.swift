@@ -9,7 +9,7 @@
 import Foundation
 
 enum CSVFormat {
-    case holland, itree, hope, benefits
+    case holland, itree, hope, benefits, mytrees
 
     // MARK: - Basic tree information
 
@@ -24,6 +24,10 @@ enum CSVFormat {
             return 0
         case .benefits:
             return 0
+        case .mytrees:
+            return 0
+        default:
+            return -1
         }
     }
 
@@ -38,6 +42,10 @@ enum CSVFormat {
             return 2
         case .benefits:
             return 1
+        case .mytrees:
+            return 1
+        default:
+            return -1
         }
     }
 
@@ -51,6 +59,10 @@ enum CSVFormat {
         case .hope:
             return 1
         case .benefits:
+            return -1
+        case .mytrees:
+            return 2
+        default:
             return -1
         }
     }
@@ -66,6 +78,10 @@ enum CSVFormat {
             return 4
         case .benefits:
             return 4
+        case .mytrees:
+            return 3
+        default:
+            return -1
         }
     }
 
@@ -80,6 +96,10 @@ enum CSVFormat {
             return 5
         case .benefits:
             return 3
+        case .mytrees:
+            return 4
+        default:
+            return -1
         }
     }
 
@@ -94,6 +114,10 @@ enum CSVFormat {
             return 10
         case .benefits:
             return 2
+        case .mytrees:
+            return 5
+        default:
+            return -1
         }
     }
 

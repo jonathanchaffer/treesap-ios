@@ -5,8 +5,6 @@
 //  Created by Jonathan Chaffer and Josiah Brett in Summer 2019.
 //  Copyright © 2019 Hope CS. All rights reserved.
 //
-//  Used https://developer.apple.com/documentation/foundation/url_loading_system/fetching_website_data_into_memory as a reference.
-//
 
 import CSVImporter
 import Foundation
@@ -16,10 +14,6 @@ import MapKit
 class DataSource {
     // MARK: - Properties
 
-    /// The URL of the database where the tree data sets are stored.
-    let internetFilebase: String = "https://faculty.hope.edu/jipping/treesap/"
-    /// The filename (and extension) of the file that contains the online tree data.
-    let internetFilename: String
     /// The filename (and extension) of the local file.
     let localFilename: String
     /// A string representation of the data source's name, for user readability.
@@ -29,8 +23,7 @@ class DataSource {
     /// An array of Tree objects collected by this data source.
     var trees: [Tree]
 
-    init(internetFilename: String, localFilename: String, dataSourceName: String, csvFormat: CSVFormat) {
-        self.internetFilename = internetFilename
+    init(localFilename: String, dataSourceName: String, csvFormat: CSVFormat) {
         self.localFilename = localFilename
         self.dataSourceName = dataSourceName
         self.csvFormat = csvFormat
@@ -39,52 +32,13 @@ class DataSource {
 
     // MARK: - Functions
 
-    /// Retrieves online tree data from the URL specified using the internet filename and internet filebase properties. Copies the online csv file to the app's documents directory, then creating Tree objects in the data sources using the data in the local repositories.  Stops if there is an error. This is done asynchronously.
-    func retrieveOnlineData(loadingScreenActive: Bool) {
-        // Retrieve the data from the URL
-        let url = URL(string: internetFilebase + internetFilename)
-        let task = URLSession.shared.dataTask(with: url!) { data, response, error in
-            // Flag for if there is an error
-            if error != nil {
-                DispatchQueue.main.async {
-                    DataManager.handleDataLoadingReport(dataSourceName: self.dataSourceName, success: false, loadingScreenActive: loadingScreenActive)
-                }
-                return
-            } else {
-                guard let httpResponse = response as? HTTPURLResponse, (200 ... 299).contains(httpResponse.statusCode) else {
-                    DataManager.handleDataLoadingReport(dataSourceName: self.dataSourceName, success: false, loadingScreenActive: loadingScreenActive)
-                    return
-                }
-
-                // Write the data to the documents directory
-                let fileManager = FileManager.default
-                do {
-                    let documentDirectory = try fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
-                    let fileURL = documentDirectory.appendingPathComponent(self.localFilename)
-                    try data!.write(to: fileURL)
-                } catch {
-                    DispatchQueue.main.async {
-                        DataManager.handleDataLoadingReport(dataSourceName: self.dataSourceName, success: false, loadingScreenActive: loadingScreenActive)
-                    }
-                    return
-                }
-            }
-            // Create Tree objects for the data
-            let errorFree: Bool = self.createTrees()
-            DispatchQueue.main.async {
-                DataManager.handleDataLoadingReport(dataSourceName: self.dataSourceName, success: errorFree, loadingScreenActive: loadingScreenActive)
-            }
-        }
-        task.resume()
-    }
-
     func getTreeList() -> [Tree] {
         return trees
     }
 
     /**
-     Creates Tree objects based on the file in the Documents directory with filename localFilename. Tree objects are stored in the trees array.
-     - Returns: True if at least one tree was imported from a local file and false otherwise.
+     Creates Tree objects based on the file in the Documents directory with filename localFilename, and stores them in the trees array.
+     - Returns: true if at least one tree was created.
      */
     func createTrees() -> Bool {
         // Create a file manager and get the path for the local file
@@ -97,20 +51,25 @@ class DataSource {
         let importer = CSVImporter<[String]>(path: filepath)
         let importedRecords: [[String]] = importer.importRecords { $0 }
         // Create a Tree object for each imported record
+        var treesCreated = false
         for record in importedRecords {
             let newTree: Tree? = makeTreeForRecord(record: record)
             if newTree != nil {
                 newTreeList.append(newTree!)
+                treesCreated = true
             }
         }
-
         trees = newTreeList
-
-        return (trees.count > 0)
+        return treesCreated
     }
     
     // MARK: - Private functions
 
+    /**
+     Takes an array of strings and converts it to a Tree based on the CSV format.
+     - Parameter record: An array of strings to be parsed.
+     - Returns: A Tree object based on the inputted record.
+     */
     private func makeTreeForRecord(record: [String]) -> Tree? {
         // Set ID (optional)
         var id: Int?
@@ -201,7 +160,6 @@ class DataSource {
             if csvFormat.coolingDollarsIndex() >= 0 {
                 tree.setOtherInfo(key: "coolingDollars", value: Double(record[self.csvFormat.coolingDollarsIndex()])!)
             }
-
             return tree
         }
         return nil
