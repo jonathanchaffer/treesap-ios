@@ -39,6 +39,16 @@ class AddTreePageViewController: UIPageViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(previousPage), name: NSNotification.Name("previous"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(addTreeDone), name: NSNotification.Name("addTreeDone"), object: nil)
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        // Prompt the user to log in if they're not already
+        if !AccountManager.isLoggedIn() {
+            let alert = UIAlertController(title: "Login required", message: "You must log into your TreeSap account to add your own trees.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in self.closeAddTree() }))
+            alert.addAction(UIAlertAction(title: "Log In", style: .default, handler: { _ in self.goToLogin() }))
+            present(alert, animated: true)
+        }
+    }
 
     // MARK: - Actions
 
@@ -74,9 +84,14 @@ class AddTreePageViewController: UIPageViewController {
         setViewControllers([pages[currentPage]], direction: .reverse, animated: true, completion: nil)
     }
 
-    private func closeAddTree() {
+    @objc private func closeAddTree() {
         navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)
+    }
+    
+    @objc private func goToLogin() {
+        let screen = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "loginSignupScreen")
+        navigationController?.pushViewController(screen, animated: true)
     }
 
     @objc private func addTreeDone() {

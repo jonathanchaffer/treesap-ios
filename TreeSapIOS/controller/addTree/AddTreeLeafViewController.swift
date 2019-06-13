@@ -13,19 +13,18 @@ class AddTreeLeafViewController: AddTreePhotoViewController {
 
     @IBOutlet var leafImageView: UIImageView!
     @IBOutlet var nextButton: UIButton!
+    @IBOutlet var skipButton: UIButton!
+    @IBOutlet var deleteImageButton: UIButton!
 
     // MARK: - Overrides
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        nextButton.isHidden = true
+        updateImage()
     }
 
     override func updateImage() {
-        if selectedImage != nil {
-            leafImageView.image = selectedImage
-            nextButton.isHidden = false
-        }
+        super.updateImage(imageView: leafImageView, nextButton: nextButton, skipButton: skipButton, deleteImageButton: deleteImageButton)
     }
 
     // MARK: - Actions
@@ -44,5 +43,9 @@ class AddTreeLeafViewController: AddTreePhotoViewController {
 
     @IBAction func handlePhotoButtonPressed(_: UIButton) {
         takeOrChoosePhoto()
+    }
+
+    @IBAction func handleDeleteImageButtonPressed(_: UIButton) {
+        deleteImage()
     }
 }

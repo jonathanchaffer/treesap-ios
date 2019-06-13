@@ -28,6 +28,24 @@ class AddTreePhotoViewController: AddTreeViewController {
         presentAlertController()
     }
 
+    /// Deletes the current image.
+    func deleteImage() {
+        selectedImage = nil
+        updateImage()
+    }
+
+    /// Shows the next button and hides the skip button.
+    func showNextButton(nextButton: UIButton, skipButton: UIButton) {
+        nextButton.isHidden = false
+        skipButton.isHidden = true
+    }
+
+    /// Shows the skip button and hides the next button.
+    func showSkipButton(nextButton: UIButton, skipButton: UIButton) {
+        nextButton.isHidden = true
+        skipButton.isHidden = false
+    }
+
     /// Presents an alert controller containing options for camera and photo library.
     private func presentAlertController() {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
@@ -61,8 +79,22 @@ class AddTreePhotoViewController: AddTreeViewController {
         updateImage()
     }
 
-    /// Updates the UIImageView on the current page.
     func updateImage() {}
+
+    /// Updates the UIImageView on the current page.
+    func updateImage(imageView: UIImageView, nextButton: UIButton, skipButton: UIButton, deleteImageButton: UIButton) {
+        if selectedImage != nil {
+            imageView.image = selectedImage
+            nextButton.isHidden = false
+            skipButton.isHidden = true
+            deleteImageButton.isHidden = false
+        } else {
+            imageView.image = UIImage(named: "noPhotoSelected")
+            nextButton.isHidden = true
+            skipButton.isHidden = false
+            deleteImageButton.isHidden = true
+        }
+    }
 }
 
 extension AddTreePhotoViewController: UIImagePickerControllerDelegate {
