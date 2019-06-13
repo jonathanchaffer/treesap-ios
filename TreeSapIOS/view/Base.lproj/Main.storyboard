@@ -1666,7 +1666,7 @@ ZC4
                                                 <rect key="frame" x="82" y="0.0" width="253" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" textContentType="password"/>
+                                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -1737,7 +1737,7 @@ ZC4
                                                 <rect key="frame" x="82" y="0.0" width="253" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" textContentType="password"/>
+                                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -1754,7 +1754,7 @@ ZC4
                                                 <rect key="frame" x="82" y="0.0" width="253" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" textContentType="password"/>
+                                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -2552,8 +2552,6 @@ ZC4
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="IeK-ba-2De"/>
-        <segue reference="Ynx-wO-HBK"/>
-        <segue reference="cac-nU-E74"/>
         <segue reference="Osm-ne-69B"/>
         <segue reference="M3K-1N-Vy6"/>
     </inferredMetricsTieBreakers>
