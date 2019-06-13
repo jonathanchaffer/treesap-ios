@@ -1051,6 +1051,7 @@
                                             <subviews>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="18z-aM-CCx">
                                                     <rect key="frame" x="304" y="6.5" width="51" height="31"/>
+                                                    <accessibility key="accessibilityConfiguration" label="Show Location Switch"/>
                                                     <connections>
                                                         <action selector="toggleLocationOnMap:" destination="fLH-Mh-jqL" eventType="valueChanged" id="rae-nv-gxg"/>
                                                     </connections>
@@ -1443,6 +1444,7 @@ ZC4
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aA5-lo-qBo">
                                                         <rect key="frame" x="110" y="384.5" width="115" height="30"/>
+                                                        <accessibility key="accessibilityConfiguration" label="i-Tree Link"/>
                                                         <state key="normal" title="i-Tree Web Tools"/>
                                                         <connections>
                                                             <action selector="openITreeWebTools:" destination="xku-UJ-vwW" eventType="touchUpInside" id="P5q-xr-VoV"/>
@@ -1450,6 +1452,7 @@ ZC4
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WCO-xD-Jdl">
                                                         <rect key="frame" x="59" y="422.5" width="217" height="30"/>
+                                                        <accessibility key="accessibilityConfiguration" label="Tree Benefit Calculator Link"/>
                                                         <state key="normal" title="National Tree Benefit Calculator"/>
                                                         <connections>
                                                             <action selector="openNationalTreeBenefitCalculator:" destination="xku-UJ-vwW" eventType="touchUpInside" id="I5x-mh-POD"/>
@@ -1457,6 +1460,7 @@ ZC4
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8hq-v8-Q4s">
                                                         <rect key="frame" x="132.5" y="460.5" width="70" height="30"/>
+                                                        <accessibility key="accessibilityConfiguration" label="iNaturalist Link"/>
                                                         <state key="normal" title="iNaturalist"/>
                                                         <connections>
                                                             <action selector="openINaturalist:" destination="xku-UJ-vwW" eventType="touchUpInside" id="m33-X6-CYX"/>
@@ -2152,8 +2156,6 @@ ZC4
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="IeK-ba-2De"/>
-        <segue reference="Gyh-Sj-jD4"/>
-        <segue reference="ZtF-HV-Gmw"/>
         <segue reference="Ynx-wO-HBK"/>
         <segue reference="cac-nU-E74"/>
     </inferredMetricsTieBreakers>
