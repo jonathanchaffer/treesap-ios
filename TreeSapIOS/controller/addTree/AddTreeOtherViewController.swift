@@ -14,19 +14,23 @@ class AddTreeOtherViewController: AddTreeViewController {
     @IBOutlet var commonNameTextField: UITextField!
     @IBOutlet var scientificNameTextField: UITextField!
     @IBOutlet var dbhTextField: UITextField!
+    @IBOutlet weak var dbhLabel: UILabel!
     @IBOutlet var circumferenceTextField: UITextField!
-
+    @IBOutlet weak var circumferenceLabel: UILabel!
+    
     // MARK: - Overrides
 
     override func viewDidLoad() {
         super.viewDidLoad()
         hideKeyboardWhenTappedAround()
+        dbhTextField.delegate = self
+        circumferenceTextField.delegate = self
     }
 
     // MARK: - Actions
 
     @IBAction func handleDoneButtonPressed(_: UIButton) {
-        let alert = UIAlertController(title: "Submit tree for approval?", message: "Your tree will be added to the online tree database if it is approved.", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Submit tree for approval?", message: "Your tree will be added to the online tree database for everyone to see if it is approved.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in self.submitTree() }))
         present(alert, animated: true)
@@ -61,5 +65,22 @@ extension UIViewController {
 
     @objc func dismissKeyboard() {
         view.endEditing(true)
+    }
+}
+
+extension AddTreeOtherViewController: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField.restorationIdentifier == "dbhTextField" {
+            let dbh = Double(dbhTextField.text!)
+            if dbh != nil {
+                circumferenceTextField.text = String(format: "%.2f", Double.pi * dbh!)
+            }
+        }
+        if textField.restorationIdentifier == "circumferenceTextField" {
+            let circumference = Double(circumferenceTextField.text!)
+            if circumference != nil {
+                dbhTextField.text = String(format: "%.2f", circumference! / Double.pi)
+            }
+        }
     }
 }

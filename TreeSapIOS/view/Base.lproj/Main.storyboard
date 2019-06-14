@@ -2395,7 +2395,7 @@ ZC4
                                                                                                     <segue destination="uVF-BD-555" kind="show" id="b6B-DS-iMg"/>
                                                                                                 </connections>
                                                                                             </button>
-                                                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="e.g. 27.0" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="i2s-g1-rja">
+                                                                                            <textField opaque="NO" contentMode="scaleToFill" restorationIdentifier="dbhTextField" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="e.g. 27.0" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="i2s-g1-rja">
                                                                                                 <rect key="frame" x="150.5" y="0.0" width="184.5" height="30"/>
                                                                                                 <nil key="textColor"/>
                                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -2415,7 +2415,7 @@ ZC4
                                                                                                 <nil key="textColor"/>
                                                                                                 <nil key="highlightedColor"/>
                                                                                             </label>
-                                                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="e.g. 84.8" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="CuX-eq-lba">
+                                                                                            <textField opaque="NO" contentMode="scaleToFill" restorationIdentifier="circumferenceTextField" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="e.g. 84.8" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="CuX-eq-lba">
                                                                                                 <rect key="frame" x="150.5" y="0.0" width="184.5" height="30"/>
                                                                                                 <nil key="textColor"/>
                                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -2519,8 +2519,10 @@ ZC4
                         <viewLayoutGuide key="safeArea" id="9dN-5q-Pyf"/>
                     </view>
                     <connections>
+                        <outlet property="circumferenceLabel" destination="PqK-DD-9Wn" id="Vb4-fh-rYN"/>
                         <outlet property="circumferenceTextField" destination="CuX-eq-lba" id="0DO-64-nTs"/>
                         <outlet property="commonNameTextField" destination="m2m-Bp-H7E" id="69x-b5-5mN"/>
+                        <outlet property="dbhLabel" destination="Ia3-uM-JBN" id="uts-ns-TC0"/>
                         <outlet property="dbhTextField" destination="i2s-g1-rja" id="0g4-a2-jxf"/>
                         <outlet property="scientificNameTextField" destination="wf4-v3-NiR" id="5U9-EJ-hsk"/>
                     </connections>

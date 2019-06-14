@@ -46,7 +46,7 @@ class SimpleDisplayViewController: TreeDisplayViewController {
         longitudeLabel.text = String(displayedTree!.location.longitude)
         // Set DBH label
         if displayedTree!.dbh != nil {
-            dbhLabel.text = String(displayedTree!.dbh!)
+            dbhLabel.text = String(displayedTree!.dbh!) + "\""
         } else {
             dbhStackView.isHidden = true
         }
