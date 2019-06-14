@@ -10,6 +10,7 @@ import Foundation
 import Firebase
 
 class DatabaseManager {
+    /// The Firestore database.
     static var db = Firestore.firestore()
     
     /**

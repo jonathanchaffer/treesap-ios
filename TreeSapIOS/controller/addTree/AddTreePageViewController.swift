@@ -23,7 +23,7 @@ class AddTreePageViewController: UIPageViewController {
         ]
     }()
     
-    /// The current page.
+    /// The current page number.
     var currentPage = 0
     
     override func viewDidLoad() {
@@ -68,6 +68,7 @@ class AddTreePageViewController: UIPageViewController {
         return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: identifier) as! AddTreeViewController
     }
     
+    /// Goes to the next page in the add tree workflow.
     @objc private func nextPage() {
         currentPage += 1
         if currentPage >= pages.count {
@@ -77,6 +78,7 @@ class AddTreePageViewController: UIPageViewController {
         setViewControllers([pages[currentPage]], direction: .forward, animated: true, completion: nil)
     }
     
+    /// Goes to the previous page in the add tree workflow.
     @objc private func previousPage() {
         currentPage -= 1
         if currentPage < 0 {
@@ -86,11 +88,13 @@ class AddTreePageViewController: UIPageViewController {
         setViewControllers([pages[currentPage]], direction: .reverse, animated: true, completion: nil)
     }
     
+    /// Closes the add tree modal.
     @objc private func closeAddTree() {
         navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)
     }
     
+    /// Pushes the login screen onto the view hierarchy.
     @objc private func goToLogin() {
         let screen = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "loginSignupScreen")
         navigationController?.pushViewController(screen, animated: true)
@@ -121,14 +125,16 @@ class AddTreePageViewController: UIPageViewController {
         if barkImage != nil {
             createdTree.addImage(barkImage!)
         }
-        // TODO: Do something with the Tree
+        // Add the tree to the local data source
         DataManager.getLocalDataSource()?.addTree(createdTree)
+        // Add the tree to the pending trees database
         DatabaseManager.addTreeToPending(tree: createdTree)
-        
+        // Display a "Please Wait" alert while it's trying to upload
         let loadingAlert = UIAlertController(title: "Please wait...", message: nil, preferredStyle: .alert)
         present(loadingAlert, animated: true)
     }
     
+    /// Dismisses the loading alert, and then alerts the user that the tree was successfully submitted.
     @objc private func submitTreeSuccess() {
         dismiss(animated: true) {
             let alert = UIAlertController(title: "Success!", message: "Your tree has been submitted for approval. While you wait, your tree will be available in the \"My Pending Trees\" data set on your device.", preferredStyle: .alert)
@@ -137,6 +143,7 @@ class AddTreePageViewController: UIPageViewController {
         }
     }
     
+    /// Dismisses the loading alert, and then alerts the user that there was an error submitting the tree.
     @objc private func submitTreeFailure() {
         dismiss(animated: true) {
             AlertManager.alertUser(title: "Error submitting tree", message: "An error occurred while trying to submit your tree. Please try again.")

@@ -29,6 +29,7 @@ class AddTreeOtherViewController: AddTreeViewController {
 
     // MARK: - Actions
 
+    /// Shows an "Are you sure?"-type alert. When the user taps OK, calls broadcastSubmitTree.
     @IBAction func handleDoneButtonPressed(_: UIButton) {
         let alert = UIAlertController(title: "Submit tree for approval?", message: "Your tree will be added to the online tree database for everyone to see if it is approved.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
@@ -42,6 +43,7 @@ class AddTreeOtherViewController: AddTreeViewController {
 
     // MARK: - Private functions
     
+    /// Tells the AddTreePageViewController to submit the tree.
     private func broadcastSubmitTree() {
         NotificationCenter.default.post(name: NSNotification.Name("submitTree"), object: nil)
     }
@@ -67,9 +69,7 @@ class AddTreeOtherViewController: AddTreeViewController {
     }
 }
 
-/**
- Extension that hides the keyboard when it is tapped outside. Simply add 'self.hideKeyboardWhenTappedAround()' to viewDidLoad to bring this extension into effect.
- */
+/// Extension that hides the keyboard when it is tapped outside. Simply add 'self.hideKeyboardWhenTappedAround()' to viewDidLoad to bring this extension into effect.
 extension UIViewController {
     func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
