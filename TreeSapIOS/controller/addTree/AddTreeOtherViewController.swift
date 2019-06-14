@@ -32,7 +32,7 @@ class AddTreeOtherViewController: AddTreeViewController {
     @IBAction func handleDoneButtonPressed(_: UIButton) {
         let alert = UIAlertController(title: "Submit tree for approval?", message: "Your tree will be added to the online tree database for everyone to see if it is approved.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in self.submitTree() }))
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in self.broadcastSubmitTree() }))
         present(alert, animated: true)
     }
 
@@ -41,15 +41,9 @@ class AddTreeOtherViewController: AddTreeViewController {
     }
 
     // MARK: - Private functions
-
-    private func submitTree() {
-        let alert = UIAlertController(title: "Success!", message: "Your tree has been submitted for approval. While you wait, your tree will be available in the \"My Trees\" data set on your device.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in self.broadcastAddTreeDone() }))
-        present(alert, animated: true)
-    }
-
-    private func broadcastAddTreeDone() {
-        NotificationCenter.default.post(name: NSNotification.Name("addTreeDone"), object: nil)
+    
+    private func broadcastSubmitTree() {
+        NotificationCenter.default.post(name: NSNotification.Name("submitTree"), object: nil)
     }
     
     @objc private func textFieldDidChange(_ textField: UITextField) {

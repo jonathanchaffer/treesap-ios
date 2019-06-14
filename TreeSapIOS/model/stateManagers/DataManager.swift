@@ -17,7 +17,7 @@ class DataManager {
         OnlineDataSource(internetFilename: "iTreeExport_119_HopeTrees_7may2018.csv", localFilename: "itree.csv", dataSourceName: "Hope College i-Tree Data", csvFormat: .itree),
         OnlineDataSource(internetFilename: "dataExport_119_HopeTrees_7may2018.csv", localFilename: "hope.csv", dataSourceName: "Hope College Trees", csvFormat: .hope),
         OnlineDataSource(internetFilename: "katelyn.csv", localFilename: "benefits.csv", dataSourceName: "Tree Benefit Data", csvFormat: .benefits),
-        LocalDataSource(localFilename: "mytrees.csv", dataSourceName: "My Trees", csvFormat: .mytrees)
+        LocalDataSource(localFilename: "mytrees.csv", dataSourceName: "My Trees (Local)", csvFormat: .mytrees)
     ]
     
     /// Array that stores the result of a data task that reads tree data from an online file to a local file. Each element in the array is a tuple that contains the name of the data source and a Bool that indicates whether the loading of data was successful.

@@ -4,6 +4,7 @@ target "TreeSapIOS" do
   pod 'Charts'
 	pod 'Firebase/Core'
 	pod 'Firebase/Auth'
+  pod 'Firebase/Firestore'
   pod 'KeyboardAvoidingView'
 end 
 target "TreeSapIOSTests" do

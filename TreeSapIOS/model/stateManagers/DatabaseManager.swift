@@ -1,0 +1,60 @@
+//
+//  DatabaseManager.swift
+//  TreeSapIOS
+//
+//  Created by Jonathan Chaffer in Summer 2019.
+//  Copyright © 2019 Hope CS. All rights reserved.
+//
+
+import Foundation
+import Firebase
+
+class DatabaseManager {
+    static var db = Firestore.firestore()
+    
+    /**
+     Sends a created tree to the pending trees database.
+     - Parameter tree: The Tree object to send to the database.
+    */
+    static func addTreeToPending(tree: Tree) {
+        // Create the data object
+        var data = [String:Any]()
+        data["latitude"] = tree.location.latitude
+        data["longitude"] = tree.location.longitude
+        if tree.commonName != nil {
+            data["commonName"] = tree.commonName!
+        }
+        if tree.scientificName != nil {
+            data["scientificName"] = tree.scientificName!
+        }
+        if tree.id != nil {
+            data["treeID"] = tree.id!
+        }
+        if tree.dbh != nil {
+            data["dbh"] = tree.dbh!
+        }
+        data["otherInfo"] = tree.otherInfo
+        data["userID"] = AccountManager.getUser()?.uid
+        
+        // Add the images to the data
+        var encodedImages = [String]()
+        for image in tree.images {
+            let imageData = image.jpegData(compressionQuality: 0.1)!
+            let encodedString = imageData.base64EncodedString(options: [])
+            encodedImages.append(encodedString)
+        }
+        data["images"] = encodedImages
+        
+        // Add the data to the pendingTrees database
+        var ref: DocumentReference? = nil
+        ref = db.collection("pendingTrees").addDocument(data: data) { err in
+            if let err = err {
+                print("Error adding document: \(err)")
+                NotificationCenter.default.post(name: NSNotification.Name("submitTreeFailure"), object: nil)
+            } else {
+                print("Document added with ID: \(ref!.documentID)")
+                NotificationCenter.default.post(name: NSNotification.Name("submitTreeSuccess"), object: nil)
+            }
+        }
+    }
+}

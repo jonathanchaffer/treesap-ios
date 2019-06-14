@@ -18,6 +18,10 @@ class AccountManager {
 	static func getEmail() -> String? {
 		return Auth.auth().currentUser?.email
 	}
+    
+    static func getUser() -> User? {
+        return Auth.auth().currentUser
+    }
 	
 	/**
 	Tries to create a user in Firebase. Alerts the user if it doesn't work.

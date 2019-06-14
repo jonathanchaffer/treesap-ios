@@ -31,5 +31,7 @@ class Tree {
         otherInfo[key] = value
     }
 
-    func addImage(_: UIImage) {}
+    func addImage(_ image: UIImage) {
+        images.append(image)
+    }
 }

@@ -57,6 +57,7 @@
 		CBE8789022957A1300C06E69 /* TreeAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE8788F22957A1300C06E69 /* TreeAnnotation.swift */; };
 		CBF89EDC22B2BBC600045670 /* OnlineDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF89EDB22B2BBC600045670 /* OnlineDataSource.swift */; };
 		CBF89EE022B2BF8400045670 /* LocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF89EDF22B2BF8400045670 /* LocalDataSource.swift */; };
+		CBF89EE222B3F40600045670 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF89EE122B3F40600045670 /* DatabaseManager.swift */; };
 		CBFD63C12295A1E800804DC4 /* NameFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFD63C02295A1E800804DC4 /* NameFormatter.swift */; };
 		D76D617F22931990003FFD24 /* CSVFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76D617E22931990003FFD24 /* CSVFormat.swift */; };
 		D76D6183229321E7003FFD24 /* TreeFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76D6182229321E7003FFD24 /* TreeFinder.swift */; };
@@ -158,6 +159,7 @@
 		CBE8788F22957A1300C06E69 /* TreeAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeAnnotation.swift; sourceTree = "<group>"; };
 		CBF89EDB22B2BBC600045670 /* OnlineDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlineDataSource.swift; sourceTree = "<group>"; };
 		CBF89EDF22B2BF8400045670 /* LocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataSource.swift; sourceTree = "<group>"; };
+		CBF89EE122B3F40600045670 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		CBFD63C02295A1E800804DC4 /* NameFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameFormatter.swift; sourceTree = "<group>"; };
 		D76D617E22931990003FFD24 /* CSVFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVFormat.swift; sourceTree = "<group>"; };
 		D76D6182229321E7003FFD24 /* TreeFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeFinder.swift; sourceTree = "<group>"; };
@@ -304,6 +306,7 @@
 				CB80E3C022AFD753001A78AE /* LocationManager.swift */,
 				CB80E3C222AFD909001A78AE /* PreferencesManager.swift */,
 				D77029DC22B1293A00671CC0 /* AccountManager.swift */,
+				CBF89EE122B3F40600045670 /* DatabaseManager.swift */,
 			);
 			path = stateManagers;
 			sourceTree = "<group>";
@@ -446,6 +449,7 @@
 				CBBCE824228DD76B008F7225 /* Frameworks */,
 				CBBCE825228DD76B008F7225 /* Resources */,
 				CBDDC00122A1727E009A64D7 /* Embed Frameworks */,
+				02184880B294883D0634C412 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -547,6 +551,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		02184880B294883D0634C412 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TreeSapIOS/Pods-TreeSapIOS-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TreeSapIOS/Pods-TreeSapIOS-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TreeSapIOS/Pods-TreeSapIOS-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		44C2AD8A95FA7814CA01F241 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -663,6 +684,7 @@
 				CB12C94B228DF508000C74C3 /* BenefitsDisplayViewController.swift in Sources */,
 				CB15257022A6A2F7002D483E /* AddTreeOtherViewController.swift in Sources */,
 				CBFD63C12295A1E800804DC4 /* NameFormatter.swift in Sources */,
+				CBF89EE222B3F40600045670 /* DatabaseManager.swift in Sources */,
 				CB15257622A6A3D5002D483E /* AddTreeEntireViewController.swift in Sources */,
 				CB091E712292EBCF00F0CB06 /* HomeViewController.swift in Sources */,
 				CB80E3BD22AFD578001A78AE /* DataManager.swift in Sources */,
