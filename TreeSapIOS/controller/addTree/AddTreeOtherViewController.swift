@@ -23,8 +23,8 @@ class AddTreeOtherViewController: AddTreeViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         hideKeyboardWhenTappedAround()
-        dbhTextField.delegate = self
-        circumferenceTextField.delegate = self
+        dbhTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        circumferenceTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
     }
 
     // MARK: - Actions
@@ -51,6 +51,26 @@ class AddTreeOtherViewController: AddTreeViewController {
     private func broadcastAddTreeDone() {
         NotificationCenter.default.post(name: NSNotification.Name("addTreeDone"), object: nil)
     }
+    
+    @objc private func textFieldDidChange(_ textField: UITextField) {
+        let currentText = textField.text!
+        if textField.restorationIdentifier == "dbhTextField" {
+            let dbh = Double(currentText)
+            if dbh != nil {
+                circumferenceTextField.text = String(format: "%.4f", Double.pi * dbh!)
+            } else {
+                circumferenceTextField.text = nil
+            }
+        }
+        if textField.restorationIdentifier == "circumferenceTextField" {
+            let circumference = Double(currentText)
+            if circumference != nil {
+                dbhTextField.text = String(format: "%.4f", circumference! / Double.pi)
+            } else {
+                dbhTextField.text = nil
+            }
+        }
+    }
 }
 
 /**
@@ -65,22 +85,5 @@ extension UIViewController {
 
     @objc func dismissKeyboard() {
         view.endEditing(true)
-    }
-}
-
-extension AddTreeOtherViewController: UITextFieldDelegate {
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        if textField.restorationIdentifier == "dbhTextField" {
-            let dbh = Double(dbhTextField.text!)
-            if dbh != nil {
-                circumferenceTextField.text = String(format: "%.2f", Double.pi * dbh!)
-            }
-        }
-        if textField.restorationIdentifier == "circumferenceTextField" {
-            let circumference = Double(circumferenceTextField.text!)
-            if circumference != nil {
-                dbhTextField.text = String(format: "%.2f", circumference! / Double.pi)
-            }
-        }
     }
 }
