@@ -125,8 +125,6 @@ class AddTreePageViewController: UIPageViewController {
         if barkImage != nil {
             createdTree.addImage(barkImage!)
         }
-        // Add the tree to the local data source
-        DataManager.getLocalDataSource()?.addTree(createdTree)
         // Add the tree to the pending trees database
         DatabaseManager.addTreeToPending(tree: createdTree)
         // Display a "Please Wait" alert while it's trying to upload

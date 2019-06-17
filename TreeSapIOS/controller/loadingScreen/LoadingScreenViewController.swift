@@ -11,13 +11,11 @@ import UIKit
 
 class LoadingScreenViewController: UIViewController {
     override func viewDidAppear(_: Bool) {
-        // Try to load the local data. If there is local data, show the home screen and start importing online tree data in the background. Otherwise, start importing online tree data in the foreground.
-        if DataManager.importLocalTreeData() {
-            showHomeScreen()
-            DataManager.importOnlineTreeData(loadingScreenActive: false)
-        } else {
-            DataManager.importOnlineTreeData(loadingScreenActive: true)
+        // Try to load the local data. If there is local data, show the home screen. Then start importing online tree data.
+        if DataManager.importAllLocalTreeData() {
+            //showHomeScreen()
         }
+        DataManager.importAllOnlineTreeData()
     }
 
     /**

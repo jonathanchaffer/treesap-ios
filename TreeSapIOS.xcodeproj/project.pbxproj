@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -43,6 +43,7 @@
 		CB9F423D22A548D700C97F70 /* NameFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9F423C22A548D700C97F70 /* NameFormatterTests.swift */; };
 		CB9F424522A55F3A00C97F70 /* TreeSapIOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9F424422A55F3A00C97F70 /* TreeSapIOSUITests.swift */; };
 		CB9F425122A5B0D800C97F70 /* AddTreePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9F425022A5B0D800C97F70 /* AddTreePageViewController.swift */; };
+		CBA9171E22B7DE8C00BA75B2 /* FirebaseDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA9171D22B7DE8C00BA75B2 /* FirebaseDataSource.swift */; };
 		CBB264B822973C6C00C036FB /* DataSourceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB264B722973C6C00C036FB /* DataSourceTableViewController.swift */; };
 		CBBCE82B228DD76B008F7225 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBCE82A228DD76B008F7225 /* AppDelegate.swift */; };
 		CBBCE82D228DD76B008F7225 /* ButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBCE82C228DD76B008F7225 /* ButtonViewController.swift */; };
@@ -55,8 +56,7 @@
 		CBBCE84F228DD93E008F7225 /* QRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBCE84E228DD93E008F7225 /* QRCodeViewController.swift */; };
 		CBBCE851228DD9B1008F7225 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBCE850228DD9B1008F7225 /* SettingsViewController.swift */; };
 		CBE8789022957A1300C06E69 /* TreeAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE8788F22957A1300C06E69 /* TreeAnnotation.swift */; };
-		CBF89EDC22B2BBC600045670 /* OnlineDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF89EDB22B2BBC600045670 /* OnlineDataSource.swift */; };
-		CBF89EE022B2BF8400045670 /* LocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF89EDF22B2BF8400045670 /* LocalDataSource.swift */; };
+		CBF89EDC22B2BBC600045670 /* CSVDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF89EDB22B2BBC600045670 /* CSVDataSource.swift */; };
 		CBF89EE222B3F40600045670 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF89EE122B3F40600045670 /* DatabaseManager.swift */; };
 		CBFD63C12295A1E800804DC4 /* NameFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFD63C02295A1E800804DC4 /* NameFormatter.swift */; };
 		D76D617F22931990003FFD24 /* CSVFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76D617E22931990003FFD24 /* CSVFormat.swift */; };
@@ -141,6 +141,7 @@
 		CB9F424422A55F3A00C97F70 /* TreeSapIOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeSapIOSUITests.swift; sourceTree = "<group>"; };
 		CB9F424622A55F3A00C97F70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CB9F425022A5B0D800C97F70 /* AddTreePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTreePageViewController.swift; sourceTree = "<group>"; };
+		CBA9171D22B7DE8C00BA75B2 /* FirebaseDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDataSource.swift; sourceTree = "<group>"; };
 		CBB264B722973C6C00C036FB /* DataSourceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourceTableViewController.swift; sourceTree = "<group>"; };
 		CBBCE827228DD76B008F7225 /* TreeSapIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TreeSapIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBBCE82A228DD76B008F7225 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -157,8 +158,7 @@
 		CBBCE84E228DD93E008F7225 /* QRCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeViewController.swift; sourceTree = "<group>"; };
 		CBBCE850228DD9B1008F7225 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		CBE8788F22957A1300C06E69 /* TreeAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeAnnotation.swift; sourceTree = "<group>"; };
-		CBF89EDB22B2BBC600045670 /* OnlineDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlineDataSource.swift; sourceTree = "<group>"; };
-		CBF89EDF22B2BF8400045670 /* LocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataSource.swift; sourceTree = "<group>"; };
+		CBF89EDB22B2BBC600045670 /* CSVDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVDataSource.swift; sourceTree = "<group>"; };
 		CBF89EE122B3F40600045670 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		CBFD63C02295A1E800804DC4 /* NameFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameFormatter.swift; sourceTree = "<group>"; };
 		D76D617E22931990003FFD24 /* CSVFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVFormat.swift; sourceTree = "<group>"; };
@@ -277,8 +277,8 @@
 				CB80E3C422AFF19C001A78AE /* stateManagers */,
 				CB6953B7228EE8720002024B /* Tree.swift */,
 				CB6953B9228EE9530002024B /* DataSource.swift */,
-				CBF89EDF22B2BF8400045670 /* LocalDataSource.swift */,
-				CBF89EDB22B2BBC600045670 /* OnlineDataSource.swift */,
+				CBF89EDB22B2BBC600045670 /* CSVDataSource.swift */,
+				CBA9171D22B7DE8C00BA75B2 /* FirebaseDataSource.swift */,
 				D76D617E22931990003FFD24 /* CSVFormat.swift */,
 				D76D6182229321E7003FFD24 /* TreeFinder.swift */,
 				CBE8788F22957A1300C06E69 /* TreeAnnotation.swift */,
@@ -675,8 +675,8 @@
 				CB6953B8228EE8720002024B /* Tree.swift in Sources */,
 				CB15257822A6B1DF002D483E /* AddTreePhotoViewController.swift in Sources */,
 				CBBCE84F228DD93E008F7225 /* QRCodeViewController.swift in Sources */,
+				CBA9171E22B7DE8C00BA75B2 /* FirebaseDataSource.swift in Sources */,
 				CB15257222A6A366002D483E /* AddTreeBarkViewController.swift in Sources */,
-				CBF89EE022B2BF8400045670 /* LocalDataSource.swift in Sources */,
 				D77029DD22B1293A00671CC0 /* AccountManager.swift in Sources */,
 				CB2D4DA522958548006DAC37 /* TreeAnnotationView.swift in Sources */,
 				CB12C94D228DF5C4000C74C3 /* SimpleDisplayViewController.swift in Sources */,
@@ -691,7 +691,7 @@
 				CB672F1B229434DA00622B59 /* TreeDisplayViewController.swift in Sources */,
 				CBBCE851228DD9B1008F7225 /* SettingsViewController.swift in Sources */,
 				418A360D22A83CD3002BF28C /* LoadingScreenViewController.swift in Sources */,
-				CBF89EDC22B2BBC600045670 /* OnlineDataSource.swift in Sources */,
+				CBF89EDC22B2BBC600045670 /* CSVDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

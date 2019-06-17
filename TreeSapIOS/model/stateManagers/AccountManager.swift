@@ -22,6 +22,10 @@ class AccountManager {
     static func getUser() -> User? {
         return Auth.auth().currentUser
     }
+    
+    static func getUserID() -> String? {
+        return getUser()?.uid
+    }
 	
 	/**
 	Tries to create a user in Firebase. Alerts the user if it doesn't work.

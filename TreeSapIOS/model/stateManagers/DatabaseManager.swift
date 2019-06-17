@@ -8,6 +8,7 @@
 
 import Foundation
 import Firebase
+import MapKit
 
 class DatabaseManager {
     /// The Firestore database.
@@ -35,7 +36,7 @@ class DatabaseManager {
             data["dbh"] = tree.dbh!
         }
         data["otherInfo"] = tree.otherInfo
-        data["userID"] = AccountManager.getUser()?.uid
+        data["userID"] = AccountManager.getUserID()
         
         // Add the images to the data
         var encodedImages = [String]()
@@ -56,6 +57,14 @@ class DatabaseManager {
                 print("Document added with ID: \(ref!.documentID)")
                 NotificationCenter.default.post(name: NSNotification.Name("submitTreeSuccess"), object: nil)
             }
+        }
+    }
+    
+    static func getPendingTreesCollection() -> Query? {
+        if AccountManager.getUserID() != nil {
+            return db.collection("pendingTrees").whereField("userID", isEqualTo: AccountManager.getUserID()!)
+        } else {
+            return nil
         }
     }
 }
