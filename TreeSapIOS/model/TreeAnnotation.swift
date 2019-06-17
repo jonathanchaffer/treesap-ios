@@ -23,7 +23,6 @@ class TreeAnnotation: NSObject, MKAnnotation {
             return UIColor(red: 46/255 + redOffset, green: 129/255 + greenOffset, blue: 219/255 + blueOffset, alpha: 1.0)
         } else {
             return UIColor(red: 0.447 + redOffset, green: 0.741 + greenOffset, blue: 0.353 + blueOffset, alpha: 1.0)
-            
         }
     }
     

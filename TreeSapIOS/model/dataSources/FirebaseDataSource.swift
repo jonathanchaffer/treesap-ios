@@ -56,8 +56,8 @@ class FirebaseDataSource: DataSource {
             let data = document.data()!
             let tree = Tree(
                 id: data["treeID"] as? Int,
-                commonName: data["commonName"] as? String,
-                scientificName: data["scientificName"] as? String,
+                commonName: NameFormatter.formatCommonName(commonName: data["commonName"] as? String),
+                scientificName: NameFormatter.formatScientificName(scientificName: data["scientificName"] as? String),
                 location: CLLocationCoordinate2D(
                     latitude: data["latitude"] as! Double,
                     longitude: data["longitude"] as! Double),

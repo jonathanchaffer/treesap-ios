@@ -71,10 +71,6 @@ class DatabaseManager {
     
     /// - Returns: A Query containing the public trees collection, or nil if there is none.
     static func getPublicTreesCollection() -> Query? {
-        if AccountManager.getUserID() != nil {
-            return db.collection("acceptedTrees")
-        } else {
-            return nil
-        }
+        return db.collection("acceptedTrees")
     }
 }
