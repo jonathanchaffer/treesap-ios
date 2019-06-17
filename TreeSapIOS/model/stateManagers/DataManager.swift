@@ -65,7 +65,6 @@ class DataManager {
     static func reportLoadedData(dataSourceName: String, success: Bool) {
         // Store a report of whether the data was successfully loaded
         reportedData.append((dataSourceName, success))
-        print(dataSourceName + ": " + String(success))
         // If not all data sources have been reported, return
         if reportedData.count != dataSources.count {
             return
