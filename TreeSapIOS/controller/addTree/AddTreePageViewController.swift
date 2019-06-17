@@ -110,7 +110,8 @@ class AddTreePageViewController: UIPageViewController {
                 latitude: Double((pages[0] as! AddTreeLocationViewController).latitudeLabel.text!)!,
                 longitude: Double((pages[0] as! AddTreeLocationViewController).longitudeLabel.text!)!
             ),
-            dbh: Double((pages[4] as! AddTreeOtherViewController).dbhTextField.text!)
+            dbh: Double((pages[4] as! AddTreeOtherViewController).dbhTextField.text!),
+            userID: AccountManager.getUserID()
         )
         // Add the images, if any, to the Tree
         let barkImage = (pages[1] as! AddTreePhotoViewController).selectedImage

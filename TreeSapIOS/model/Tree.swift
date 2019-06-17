@@ -17,14 +17,16 @@ class Tree {
     let dbh: Double?
     var otherInfo: [String: Double] = [:]
     var images: [UIImage] = []
+    let userID: String?
 
-    init(id: Int?, commonName: String?, scientificName: String?, location: CLLocationCoordinate2D, dbh: Double?) {
+    init(id: Int?, commonName: String?, scientificName: String?, location: CLLocationCoordinate2D, dbh: Double?, userID: String?) {
         // Initialize basic information
         self.id = id
         self.commonName = commonName
         self.scientificName = scientificName
         self.location = location
         self.dbh = dbh
+        self.userID = userID
     }
 
     func setOtherInfo(key: String, value: Double) {

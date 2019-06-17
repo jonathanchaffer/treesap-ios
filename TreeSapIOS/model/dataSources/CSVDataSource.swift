@@ -136,7 +136,8 @@ class CSVDataSource: DataSource {
                 commonName: commonName,
                 scientificName: scientificName,
                 location: CLLocationCoordinate2D(latitude: latitude! as CLLocationDegrees, longitude: longitude! as CLLocationDegrees),
-                dbh: dbh
+                dbh: dbh,
+                userID: nil
             )
             
             // Set general benefit information

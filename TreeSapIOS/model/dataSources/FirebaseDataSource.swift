@@ -61,7 +61,8 @@ class FirebaseDataSource: DataSource {
                 location: CLLocationCoordinate2D(
                     latitude: data["latitude"] as! Double,
                     longitude: data["longitude"] as! Double),
-                dbh: data["dbh"] as? Double)
+                dbh: data["dbh"] as? Double,
+                userID: data["userID"] as? String)
             // TODO: Add images and other info
             trees.append(tree)
         }
