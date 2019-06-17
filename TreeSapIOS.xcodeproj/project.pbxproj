@@ -276,9 +276,7 @@
 			children = (
 				CB80E3C422AFF19C001A78AE /* stateManagers */,
 				CB6953B7228EE8720002024B /* Tree.swift */,
-				CB6953B9228EE9530002024B /* DataSource.swift */,
-				CBF89EDB22B2BBC600045670 /* CSVDataSource.swift */,
-				CBA9171D22B7DE8C00BA75B2 /* FirebaseDataSource.swift */,
+				CBA9172122B8046200BA75B2 /* dataSources */,
 				D76D617E22931990003FFD24 /* CSVFormat.swift */,
 				D76D6182229321E7003FFD24 /* TreeFinder.swift */,
 				CBE8788F22957A1300C06E69 /* TreeAnnotation.swift */,
@@ -369,6 +367,16 @@
 				CBBCE84E228DD93E008F7225 /* QRCodeViewController.swift */,
 			);
 			path = tabs;
+			sourceTree = "<group>";
+		};
+		CBA9172122B8046200BA75B2 /* dataSources */ = {
+			isa = PBXGroup;
+			children = (
+				CB6953B9228EE9530002024B /* DataSource.swift */,
+				CBF89EDB22B2BBC600045670 /* CSVDataSource.swift */,
+				CBA9171D22B7DE8C00BA75B2 /* FirebaseDataSource.swift */,
+			);
+			path = dataSources;
 			sourceTree = "<group>";
 		};
 		CBBCE81E228DD76B008F7225 = {

@@ -150,7 +150,7 @@ class PreferencesManager {
      */
     static func activateDataSource(dataSourceName: String) {
         if dataSourceAvailability[dataSourceName] == nil {
-            return
+            dataSourceAvailability[dataSourceName] = true
         }
 
         dataSourceAvailability[dataSourceName] = true
@@ -163,7 +163,7 @@ class PreferencesManager {
      */
     static func deactivateDataSource(dataSourceName: String) {
         if dataSourceAvailability[dataSourceName] == nil {
-            return
+            dataSourceAvailability[dataSourceName] = false
         }
 
         dataSourceAvailability[dataSourceName] = false

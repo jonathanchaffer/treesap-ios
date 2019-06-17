@@ -2,7 +2,7 @@
 //  FirebaseDataSource.swift
 //  TreeSapIOS
 //
-//  Created by Summer2019 on 6/17/19.
+//  Created by Jonathan Chaffer in Summer 2019.
 //  Copyright © 2019 Hope CS. All rights reserved.
 //
 
@@ -11,13 +11,27 @@ import MapKit
 import Firebase
 
 class FirebaseDataSource: DataSource {
+    // MARK: - Properties
+    var databaseType: DatabaseType? = nil
+    
+    init(dataSourceName: String, databaseType: DatabaseType) {
+        self.databaseType = databaseType
+        super.init(dataSourceName: dataSourceName)
+    }
+    
+    // MARK: - Functions
     override func importOnlineTreeData() {
         trees = [Tree]()
         retrieveFirebaseData()
     }
     
     func retrieveFirebaseData() {
-        let collection = DatabaseManager.getPendingTreesCollection()
+        var collection: Query? = nil
+        if self.databaseType == .pendingTrees {
+            collection = DatabaseManager.getPendingTreesCollection()
+        } else if self.databaseType == .publicTrees {
+            collection = DatabaseManager.getPublicTreesCollection()
+        }
         if collection != nil {
             collection!.getDocuments() { snapshot, error in
                 if let error = error {
@@ -47,4 +61,8 @@ class FirebaseDataSource: DataSource {
             trees.append(tree)
         }
     }
+}
+
+enum DatabaseType {
+    case pendingTrees, publicTrees
 }
