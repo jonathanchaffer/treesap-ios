@@ -15,9 +15,9 @@ class DatabaseManager {
     static var db = Firestore.firestore()
     
     /**
-     Sends a created tree to the pending trees database.
+     Uploads a created tree to the pending trees database. Alerts the user if there is an error.
      - Parameter tree: The Tree object to send to the database.
-    */
+     */
     static func addTreeToPending(tree: Tree) {
         // Create the data object
         var data = [String:Any]()
@@ -60,6 +60,7 @@ class DatabaseManager {
         }
     }
     
+    /// - Returns: A Query containing a collection of pending trees for the current user, or nil if there is none.
     static func getPendingTreesCollection() -> Query? {
         if AccountManager.getUserID() != nil {
             return db.collection("pendingTrees").whereField("userID", isEqualTo: AccountManager.getUserID()!)
@@ -68,6 +69,7 @@ class DatabaseManager {
         }
     }
     
+    /// - Returns: A Query containing the public trees collection, or nil if there is none.
     static func getPublicTreesCollection() -> Query? {
         if AccountManager.getUserID() != nil {
             return db.collection("acceptedTrees")

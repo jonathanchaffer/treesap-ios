@@ -11,7 +11,7 @@ import UIKit
 class DataManager {
     // MARK: - Properties
     
-    /// Array of data sources. This is where all data sources are initialized. NOTE: This should only contain one local data source. If there are multiple, all user-created trees will just be added to the first local data source.
+    /// Array of data sources. This is where all data sources are initialized.
     static var dataSources: [DataSource] = [
         CSVDataSource(internetFilename: "CoH_Tree_Inventory_6_12_18.csv", localFilename: "holland.csv", dataSourceName: "City of Holland Tree Inventory", csvFormat: .holland),
         CSVDataSource(internetFilename: "iTreeExport_119_HopeTrees_7may2018.csv", localFilename: "itree.csv", dataSourceName: "Hope College i-Tree Data", csvFormat: .itree),
@@ -21,13 +21,13 @@ class DataManager {
         FirebaseDataSource(dataSourceName: "User Trees", databaseType: .publicTrees)
     ]
     
-    /// Array that stores the result of a data task that reads tree data from an online file to a local file. Each element in the array is a tuple that contains the name of the data source and a Bool that indicates whether the loading of data was successful.
+    /// Keeps track of whether data was gathered from online data sources properly. Each element in the array is a tuple that contains the name of the data source and a Bool that indicates whether the loading of data was successful.
     static var reportedData = [(name: String, success: Bool)]()
     
     // MARK: - Static functions
     
     /**
-     Imports CSV data for the CSV data sources.
+     Imports local CSV data for the CSV data sources.
      - Returns: true if at least one tree was created.
      */
     static func importAllLocalTreeData() -> Bool {
@@ -40,9 +40,7 @@ class DataManager {
         return dataFound
     }
     
-    /**
-     Imports each data source's tree data from online.
-     */
+    /// Imports each data source's tree data from online.
     static func importAllOnlineTreeData() {
         for dataSource in dataSources {
             dataSource.importOnlineTreeData()
@@ -50,6 +48,7 @@ class DataManager {
         return
     }
     
+    /// Imports each Firebase data source's tree data from online.
     static func reloadFirebaseTreeData() {
         for dataSource in dataSources {
             if dataSource is FirebaseDataSource {
@@ -59,7 +58,7 @@ class DataManager {
     }
     
     /**
-     Stores whether a data successfully got data in reportedData. If all of the data tasks have finished, iterate through the result of each of the data tasks and alerts the user if less than all of the data could be loaded properly.
+     Stores whether a data source successfully retrieved online data. If all data sources have reported, iterate through each result and alert the user if less than all of the data was loaded properly.
      - Parameter dataSourceName: The name of the data source that the data task is loading information from.
      - Parameter success: Whether the data task successfully loaded tree data from the online file into the local file.
      */
@@ -117,7 +116,6 @@ class DataManager {
                 return dataSource
             }
         }
-        
         return nil
     }
 }

@@ -27,10 +27,12 @@ class AccountManager {
         return getUser()?.uid
     }
 	
-	/**
-	Tries to create a user in Firebase. Alerts the user if it doesn't work.
-	*/
-	static func createUser(email: String, password: String) {
+    /**
+     Tries to create a user in Firebase with the given email and password. Alerts the user if it doesn't work.
+     - Parameter email: The inputted email.
+     - Parameter password: The inputted password.
+     */
+    static func createUser(email: String, password: String) {
 		Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
 			if let error = error {
 				switch error._code {
@@ -49,6 +51,11 @@ class AccountManager {
 		}
 	}
 	
+    /**
+     Tries to log in with the given email and password. Alerts the user if it doesn't work.
+     - Parameter email: The inputted email.
+     - Parameter password: The inputted password.
+     */
 	static func logIn(email: String, password: String) {
 		Auth.auth().signIn(withEmail: email, password: password) { user, error in
 			if let error = error {
@@ -68,7 +75,11 @@ class AccountManager {
 			}
 		}
 	}
-	
+    
+    /**
+     Tries to log out the current user.
+     - Returns: true if it worked, false otherwise.
+     */
 	static func logOut() -> Bool {
 		do {
 			try Auth.auth().signOut()

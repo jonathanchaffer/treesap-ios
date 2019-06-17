@@ -14,17 +14,19 @@ class FirebaseDataSource: DataSource {
     // MARK: - Properties
     var databaseType: DatabaseType? = nil
     
+    // MARK: - Initializers
     init(dataSourceName: String, databaseType: DatabaseType) {
         self.databaseType = databaseType
         super.init(dataSourceName: dataSourceName)
     }
     
-    // MARK: - Functions
+    // MARK: - Mutators
     override func importOnlineTreeData() {
         trees = [Tree]()
         retrieveFirebaseData()
     }
     
+    /// Retrieves online tree data from Firebase, then calls loadTreesFromDocuments. Reports to the data manager whether retrieval was successful.
     func retrieveFirebaseData() {
         var collection: Query? = nil
         if self.databaseType == .pendingTrees {
@@ -46,6 +48,9 @@ class FirebaseDataSource: DataSource {
         DataManager.reportLoadedData(dataSourceName: self.dataSourceName, success: true)
     }
     
+    /**
+     Creates Tree objects based on an array of documents, and stores them in the trees array.
+     */
     func loadTreesFromDocuments(documents: [DocumentSnapshot]) {
         for document in documents {
             let data = document.data()!

@@ -13,6 +13,7 @@ import Foundation
 import MapKit
 
 class CSVDataSource: DataSource {
+    // MARK: - Properties
     /// The URL of the database where the tree data sets are stored.
     let internetFilebase: String = "https://faculty.hope.edu/jipping/treesap/"
     /// The filename (and extension) of the file that contains the online tree data.
@@ -22,6 +23,7 @@ class CSVDataSource: DataSource {
     /// The format of CSV data contained in the data source. The CSV file will be parsed differently depending on this value.
     let csvFormat: CSVFormat
     
+    // MARK: - Initializers
     init(internetFilename: String, localFilename: String, dataSourceName: String, csvFormat: CSVFormat) {
         self.internetFilename = internetFilename
         self.localFilename = localFilename
@@ -29,17 +31,13 @@ class CSVDataSource: DataSource {
         super.init(dataSourceName: dataSourceName)
     }
     
+    // MARK: - Mutators
     override func importOnlineTreeData() {
         trees = [Tree]()
         retrieveOnlineCSVData()
     }
     
-    /**
-     Retrieves online tree data from the URL specified by internetFilebase and internetFilename.
-     Copies the online csv file to the app's documents directory, then calls createTrees to add Tree objects into the app.
-     Stops if there is an error. This is done asynchronously.
-     - Parameter loadingScreenActive: A Bool indicating whether the loading screen is active.
-     */
+    /// Retrieves online tree data from the URL specified by internetFilebase and internetFilename. Copies the online csv file to the app's documents directory, then calls loadTreesFromCSV. Reports to the data manager whether retrieval was successful.
     func retrieveOnlineCSVData() {
         // Retrieve the data from the URL
         let url = URL(string: internetFilebase + internetFilename)
