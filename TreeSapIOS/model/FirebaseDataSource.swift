@@ -11,10 +11,9 @@ import MapKit
 import Firebase
 
 class FirebaseDataSource: DataSource {
-    override func importOnlineTreeData() -> Bool {
+    override func importOnlineTreeData() {
         trees = [Tree]()
         retrieveFirebaseData()
-        return true
     }
     
     func retrieveFirebaseData() {

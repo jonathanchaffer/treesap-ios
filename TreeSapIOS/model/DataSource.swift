@@ -27,8 +27,6 @@ class DataSource {
         return trees
     }
 
-    func importOnlineTreeData() -> Bool {
-        return false
-    }
+    func importOnlineTreeData() {}
     
 }

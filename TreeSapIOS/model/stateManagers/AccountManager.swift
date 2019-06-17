@@ -64,6 +64,7 @@ class AccountManager {
 				}
 			} else {
 				NotificationCenter.default.post(name: NSNotification.Name("loggedIn"), object: nil)
+                DataManager.reloadFirebaseTreeData()
 			}
 		}
 	}
@@ -71,6 +72,7 @@ class AccountManager {
 	static func logOut() -> Bool {
 		do {
 			try Auth.auth().signOut()
+            DataManager.reloadFirebaseTreeData()
 			return true
 		} catch {
 			return false

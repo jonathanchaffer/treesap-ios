@@ -49,6 +49,14 @@ class DataManager {
         return
     }
     
+    static func reloadFirebaseTreeData() {
+        for dataSource in dataSources {
+            if dataSource is FirebaseDataSource {
+                (dataSource as! FirebaseDataSource).importOnlineTreeData()
+            }
+        }
+    }
+    
     /**
      Stores whether a data successfully got data in reportedData. If all of the data tasks have finished, iterate through the result of each of the data tasks and alerts the user if less than all of the data could be loaded properly.
      - Parameter dataSourceName: The name of the data source that the data task is loading information from.
@@ -84,7 +92,7 @@ class DataManager {
                     }
                 } else {
                     DispatchQueue.main.async {
-                        AlertManager.alertUser(title: "Some tree data unavailable", message: "Some or all of the tree data could not be loaded. Please make sure that your device is connected to the Internet and then restart the app.")
+                        AlertManager.alertUser(title: "Some tree data unavailable", message: "Some or all of the tree data could not be loaded. Please ensure that your device is connected to the Internet and then restart the app.")
                     }
                 }
             }

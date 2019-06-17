@@ -29,9 +29,9 @@ class CSVDataSource: DataSource {
         super.init(dataSourceName: dataSourceName)
     }
     
-    override func importOnlineTreeData() -> Bool {
+    override func importOnlineTreeData() {
+        trees = [Tree]()
         retrieveOnlineCSVData()
-        return true
     }
     
     /**
