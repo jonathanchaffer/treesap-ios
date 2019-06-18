@@ -136,6 +136,7 @@ class AddTreePageViewController: UIPageViewController {
     /// Dismisses the loading alert, and then alerts the user that the tree was successfully submitted.
     @objc private func submitTreeSuccess() {
         dismiss(animated: true) {
+            DataManager.reloadFirebaseTreeData()
             let alert = UIAlertController(title: "Success!", message: "Your tree has been submitted for approval. While you wait, your tree will be available in the \"My Pending Trees\" data set on your device.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in self.closeAddTree() }))
             self.present(alert, animated: true)
