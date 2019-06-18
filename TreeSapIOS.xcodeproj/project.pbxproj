@@ -55,6 +55,7 @@
 		CBBCE84D228DD847008F7225 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBCE84C228DD847008F7225 /* MapViewController.swift */; };
 		CBBCE84F228DD93E008F7225 /* QRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBCE84E228DD93E008F7225 /* QRCodeViewController.swift */; };
 		CBBCE851228DD9B1008F7225 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBCE850228DD9B1008F7225 /* SettingsViewController.swift */; };
+		CBC7BC9822B93AC8002D4B98 /* HideKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC7BC9722B93AC8002D4B98 /* HideKeyboard.swift */; };
 		CBE8789022957A1300C06E69 /* TreeAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE8788F22957A1300C06E69 /* TreeAnnotation.swift */; };
 		CBF89EDC22B2BBC600045670 /* CSVDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF89EDB22B2BBC600045670 /* CSVDataSource.swift */; };
 		CBF89EE222B3F40600045670 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF89EE122B3F40600045670 /* DatabaseManager.swift */; };
@@ -157,6 +158,7 @@
 		CBBCE84C228DD847008F7225 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		CBBCE84E228DD93E008F7225 /* QRCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeViewController.swift; sourceTree = "<group>"; };
 		CBBCE850228DD9B1008F7225 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		CBC7BC9722B93AC8002D4B98 /* HideKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideKeyboard.swift; sourceTree = "<group>"; };
 		CBE8788F22957A1300C06E69 /* TreeAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeAnnotation.swift; sourceTree = "<group>"; };
 		CBF89EDB22B2BBC600045670 /* CSVDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVDataSource.swift; sourceTree = "<group>"; };
 		CBF89EE122B3F40600045670 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
@@ -267,6 +269,7 @@
 				CB9F424E22A5AE0100C97F70 /* settings */,
 				CB9F424D22A5ADF800C97F70 /* addTree */,
 				CB9F424C22A5ADD200C97F70 /* treeDetail */,
+				CBC7BC9722B93AC8002D4B98 /* HideKeyboard.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -700,6 +703,7 @@
 				CBBCE851228DD9B1008F7225 /* SettingsViewController.swift in Sources */,
 				418A360D22A83CD3002BF28C /* LoadingScreenViewController.swift in Sources */,
 				CBF89EDC22B2BBC600045670 /* CSVDataSource.swift in Sources */,
+				CBC7BC9822B93AC8002D4B98 /* HideKeyboard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

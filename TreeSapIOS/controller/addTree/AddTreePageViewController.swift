@@ -107,8 +107,8 @@ class AddTreePageViewController: UIPageViewController {
             commonName: NameFormatter.formatCommonName(commonName: (pages[4] as! AddTreeOtherViewController).commonNameTextField.text),
             scientificName: NameFormatter.formatScientificName(scientificName: (pages[4] as! AddTreeOtherViewController).scientificNameTextField.text),
             location: CLLocationCoordinate2D(
-                latitude: Double((pages[0] as! AddTreeLocationViewController).latitudeLabel.text!)!,
-                longitude: Double((pages[0] as! AddTreeLocationViewController).longitudeLabel.text!)!
+                latitude: Double((pages[0] as! AddTreeLocationViewController).latitudeTextField.text!)!,
+                longitude: Double((pages[0] as! AddTreeLocationViewController).longitudeTextField.text!)!
             ),
             dbh: Double((pages[4] as! AddTreeOtherViewController).dbhTextField.text!),
             userID: AccountManager.getUserID()
