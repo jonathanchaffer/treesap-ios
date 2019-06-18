@@ -20,12 +20,13 @@ class PieChartDisplayViewController: TreeDisplayViewController, ChartViewDelegat
     let dollarFormatter = NumberFormatter()
 
     // Colors for the charts
-    let pieChartColors = [
-        UIColor(red: 95 / 255, green: 184 / 255, blue: 78 / 255, alpha: 1.0),
-        UIColor(red: 190 / 255, green: 223 / 255, blue: 192 / 255, alpha: 1.0),
-        UIColor(red: 53 / 255, green: 124 / 255, blue: 125 / 255, alpha: 1.0),
-        UIColor(red: 134 / 255, green: 201 / 255, blue: 142 / 255, alpha: 1.0),
-        UIColor(red: 56 / 255, green: 85 / 255, blue: 81 / 255, alpha: 1.0),
+    let pieChartColors: [UIColor] = [
+        UIColor(named: "piechart01")!,
+        UIColor(named: "piechart02")!,
+        UIColor(named: "piechart03")!,
+        UIColor(named: "piechart04")!,
+        UIColor(named: "piechart05")!,
+        UIColor(named: "piechart06")!,
     ]
 
     // Legend labels for breakdown data
