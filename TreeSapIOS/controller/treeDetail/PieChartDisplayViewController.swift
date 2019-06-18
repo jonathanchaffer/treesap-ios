@@ -63,7 +63,8 @@ class PieChartDisplayViewController: TreeDisplayViewController, ChartViewDelegat
         pieChartView.transparentCircleRadiusPercent = 0
         pieChartView.rotationEnabled = true
         pieChartView.legend.verticalAlignment = .top
-        pieChartView.legend.orientation = .vertical
+        pieChartView.legend.orientation = .horizontal
+        pieChartView.legend.horizontalAlignment = .center
         pieChartView.legend.font = .preferredFont(forTextStyle: .body)
         pieChartView.legend.form = .circle
         pieChartView.legend.formSize = 12
@@ -110,31 +111,31 @@ class PieChartDisplayViewController: TreeDisplayViewController, ChartViewDelegat
         var entries: [PieChartDataEntry] = []
         let carbonSequestrationDollars = displayedTree!.otherInfo["carbonSequestrationDollars"]
         if carbonSequestrationDollars != nil, carbonSequestrationDollars! > 0 {
-            let entry = PieChartDataEntry(value: carbonSequestrationDollars!, label: "CO₂ Sequestration")
+            let entry = PieChartDataEntry(value: carbonSequestrationDollars!, label: "CO₂ sequestration  ")
             entry.accessibilityLabel = "carbonSequestrationDollars"
             entries.append(entry)
         }
         let avoidedRunoffDollars = displayedTree!.otherInfo["avoidedRunoffDollars"]
         if avoidedRunoffDollars != nil, avoidedRunoffDollars! > 0 {
-            let entry = PieChartDataEntry(value: avoidedRunoffDollars!, label: "Rainfall")
+            let entry = PieChartDataEntry(value: avoidedRunoffDollars!, label: "Runoff avoided  ")
             entry.accessibilityLabel = "avoidedRunoffDollars"
             entries.append(entry)
         }
         let carbonAvoidedDollars = displayedTree!.otherInfo["carbonAvoidedDollars"]
         if carbonAvoidedDollars != nil, carbonAvoidedDollars! > 0 {
-            let entry = PieChartDataEntry(value: carbonAvoidedDollars!, label: "CO₂ Avoided")
+            let entry = PieChartDataEntry(value: carbonAvoidedDollars!, label: "Avoided emissions  ")
             entry.accessibilityLabel = "carbonAvoidedDollars"
             entries.append(entry)
         }
         let pollutionRemovalDollars = displayedTree!.otherInfo["pollutionRemovalDollars"]
         if pollutionRemovalDollars != nil, pollutionRemovalDollars! > 0 {
-            let entry = PieChartDataEntry(value: displayedTree!.otherInfo["pollutionRemovalDollars"]!, label: "Air Quality")
+            let entry = PieChartDataEntry(value: displayedTree!.otherInfo["pollutionRemovalDollars"]!, label: "Pollution removed  ")
             entry.accessibilityLabel = "pollutionRemovalDollars"
             entries.append(entry)
         }
         let energySavingsDollars = displayedTree!.otherInfo["energySavingsDollars"]
         if energySavingsDollars != nil, energySavingsDollars! > 0 {
-            let entry = PieChartDataEntry(value: energySavingsDollars!, label: "Energy")
+            let entry = PieChartDataEntry(value: energySavingsDollars!, label: "Energy savings  ")
             entry.accessibilityLabel = "energySavingsDollars"
             entries.append(entry)
         }
