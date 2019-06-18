@@ -113,7 +113,7 @@
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="T2U-ko-uFs" secondAttribute="height" multiplier="1:1" id="6QK-DR-cel"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="26"/>
                                         <state key="normal" title="Press me!"/>
                                         <connections>
                                             <action selector="handleBigButtonPressed:" destination="9pv-A4-QxB" eventType="touchUpInside" id="lbb-n8-xtC"/>
@@ -2884,8 +2884,8 @@ ZC4
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="txq-mR-ZcU"/>
-        <segue reference="NRC-p1-lpH"/>
+        <segue reference="Osm-ne-69B"/>
+        <segue reference="M3K-1N-Vy6"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" name="treesapGreen"/>
 </document>
