@@ -51,10 +51,10 @@ class PieChartDisplayViewController: TreeDisplayViewController, ChartViewDelegat
         // Configure the pie chart
         pieChartView.delegate = self
         pieChartView.drawHoleEnabled = true
-        pieChartView.holeRadiusPercent = 0.33
+        pieChartView.drawEntryLabelsEnabled = false
+        pieChartView.holeRadiusPercent = 0.5
         pieChartView.transparentCircleRadiusPercent = 0
         pieChartView.rotationEnabled = true
-        pieChartView.rotationWithTwoFingers = true
         pieChartView.legend.verticalAlignment = .top
         pieChartView.legend.orientation = .vertical
         pieChartView.legend.font = .preferredFont(forTextStyle: .body)
@@ -147,7 +147,7 @@ class PieChartDisplayViewController: TreeDisplayViewController, ChartViewDelegat
         var data: PieChartData?
         if entries != [] {
             data = PieChartData(dataSet: set)
-            data!.setValueFont(.preferredFont(forTextStyle: .body))
+            data!.setValueFont(.systemFont(ofSize: 17.0, weight: .semibold))
             data!.setValueTextColor(.white)
             data!.setValueFormatter(DefaultValueFormatter(formatter: dollarFormatter))
         } else {
