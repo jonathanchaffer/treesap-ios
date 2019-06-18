@@ -55,4 +55,10 @@ class SimpleDisplayViewController: TreeDisplayViewController {
             backgroundImage.image = UIImage(named: displayedTree!.commonName!)
         }
     }
+    
+    // - Actions
+    @IBAction func dbhInfoButtonPressed(_ sender: UIButton) {
+        AlertManager.alertUser(title: "What does DBH mean?", message: "DBH is an acronym for Diameter at Breast Height, with breast height being 4.5 feet above the ground.")
+    }
+    
 }

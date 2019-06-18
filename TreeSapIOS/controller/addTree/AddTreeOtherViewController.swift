@@ -36,6 +36,11 @@ class AddTreeOtherViewController: AddTreeViewController {
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in self.broadcastSubmitTree() }))
         present(alert, animated: true)
     }
+    
+    @IBAction func dbhInfoButtonPressed(_ sender: UIButton) {
+        AlertManager.alertUser(title: "What does DBH mean?", message: "DBH is an acronym for Diameter at Breast Height, with breast height being 4.5 feet above the ground. If you update this field, the circumference field will update automatically, and vice versa.")
+    }
+    
 
     @IBAction func broadcastBack(_: UIButton) {
         previousPage()
