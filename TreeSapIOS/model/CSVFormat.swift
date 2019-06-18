@@ -142,6 +142,16 @@ enum CSVFormat {
             return -1
         }
     }
+    
+    /// Returns the index for water untercepted (ft^3/yr), or -1 if there is none.
+    func waterInterceptedCubicFeetIndex() -> Int {
+        switch self {
+        case .benefits:
+            return 33
+        default:
+            return -1
+        }
+    }
 
     /// Returns the index for avoided runoff (ft^3/yr), or -1 if there is none.
     func avoidedRunoffCubicFeetIndex() -> Int {

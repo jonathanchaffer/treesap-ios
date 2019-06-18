@@ -153,6 +153,9 @@ class CSVDataSource: DataSource {
             if csvFormat.avoidedRunoffDollarsIndex() >= 0 {
                 tree.setOtherInfo(key: "avoidedRunoffDollars", value: Double(record[self.csvFormat.avoidedRunoffDollarsIndex()])!)
             }
+            if csvFormat.waterInterceptedCubicFeetIndex() >= 0 {
+                tree.setOtherInfo(key: "waterInterceptedCubicFeet", value: Double(record[self.csvFormat.waterInterceptedCubicFeetIndex()])!)
+            }
             if csvFormat.carbonAvoidedPoundsIndex() >= 0 {
                 tree.setOtherInfo(key: "carbonAvoidedPounds", value: Double(record[self.csvFormat.carbonAvoidedPoundsIndex()])!)
             }

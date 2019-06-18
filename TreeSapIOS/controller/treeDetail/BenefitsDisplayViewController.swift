@@ -31,6 +31,8 @@ class BenefitsDisplayViewController: TreeDisplayViewController {
     /**/ @IBOutlet var stormWaterDollarsLabel: UILabel!
     /**/ @IBOutlet weak var avoidedRunoffStackView: UIStackView!
     /****/ @IBOutlet var avoidedRunoffGallonsLabel: UILabel!
+    /**/ @IBOutlet weak var rainfallInterceptedGallonsStackView: UIStackView!
+    /****/ @IBOutlet var rainfallInterceptedGallonsLabel: UILabel!
     
     @IBOutlet var pollutionRemovalStackView: UIStackView!
     /**/ @IBOutlet var pollutionRemovalDollarsLabel: UILabel!
@@ -119,11 +121,17 @@ class BenefitsDisplayViewController: TreeDisplayViewController {
         } else {
             stormWaterStackView.isHidden = true
         }
-        // Avoided runoff (ft^3)
+        // Avoided runoff (gal)
         if displayedTree!.otherInfo["avoidedRunoffCubicFeet"] != nil {
             avoidedRunoffGallonsLabel.text = String(format: "%.2f", displayedTree!.otherInfo["avoidedRunoffCubicFeet"]! * 7.48052) + " gal"
         } else {
             avoidedRunoffGallonsLabel.isHidden = true
+        }
+        // Rainfall intercepted (gal)
+        if displayedTree!.otherInfo["waterInterceptedCubicFeet"] != nil {
+            rainfallInterceptedGallonsLabel.text = String(format: "%.2f", displayedTree!.otherInfo["waterInterceptedCubicFeet"]! * 7.48052) + " gal"
+        } else {
+            rainfallInterceptedGallonsStackView.isHidden = true
         }
         // Pollution removal ($)
         if displayedTree!.otherInfo["pollutionRemovalDollars"] != nil {

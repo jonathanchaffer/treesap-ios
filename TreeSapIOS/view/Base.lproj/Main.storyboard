@@ -830,7 +830,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="Faf-C4-ep4">
-                                                <rect key="frame" x="0.0" y="198" width="319" height="48"/>
+                                                <rect key="frame" x="0.0" y="198" width="319" height="68.5"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="hBe-gt-AFO">
                                                         <rect key="frame" x="0.0" y="0.0" width="319" height="20.5"/>
@@ -870,8 +870,29 @@
                                                             </label>
                                                         </subviews>
                                                     </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="MzM-Xp-3EQ">
+                                                        <rect key="frame" x="0.0" y="47" width="319" height="14.5"/>
+                                                        <subviews>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6cQ-0C-Diw">
+                                                                <rect key="frame" x="0.0" y="0.0" width="20" height="14.5"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </view>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rainfall intercepted" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QRq-lA-ff1">
+                                                                <rect key="frame" x="28" y="0.0" width="266" height="14.5"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" text="gal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3e8-iD-1Tc">
+                                                                <rect key="frame" x="302" y="0.0" width="17" height="14.5"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                    </stackView>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aQM-Gp-Dhy">
-                                                        <rect key="frame" x="0.0" y="47" width="319" height="1"/>
+                                                        <rect key="frame" x="0.0" y="67.5" width="319" height="1"/>
                                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="ZjV-i2-BO2"/>
@@ -880,7 +901,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="iOi-Kp-i9J">
-                                                <rect key="frame" x="0.0" y="252" width="319" height="130"/>
+                                                <rect key="frame" x="0.0" y="272.5" width="319" height="130"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="KtS-mn-NUV">
                                                         <rect key="frame" x="0.0" y="0.0" width="319" height="20.5"/>
@@ -1014,7 +1035,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="h1i-SD-VxZ">
-                                                <rect key="frame" x="0.0" y="388" width="319" height="74.5"/>
+                                                <rect key="frame" x="0.0" y="408.5" width="319" height="74.5"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="hfg-Ts-gbx">
                                                         <rect key="frame" x="0.0" y="0.0" width="319" height="20.5"/>
@@ -1085,7 +1106,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="WQG-fT-l2E">
-                                                <rect key="frame" x="0.0" y="468.5" width="319" height="43"/>
+                                                <rect key="frame" x="0.0" y="489" width="319" height="43"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="bzk-Vg-U8w">
                                                         <rect key="frame" x="0.0" y="0.0" width="319" height="20.5"/>
@@ -1128,14 +1149,14 @@
                                                 </subviews>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Khp-rs-4ek">
-                                                <rect key="frame" x="0.0" y="517.5" width="319" height="3"/>
+                                                <rect key="frame" x="0.0" y="538" width="319" height="3"/>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="3" id="bbd-nP-0Nt"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tkt-bY-ETk">
-                                                <rect key="frame" x="0.0" y="526.5" width="319" height="44.5"/>
+                                                <rect key="frame" x="0.0" y="547" width="319" height="24"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
                                         </subviews>
@@ -1146,6 +1167,7 @@
                                             <constraint firstItem="Z3G-hA-iL4" firstAttribute="width" secondItem="sA1-fI-ssn" secondAttribute="width" id="Y1O-az-g3s"/>
                                             <constraint firstItem="e9C-Ys-8p6" firstAttribute="width" secondItem="sA1-fI-ssn" secondAttribute="width" id="bIY-8z-kTN"/>
                                             <constraint firstItem="ylf-wV-z8R" firstAttribute="width" secondItem="sA1-fI-ssn" secondAttribute="width" id="hN9-xG-thR"/>
+                                            <constraint firstItem="6cQ-0C-Diw" firstAttribute="width" secondItem="sA1-fI-ssn" secondAttribute="width" id="nRD-3o-r8d"/>
                                             <constraint firstItem="Wn4-aM-uZl" firstAttribute="width" secondItem="sA1-fI-ssn" secondAttribute="width" id="qJE-fu-nNw"/>
                                             <constraint firstItem="tQa-0r-cd0" firstAttribute="width" secondItem="sA1-fI-ssn" secondAttribute="width" id="sMh-dS-WU1"/>
                                             <constraint firstItem="cfj-Wi-194" firstAttribute="width" secondItem="sA1-fI-ssn" secondAttribute="width" id="svR-yd-rYh"/>
@@ -1206,6 +1228,8 @@
                         <outlet property="pm25OuncesStackView" destination="WtS-SA-KDC" id="X5b-Pi-K9v"/>
                         <outlet property="pollutionRemovalDollarsLabel" destination="iwx-BR-E9Y" id="RlA-JR-HNy"/>
                         <outlet property="pollutionRemovalStackView" destination="iOi-Kp-i9J" id="nrs-QR-UQj"/>
+                        <outlet property="rainfallInterceptedGallonsLabel" destination="3e8-iD-1Tc" id="DyR-MO-7n5"/>
+                        <outlet property="rainfallInterceptedGallonsStackView" destination="MzM-Xp-3EQ" id="aUp-iT-qS3"/>
                         <outlet property="scientificNameLabel" destination="Wq7-LS-wqv" id="1cQ-At-IlJ"/>
                         <outlet property="so2OuncesLabel" destination="rhg-sP-F7S" id="fDd-2r-h7I"/>
                         <outlet property="so2OuncesStackView" destination="Eyz-oG-iCJ" id="50w-2E-ycR"/>
