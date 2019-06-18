@@ -618,11 +618,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="tao-k5-qM0">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="tao-k5-qM0">
                                 <rect key="frame" x="20" y="40" width="335" height="587"/>
                                 <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Annual Tree Benefits" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kp5-DK-GzE">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="31.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="26"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Common Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qW8-wu-0mg">
+                                        <rect key="frame" x="0.0" y="39.5" width="335" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HXB-U3-Z9X" customClass="PieChartView" customModule="Charts">
-                                        <rect key="frame" x="0.0" y="0.0" width="335" height="523"/>
+                                        <rect key="frame" x="0.0" y="68" width="335" height="447"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                     <view contentMode="scaleToFill" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="Ol9-nK-IIg" customClass="HorizontalBarChartView" customModule="Charts">
@@ -645,7 +657,9 @@
                         <viewLayoutGuide key="safeArea" id="cn0-VP-zAi"/>
                     </view>
                     <connections>
+                        <outlet property="annualTreeBenefitsLabel" destination="Kp5-DK-GzE" id="1i4-xI-TjM"/>
                         <outlet property="barChartView" destination="Ol9-nK-IIg" id="b5M-td-NkE"/>
+                        <outlet property="commonNameLabel" destination="qW8-wu-0mg" id="2KE-ta-TaW"/>
                         <outlet property="pieChartView" destination="HXB-U3-Z9X" id="jP2-MJ-dEI"/>
                     </connections>
                 </viewController>

@@ -15,6 +15,10 @@ class PieChartDisplayViewController: TreeDisplayViewController, ChartViewDelegat
     // Chart views
     @IBOutlet var pieChartView: PieChartView!
     @IBOutlet var barChartView: HorizontalBarChartView!
+    
+    // Headers
+    @IBOutlet weak var annualTreeBenefitsLabel: UILabel!
+    @IBOutlet weak var commonNameLabel: UILabel!
 
     // Number formatter for $x.xx format
     let dollarFormatter = NumberFormatter()
@@ -41,6 +45,9 @@ class PieChartDisplayViewController: TreeDisplayViewController, ChartViewDelegat
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Set the common name label
+        commonNameLabel.text = self.displayedTree!.commonName
 
         // Configure the dollar formatter
         dollarFormatter.numberStyle = .currency
@@ -151,8 +158,10 @@ class PieChartDisplayViewController: TreeDisplayViewController, ChartViewDelegat
             data!.setValueTextColor(.white)
             data!.setValueFormatter(DefaultValueFormatter(formatter: dollarFormatter))
         } else {
-            // If there are no pie chart entries, hide the bar chart
+            // If there are no pie chart entries, hide the bar chart and titles
             barChartView.isHidden = true
+            annualTreeBenefitsLabel.isHidden = true
+            commonNameLabel.isHidden = true
         }
         pieChartView.data = data
         pieChartView.highlightValues(nil)
