@@ -1876,7 +1876,7 @@ ZC4
                                                 <rect key="frame" x="0.0" y="0.0" width="335" height="557"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="cOS-s1-TNB">
-                                                        <rect key="frame" x="0.0" y="48" width="335" height="461.5"/>
+                                                        <rect key="frame" x="0.0" y="27.5" width="335" height="502"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Step 2: Bark" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fc4-Hb-mvA">
                                                                 <rect key="frame" x="96" y="0.0" width="143.5" height="31.5"/>
@@ -1884,14 +1884,15 @@ ZC4
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="If possible, please provide a clear photo of the tree's bark." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hOF-3b-abF">
-                                                                <rect key="frame" x="0.0" y="39.5" width="335" height="41"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hOF-3b-abF">
+                                                                <rect key="frame" x="0.0" y="39.5" width="335" height="81.5"/>
+                                                                <string key="text">Please stand approximately one foot away from the tree and take a close-up photo of the bark. The color and texture of the bark is important in identifying a tree.</string>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="625-qZ-IBe" customClass="FilledButton" customModule="TreeSapIOS" customModuleProvider="target">
-                                                                <rect key="frame" x="100.5" y="88.5" width="134" height="30"/>
+                                                                <rect key="frame" x="100.5" y="129" width="134" height="30"/>
                                                                 <state key="normal" title="Take/Choose Photo"/>
                                                                 <connections>
                                                                     <action selector="handlePhotoButtonPressed:" destination="vWK-Ed-YnA" eventType="touchUpInside" id="Qtp-cF-l0h"/>
@@ -1899,7 +1900,7 @@ ZC4
                                                                 </connections>
                                                             </button>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Kc-bU-Q48">
-                                                                <rect key="frame" x="0.0" y="126.5" width="335" height="335"/>
+                                                                <rect key="frame" x="0.0" y="167" width="335" height="335"/>
                                                                 <subviews>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noPhotoSelected" translatesAutoresizingMaskIntoConstraints="NO" id="uPc-QA-hRO">
                                                                         <rect key="frame" x="0.0" y="0.0" width="335" height="335"/>
@@ -2022,7 +2023,7 @@ ZC4
                                                 <rect key="frame" x="0.0" y="0.0" width="335" height="557"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="cNM-FO-DaA">
-                                                        <rect key="frame" x="0.0" y="48" width="335" height="461.5"/>
+                                                        <rect key="frame" x="0.0" y="27.5" width="335" height="502"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Step 3: Leaves" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FTG-9I-7nh">
                                                                 <rect key="frame" x="81" y="0.0" width="173.5" height="31.5"/>
@@ -2030,14 +2031,15 @@ ZC4
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="If possible, please provide a clear photo of the tree's leaves or needles." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VG7-l9-Rgl">
-                                                                <rect key="frame" x="0.0" y="39.5" width="335" height="41"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VG7-l9-Rgl">
+                                                                <rect key="frame" x="0.0" y="39.5" width="335" height="81.5"/>
+                                                                <string key="text">Please take a close-up photo of the leaves or needles. Make sure to include multiple leaves in the photo as well as any fruits, flowers, or other unique characteristics.</string>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hiB-8s-BI3" customClass="FilledButton" customModule="TreeSapIOS" customModuleProvider="target">
-                                                                <rect key="frame" x="100.5" y="88.5" width="134" height="30"/>
+                                                                <rect key="frame" x="100.5" y="129" width="134" height="30"/>
                                                                 <state key="normal" title="Take/Choose Photo"/>
                                                                 <connections>
                                                                     <action selector="handlePhotoButtonPressed:" destination="m5e-m4-Lcs" eventType="touchUpInside" id="M5V-Ck-gw7"/>
@@ -2045,7 +2047,7 @@ ZC4
                                                                 </connections>
                                                             </button>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r1a-WN-aEk">
-                                                                <rect key="frame" x="0.0" y="126.5" width="335" height="335"/>
+                                                                <rect key="frame" x="0.0" y="167" width="335" height="335"/>
                                                                 <subviews>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noPhotoSelected" translatesAutoresizingMaskIntoConstraints="NO" id="yhh-b7-wLD">
                                                                         <rect key="frame" x="0.0" y="0.0" width="335" height="335"/>
@@ -2169,7 +2171,7 @@ ZC4
                                                 <rect key="frame" x="0.0" y="0.0" width="335" height="557"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="0l3-2d-ecW">
-                                                        <rect key="frame" x="0.0" y="48" width="335" height="461.5"/>
+                                                        <rect key="frame" x="0.0" y="27.5" width="335" height="502"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Step 4: Entire Tree" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LJE-K8-54s">
                                                                 <rect key="frame" x="60" y="0.0" width="215.5" height="31.5"/>
@@ -2177,14 +2179,15 @@ ZC4
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="If possible, please provide a clear photo of the entire tree." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pAv-RD-eOs">
-                                                                <rect key="frame" x="0.0" y="39.5" width="335" height="41"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pAv-RD-eOs">
+                                                                <rect key="frame" x="0.0" y="39.5" width="335" height="81.5"/>
+                                                                <string key="text">Please stand back to capture the entire tree in one photo. The shape of the tree and its branching pattern can often aid in identification.</string>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s9Y-C8-qbz" customClass="FilledButton" customModule="TreeSapIOS" customModuleProvider="target">
-                                                                <rect key="frame" x="100.5" y="88.5" width="134" height="30"/>
+                                                                <rect key="frame" x="100.5" y="129" width="134" height="30"/>
                                                                 <state key="normal" title="Take/Choose Photo"/>
                                                                 <connections>
                                                                     <action selector="handlePhotoButtonPressed:" destination="KK5-YB-y2k" eventType="touchUpInside" id="MaT-I1-N3S"/>
@@ -2192,7 +2195,7 @@ ZC4
                                                                 </connections>
                                                             </button>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H4l-aW-Dyf">
-                                                                <rect key="frame" x="0.0" y="126.5" width="335" height="335"/>
+                                                                <rect key="frame" x="0.0" y="167" width="335" height="335"/>
                                                                 <subviews>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noPhotoSelected" translatesAutoresizingMaskIntoConstraints="NO" id="cs6-ba-FOp">
                                                                         <rect key="frame" x="0.0" y="0.0" width="335" height="335"/>
