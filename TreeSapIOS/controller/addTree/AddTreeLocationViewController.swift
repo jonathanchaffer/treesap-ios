@@ -10,20 +10,22 @@ import UIKit
 
 class AddTreeLocationViewController: AddTreeViewController {
     // MARK: - Properties
-
+    
     @IBOutlet weak var latitudeTextField: UITextField!
     @IBOutlet weak var longitudeTextField: UITextField!
     @IBOutlet var nextButton: UIButton!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
+        latitudeTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        longitudeTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         // Hide the next button at first
         nextButton.isHidden = true
     }
-
+    
     // MARK: - Actions
-
+    
     @IBAction func broadcastNext(_: UIButton) {
         // Convert the inputs to Double. If the conversion failed, alert the user.
         let latitude = Double(latitudeTextField.text!)
@@ -37,7 +39,7 @@ class AddTreeLocationViewController: AddTreeViewController {
         
         nextPage()
     }
-
+    
     @IBAction func updateLocation(_: UIButton) {
         // Check location authorization
         LocationManager.checkLocationAuthorization()
@@ -49,6 +51,16 @@ class AddTreeLocationViewController: AddTreeViewController {
             nextButton.isHidden = false
         } else {
             AlertManager.alertUser(title: "Location could not be accessed", message: "Please make sure that location services are enabled.")
+        }
+    }
+    
+    @objc private func textFieldDidChange(_ textField: UITextField) {
+        let latitude = Double(latitudeTextField.text!)
+        let longitude = Double(longitudeTextField.text!)
+        if latitude != nil && longitude != nil {
+            nextButton.isHidden = false
+        } else {
+            nextButton.isHidden = true
         }
     }
 }
