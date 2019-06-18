@@ -16,14 +16,16 @@ class TreeAnnotation: NSObject, MKAnnotation {
     let coordinate: CLLocationCoordinate2D
     
     var markerTintColor: UIColor {
-        let redOffset = CGFloat(Float.random(in: -0.1 ... 0.1))
-        let greenOffset = CGFloat(Float.random(in: -0.1 ... 0.1))
-        let blueOffset = CGFloat(Float.random(in: -0.1 ... 0.1))
+        let redOffset = CGFloat(Float.random(in: -0.075 ... 0.075))
+        let greenOffset = CGFloat(Float.random(in: -0.075 ... 0.075))
+        let blueOffset = CGFloat(Float.random(in: -0.075 ... 0.075))
+        var baseColor: UIColor? = nil
         if tree.userID == AccountManager.getUserID() && AccountManager.getUserID() != nil {
-            return UIColor(red: 46/255 + redOffset, green: 129/255 + greenOffset, blue: 219/255 + blueOffset, alpha: 1.0)
+            baseColor = UIColor(named: "myTree")
         } else {
-            return UIColor(red: 0.447 + redOffset, green: 0.741 + greenOffset, blue: 0.353 + blueOffset, alpha: 1.0)
+            baseColor = UIColor(named: "treesapGreen")
         }
+        return UIColor(red: baseColor!.rgba.0 + redOffset, green: baseColor!.rgba.1 + greenOffset, blue: baseColor!.rgba.2 + blueOffset, alpha: 1.0)
     }
     
     init(tree: Tree) {
@@ -32,5 +34,17 @@ class TreeAnnotation: NSObject, MKAnnotation {
         title = tree.commonName
         subtitle = tree.scientificName
         super.init()
+    }
+}
+
+extension UIColor {
+    var rgba: (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
+        var red: CGFloat = 0
+        var green: CGFloat = 0
+        var blue: CGFloat = 0
+        var alpha: CGFloat = 0
+        getRed(&red, green: &green, blue: &blue, alpha: &alpha)
+        
+        return (red, green, blue, alpha)
     }
 }

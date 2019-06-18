@@ -96,8 +96,8 @@ class TreeDetailPageViewController: UIPageViewController {
         pageControl = UIPageControl(frame: CGRect(x: 0, y: UIScreen.main.bounds.height - 90, width: UIScreen.main.bounds.width, height: 50))
         pageControl!.numberOfPages = pages.count
         pageControl!.currentPage = 0
-        pageControl!.currentPageIndicatorTintColor = UIColor(red: 0.373, green: 0.718, blue: 0.306, alpha: 1.0)
-        pageControl!.pageIndicatorTintColor = UIColor(red: 0.373, green: 0.718, blue: 0.306, alpha: 0.3)
+        pageControl!.currentPageIndicatorTintColor = UIColor(named: "treesapGreen")!
+        pageControl!.pageIndicatorTintColor = UIColor(named: "treesapGreenTranslucent")!
         view.addSubview(pageControl!)
     }
 
