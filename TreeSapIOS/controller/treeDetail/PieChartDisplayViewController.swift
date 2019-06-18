@@ -71,6 +71,11 @@ class PieChartDisplayViewController: TreeDisplayViewController, ChartViewDelegat
         pieChartView.noDataFont = .preferredFont(forTextStyle: .body)
         pieChartView.noDataTextColor = .black
         pieChartView.noDataTextAlignment = .center
+        if displayedTree!.otherInfo["totalAnnualBenefitsDollars"] != nil {
+            pieChartView.centerAttributedText = NSAttributedString(
+                string: "Total: $" + String(format: "%.2f", displayedTree!.otherInfo["totalAnnualBenefitsDollars"]!),
+                attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17.0, weight: .semibold)])
+        }
 
         // Configure the bar chart
         barChartView.delegate = self
