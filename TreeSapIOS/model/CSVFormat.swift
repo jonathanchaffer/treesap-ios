@@ -9,7 +9,7 @@
 import Foundation
 
 enum CSVFormat {
-    case holland, itree, hope, benefits, mytrees
+    case holland, itree, hope, benefits
 
     // MARK: - Basic tree information
 
@@ -23,8 +23,6 @@ enum CSVFormat {
         case .hope:
             return 0
         case .benefits:
-            return 0
-        case .mytrees:
             return 0
         default:
             return -1
@@ -42,8 +40,6 @@ enum CSVFormat {
             return 2
         case .benefits:
             return 1
-        case .mytrees:
-            return 1
         default:
             return -1
         }
@@ -60,8 +56,6 @@ enum CSVFormat {
             return 1
         case .benefits:
             return -1
-        case .mytrees:
-            return 2
         default:
             return -1
         }
@@ -78,8 +72,6 @@ enum CSVFormat {
             return 4
         case .benefits:
             return 4
-        case .mytrees:
-            return 3
         default:
             return -1
         }
@@ -96,8 +88,6 @@ enum CSVFormat {
             return 5
         case .benefits:
             return 3
-        case .mytrees:
-            return 4
         default:
             return -1
         }
@@ -114,8 +104,16 @@ enum CSVFormat {
             return 10
         case .benefits:
             return 2
-        case .mytrees:
-            return 5
+        default:
+            return -1
+        }
+    }
+    
+    /// Returns the index for whether the tree is native, or -1 if there is none.
+    func nativeIndex() -> Int {
+        switch self {
+        case .benefits:
+            return 15
         default:
             return -1
         }

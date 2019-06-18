@@ -129,6 +129,15 @@ class CSVDataSource: DataSource {
         if csvFormat.dbhIndex() >= 0 {
             dbh = Double(record[self.csvFormat.dbhIndex()])
         }
+        // Set native (optional)
+        var native: Bool?
+        if csvFormat.nativeIndex() >= 0 {
+            if record[self.csvFormat.nativeIndex()].lowercased() == "yes" {
+                native = true
+            } else if record[self.csvFormat.nativeIndex()].lowercased() == "no" {
+                native = false
+            }
+        }
         if latitude != nil, longitude != nil {
             // Create the Tree object
             let tree = Tree(
@@ -137,6 +146,7 @@ class CSVDataSource: DataSource {
                 scientificName: scientificName,
                 location: CLLocationCoordinate2D(latitude: latitude! as CLLocationDegrees, longitude: longitude! as CLLocationDegrees),
                 dbh: dbh,
+                native: native,
                 userID: nil
             )
             

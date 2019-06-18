@@ -19,6 +19,9 @@ class BenefitsDisplayViewController: TreeDisplayViewController {
     @IBOutlet var dbhStackView: UIStackView!
     /**/ @IBOutlet var dbhLabel: UILabel!
     
+    @IBOutlet var nativeStackView: UIStackView!
+    /**/ @IBOutlet var nativeLabel: UILabel!
+    
     @IBOutlet var totalAnnualBenefitsStackView: UIStackView!
     /**/ @IBOutlet var totalAnnualBenefitsDollarsLabel: UILabel!
     
@@ -96,6 +99,16 @@ class BenefitsDisplayViewController: TreeDisplayViewController {
             dbhLabel.text = String(displayedTree!.dbh!) + "\""
         } else {
             dbhStackView.isHidden = true
+        }
+        // Native
+        if displayedTree!.native != nil {
+            if displayedTree!.native! {
+                nativeLabel.text = "Yes"
+            } else {
+                nativeLabel.text = "No"
+            }
+        } else {
+            nativeStackView.isHidden = true
         }
         // Total annual benefits ($)
         if displayedTree!.otherInfo["totalAnnualBenefitsDollars"] != nil {

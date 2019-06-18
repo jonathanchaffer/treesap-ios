@@ -111,6 +111,7 @@ class AddTreePageViewController: UIPageViewController {
                 longitude: Double((pages[0] as! AddTreeLocationViewController).longitudeTextField.text!)!
             ),
             dbh: Double((pages[4] as! AddTreeOtherViewController).dbhTextField.text!),
+            native: nil,
             userID: AccountManager.getUserID()
         )
         // Add the images, if any, to the Tree
