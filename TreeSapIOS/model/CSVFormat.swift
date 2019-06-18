@@ -234,12 +234,32 @@ enum CSVFormat {
             return -1
         }
     }
+    
+    /// Returns the index for CO (oz/yr), or -1 if there is none.
+    func coOuncesIndex() -> Int {
+        switch self {
+        case .benefits:
+            return 36
+        default:
+            return -1
+        }
+    }
 
     /// Returns the index for O3 ($/yr), or -1 if there is none.
     func o3DollarsIndex() -> Int {
         switch self {
         case .benefits:
             return 42
+        default:
+            return -1
+        }
+    }
+    
+    /// Returns the index for O3 (oz/yr), or -1 if there is none.
+    func o3OuncesIndex() -> Int {
+        switch self {
+        case .benefits:
+            return 37
         default:
             return -1
         }
@@ -254,6 +274,16 @@ enum CSVFormat {
             return -1
         }
     }
+    
+    /// Returns the index for NO2 (oz/yr), or -1 if there is none.
+    func no2OuncesIndex() -> Int {
+        switch self {
+        case .benefits:
+            return 38
+        default:
+            return -1
+        }
+    }
 
     /// Returns the index for SO2 ($/yr), or -1 if there is none.
     func so2DollarsIndex() -> Int {
@@ -264,12 +294,32 @@ enum CSVFormat {
             return -1
         }
     }
+    
+    /// Returns the index for SO2 (oz/yr), or -1 if there is none.
+    func so2OuncesIndex() -> Int {
+        switch self {
+        case .benefits:
+            return 39
+        default:
+            return -1
+        }
+    }
 
     /// Returns the index for PM2.5 ($/yr), or -1 if there is none.
     func pm25DollarsIndex() -> Int {
         switch self {
         case .benefits:
             return 45
+        default:
+            return -1
+        }
+    }
+    
+    /// Returns the index for PM2.5 (oz/yr), or -1 if there is none.
+    func pm25OuncesIndex() -> Int {
+        switch self {
+        case .benefits:
+            return 40
         default:
             return -1
         }
@@ -295,11 +345,31 @@ enum CSVFormat {
         }
     }
     
+    /// Returns the index for heating (MBTU/yr), or -1 if there is none.
+    func heatingMBTUIndex() -> Int {
+        switch self {
+        case .benefits:
+            return 53
+        default:
+            return -1
+        }
+    }
+    
     /// Returns the index for cooling ($/yr), or -1 if there is none.
     func coolingDollarsIndex() -> Int {
         switch self {
         case .benefits:
             return 58
+        default:
+            return -1
+        }
+    }
+    
+    /// Returns the index for cooling ($/yr), or -1 if there is none.
+    func coolingKWHIndex() -> Int {
+        switch self {
+        case .benefits:
+            return 57
         default:
             return -1
         }

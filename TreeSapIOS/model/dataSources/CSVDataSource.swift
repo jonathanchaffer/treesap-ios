@@ -175,17 +175,32 @@ class CSVDataSource: DataSource {
             if csvFormat.coDollarsIndex() >= 0 {
                 tree.setOtherInfo(key: "coDollars", value: Double(record[self.csvFormat.coDollarsIndex()])!)
             }
+            if csvFormat.coOuncesIndex() >= 0 {
+                tree.setOtherInfo(key: "coOunces", value: Double(record[self.csvFormat.coOuncesIndex()])!)
+            }
             if csvFormat.o3DollarsIndex() >= 0 {
                 tree.setOtherInfo(key: "o3Dollars", value: Double(record[self.csvFormat.o3DollarsIndex()])!)
+            }
+            if csvFormat.o3OuncesIndex() >= 0 {
+                tree.setOtherInfo(key: "o3Ounces", value: Double(record[self.csvFormat.o3OuncesIndex()])!)
             }
             if csvFormat.no2DollarsIndex() >= 0 {
                 tree.setOtherInfo(key: "no2Dollars", value: Double(record[self.csvFormat.no2DollarsIndex()])!)
             }
+            if csvFormat.no2OuncesIndex() >= 0 {
+                tree.setOtherInfo(key: "no2Ounces", value: Double(record[self.csvFormat.no2OuncesIndex()])!)
+            }
             if csvFormat.so2DollarsIndex() >= 0 {
                 tree.setOtherInfo(key: "so2Dollars", value: Double(record[self.csvFormat.so2DollarsIndex()])!)
             }
+            if csvFormat.so2OuncesIndex() >= 0 {
+                tree.setOtherInfo(key: "so2Ounces", value: Double(record[self.csvFormat.so2OuncesIndex()])!)
+            }
             if csvFormat.pm25DollarsIndex() >= 0 {
                 tree.setOtherInfo(key: "pm25Dollars", value: Double(record[self.csvFormat.pm25DollarsIndex()])!)
+            }
+            if csvFormat.pm25OuncesIndex() >= 0 {
+                tree.setOtherInfo(key: "pm25Ounces", value: Double(record[self.csvFormat.pm25OuncesIndex()])!)
             }
             if csvFormat.heating1DollarsIndex() >= 0 {
                 tree.setOtherInfo(key: "heating1Dollars", value: Double(record[self.csvFormat.heating1DollarsIndex()])!)
@@ -193,8 +208,14 @@ class CSVDataSource: DataSource {
             if csvFormat.heating2DollarsIndex() >= 0 {
                 tree.setOtherInfo(key: "heating2Dollars", value: Double(record[self.csvFormat.heating2DollarsIndex()])!)
             }
+            if csvFormat.heatingMBTUIndex() >= 0 {
+                tree.setOtherInfo(key: "heatingMBTU", value: Double(record[self.csvFormat.heatingMBTUIndex()])!)
+            }
             if csvFormat.coolingDollarsIndex() >= 0 {
                 tree.setOtherInfo(key: "coolingDollars", value: Double(record[self.csvFormat.coolingDollarsIndex()])!)
+            }
+            if csvFormat.coolingKWHIndex() >= 0 {
+                tree.setOtherInfo(key: "coolingKWH", value: Double(record[self.csvFormat.coolingKWHIndex()])!)
             }
             return tree
         }
