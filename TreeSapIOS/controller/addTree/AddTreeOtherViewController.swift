@@ -13,11 +13,10 @@ class AddTreeOtherViewController: AddTreeViewController {
 
     @IBOutlet var commonNameTextField: UITextField!
     @IBOutlet var scientificNameTextField: UITextField!
+    
     @IBOutlet var measurementStackView: UIStackView!
     @IBOutlet var dbhTextField: UITextField!
     @IBOutlet var circumferenceTextField: UITextField!
-    
-    // Extra DBH/circumference inputs
     @IBOutlet weak var measurement1StackView: UIStackView!
     @IBOutlet weak var dbh1TextField: UITextField!
     @IBOutlet weak var circumference1TextField: UITextField!
@@ -84,7 +83,12 @@ class AddTreeOtherViewController: AddTreeViewController {
     @IBAction func addMeasurementButtonPressed(_ sender: UIButton) {
         if visibleMeasurementsCount < measurementStackViews.count {
             visibleMeasurementsCount += 1
-            measurementStackViews[visibleMeasurementsCount - 1].isHidden = false
+            let stackViewToShow = measurementStackViews[visibleMeasurementsCount - 1]
+            stackViewToShow.layer.opacity = 0
+            UIView.animate(withDuration: 0.3, animations: {
+                stackViewToShow.isHidden = false
+                stackViewToShow.layer.opacity = 1
+            })
         } else {
             AlertManager.alertUser(title: "Maximum number of trunk measurements reached", message: "You can only input up to \(measurementStackViews.count) trunk measurements.")
         }
@@ -94,9 +98,13 @@ class AddTreeOtherViewController: AddTreeViewController {
     @IBAction func removeMeasurementButtonPressed(_ sender: UIButton) {
         if visibleMeasurementsCount > 1 {
             visibleMeasurementsCount -= 1
-            measurementStackViews[visibleMeasurementsCount].isHidden = true
-            dbhTextFields[visibleMeasurementsCount].text = nil
-            circumferenceTextFields[visibleMeasurementsCount].text = nil
+            let stackViewToHide = measurementStackViews[visibleMeasurementsCount]
+            UIView.animate(withDuration: 0.3, animations: {
+                stackViewToHide.layer.opacity = 0
+                stackViewToHide.isHidden = true
+                self.dbhTextFields[self.visibleMeasurementsCount].text = nil
+                self.circumferenceTextFields[self.visibleMeasurementsCount].text = nil
+            })
         } else {
             AlertManager.alertUser(title: "Minimum number of trunk measurements reached", message: "At least one trunk measurement is needed.")
         }
