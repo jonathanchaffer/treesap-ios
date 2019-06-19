@@ -24,8 +24,6 @@ enum CSVFormat {
             return 0
         case .benefits:
             return 0
-        default:
-            return -1
         }
     }
 
@@ -40,8 +38,6 @@ enum CSVFormat {
             return 2
         case .benefits:
             return 1
-        default:
-            return -1
         }
     }
 
@@ -55,8 +51,6 @@ enum CSVFormat {
         case .hope:
             return 1
         case .benefits:
-            return -1
-        default:
             return -1
         }
     }
@@ -72,8 +66,6 @@ enum CSVFormat {
             return 4
         case .benefits:
             return 4
-        default:
-            return -1
         }
     }
 
@@ -88,8 +80,6 @@ enum CSVFormat {
             return 5
         case .benefits:
             return 3
-        default:
-            return -1
         }
     }
 
@@ -104,8 +94,6 @@ enum CSVFormat {
             return 10
         case .benefits:
             return 2
-        default:
-            return -1
         }
     }
     
