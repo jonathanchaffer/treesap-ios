@@ -28,6 +28,10 @@ class AddTreeOtherViewController: AddTreeViewController {
     @IBOutlet weak var dbh3TextField: UITextField!
     @IBOutlet weak var circumference3TextField: UITextField!
     
+    @IBOutlet var metricSwitch: UISwitch!
+    @IBOutlet var dbhLabels: [UILabel]!
+    @IBOutlet var circumferenceLabels: [UILabel]!
+    
     /// The number of additional measurements that are currently being shown.
     var visibleMeasurementsCount = 1
     
@@ -57,6 +61,8 @@ class AddTreeOtherViewController: AddTreeViewController {
         for i in 1 ..< measurementStackViews.count {
             measurementStackViews[i].isHidden = true
         }
+        // Set the metric switch to off
+        metricSwitch.isOn = false
     }
 
     // MARK: - Actions
@@ -96,7 +102,25 @@ class AddTreeOtherViewController: AddTreeViewController {
         }
     }
     
-
+    @IBAction func toggleMetric(_ sender: UISwitch) {
+        if sender.isOn {
+            for label in dbhLabels {
+                label.text = "DBH (cm)"
+            }
+            for label in circumferenceLabels {
+                label.text = "Circumference (cm)"
+            }
+        } else {
+            for label in dbhLabels {
+                label.text = "DBH (in)"
+            }
+            for label in circumferenceLabels {
+                label.text = "Circumference (in)"
+            }
+        }
+        
+    }
+    
     @IBAction func broadcastBack(_: UIButton) {
         previousPage()
     }
