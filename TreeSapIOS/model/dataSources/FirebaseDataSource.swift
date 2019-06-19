@@ -53,25 +53,41 @@ class FirebaseDataSource: DataSource {
      */
     func loadTreesFromDocuments(documents: [DocumentSnapshot]) {
         for document in documents {
-            let data = document.data()!
-            let tree = Tree(
-                id: data["treeID"] as? Int,
-                commonName: NameFormatter.formatCommonName(commonName: data["commonName"] as? String),
-                scientificName: NameFormatter.formatScientificName(scientificName: data["scientificName"] as? String),
-                location: CLLocationCoordinate2D(
-                    latitude: data["latitude"] as! Double,
-                    longitude: data["longitude"] as! Double),
-                native: data["native"] as? Bool,
-                userID: data["userID"] as? String)
-            for dbh in data["dbhArray"] as! [Double] {
-                tree.addDBH(dbh)
+            do {
+                let data = document.data()!
+                let id = data["treeID"] as? Int
+                let commonName = NameFormatter.formatCommonName(commonName: data["commonName"] as? String)
+                let scientificName = NameFormatter.formatScientificName(scientificName: data["scientificName"] as? String)
+                guard let latitude = data["latitude"] as? Double else { throw DatabaseError.invalidDocumentData }
+                guard let longitude = data["longitude"] as? Double else { throw DatabaseError.invalidDocumentData }
+                let native = data["native"] as? Bool
+                let userID = data["userID"] as? String
+                guard let dbhArray = data["dbhArray"] as? [Double] else { throw DatabaseError.invalidDocumentData }
+                let tree = Tree(
+                    id: id,
+                    commonName: commonName,
+                    scientificName: scientificName,
+                    location: CLLocationCoordinate2D(
+                        latitude: latitude,
+                        longitude: longitude),
+                    native: native,
+                    userID: userID)
+                for dbh in dbhArray {
+                    tree.addDBH(dbh)
+                }
+                // TODO: Add images and other info
+                trees.append(tree)
+            } catch {
+                print("Error: The document \(document.documentID) could not be read.")
             }
-            // TODO: Add images and other info
-            trees.append(tree)
         }
     }
 }
 
 enum DatabaseType {
     case pendingTrees, publicTrees
+}
+
+enum DatabaseError: Error {
+    case invalidDocumentData
 }
