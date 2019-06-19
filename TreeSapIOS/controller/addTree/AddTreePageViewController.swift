@@ -110,10 +110,26 @@ class AddTreePageViewController: UIPageViewController {
                 latitude: Double((pages[0] as! AddTreeLocationViewController).latitudeTextField.text!)!,
                 longitude: Double((pages[0] as! AddTreeLocationViewController).longitudeTextField.text!)!
             ),
-            dbh: Double((pages[4] as! AddTreeOtherViewController).dbhTextField.text!),
             native: nil,
             userID: AccountManager.getUserID()
         )
+        // Add DBH values, if any, to the Tree
+        let dbh = Double((pages[4] as! AddTreeOtherViewController).dbhTextField.text!)
+        if dbh != nil {
+            createdTree.addDBH(convertToMetricIfNecessary(dbh!))
+        }
+        let dbh1 = Double((pages[4] as! AddTreeOtherViewController).dbh1TextField.text!)
+        if dbh1 != nil {
+            createdTree.addDBH(convertToMetricIfNecessary(dbh1!))
+        }
+        let dbh2 = Double((pages[4] as! AddTreeOtherViewController).dbh2TextField.text!)
+        if dbh2 != nil {
+            createdTree.addDBH(convertToMetricIfNecessary(dbh2!))
+        }
+        let dbh3 = Double((pages[4] as! AddTreeOtherViewController).dbh3TextField.text!)
+        if dbh3 != nil {
+            createdTree.addDBH(convertToMetricIfNecessary(dbh3!))
+        }
         // Add the images, if any, to the Tree
         let barkImage = (pages[1] as! AddTreePhotoViewController).selectedImage
         let leafImage = (pages[2] as! AddTreePhotoViewController).selectedImage
@@ -149,5 +165,12 @@ class AddTreePageViewController: UIPageViewController {
         dismiss(animated: true) {
             AlertManager.alertUser(title: "Error submitting tree", message: "An error occurred while trying to submit your tree. Please try again.")
         }
+    }
+    
+    private func convertToMetricIfNecessary(_ dbh: Double) -> Double {
+        if (pages[4] as! AddTreeOtherViewController).metricSwitch.isOn {
+            return dbh * 2.54
+        }
+        return dbh
     }
 }
