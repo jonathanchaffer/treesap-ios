@@ -15,7 +15,7 @@ class TreeFinderTests: XCTestCase {
     
     override func setUp() {
         for dataSource in DataManager.dataSources{
-            dataSource.retrieveOnlineData(loadingScreenActive: false)
+            dataSource.importOnlineTreeData()
         }
     }
     

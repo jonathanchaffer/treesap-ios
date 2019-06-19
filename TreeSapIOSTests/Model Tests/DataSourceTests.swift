@@ -11,14 +11,14 @@ import CSVImporter
 import XCTest
 
 class DataSourceTests: XCTestCase {
-    var hollandSource: DataSource!
-    var iTreeSource: DataSource!
-    var hopeSource: DataSource!
+    var hollandSource: CSVDataSource!
+    var iTreeSource: CSVDataSource!
+    var hopeSource: CSVDataSource!
 
     override func setUp() {
-        hollandSource = DataSource(internetFilename: "CoH_Tree_Inventory_6_12_18.csv", localFilename: "holland.csv", dataSourceName: "City of Holland", csvFormat: CSVFormat.holland)
-        iTreeSource = DataSource(internetFilename: "iTreeExport_119_HopeTrees_7may2018.csv", localFilename: "itree.csv", dataSourceName: "iTree", csvFormat: CSVFormat.itree)
-        hopeSource = DataSource(internetFilename: "dataExport_119_HopeTrees_7may2018.csv", localFilename: "hope.csv", dataSourceName: "Hope College", csvFormat: CSVFormat.hope)
+        hollandSource = CSVDataSource(internetFilename: "CoH_Tree_Inventory_6_12_18.csv", localFilename: "holland.csv", dataSourceName: "City of Holland", csvFormat: CSVFormat.holland)
+        iTreeSource = CSVDataSource(internetFilename: "iTreeExport_119_HopeTrees_7may2018.csv", localFilename: "itree.csv", dataSourceName: "iTree", csvFormat: CSVFormat.itree)
+        hopeSource = CSVDataSource(internetFilename: "dataExport_119_HopeTrees_7may2018.csv", localFilename: "hope.csv", dataSourceName: "Hope College", csvFormat: CSVFormat.hope)
     }
 
     override func tearDown() { }
