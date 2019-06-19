@@ -97,6 +97,48 @@ enum CSVFormat {
         }
     }
     
+    /// Returns the index for the DBH(1), or -1 if there is none.
+    func dbh1Index() -> Int {
+        switch self {
+        case .holland:
+            return 11
+        case .itree:
+            return 11
+        case .hope:
+            return 11
+        default:
+            return -1
+        }
+    }
+    
+    /// Returns the index for the DBH(2), or -1 if there is none.
+    func dbh2Index() -> Int {
+        switch self {
+        case .holland:
+            return 12
+        case .itree:
+            return 12
+        case .hope:
+            return 12
+        default:
+            return -1
+        }
+    }
+    
+    /// Returns the index for the DBH(3), or -1 if there is none.
+    func dbh3Index() -> Int {
+        switch self {
+        case .holland:
+            return 14
+        case .itree:
+            return 13
+        case .hope:
+            return 13
+        default:
+            return -1
+        }
+    }
+    
     /// Returns the index for whether the tree is native, or -1 if there is none.
     func nativeIndex() -> Int {
         switch self {

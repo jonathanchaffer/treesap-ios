@@ -95,8 +95,13 @@ class BenefitsDisplayViewController: TreeDisplayViewController {
             scientificNameLabel.isHidden = true
         }
         // DBH
-        if displayedTree!.dbh != nil {
-            dbhLabel.text = String(displayedTree!.dbh!) + "\""
+        if displayedTree!.dbhArray != [] {
+            var dbhString = ""
+            for i in 0 ..< displayedTree!.dbhArray.count - 1 {
+                dbhString += String(displayedTree!.dbhArray[i]) + "\", "
+            }
+            dbhString += String(displayedTree!.dbhArray[displayedTree!.dbhArray.count - 1]) + "\""
+            dbhLabel.text = dbhString
         } else {
             dbhStackView.isHidden = true
         }
