@@ -15,6 +15,8 @@ class MapViewController: UIViewController {
 
     @IBOutlet var mapView: MKMapView!
     let regionRadius: CLLocationDistance = 200
+    ///The location on which the map will be centered if the user's location is not provided
+    let defaultLocation: (Double, Double) = (42.78758, -86.108110)  //These are the coordinates of Centennial Park (in Holland, Michigan)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,11 +31,11 @@ class MapViewController: UIViewController {
             mapView.register(TreeAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
         }
 
-        // If location use is authorized, set starting location to current location. Otherwise, use Centennial Park (in Holland, Michigan) as a default.
+        // If location use is authorized, set starting location to current location. Otherwise, use the default location.
         if LocationManager.locationFeaturesEnabled, LocationManager.getCurrentLocation() != nil {
             centerMapOnLocation(location: LocationManager.getCurrentLocation()!.coordinate)
         } else {
-            centerMapOnLocation(location: CLLocationCoordinate2D(latitude: 42.787586, longitude: -86.108110))
+            centerMapOnLocation(location: CLLocationCoordinate2D(latitude: defaultLocation.0, longitude: defaultLocation.1))
         }
     }
 
@@ -55,7 +57,8 @@ class MapViewController: UIViewController {
         // Add annotations to the map.
         for dataSource in PreferencesManager.getActiveDataSources() {
             for tree in dataSource.getTreeList() {
-                mapView.addAnnotation(TreeAnnotation(tree: tree))
+                let annotation = TreeAnnotation(tree: tree)
+                mapView.addAnnotation(annotation)
             }
         }
     }
@@ -70,12 +73,42 @@ class MapViewController: UIViewController {
         let coordinateRegion = MKCoordinateRegion(center: location, latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
         mapView.setRegion(coordinateRegion, animated: true)
     }
+    
+    // MARK: - MKMapViewDelegate Protocol Functions
+    
+    //When this is finished, it should deactivate tree annotations surrounding a tree annotation that was tapped. This is so that the surrounding annotations do not get in the way of the user pressing the annotation callout
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView){
+        //This commented out code might be used later
+//        let annotation = view.annotation as! TreeAnnotation
+//        let annotationPoint = MKMapPoint(annotation.coordinate)
+//        let deactivationRegion = MKMapSize(width: 0.5, height: 0.5)
+//        let annotationSet = mapView.annotations(in: MKMapRect(origin: annotationPoint, size: MKMapSize.world))
+
+        for nearbyAnnotation in mapView.annotations{
+            let annotationView = mapView.view(for: nearbyAnnotation)
+            if(annotationView != nil){
+                annotationView!.isUserInteractionEnabled = false
+            }
+        }
+        view.isUserInteractionEnabled = true
+    }
+    
+    //When this is finished, it should reactivate tree annotations surrounding a tree annotation that was tapped.
+    func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView){
+        for nearbyAnnotation in mapView.annotations{
+            let annotationView = mapView.view(for: nearbyAnnotation)
+            if(annotationView != nil){
+                annotationView!.isUserInteractionEnabled = true
+            }
+        }
+    }
 }
 
 extension MapViewController: MKMapViewDelegate {
     // This function gets called whenever the info button is pressed on a map callout
     func mapView(_: MKMapView, annotationView view: MKAnnotationView,
                  calloutAccessoryControlTapped _: UIControl) {
+        
         let annotation = view.annotation as! TreeAnnotation
 
         // Display tree data
