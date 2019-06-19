@@ -17,7 +17,6 @@ class AddTreeOtherViewController: AddTreeViewController {
     @IBOutlet var dbhTextField: UITextField!
     @IBOutlet var circumferenceTextField: UITextField!
     
-    var extraMeasurementsCount = 0
     // Extra DBH/circumference inputs
     @IBOutlet weak var measurement1StackView: UIStackView!
     @IBOutlet weak var dbh1TextField: UITextField!
@@ -28,6 +27,9 @@ class AddTreeOtherViewController: AddTreeViewController {
     @IBOutlet weak var measurement3StackView: UIStackView!
     @IBOutlet weak var dbh3TextField: UITextField!
     @IBOutlet weak var circumference3TextField: UITextField!
+    
+    /// The number of additional measurements that are currently being shown.
+    var visibleMeasurementsCount = 1
     
     var dbhTextFields = [UITextField]()
     var circumferenceTextFields = [UITextField]()
@@ -67,25 +69,28 @@ class AddTreeOtherViewController: AddTreeViewController {
         present(alert, animated: true)
     }
     
+    /// Shows an alert that explains what DBH means.
     @IBAction func dbhInfoButtonPressed(_ sender: UIButton) {
         AlertManager.alertUser(title: "What does DBH mean?", message: "DBH is an acronym for Diameter at Breast Height, where breast height is 4.5 feet above the ground. If you update this field, the circumference field will update automatically, and vice versa.")
     }
     
     /// Shows an additional measurement stack view.
     @IBAction func addMeasurementButtonPressed(_ sender: UIButton) {
-        if extraMeasurementsCount < measurementStackViews.count - 1 {
-            extraMeasurementsCount += 1
-            measurementStackViews[extraMeasurementsCount].isHidden = false
+        if visibleMeasurementsCount < measurementStackViews.count {
+            visibleMeasurementsCount += 1
+            measurementStackViews[visibleMeasurementsCount - 1].isHidden = false
         } else {
             AlertManager.alertUser(title: "Maximum number of trunk measurements reached", message: "You can only input up to \(measurementStackViews.count) trunk measurements.")
         }
     }
     
-    /// Hides a measurement stack view.
+    /// Hides a measurement stack view and clears its text.
     @IBAction func removeMeasurementButtonPressed(_ sender: UIButton) {
-        if extraMeasurementsCount >= 1 {
-            extraMeasurementsCount -= 1
-            measurementStackViews[extraMeasurementsCount].isHidden = true
+        if visibleMeasurementsCount > 1 {
+            visibleMeasurementsCount -= 1
+            measurementStackViews[visibleMeasurementsCount].isHidden = true
+            dbhTextFields[visibleMeasurementsCount].text = nil
+            circumferenceTextFields[visibleMeasurementsCount].text = nil
         } else {
             AlertManager.alertUser(title: "Minimum number of trunk measurements reached", message: "At least one trunk measurement is needed.")
         }
@@ -103,16 +108,20 @@ class AddTreeOtherViewController: AddTreeViewController {
         NotificationCenter.default.post(name: NSNotification.Name("submitTree"), object: nil)
     }
     
+    /// Function that is called when a text field's text changes.
     @objc private func textFieldDidChange(_ textField: UITextField) {
         let currentText = textField.text!
-        if textField == dbhTextField {
-            updateCircumference(dbhText: currentText, circumferenceTextField: circumferenceTextField)
+        if dbhTextFields.contains(textField) {
+            let i = dbhTextFields.firstIndex(of: textField)!
+            updateCircumference(dbhText: currentText, circumferenceTextField: circumferenceTextFields[i])
         }
-        if textField == circumferenceTextField {
-            updateDBH(circumferenceText: currentText, dbhTextField: dbhTextField)
+        if circumferenceTextFields.contains(textField) {
+            let i = circumferenceTextFields.firstIndex(of: textField)!
+            updateDBH(circumferenceText: currentText, dbhTextField: dbhTextFields[i])
         }
     }
     
+    /// Converts a DBH string to circumference and updates the specified text field.
     private func updateCircumference(dbhText: String, circumferenceTextField: UITextField) {
         let dbh = Double(dbhText)
         if dbh != nil {
@@ -122,6 +131,7 @@ class AddTreeOtherViewController: AddTreeViewController {
         }
     }
     
+    /// Converts a circumference string to DBH and updates the specified text field.
     private func updateDBH(circumferenceText: String, dbhTextField: UITextField) {
         let circumference = Double(circumferenceText)
         if circumference != nil {
