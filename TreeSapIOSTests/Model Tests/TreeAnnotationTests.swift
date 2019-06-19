@@ -14,7 +14,7 @@ class TreeAnnotationTests: XCTestCase {
 
     func testTreeAnnotation(){
         let treeCoordinates: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 72.3, longitude: -84.785)
-        let tree: Tree = Tree(id: 81, commonName: "Name of Tree", scientificName: "Scientific Name of Tree", location: treeCoordinates, dbh: 12.396665, native: true, userID: "abc")
+        let tree: Tree = Tree(id: 81, commonName: "Name of Tree", scientificName: "Scientific Name of Tree", location: treeCoordinates, native: true, userID: "abc")
         let treeAnnotation: TreeAnnotation = TreeAnnotation(tree: tree)
         
         XCTAssertEqual(treeAnnotation.title, tree.commonName)
@@ -28,6 +28,5 @@ class TreeAnnotationTests: XCTestCase {
         XCTAssertEqual(treeAnnotationTree.scientificName, tree.scientificName)
         XCTAssertEqual(treeAnnotationTree.location.latitude, tree.location.latitude)
         XCTAssertEqual(treeAnnotationTree.location.longitude, tree.location.longitude)
-        XCTAssertEqual(treeAnnotationTree.dbh, tree.dbh)
     }
 }
