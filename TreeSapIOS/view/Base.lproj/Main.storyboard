@@ -1308,7 +1308,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" image="QRCodeOverlay" highlightedImage="QRCodeOverlay" translatesAutoresizingMaskIntoConstraints="NO" id="tLf-oU-uzz">
-                                <rect key="frame" x="62.5" y="216" width="250" height="250"/>
+                                <rect key="frame" x="179.5" y="333" width="16" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="250" id="BuD-2o-2Ff"/>
                                     <constraint firstAttribute="width" secondItem="tLf-oU-uzz" secondAttribute="height" multiplier="1:1" id="nBa-MU-vRJ"/>
@@ -1889,7 +1889,7 @@ ZC4
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Log In" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T9f-Sc-kvd">
-                                                    <rect key="frame" x="16" y="11.5" width="47" height="21"/>
+                                                    <rect key="frame" x="16" y="11.5" width="317" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1898,6 +1898,7 @@ ZC4
                                             <constraints>
                                                 <constraint firstItem="T9f-Sc-kvd" firstAttribute="leading" secondItem="7zD-Ud-8pK" secondAttribute="leadingMargin" id="9hG-7C-U45"/>
                                                 <constraint firstItem="T9f-Sc-kvd" firstAttribute="centerY" secondItem="7zD-Ud-8pK" secondAttribute="centerY" id="iXt-TX-PcD"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="T9f-Sc-kvd" secondAttribute="trailing" id="puQ-Ti-1zd"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -1912,7 +1913,7 @@ ZC4
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="example@example.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t1C-3v-RfR">
-                                                    <rect key="frame" x="16" y="11.5" width="181" height="21"/>
+                                                    <rect key="frame" x="16" y="11.5" width="343" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1920,6 +1921,7 @@ ZC4
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="t1C-3v-RfR" firstAttribute="leading" secondItem="Fdd-VM-0V3" secondAttribute="leadingMargin" id="Gkb-pJ-m5k"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="t1C-3v-RfR" secondAttribute="trailing" id="YBt-6b-nbo"/>
                                                 <constraint firstItem="t1C-3v-RfR" firstAttribute="centerY" secondItem="Fdd-VM-0V3" secondAttribute="centerY" id="ySt-7M-W0T"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -1932,7 +1934,7 @@ ZC4
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Log Out" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aA9-Sr-1Oz">
-                                                    <rect key="frame" x="16" y="11.5" width="61" height="21"/>
+                                                    <rect key="frame" x="16" y="11.5" width="343" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
                                                     <nil key="highlightedColor"/>
@@ -1940,6 +1942,7 @@ ZC4
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="aA9-Sr-1Oz" firstAttribute="centerY" secondItem="9cg-MC-FOc" secondAttribute="centerY" id="0NW-Ki-4CO"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="aA9-Sr-1Oz" secondAttribute="trailing" id="SzM-zE-IrU"/>
                                                 <constraint firstItem="aA9-Sr-1Oz" firstAttribute="leading" secondItem="9cg-MC-FOc" secondAttribute="leadingMargin" id="XbV-0G-oPg"/>
                                             </constraints>
                                         </tableViewCellContentView>
