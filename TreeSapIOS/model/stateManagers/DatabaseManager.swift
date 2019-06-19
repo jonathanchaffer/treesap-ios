@@ -32,9 +32,7 @@ class DatabaseManager {
         if tree.id != nil {
             data["treeID"] = tree.id!
         }
-        if tree.dbh != nil {
-            data["dbh"] = tree.dbh!
-        }
+        data["dbhArray"] = tree.dbhArray
         data["otherInfo"] = tree.otherInfo
         data["userID"] = AccountManager.getUserID()
         

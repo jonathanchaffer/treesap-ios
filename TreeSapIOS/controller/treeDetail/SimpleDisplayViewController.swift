@@ -45,8 +45,13 @@ class SimpleDisplayViewController: TreeDisplayViewController {
         latitudeLabel.text = String(displayedTree!.location.latitude)
         longitudeLabel.text = String(displayedTree!.location.longitude)
         // Set DBH label
-        if displayedTree!.dbh != nil {
-            dbhLabel.text = String(displayedTree!.dbh!) + "\""
+        if displayedTree!.dbhArray != [] {
+            var dbhString = ""
+            for i in 0 ..< displayedTree!.dbhArray.count - 1 {
+                dbhString += String(displayedTree!.dbhArray[i]) + "\", "
+            }
+            dbhString += String(displayedTree!.dbhArray[displayedTree!.dbhArray.count - 1]) + "\""
+            dbhLabel.text = dbhString
         } else {
             dbhStackView.isHidden = true
         }
@@ -58,7 +63,7 @@ class SimpleDisplayViewController: TreeDisplayViewController {
     
     // - Actions
     @IBAction func dbhInfoButtonPressed(_ sender: UIButton) {
-        AlertManager.alertUser(title: "What does DBH mean?", message: "DBH is an acronym for Diameter at Breast Height, with breast height being 4.5 feet above the ground.")
+        AlertManager.alertUser(title: "What does DBH mean?", message: "DBH is an acronym for Diameter at Breast Height, with breast height being 4.5 feet above the ground. If multiple numbers are listed, it means that the tree has multiple branches below breast height.")
     }
     
 }

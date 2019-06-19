@@ -124,11 +124,6 @@ class CSVDataSource: DataSource {
         // Set latitude and longitude (required)
         let latitude = Double(record[self.csvFormat.latitudeIndex()])
         let longitude = Double(record[self.csvFormat.longitudeIndex()])
-        // Set DBH (optional)
-        var dbh: Double?
-        if csvFormat.dbhIndex() >= 0 {
-            dbh = Double(record[self.csvFormat.dbhIndex()])
-        }
         // Set native (optional)
         var native: Bool?
         if csvFormat.nativeIndex() >= 0 {
@@ -145,10 +140,38 @@ class CSVDataSource: DataSource {
                 commonName: commonName,
                 scientificName: scientificName,
                 location: CLLocationCoordinate2D(latitude: latitude! as CLLocationDegrees, longitude: longitude! as CLLocationDegrees),
-                dbh: dbh,
                 native: native,
                 userID: nil
             )
+            // Set DBH
+            var dbh: Double?
+            if csvFormat.dbhIndex() >= 0 {
+                dbh = Double(record[self.csvFormat.dbhIndex()])
+                if dbh != nil && dbh != 0 {
+                    tree.addDBH(dbh!)
+                }
+            }
+            var dbh1: Double?
+            if csvFormat.dbh1Index() >= 0 {
+                dbh1 = Double(record[self.csvFormat.dbh1Index()])
+                if dbh1 != nil && dbh1 != 0 {
+                    tree.addDBH(dbh1!)
+                }
+            }
+            var dbh2: Double?
+            if csvFormat.dbh2Index() >= 0 {
+                dbh2 = Double(record[self.csvFormat.dbh2Index()])
+                if dbh2 != nil && dbh2 != 0 {
+                    tree.addDBH(dbh2!)
+                }
+            }
+            var dbh3: Double?
+            if csvFormat.dbh3Index() >= 0 {
+                dbh3 = Double(record[self.csvFormat.dbh3Index()])
+                if dbh3 != nil && dbh3 != 0 {
+                    tree.addDBH(dbh3!)
+                }
+            }
             
             // Set general benefit information
             if csvFormat.carbonSequestrationPoundsIndex() >= 0 {

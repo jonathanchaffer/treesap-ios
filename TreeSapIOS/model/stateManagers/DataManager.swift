@@ -17,8 +17,8 @@ class DataManager {
         CSVDataSource(internetFilename: "iTreeExport_119_HopeTrees_7may2018.csv", localFilename: "itree.csv", dataSourceName: "Hope College i-Tree Data", csvFormat: .itree),
         CSVDataSource(internetFilename: "dataExport_119_HopeTrees_7may2018.csv", localFilename: "hope.csv", dataSourceName: "Hope College Trees", csvFormat: .hope),
         CSVDataSource(internetFilename: "katelyn.csv", localFilename: "benefits.csv", dataSourceName: "Tree Benefit Data", csvFormat: .benefits),
-        FirebaseDataSource(dataSourceName: "My Pending Trees", databaseType: .pendingTrees),
-        FirebaseDataSource(dataSourceName: "User Trees", databaseType: .publicTrees)
+        //FirebaseDataSource(dataSourceName: "My Pending Trees", databaseType: .pendingTrees),
+        //FirebaseDataSource(dataSourceName: "User Trees", databaseType: .publicTrees)
     ]
     
     /// Keeps track of whether data was gathered from online data sources properly. Each element in the array is a tuple that contains the name of the data source and a Bool that indicates whether the loading of data was successful.
