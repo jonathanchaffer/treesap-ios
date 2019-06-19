@@ -191,49 +191,4 @@ class TreeFinderTests: XCTestCase {
         //Tree Benefit Data Test Cases
         ///Cases that include trees in the Tree Benefits data set
         let treeBenefitsFoundCases: [(String?, Double, Double)] = [("American Basswood",42.77405533,-86.10725963), ("American Sycamore",42.7909676,-86.05525776), ("American Sycamore",42.79083185,-86.05524837), ("Japanese Flowering Cherry",42.77437772,-86.10899429), ("Littleleaf Linden",42.78815167,-86.06422697), ("Norway Maple",42.77798861,-86.10420353), ("Red Maple",42.77475559,-86.11658534), ("Sugar Maple",42.78743799,-86.05207995), ("Wych Elm",42.78756826,-86.05535508)]
-        
-        // This function does not work
-        //    /**
-        //     Uses the distance formula to calculate the distance between to points
-        //
-        //     - Parameters:
-        //     - point1: A CLLocationCoordinate2D that gives the location of the first point
-        //     - point2: A CLLocationCoordinate2D that gives the location of the second point
-        //
-        //     - Returns: A double that gives the distance between the two points
-        //     */
-        //    func distanceBetweenPoints(point1: CLLocationCoordinate2D, point2: CLLocationCoordinate2D) -> Double{
-        //        let latitudeDistance: Double = point1.latitude - point2.latitude
-        //        let longitudeDistance: Double = point1.longitude - point2.longitude
-        //        return ((latitudeDistance * latitudeDistance) + (longitudeDistance * longitudeDistance)).squareRoot()
-        //    }
-        
-        //    func testDistanceBetweenWithCases(){
-        //        //latitude value sare in the range [-90, 90] and longitude values are in the range [-180, 180]
-        //        let distanceBetweenTestCases = [(38.1358762, 68.4387746, 38.1358762, 68.4387746), (-90, -270, 90, 270)]
-        //
-        //        for testCase in distanceBetweenTestCases{
-        //            let point1 = CLLocationCoordinate2D(latitude: testCase.0, longitude: testCase.1)
-        //            let point2 = CLLocationCoordinate2D(latitude: testCase.2, longitude: testCase.3)
-        //
-        //            let testDistance: Double = distanceBetweenPoints(point1: point1, point2: point2)
-        //            let actualDistance: Double = TreeFinder.distanceBetween(from: point1, to: point2)
-        //
-        //            XCTAssertEqual(actualDistance, testDistance, accuracy: distanceBetweenMarginOfError, "Expected the calculated distance between points to be close to the expected value.")
-        //        }
-        //    }
-        
-        //    func testDistanceBetweenWithRandomGenerator(){
-        //        let numCases = 1000
-        //
-        //        for _ in 0 ..< numCases{
-        //            let point1 = CLLocationCoordinate2D(latitude: Double.random(in: -90 ... 90), longitude: Double.random(in: -180 ... 180))
-        //            let point2 = CLLocationCoordinate2D(latitude: Double.random(in: -90 ... 90), longitude: Double.random(in: -180 ... 180))
-        //
-        //            let testDistance: Double = distanceBetweenPoints(point1: point1, point2: point2)
-        //            let actualDistance: Double = TreeFinder.distanceBetween(from: point1, to: point2)
-        //
-        //            XCTAssertEqual(actualDistance, testDistance, accuracy: distanceBetweenMarginOfError, "Expected the calculated distance between points to be close to the expected value.")
-        //        }
-        //    }
 }
