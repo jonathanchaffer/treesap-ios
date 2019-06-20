@@ -73,34 +73,6 @@ class MapViewController: UIViewController {
         let coordinateRegion = MKCoordinateRegion(center: location, latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
         mapView.setRegion(coordinateRegion, animated: true)
     }
-
-    // MARK: - MKMapViewDelegate protocol functions
-
-    // When an annotation view is selected, deactivates tree annotations surrounding it so that the surrounding annotations do not get in the way of the user interacting with the annotation callout.
-    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-//        This commented out code is for hiding nearby annotations when an annotation is tapped
-//        let annotation = view.annotation as! TreeAnnotation
-//        let annotationPoint = MKMapPoint(annotation.coordinate)
-//        let deactivationRegion = MKMapSize(width: 0.5, height: 0.5)
-//        let annotationSet = mapView.annotations(in: MKMapRect(origin: annotationPoint, size: MKMapSize.world))
-        for nearbyAnnotation in mapView.annotations {
-            let annotationView = mapView.view(for: nearbyAnnotation)
-            if annotationView != nil {
-                annotationView!.isUserInteractionEnabled = false
-            }
-        }
-        view.isUserInteractionEnabled = true
-    }
-
-    // When an annotation view is deselected, reactivates tree annotations surrounding it.
-    func mapView(_ mapView: MKMapView, didDeselect _: MKAnnotationView) {
-        for nearbyAnnotation in mapView.annotations {
-            let annotationView = mapView.view(for: nearbyAnnotation)
-            if annotationView != nil {
-                annotationView!.isUserInteractionEnabled = true
-            }
-        }
-    }
 }
 
 extension MapViewController: MKMapViewDelegate {
@@ -112,5 +84,31 @@ extension MapViewController: MKMapViewDelegate {
         // Display tree data
         let pages = TreeDetailPageViewController(tree: annotation.tree)
         navigationController?.pushViewController(pages, animated: true)
+    }
+    
+    /// When an annotation view is selected, deactivates tree annotations surrounding it so that the surrounding annotations do not get in the way of the user interacting with the annotation callout.
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        //        This commented out code is for hiding nearby annotations when an annotation is tapped
+        //        let annotation = view.annotation as! TreeAnnotation
+        //        let annotationPoint = MKMapPoint(annotation.coordinate)
+        //        let deactivationRegion = MKMapSize(width: 0.5, height: 0.5)
+        //        let annotationSet = mapView.annotations(in: MKMapRect(origin: annotationPoint, size: MKMapSize.world))
+        for nearbyAnnotation in mapView.annotations {
+            let annotationView = mapView.view(for: nearbyAnnotation)
+            if annotationView != nil {
+                annotationView!.isUserInteractionEnabled = false
+            }
+        }
+        view.isUserInteractionEnabled = true
+    }
+    
+    /// When an annotation view is deselected, reactivates tree annotations surrounding it.
+    func mapView(_ mapView: MKMapView, didDeselect _: MKAnnotationView) {
+        for nearbyAnnotation in mapView.annotations {
+            let annotationView = mapView.view(for: nearbyAnnotation)
+            if annotationView != nil {
+                annotationView!.isUserInteractionEnabled = true
+            }
+        }
     }
 }

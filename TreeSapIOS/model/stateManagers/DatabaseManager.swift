@@ -35,7 +35,7 @@ class DatabaseManager {
      Uploads a created tree to the pending trees database. Alerts the user if there is an error.
      - Parameter tree: The Tree object to send to the database.
      */
-    static func addTreeToPending(tree: Tree) {
+    static func addTreeToCollection(tree: Tree, collectionID: String) {
         // Create the data object
         var data = [String:Any]()
         data["latitude"] = tree.location.latitude
@@ -65,7 +65,7 @@ class DatabaseManager {
         
         // Add the data to the pendingTrees database
         var ref: DocumentReference? = nil
-        ref = db.collection("pendingTrees").addDocument(data: data) { err in
+        ref = db.collection(collectionID).addDocument(data: data) { err in
             if let err = err {
                 print("Error adding document: \(err)")
                 NotificationCenter.default.post(name: NSNotification.Name("submitTreeFailure"), object: nil)

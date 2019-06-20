@@ -144,7 +144,7 @@ class AddTreePageViewController: UIPageViewController {
             createdTree.addImage(barkImage!)
         }
         // Add the tree to the pending trees database
-        DatabaseManager.addTreeToPending(tree: createdTree)
+        DatabaseManager.addTreeToCollection(tree: createdTree, collectionID: "pendingTrees")
         // Display a "Please Wait" alert while it's trying to upload
         let loadingAlert = UIAlertController(title: "Please wait...", message: nil, preferredStyle: .alert)
         present(loadingAlert, animated: true)

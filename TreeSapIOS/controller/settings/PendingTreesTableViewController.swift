@@ -39,14 +39,14 @@ class PendingTreesTableViewController: UITableViewController {
         // If there is a common name, add it
         let commonName = data["commonName"] as? String
         if commonName != nil && commonName != "" {
-            cell.textLabel?.text = data["commonName"] as? String
+            cell.textLabel?.text = commonName
         } else {
             cell.textLabel?.text = "N/A"
         }
         // If there is a scientific name, add it
         let scientificName = data["scientificName"] as? String
         if scientificName != nil && scientificName != "" {
-            cell.detailTextLabel?.text = data["scientificName"] as? String
+            cell.detailTextLabel?.text = scientificName
         } else {
             cell.detailTextLabel?.text = "N/A"
         }
@@ -62,6 +62,9 @@ class PendingTreesTableViewController: UITableViewController {
     
     /// Function that is called when a table cell is selected.
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "pendingTreeDetails") as! PendingTreeDetailsViewController
+        vc.data = documents[indexPath.row].data()
+        navigationController?.pushViewController(vc, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }
