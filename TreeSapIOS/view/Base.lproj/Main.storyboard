@@ -1408,7 +1408,7 @@
                                                     </connections>
                                                 </switch>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show user location on map" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HUT-Kn-6Vy">
-                                                    <rect key="frame" x="16" y="11.5" width="280" height="21"/>
+                                                    <rect key="frame" x="16" y="11.5" width="206.5" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1418,7 +1418,7 @@
                                                 <constraint firstItem="18z-aM-CCx" firstAttribute="centerY" secondItem="Mgq-fx-bom" secondAttribute="centerY" id="043-Gj-hpA"/>
                                                 <constraint firstItem="HUT-Kn-6Vy" firstAttribute="centerY" secondItem="Mgq-fx-bom" secondAttribute="centerY" id="eDd-GA-jJR"/>
                                                 <constraint firstAttribute="trailing" secondItem="18z-aM-CCx" secondAttribute="trailing" constant="22" id="i2z-RU-MgC"/>
-                                                <constraint firstItem="18z-aM-CCx" firstAttribute="leading" secondItem="HUT-Kn-6Vy" secondAttribute="trailing" constant="8" symbolic="YES" id="oPb-u0-yo9"/>
+                                                <constraint firstItem="18z-aM-CCx" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="HUT-Kn-6Vy" secondAttribute="trailing" constant="8" symbolic="YES" id="oPb-u0-yo9"/>
                                                 <constraint firstItem="HUT-Kn-6Vy" firstAttribute="leading" secondItem="Mgq-fx-bom" secondAttribute="leadingMargin" id="rhA-PR-6y8"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -1431,7 +1431,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Max identification distance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rDS-Fm-OlN">
-                                                    <rect key="frame" x="16" y="11.5" width="231" height="21"/>
+                                                    <rect key="frame" x="16" y="11.5" width="205" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1450,7 +1450,7 @@
                                                 </textField>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="WHa-kj-CxB" firstAttribute="leading" secondItem="rDS-Fm-OlN" secondAttribute="trailing" constant="8" symbolic="YES" id="FWx-hE-7z8"/>
+                                                <constraint firstItem="WHa-kj-CxB" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="rDS-Fm-OlN" secondAttribute="trailing" constant="8" symbolic="YES" id="FWx-hE-7z8"/>
                                                 <constraint firstAttribute="trailing" secondItem="WHa-kj-CxB" secondAttribute="trailing" constant="20" id="TtS-eB-CEw"/>
                                                 <constraint firstItem="rDS-Fm-OlN" firstAttribute="centerY" secondItem="n6d-ff-Fny" secondAttribute="centerY" id="paE-kc-dXb"/>
                                                 <constraint firstItem="WHa-kj-CxB" firstAttribute="centerY" secondItem="n6d-ff-Fny" secondAttribute="centerY" id="r4C-wz-50t"/>
@@ -1494,7 +1494,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Active data sources" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bhJ-zN-YY8">
-                                                    <rect key="frame" x="16" y="11.5" width="309" height="21"/>
+                                                    <rect key="frame" x="16" y="11.5" width="150.5" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1502,7 +1502,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="bhJ-zN-YY8" firstAttribute="centerY" secondItem="b4X-jD-yxj" secondAttribute="centerY" id="J1k-La-1Tx"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="bhJ-zN-YY8" secondAttribute="trailing" constant="8" id="QUY-Vd-Xfd"/>
+                                                <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="bhJ-zN-YY8" secondAttribute="trailing" id="QUY-Vd-Xfd"/>
                                                 <constraint firstItem="bhJ-zN-YY8" firstAttribute="leading" secondItem="b4X-jD-yxj" secondAttribute="leadingMargin" id="U4E-Iw-D3a"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -1899,7 +1899,7 @@ ZC4
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Log In" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T9f-Sc-kvd">
-                                                    <rect key="frame" x="16" y="11.5" width="317" height="21"/>
+                                                    <rect key="frame" x="16" y="11.5" width="47" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1908,7 +1908,7 @@ ZC4
                                             <constraints>
                                                 <constraint firstItem="T9f-Sc-kvd" firstAttribute="leading" secondItem="7zD-Ud-8pK" secondAttribute="leadingMargin" id="9hG-7C-U45"/>
                                                 <constraint firstItem="T9f-Sc-kvd" firstAttribute="centerY" secondItem="7zD-Ud-8pK" secondAttribute="centerY" id="iXt-TX-PcD"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="T9f-Sc-kvd" secondAttribute="trailing" id="puQ-Ti-1zd"/>
+                                                <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="T9f-Sc-kvd" secondAttribute="trailing" id="puQ-Ti-1zd"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -1923,7 +1923,7 @@ ZC4
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="example@example.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t1C-3v-RfR">
-                                                    <rect key="frame" x="16" y="11.5" width="343" height="21"/>
+                                                    <rect key="frame" x="16" y="11.5" width="181" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1931,7 +1931,7 @@ ZC4
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="t1C-3v-RfR" firstAttribute="leading" secondItem="Fdd-VM-0V3" secondAttribute="leadingMargin" id="Gkb-pJ-m5k"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="t1C-3v-RfR" secondAttribute="trailing" id="YBt-6b-nbo"/>
+                                                <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="t1C-3v-RfR" secondAttribute="trailing" id="YBt-6b-nbo"/>
                                                 <constraint firstItem="t1C-3v-RfR" firstAttribute="centerY" secondItem="Fdd-VM-0V3" secondAttribute="centerY" id="ySt-7M-W0T"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -1944,7 +1944,7 @@ ZC4
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Log Out" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aA9-Sr-1Oz">
-                                                    <rect key="frame" x="16" y="11.5" width="343" height="21"/>
+                                                    <rect key="frame" x="16" y="11.5" width="61" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
                                                     <nil key="highlightedColor"/>
@@ -1952,7 +1952,7 @@ ZC4
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="aA9-Sr-1Oz" firstAttribute="centerY" secondItem="9cg-MC-FOc" secondAttribute="centerY" id="0NW-Ki-4CO"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="aA9-Sr-1Oz" secondAttribute="trailing" id="SzM-zE-IrU"/>
+                                                <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="aA9-Sr-1Oz" secondAttribute="trailing" id="SzM-zE-IrU"/>
                                                 <constraint firstItem="aA9-Sr-1Oz" firstAttribute="leading" secondItem="9cg-MC-FOc" secondAttribute="leadingMargin" id="XbV-0G-oPg"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -2006,7 +2006,7 @@ ZC4
                                                         <rect key="frame" x="82" y="0.0" width="253" height="30"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next"/>
                                                     </textField>
                                                 </subviews>
                                             </stackView>
@@ -2023,7 +2023,7 @@ ZC4
                                                         <rect key="frame" x="82" y="0.0" width="253" height="30"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                                        <textInputTraits key="textInputTraits" returnKeyType="go" secureTextEntry="YES" textContentType="password"/>
                                                     </textField>
                                                 </subviews>
                                             </stackView>
@@ -2077,7 +2077,7 @@ ZC4
                                                         <rect key="frame" x="82" y="0.0" width="253" height="30"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next"/>
                                                     </textField>
                                                 </subviews>
                                             </stackView>
@@ -2094,7 +2094,7 @@ ZC4
                                                         <rect key="frame" x="82" y="0.0" width="253" height="30"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                                        <textInputTraits key="textInputTraits" returnKeyType="next" secureTextEntry="YES" textContentType="password"/>
                                                     </textField>
                                                 </subviews>
                                             </stackView>
@@ -2111,7 +2111,7 @@ ZC4
                                                         <rect key="frame" x="82" y="0.0" width="253" height="30"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                                        <textInputTraits key="textInputTraits" returnKeyType="go" secureTextEntry="YES" textContentType="password"/>
                                                     </textField>
                                                 </subviews>
                                             </stackView>
@@ -3130,8 +3130,8 @@ ZC4
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Osm-ne-69B"/>
-        <segue reference="M3K-1N-Vy6"/>
+        <segue reference="txq-mR-ZcU"/>
+        <segue reference="NRC-p1-lpH"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" name="treesapGreen"/>
 </document>

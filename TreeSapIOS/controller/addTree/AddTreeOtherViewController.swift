@@ -42,6 +42,8 @@ class AddTreeOtherViewController: AddTreeViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        commonNameTextField.delegate = self
+        scientificNameTextField.delegate = self
         hideKeyboardWhenTappedAround()
         // Set up array of DBH text fields
         dbhTextFields = [dbhTextField, dbh1TextField, dbh2TextField, dbh3TextField]
@@ -51,9 +53,11 @@ class AddTreeOtherViewController: AddTreeViewController {
         measurementStackViews = [measurementStackView, measurement1StackView, measurement2StackView, measurement3StackView]
         // Set up text field targets
         for textField in dbhTextFields {
+            textField.delegate = self
             textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         }
         for textField in circumferenceTextFields {
+            textField.delegate = self
             textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         }
         // Hide the extra measurement stack views
@@ -171,5 +175,60 @@ class AddTreeOtherViewController: AddTreeViewController {
         } else {
             dbhTextField.text = nil
         }
+    }
+}
+
+extension AddTreeOtherViewController: UITextFieldDelegate {
+    /// Function that is called when the return key is pressed on the keyboard. Sets the next text field to be first responder or handles submit events appropriately.
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        switch textField {
+        case commonNameTextField:
+            scientificNameTextField.becomeFirstResponder()
+        case scientificNameTextField:
+            dbhTextField.becomeFirstResponder()
+        case dbhTextField:
+            if !measurement1StackView.isHidden {
+                dbh1TextField.becomeFirstResponder()
+            } else {
+                circumferenceTextField.becomeFirstResponder()
+            }
+        case circumferenceTextField:
+            if !measurement1StackView.isHidden {
+                circumference1TextField.becomeFirstResponder()
+            } else {
+                view.endEditing(true)
+            }
+        case dbh1TextField:
+            if !measurement2StackView.isHidden {
+                dbh2TextField.becomeFirstResponder()
+            } else {
+                circumference1TextField.becomeFirstResponder()
+            }
+        case circumference1TextField:
+            if !measurement2StackView.isHidden {
+                circumference2TextField.becomeFirstResponder()
+            } else {
+                view.endEditing(true)
+            }
+        case dbh2TextField:
+            if !measurement3StackView.isHidden {
+                dbh3TextField.becomeFirstResponder()
+            } else {
+                circumference2TextField.becomeFirstResponder()
+            }
+        case circumference2TextField:
+            if !measurement3StackView.isHidden {
+                circumference3TextField.becomeFirstResponder()
+            } else {
+                view.endEditing(true)
+            }
+        case dbh3TextField:
+            circumference3TextField.becomeFirstResponder()
+        case circumference3TextField:
+            view.endEditing(true)
+        default:
+            return true
+        }
+        return true
     }
 }

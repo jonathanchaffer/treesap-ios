@@ -19,12 +19,7 @@ class SettingsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         cutoffDistanceTextField.delegate = self
-
-        // Set up gesture recognizer that will dismiss the keyboard when the user taps outside of it
-        // Based on code from https://medium.com/@KaushElsewhere/how-to-dismiss-keyboard-in-a-view-controller-of-ios-3b1bfe973ad1 and https://www.bignerdranch.com/blog/hannibal-selector/#tl-dr
-        let gestureRecognizer: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(stopEditingText))
-        gestureRecognizer.cancelsTouchesInView = false
-        view.addGestureRecognizer(gestureRecognizer)
+        hideKeyboardWhenTappedAround()
     }
 
     override func viewWillAppear(_: Bool) {
@@ -65,29 +60,17 @@ class SettingsViewController: UITableViewController {
 			present(alert, animated: true)
 		}
 	}
-	
-	
-	
-	// MARK: - Other functions
-
-    /// Makes text fields stop getting edited, dismissing the keyboard if they are being edited
-    @objc func stopEditingText() {
-        cutoffDistanceTextField.endEditing(true)
-    }
-}
-
-// Extension that makes the text fields allow only numbers and dots.
-// https://stackoverflow.com/questions/30973044/how-to-restrict-uitextfield-to-take-only-numbers-in-swift
-extension SettingsViewController {
-    func textField(_: UITextField, shouldChangeCharactersIn _: NSRange, replacementString string: String) -> Bool {
-        let allowedCharacters = CharacterSet(charactersIn: ".0123456789")
-        let characterSet = CharacterSet(charactersIn: string)
-        return allowedCharacters.isSuperset(of: characterSet)
-    }
 }
 
 extension SettingsViewController: UITextFieldDelegate {
-    /// Causes the the keyboard to be dismissed upon pressing the enter button when the text field is selected
+    /// Ensures that text fields on this view controller only allow numbers, dashes, and dots.
+    func textField(_: UITextField, shouldChangeCharactersIn _: NSRange, replacementString string: String) -> Bool {
+        let allowedCharacters = CharacterSet(charactersIn: "-.0123456789")
+        let characterSet = CharacterSet(charactersIn: string)
+        return allowedCharacters.isSuperset(of: characterSet)
+    }
+    
+    /// Function that is called when the return key is pressed on the keyboard. Ends editing on the text field.
     func textFieldShouldReturn(_: UITextField) -> Bool {
         view.endEditing(true)
         return false

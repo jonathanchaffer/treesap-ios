@@ -22,9 +22,13 @@ class LoginSignupViewController: UIViewController {
 	// MARK: - Overrides
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
+        loginEmailTextField.delegate = self
+        loginPasswordTextField.delegate = self
+        createAccountEmailTextField.delegate = self
+        createAccountPasswordTextField.delegate = self
+        createAccountConfirmTextField.delegate = self
+		hideKeyboardWhenTappedAround()
 		loginStackView.isHidden = false
-		
 		NotificationCenter.default.addObserver(self, selector: #selector(closeLoginSignup), name: NSNotification.Name("loggedIn"), object: nil)
 	}
 	
@@ -34,32 +38,62 @@ class LoginSignupViewController: UIViewController {
 		createAccountStackView.isHidden = false
 	}
 	
-	@IBAction func signUpButtonPressed(_ sender: UIButton) {
-		if createAccountEmailTextField.text != nil && createAccountPasswordTextField.text != nil && createAccountConfirmTextField.text != nil {
-			// Check for non-matching passwords
-			if createAccountPasswordTextField.text! != createAccountConfirmTextField.text! {
-				AlertManager.alertUser(title: "Passwords do not match", message: "Please ensure that you enter the same password in both password fields.")
-				return
-			}
-			// Create the user
-			AccountManager.createUser(email: createAccountEmailTextField.text!, password: createAccountPasswordTextField.text!)
-		}
-	}
-	
-	@IBAction func logInButtonPressed(_ sender: UIButton) {
-		if loginEmailTextField.text != nil && loginPasswordTextField.text != nil {
-			AccountManager.logIn(email: loginEmailTextField.text!, password: loginPasswordTextField.text!)
-		}
-	}
-	
 	@IBAction func cancelCreateAccount(_ sender: UIButton) {
 		createAccountStackView.isHidden = true
 		loginStackView.isHidden = false
 	}
+    
+    @IBAction func signUpButtonPressed(_ sender: UIButton) {
+        signUp()
+    }
+    
+    @IBAction func logInButtonPressed(_ sender: UIButton) {
+        logIn()
+    }
 	
+    // MARK: - Functions
 	@objc func closeLoginSignup() {
 		navigationController?.popViewController(animated: true)
 		dismiss(animated: true, completion: nil)
 	}
+    
+    private func logIn() {
+        if loginEmailTextField.text != nil && loginPasswordTextField.text != nil {
+            AccountManager.logIn(email: loginEmailTextField.text!, password: loginPasswordTextField.text!)
+        }
+    }
+    
+    private func signUp() {
+        if createAccountEmailTextField.text != nil && createAccountPasswordTextField.text != nil && createAccountConfirmTextField.text != nil {
+            // Check for non-matching passwords
+            if createAccountPasswordTextField.text! != createAccountConfirmTextField.text! {
+                AlertManager.alertUser(title: "Passwords do not match", message: "Please ensure that you enter the same password in both password fields.")
+                return
+            }
+            // Create the user
+            AccountManager.createUser(email: createAccountEmailTextField.text!, password: createAccountPasswordTextField.text!)
+        }
+    }
+    
 }
 
+extension LoginSignupViewController: UITextFieldDelegate {
+    /// Function that is called when the return key is pressed on the keyboard. Sets the next text field to be first responder or handles submit events appropriately.
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        switch textField {
+        case loginEmailTextField:
+            loginPasswordTextField.becomeFirstResponder()
+        case loginPasswordTextField:
+            logIn()
+        case createAccountEmailTextField:
+            createAccountPasswordTextField.becomeFirstResponder()
+        case createAccountPasswordTextField:
+            createAccountConfirmTextField.becomeFirstResponder()
+        case createAccountConfirmTextField:
+            signUp()
+        default:
+            return true
+        }
+        return true
+    }
+}

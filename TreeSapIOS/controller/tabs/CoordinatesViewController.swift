@@ -5,11 +5,13 @@
 //  Created by Jonathan Chaffer and Josiah Brett in Summer 2019.
 //  Copyright © 2019 Hope CS. All rights reserved.
 //
+// Used https://stackoverflow.com/questions/30973044/how-to-restrict-uitextfield-to-take-only-numbers-in-swift as a reference.
+//
 
 import MapKit
 import UIKit
 
-class CoordinatesViewController: UIViewController, UITextFieldDelegate {
+class CoordinatesViewController: UIViewController {
     // MARK: - Properties
 
     @IBOutlet var latitudeTextField: UITextField!
@@ -64,19 +66,6 @@ class CoordinatesViewController: UIViewController, UITextFieldDelegate {
         navigationController?.pushViewController(pages, animated: true)
     }
 
-    // If the text field is the first/latitude text field, the second/longitude text field becomes first responder (so it becomes selected). If the text field is the second/longitude text field, then the handleCoordinates function is called. Otherwise, nothing happens.
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        switch textField {
-        case latitudeTextField:
-            longitudeTextField.becomeFirstResponder()
-        case longitudeTextField:
-            handleCoordinates()
-        default:
-            return true
-        }
-        return true
-    }
-
     /**
      - Returns: A Tree object that corresponds to the tree closest to and within the cutoff distance of the given location, or nil if no such tree was found.
 
@@ -89,12 +78,24 @@ class CoordinatesViewController: UIViewController, UITextFieldDelegate {
     }
 }
 
-// Extension that makes the text fields allow only numbers, dashes, and dots.
-// https://stackoverflow.com/questions/30973044/how-to-restrict-uitextfield-to-take-only-numbers-in-swift
-extension CoordinatesViewController {
+extension CoordinatesViewController: UITextFieldDelegate {
+    /// Ensures that text fields on this view controller only allow numbers, dashes, and dots.
     func textField(_: UITextField, shouldChangeCharactersIn _: NSRange, replacementString string: String) -> Bool {
         let allowedCharacters = CharacterSet(charactersIn: "-.0123456789")
         let characterSet = CharacterSet(charactersIn: string)
         return allowedCharacters.isSuperset(of: characterSet)
+    }
+    
+    /// Function that is called when the return key is pressed on the keyboard. Sets the next text field to be first responder or handles submit events appropriately.
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        switch textField {
+        case latitudeTextField:
+            longitudeTextField.becomeFirstResponder()
+        case longitudeTextField:
+            handleCoordinates()
+        default:
+            return true
+        }
+        return true
     }
 }
