@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0B85D9CFEC2032A626AC6A93 /* libPods-TreeSapIOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 04069877CBA1FE325848DCEC /* libPods-TreeSapIOSTests.a */; };
 		4101181C22A6FA5600EDE6D8 /* UserPreferenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4101181B22A6FA5600EDE6D8 /* UserPreferenceTests.swift */; };
+		4107AC3522BBAC3A0024C2D2 /* TreeAddTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4107AC3422BBAC3A0024C2D2 /* TreeAddTests.swift */; };
 		418A360D22A83CD3002BF28C /* LoadingScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418A360C22A83CD3002BF28C /* LoadingScreenViewController.swift */; };
 		41AD85E622BA933E00DAB44B /* MoreInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AD85E522BA933E00DAB44B /* MoreInformationViewController.swift */; };
 		41AD85EC22BAAAD700DAB44B /* MoreInformationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AD85EB22BAAAD700DAB44B /* MoreInformationTests.swift */; };
@@ -104,6 +105,7 @@
 		032803B715E7C1F1944B7370 /* Pods-TreeSapIOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreeSapIOSTests.release.xcconfig"; path = "Target Support Files/Pods-TreeSapIOSTests/Pods-TreeSapIOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		04069877CBA1FE325848DCEC /* libPods-TreeSapIOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TreeSapIOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4101181B22A6FA5600EDE6D8 /* UserPreferenceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPreferenceTests.swift; sourceTree = "<group>"; };
+		4107AC3422BBAC3A0024C2D2 /* TreeAddTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeAddTests.swift; sourceTree = "<group>"; };
 		418A360C22A83CD3002BF28C /* LoadingScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingScreenViewController.swift; sourceTree = "<group>"; };
 		41AD85E522BA933E00DAB44B /* MoreInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreInformationViewController.swift; sourceTree = "<group>"; };
 		41AD85EB22BAAAD700DAB44B /* MoreInformationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreInformationTests.swift; sourceTree = "<group>"; };
@@ -322,6 +324,7 @@
 			children = (
 				41FE11EB22B18C5600919026 /* Settings Tests */,
 				CB9F424422A55F3A00C97F70 /* TreeSapIOSUITests.swift */,
+				4107AC3422BBAC3A0024C2D2 /* TreeAddTests.swift */,
 				CB9F424622A55F3A00C97F70 /* Info.plist */,
 			);
 			path = TreeSapIOSUITests;
@@ -697,6 +700,7 @@
 				CB9F424522A55F3A00C97F70 /* TreeSapIOSUITests.swift in Sources */,
 				41AD85EC22BAAAD700DAB44B /* MoreInformationTests.swift in Sources */,
 				41AD85EE22BAC0C200DAB44B /* AccountSettingsTests.swift in Sources */,
+				4107AC3522BBAC3A0024C2D2 /* TreeAddTests.swift in Sources */,
 				41FE11ED22B18C8F00919026 /* DataSourceAvailabilityTableTests.swift in Sources */,
 				41F52F1B22AFE02500E2ACE8 /* SettingsViewControllerTests.swift in Sources */,
 			);
