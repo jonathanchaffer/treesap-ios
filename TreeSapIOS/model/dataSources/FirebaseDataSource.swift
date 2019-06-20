@@ -30,7 +30,7 @@ class FirebaseDataSource: DataSource {
     func retrieveFirebaseData() {
         var collection: Query? = nil
         if self.databaseType == .pendingTrees {
-            collection = DatabaseManager.getPendingTreesCollection()
+            collection = DatabaseManager.getMyPendingTreesCollection()
         } else if self.databaseType == .publicTrees {
             collection = DatabaseManager.getPublicTreesCollection()
         }

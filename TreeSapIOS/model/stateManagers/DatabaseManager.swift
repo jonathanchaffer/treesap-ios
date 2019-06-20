@@ -13,6 +13,23 @@ import MapKit
 class DatabaseManager {
     /// The Firestore database.
     static var db = Firestore.firestore()
+    /// Array of curator user IDs.
+    static var curators = [String]()
+    
+    static func setup() {
+        db.collection("curators").getDocuments() { snapshot, error in
+            if let error = error {
+                print("Error retrieving curators: \(error)")
+            } else {
+                for document in snapshot!.documents {
+                    let data = document.data()
+                    if data["userID"] != nil {
+                        curators.append(data["userID"] as! String)
+                    }
+                }
+            }
+        }
+    }
     
     /**
      Uploads a created tree to the pending trees database. Alerts the user if there is an error.
@@ -60,12 +77,17 @@ class DatabaseManager {
     }
     
     /// - Returns: A Query containing a collection of pending trees for the current user, or nil if there is none.
-    static func getPendingTreesCollection() -> Query? {
+    static func getMyPendingTreesCollection() -> Query? {
         if AccountManager.getUserID() != nil {
             return db.collection("pendingTrees").whereField("userID", isEqualTo: AccountManager.getUserID()!)
         } else {
             return nil
         }
+    }
+    
+    /// - Returns: A Query containing a collection of pending trees for all users, or nil if there is none.
+    static func getAllPendingTreesCollection() -> Query? {
+        return db.collection("pendingTrees")
     }
     
     /// - Returns: A Query containing the public trees collection, or nil if there is none.
