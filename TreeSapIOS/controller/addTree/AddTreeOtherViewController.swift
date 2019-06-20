@@ -231,4 +231,14 @@ extension AddTreeOtherViewController: UITextFieldDelegate {
         }
         return true
     }
+    
+    /// Ensures that measurement text fields only allow numbers and dots.
+    func textField(_ textField: UITextField, shouldChangeCharactersIn _: NSRange, replacementString string: String) -> Bool {
+        if dbhTextFields.contains(textField) || circumferenceTextFields.contains(textField) {
+            let allowedCharacters = CharacterSet(charactersIn: ".0123456789")
+            let characterSet = CharacterSet(charactersIn: string)
+            return allowedCharacters.isSuperset(of: characterSet)
+        }
+        return true
+    }
 }
