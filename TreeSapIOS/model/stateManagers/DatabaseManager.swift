@@ -44,7 +44,7 @@ class DatabaseManager {
             encodedImages.append(encodedString)
         }
         data["images"] = encodedImages
-        data["timestamp"] = Date().timeIntervalSince1970
+        data["timestamp"] = Timestamp()
         
         // Add the data to the pendingTrees database
         var ref: DocumentReference? = nil
