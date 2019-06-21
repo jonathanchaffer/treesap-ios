@@ -23,9 +23,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // Reset app state for UI testing purposes
             UserDefaults.standard.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
         }
+        FirebaseApp.configure()
         PreferencesManager.loadPreferences()
         LocationManager.setup()
-		FirebaseApp.configure()
+        DatabaseManager.setup()
         return true
     }
 

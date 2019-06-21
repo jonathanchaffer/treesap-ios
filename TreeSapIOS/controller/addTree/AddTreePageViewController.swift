@@ -134,17 +134,17 @@ class AddTreePageViewController: UIPageViewController {
         let barkImage = (pages[1] as! AddTreePhotoViewController).selectedImage
         let leafImage = (pages[2] as! AddTreePhotoViewController).selectedImage
         let entireImage = (pages[3] as! AddTreePhotoViewController).selectedImage
-        if entireImage != nil {
-            createdTree.addImage(entireImage!)
+        if barkImage != nil {
+            createdTree.addImage(barkImage!)
         }
         if leafImage != nil {
             createdTree.addImage(leafImage!)
         }
-        if barkImage != nil {
-            createdTree.addImage(barkImage!)
+        if entireImage != nil {
+            createdTree.addImage(entireImage!)
         }
         // Add the tree to the pending trees database
-        DatabaseManager.addTreeToPending(tree: createdTree)
+        DatabaseManager.submitTreeToPending(tree: createdTree)
         // Display a "Please Wait" alert while it's trying to upload
         let loadingAlert = UIAlertController(title: "Please wait...", message: nil, preferredStyle: .alert)
         present(loadingAlert, animated: true)

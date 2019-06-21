@@ -29,8 +29,10 @@ class FirebaseDataSource: DataSource {
     /// Retrieves online tree data from Firebase, then calls loadTreesFromDocuments. Reports to the data manager whether retrieval was successful.
     func retrieveFirebaseData() {
         var collection: Query? = nil
-        if self.databaseType == .pendingTrees {
-            collection = DatabaseManager.getPendingTreesCollection()
+        if self.databaseType == .myPendingTrees {
+            collection = DatabaseManager.getMyPendingTreesCollection()
+        } else if self.databaseType == .allPendingTrees {
+            collection = DatabaseManager.getAllPendingTreesCollection()
         } else if self.databaseType == .publicTrees {
             collection = DatabaseManager.getPublicTreesCollection()
         }
@@ -39,13 +41,16 @@ class FirebaseDataSource: DataSource {
                 if let error = error {
                     print("Error retrieving documents: \(error)")
                     DataManager.reportLoadedData(dataSourceName: self.dataSourceName, success: false)
+                    NotificationCenter.default.post(name: NSNotification.Name("firebaseDataFailed"), object: self)
                 } else {
                     self.loadTreesFromDocuments(documents: snapshot!.documents)
                     DataManager.reportLoadedData(dataSourceName: self.dataSourceName, success: true)
+                    NotificationCenter.default.post(name: NSNotification.Name("firebaseDataRetrieved"), object: self)
                 }
             }
         }
         DataManager.reportLoadedData(dataSourceName: self.dataSourceName, success: true)
+        NotificationCenter.default.post(name: NSNotification.Name("firebaseDataRetrieved"), object: self)
     }
     
     /**
@@ -75,7 +80,13 @@ class FirebaseDataSource: DataSource {
                 for dbh in dbhArray {
                     tree.addDBH(dbh)
                 }
-                // TODO: Add images and other info
+                tree.documentID = document.documentID
+                guard let images = data["images"] as? [String] else { throw DatabaseError.invalidDocumentData }
+                for encodedImage in images {
+                    let decodedImageData: Data = Data(base64Encoded: encodedImage, options: .ignoreUnknownCharacters)!
+                    let decodedImage = UIImage(data: decodedImageData)
+                    tree.addImage(decodedImage!)
+                }
                 trees.append(tree)
             } catch {
                 print("Error: The document \(document.documentID) could not be read.")
@@ -85,7 +96,7 @@ class FirebaseDataSource: DataSource {
 }
 
 enum DatabaseType {
-    case pendingTrees, publicTrees
+    case myPendingTrees, allPendingTrees, publicTrees
 }
 
 enum DatabaseError: Error {
