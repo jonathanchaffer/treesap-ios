@@ -6,6 +6,7 @@ target "TreeSapIOS" do
 	pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
   pod 'KeyboardAvoidingView'
+  pod 'ImageSlideshow'
 end 
 target "TreeSapIOSTests" do
 	pod 'CSVImporter'
@@ -14,6 +15,7 @@ target "TreeSapIOSTests" do
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
   pod 'KeyboardAvoidingView'
+  pod 'ImageSlideshow'
 end
 target "TreeSapIOSUITests" do
   pod 'CSVImporter'
@@ -22,4 +24,5 @@ target "TreeSapIOSUITests" do
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
   pod 'KeyboardAvoidingView'
+  pod 'ImageSlideshow'
 end

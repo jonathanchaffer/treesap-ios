@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import MapKit
+import ImageSlideshow
 
 class PendingTreeDetailsViewController: UIViewController {
     // MARK: - Properties
@@ -20,7 +21,7 @@ class PendingTreeDetailsViewController: UIViewController {
     @IBOutlet weak var latitudeLabel: UILabel!
     @IBOutlet weak var longitudeLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var imagesScrollView: UIScrollView!
+    @IBOutlet weak var imageSlideshow: ImageSlideshow!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,21 +81,21 @@ class PendingTreeDetailsViewController: UIViewController {
     
     private func setupImages() {
         let images = displayedTree!.images
-        let imageWidth = imagesScrollView.frame.height - 40
-        let leadingSpace = CGFloat(20)
-        print(imageWidth)
-        let gutterSpace = CGFloat(8)
-        for i in 0 ..< images.count {
-            let imageView = UIImageView()
-            imageView.image = images[i]
-            let x = imagesScrollView.bounds.origin.x + (imageWidth + gutterSpace) * CGFloat(i) + leadingSpace
-            let y = imagesScrollView.bounds.origin.y
-            imageView.contentMode = .scaleAspectFill
-            imageView.frame = CGRect(x: x, y: y, width: imageWidth, height: imageWidth)
-            imageView.isUserInteractionEnabled = true
-            imagesScrollView.addSubview(imageView)
+        if !images.isEmpty {
+            var imageSources = [ImageSource]()
+            for image in images {
+                imageSources.append(ImageSource(image: image))
+            }
+            imageSlideshow.setImageInputs(imageSources)
+            let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.didTapSlideshow))
+            imageSlideshow.addGestureRecognizer(gestureRecognizer)
+        } else {
+            imageSlideshow.isHidden = true
         }
-        imagesScrollView.contentSize.width = (imageWidth + gutterSpace) * CGFloat(images.count) + (2 * leadingSpace) - gutterSpace
+    }
+    
+    @objc private func didTapSlideshow() {
+        imageSlideshow.presentFullScreenController(from: self)
     }
     
     /// Dismisses the loading alert, and then alerts the user that the tree was successfully accepted.
