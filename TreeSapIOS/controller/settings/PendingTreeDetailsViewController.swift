@@ -20,10 +20,12 @@ class PendingTreeDetailsViewController: UIViewController {
     @IBOutlet weak var latitudeLabel: UILabel!
     @IBOutlet weak var longitudeLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var imagesScrollView: UIScrollView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupDetails()
+        setupImages()
         NotificationCenter.default.addObserver(self, selector: #selector(updateTreeSuccess), name: NSNotification.Name("updateTreeSuccess"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(updateTreeFailure), name: NSNotification.Name("updateTreeFailure"), object: nil)
     }
@@ -71,6 +73,25 @@ class PendingTreeDetailsViewController: UIViewController {
         mapView.setRegion(coordinateRegion, animated: true)
         mapView.register(TreeAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
         mapView.addAnnotation(TreeAnnotation(tree: displayedTree!))
+    }
+    
+    private func setupImages() {
+        let images = displayedTree!.images
+        let imageWidth = imagesScrollView.frame.height - 40
+        let leadingSpace = CGFloat(20)
+        print(imageWidth)
+        let gutterSpace = CGFloat(8)
+        for i in 0 ..< images.count {
+            let imageView = UIImageView()
+            imageView.image = images[i]
+            let x = imagesScrollView.bounds.origin.x + (imageWidth + gutterSpace) * CGFloat(i) + leadingSpace
+            let y = imagesScrollView.bounds.origin.y
+            imageView.contentMode = .scaleAspectFill
+            imageView.frame = CGRect(x: x, y: y, width: imageWidth, height: imageWidth)
+            imageView.isUserInteractionEnabled = true
+            imagesScrollView.addSubview(imageView)
+        }
+        imagesScrollView.contentSize.width = (imageWidth + gutterSpace) * CGFloat(images.count) + (2 * leadingSpace) - gutterSpace
     }
     
     /// Dismisses the loading alert, and then alerts the user that the tree was successfully accepted.
