@@ -19,6 +19,7 @@ class Tree {
     var otherInfo = [String: Double]()
     var images = [UIImage]()
     let userID: String?
+    var documentID: String? = nil
 
     init(id: Int?, commonName: String?, scientificName: String?, location: CLLocationCoordinate2D, native: Bool?, userID: String?) {
         // Initialize basic information

@@ -16,26 +16,24 @@ class DatabaseManager {
     /// Array of curator user IDs.
     static var curators = [String]()
     
+    /// Sets up the list of curators.
     static func setup() {
         db.collection("curators").getDocuments() { snapshot, error in
             if let error = error {
                 print("Error retrieving curators: \(error)")
             } else {
                 for document in snapshot!.documents {
-                    let data = document.data()
-                    if data["userID"] != nil {
-                        curators.append(data["userID"] as! String)
-                    }
+                    curators.append(document.documentID)
                 }
             }
         }
     }
     
     /**
-     Uploads a created tree to the pending trees database. Alerts the user if there is an error.
-     - Parameter tree: The Tree object to send to the database.
+     Creates a data object based on the specified tree and adds it to the pending trees collection.
+     - Parameter tree: The tree to submit.
      */
-    static func addTreeToCollection(tree: Tree, collectionID: String) {
+    static func submitTreeToPending(tree: Tree) {
         // Create the data object
         var data = [String:Any]()
         data["latitude"] = tree.location.latitude
@@ -63,17 +61,64 @@ class DatabaseManager {
         data["images"] = encodedImages
         data["timestamp"] = Date().timeIntervalSince1970
         
-        // Add the data to the pendingTrees database
-        var ref: DocumentReference? = nil
-        ref = db.collection(collectionID).addDocument(data: data) { err in
+        // Add the data to the collection
+        addDataToCollection(data: data, collectionID: "pendingTrees", documentID: nil)
+    }
+    
+    /**
+     Moves an existing document from pendingTrees to acceptedTrees.
+     - Parameter documentID: The ID of the document to move.
+     */
+    static func moveDataToAccepted(documentID: String) {
+        let ref = db.collection("pendingTrees").document(documentID)
+        ref.getDocument() { document, err in
             if let err = err {
-                print("Error adding document: \(err)")
-                NotificationCenter.default.post(name: NSNotification.Name("submitTreeFailure"), object: nil)
+                print("Error retrieving document: \(err)")
             } else {
-                print("Document added with ID: \(ref!.documentID)")
-                NotificationCenter.default.post(name: NSNotification.Name("submitTreeSuccess"), object: nil)
+                addDataToCollection(data: document!.data()!, collectionID: "acceptedTrees", documentID: documentID)
+                removeDataFromCollection(collectionID: "pendingTrees", documentID: documentID)
             }
         }
+    }
+    
+    /**
+     Adds or overwrites a document to a collection in the database.
+     - Parameter data: The data object to upload to the database.
+     - Parameter collectionID: The ID of the collection in which the document should be stored.
+     - Parameter documentID: The ID of the document to overwrite, or nil if no documents should be overwritten (i.e. a new document should be created).
+     */
+    fileprivate static func addDataToCollection(data: [String:Any], collectionID: String, documentID: String?) {
+        var ref: DocumentReference? = nil
+        if documentID == nil {
+            ref = db.collection(collectionID).addDocument(data: data) { err in
+                if let err = err {
+                    print("Error adding document: \(err)")
+                    NotificationCenter.default.post(name: NSNotification.Name("submitTreeFailure"), object: nil)
+                } else {
+                    print("Document added with ID: \(ref!.documentID)")
+                    NotificationCenter.default.post(name: NSNotification.Name("submitTreeSuccess"), object: nil)
+                }
+            }
+        } else {
+            db.collection(collectionID).document(documentID!).setData(data) { err in
+                if let err = err {
+                    print("Error updating document: \(err)")
+                    NotificationCenter.default.post(name: NSNotification.Name("updateTreeFailure"), object: nil)
+                } else {
+                    print("Document updated with ID: \(documentID!)")
+                    NotificationCenter.default.post(name: NSNotification.Name("updateTreeSuccess"), object: nil)
+                }
+            }
+        }
+    }
+    
+    /**
+     Removes a document from a collection in the database.
+     - Parameter collectionID: The ID of the collection from which the document should be removed.
+     - Parameter documentID: The ID of the document to remove.
+     */
+    fileprivate static func removeDataFromCollection(collectionID: String, documentID: String) {
+        db.collection(collectionID).document(documentID).delete()
     }
     
     /// - Returns: A Query containing a collection of pending trees for the current user, or nil if there is none.

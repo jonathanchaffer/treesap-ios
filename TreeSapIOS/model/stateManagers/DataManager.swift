@@ -17,7 +17,7 @@ class DataManager {
         CSVDataSource(internetFilename: "iTreeExport_119_HopeTrees_7may2018.csv", localFilename: "itree.csv", dataSourceName: "Hope College i-Tree Data", csvFormat: .itree),
         CSVDataSource(internetFilename: "dataExport_119_HopeTrees_7may2018.csv", localFilename: "hope.csv", dataSourceName: "Hope College Trees", csvFormat: .hope),
         CSVDataSource(internetFilename: "katelyn.csv", localFilename: "benefits.csv", dataSourceName: "Tree Benefit Data", csvFormat: .benefits),
-        FirebaseDataSource(dataSourceName: "My Pending Trees", databaseType: .pendingTrees),
+        FirebaseDataSource(dataSourceName: "My Pending Trees", databaseType: .myPendingTrees),
         FirebaseDataSource(dataSourceName: "User Trees", databaseType: .publicTrees)
     ]
     

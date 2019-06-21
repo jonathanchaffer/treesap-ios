@@ -403,7 +403,7 @@ enum CSVFormat {
         }
     }
     
-    /// Returns the index for cooling ($/yr), or -1 if there is none.
+    /// Returns the index for cooling (KWH/yr), or -1 if there is none.
     func coolingKWHIndex() -> Int {
         switch self {
         case .benefits:
