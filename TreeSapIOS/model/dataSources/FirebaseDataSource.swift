@@ -81,15 +81,12 @@ class FirebaseDataSource: DataSource {
                     tree.addDBH(dbh)
                 }
                 tree.documentID = document.documentID
-                // TODO: Add images and other info
                 guard let images = data["images"] as? [String] else { throw DatabaseError.invalidDocumentData }
                 for encodedImage in images {
                     let decodedImageData: Data = Data(base64Encoded: encodedImage, options: .ignoreUnknownCharacters)!
                     let decodedImage = UIImage(data: decodedImageData)
                     tree.addImage(decodedImage!)
                 }
-                guard let otherInfo = data["otherInfo"] as? [String:Double] else { throw DatabaseError.invalidDocumentData }
-                tree.otherInfo = otherInfo
                 trees.append(tree)
             } catch {
                 print("Error: The document \(document.documentID) could not be read.")

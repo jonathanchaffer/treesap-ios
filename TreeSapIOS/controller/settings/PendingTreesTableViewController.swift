@@ -51,7 +51,7 @@ class PendingTreesTableViewController: UITableViewController {
         // If there is at least one image, display it
         let images = tree.images
         if images.count >= 1 {
-            cell.imageView?.image = images[0]
+            cell.imageView?.image = images.last
         }
         return cell
     }

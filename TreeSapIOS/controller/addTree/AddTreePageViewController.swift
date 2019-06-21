@@ -134,14 +134,14 @@ class AddTreePageViewController: UIPageViewController {
         let barkImage = (pages[1] as! AddTreePhotoViewController).selectedImage
         let leafImage = (pages[2] as! AddTreePhotoViewController).selectedImage
         let entireImage = (pages[3] as! AddTreePhotoViewController).selectedImage
-        if entireImage != nil {
-            createdTree.addImage(entireImage!)
+        if barkImage != nil {
+            createdTree.addImage(barkImage!)
         }
         if leafImage != nil {
             createdTree.addImage(leafImage!)
         }
-        if barkImage != nil {
-            createdTree.addImage(barkImage!)
+        if entireImage != nil {
+            createdTree.addImage(entireImage!)
         }
         // Add the tree to the pending trees database
         DatabaseManager.submitTreeToPending(tree: createdTree)
