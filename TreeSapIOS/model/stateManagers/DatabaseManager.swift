@@ -82,6 +82,14 @@ class DatabaseManager {
     }
     
     /**
+     Removes an existing document from pendingTrees.
+     - Parameter documentID: The ID of the document to remove.
+     */
+    static func removeDataFromPending(documentID: String) {
+        removeDataFromCollection(collectionID: "pendingTrees", documentID: documentID)
+    }
+    
+    /**
      Adds or overwrites a document to a collection in the database.
      - Parameter data: The data object to upload to the database.
      - Parameter collectionID: The ID of the collection in which the document should be stored.
@@ -118,7 +126,15 @@ class DatabaseManager {
      - Parameter documentID: The ID of the document to remove.
      */
     fileprivate static func removeDataFromCollection(collectionID: String, documentID: String) {
-        db.collection(collectionID).document(documentID).delete()
+        db.collection(collectionID).document(documentID).delete() { err in
+            if let err = err {
+                print("Error removing document: \(err)")
+                NotificationCenter.default.post(name: NSNotification.Name("deleteTreeFailure"), object: nil)
+            } else {
+                print("Document successfully removed!")
+                NotificationCenter.default.post(name: NSNotification.Name("deleteTreeSuccess"), object: nil)
+            }
+        }
     }
     
     /// - Returns: A Query containing a collection of pending trees for the current user, or nil if there is none.

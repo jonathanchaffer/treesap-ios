@@ -28,6 +28,8 @@ class PendingTreeDetailsViewController: UIViewController {
         setupImages()
         NotificationCenter.default.addObserver(self, selector: #selector(updateTreeSuccess), name: NSNotification.Name("updateTreeSuccess"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(updateTreeFailure), name: NSNotification.Name("updateTreeFailure"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(deleteTreeSuccess), name: NSNotification.Name("deleteTreeSuccess"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(deleteTreeFailure), name: NSNotification.Name("deleteTreeFailure"), object: nil)
     }
     
     // MARK: - Private functions
@@ -75,6 +77,7 @@ class PendingTreeDetailsViewController: UIViewController {
         mapView.addAnnotation(TreeAnnotation(tree: displayedTree!))
     }
     
+    
     private func setupImages() {
         let images = displayedTree!.images
         let imageWidth = imagesScrollView.frame.height - 40
@@ -103,10 +106,26 @@ class PendingTreeDetailsViewController: UIViewController {
         }
     }
     
-    /// Dismisses the loading alert, and then alerts the user that the tree was successfully accepted.
+    /// Dismisses the loading alert, and then alerts the user that there was an error while trying to update the tree.
     @objc private func updateTreeFailure() {
         dismiss(animated: true) {
             AlertManager.alertUser(title: "Error updating tree", message: "An error occurred while trying to update the tree. Please try again.")
+        }
+    }
+    
+    /// Dismisses the loading alert, and then alerts the user that the tree was successfully removed.
+    @objc private func deleteTreeSuccess() {
+        dismiss(animated: true) {
+            let alert = UIAlertController(title: "Success!", message: "The tree has been removed.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in self.closePendingTreeDetails() }))
+            self.present(alert, animated: true)
+        }
+    }
+    
+    /// Dismisses the loading alert, and then alerts the user that there was an error while trying to remove the tree.
+    @objc private func deleteTreeFailure() {
+        dismiss(animated: true) {
+            AlertManager.alertUser(title: "Error removing tree", message: "An error occurred while trying to remove the tree. Please try again.")
         }
     }
     
@@ -120,6 +139,13 @@ class PendingTreeDetailsViewController: UIViewController {
     
     @IBAction func acceptButtonPressed(_ sender: UIButton) {
         DatabaseManager.moveDataToAccepted(documentID: displayedTree!.documentID!)
+        // Display a "Please Wait" alert while it's trying to upload
+        let loadingAlert = UIAlertController(title: "Please wait...", message: nil, preferredStyle: .alert)
+        present(loadingAlert, animated: true)
+    }
+    
+    @IBAction func rejectButtonPressed(_ sender: UIButton) {
+        DatabaseManager.removeDataFromPending(documentID: displayedTree!.documentID!)
         // Display a "Please Wait" alert while it's trying to upload
         let loadingAlert = UIAlertController(title: "Please wait...", message: nil, preferredStyle: .alert)
         present(loadingAlert, animated: true)
