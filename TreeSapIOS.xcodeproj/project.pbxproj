@@ -54,7 +54,7 @@
 		CBA9171E22B7DE8C00BA75B2 /* FirebaseDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA9171D22B7DE8C00BA75B2 /* FirebaseDataSource.swift */; };
 		CBB264B822973C6C00C036FB /* DataSourceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB264B722973C6C00C036FB /* DataSourceTableViewController.swift */; };
 		CBBCE82B228DD76B008F7225 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBCE82A228DD76B008F7225 /* AppDelegate.swift */; };
-		CBBCE82D228DD76B008F7225 /* ButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBCE82C228DD76B008F7225 /* ButtonViewController.swift */; };
+		CBBCE82D228DD76B008F7225 /* IdentifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBCE82C228DD76B008F7225 /* IdentifyViewController.swift */; };
 		CBBCE82F228DD76B008F7225 /* CoordinatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBCE82E228DD76B008F7225 /* CoordinatesViewController.swift */; };
 		CBBCE832228DD76B008F7225 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBBCE830228DD76B008F7225 /* Main.storyboard */; };
 		CBBCE834228DD777008F7225 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBBCE833228DD777008F7225 /* Assets.xcassets */; };
@@ -162,7 +162,7 @@
 		CBB264B722973C6C00C036FB /* DataSourceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourceTableViewController.swift; sourceTree = "<group>"; };
 		CBBCE827228DD76B008F7225 /* TreeSapIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TreeSapIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBBCE82A228DD76B008F7225 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CBBCE82C228DD76B008F7225 /* ButtonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonViewController.swift; sourceTree = "<group>"; };
+		CBBCE82C228DD76B008F7225 /* IdentifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifyViewController.swift; sourceTree = "<group>"; };
 		CBBCE82E228DD76B008F7225 /* CoordinatesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatesViewController.swift; sourceTree = "<group>"; };
 		CBBCE831228DD76B008F7225 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CBBCE833228DD777008F7225 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -388,7 +388,7 @@
 			isa = PBXGroup;
 			children = (
 				CB091E702292EBCF00F0CB06 /* HomeViewController.swift */,
-				CBBCE82C228DD76B008F7225 /* ButtonViewController.swift */,
+				CBBCE82C228DD76B008F7225 /* IdentifyViewController.swift */,
 				CBBCE82E228DD76B008F7225 /* CoordinatesViewController.swift */,
 				CBBCE84C228DD847008F7225 /* MapViewController.swift */,
 				CBBCE84E228DD93E008F7225 /* QRCodeViewController.swift */,
@@ -743,7 +743,7 @@
 				CB15256C22A6A00F002D483E /* AddTreeLocationViewController.swift in Sources */,
 				CB75474E22C11E43001FDA65 /* ForgotPasswordViewController.swift in Sources */,
 				CBBCE82B228DD76B008F7225 /* AppDelegate.swift in Sources */,
-				CBBCE82D228DD76B008F7225 /* ButtonViewController.swift in Sources */,
+				CBBCE82D228DD76B008F7225 /* IdentifyViewController.swift in Sources */,
 				CBB264B822973C6C00C036FB /* DataSourceTableViewController.swift in Sources */,
 				CBBCE84D228DD847008F7225 /* MapViewController.swift in Sources */,
 				CBE8789022957A1300C06E69 /* TreeAnnotation.swift in Sources */,
