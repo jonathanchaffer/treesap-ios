@@ -19,7 +19,8 @@ class PieChartDisplayViewController: TreeDisplayViewController, ChartViewDelegat
     // Headers
     @IBOutlet weak var annualTreeBenefitsLabel: UILabel!
     @IBOutlet weak var commonNameLabel: UILabel!
-
+    @IBOutlet weak var estimatedBenefitsLabel: UILabel!
+    
     // Number formatter for $x.xx format
     let dollarFormatter = NumberFormatter()
 
@@ -48,6 +49,13 @@ class PieChartDisplayViewController: TreeDisplayViewController, ChartViewDelegat
         
         // Set the common name label
         commonNameLabel.text = self.displayedTree!.commonName
+        
+        // Show/hide the estimated benefits disclaimer
+        if estimatedBenefitsFound! {
+            estimatedBenefitsLabel.isHidden = false
+        } else {
+            estimatedBenefitsLabel.isHidden = true
+        }
 
         // Configure the dollar formatter
         dollarFormatter.numberStyle = .currency

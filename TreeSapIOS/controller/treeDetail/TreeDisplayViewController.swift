@@ -12,6 +12,7 @@ class TreeDisplayViewController: UIViewController {
     // MARK: - Properties
 
     var displayedTree: Tree?
+    var estimatedBenefitsFound: Bool?
 
     // MARK: - Overrides
 

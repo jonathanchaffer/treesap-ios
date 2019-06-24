@@ -9,10 +9,11 @@
 
 import CSVImporter
 import UIKit
+import MapKit
 
 class TreeDetailPageViewController: UIPageViewController {
     // MARK: - Properties
-
+    
     /// The tree that will be displayed in the tree detail views.
     var displayedTree: Tree?
     /// The dot indicator that shows the current page.
@@ -25,64 +26,71 @@ class TreeDetailPageViewController: UIPageViewController {
             self.getViewController(withIdentifier: "benefitsDisplay"),
         ]
     }()
-
+    
     // MARK: - Constructors
-
+    
     init(tree: Tree) {
         super.init(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
         displayedTree = tree
     }
-
+    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
-
+    
     // MARK: - Overrides
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         dataSource = self
         delegate = self
-
+        
         title = "Tree Details"
         configurePageControl()
-
+        
         // Set the background color to white so it is not noticed when flipping quickly between the different tree displays
         view.backgroundColor = UIColor.white
-
+        
+        // Estimate benefit information for trees that don't have benefit information
+        var estimatedBenefitsFound = false
+        if displayedTree!.otherInfo.isEmpty {
+            estimatedBenefitsFound = estimateTreeBenefits(maxDistance: 1000, maxDBHDifference: 1000)
+        }
+        
         // Set the displayed tree for each of the tree detail views.
         for page in pages {
             page.displayedTree = displayedTree
+            page.estimatedBenefitsFound = estimatedBenefitsFound
         }
-
+        
         if let firstVC = pages.first {
             setViewControllers([firstVC], direction: .forward, animated: true, completion: nil)
         }
     }
-
+    
     override func viewWillAppear(_: Bool) {
         // Hide the tab bar when the detail display will appear.
         //tabBarController?.tabBar.isHidden = true
     }
-
+    
     override func viewWillDisappear(_: Bool) {
         // Show the tab bar when the detail display will disappear.
         //tabBarController?.tabBar.isHidden = false
     }
-
+    
     override func viewDidDisappear(_: Bool) {
         // Pop the tree details
         navigationController?.popViewController(animated: false)
         dismiss(animated: false, completion: nil)
     }
-
+    
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating _: Bool, previousViewControllers _: [UIViewController], transitionCompleted _: Bool) {
         let pageContentViewController = pageViewController.viewControllers![0]
         pageControl!.currentPage = pages.firstIndex(of: pageContentViewController as! TreeDisplayViewController)!
     }
-
+    
     // MARK: - Private functions
-
+    
     /**
      Instantiates and returns a TreeDisplayViewController based on the identifier of the view controller in the storyboard.
      - Parameter identifier: The storyboard ID of the view controller that is to be instantiated and returned.
@@ -90,7 +98,7 @@ class TreeDetailPageViewController: UIPageViewController {
     private func getViewController(withIdentifier identifier: String) -> TreeDisplayViewController {
         return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: identifier) as! TreeDisplayViewController
     }
-
+    
     /// Sets up the dot indicator that shows the current page.
     private func configurePageControl() {
         pageControl = UIPageControl(frame: CGRect(x: 0, y: UIScreen.main.bounds.height - 90, width: UIScreen.main.bounds.width, height: 50))
@@ -100,36 +108,33 @@ class TreeDetailPageViewController: UIPageViewController {
         pageControl!.pageIndicatorTintColor = UIColor(named: "treesapGreenTranslucent")!
         view.addSubview(pageControl!)
     }
-
-//    private func configureBenefitsByLocation() {
-//        // Create a file manager and get the path for the local file
-//        let fileManager = FileManager.default
-//        let documentsURL = try! fileManager.url(for:.documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
-//        let filepath = documentsURL.appendingPathComponent("katelyn.csv").path
-//        // Create an importer for the local file
-//        let importer = CSVImporter<[String]>(path: filepath)
-//        let importedRecords = importer.importRecords { $0 }
-//        for record in importedRecords {
-//            // Check whether latitude and longitude match to 4 decimal places
-//            let recordLatitude = Double(record[CSVFormat.benefits.latitudeIndex()])
-//            let recordLongitude = Double(record[CSVFormat.benefits.longitudeIndex()])
-//            if (recordLatitude != nil && recordLongitude != nil) {
-//                print("lat: " + String(format:"%.4f", recordLatitude!))
-//                print("long:" + String(format:"%.4f", recordLongitude!))
-//                if (String(format:"%.4f", recordLatitude!) == String(format:"%.4f", self.displayedTree!.location.latitude)) {
-//                    if (String(format:"%.4f", recordLongitude!) == String(format: "%.4f", self.displayedTree!.location.longitude)) {
-//                        for page in self.pages {
-//                            page.foundBenefitData = true
-//                            page.totalAnnualBenefits = Double(record[CSVFormat.benefits.totalAnnualBenefitsIndex()])
-//                            page.avoidedRunoffValue = Double(record[CSVFormat.benefits.avoidedRunoffValueIndex()])
-//                            page.pollutionValue = Double(record[CSVFormat.benefits.pollutionValueIndex()])
-//                            page.totalEnergySavings = Double(record[CSVFormat.benefits.totalEnergySavingsIndex()])
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//    }
+    
+    private func estimateTreeBenefits(maxDistance: Double, maxDBHDifference: Double) -> Bool {
+        var bestMatch: Tree? = nil
+        for dataSource in DataManager.dataSources {
+            for tree in dataSource.getTreeList() {
+                if !tree.otherInfo.isEmpty
+                    && tree.commonName == displayedTree!.commonName
+                    && TreeFinder.distanceBetween(from: tree.location, to: displayedTree!.location) <= maxDistance
+                    && abs(tree.dbhArray.average() - displayedTree!.dbhArray.average()) <= maxDBHDifference {
+                    if bestMatch != nil {
+                        if TreeFinder.distanceBetween(from: tree.location, to: displayedTree!.location) <= TreeFinder.distanceBetween(from: bestMatch!.location, to: displayedTree!.location) {
+                            if abs(tree.dbhArray.average() - displayedTree!.dbhArray.average()) <= abs(bestMatch!.dbhArray.average() - displayedTree!.dbhArray.average()) {
+                                bestMatch = tree
+                            }
+                        }
+                    } else {
+                        bestMatch = tree
+                    }
+                }
+            }
+        }
+        if bestMatch != nil {
+            displayedTree!.otherInfo = bestMatch!.otherInfo
+            return true
+        }
+        return false
+    }
 }
 
 extension TreeDetailPageViewController: UIPageViewControllerDataSource {
@@ -140,7 +145,7 @@ extension TreeDetailPageViewController: UIPageViewControllerDataSource {
         guard pages.count > previousIndex else { return nil }
         return pages[previousIndex]
     }
-
+    
     func pageViewController(_: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         guard let viewControllerIndex = pages.firstIndex(of: viewController as! TreeDisplayViewController) else { return nil }
         let nextIndex = viewControllerIndex + 1
