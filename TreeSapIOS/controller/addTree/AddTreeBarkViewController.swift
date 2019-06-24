@@ -7,24 +7,25 @@
 //
 
 import UIKit
+import ImageSlideshow
 
 class AddTreeBarkViewController: AddTreePhotoViewController {
     // MARK: - Properties
-
-    @IBOutlet var barkImageView: UIImageView!
+    
+    @IBOutlet weak var imageSlideshow: ImageSlideshow!
     @IBOutlet var nextButton: UIButton!
     @IBOutlet var skipButton: UIButton!
-    @IBOutlet var deleteImageButton: UIButton!
+    @IBOutlet var clearPhotosButton: UIButton!
 
     // MARK: - Overrides
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateImage()
+        updateImages()
     }
 
-    override func updateImage() {
-        super.updateImage(imageView: barkImageView, nextButton: nextButton, skipButton: skipButton, deleteImageButton: deleteImageButton)
+    override func updateImages() {
+        super.updateImages(imageSlideshow: imageSlideshow, nextButton: nextButton, skipButton: skipButton, clearPhotosButton: clearPhotosButton)
     }
 
     // MARK: - Actions
@@ -46,6 +47,6 @@ class AddTreeBarkViewController: AddTreePhotoViewController {
     }
 
     @IBAction func handleDeleteButtonPressed(_: UIButton) {
-        deleteImage()
+        clearImages()
     }
 }
