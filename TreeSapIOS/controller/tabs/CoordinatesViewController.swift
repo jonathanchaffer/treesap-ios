@@ -41,7 +41,7 @@ class CoordinatesViewController: UIViewController {
 
         // Check that latitude and longitude values exist
         if latitude == nil || longitude == nil {
-            AlertManager.alertUser(title: "Invalid coordinates", message: "Please make sure that you input valid coordinates.")
+            AlertManager.alertUser(title: "Invalid coordinates", message: "Please ensure that you input valid coordinates.")
             return
         }
         // Check that the latitude and longitude values are in the correct ranges
