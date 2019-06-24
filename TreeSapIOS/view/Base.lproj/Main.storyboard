@@ -2964,10 +2964,10 @@ ZC4
                                                         <rect key="frame" x="0.0" y="0.0" width="414" height="626"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WSP-xw-vfU">
-                                                                <rect key="frame" x="0.0" y="0.0" width="414" height="617.66666666666663"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="414" height="804"/>
                                                                 <subviews>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="4us-bE-Z42">
-                                                                        <rect key="frame" x="20" y="20" width="374" height="577.66666666666663"/>
+                                                                        <rect key="frame" x="20" y="20" width="374" height="764"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Step 5: Other Details" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ToR-fN-DnY">
                                                                                 <rect key="frame" x="64.666666666666671" y="0.0" width="244.66666666666663" height="31.333333333333332"/>
@@ -3303,8 +3303,29 @@ ZC4
                                                                                     <constraint firstItem="265-1u-TGc" firstAttribute="centerY" secondItem="4k2-BB-4cm" secondAttribute="centerY" id="y0A-fa-jw6"/>
                                                                                 </constraints>
                                                                             </stackView>
+                                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="phR-Rx-b3z">
+                                                                                <rect key="frame" x="0.0" y="585.66666666666663" width="374" height="178.33333333333337"/>
+                                                                                <subviews>
+                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a8M-Ut-bBz">
+                                                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="20.333333333333332"/>
+                                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                        <nil key="textColor"/>
+                                                                                        <nil key="highlightedColor"/>
+                                                                                    </label>
+                                                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="neN-Bs-wy8" customClass="MultilineTextField" customModule="TreeSapIOS" customModuleProvider="target">
+                                                                                        <rect key="frame" x="0.0" y="28.333333333333371" width="374" height="150"/>
+                                                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                        <constraints>
+                                                                                            <constraint firstAttribute="height" constant="150" id="lQq-dJ-FYT"/>
+                                                                                        </constraints>
+                                                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                                                    </textView>
+                                                                                </subviews>
+                                                                            </stackView>
                                                                         </subviews>
                                                                         <constraints>
+                                                                            <constraint firstAttribute="trailing" secondItem="phR-Rx-b3z" secondAttribute="trailing" id="9kP-LG-aIn"/>
                                                                             <constraint firstItem="kzH-vD-0J9" firstAttribute="height" secondItem="XHL-sR-gbq" secondAttribute="height" id="AV5-w8-Chh"/>
                                                                             <constraint firstAttribute="trailing" secondItem="u4Y-nD-kBm" secondAttribute="trailing" id="CJZ-wK-XVv"/>
                                                                             <constraint firstAttribute="trailing" secondItem="fgU-G0-Ut7" secondAttribute="trailing" id="GIP-He-GgL"/>
@@ -3312,6 +3333,7 @@ ZC4
                                                                             <constraint firstItem="fgU-G0-Ut7" firstAttribute="leading" secondItem="4us-bE-Z42" secondAttribute="leading" id="h5A-NU-hfV"/>
                                                                             <constraint firstItem="4k2-BB-4cm" firstAttribute="leading" secondItem="4us-bE-Z42" secondAttribute="leading" id="jQg-m9-9ak"/>
                                                                             <constraint firstAttribute="trailing" secondItem="4k2-BB-4cm" secondAttribute="trailing" id="t62-J3-NJx"/>
+                                                                            <constraint firstItem="phR-Rx-b3z" firstAttribute="leading" secondItem="4us-bE-Z42" secondAttribute="leading" id="z3H-X3-0SL"/>
                                                                         </constraints>
                                                                     </stackView>
                                                                 </subviews>
@@ -3409,6 +3431,7 @@ ZC4
                         <outlet property="measurement3StackView" destination="Yf4-xI-RkG" id="O0B-I5-qVB"/>
                         <outlet property="measurementStackView" destination="TA6-nD-Ud2" id="EmB-Tr-thR"/>
                         <outlet property="metricSwitch" destination="Kfp-Yo-vKv" id="bKm-2F-RNh"/>
+                        <outlet property="notesTextField" destination="neN-Bs-wy8" id="DIS-Xj-Yqk"/>
                         <outlet property="scientificNameTextField" destination="wf4-v3-NiR" id="5U9-EJ-hsk"/>
                         <outletCollection property="circumferenceLabels" destination="PqK-DD-9Wn" collectionClass="NSMutableArray" id="axj-6a-iMr"/>
                         <outletCollection property="circumferenceLabels" destination="TDl-bk-caX" collectionClass="NSMutableArray" id="dpN-fi-XvD"/>
