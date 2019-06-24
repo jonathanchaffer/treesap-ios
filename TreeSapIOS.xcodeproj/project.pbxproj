@@ -39,6 +39,8 @@
 		CB672F1B229434DA00622B59 /* TreeDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB672F1A229434DA00622B59 /* TreeDisplayViewController.swift */; };
 		CB6953B8228EE8720002024B /* Tree.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6953B7228EE8720002024B /* Tree.swift */; };
 		CB6953BA228EE9530002024B /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6953B9228EE9530002024B /* DataSource.swift */; };
+		CB75474A22C10953001FDA65 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB75474922C10953001FDA65 /* ChangePasswordViewController.swift */; };
+		CB75474C22C11186001FDA65 /* ChangeDisplayNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB75474B22C11186001FDA65 /* ChangeDisplayNameViewController.swift */; };
 		CB80E3BD22AFD578001A78AE /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB80E3BC22AFD578001A78AE /* DataManager.swift */; };
 		CB80E3BF22AFD657001A78AE /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB80E3BE22AFD657001A78AE /* AlertManager.swift */; };
 		CB80E3C122AFD753001A78AE /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB80E3C022AFD753001A78AE /* LocationManager.swift */; };
@@ -141,6 +143,8 @@
 		CB672F1A229434DA00622B59 /* TreeDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeDisplayViewController.swift; sourceTree = "<group>"; };
 		CB6953B7228EE8720002024B /* Tree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tree.swift; sourceTree = "<group>"; };
 		CB6953B9228EE9530002024B /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
+		CB75474922C10953001FDA65 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
+		CB75474B22C11186001FDA65 /* ChangeDisplayNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeDisplayNameViewController.swift; sourceTree = "<group>"; };
 		CB80E3BC22AFD578001A78AE /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		CB80E3BE22AFD657001A78AE /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		CB80E3C022AFD753001A78AE /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
@@ -370,6 +374,8 @@
 				CB9A1C0522BC0F5F00D1067E /* PendingTreeDetailsViewController.swift */,
 				D77029E022B16BDD00671CC0 /* AccountTableViewController.swift */,
 				D77029DE22B12C7300671CC0 /* LoginSignupViewController.swift */,
+				CB75474922C10953001FDA65 /* ChangePasswordViewController.swift */,
+				CB75474B22C11186001FDA65 /* ChangeDisplayNameViewController.swift */,
 				41AD85E522BA933E00DAB44B /* MoreInformationViewController.swift */,
 			);
 			path = settings;
@@ -719,8 +725,10 @@
 				D77029DF22B12C7300671CC0 /* LoginSignupViewController.swift in Sources */,
 				CB9F425122A5B0D800C97F70 /* AddTreePageViewController.swift in Sources */,
 				CB12C94F228DF85D000C74C3 /* TreeDetailPageViewController.swift in Sources */,
+				CB75474A22C10953001FDA65 /* ChangePasswordViewController.swift in Sources */,
 				D76D6183229321E7003FFD24 /* TreeFinder.swift in Sources */,
 				CB12C951228DFA12000C74C3 /* PieChartDisplayViewController.swift in Sources */,
+				CB75474C22C11186001FDA65 /* ChangeDisplayNameViewController.swift in Sources */,
 				CBBCE82F228DD76B008F7225 /* CoordinatesViewController.swift in Sources */,
 				CB15256A22A69941002D483E /* FilledButton.swift in Sources */,
 				CB9A1C0222BBCC1F00D1067E /* PendingTreesTableViewController.swift in Sources */,

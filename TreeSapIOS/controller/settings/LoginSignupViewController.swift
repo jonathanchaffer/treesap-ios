@@ -16,7 +16,8 @@ class LoginSignupViewController: UIViewController {
 	@IBOutlet weak var loginPasswordTextField: UITextField!
 	@IBOutlet weak var createAccountStackView: UIStackView!
 	@IBOutlet weak var createAccountEmailTextField: UITextField!
-	@IBOutlet weak var createAccountPasswordTextField: UITextField!
+    @IBOutlet weak var createAccountDisplayNameTextField: UITextField!
+    @IBOutlet weak var createAccountPasswordTextField: UITextField!
 	@IBOutlet weak var createAccountConfirmTextField: UITextField!
 	
 	// MARK: - Overrides
@@ -71,7 +72,7 @@ class LoginSignupViewController: UIViewController {
                 return
             }
             // Create the user
-            AccountManager.createUser(email: createAccountEmailTextField.text!, password: createAccountPasswordTextField.text!)
+            AccountManager.createUser(email: createAccountEmailTextField.text!, displayName: createAccountDisplayNameTextField.text!, password: createAccountPasswordTextField.text!)
         }
     }
     

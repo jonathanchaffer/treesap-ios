@@ -34,7 +34,6 @@ class SettingsViewController: UITableViewController {
         super.viewDidLoad()
         cutoffDistanceTextField.delegate = self
         hideKeyboardWhenTappedAround()
-        print(DatabaseManager.curators)
     }
 
     override func viewWillAppear(_: Bool) {
