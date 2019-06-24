@@ -130,6 +130,16 @@ class AddTreePageViewController: UIPageViewController {
         if dbh3 != nil {
             createdTree.addDBH(convertToMetricIfNecessary(dbh3!))
         }
+        // Add notes, if any, to the Tree
+        let notes = (pages[4] as! AddTreeOtherViewController).notesTextField.text
+        if notes != nil {
+            let notesList = notes!.split(separator: "\n")
+            for note in notesList {
+                if note != "" {
+                    createdTree.addNote(note: String(note))
+                }
+            }
+        }
         // Add the images, if any, to the Tree
         let barkImage = (pages[1] as! AddTreePhotoViewController).selectedImage
         let leafImage = (pages[2] as! AddTreePhotoViewController).selectedImage

@@ -67,7 +67,6 @@ class FirebaseDataSource: DataSource {
                 guard let longitude = data["longitude"] as? Double else { throw DatabaseError.invalidDocumentData }
                 let native = data["native"] as? Bool
                 let userID = data["userID"] as? String
-                guard let dbhArray = data["dbhArray"] as? [Double] else { throw DatabaseError.invalidDocumentData }
                 let tree = Tree(
                     id: id,
                     commonName: commonName,
@@ -77,8 +76,13 @@ class FirebaseDataSource: DataSource {
                         longitude: longitude),
                     native: native,
                     userID: userID)
+                guard let dbhArray = data["dbhArray"] as? [Double] else { throw DatabaseError.invalidDocumentData }
                 for dbh in dbhArray {
                     tree.addDBH(dbh)
+                }
+                guard let notes = data["notes"] as? [String] else { throw DatabaseError.invalidDocumentData }
+                for note in notes {
+                    tree.addNote(note: note)
                 }
                 tree.documentID = document.documentID
                 guard let images = data["images"] as? [String] else { throw DatabaseError.invalidDocumentData }

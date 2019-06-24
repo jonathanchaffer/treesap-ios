@@ -31,6 +31,8 @@ class AddTreeOtherViewController: AddTreeViewController {
     @IBOutlet var dbhLabels: [UILabel]!
     @IBOutlet var circumferenceLabels: [UILabel]!
     
+    @IBOutlet weak var notesTextField: MultilineTextField!
+    
     /// The number of additional measurements that are currently being shown.
     var visibleMeasurementsCount = 1
     

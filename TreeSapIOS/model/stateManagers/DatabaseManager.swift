@@ -49,6 +49,7 @@ class DatabaseManager {
         }
         data["dbhArray"] = tree.dbhArray
         data["otherInfo"] = tree.otherInfo
+        data["notes"] = tree.notes
         data["userID"] = AccountManager.getUserID()
         
         // Add the images to the data
