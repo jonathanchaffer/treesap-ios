@@ -9,22 +9,32 @@
 import UIKit
 
 class ChangeDisplayNameViewController: UIViewController {
-
+    @IBOutlet weak var newDisplayNameTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        NotificationCenter.default.addObserver(self, selector: #selector(closeChangeDisplayName), name: NSNotification.Name("displayNameUpdated"), object: nil)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func updateDisplayName() {
+        AccountManager.setDisplayName(displayName: newDisplayNameTextField.text!)
     }
-    */
+    
+    @objc private func closeChangeDisplayName() {
+        navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func changeDisplayNameButtonPressed(_ sender: UIButton) {
+        updateDisplayName()
+    }
+}
 
+extension ChangeDisplayNameViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == newDisplayNameTextField {
+            updateDisplayName()
+        }
+        return true
+    }
 }
