@@ -85,7 +85,9 @@ class FirebaseDataSource: DataSource {
                 for encodedImage in images {
                     let decodedImageData: Data = Data(base64Encoded: encodedImage, options: .ignoreUnknownCharacters)!
                     let decodedImage = UIImage(data: decodedImageData)
-                    tree.addImage(decodedImage!)
+                    if(decodedImage != nil){
+                        tree.addImage(decodedImage!)
+                    }
                 }
                 trees.append(tree)
             } catch {
