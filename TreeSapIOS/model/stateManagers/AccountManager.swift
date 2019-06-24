@@ -134,4 +134,14 @@ class AccountManager {
             }
         }
     }
+    
+    static func sendPasswordResetEmail(email: String) {
+        Auth.auth().sendPasswordReset(withEmail: email) { error in
+            if error != nil {
+                AlertManager.alertUser(title: "Error sending password reset email", message: "An error occurred while tyring to send a password reset email. Please try again.")
+            } else {
+                NotificationCenter.default.post(name: NSNotification.Name("passwordResetSent"), object: nil)
+            }
+        }
+    }
 }

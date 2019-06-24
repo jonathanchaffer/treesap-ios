@@ -41,6 +41,7 @@
 		CB6953BA228EE9530002024B /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6953B9228EE9530002024B /* DataSource.swift */; };
 		CB75474A22C10953001FDA65 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB75474922C10953001FDA65 /* ChangePasswordViewController.swift */; };
 		CB75474C22C11186001FDA65 /* ChangeDisplayNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB75474B22C11186001FDA65 /* ChangeDisplayNameViewController.swift */; };
+		CB75474E22C11E43001FDA65 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB75474D22C11E43001FDA65 /* ForgotPasswordViewController.swift */; };
 		CB80E3BD22AFD578001A78AE /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB80E3BC22AFD578001A78AE /* DataManager.swift */; };
 		CB80E3BF22AFD657001A78AE /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB80E3BE22AFD657001A78AE /* AlertManager.swift */; };
 		CB80E3C122AFD753001A78AE /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB80E3C022AFD753001A78AE /* LocationManager.swift */; };
@@ -145,6 +146,7 @@
 		CB6953B9228EE9530002024B /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 		CB75474922C10953001FDA65 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		CB75474B22C11186001FDA65 /* ChangeDisplayNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeDisplayNameViewController.swift; sourceTree = "<group>"; };
+		CB75474D22C11E43001FDA65 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		CB80E3BC22AFD578001A78AE /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		CB80E3BE22AFD657001A78AE /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		CB80E3C022AFD753001A78AE /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
@@ -374,6 +376,7 @@
 				CB9A1C0522BC0F5F00D1067E /* PendingTreeDetailsViewController.swift */,
 				D77029E022B16BDD00671CC0 /* AccountTableViewController.swift */,
 				D77029DE22B12C7300671CC0 /* LoginSignupViewController.swift */,
+				CB75474D22C11E43001FDA65 /* ForgotPasswordViewController.swift */,
 				CB75474922C10953001FDA65 /* ChangePasswordViewController.swift */,
 				CB75474B22C11186001FDA65 /* ChangeDisplayNameViewController.swift */,
 				41AD85E522BA933E00DAB44B /* MoreInformationViewController.swift */,
@@ -738,6 +741,7 @@
 				CB9A1C0622BC0F5F00D1067E /* PendingTreeDetailsViewController.swift in Sources */,
 				D77029E122B16BDD00671CC0 /* AccountTableViewController.swift in Sources */,
 				CB15256C22A6A00F002D483E /* AddTreeLocationViewController.swift in Sources */,
+				CB75474E22C11E43001FDA65 /* ForgotPasswordViewController.swift in Sources */,
 				CBBCE82B228DD76B008F7225 /* AppDelegate.swift in Sources */,
 				CBBCE82D228DD76B008F7225 /* ButtonViewController.swift in Sources */,
 				CBB264B822973C6C00C036FB /* DataSourceTableViewController.swift in Sources */,

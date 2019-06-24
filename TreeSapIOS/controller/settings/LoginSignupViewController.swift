@@ -35,13 +35,17 @@ class LoginSignupViewController: UIViewController {
 	
 	// MARK: - Actions
 	@IBAction func showCreateAccount(_ sender: UIButton) {
-		loginStackView.isHidden = true
-		createAccountStackView.isHidden = false
+        UIView.animate(withDuration: 0.3) {
+            self.loginStackView.isHidden = true
+            self.createAccountStackView.isHidden = false
+        }
 	}
 	
 	@IBAction func cancelCreateAccount(_ sender: UIButton) {
-		createAccountStackView.isHidden = true
-		loginStackView.isHidden = false
+        UIView.animate(withDuration: 0.3) {
+            self.loginStackView.isHidden = false
+            self.createAccountStackView.isHidden = true
+        }
 	}
     
     @IBAction func signUpButtonPressed(_ sender: UIButton) {
