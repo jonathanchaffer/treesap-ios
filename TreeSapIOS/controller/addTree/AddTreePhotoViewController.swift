@@ -88,16 +88,17 @@ class AddTreePhotoViewController: AddTreeViewController {
         for image in selectedImages {
             imageSources.append(ImageSource(image: image))
         }
-        imageSlideshow.setImageInputs(imageSources)
         if !selectedImages.isEmpty {
             nextButton.isHidden = false
             skipButton.isHidden = true
             clearPhotosButton.isHidden = false
         } else {
+            imageSources.append(ImageSource(image: UIImage(named: "noPhotoSelected")!))
             nextButton.isHidden = true
             skipButton.isHidden = false
             clearPhotosButton.isHidden = true
         }
+        imageSlideshow.setImageInputs(imageSources)
     }
 }
 
