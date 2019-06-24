@@ -24,7 +24,10 @@ class TreeAddTest: XCTestCase {
         let addTreeExpectation = expectation(for: exists, evaluatedWith: addTreeButton, handler: nil)
         wait(for: [addTreeExpectation], timeout: 8)
         addTreeButton.tap()
+        logInIfNecessary()
     }
+    
+    //MARK: Helper Methods in setUp()
     
     ///Log the user in if necessary. Fail if the login interface is invalid
     func logInIfNecessary(){
@@ -77,6 +80,8 @@ class TreeAddTest: XCTestCase {
         //Log in
         app.buttons["Go"].tap()
     }
+    
+    //MARK: Other Details Page Tests
     
     ///Tests that a tree can be added with the bare minimum requirements. Uses the device location. Skips adding pictures, and does not add any additional information. This adds an empty tree every time it runs, if it does not fail.
     func testTreeAddGeneral(){
@@ -175,8 +180,93 @@ class TreeAddTest: XCTestCase {
         app.keys["7"].tap()
         app.keys["8"].tap()
         
-        //Press the "Go" button/key to add the tree
-        app.buttons["Go"].tap()
+        app.buttons["Next"].tap()
+        
+        //Press "Done" to add the tree
+        app.buttons["Done"].tap()
         app.alerts["Submit tree for approval?"].buttons["OK"].tap()
+    }
+    
+    //This test may not work
+    ///Tests that only numbers, spaces and the character "." can be typed in the measurement text box by the user. Assumes that the the keyboard starts out with the numbers configuration (of the two configurations one can shift between using the more button).
+    func testProperCharactersAllowedOtherDetailsScreen(){
+        //Navigate to other details page
+        app.buttons["Use Current Location"].tap()
+        app.buttons["Next"].tap()
+        app.buttons["Skip"].tap()
+        app.buttons["Skip"].tap()
+        app.buttons["Skip"].tap()
+        
+        //Add tree measurement text fields
+        let addMeasurementButton: XCUIElement = app.buttons["Add DBH Measurement"]
+        addMeasurementButton.tap()
+        addMeasurementButton.tap()
+        addMeasurementButton.tap()
+        
+        var checkedTextFields = [XCUIElement]()
+        checkedTextFields.append(app.textFields["DBH Text 0"])
+        checkedTextFields.append(app.textFields["Circumference Text 0"])
+        checkedTextFields.append(app.textFields["DBH Text 1"])
+        checkedTextFields.append(app.textFields["Circumference Text 1"])
+        checkedTextFields.append(app.textFields["DBH Text 2"])
+        checkedTextFields.append(app.textFields["Circumference Text 2"])
+        checkedTextFields.append(app.textFields["DBH Text 3"])
+        checkedTextFields.append(app.textFields["Circumference Text 3"])
+        
+        for textField in checkedTextFields{
+            textField.tap()
+            
+            //Clear the text in the text field, if the clear text button is visible. The clear text button is only visible if the text field is being edited and there is text in the text field
+            let clearTextButton = app.buttons["Clear text"]
+            if(clearTextButton.exists && clearTextButton.isHittable){
+                clearTextButton.tap()
+            }
+            
+            //Type in the text field using the allowed keys
+            app.keys["1"].tap()
+            app.keys["2"].tap()
+            app.keys["3"].tap()
+            app.keys["4"].tap()
+            app.keys["5"].tap()
+            app.keys["6"].tap()
+            app.keys["7"].tap()
+            app.keys["8"].tap()
+            app.keys["9"].tap()
+            app.keys["."].tap()
+            app.keys["0"].tap()
+            
+            //Check that the correct string was typed
+            guard let text = textField.value as? String else{
+                let textFieldName: String = textField.accessibilityValue ?? "nil"
+                XCTFail("The text field \"\(textFieldName)\" does not contain text.")
+                return
+            }
+            XCTAssertEqual(text, "123456789.0", "The text field should contain the string \"123456789.0\", but contains the string \"\(text)\"")
+            
+            //Clear the text field
+            app.buttons["Clear text"].tap()
+            
+            //Type in the text field using the keys that are not allowed
+            let keysToCheckOnNumbersKeyboard: [XCUIElement] = [app.keys["-"], app.keys["/"], app.keys[":"], app.keys[";"], app.keys["("], app.keys[")"], app.keys["$"], app.keys["ampersand"], app.keys["@"], app.keys["\""], app.keys[","], app.keys["?"], app.keys["!"], app.keys["-"], app.keys["'"], app.keys["space"]]
+            for key in keysToCheckOnNumbersKeyboard{
+                key.tap()
+            }
+
+            //Check that the text in the text field is still empty or equal to the placeholder text. If there is no text in the text field, attempting to access the text in the text field programmatically will result in the value of the placeholder text in the text field.
+            guard let testText = textField.value as? String else{
+                let textFieldName: String = textField.accessibilityValue ?? "nil"
+                XCTFail("The text field \"\(textFieldName)\" does not contain text.")
+                return
+            }
+            if(testText != ""){
+                guard let placeholderText: String = textField.placeholderValue else{
+                    XCTFail()
+                    return
+                }
+                if(testText != placeholderText){
+                    XCTFail("The text in the text field \"\(textField)\" is \"\(testText)\". The text field should be empty, or contain the placeholder text, \"\(placeholderText)\".")
+                }
+            }
+        }
     }
 }
