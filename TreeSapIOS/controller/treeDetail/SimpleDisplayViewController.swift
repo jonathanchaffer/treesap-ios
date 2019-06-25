@@ -107,54 +107,72 @@ class SimpleDisplayViewController: TreeDisplayViewController {
         imageSlideshow.presentFullScreenController(from: self)
     }
     
+    /// Shows notes.
+    private func showNotes() {
+        viewNotesButton.isHidden = true
+        hideNotesButton.isHidden = false
+        self.notesContainerStackView.layer.opacity = 0
+        UIView.animate(withDuration: 0.3) {
+            self.notesContainerStackView.isHidden = false
+            self.notesContainerStackView.layer.opacity = 1
+        }
+    }
+    
+    /// Shows photos.
+    private func showPhotos() {
+        viewPhotosButton.isHidden = true
+        hidePhotosButton.isHidden = false
+        self.photosContainerStackView.layer.opacity = 0
+        UIView.animate(withDuration: 0.3) {
+            self.photosContainerStackView.isHidden = false
+            self.photosContainerStackView.layer.opacity = 1
+        }
+    }
+    
+    /// Hides notes.
+    private func hideNotes() {
+        viewNotesButton.isHidden = false
+        hideNotesButton.isHidden = true
+        UIView.animate(withDuration: 0.3) {
+            self.notesContainerStackView.isHidden = true
+            self.notesContainerStackView.layer.opacity = 0
+        }
+    }
+    
+    /// Hides photos.
+    private func hidePhotos() {
+        viewPhotosButton.isHidden = false
+        hidePhotosButton.isHidden = true
+        UIView.animate(withDuration: 0.3) {
+            self.photosContainerStackView.isHidden = true
+            self.photosContainerStackView.layer.opacity = 0
+        }
+    }
+    
     // MARK: - Actions
     @IBAction func dbhInfoButtonPressed(_ sender: UIButton) {
         AlertManager.alertUser(title: "What does DBH mean?", message: "DBH is an acronym for Diameter at Breast Height, where breast height is 4.5 feet above the ground. If multiple numbers are listed, it means that the tree branches below breast height.")
     }
     
     @IBAction func viewNotesButtonPressed(_ sender: UIButton) {
-        viewNotesButton.isHidden = true
-        hideNotesButton.isHidden = false
-        viewPhotosButton.isHidden = false
-        hidePhotosButton.isHidden = true
-        self.notesContainerStackView.layer.opacity = 0
-        UIView.animate(withDuration: 0.3) {
-            self.notesContainerStackView.isHidden = false
-            self.notesContainerStackView.layer.opacity = 1
-            self.photosContainerStackView.isHidden = true
-            self.photosContainerStackView.layer.opacity = 0
+        if !photosContainerStackView.isHidden {
+            hidePhotos()
         }
+        showNotes()
     }
     
     @IBAction func hideNotesButtonPressed(_ sender: UIButton) {
-        viewNotesButton.isHidden = false
-        hideNotesButton.isHidden = true
-        UIView.animate(withDuration: 0.3) {
-            self.notesContainerStackView.isHidden = true
-            self.notesContainerStackView.layer.opacity = 0
-        }
+        hideNotes()
     }
     
     @IBAction func viewPhotosButtonPressed(_ sender: UIButton) {
-        viewPhotosButton.isHidden = true
-        hidePhotosButton.isHidden = false
-        viewNotesButton.isHidden = false
-        hideNotesButton.isHidden = true
-        self.photosContainerStackView.layer.opacity = 0
-        UIView.animate(withDuration: 0.3) {
-            self.photosContainerStackView.isHidden = false
-            self.photosContainerStackView.layer.opacity = 1
-            self.notesContainerStackView.isHidden = true
-            self.notesContainerStackView.layer.opacity = 0
+        if !notesContainerStackView.isHidden {
+            hideNotes()
         }
+        showPhotos()
     }
     
     @IBAction func hidePhotosButtonPressed(_ sender: UIButton) {
-        viewPhotosButton.isHidden = false
-        hidePhotosButton.isHidden = true
-        UIView.animate(withDuration: 0.3) {
-            self.photosContainerStackView.isHidden = true
-            self.photosContainerStackView.layer.opacity = 0
-        }
+        hidePhotos()
     }
 }
