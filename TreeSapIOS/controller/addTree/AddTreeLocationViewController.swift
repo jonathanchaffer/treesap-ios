@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddTreeLocationViewController: AddTreeViewController {
+class AddTreeLocationViewController: AddTreeViewController, UITextFieldDelegate {
     // MARK: - Properties
     
     @IBOutlet weak var latitudeTextField: UITextField!
@@ -18,8 +18,12 @@ class AddTreeLocationViewController: AddTreeViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
+        
         latitudeTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         longitudeTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        latitudeTextField.delegate = self
+        longitudeTextField.delegate = self
+        
         // Hide the next button at first
         nextButton.isHidden = true
     }
