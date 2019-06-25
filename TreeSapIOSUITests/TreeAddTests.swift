@@ -247,10 +247,43 @@ class TreeAddTest: XCTestCase {
             app.buttons["Clear text"].tap()
             
             //Type in the text field using the keys that are not allowed
-            let keysToCheckOnNumbersKeyboard: [XCUIElement] = [app.keys["-"], app.keys["/"], app.keys[":"], app.keys[";"], app.keys["("], app.keys[")"], app.keys["$"], app.keys["ampersand"], app.keys["@"], app.keys["\""], app.keys[","], app.keys["?"], app.keys["!"], app.keys["-"], app.keys["'"], app.keys["space"]]
-            for key in keysToCheckOnNumbersKeyboard{
-                key.tap()
-            }
+            app.keys["-"].tap()
+            app.keys["/"].tap()
+            app.keys[":"].tap()
+            app.keys[";"].tap()
+            app.keys["("].tap()
+            app.keys[")"].tap()
+            app.keys["$"].tap()
+            app.keys["ampersand"].tap()
+            app.keys["@"].tap()
+            app.keys["\""].tap()
+            app.keys[","].tap()
+            app.keys["?"].tap()
+            app.keys["!"].tap()
+            app.keys["-"].tap()
+            app.keys["'"].tap()
+            app.keys["space"].tap()
+            app.buttons["more"].tap()
+            app.keys["["].tap()
+            app.keys["]"].tap()
+            app.keys["{"].tap()
+            app.keys["}"].tap()
+            app.keys["#"].tap()
+            app.keys["%"].tap()
+            app.keys["^"].tap()
+            app.keys["*"].tap()
+            app.keys["+"].tap()
+            app.keys["="].tap()
+            app.keys["_"].tap()
+            app.keys["\\"].tap()
+            app.keys["|"].tap()
+            app.keys["~"].tap()
+            app.keys["<"].tap()
+            app.keys[">"].tap()
+            app/*@START_MENU_TOKEN@*/.keys["€"]/*[[".keyboards.keys[\"€\"]",".keys[\"€\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+            app/*@START_MENU_TOKEN@*/.keys["£"]/*[[".keyboards.keys[\"£\"]",".keys[\"£\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+            app/*@START_MENU_TOKEN@*/.keys["¥"]/*[[".keyboards.keys[\"¥\"]",".keys[\"¥\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+            app/*@START_MENU_TOKEN@*/.keys["•"]/*[[".keyboards.keys[\"•\"]",".keys[\"•\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
 
             //Check that the text in the text field is still empty or equal to the placeholder text. If there is no text in the text field, attempting to access the text in the text field programmatically will result in the value of the placeholder text in the text field.
             guard let testText = textField.value as? String else{
