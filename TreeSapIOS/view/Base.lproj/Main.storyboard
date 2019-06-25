@@ -323,7 +323,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default" translatesAutoresizingMaskIntoConstraints="NO" id="NII-U9-hIK">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="_default" translatesAutoresizingMaskIntoConstraints="NO" id="NII-U9-hIK">
                                 <rect key="frame" x="0.0" y="20" width="414" height="716"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4An-t0-pxC">
@@ -3902,8 +3902,8 @@ ZC4
     </scenes>
     <resources>
         <image name="QRCodeOverlay" width="300" height="300"/>
+        <image name="_default" width="1920" height="2560"/>
         <image name="compass" width="30" height="30"/>
-        <image name="default" width="1920" height="2560"/>
         <image name="frog" width="1024" height="1024"/>
         <image name="home" width="30" height="30"/>
         <image name="map" width="30" height="30"/>

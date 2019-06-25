@@ -39,6 +39,9 @@ class NameFormatter {
         if newCommonName == "Crimson King Maple" {
             newCommonName = "Norway Maple"
         }
+        if newCommonName == "Japanese Crab Apple" {
+            newCommonName = "Japanese Flower Crabapple"
+        }
         if newCommonName == "Japanese Flowering Crabapple" {
             newCommonName = "Japanese Flower Crabapple"
         }
