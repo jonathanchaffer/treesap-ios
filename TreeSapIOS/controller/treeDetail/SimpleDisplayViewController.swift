@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ImageSlideshow
 
 class SimpleDisplayViewController: TreeDisplayViewController {
     // MARK: - Properties
@@ -23,10 +24,15 @@ class SimpleDisplayViewController: TreeDisplayViewController {
     @IBOutlet weak var viewNotesButton: UIButton!
     @IBOutlet weak var hideNotesButton: UIButton!
     @IBOutlet weak var notesStackView: UIStackView!
+    @IBOutlet weak var photosContainerStackView: UIStackView!
+    @IBOutlet weak var viewPhotosButton: UIButton!
+    @IBOutlet weak var hidePhotosButton: UIButton!
+    @IBOutlet weak var imageSlideshow: ImageSlideshow!
+    
     // MARK: - Overrides
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Set common name label
         if displayedTree!.commonName != nil {
             commonNameLabel.text = displayedTree!.commonName
@@ -77,6 +83,28 @@ class SimpleDisplayViewController: TreeDisplayViewController {
             label.lineBreakMode = .byWordWrapping
             notesStackView.addArrangedSubview(label)
         }
+        // Set up photos
+        hidePhotosButton.isHidden = true
+        photosContainerStackView.isHidden = true
+        if displayedTree!.images == [] {
+            viewPhotosButton.isHidden = true
+        }
+        setupSlideshow()
+    }
+    
+    private func setupSlideshow() {
+        let images = displayedTree!.images
+        var imageSources = [ImageSource]()
+        for image in images {
+            imageSources.append(ImageSource(image: image))
+        }
+        imageSlideshow.setImageInputs(imageSources)
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.didTapSlideshow))
+        imageSlideshow.addGestureRecognizer(gestureRecognizer)
+    }
+    
+    @objc private func didTapSlideshow() {
+        imageSlideshow.presentFullScreenController(from: self)
     }
     
     // MARK: - Actions
@@ -87,20 +115,46 @@ class SimpleDisplayViewController: TreeDisplayViewController {
     @IBAction func viewNotesButtonPressed(_ sender: UIButton) {
         viewNotesButton.isHidden = true
         hideNotesButton.isHidden = false
+        viewPhotosButton.isHidden = false
+        hidePhotosButton.isHidden = true
         self.notesContainerStackView.layer.opacity = 0
         UIView.animate(withDuration: 0.3) {
             self.notesContainerStackView.isHidden = false
             self.notesContainerStackView.layer.opacity = 1
+            self.photosContainerStackView.isHidden = true
+            self.photosContainerStackView.layer.opacity = 0
         }
     }
     
     @IBAction func hideNotesButtonPressed(_ sender: UIButton) {
         viewNotesButton.isHidden = false
         hideNotesButton.isHidden = true
-        self.notesContainerStackView.layer.opacity = 1
         UIView.animate(withDuration: 0.3) {
             self.notesContainerStackView.isHidden = true
             self.notesContainerStackView.layer.opacity = 0
+        }
+    }
+    
+    @IBAction func viewPhotosButtonPressed(_ sender: UIButton) {
+        viewPhotosButton.isHidden = true
+        hidePhotosButton.isHidden = false
+        viewNotesButton.isHidden = false
+        hideNotesButton.isHidden = true
+        self.photosContainerStackView.layer.opacity = 0
+        UIView.animate(withDuration: 0.3) {
+            self.photosContainerStackView.isHidden = false
+            self.photosContainerStackView.layer.opacity = 1
+            self.notesContainerStackView.isHidden = true
+            self.notesContainerStackView.layer.opacity = 0
+        }
+    }
+    
+    @IBAction func hidePhotosButtonPressed(_ sender: UIButton) {
+        viewPhotosButton.isHidden = false
+        hidePhotosButton.isHidden = true
+        UIView.animate(withDuration: 0.3) {
+            self.photosContainerStackView.isHidden = true
+            self.photosContainerStackView.layer.opacity = 0
         }
     }
 }
