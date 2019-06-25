@@ -176,7 +176,7 @@ class TreeAddTest: XCTestCase {
         app.keys["8"].tap()
         
         //Press the "Go" button/key to add the tree
-        app.buttons["Go"].tap()
+        app.buttons["Done Adding Tree"].tap()
         app.alerts["Submit tree for approval?"].buttons["OK"].tap()
     }
 }
