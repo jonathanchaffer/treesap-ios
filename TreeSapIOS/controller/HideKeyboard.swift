@@ -17,7 +17,11 @@ extension UIViewController {
         view.addGestureRecognizer(tap)
     }
     
+    ///Dismisses the keyboard.
     @objc func dismissKeyboard() {
-        view.endEditing(true)
+        //The dispatch queue is used because button presses need to be resolved before the keyboard is dismissed.
+        DispatchQueue.main.asyncAfter(deadline: .now()){
+            self.view.endEditing(true)
+        }
     }
 }
