@@ -130,18 +130,34 @@ class AddTreePageViewController: UIPageViewController {
         if dbh3 != nil {
             createdTree.addDBH(convertToMetricIfNecessary(dbh3!))
         }
+        // Add notes, if any, to the Tree
+        let notes = (pages[4] as! AddTreeOtherViewController).notesTextField.text
+        if notes != nil {
+            let notesList = notes!.split(separator: "\n")
+            for note in notesList {
+                if note != "" {
+                    createdTree.addNote(note: String(note))
+                }
+            }
+        }
         // Add the images, if any, to the Tree
-        let barkImage = (pages[1] as! AddTreePhotoViewController).selectedImage
-        let leafImage = (pages[2] as! AddTreePhotoViewController).selectedImage
-        let entireImage = (pages[3] as! AddTreePhotoViewController).selectedImage
-        if barkImage != nil {
-            createdTree.addImage(barkImage!)
+        let barkImages = (pages[1] as! AddTreePhotoViewController).selectedImages
+        let leafImages = (pages[2] as! AddTreePhotoViewController).selectedImages
+        let entireImages = (pages[3] as! AddTreePhotoViewController).selectedImages
+        if !barkImages.isEmpty {
+            for image in barkImages {
+                createdTree.addImage(image)
+            }
         }
-        if leafImage != nil {
-            createdTree.addImage(leafImage!)
+        if !leafImages.isEmpty {
+            for image in leafImages {
+                createdTree.addImage(image)
+            }
         }
-        if entireImage != nil {
-            createdTree.addImage(entireImage!)
+        if !entireImages.isEmpty {
+            for image in entireImages {
+                createdTree.addImage(image)
+            }
         }
         // Add the tree to the pending trees database
         DatabaseManager.submitTreeToPending(tree: createdTree)

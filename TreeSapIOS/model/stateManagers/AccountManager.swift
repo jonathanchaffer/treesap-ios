@@ -10,14 +10,18 @@ import Foundation
 import Firebase
 
 class AccountManager {
-	
-	static func isLoggedIn() -> Bool {
-		return Auth.auth().currentUser != nil
-	}
-	
-	static func getEmail() -> String? {
-		return Auth.auth().currentUser?.email
-	}
+    
+    static func isLoggedIn() -> Bool {
+        return Auth.auth().currentUser != nil
+    }
+    
+    static func getEmail() -> String? {
+        return Auth.auth().currentUser?.email
+    }
+    
+    static func getDisplayName() -> String? {
+        return Auth.auth().currentUser?.displayName
+    }
     
     static func getUser() -> User? {
         return Auth.auth().currentUser
@@ -26,67 +30,118 @@ class AccountManager {
     static func getUserID() -> String? {
         return getUser()?.uid
     }
-	
+    
     /**
      Tries to create a user in Firebase with the given email and password. Alerts the user if it doesn't work.
      - Parameter email: The inputted email.
+     - Parameter displayName: The inputted display name.
      - Parameter password: The inputted password.
      */
-    static func createUser(email: String, password: String) {
-		Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
-			if let error = error {
-				switch error._code {
-				case AuthErrorCode.invalidEmail.rawValue:
-					AlertManager.alertUser(title: "Invalid email", message: "Please ensure that you have entered a valid email address.")
-				case AuthErrorCode.emailAlreadyInUse.rawValue:
-					AlertManager.alertUser(title: "Email already in use", message: "An account has already been created with that email.")
-				case AuthErrorCode.weakPassword.rawValue:
-					AlertManager.alertUser(title: "Weak password", message: "Please ensure that your password contains at least 6 characters.")
-				default:
-					AlertManager.alertUser(title: "Error", message: "There was an error creating your account. Please try again.")
-				}
-			} else {
-				NotificationCenter.default.post(name: NSNotification.Name("loggedIn"), object: nil)
-			}
-		}
-	}
-	
+    static func createUser(email: String, displayName: String, password: String) {
+        Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+            if let error = error {
+                switch error._code {
+                case AuthErrorCode.invalidEmail.rawValue:
+                    AlertManager.alertUser(title: "Invalid email", message: "Please ensure that you have entered a valid email address.")
+                case AuthErrorCode.emailAlreadyInUse.rawValue:
+                    AlertManager.alertUser(title: "Email already in use", message: "An account has already been created with that email.")
+                case AuthErrorCode.weakPassword.rawValue:
+                    AlertManager.alertUser(title: "Weak password", message: "Please ensure that your password contains at least 6 characters.")
+                default:
+                    AlertManager.alertUser(title: "Error", message: "There was an error creating your account. Please try again.")
+                }
+            } else {
+                setDisplayName(displayName: displayName)
+                NotificationCenter.default.post(name: NSNotification.Name("loggedIn"), object: nil)
+            }
+        }
+    }
+    
     /**
      Tries to log in with the given email and password. Alerts the user if it doesn't work.
      - Parameter email: The inputted email.
      - Parameter password: The inputted password.
      */
-	static func logIn(email: String, password: String) {
-		Auth.auth().signIn(withEmail: email, password: password) { user, error in
-			if let error = error {
-				switch error._code {
-				case AuthErrorCode.wrongPassword.rawValue:
-					AlertManager.alertUser(title: "Incorrect password", message: "The password you entered was incorrect. Please try again.")
-				case AuthErrorCode.invalidEmail.rawValue:
-					AlertManager.alertUser(title: "Invalid email", message: "The email you entered is invalid. Please try again.")
+    static func logIn(email: String, password: String) {
+        Auth.auth().signIn(withEmail: email, password: password) { user, error in
+            if let error = error {
+                switch error._code {
+                case AuthErrorCode.wrongPassword.rawValue:
+                    AlertManager.alertUser(title: "Incorrect password", message: "The password you entered was incorrect. Please try again.")
+                case AuthErrorCode.invalidEmail.rawValue:
+                    AlertManager.alertUser(title: "Invalid email", message: "The email you entered is invalid. Please try again.")
                 case AuthErrorCode.userNotFound.rawValue:
                     AlertManager.alertUser(title: "User not found", message: "A user with the email you entered was not found in our database. Please try again.")
-				default:
-					AlertManager.alertUser(title: "Error", message: "There was an error logging into your account. Please try again.")
-				}
-			} else {
-				NotificationCenter.default.post(name: NSNotification.Name("loggedIn"), object: nil)
+                default:
+                    AlertManager.alertUser(title: "Error", message: "There was an error logging into your account. Please try again.")
+                }
+            } else {
+                NotificationCenter.default.post(name: NSNotification.Name("loggedIn"), object: nil)
                 DataManager.reloadFirebaseTreeData()
-			}
-		}
-	}
+            }
+        }
+    }
     
     /**
      Tries to log out the current user.
      - Returns: true if it worked, false otherwise.
      */
-	static func logOut() -> Bool {
-		do {
-			try Auth.auth().signOut()
+    static func logOut() -> Bool {
+        do {
+            try Auth.auth().signOut()
             DataManager.reloadFirebaseTreeData()
-			return true
-		} catch {
-			return false
-		}
-	}
+            return true
+        } catch {
+            return false
+        }
+    }
+    
+    /**
+     Tries to set the display name of the current user. Shown an alert if there is an error.
+     */
+    static func setDisplayName(displayName: String) {
+        if let user = Auth.auth().currentUser {
+            let changeRequest = user.createProfileChangeRequest()
+            changeRequest.displayName = displayName
+            changeRequest.commitChanges() { error in
+                if error != nil {
+                    AlertManager.alertUser(title: "Error setting display name", message: "An error occurred while trying to set your display name. Please try again.")
+                } else {
+                    NotificationCenter.default.post(name: NSNotification.Name("displayNameUpdated"), object: nil)
+                }
+            }
+        }
+    }
+    
+    static func updatePassword(oldPassword: String, newPassword: String) {
+        let credential = EmailAuthProvider.credential(withEmail: getEmail()!, password: oldPassword)
+        getUser()?.reauthenticate(with: credential) { result, error in
+            if error != nil {
+                AlertManager.alertUser(title: "Old password incorrect", message: "The old password you entered was incorrect. Please try again.")
+            } else {
+                getUser()?.updatePassword(to: newPassword) { error in
+                    if let error = error {
+                        switch error._code {
+                        case AuthErrorCode.weakPassword.rawValue:
+                            AlertManager.alertUser(title: "Weak password", message: "Please ensure that your password contains at least 6 characters.")
+                        default:
+                            AlertManager.alertUser(title: "Error updating password", message: "An error occurred while trying to update your password. Please try again.")
+                        }
+                    } else {
+                        NotificationCenter.default.post(name: NSNotification.Name("passwordUpdated"), object: nil)
+                    }
+                }
+            }
+        }
+    }
+    
+    static func sendPasswordResetEmail(email: String) {
+        Auth.auth().sendPasswordReset(withEmail: email) { error in
+            if error != nil {
+                AlertManager.alertUser(title: "Error sending password reset email", message: "An error occurred while tyring to send a password reset email. Please try again.")
+            } else {
+                NotificationCenter.default.post(name: NSNotification.Name("passwordResetSent"), object: nil)
+            }
+        }
+    }
 }

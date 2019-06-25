@@ -16,7 +16,8 @@ class LoginSignupViewController: UIViewController {
 	@IBOutlet weak var loginPasswordTextField: UITextField!
 	@IBOutlet weak var createAccountStackView: UIStackView!
 	@IBOutlet weak var createAccountEmailTextField: UITextField!
-	@IBOutlet weak var createAccountPasswordTextField: UITextField!
+    @IBOutlet weak var createAccountDisplayNameTextField: UITextField!
+    @IBOutlet weak var createAccountPasswordTextField: UITextField!
 	@IBOutlet weak var createAccountConfirmTextField: UITextField!
 	
 	// MARK: - Overrides
@@ -34,13 +35,17 @@ class LoginSignupViewController: UIViewController {
 	
 	// MARK: - Actions
 	@IBAction func showCreateAccount(_ sender: UIButton) {
-		loginStackView.isHidden = true
-		createAccountStackView.isHidden = false
+        UIView.animate(withDuration: 0.3) {
+            self.loginStackView.isHidden = true
+            self.createAccountStackView.isHidden = false
+        }
 	}
 	
 	@IBAction func cancelCreateAccount(_ sender: UIButton) {
-		createAccountStackView.isHidden = true
-		loginStackView.isHidden = false
+        UIView.animate(withDuration: 0.3) {
+            self.loginStackView.isHidden = false
+            self.createAccountStackView.isHidden = true
+        }
 	}
     
     @IBAction func signUpButtonPressed(_ sender: UIButton) {
@@ -71,7 +76,7 @@ class LoginSignupViewController: UIViewController {
                 return
             }
             // Create the user
-            AccountManager.createUser(email: createAccountEmailTextField.text!, password: createAccountPasswordTextField.text!)
+            AccountManager.createUser(email: createAccountEmailTextField.text!, displayName: createAccountDisplayNameTextField.text!, password: createAccountPasswordTextField.text!)
         }
     }
     

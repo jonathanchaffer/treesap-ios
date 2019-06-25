@@ -10,7 +10,8 @@ import UIKit
 
 class BenefitsDisplayViewController: TreeDisplayViewController {
     // MARK: - Properties
-
+    @IBOutlet weak var estimatedBenefitsLabel: UILabel!
+    
     @IBOutlet var benefitsContainer: UIView!
     @IBOutlet var noDataContainer: UIView!
     @IBOutlet var commonNameLabel: UILabel!
@@ -64,6 +65,13 @@ class BenefitsDisplayViewController: TreeDisplayViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Show/hide the estimated benefits disclaimer
+        if estimatedBenefitsFound! {
+            estimatedBenefitsLabel.isHidden = false
+        } else {
+            estimatedBenefitsLabel.isHidden = true
+        }
 
         if displayedTree!.otherInfo != [:] {
             // Set label text

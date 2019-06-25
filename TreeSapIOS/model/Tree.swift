@@ -20,6 +20,7 @@ class Tree {
     var images = [UIImage]()
     let userID: String?
     var documentID: String? = nil
+    var notes = [String]()
 
     init(id: Int?, commonName: String?, scientificName: String?, location: CLLocationCoordinate2D, native: Bool?, userID: String?) {
         // Initialize basic information
@@ -41,5 +42,9 @@ class Tree {
 
     func addImage(_ image: UIImage) {
         images.append(image)
+    }
+    
+    func addNote(note: String) {
+        notes.append(note)
     }
 }

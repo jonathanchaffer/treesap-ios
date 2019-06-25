@@ -7,45 +7,46 @@
 //
 
 import UIKit
+import ImageSlideshow
 
 class AddTreeLeafViewController: AddTreePhotoViewController {
     // MARK: - Properties
-
-    @IBOutlet var leafImageView: UIImageView!
+    
+    @IBOutlet weak var imageSlideshow: ImageSlideshow!
     @IBOutlet var nextButton: UIButton!
     @IBOutlet var skipButton: UIButton!
-    @IBOutlet var deleteImageButton: UIButton!
-
+    @IBOutlet var clearPhotosButton: UIButton!
+    
     // MARK: - Overrides
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateImage()
+        updateImages()
     }
-
-    override func updateImage() {
-        super.updateImage(imageView: leafImageView, nextButton: nextButton, skipButton: skipButton, deleteImageButton: deleteImageButton)
+    
+    override func updateImages() {
+        super.updateImages(imageSlideshow: imageSlideshow, nextButton: nextButton, skipButton: skipButton, clearPhotosButton: clearPhotosButton)
     }
-
+    
     // MARK: - Actions
-
+    
     @IBAction func broadcastNext(_: UIButton) {
         nextPage()
     }
-
+    
     @IBAction func broadcastSkip(_: UIButton) {
         nextPage()
     }
-
+    
     @IBAction func broadcastBack(_: UIButton) {
         previousPage()
     }
-
+    
     @IBAction func handlePhotoButtonPressed(_: UIButton) {
         takeOrChoosePhoto()
     }
-
-    @IBAction func handleDeleteImageButtonPressed(_: UIButton) {
-        deleteImage()
+    
+    @IBAction func handleDeleteButtonPressed(_: UIButton) {
+        clearImages()
     }
 }

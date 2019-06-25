@@ -9,12 +9,13 @@
 //
 
 import UIKit
+import ImageSlideshow
 
 class AddTreePhotoViewController: AddTreeViewController {
     let pickerController = UIImagePickerController()
     let delegate = self
-    var selectedImage: UIImage?
-
+    var selectedImages = [UIImage]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -29,9 +30,9 @@ class AddTreePhotoViewController: AddTreeViewController {
     }
 
     /// Deletes the current image.
-    func deleteImage() {
-        selectedImage = nil
-        updateImage()
+    func clearImages() {
+        selectedImages = []
+        updateImages()
     }
 
     /// Shows the next button and hides the skip button.
@@ -75,25 +76,29 @@ class AddTreePhotoViewController: AddTreeViewController {
     /// Function that is called when an image has been selected.
     private func pickerController(_ controller: UIImagePickerController, didSelect image: UIImage?) {
         controller.dismiss(animated: true, completion: nil)
-        selectedImage = image
-        updateImage()
+        selectedImages.append(image!)
+        updateImages()
     }
 
-    func updateImage() {}
+    func updateImages() {}
 
-    /// Updates the UIImageView on the current page.
-    func updateImage(imageView: UIImageView, nextButton: UIButton, skipButton: UIButton, deleteImageButton: UIButton) {
-        if selectedImage != nil {
-            imageView.image = selectedImage
+    /// Updates the image slideshow on the current page.
+    func updateImages(imageSlideshow: ImageSlideshow, nextButton: UIButton, skipButton: UIButton, clearPhotosButton: UIButton) {
+        var imageSources = [ImageSource]()
+        for image in selectedImages {
+            imageSources.append(ImageSource(image: image))
+        }
+        if !selectedImages.isEmpty {
             nextButton.isHidden = false
             skipButton.isHidden = true
-            deleteImageButton.isHidden = false
+            clearPhotosButton.isHidden = false
         } else {
-            imageView.image = UIImage(named: "noPhotoSelected")
+            imageSources.append(ImageSource(image: UIImage(named: "noPhotoSelected")!))
             nextButton.isHidden = true
             skipButton.isHidden = false
-            deleteImageButton.isHidden = true
+            clearPhotosButton.isHidden = true
         }
+        imageSlideshow.setImageInputs(imageSources)
     }
 }
 
