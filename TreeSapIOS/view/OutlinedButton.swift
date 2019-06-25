@@ -9,7 +9,6 @@
 import UIKit
 
 class OutlinedButton: UIButton {
-    
     @IBInspectable var borderColor: UIColor? {
         didSet {
             layer.borderColor = borderColor?.cgColor

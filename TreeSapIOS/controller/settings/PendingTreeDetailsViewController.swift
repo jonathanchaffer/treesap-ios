@@ -21,11 +21,37 @@ class PendingTreeDetailsViewController: UIViewController {
     @IBOutlet weak var latitudeLabel: UILabel!
     @IBOutlet weak var longitudeLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var notesContainerStackView: UIStackView!
+    @IBOutlet weak var viewNotesButton: UIButton!
+    @IBOutlet weak var hideNotesButton: UIButton!
+    @IBOutlet weak var notesStackView: UIStackView!
+    @IBOutlet weak var photosContainerStackView: UIStackView!
+    @IBOutlet weak var viewPhotosButton: UIButton!
+    @IBOutlet weak var hidePhotosButton: UIButton!
     @IBOutlet weak var imageSlideshow: ImageSlideshow!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupDetails()
+        // Set up notes
+        hideNotesButton.isHidden = true
+        notesContainerStackView.isHidden = true
+        if displayedTree!.notes == [] {
+            viewNotesButton.isHidden = true
+        }
+        for note in displayedTree!.notes {
+            let label = UILabel()
+            label.text = note
+            label.numberOfLines = 0
+            label.lineBreakMode = .byWordWrapping
+            notesStackView.addArrangedSubview(label)
+        }
+        // Set up photos
+        hidePhotosButton.isHidden = true
+        photosContainerStackView.isHidden = true
+        if displayedTree!.images == [] {
+            viewPhotosButton.isHidden = true
+        }
         setupImages()
         NotificationCenter.default.addObserver(self, selector: #selector(updateTreeSuccess), name: NSNotification.Name("updateTreeSuccess"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(updateTreeFailure), name: NSNotification.Name("updateTreeFailure"), object: nil)
@@ -139,16 +165,70 @@ class PendingTreeDetailsViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func acceptButtonPressed(_ sender: UIButton) {
-        DatabaseManager.moveDataToAccepted(documentID: displayedTree!.documentID!)
-        // Display a "Please Wait" alert while it's trying to upload
-        let loadingAlert = UIAlertController(title: "Please wait...", message: nil, preferredStyle: .alert)
-        present(loadingAlert, animated: true)
+        let alert = UIAlertController(title: "Accept tree?", message: "This tree will be added to the online database for everyone to see.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+            DatabaseManager.moveDataToAccepted(documentID: self.displayedTree!.documentID!)
+            let loadingAlert = UIAlertController(title: "Please wait...", message: nil, preferredStyle: .alert)
+            self.present(loadingAlert, animated: true)
+        }))
+        present(alert, animated: true)
     }
     
     @IBAction func rejectButtonPressed(_ sender: UIButton) {
-        DatabaseManager.removeDataFromPending(documentID: displayedTree!.documentID!)
-        // Display a "Please Wait" alert while it's trying to upload
-        let loadingAlert = UIAlertController(title: "Please wait...", message: nil, preferredStyle: .alert)
-        present(loadingAlert, animated: true)
+        let alert = UIAlertController(title: "Reject tree?", message: "This tree will be removed from the database.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+            DatabaseManager.removeDataFromPending(documentID: self.displayedTree!.documentID!)
+            let loadingAlert = UIAlertController(title: "Please wait...", message: nil, preferredStyle: .alert)
+            self.present(loadingAlert, animated: true)
+        }))
+        present(alert, animated: true)
+    }
+    
+    @IBAction func viewNotesButtonPressed(_ sender: UIButton) {
+        viewNotesButton.isHidden = true
+        hideNotesButton.isHidden = false
+        viewPhotosButton.isHidden = false
+        hidePhotosButton.isHidden = true
+        self.notesContainerStackView.layer.opacity = 0
+        UIView.animate(withDuration: 0.3) {
+            self.notesContainerStackView.isHidden = false
+            self.notesContainerStackView.layer.opacity = 1
+            self.photosContainerStackView.isHidden = true
+            self.photosContainerStackView.layer.opacity = 0
+        }
+    }
+    
+    @IBAction func hideNotesButtonPressed(_ sender: UIButton) {
+        viewNotesButton.isHidden = false
+        hideNotesButton.isHidden = true
+        UIView.animate(withDuration: 0.3) {
+            self.notesContainerStackView.isHidden = true
+            self.notesContainerStackView.layer.opacity = 0
+        }
+    }
+    
+    @IBAction func viewPhotosButtonPressed(_ sender: UIButton) {
+        viewPhotosButton.isHidden = true
+        hidePhotosButton.isHidden = false
+        viewNotesButton.isHidden = false
+        hideNotesButton.isHidden = true
+        self.photosContainerStackView.layer.opacity = 0
+        UIView.animate(withDuration: 0.3) {
+            self.photosContainerStackView.isHidden = false
+            self.photosContainerStackView.layer.opacity = 1
+            self.notesContainerStackView.isHidden = true
+            self.notesContainerStackView.layer.opacity = 0
+        }
+    }
+    
+    @IBAction func hidePhotosButtonPressed(_ sender: UIButton) {
+        viewPhotosButton.isHidden = false
+        hidePhotosButton.isHidden = true
+        UIView.animate(withDuration: 0.3) {
+            self.photosContainerStackView.isHidden = true
+            self.photosContainerStackView.layer.opacity = 0
+        }
     }
 }
