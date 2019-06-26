@@ -182,9 +182,10 @@ class TreeAddTest: XCTestCase {
         
         app.buttons["Next"].tap()
         
-        //Press "Done" to add the tree
+        //Press "Done" to add the tree, and press "OK" on the following alerts
         app.buttons["Done"].tap()
         app.alerts["Submit tree for approval?"].buttons["OK"].tap()
+        app.alerts["Success!"].buttons["OK"].tap()
     }
     
     //This test may not work
