@@ -62,7 +62,7 @@ class DatabaseManager {
         data["images"] = encodedImages
         data["timestamp"] = Timestamp()
         
-        // Add the data to the collection
+        // Add the data to pending
         addDataToCollection(data: data, collectionID: "pendingTrees", documentID: nil)
     }
     
@@ -70,14 +70,18 @@ class DatabaseManager {
      Moves an existing document from pendingTrees to acceptedTrees.
      - Parameter documentID: The ID of the document to move.
      */
-    static func moveDataToAccepted(documentID: String) {
+    static func moveDocumentToAccepted(documentID: String) {
         let ref = db.collection("pendingTrees").document(documentID)
         ref.getDocument() { document, err in
             if let err = err {
                 print("Error retrieving document: \(err)")
             } else {
+                // Add the tree to accepted
                 addDataToCollection(data: document!.data()!, collectionID: "acceptedTrees", documentID: documentID)
+                // Remove the tree from pending
                 removeDataFromCollection(collectionID: "pendingTrees", documentID: documentID)
+                // Add the notification to notifications
+                addDataToCollection(data: ["accepted": true, "treeData": document!.data()!], collectionID: "notifications", documentID: nil)
             }
         }
     }
@@ -86,8 +90,18 @@ class DatabaseManager {
      Removes an existing document from pendingTrees.
      - Parameter documentID: The ID of the document to remove.
      */
-    static func removeDataFromPending(documentID: String) {
-        removeDataFromCollection(collectionID: "pendingTrees", documentID: documentID)
+    static func removeDocumentFromPending(documentID: String) {
+        let ref = db.collection("pendingTrees").document(documentID)
+        ref.getDocument() { document, err in
+            if let err = err {
+                print("Error retrieving document: \(err)")
+            } else {
+                // Remove the tree from pending
+                removeDataFromCollection(collectionID: "pendingTrees", documentID: documentID)
+                // Add the notification to notifications
+                addDataToCollection(data: ["accepted": false, "treeData": document!.data()!], collectionID: "notifications", documentID: nil)
+            }
+        }
     }
     
     /**
@@ -155,5 +169,14 @@ class DatabaseManager {
     /// - Returns: A Query containing the public trees collection, or nil if there is none.
     static func getPublicTreesCollection() -> Query? {
         return db.collection("acceptedTrees")
+    }
+    
+    /// - Returns: A Query containing a collection of notifications for the current user, or nil if there is none.
+    static func getNotificationsCollection() -> Query? {
+        if AccountManager.getUserID() != nil {
+            return db.collection("notifications").whereField(FieldPath(["treeData", "userID"]), isEqualTo: AccountManager.getUserID()!)
+        } else {
+            return nil
+        }
     }
 }

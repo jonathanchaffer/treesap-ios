@@ -44,6 +44,7 @@
 		CB75474E22C11E43001FDA65 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB75474D22C11E43001FDA65 /* ForgotPasswordViewController.swift */; };
 		CB75475022C13B21001FDA65 /* OutlinedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB75474F22C13B21001FDA65 /* OutlinedButton.swift */; };
 		CB75475222C14DD0001FDA65 /* MultilineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB75475122C14DD0001FDA65 /* MultilineTextField.swift */; };
+		CB78C9EA22C3C25100B5A7CB /* NotificationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB78C9E922C3C25100B5A7CB /* NotificationsTableViewController.swift */; };
 		CB80E3BD22AFD578001A78AE /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB80E3BC22AFD578001A78AE /* DataManager.swift */; };
 		CB80E3BF22AFD657001A78AE /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB80E3BE22AFD657001A78AE /* AlertManager.swift */; };
 		CB80E3C122AFD753001A78AE /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB80E3C022AFD753001A78AE /* LocationManager.swift */; };
@@ -151,6 +152,7 @@
 		CB75474D22C11E43001FDA65 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		CB75474F22C13B21001FDA65 /* OutlinedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutlinedButton.swift; sourceTree = "<group>"; };
 		CB75475122C14DD0001FDA65 /* MultilineTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultilineTextField.swift; sourceTree = "<group>"; };
+		CB78C9E922C3C25100B5A7CB /* NotificationsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsTableViewController.swift; sourceTree = "<group>"; };
 		CB80E3BC22AFD578001A78AE /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		CB80E3BE22AFD657001A78AE /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		CB80E3C022AFD753001A78AE /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
@@ -385,6 +387,7 @@
 				CB75474D22C11E43001FDA65 /* ForgotPasswordViewController.swift */,
 				CB75474922C10953001FDA65 /* ChangePasswordViewController.swift */,
 				CB75474B22C11186001FDA65 /* ChangeDisplayNameViewController.swift */,
+				CB78C9E922C3C25100B5A7CB /* NotificationsTableViewController.swift */,
 				41AD85E522BA933E00DAB44B /* MoreInformationViewController.swift */,
 			);
 			path = settings;
@@ -733,6 +736,7 @@
 			files = (
 				D77029DF22B12C7300671CC0 /* LoginSignupViewController.swift in Sources */,
 				CB9F425122A5B0D800C97F70 /* AddTreePageViewController.swift in Sources */,
+				CB78C9EA22C3C25100B5A7CB /* NotificationsTableViewController.swift in Sources */,
 				CB75475022C13B21001FDA65 /* OutlinedButton.swift in Sources */,
 				CB12C94F228DF85D000C74C3 /* TreeDetailPageViewController.swift in Sources */,
 				CB75474A22C10953001FDA65 /* ChangePasswordViewController.swift in Sources */,

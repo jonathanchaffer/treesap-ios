@@ -210,7 +210,7 @@ class PendingTreeDetailsViewController: UIViewController {
         let alert = UIAlertController(title: "Accept tree?", message: "This tree will be added to the online database for everyone to see.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
-            DatabaseManager.moveDataToAccepted(documentID: self.displayedTree!.documentID!)
+            DatabaseManager.moveDocumentToAccepted(documentID: self.displayedTree!.documentID!)
             let loadingAlert = UIAlertController(title: "Please wait...", message: nil, preferredStyle: .alert)
             self.present(loadingAlert, animated: true)
         }))
@@ -221,7 +221,7 @@ class PendingTreeDetailsViewController: UIViewController {
         let alert = UIAlertController(title: "Reject tree?", message: "This tree will be removed from the database.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
-            DatabaseManager.removeDataFromPending(documentID: self.displayedTree!.documentID!)
+            DatabaseManager.removeDocumentFromPending(documentID: self.displayedTree!.documentID!)
             let loadingAlert = UIAlertController(title: "Please wait...", message: nil, preferredStyle: .alert)
             self.present(loadingAlert, animated: true)
         }))
