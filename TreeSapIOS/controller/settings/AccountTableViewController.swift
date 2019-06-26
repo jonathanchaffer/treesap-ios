@@ -15,7 +15,7 @@ class AccountTableViewController: UITableViewController {
     @IBOutlet weak var displayNameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     
-    let numRowsPerSection = [1, 5]
+    let numRowsPerSection = [1, 4]
     let sectionHeaders: [String?] = ["Account", "Account"]
     
     // MARK: - Overrides

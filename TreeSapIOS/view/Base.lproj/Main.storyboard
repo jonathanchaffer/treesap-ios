@@ -621,7 +621,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JH4-oc-K2P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="838" y="1350"/>
+            <point key="canvasLocation" x="1744.9275362318842" y="1349.1847826086957"/>
         </scene>
         <!--Add Tree Location View Controller-->
         <scene sceneID="4zU-Eg-kCu">
@@ -849,7 +849,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r1j-zC-oy6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1534" y="1350"/>
+            <point key="canvasLocation" x="2440.5797101449275" y="1349.1847826086957"/>
         </scene>
         <!--Benefits Display View Controller-->
         <scene sceneID="c72-WP-SK7">
@@ -1451,7 +1451,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XCc-DU-1MA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2209" y="1350"/>
+            <point key="canvasLocation" x="3115.9420289855075" y="1349.1847826086957"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="5Td-JP-srG">
@@ -1480,7 +1480,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uON-C0-WDG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3572" y="1346"/>
+            <point key="canvasLocation" x="4478.2608695652179" y="1345.9239130434785"/>
         </scene>
         <!--QR Code-->
         <scene sceneID="89T-WE-ojm">
@@ -1762,6 +1762,11 @@
                         <barButtonItem key="leftBarButtonItem" title="Close" image="xButton" id="1eC-HO-7oO">
                             <connections>
                                 <action selector="closeSettings:" destination="fLH-Mh-jqL" id="3rf-fK-NU6"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Notifications" image="bell" id="ci3-rp-xqu">
+                            <connections>
+                                <segue destination="zXv-Mm-1pB" kind="show" id="18e-DL-oC4"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -2552,38 +2557,14 @@ ZC4
                                             <segue destination="rk9-CE-5Wt" kind="show" id="WT2-1k-LNc"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="XjX-hG-lrN">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="XjX-hG-lrN">
                                         <rect key="frame" x="0.0" y="325.33333333333337" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XjX-hG-lrN" id="HvZ-lx-e6O">
-                                            <rect key="frame" x="0.0" y="0.0" width="376" height="43.666666666666664"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="View notifications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oIU-ak-mV2">
-                                                    <rect key="frame" x="20" y="11.333333333333336" width="136" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="oIU-ak-mV2" firstAttribute="centerY" secondItem="HvZ-lx-e6O" secondAttribute="centerY" id="7Qb-ce-VNn"/>
-                                                <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="oIU-ak-mV2" secondAttribute="trailing" id="JbI-oc-ucw"/>
-                                                <constraint firstItem="oIU-ak-mV2" firstAttribute="leading" secondItem="HvZ-lx-e6O" secondAttribute="leadingMargin" id="u8M-UN-bg8"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="zXv-Mm-1pB" kind="show" id="omh-NS-cix"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="C2u-aY-nys">
-                                        <rect key="frame" x="0.0" y="369.33333333333337" width="414" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="C2u-aY-nys" id="DN7-HA-OLF">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Log out" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4f1-A8-lh9">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Log out" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oIU-ak-mV2">
                                                     <rect key="frame" x="20" y="11.333333333333336" width="58" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
@@ -2591,9 +2572,9 @@ ZC4
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="4f1-A8-lh9" firstAttribute="centerY" secondItem="DN7-HA-OLF" secondAttribute="centerY" id="5L6-a5-uUb"/>
-                                                <constraint firstItem="4f1-A8-lh9" firstAttribute="leading" secondItem="DN7-HA-OLF" secondAttribute="leadingMargin" id="GkY-zd-SoI"/>
-                                                <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="4f1-A8-lh9" secondAttribute="trailing" id="oge-z4-DxN"/>
+                                                <constraint firstItem="oIU-ak-mV2" firstAttribute="centerY" secondItem="HvZ-lx-e6O" secondAttribute="centerY" id="7Qb-ce-VNn"/>
+                                                <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="oIU-ak-mV2" secondAttribute="trailing" id="JbI-oc-ucw"/>
+                                                <constraint firstItem="oIU-ak-mV2" firstAttribute="leading" secondItem="HvZ-lx-e6O" secondAttribute="leadingMargin" id="u8M-UN-bg8"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -3177,7 +3158,7 @@ ZC4
             </objects>
             <point key="canvasLocation" x="-538" y="3870"/>
         </scene>
-        <!--Notifications Table View Controller-->
+        <!--Notifications-->
         <scene sceneID="3jD-c7-SGW">
             <objects>
                 <tableViewController id="zXv-Mm-1pB" customClass="NotificationsTableViewController" customModule="TreeSapIOS" customModuleProvider="target" sceneMemberID="viewController">
@@ -3218,22 +3199,26 @@ ZC4
                     </tableView>
                     <toolbarItems>
                         <barButtonItem title="Select" id="I5P-dU-HPq">
+                            <color key="tintColor" name="treesapGreen"/>
                             <connections>
                                 <action selector="selectButtonPressed:" destination="zXv-Mm-1pB" id="5DW-Oo-f2r"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem title="Cancel" id="Jhu-qd-99f">
+                            <color key="tintColor" name="treesapGreen"/>
                             <connections>
                                 <action selector="cancelButtonPressed:" destination="zXv-Mm-1pB" id="zBL-LV-td1"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="Jzx-jr-8og"/>
                         <barButtonItem systemItem="trash" id="Fra-SW-lMq">
+                            <color key="tintColor" name="treesapGreen"/>
                             <connections>
                                 <action selector="trashButtonPressed:" destination="zXv-Mm-1pB" id="Y78-Bv-K7h"/>
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
+                    <navigationItem key="navigationItem" title="Notifications" id="jBt-rH-dMi"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="barSpace" destination="Jzx-jr-8og" id="OuO-KU-5U1"/>
@@ -3251,7 +3236,7 @@ ZC4
                     </items>
                 </toolbar>
             </objects>
-            <point key="canvasLocation" x="155" y="3870"/>
+            <point key="canvasLocation" x="-533" y="3018"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="rNQ-1x-mCj">
@@ -4181,6 +4166,7 @@ ZC4
     <resources>
         <image name="QRCodeOverlay" width="300" height="300"/>
         <image name="_default" width="1920" height="1271"/>
+        <image name="bell" width="30" height="30"/>
         <image name="compass" width="30" height="30"/>
         <image name="frog" width="1024" height="1024"/>
         <image name="home" width="30" height="30"/>
@@ -4197,8 +4183,8 @@ ZC4
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Osm-ne-69B"/>
-        <segue reference="M3K-1N-Vy6"/>
+        <segue reference="Ynx-wO-HBK"/>
+        <segue reference="cac-nU-E74"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" name="treesapGreen"/>
 </document>
