@@ -113,7 +113,7 @@ class SettingsViewController: UITableViewController {
 			let defaultCutoff: Double = PreferencesManager.getDefaultCutoffDistance()
 			PreferencesManager.setCutoffDistance(defaultCutoff)
 			cutoffDistanceTextField.text = String(defaultCutoff)
-			let alert = UIAlertController(title: "Invalid number", message: "Distance has been reset to " + String(defaultCutoff), preferredStyle: .alert)
+			let alert = UIAlertController(title: "Invalid distance", message: "The max identification distance has been reset to " + String(defaultCutoff) + ".", preferredStyle: .alert)
 			alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
 			present(alert, animated: true)
 		}

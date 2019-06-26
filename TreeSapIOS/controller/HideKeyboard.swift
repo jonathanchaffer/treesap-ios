@@ -2,7 +2,7 @@
 //  HideKeyboard.swift
 //  TreeSapIOS
 //
-//  Created by Jonathan Chaffer in Summer 2019.
+//  Created by Jonathan Chaffer and Josiah Brett in Summer 2019.
 //  Copyright © 2019 Hope CS. All rights reserved.
 //
 
@@ -18,21 +18,21 @@ extension UIViewController: UIGestureRecognizerDelegate {
         view.addGestureRecognizer(tap)
     }
     
-    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool{
+    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
         let touchView = touch.view
-        if(touchView == nil){
+        if touchView == nil {
             return true
         }
-        
-        if(touchView is UIButton || touchView is UITextField){
+        // If the touch view is a subview of a text field or is a text field, then the keyboard should stay up.
+        if touchView?.superview is UITextField || touchView is UITextField {
             return false
         }
         return true
     }
     
-    ///Dismisses the keyboard.
+    /// Dismisses the keyboard.
     @objc func dismissKeyboard(sender: UITapGestureRecognizer) {
-        //The dispatch queue is used because button presses need to be resolved before the keyboard is dismissed.
+        // The dispatch queue is used because button presses need to be resolved before the keyboard is dismissed.
         DispatchQueue.main.asyncAfter(deadline: .now()){
             self.view.endEditing(true)
         }
