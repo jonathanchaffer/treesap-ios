@@ -27,10 +27,6 @@ class AccountTableViewController: UITableViewController {
 		NotificationCenter.default.addObserver(self, selector: #selector(refreshTable), name: NSNotification.Name("loggedIn"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(refreshTable), name: NSNotification.Name("displayNameUpdated"), object: nil)
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        navigationController?.setToolbarHidden(true, animated: false)
-    }
 	
 	/// Deselects a row when it is selected.
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

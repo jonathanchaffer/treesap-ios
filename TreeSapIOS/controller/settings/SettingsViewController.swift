@@ -40,6 +40,7 @@ class SettingsViewController: UITableViewController {
         locationToggleSwitch.isOn = PreferencesManager.getShowingUserLocation()
         cutoffDistanceTextField.text = String(PreferencesManager.getCutoffDistance())
         tableView.reloadData()
+        navigationController?.setToolbarHidden(true, animated: false)
     }
 
 	/// Deselects a row when it is selected.
