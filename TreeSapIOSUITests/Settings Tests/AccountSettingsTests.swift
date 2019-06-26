@@ -32,16 +32,16 @@ class AccountSettingsTests: XCTestCase {
     //This logs the user in to an account with the e-mail "example@example.com" and the password "thingyThingy". If the user is logged in at the beginning of the test, the user is logged out before the rest of the test runs.
     func testLogInAndOut() {
         //Logs the user out, if they are logged in
-        let logoutButton = app.tables.staticTexts["Log Out"]
+        let logoutButton = app.tables.staticTexts["log out"]
         if(logoutButton.exists && logoutButton.isHittable){
             logoutButton.tap()
             app.alerts["Are you sure?"].buttons["OK"].tap()
         }
         
-        app.tables.staticTexts["Log In"].tap()
+        app.tables.staticTexts["log in or sign up"].tap()
         
         //Type in Email
-        app.textFields["Log In Email"].tap()
+        app.textFields["log in email entry"].tap()
         app.keys["e"].tap()
         app.keys["x"].tap()
         app.keys["a"].tap()
@@ -83,24 +83,24 @@ class AccountSettingsTests: XCTestCase {
         app.buttons["Go"].tap()
         
         //Log out
-        app.tables/*@START_MENU_TOKEN@*/.staticTexts["Log Out"]/*[[".cells.staticTexts[\"Log Out\"]",".staticTexts[\"Log Out\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app.tables.staticTexts["log out"].tap()
         app.alerts["Are you sure?"].buttons["OK"].tap()
     }
     
     func testCreateAccount(){
         
         //Logs the user out, if they are logged in
-        let logoutButton = app.tables.staticTexts["Log Out"]
+        let logoutButton = app.tables.staticTexts["log out"]
         if(logoutButton.exists && logoutButton.isHittable){
             logoutButton.tap()
             app.alerts["Are you sure?"].buttons["OK"].tap()
         }
         
-        app.tables.staticTexts["Log In"].tap()
-        app.buttons["Create an Account"].tap()
+        app.tables.staticTexts["log in or sign up"].tap()
+        app.buttons["create an account"].tap()
         
         //Type in e-mail
-        app.textFields["Create Account Email"].tap()
+        app.textFields["create account email entry"].tap()
         app.keys["t"].tap()
         app.keys["e"].tap()
         app.keys["s"].tap()

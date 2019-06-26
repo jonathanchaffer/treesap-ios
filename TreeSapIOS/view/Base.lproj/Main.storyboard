@@ -1491,7 +1491,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" image="QRCodeOverlay" highlightedImage="QRCodeOverlay" translatesAutoresizingMaskIntoConstraints="NO" id="tLf-oU-uzz">
-                                <rect key="frame" x="82" y="250.66666666666663" width="250" height="250"/>
+                                <rect key="frame" x="199" y="367.66666666666669" width="16" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="250" id="BuD-2o-2Ff"/>
                                     <constraint firstAttribute="width" secondItem="tLf-oU-uzz" secondAttribute="height" multiplier="1:1" id="nBa-MU-vRJ"/>
@@ -1627,7 +1627,7 @@
                                                     </constraints>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                                     <connections>
                                                         <action selector="updateCutoffDistance:" destination="fLH-Mh-jqL" eventType="editingDidEnd" id="br4-6k-IDc"/>
                                                     </connections>
@@ -2454,6 +2454,7 @@ ZC4
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Log in / Sign up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T9f-Sc-kvd">
                                                     <rect key="frame" x="20" y="11.333333333333336" width="118" height="21"/>
+                                                    <accessibility key="accessibilityConfiguration" identifier="log in or sign up"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -2561,6 +2562,7 @@ ZC4
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Log out" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oIU-ak-mV2">
                                                     <rect key="frame" x="20" y="11.333333333333336" width="58" height="21"/>
+                                                    <accessibility key="accessibilityConfiguration" identifier="log out"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
                                                     <nil key="highlightedColor"/>
@@ -2621,7 +2623,7 @@ ZC4
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ay8-wJ-XRj">
                                                         <rect key="frame" x="113" y="0.0" width="261" height="30"/>
-                                                        <accessibility key="accessibilityConfiguration" label="Create Account Email"/>
+                                                        <accessibility key="accessibilityConfiguration" identifier="create account email entry"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next"/>
@@ -2639,7 +2641,7 @@ ZC4
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="om6-Yf-D0c">
                                                         <rect key="frame" x="113" y="0.0" width="261" height="30"/>
-                                                        <accessibility key="accessibilityConfiguration" label="Create Account Email"/>
+                                                        <accessibility key="accessibilityConfiguration" identifier="create account display name entry"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next"/>
@@ -2657,6 +2659,7 @@ ZC4
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Zq-dV-Jdq">
                                                         <rect key="frame" x="113" y="0.0" width="261" height="30"/>
+                                                        <accessibility key="accessibilityConfiguration" identifier="create account password entry"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" returnKeyType="next" secureTextEntry="YES" textContentType="password"/>
@@ -2674,6 +2677,7 @@ ZC4
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="q9a-kN-5F4">
                                                         <rect key="frame" x="113" y="0.0" width="261" height="30"/>
+                                                        <accessibility key="accessibilityConfiguration" identifier="create account confirm password entry"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" returnKeyType="go" secureTextEntry="YES" textContentType="password"/>
@@ -2685,6 +2689,7 @@ ZC4
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n0a-tZ-kOL">
                                                         <rect key="frame" x="0.0" y="0.0" width="48" height="50"/>
+                                                        <accessibility key="accessibilityConfiguration" identifier="create account cancel button"/>
                                                         <state key="normal" title="Cancel"/>
                                                         <connections>
                                                             <action selector="cancelCreateAccount:" destination="ngw-bB-mhO" eventType="touchUpInside" id="Rdv-uE-JoQ"/>
@@ -2696,6 +2701,7 @@ ZC4
                                                     </view>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6GO-mg-QqV" customClass="FilledButton" customModule="TreeSapIOS" customModuleProvider="target">
                                                         <rect key="frame" x="320" y="0.0" width="54" height="50"/>
+                                                        <accessibility key="accessibilityConfiguration" identifier="sign up button"/>
                                                         <state key="normal" title="Sign Up"/>
                                                         <connections>
                                                             <action selector="signUpButtonPressed:" destination="ngw-bB-mhO" eventType="touchUpInside" id="LaH-9r-c1r"/>
@@ -2731,7 +2737,7 @@ ZC4
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YVv-7T-xLF">
                                                         <rect key="frame" x="81.666666666666657" y="0.0" width="292.33333333333337" height="30"/>
-                                                        <accessibility key="accessibilityConfiguration" label="Log In Email"/>
+                                                        <accessibility key="accessibilityConfiguration" identifier="log in email entry"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next"/>
@@ -2749,6 +2755,7 @@ ZC4
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ljP-yg-aTb">
                                                         <rect key="frame" x="81.666666666666657" y="0.0" width="292.33333333333337" height="30"/>
+                                                        <accessibility key="accessibilityConfiguration" identifier="log in password entry"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" returnKeyType="go" secureTextEntry="YES" textContentType="password"/>
@@ -2760,6 +2767,7 @@ ZC4
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2EW-iH-gTB">
                                                         <rect key="frame" x="0.0" y="0.0" width="123" height="50"/>
+                                                        <accessibility key="accessibilityConfiguration" identifier="forgot password button"/>
                                                         <state key="normal" title="Forgot Password?"/>
                                                         <connections>
                                                             <segue destination="l1Y-oT-F6z" kind="show" id="XY8-HN-Pdf"/>
@@ -2771,6 +2779,7 @@ ZC4
                                                     </view>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L7V-Ls-mgO" customClass="FilledButton" customModule="TreeSapIOS" customModuleProvider="target">
                                                         <rect key="frame" x="332" y="0.0" width="42" height="50"/>
+                                                        <accessibility key="accessibilityConfiguration" identifier="log in button"/>
                                                         <state key="normal" title="Log In"/>
                                                         <connections>
                                                             <action selector="logInButtonPressed:" destination="ngw-bB-mhO" eventType="touchUpInside" id="FSS-3c-MUb"/>
@@ -2800,6 +2809,7 @@ ZC4
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tgm-2f-pfX" customClass="FilledButton" customModule="TreeSapIOS" customModuleProvider="target">
                                                         <rect key="frame" x="252" y="0.0" width="57" height="128"/>
+                                                        <accessibility key="accessibilityConfiguration" identifier="create an account"/>
                                                         <state key="normal" title="Register"/>
                                                         <connections>
                                                             <action selector="showCreateAccount:" destination="ngw-bB-mhO" eventType="touchUpInside" id="7M8-mG-dVb"/>
