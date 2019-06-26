@@ -76,7 +76,9 @@ class AddTreePhotoViewController: AddTreeViewController {
     /// Function that is called when an image has been selected.
     private func pickerController(_ controller: UIImagePickerController, didSelect image: UIImage?) {
         controller.dismiss(animated: true, completion: nil)
-        selectedImages.append(image!)
+        if(image != nil){
+            selectedImages.append(image!)
+        }
         updateImages()
     }
 
