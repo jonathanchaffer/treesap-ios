@@ -243,7 +243,10 @@ class TreeAddTest: XCTestCase {
             XCTAssertEqual(text, "123456789.0", "The text field should contain the string \"123456789.0\", but contains the string \"\(text)\"")
             
             //Clear the text field
-            app.buttons["Clear text"].tap()
+            let deleteButton = app.keys["delete"]
+            for _ in 0 ..< 11{
+                deleteButton.tap()
+            }
             
             //Type in the text field using the keys that are not allowed
             app.keys["-"].tap()
@@ -338,7 +341,7 @@ class TreeAddTest: XCTestCase {
             app.keys["X"].tap()
             app.keys["Y"].tap()
             app.keys["Z"].tap()
-
+            
             //Check that the text in the text field is still empty or equal to the placeholder text. If there is no text in the text field, attempting to access the text in the text field programmatically will result in the value of the placeholder text in the text field.
             guard let testText = textField.value as? String else{
                 let textFieldName: String = textField.accessibilityValue ?? "nil"
