@@ -67,6 +67,16 @@ class PendingTreesTableViewController: UITableViewController {
     /// Reloads the table data.
     @objc private func reloadTableData() {
         tableView.reloadData()
+        reloadTableRows()
+    }
+    
+    /// Reloads the table data.
+    private func reloadTableRows() {
+        var rows = [IndexPath]()
+        for i in 0 ..< PendingTreesDataSource.trees.count {
+            rows.append(IndexPath(row: i, section: 0))
+        }
+        tableView.reloadRows(at: rows, with: .automatic)
     }
     
     /// Shows an alert saying that pending trees could not be loaded.

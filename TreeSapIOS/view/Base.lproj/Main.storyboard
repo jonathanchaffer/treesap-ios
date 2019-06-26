@@ -3217,11 +3217,30 @@ ZC4
                         </connections>
                     </tableView>
                     <toolbarItems>
-                        <barButtonItem title="Select" id="I5P-dU-HPq"/>
+                        <barButtonItem title="Select" id="I5P-dU-HPq">
+                            <connections>
+                                <action selector="selectButtonPressed:" destination="zXv-Mm-1pB" id="5DW-Oo-f2r"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem title="Cancel" id="Jhu-qd-99f">
+                            <connections>
+                                <action selector="cancelButtonPressed:" destination="zXv-Mm-1pB" id="zBL-LV-td1"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="Jzx-jr-8og"/>
-                        <barButtonItem systemItem="trash" id="Fra-SW-lMq"/>
+                        <barButtonItem systemItem="trash" id="Fra-SW-lMq">
+                            <connections>
+                                <action selector="trashButtonPressed:" destination="zXv-Mm-1pB" id="Y78-Bv-K7h"/>
+                            </connections>
+                        </barButtonItem>
                     </toolbarItems>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="barSpace" destination="Jzx-jr-8og" id="OuO-KU-5U1"/>
+                        <outlet property="cancelButton" destination="Jhu-qd-99f" id="gTj-Jq-1VE"/>
+                        <outlet property="selectButton" destination="I5P-dU-HPq" id="qbE-R2-Rs2"/>
+                        <outlet property="trashButton" destination="Fra-SW-lMq" id="Xbp-br-Mvn"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hSg-0e-Oze" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="NVr-7Z-O4H">

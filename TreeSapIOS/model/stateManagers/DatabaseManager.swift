@@ -70,7 +70,7 @@ class DatabaseManager {
      Moves an existing document from pendingTrees to acceptedTrees.
      - Parameter documentID: The ID of the document to move.
      */
-    static func moveDocumentToAccepted(documentID: String) {
+    static func acceptDocumentFromPending(documentID: String) {
         let ref = db.collection("pendingTrees").document(documentID)
         ref.getDocument() { document, err in
             if let err = err {
@@ -90,7 +90,7 @@ class DatabaseManager {
      Removes an existing document from pendingTrees.
      - Parameter documentID: The ID of the document to remove.
      */
-    static func removeDocumentFromPending(documentID: String) {
+    static func rejectDocumentFromPending(documentID: String) {
         let ref = db.collection("pendingTrees").document(documentID)
         ref.getDocument() { document, err in
             if let err = err {
@@ -105,6 +105,14 @@ class DatabaseManager {
     }
     
     /**
+     Removes an existing document from notifications.
+     - Parameter documentID: The ID of the document to remove.
+     */
+    static func removeDocumentFromNotifications(documentID: String) {
+        removeDataFromCollection(collectionID: "notifications", documentID: documentID)
+    }
+    
+    /**
      Adds or overwrites a document to a collection in the database.
      - Parameter data: The data object to upload to the database.
      - Parameter collectionID: The ID of the collection in which the document should be stored.
@@ -116,20 +124,20 @@ class DatabaseManager {
             ref = db.collection(collectionID).addDocument(data: data) { err in
                 if let err = err {
                     print("Error adding document: \(err)")
-                    NotificationCenter.default.post(name: NSNotification.Name("submitTreeFailure"), object: nil)
+                    NotificationCenter.default.post(name: NSNotification.Name("submitDataFailure"), object: nil)
                 } else {
                     print("Document added with ID: \(ref!.documentID)")
-                    NotificationCenter.default.post(name: NSNotification.Name("submitTreeSuccess"), object: nil)
+                    NotificationCenter.default.post(name: NSNotification.Name("submitDataSuccess"), object: nil)
                 }
             }
         } else {
             db.collection(collectionID).document(documentID!).setData(data) { err in
                 if let err = err {
                     print("Error updating document: \(err)")
-                    NotificationCenter.default.post(name: NSNotification.Name("updateTreeFailure"), object: nil)
+                    NotificationCenter.default.post(name: NSNotification.Name("updateDataFailure"), object: nil)
                 } else {
                     print("Document updated with ID: \(documentID!)")
-                    NotificationCenter.default.post(name: NSNotification.Name("updateTreeSuccess"), object: nil)
+                    NotificationCenter.default.post(name: NSNotification.Name("updateDataSuccess"), object: nil)
                 }
             }
         }
@@ -144,10 +152,10 @@ class DatabaseManager {
         db.collection(collectionID).document(documentID).delete() { err in
             if let err = err {
                 print("Error removing document: \(err)")
-                NotificationCenter.default.post(name: NSNotification.Name("deleteTreeFailure"), object: nil)
+                NotificationCenter.default.post(name: NSNotification.Name("deleteDataFailure"), object: nil)
             } else {
                 print("Document successfully removed!")
-                NotificationCenter.default.post(name: NSNotification.Name("deleteTreeSuccess"), object: nil)
+                NotificationCenter.default.post(name: NSNotification.Name("deleteDataSuccess"), object: nil)
             }
         }
     }

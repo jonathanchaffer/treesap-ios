@@ -53,10 +53,10 @@ class PendingTreeDetailsViewController: UIViewController {
             viewPhotosButton.isHidden = true
         }
         setupImages()
-        NotificationCenter.default.addObserver(self, selector: #selector(updateTreeSuccess), name: NSNotification.Name("updateTreeSuccess"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(updateTreeFailure), name: NSNotification.Name("updateTreeFailure"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(deleteTreeSuccess), name: NSNotification.Name("deleteTreeSuccess"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(deleteTreeFailure), name: NSNotification.Name("deleteTreeFailure"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateDataSuccess), name: NSNotification.Name("updateDataSuccess"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateDataFailure), name: NSNotification.Name("updateDataFailure"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(deleteDataSuccess), name: NSNotification.Name("deleteDataSuccess"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(deleteDataFailure), name: NSNotification.Name("deleteDataFailure"), object: nil)
     }
     
     // MARK: - Private functions
@@ -125,7 +125,7 @@ class PendingTreeDetailsViewController: UIViewController {
     }
     
     /// Dismisses the loading alert, and then alerts the user that the tree was successfully accepted.
-    @objc private func updateTreeSuccess() {
+    @objc private func updateDataSuccess() {
         dismiss(animated: true) {
             let alert = UIAlertController(title: "Success!", message: "The tree has been updated.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in self.closePendingTreeDetails() }))
@@ -134,14 +134,14 @@ class PendingTreeDetailsViewController: UIViewController {
     }
     
     /// Dismisses the loading alert, and then alerts the user that there was an error while trying to update the tree.
-    @objc private func updateTreeFailure() {
+    @objc private func updateDataFailure() {
         dismiss(animated: true) {
             AlertManager.alertUser(title: "Error updating tree", message: "An error occurred while trying to update the tree. Please try again.")
         }
     }
     
     /// Dismisses the loading alert, and then alerts the user that the tree was successfully removed.
-    @objc private func deleteTreeSuccess() {
+    @objc private func deleteDataSuccess() {
         dismiss(animated: true) {
             let alert = UIAlertController(title: "Success!", message: "The tree has been removed.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in self.closePendingTreeDetails() }))
@@ -150,7 +150,7 @@ class PendingTreeDetailsViewController: UIViewController {
     }
     
     /// Dismisses the loading alert, and then alerts the user that there was an error while trying to remove the tree.
-    @objc private func deleteTreeFailure() {
+    @objc private func deleteDataFailure() {
         dismiss(animated: true) {
             AlertManager.alertUser(title: "Error removing tree", message: "An error occurred while trying to remove the tree. Please try again.")
         }
@@ -210,7 +210,7 @@ class PendingTreeDetailsViewController: UIViewController {
         let alert = UIAlertController(title: "Accept tree?", message: "This tree will be added to the online database for everyone to see.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
-            DatabaseManager.moveDocumentToAccepted(documentID: self.displayedTree!.documentID!)
+            DatabaseManager.acceptDocumentFromPending(documentID: self.displayedTree!.documentID!)
             let loadingAlert = UIAlertController(title: "Please wait...", message: nil, preferredStyle: .alert)
             self.present(loadingAlert, animated: true)
         }))
@@ -221,7 +221,7 @@ class PendingTreeDetailsViewController: UIViewController {
         let alert = UIAlertController(title: "Reject tree?", message: "This tree will be removed from the database.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
-            DatabaseManager.removeDocumentFromPending(documentID: self.displayedTree!.documentID!)
+            DatabaseManager.rejectDocumentFromPending(documentID: self.displayedTree!.documentID!)
             let loadingAlert = UIAlertController(title: "Please wait...", message: nil, preferredStyle: .alert)
             self.present(loadingAlert, animated: true)
         }))

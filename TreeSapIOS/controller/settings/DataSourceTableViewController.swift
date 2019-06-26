@@ -34,8 +34,8 @@ class DataSourceTableViewController: UITableViewController {
 
     override func viewWillDisappear(_: Bool) {
         for i in 0 ..< dataSources.count {
-            let indexPath = NSIndexPath(row: i, section: 0)
-            let cell = tableView.cellForRow(at: indexPath as IndexPath)
+            let indexPath = IndexPath(row: i, section: 0)
+            let cell = tableView.cellForRow(at: indexPath)
             if cell!.accessoryType == .checkmark {
                 PreferencesManager.activateDataSource(dataSourceName: cell!.textLabel!.text!)
             } else {
