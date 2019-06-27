@@ -218,8 +218,10 @@ class PendingTreeDetailsViewController: UIViewController {
             DatabaseManager.sendNotificationToUser(userID: self.displayedTree!.userID!, accepted: accepting, message: "", documentID: self.displayedTree!.documentID!)
             if accepting {
                 DatabaseManager.acceptDocumentFromPending(documentID: self.displayedTree!.documentID!)
+                AlertManager.showLoadingAlert()
             } else {
                 DatabaseManager.rejectDocumentFromPending(documentID: self.displayedTree!.documentID!)
+                AlertManager.showLoadingAlert()
             }
         })
         addMessageAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
