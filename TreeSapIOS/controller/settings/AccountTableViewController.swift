@@ -31,7 +31,7 @@ class AccountTableViewController: UITableViewController {
 	/// Deselects a row when it is selected.
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		tableView.deselectRow(at: indexPath, animated: true)
-		if indexPath == IndexPath(row: 3, section: 1) {
+		if indexPath == IndexPath(row: numRowsPerSection[1] - 1, section: 1) {
 			logOutPressed()
 		}
 	}

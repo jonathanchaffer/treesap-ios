@@ -49,14 +49,18 @@ class PendingTreeDetailsViewController: UIViewController {
         // Set up photos
         hidePhotosButton.isHidden = true
         photosContainerStackView.isHidden = true
-        if displayedTree!.images == [] {
+        var numPhotos = 0
+        for imageCategory in displayedTree!.images.keys {
+            numPhotos += displayedTree!.images[imageCategory]!.count
+        }
+        if numPhotos == 0 {
             viewPhotosButton.isHidden = true
         }
-        setupImages()
-        NotificationCenter.default.addObserver(self, selector: #selector(updateTreeSuccess), name: NSNotification.Name("updateTreeSuccess"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(updateTreeFailure), name: NSNotification.Name("updateTreeFailure"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(deleteTreeSuccess), name: NSNotification.Name("deleteTreeSuccess"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(deleteTreeFailure), name: NSNotification.Name("deleteTreeFailure"), object: nil)
+        setupSlideshow()
+        NotificationCenter.default.addObserver(self, selector: #selector(updateDataSuccess), name: NSNotification.Name("updateDataSuccess"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateDataFailure), name: NSNotification.Name("updateDataFailure"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(deleteDataSuccess), name: NSNotification.Name("deleteDataSuccess"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(deleteDataFailure), name: NSNotification.Name("deleteDataFailure"), object: nil)
     }
     
     // MARK: - Private functions
@@ -105,19 +109,16 @@ class PendingTreeDetailsViewController: UIViewController {
     }
     
     
-    private func setupImages() {
-        let images = displayedTree!.images
-        if !images.isEmpty {
-            var imageSources = [ImageSource]()
-            for image in images {
+    private func setupSlideshow() {
+        var imageSources = [ImageSource]()
+        for imageCategory in displayedTree!.images.keys {
+            for image in displayedTree!.images[imageCategory]! {
                 imageSources.append(ImageSource(image: image))
             }
-            imageSlideshow.setImageInputs(imageSources)
-            let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.didTapSlideshow))
-            imageSlideshow.addGestureRecognizer(gestureRecognizer)
-        } else {
-            imageSlideshow.isHidden = true
         }
+        imageSlideshow.setImageInputs(imageSources)
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.didTapSlideshow))
+        imageSlideshow.addGestureRecognizer(gestureRecognizer)
     }
     
     @objc private func didTapSlideshow() {
@@ -125,7 +126,7 @@ class PendingTreeDetailsViewController: UIViewController {
     }
     
     /// Dismisses the loading alert, and then alerts the user that the tree was successfully accepted.
-    @objc private func updateTreeSuccess() {
+    @objc private func updateDataSuccess() {
         dismiss(animated: true) {
             let alert = UIAlertController(title: "Success!", message: "The tree has been updated.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in self.closePendingTreeDetails() }))
@@ -134,14 +135,14 @@ class PendingTreeDetailsViewController: UIViewController {
     }
     
     /// Dismisses the loading alert, and then alerts the user that there was an error while trying to update the tree.
-    @objc private func updateTreeFailure() {
+    @objc private func updateDataFailure() {
         dismiss(animated: true) {
             AlertManager.alertUser(title: "Error updating tree", message: "An error occurred while trying to update the tree. Please try again.")
         }
     }
     
     /// Dismisses the loading alert, and then alerts the user that the tree was successfully removed.
-    @objc private func deleteTreeSuccess() {
+    @objc private func deleteDataSuccess() {
         dismiss(animated: true) {
             let alert = UIAlertController(title: "Success!", message: "The tree has been removed.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in self.closePendingTreeDetails() }))
@@ -150,7 +151,7 @@ class PendingTreeDetailsViewController: UIViewController {
     }
     
     /// Dismisses the loading alert, and then alerts the user that there was an error while trying to remove the tree.
-    @objc private func deleteTreeFailure() {
+    @objc private func deleteDataFailure() {
         dismiss(animated: true) {
             AlertManager.alertUser(title: "Error removing tree", message: "An error occurred while trying to remove the tree. Please try again.")
         }
@@ -204,28 +205,49 @@ class PendingTreeDetailsViewController: UIViewController {
         }
     }
     
+    /// Shows an alert asking the user whether they would like to send a message to the user.
+    private func showAddMessageAlert(accepting: Bool) {
+        let addMessageAlert = UIAlertController(title: "Add message?", message: "Would you like to send a message to the user who submitted this tree?", preferredStyle: .alert)
+        addMessageAlert.addAction(UIAlertAction(title: "Add message", style: .default) { _ in self.showAddMessageScreen(accepting: accepting) })
+        var withoutMessageLabel: String? = nil
+        if accepting {
+            withoutMessageLabel = "Accept without message"
+        } else {
+            withoutMessageLabel = "Reject without message"
+        }
+        addMessageAlert.addAction(UIAlertAction(title: withoutMessageLabel!, style: .default) { _ in
+            DatabaseManager.sendNotificationToUser(userID: self.displayedTree!.userID!, accepted: accepting, message: "", documentID: self.displayedTree!.documentID!)
+            if accepting {
+                DatabaseManager.acceptDocumentFromPending(documentID: self.displayedTree!.documentID!)
+                AlertManager.showLoadingAlert()
+            } else {
+                DatabaseManager.rejectDocumentFromPending(documentID: self.displayedTree!.documentID!)
+                AlertManager.showLoadingAlert()
+            }
+        })
+        addMessageAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        self.present(addMessageAlert, animated: true)
+    }
+    
+    /// Shows the add message screen.
+    private func showAddMessageScreen(accepting: Bool) {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "addMessage") as! AddMessageViewController
+        vc.accepting = accepting
+        vc.documentID = self.displayedTree!.documentID
+        vc.userID = self.displayedTree!.userID
+        let navigationController = UINavigationController(rootViewController: vc)
+        navigationController.navigationBar.tintColor = UIColor(named: "treesapGreen")!
+        self.present(navigationController, animated: true)
+    }
+    
     // MARK: - Actions
     
     @IBAction func acceptButtonPressed(_ sender: UIButton) {
-        let alert = UIAlertController(title: "Accept tree?", message: "This tree will be added to the online database for everyone to see.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
-            DatabaseManager.moveDataToAccepted(documentID: self.displayedTree!.documentID!)
-            let loadingAlert = UIAlertController(title: "Please wait...", message: nil, preferredStyle: .alert)
-            self.present(loadingAlert, animated: true)
-        }))
-        present(alert, animated: true)
+        showAddMessageAlert(accepting: true)
     }
     
     @IBAction func rejectButtonPressed(_ sender: UIButton) {
-        let alert = UIAlertController(title: "Reject tree?", message: "This tree will be removed from the database.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
-            DatabaseManager.removeDataFromPending(documentID: self.displayedTree!.documentID!)
-            let loadingAlert = UIAlertController(title: "Please wait...", message: nil, preferredStyle: .alert)
-            self.present(loadingAlert, animated: true)
-        }))
-        present(alert, animated: true)
+        showAddMessageAlert(accepting: false)
     }
     
     @IBAction func viewNotesButtonPressed(_ sender: UIButton) {

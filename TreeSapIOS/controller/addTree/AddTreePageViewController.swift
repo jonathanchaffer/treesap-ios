@@ -38,8 +38,8 @@ class AddTreePageViewController: UIPageViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(nextPage), name: NSNotification.Name("next"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(previousPage), name: NSNotification.Name("previous"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(submitTree), name: NSNotification.Name("submitTree"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(submitTreeSuccess), name: NSNotification.Name("submitTreeSuccess"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(submitTreeFailure), name: NSNotification.Name("submitTreeFailure"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(submitDataSuccess), name: NSNotification.Name("submitDataSuccess"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(submitDataFailure), name: NSNotification.Name("submitDataFailure"), object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -146,28 +146,27 @@ class AddTreePageViewController: UIPageViewController {
         let entireImages = (pages[3] as! AddTreePhotoViewController).selectedImages
         if !barkImages.isEmpty {
             for image in barkImages {
-                createdTree.addImage(image)
+                createdTree.addImage(image, toCategory: .bark)
             }
         }
         if !leafImages.isEmpty {
             for image in leafImages {
-                createdTree.addImage(image)
+                createdTree.addImage(image, toCategory: .leaf)
             }
         }
         if !entireImages.isEmpty {
             for image in entireImages {
-                createdTree.addImage(image)
+                createdTree.addImage(image, toCategory: .full)
             }
         }
         // Add the tree to the pending trees database
         DatabaseManager.submitTreeToPending(tree: createdTree)
-        // Display a "Please Wait" alert while it's trying to upload
-        let loadingAlert = UIAlertController(title: "Please wait...", message: nil, preferredStyle: .alert)
-        present(loadingAlert, animated: true)
+        // Display a loading alert while it's trying to upload
+        AlertManager.showLoadingAlert()
     }
     
     /// Dismisses the loading alert, and then alerts the user that the tree was successfully submitted.
-    @objc private func submitTreeSuccess() {
+    @objc private func submitDataSuccess() {
         dismiss(animated: true) {
             DataManager.reloadFirebaseTreeData()
             let alert = UIAlertController(title: "Success!", message: "Your tree has been submitted for approval. While you wait, your tree will be available in the \"My Pending Trees\" data set on your device.", preferredStyle: .alert)
@@ -177,7 +176,7 @@ class AddTreePageViewController: UIPageViewController {
     }
     
     /// Dismisses the loading alert, and then alerts the user that there was an error submitting the tree.
-    @objc private func submitTreeFailure() {
+    @objc private func submitDataFailure() {
         dismiss(animated: true) {
             AlertManager.alertUser(title: "Error submitting tree", message: "An error occurred while trying to submit your tree. Please try again.")
         }

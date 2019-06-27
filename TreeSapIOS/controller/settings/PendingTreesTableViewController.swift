@@ -48,10 +48,14 @@ class PendingTreesTableViewController: UITableViewController {
         } else {
             cell.detailTextLabel?.text = "N/A"
         }
-        // If there is at least one image, display it
+        // If there is at least one image, display it. Prefer full tree images
         let images = tree.images
-        if images.count >= 1 {
-            cell.imageView?.image = images.last
+        if images[.full]!.count >= 1 {
+            cell.imageView?.image = images[.full]!.first
+        } else if images[.leaf]!.count >= 1 {
+            cell.imageView?.image = images[.leaf]!.first
+        } else if images[.bark]!.count >= 1 {
+            cell.imageView?.image = images[.bark]!.first
         }
         return cell
     }
@@ -67,6 +71,16 @@ class PendingTreesTableViewController: UITableViewController {
     /// Reloads the table data.
     @objc private func reloadTableData() {
         tableView.reloadData()
+        reloadTableRows()
+    }
+    
+    /// Reloads the table data.
+    private func reloadTableRows() {
+        var rows = [IndexPath]()
+        for i in 0 ..< PendingTreesDataSource.trees.count {
+            rows.append(IndexPath(row: i, section: 0))
+        }
+        tableView.reloadRows(at: rows, with: .automatic)
     }
     
     /// Shows an alert saying that pending trees could not be loaded.

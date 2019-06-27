@@ -73,7 +73,7 @@ class SimpleDisplayViewController: TreeDisplayViewController {
         // Set up notes
         hideNotesButton.isHidden = true
         notesContainerStackView.isHidden = true
-        if displayedTree!.notes == [] {
+        if displayedTree!.notes.isEmpty {
             viewNotesButton.isHidden = true
         }
         for note in displayedTree!.notes {
@@ -86,17 +86,22 @@ class SimpleDisplayViewController: TreeDisplayViewController {
         // Set up photos
         hidePhotosButton.isHidden = true
         photosContainerStackView.isHidden = true
-        if displayedTree!.images == [] {
+        var numPhotos = 0
+        for imageCategory in displayedTree!.images.keys {
+            numPhotos += displayedTree!.images[imageCategory]!.count
+        }
+        if numPhotos == 0 {
             viewPhotosButton.isHidden = true
         }
         setupSlideshow()
     }
     
     private func setupSlideshow() {
-        let images = displayedTree!.images
         var imageSources = [ImageSource]()
-        for image in images {
-            imageSources.append(ImageSource(image: image))
+        for imageCategory in displayedTree!.images.keys {
+            for image in displayedTree!.images[imageCategory]! {
+                imageSources.append(ImageSource(image: image))
+            }
         }
         imageSlideshow.setImageInputs(imageSources)
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.didTapSlideshow))
