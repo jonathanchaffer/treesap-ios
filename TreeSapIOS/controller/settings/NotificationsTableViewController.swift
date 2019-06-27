@@ -46,12 +46,20 @@ class NotificationsTableViewController: UITableViewController {
         let accepted = data["accepted"] as! Bool
         let treeData = data["treeData"] as! [String: Any]
         let commonName = NameFormatter.formatCommonName(commonName: treeData["commonName"] as? String)
+        let read = data["read"] as! Bool
         if accepted {
             cell.textLabel!.text = "Tree Accepted"
             cell.detailTextLabel!.text = "Your \(commonName!) has been added to the database."
         } else {
             cell.textLabel!.text = "Tree Rejected"
             cell.detailTextLabel!.text = "Your \(commonName!) was removed from the database."
+        }
+        if read {
+            cell.textLabel!.font = UIFont.systemFont(ofSize: 17, weight: .regular)
+            cell.detailTextLabel!.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+        } else {
+            cell.textLabel!.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
+            cell.detailTextLabel!.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
         }
         if selecting {
             cell.accessoryType = .none

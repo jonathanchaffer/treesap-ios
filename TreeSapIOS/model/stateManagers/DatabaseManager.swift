@@ -122,7 +122,7 @@ class DatabaseManager {
                 print("Error retrieving document: \(err)")
             } else {
                 // Add the notification to notifications
-                addDataToCollection(data: ["accepted": accepted, "treeData": document!.data()!, "message": message], collectionID: "notifications", documentID: nil)
+                addDataToCollection(data: ["accepted": accepted, "treeData": document!.data()!, "message": message, "read": false, "timestamp": Timestamp()], collectionID: "notifications", documentID: nil)
             }
         }
     }
