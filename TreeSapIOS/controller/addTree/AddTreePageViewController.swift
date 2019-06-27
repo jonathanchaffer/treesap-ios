@@ -161,9 +161,8 @@ class AddTreePageViewController: UIPageViewController {
         }
         // Add the tree to the pending trees database
         DatabaseManager.submitTreeToPending(tree: createdTree)
-        // Display a "Please Wait" alert while it's trying to upload
-        let loadingAlert = UIAlertController(title: "Please wait...", message: nil, preferredStyle: .alert)
-        present(loadingAlert, animated: true)
+        // Display a loading alert while it's trying to upload
+        AlertManager.showLoadingAlert()
     }
     
     /// Dismisses the loading alert, and then alerts the user that the tree was successfully submitted.

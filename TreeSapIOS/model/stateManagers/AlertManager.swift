@@ -20,14 +20,28 @@ class AlertManager {
         let alertController: UIAlertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
 
-        // Get the currently active UIViewController
+        // Present the alert from the current view controller
+        if let currentViewController = getCurrentViewController() {
+            currentViewController.present(alertController, animated: true, completion: nil)
+        }
+    }
+    
+    static func showLoadingAlert() {
+        // Create an alert
+        let loadingAlertController = UIAlertController(title: "Please wait...", message: nil, preferredStyle: .alert)
+        
+        // Present the alert from the current view controlelr
+        if let currentViewController = getCurrentViewController() {
+            currentViewController.present(loadingAlertController, animated: true, completion: nil)
+        }
+    }
+    
+    /// - Returns: The currently active view controller.
+    fileprivate static func getCurrentViewController() -> UIViewController? {
         var currentViewController: UIViewController? = UIApplication.shared.keyWindow?.rootViewController
         while currentViewController?.presentedViewController != nil {
             currentViewController = currentViewController?.presentedViewController
         }
-
-        if currentViewController != nil {
-            currentViewController!.present(alertController, animated: true, completion: nil)
-        }
+        return currentViewController
     }
 }

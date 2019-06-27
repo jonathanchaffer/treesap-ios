@@ -379,6 +379,7 @@
 			isa = PBXGroup;
 			children = (
 				CBBCE850228DD9B1008F7225 /* SettingsViewController.swift */,
+				CB78C9E922C3C25100B5A7CB /* NotificationsTableViewController.swift */,
 				CBB264B722973C6C00C036FB /* DataSourceTableViewController.swift */,
 				CB9A1C0122BBCC1F00D1067E /* PendingTreesTableViewController.swift */,
 				CB9A1C0522BC0F5F00D1067E /* PendingTreeDetailsViewController.swift */,
@@ -387,7 +388,6 @@
 				CB75474D22C11E43001FDA65 /* ForgotPasswordViewController.swift */,
 				CB75474922C10953001FDA65 /* ChangePasswordViewController.swift */,
 				CB75474B22C11186001FDA65 /* ChangeDisplayNameViewController.swift */,
-				CB78C9E922C3C25100B5A7CB /* NotificationsTableViewController.swift */,
 				41AD85E522BA933E00DAB44B /* MoreInformationViewController.swift */,
 			);
 			path = settings;

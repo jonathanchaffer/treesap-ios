@@ -211,8 +211,7 @@ class PendingTreeDetailsViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
             DatabaseManager.acceptDocumentFromPending(documentID: self.displayedTree!.documentID!)
-            let loadingAlert = UIAlertController(title: "Please wait...", message: nil, preferredStyle: .alert)
-            self.present(loadingAlert, animated: true)
+            AlertManager.showLoadingAlert()
         }))
         present(alert, animated: true)
     }
@@ -222,8 +221,7 @@ class PendingTreeDetailsViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
             DatabaseManager.rejectDocumentFromPending(documentID: self.displayedTree!.documentID!)
-            let loadingAlert = UIAlertController(title: "Please wait...", message: nil, preferredStyle: .alert)
-            self.present(loadingAlert, animated: true)
+            AlertManager.showLoadingAlert()
         }))
         present(alert, animated: true)
     }
