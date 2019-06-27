@@ -31,6 +31,9 @@ class NotificationsTableViewController: UITableViewController {
 
     override func viewWillAppear(_: Bool) {
         reloadNotifications()
+        DispatchQueue.main.asyncAfter(deadline: .now()) {
+            self.stopSelection()
+        }
         navigationController?.setToolbarHidden(false, animated: false)
     }
 
