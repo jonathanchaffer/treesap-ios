@@ -53,13 +53,18 @@ class DatabaseManager {
         data["userID"] = AccountManager.getUserID()
         
         // Add the images to the data
-        var encodedImages = [String]()
-        for image in tree.images {
-            let imageData = image.jpegData(compressionQuality: 0.1)!
-            let encodedString = imageData.base64EncodedString(options: [])
-            encodedImages.append(encodedString)
+        var encodedImageMap = [String: [String]]()
+        for imageCategory in tree.images.keys {
+            var encodedImages = [String]()
+            for image in tree.images[imageCategory]! {
+                let imageData = image.jpegData(compressionQuality: 0.1)!
+                let encodedString = imageData.base64EncodedString(options: [])
+                encodedImages.append(encodedString)
+            }
+            encodedImageMap[imageCategory.toString()] = encodedImages
         }
-        data["images"] = encodedImages
+        data["images"] = encodedImageMap
+        
         data["timestamp"] = Timestamp()
         
         // Add the data to pending

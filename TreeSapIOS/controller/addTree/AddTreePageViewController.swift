@@ -146,17 +146,17 @@ class AddTreePageViewController: UIPageViewController {
         let entireImages = (pages[3] as! AddTreePhotoViewController).selectedImages
         if !barkImages.isEmpty {
             for image in barkImages {
-                createdTree.addImage(image)
+                createdTree.addImage(image, toCategory: .bark)
             }
         }
         if !leafImages.isEmpty {
             for image in leafImages {
-                createdTree.addImage(image)
+                createdTree.addImage(image, toCategory: .leaf)
             }
         }
         if !entireImages.isEmpty {
             for image in entireImages {
-                createdTree.addImage(image)
+                createdTree.addImage(image, toCategory: .full)
             }
         }
         // Add the tree to the pending trees database

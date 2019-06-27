@@ -37,6 +37,7 @@
 		CB2D4DA522958548006DAC37 /* TreeAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2D4DA422958548006DAC37 /* TreeAnnotationView.swift */; };
 		CB2D4DA722959D0E006DAC37 /* DataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2D4DA622959D0E006DAC37 /* DataSourceTests.swift */; };
 		CB4707CF22C4FBE200E7908F /* AddMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4707CE22C4FBE200E7908F /* AddMessageViewController.swift */; };
+		CB4707D122C52D8900E7908F /* ImageCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4707D022C52D8900E7908F /* ImageCategory.swift */; };
 		CB672F1B229434DA00622B59 /* TreeDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB672F1A229434DA00622B59 /* TreeDisplayViewController.swift */; };
 		CB6953B8228EE8720002024B /* Tree.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6953B7228EE8720002024B /* Tree.swift */; };
 		CB6953BA228EE9530002024B /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6953B9228EE9530002024B /* DataSource.swift */; };
@@ -146,6 +147,7 @@
 		CB2D4DA422958548006DAC37 /* TreeAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeAnnotationView.swift; sourceTree = "<group>"; };
 		CB2D4DA622959D0E006DAC37 /* DataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourceTests.swift; sourceTree = "<group>"; };
 		CB4707CE22C4FBE200E7908F /* AddMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMessageViewController.swift; sourceTree = "<group>"; };
+		CB4707D022C52D8900E7908F /* ImageCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCategory.swift; sourceTree = "<group>"; };
 		CB672F1A229434DA00622B59 /* TreeDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeDisplayViewController.swift; sourceTree = "<group>"; };
 		CB6953B7228EE8720002024B /* Tree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tree.swift; sourceTree = "<group>"; };
 		CB6953B9228EE9530002024B /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
@@ -304,6 +306,7 @@
 			children = (
 				CB80E3C422AFF19C001A78AE /* stateManagers */,
 				CB6953B7228EE8720002024B /* Tree.swift */,
+				CB4707D022C52D8900E7908F /* ImageCategory.swift */,
 				CBA9172122B8046200BA75B2 /* dataSources */,
 				D76D617E22931990003FFD24 /* CSVFormat.swift */,
 				D76D6182229321E7003FFD24 /* TreeFinder.swift */,
@@ -784,6 +787,7 @@
 				CB80E3BD22AFD578001A78AE /* DataManager.swift in Sources */,
 				41AD85E622BA933E00DAB44B /* MoreInformationViewController.swift in Sources */,
 				CB672F1B229434DA00622B59 /* TreeDisplayViewController.swift in Sources */,
+				CB4707D122C52D8900E7908F /* ImageCategory.swift in Sources */,
 				CBBCE851228DD9B1008F7225 /* SettingsViewController.swift in Sources */,
 				418A360D22A83CD3002BF28C /* LoadingScreenViewController.swift in Sources */,
 				CBF89EDC22B2BBC600045670 /* CSVDataSource.swift in Sources */,

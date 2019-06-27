@@ -49,10 +49,14 @@ class PendingTreeDetailsViewController: UIViewController {
         // Set up photos
         hidePhotosButton.isHidden = true
         photosContainerStackView.isHidden = true
-        if displayedTree!.images == [] {
+        var numPhotos = 0
+        for imageCategory in displayedTree!.images.keys {
+            numPhotos += displayedTree!.images[imageCategory]!.count
+        }
+        if numPhotos == 0 {
             viewPhotosButton.isHidden = true
         }
-        setupImages()
+        setupSlideshow()
         NotificationCenter.default.addObserver(self, selector: #selector(updateDataSuccess), name: NSNotification.Name("updateDataSuccess"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(updateDataFailure), name: NSNotification.Name("updateDataFailure"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(deleteDataSuccess), name: NSNotification.Name("deleteDataSuccess"), object: nil)
@@ -105,19 +109,16 @@ class PendingTreeDetailsViewController: UIViewController {
     }
     
     
-    private func setupImages() {
-        let images = displayedTree!.images
-        if !images.isEmpty {
-            var imageSources = [ImageSource]()
-            for image in images {
+    private func setupSlideshow() {
+        var imageSources = [ImageSource]()
+        for imageCategory in displayedTree!.images.keys {
+            for image in displayedTree!.images[imageCategory]! {
                 imageSources.append(ImageSource(image: image))
             }
-            imageSlideshow.setImageInputs(imageSources)
-            let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.didTapSlideshow))
-            imageSlideshow.addGestureRecognizer(gestureRecognizer)
-        } else {
-            imageSlideshow.isHidden = true
         }
+        imageSlideshow.setImageInputs(imageSources)
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.didTapSlideshow))
+        imageSlideshow.addGestureRecognizer(gestureRecognizer)
     }
     
     @objc private func didTapSlideshow() {
