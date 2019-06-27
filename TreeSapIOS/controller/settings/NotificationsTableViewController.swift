@@ -25,13 +25,13 @@ class NotificationsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Notifications"
-        navigationController?.setToolbarHidden(false, animated: false)
         NotificationCenter.default.addObserver(self, selector: #selector(deleteDataSuccess), name: NSNotification.Name("deleteDataSuccess"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(deleteDataFailure), name: NSNotification.Name("deleteDataFailure"), object: nil)
     }
 
     override func viewWillAppear(_: Bool) {
         reloadNotifications()
+        navigationController?.setToolbarHidden(false, animated: false)
     }
 
     override func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
@@ -73,11 +73,22 @@ class NotificationsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
         if selecting {
+            // If selecting is active, select/deselect the cell appropriately
             if cell?.accessoryType == .checkmark {
                 cell?.accessoryType = .none
             } else {
                 cell?.accessoryType = .checkmark
             }
+        } else {
+            let index = indexPath.row
+            // If notification is unread, mark as read
+            if !(documents[index]["read"] as! Bool) {
+                DatabaseManager.markNotificationAsRead(documentID: documents[index].documentID)
+            }
+            // Push notification details for the cell
+            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "notificationDetails") as! NotificationDetailsViewController
+            vc.data = documents[index].data()!
+            self.navigationController?.pushViewController(vc, animated: true)
         }
         tableView.deselectRow(at: indexPath, animated: true)
     }

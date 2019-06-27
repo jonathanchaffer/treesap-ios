@@ -38,6 +38,7 @@
 		CB2D4DA722959D0E006DAC37 /* DataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2D4DA622959D0E006DAC37 /* DataSourceTests.swift */; };
 		CB4707CF22C4FBE200E7908F /* AddMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4707CE22C4FBE200E7908F /* AddMessageViewController.swift */; };
 		CB4707D122C52D8900E7908F /* ImageCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4707D022C52D8900E7908F /* ImageCategory.swift */; };
+		CB4707D322C5422200E7908F /* NotificationDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4707D222C5422200E7908F /* NotificationDetailsViewController.swift */; };
 		CB672F1B229434DA00622B59 /* TreeDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB672F1A229434DA00622B59 /* TreeDisplayViewController.swift */; };
 		CB6953B8228EE8720002024B /* Tree.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6953B7228EE8720002024B /* Tree.swift */; };
 		CB6953BA228EE9530002024B /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6953B9228EE9530002024B /* DataSource.swift */; };
@@ -148,6 +149,7 @@
 		CB2D4DA622959D0E006DAC37 /* DataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourceTests.swift; sourceTree = "<group>"; };
 		CB4707CE22C4FBE200E7908F /* AddMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMessageViewController.swift; sourceTree = "<group>"; };
 		CB4707D022C52D8900E7908F /* ImageCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCategory.swift; sourceTree = "<group>"; };
+		CB4707D222C5422200E7908F /* NotificationDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationDetailsViewController.swift; sourceTree = "<group>"; };
 		CB672F1A229434DA00622B59 /* TreeDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeDisplayViewController.swift; sourceTree = "<group>"; };
 		CB6953B7228EE8720002024B /* Tree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tree.swift; sourceTree = "<group>"; };
 		CB6953B9228EE9530002024B /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
@@ -385,6 +387,7 @@
 			children = (
 				CBBCE850228DD9B1008F7225 /* SettingsViewController.swift */,
 				CB78C9E922C3C25100B5A7CB /* NotificationsTableViewController.swift */,
+				CB4707D222C5422200E7908F /* NotificationDetailsViewController.swift */,
 				CBB264B722973C6C00C036FB /* DataSourceTableViewController.swift */,
 				CB9A1C0122BBCC1F00D1067E /* PendingTreesTableViewController.swift */,
 				CB9A1C0522BC0F5F00D1067E /* PendingTreeDetailsViewController.swift */,
@@ -750,6 +753,7 @@
 				CB12C951228DFA12000C74C3 /* PieChartDisplayViewController.swift in Sources */,
 				CB75474C22C11186001FDA65 /* ChangeDisplayNameViewController.swift in Sources */,
 				CBBCE82F228DD76B008F7225 /* CoordinatesViewController.swift in Sources */,
+				CB4707D322C5422200E7908F /* NotificationDetailsViewController.swift in Sources */,
 				CB15256A22A69941002D483E /* FilledButton.swift in Sources */,
 				CB9A1C0222BBCC1F00D1067E /* PendingTreesTableViewController.swift in Sources */,
 				CB75475222C14DD0001FDA65 /* MultilineTextField.swift in Sources */,

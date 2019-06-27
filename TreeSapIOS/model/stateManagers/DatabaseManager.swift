@@ -133,6 +133,24 @@ class DatabaseManager {
     }
     
     /**
+     Marks a notification as read.
+     - Parameter documentID: The document ID of the notification.
+     */
+    static func markNotificationAsRead(documentID: String) {
+        let ref = db.collection("notifications").document(documentID)
+        ref.getDocument() { document, err in
+            if let err = err {
+                print("Error retrieving document: \(err)")
+            } else {
+                // Update the notification
+                var data = document!.data()!
+                data["read"]! = true
+                addDataToCollection(data: data, collectionID: "notifications", documentID: documentID)
+            }
+        }
+    }
+    
+    /**
      Adds or overwrites a document to a collection in the database.
      - Parameter data: The data object to upload to the database.
      - Parameter collectionID: The ID of the collection in which the document should be stored.
