@@ -14,6 +14,7 @@ class NotificationsTableViewController: UITableViewController {
 
     var documents = [DocumentSnapshot]()
     var selecting = false
+    var numPendingDeletions = 0
 
     @IBOutlet var selectButton: UIBarButtonItem!
     @IBOutlet var cancelButton: UIBarButtonItem!
@@ -137,9 +138,12 @@ class NotificationsTableViewController: UITableViewController {
     
     /// Dismisses the loading alert and then reloads notifications and stops selection.
     @objc private func deleteDataSuccess() {
-        dismiss(animated: true) {
-            self.reloadNotifications()
-            self.stopSelection()
+        numPendingDeletions -= 1
+        if numPendingDeletions == 0 {
+            dismiss(animated: true) {
+                self.reloadNotifications()
+                self.stopSelection()
+            }
         }
     }
     
@@ -180,16 +184,16 @@ class NotificationsTableViewController: UITableViewController {
         let alert = UIAlertController(title: "Remove notifications?", message: "Are you sure you want to remove these notifications permanently?", preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "Remove", style: .destructive) { _ in
-            var numNotificationsToDelete = 0
+            self.numPendingDeletions = 0
             for i in 0 ..< self.documents.count {
                 let indexPath = IndexPath(row: i, section: 0)
                 let cell = self.tableView.cellForRow(at: indexPath)
                 if cell!.accessoryType == .checkmark {
-                    numNotificationsToDelete += 1
+                    self.numPendingDeletions += 1
                     DatabaseManager.removeDocumentFromNotifications(documentID: self.documents[i].documentID)
                 }
             }
-            if numNotificationsToDelete > 0 {
+            if self.numPendingDeletions > 0 {
                 AlertManager.showLoadingAlert()
             }
         })
