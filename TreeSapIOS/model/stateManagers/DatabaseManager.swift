@@ -80,8 +80,6 @@ class DatabaseManager {
                 addDataToCollection(data: document!.data()!, collectionID: "acceptedTrees", documentID: documentID)
                 // Remove the tree from pending
                 removeDataFromCollection(collectionID: "pendingTrees", documentID: documentID)
-                // Add the notification to notifications
-                addDataToCollection(data: ["accepted": true, "treeData": document!.data()!], collectionID: "notifications", documentID: nil)
             }
         }
     }
@@ -98,8 +96,6 @@ class DatabaseManager {
             } else {
                 // Remove the tree from pending
                 removeDataFromCollection(collectionID: "pendingTrees", documentID: documentID)
-                // Add the notification to notifications
-                addDataToCollection(data: ["accepted": false, "treeData": document!.data()!], collectionID: "notifications", documentID: nil)
             }
         }
     }
@@ -110,6 +106,25 @@ class DatabaseManager {
      */
     static func removeDocumentFromNotifications(documentID: String) {
         removeDataFromCollection(collectionID: "notifications", documentID: documentID)
+    }
+    
+    /**
+     Adds a document to the notifications collection with data about whether a given tree was accepted or rejected.
+     - Parameter userID: The ID of the user to send the notification to.
+     - Parameter accepted: Whether the tree was accepted.
+     - Parameter message: An optional message to send to the user.
+     - Parameter documentID: The document ID of the tree in question.
+     */
+    static func sendNotificationToUser(userID: String, accepted: Bool, message: String, documentID: String) {
+        let ref = db.collection("pendingTrees").document(documentID)
+        ref.getDocument() { document, err in
+            if let err = err {
+                print("Error retrieving document: \(err)")
+            } else {
+                // Add the notification to notifications
+                addDataToCollection(data: ["accepted": accepted, "treeData": document!.data()!, "message": message], collectionID: "notifications", documentID: nil)
+            }
+        }
     }
     
     /**

@@ -204,26 +204,45 @@ class PendingTreeDetailsViewController: UIViewController {
         }
     }
     
+    /// Shows an alert asking the user whether they would like to send a message to the user.
+    private func showAddMessageAlert(accepting: Bool) {
+        let addMessageAlert = UIAlertController(title: "Add message?", message: "Would you like to send a message to the user who submitted this tree?", preferredStyle: .alert)
+        addMessageAlert.addAction(UIAlertAction(title: "Add message", style: .default) { _ in self.showAddMessageScreen(accepting: accepting) })
+        var withoutMessageLabel: String? = nil
+        if accepting {
+            withoutMessageLabel = "Accept without message"
+        } else {
+            withoutMessageLabel = "Reject without message"
+        }
+        addMessageAlert.addAction(UIAlertAction(title: withoutMessageLabel!, style: .default) { _ in
+            DatabaseManager.sendNotificationToUser(userID: self.displayedTree!.userID!, accepted: accepting, message: "", documentID: self.displayedTree!.documentID!)
+            if accepting {
+                DatabaseManager.acceptDocumentFromPending(documentID: self.displayedTree!.documentID!)
+            } else {
+                DatabaseManager.rejectDocumentFromPending(documentID: self.displayedTree!.documentID!)
+            }
+        })
+        addMessageAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        self.present(addMessageAlert, animated: true)
+    }
+    
+    /// Shows the add message screen.
+    private func showAddMessageScreen(accepting: Bool) {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "addMessage") as! AddMessageViewController
+        vc.accepting = accepting
+        vc.documentID = self.displayedTree!.documentID
+        vc.userID = self.displayedTree!.userID
+        self.present(vc, animated: true)
+    }
+    
     // MARK: - Actions
     
     @IBAction func acceptButtonPressed(_ sender: UIButton) {
-        let alert = UIAlertController(title: "Accept tree?", message: "This tree will be added to the online database for everyone to see.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
-            DatabaseManager.acceptDocumentFromPending(documentID: self.displayedTree!.documentID!)
-            AlertManager.showLoadingAlert()
-        }))
-        present(alert, animated: true)
+        showAddMessageAlert(accepting: true)
     }
     
     @IBAction func rejectButtonPressed(_ sender: UIButton) {
-        let alert = UIAlertController(title: "Reject tree?", message: "This tree will be removed from the database.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
-            DatabaseManager.rejectDocumentFromPending(documentID: self.displayedTree!.documentID!)
-            AlertManager.showLoadingAlert()
-        }))
-        present(alert, animated: true)
+        showAddMessageAlert(accepting: false)
     }
     
     @IBAction func viewNotesButtonPressed(_ sender: UIButton) {
