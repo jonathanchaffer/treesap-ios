@@ -234,7 +234,9 @@ class PendingTreeDetailsViewController: UIViewController {
         vc.accepting = accepting
         vc.documentID = self.displayedTree!.documentID
         vc.userID = self.displayedTree!.userID
-        self.present(vc, animated: true)
+        let navigationController = UINavigationController(rootViewController: vc)
+        navigationController.navigationBar.tintColor = UIColor(named: "treesapGreen")!
+        self.present(navigationController, animated: true)
     }
     
     // MARK: - Actions
