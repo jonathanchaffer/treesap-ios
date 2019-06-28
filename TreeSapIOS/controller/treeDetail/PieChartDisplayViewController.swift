@@ -105,6 +105,15 @@ class PieChartDisplayViewController: TreeDisplayViewController, ChartViewDelegat
         barChartView.noDataFont = .preferredFont(forTextStyle: .body)
         barChartView.noDataTextColor = .black
         barChartView.noDataTextAlignment = .center
+        
+        // Configure special settings for small screens
+        if UIScreen.main.bounds.width <= 320 {
+            commonNameLabel.isHidden = true
+            annualTreeBenefitsLabel.isHidden = true
+            pieChartView.legend.font = .systemFont(ofSize: 12)
+            barChartView.legend.font = .systemFont(ofSize: 12)
+            barChartView.noDataFont = .systemFont(ofSize: 12)
+        }
 
         // Animate in the pie chart
         updatePieChartData()
