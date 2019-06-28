@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ImageSlideshow
 
 class NotificationDetailsViewController: UIViewController {
     // MARK: - Properties
@@ -18,6 +19,9 @@ class NotificationDetailsViewController: UIViewController {
     @IBOutlet weak var latitudeLabel: UILabel!
     @IBOutlet weak var longitudeLabel: UILabel!
     @IBOutlet weak var dbhLabel: UILabel!
+    @IBOutlet weak var notesStackView: UIStackView!
+    @IBOutlet weak var imageSlideshow: ImageSlideshow!
+    @IBOutlet weak var noPhotosLabel: UILabel!
     @IBOutlet weak var commentsLabel: UILabel!
     
     // MARK: - Overrides
@@ -26,9 +30,11 @@ class NotificationDetailsViewController: UIViewController {
         title = "Notification"
         navigationController?.setToolbarHidden(true, animated: false)
         setupLabels()
+        setupPhotos()
     }
     
     // MARK: - Private functions
+    
     private func setupLabels() {
         let accepted = data!["accepted"]! as! Bool
         let comments = data!["message"]! as! String
@@ -38,6 +44,7 @@ class NotificationDetailsViewController: UIViewController {
         let latitude = treeData["latitude"]! as! Double
         let longitude = treeData["longitude"] as! Double
         let dbhArray = treeData["dbhArray"]! as! [Double]
+        let notes = treeData["notes"] as! [String]
 
         // Set title and subtitle
         if accepted {
@@ -85,11 +92,50 @@ class NotificationDetailsViewController: UIViewController {
             dbhLabel.text = "N/A"
         }
         
+        // Set notes labels
+        if !notes.isEmpty {
+            for note in notes {
+                let label = UILabel()
+                label.text = note
+                label.numberOfLines = 0
+                notesStackView.addArrangedSubview(label)
+            }
+        } else {
+            let label = UILabel()
+            label.text = "N/A"
+            notesStackView.addArrangedSubview(label)
+        }
+        
         // Set comments label
         if comments != "" {
             commentsLabel.text = comments
         } else {
-            commentsLabel.text = "(none)"
+            commentsLabel.text = "N/A"
         }
+    }
+    
+    private func setupPhotos() {
+        var imageSources = [ImageSource]()
+        let treeData = data!["treeData"]! as! [String: Any]
+        let imageMap = treeData["images"] as! [String: [String]]
+        for imageCategory in imageMap.keys {
+            for encodedImage in imageMap[imageCategory]! {
+                if let image = DatabaseManager.convertBase64ToImage(encodedImage: encodedImage) {
+                    imageSources.append(ImageSource(image: image))
+                }
+            }
+        }
+        if !imageSources.isEmpty {
+            noPhotosLabel.isHidden = true
+            imageSlideshow.setImageInputs(imageSources)
+        } else {
+            imageSlideshow.isHidden = true
+        }
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.didTapSlideshow))
+        imageSlideshow.addGestureRecognizer(gestureRecognizer)
+    }
+    
+    @objc private func didTapSlideshow() {
+        imageSlideshow.presentFullScreenController(from: self)
     }
 }

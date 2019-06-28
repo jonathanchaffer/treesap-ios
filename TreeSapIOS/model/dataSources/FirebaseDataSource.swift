@@ -89,8 +89,7 @@ class FirebaseDataSource: DataSource {
                 for imageCategory in imageMap.keys {
                     let images = imageMap[imageCategory]!
                     for encodedImage in images {
-                        let decodedImageData: Data = Data(base64Encoded: encodedImage, options: .ignoreUnknownCharacters)!
-                        let decodedImage = UIImage(data: decodedImageData)
+                        let decodedImage = DatabaseManager.convertBase64ToImage(encodedImage: encodedImage)
                         if decodedImage != nil {
                             if imageCategory == "bark" {
                                 tree.addImage(decodedImage!, toCategory: .bark)

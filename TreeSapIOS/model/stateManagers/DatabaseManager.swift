@@ -11,6 +11,7 @@ import Firebase
 import MapKit
 
 class DatabaseManager {
+    // MARK: - Properties
     /// The Firestore database.
     static var db = Firestore.firestore()
     /// Array of curator user IDs.
@@ -29,6 +30,7 @@ class DatabaseManager {
         }
     }
     
+    // MARK: - Firebase data modification
     /**
      Creates a data object based on the specified tree and adds it to the pending trees collection.
      - Parameter tree: The tree to submit.
@@ -57,8 +59,7 @@ class DatabaseManager {
         for imageCategory in tree.images.keys {
             var encodedImages = [String]()
             for image in tree.images[imageCategory]! {
-                let imageData = image.jpegData(compressionQuality: 0.1)!
-                let encodedString = imageData.base64EncodedString(options: [])
+                let encodedString = convertImageToBase64(image: image)
                 encodedImages.append(encodedString)
             }
             encodedImageMap[imageCategory.toString()] = encodedImages
@@ -198,6 +199,7 @@ class DatabaseManager {
         }
     }
     
+    // MARK: - Firebase query accessors
     /// - Returns: A Query containing a collection of pending trees for the current user, or nil if there is none.
     static func getMyPendingTreesCollection() -> Query? {
         if AccountManager.getUserID() != nil {
@@ -224,5 +226,16 @@ class DatabaseManager {
         } else {
             return nil
         }
+    }
+    
+    // MARK: - Helper functions
+    static func convertBase64ToImage(encodedImage: String) -> UIImage? {
+        let decodedImageData: Data = Data(base64Encoded: encodedImage, options: .ignoreUnknownCharacters)!
+        return UIImage(data: decodedImageData)
+    }
+    
+    static func convertImageToBase64(image: UIImage) -> String {
+        let imageData = image.jpegData(compressionQuality: 0.1)!
+        return imageData.base64EncodedString(options: [])
     }
 }

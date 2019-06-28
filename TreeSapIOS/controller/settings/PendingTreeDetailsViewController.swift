@@ -15,48 +15,20 @@ class PendingTreeDetailsViewController: UIViewController {
     // MARK: - Properties
     var displayedTree: Tree?
     
+    @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var commonNameLabel: UILabel!
     @IBOutlet weak var scientificNameLabel: UILabel!
-    @IBOutlet weak var dbhLabel: UILabel!
     @IBOutlet weak var latitudeLabel: UILabel!
     @IBOutlet weak var longitudeLabel: UILabel!
-    @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var notesContainerStackView: UIStackView!
-    @IBOutlet weak var viewNotesButton: UIButton!
-    @IBOutlet weak var hideNotesButton: UIButton!
+    @IBOutlet weak var dbhLabel: UILabel!
     @IBOutlet weak var notesStackView: UIStackView!
-    @IBOutlet weak var photosContainerStackView: UIStackView!
-    @IBOutlet weak var viewPhotosButton: UIButton!
-    @IBOutlet weak var hidePhotosButton: UIButton!
+    @IBOutlet weak var noPhotosLabel: UILabel!
     @IBOutlet weak var imageSlideshow: ImageSlideshow!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupDetails()
-        // Set up notes
-        hideNotesButton.isHidden = true
-        notesContainerStackView.isHidden = true
-        if displayedTree!.notes == [] {
-            viewNotesButton.isHidden = true
-        }
-        for note in displayedTree!.notes {
-            let label = UILabel()
-            label.text = note
-            label.numberOfLines = 0
-            label.lineBreakMode = .byWordWrapping
-            notesStackView.addArrangedSubview(label)
-        }
-        // Set up photos
-        hidePhotosButton.isHidden = true
-        photosContainerStackView.isHidden = true
-        var numPhotos = 0
-        for imageCategory in displayedTree!.images.keys {
-            numPhotos += displayedTree!.images[imageCategory]!.count
-        }
-        if numPhotos == 0 {
-            viewPhotosButton.isHidden = true
-        }
-        setupSlideshow()
+        setupLabels()
+        setupPhotos()
         NotificationCenter.default.addObserver(self, selector: #selector(updateDataSuccess), name: NSNotification.Name("updateDataSuccess"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(updateDataFailure), name: NSNotification.Name("updateDataFailure"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(deleteDataSuccess), name: NSNotification.Name("deleteDataSuccess"), object: nil)
@@ -65,38 +37,57 @@ class PendingTreeDetailsViewController: UIViewController {
     
     // MARK: - Private functions
     
-    private func setupDetails() {
-        // Set common name label
+    private func setupLabels() {
         let commonName = displayedTree!.commonName
+        let scientificName = displayedTree!.scientificName
+        let latitude = displayedTree!.location.latitude
+        let longitude = displayedTree!.location.longitude
+        let dbhArray = displayedTree!.dbhArray
+        let notes = displayedTree!.notes
+        
+        // Set common name and scientific name labels
         if commonName != nil && commonName != "" {
             commonNameLabel.text = commonName!
         } else {
-            commonNameLabel.text = "Common Name N/A"
+            commonNameLabel.text = "N/A"
         }
-        // Set scientific name label
-        let scientificName = displayedTree!.scientificName
         if scientificName != nil && scientificName != "" {
-            scientificNameLabel.text = scientificName
+            scientificNameLabel.text = scientificName!
         } else {
-            scientificNameLabel.text = "Scientific Name N/A"
+            scientificNameLabel.text = "N/A"
         }
+        
+        // Set latitude and longitude labels
+        latitudeLabel.text = String(latitude)
+        longitudeLabel.text = String(longitude)
+        
         // Set DBH label
-        if displayedTree!.dbhArray != [] {
+        if dbhArray != [] {
             var dbhString = ""
-            for i in 0 ..< displayedTree!.dbhArray.count - 1 {
-                dbhString += String(displayedTree!.dbhArray[i]) + "\", "
+            for i in 0 ..< dbhArray.count - 1 {
+                dbhString += String(dbhArray[i]) + "\", "
             }
-            dbhString += String(displayedTree!.dbhArray[displayedTree!.dbhArray.count - 1]) + "\""
+            dbhString += String(dbhArray[dbhArray.count - 1]) + "\""
             dbhLabel.text = dbhString
         } else {
             dbhLabel.text = "N/A"
         }
-        // Set latitude and longitude labels
-        let latitude = displayedTree!.location.latitude
-        let longitude = displayedTree!.location.longitude
-        latitudeLabel.text = String(latitude)
-        longitudeLabel.text = String(longitude)
-        // Set up map view
+        
+        // Set notes labels
+        if !notes.isEmpty {
+            for note in notes {
+                let label = UILabel()
+                label.text = note
+                label.numberOfLines = 0
+                notesStackView.addArrangedSubview(label)
+            }
+        } else {
+            let label = UILabel()
+            label.text = "N/A"
+            notesStackView.addArrangedSubview(label)
+        }
+        
+        // Set up map
         let coordinateRegion = MKCoordinateRegion(
             center: CLLocationCoordinate2D(
                 latitude: latitude,
@@ -108,15 +99,20 @@ class PendingTreeDetailsViewController: UIViewController {
         mapView.addAnnotation(TreeAnnotation(tree: displayedTree!))
     }
     
-    
-    private func setupSlideshow() {
+    private func setupPhotos() {
         var imageSources = [ImageSource]()
-        for imageCategory in displayedTree!.images.keys {
-            for image in displayedTree!.images[imageCategory]! {
+        let imageMap = displayedTree!.images
+        for imageCategory in imageMap.keys {
+            for image in imageMap[imageCategory]! {
                 imageSources.append(ImageSource(image: image))
             }
         }
-        imageSlideshow.setImageInputs(imageSources)
+        if !imageSources.isEmpty {
+            noPhotosLabel.isHidden = true
+            imageSlideshow.setImageInputs(imageSources)
+        } else {
+            imageSlideshow.isHidden = true
+        }
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.didTapSlideshow))
         imageSlideshow.addGestureRecognizer(gestureRecognizer)
     }
@@ -163,48 +159,6 @@ class PendingTreeDetailsViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    /// Shows notes.
-    private func showNotes() {
-        viewNotesButton.isHidden = true
-        hideNotesButton.isHidden = false
-        self.notesContainerStackView.layer.opacity = 0
-        UIView.animate(withDuration: 0.3) {
-            self.notesContainerStackView.isHidden = false
-            self.notesContainerStackView.layer.opacity = 1
-        }
-    }
-    
-    /// Shows photos.
-    private func showPhotos() {
-        viewPhotosButton.isHidden = true
-        hidePhotosButton.isHidden = false
-        self.photosContainerStackView.layer.opacity = 0
-        UIView.animate(withDuration: 0.3) {
-            self.photosContainerStackView.isHidden = false
-            self.photosContainerStackView.layer.opacity = 1
-        }
-    }
-    
-    /// Hides notes.
-    private func hideNotes() {
-        viewNotesButton.isHidden = false
-        hideNotesButton.isHidden = true
-        UIView.animate(withDuration: 0.3) {
-            self.notesContainerStackView.isHidden = true
-            self.notesContainerStackView.layer.opacity = 0
-        }
-    }
-    
-    /// Hides photos.
-    private func hidePhotos() {
-        viewPhotosButton.isHidden = false
-        hidePhotosButton.isHidden = true
-        UIView.animate(withDuration: 0.3) {
-            self.photosContainerStackView.isHidden = true
-            self.photosContainerStackView.layer.opacity = 0
-        }
-    }
-    
     /// Shows an alert asking the user whether they would like to send a message to the user.
     private func showAddMessageAlert(accepting: Bool) {
         let addMessageAlert = UIAlertController(title: "Add message?", message: "Would you like to send a message to the user who submitted this tree?", preferredStyle: .alert)
@@ -248,27 +202,5 @@ class PendingTreeDetailsViewController: UIViewController {
     
     @IBAction func rejectButtonPressed(_ sender: UIButton) {
         showAddMessageAlert(accepting: false)
-    }
-    
-    @IBAction func viewNotesButtonPressed(_ sender: UIButton) {
-        if !photosContainerStackView.isHidden {
-            hidePhotos()
-        }
-        showNotes()
-    }
-    
-    @IBAction func hideNotesButtonPressed(_ sender: UIButton) {
-        hideNotes()
-    }
-    
-    @IBAction func viewPhotosButtonPressed(_ sender: UIButton) {
-        if !notesContainerStackView.isHidden {
-            hideNotes()
-        }
-        showPhotos()
-    }
-    
-    @IBAction func hidePhotosButtonPressed(_ sender: UIButton) {
-        hidePhotos()
     }
 }
