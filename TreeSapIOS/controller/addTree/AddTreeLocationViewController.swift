@@ -40,6 +40,11 @@ class AddTreeLocationViewController: AddTreeViewController, UITextFieldDelegate 
             AlertManager.alertUser(title: "Invalid coordinates", message: "Please make sure that you input valid coordinates.")
             return
         }
+        // Check that the latitude and longitude values are in the correct ranges
+        if latitude! < -90.0 || latitude! > 90.0 || longitude! < -180.0 || longitude! > 180.0 {
+            AlertManager.alertUser(title: "Coordinates outside of valid range", message: "The latitude must be between -90 and 90. The longitude must be between -180 and 180.")
+            return
+        }
         
         nextPage()
     }
