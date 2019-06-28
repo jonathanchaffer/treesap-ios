@@ -39,6 +39,7 @@
 		CB4707CF22C4FBE200E7908F /* AddMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4707CE22C4FBE200E7908F /* AddMessageViewController.swift */; };
 		CB4707D122C52D8900E7908F /* ImageCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4707D022C52D8900E7908F /* ImageCategory.swift */; };
 		CB4707D322C5422200E7908F /* NotificationDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4707D222C5422200E7908F /* NotificationDetailsViewController.swift */; };
+		CB55444D22C658E100DE71E7 /* StringConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB55444C22C658E100DE71E7 /* StringConstants.swift */; };
 		CB672F1B229434DA00622B59 /* TreeDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB672F1A229434DA00622B59 /* TreeDisplayViewController.swift */; };
 		CB6953B8228EE8720002024B /* Tree.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6953B7228EE8720002024B /* Tree.swift */; };
 		CB6953BA228EE9530002024B /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6953B9228EE9530002024B /* DataSource.swift */; };
@@ -150,6 +151,7 @@
 		CB4707CE22C4FBE200E7908F /* AddMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMessageViewController.swift; sourceTree = "<group>"; };
 		CB4707D022C52D8900E7908F /* ImageCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCategory.swift; sourceTree = "<group>"; };
 		CB4707D222C5422200E7908F /* NotificationDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationDetailsViewController.swift; sourceTree = "<group>"; };
+		CB55444C22C658E100DE71E7 /* StringConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringConstants.swift; sourceTree = "<group>"; };
 		CB672F1A229434DA00622B59 /* TreeDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeDisplayViewController.swift; sourceTree = "<group>"; };
 		CB6953B7228EE8720002024B /* Tree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tree.swift; sourceTree = "<group>"; };
 		CB6953B9228EE9530002024B /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
@@ -306,6 +308,7 @@
 		CB6953B5228EE4AE0002024B /* model */ = {
 			isa = PBXGroup;
 			children = (
+				CB55444C22C658E100DE71E7 /* StringConstants.swift */,
 				CB80E3C422AFF19C001A78AE /* stateManagers */,
 				CB6953B7228EE8720002024B /* Tree.swift */,
 				CB4707D022C52D8900E7908F /* ImageCategory.swift */,
@@ -745,6 +748,7 @@
 			files = (
 				D77029DF22B12C7300671CC0 /* LoginSignupViewController.swift in Sources */,
 				CB9F425122A5B0D800C97F70 /* AddTreePageViewController.swift in Sources */,
+				CB55444D22C658E100DE71E7 /* StringConstants.swift in Sources */,
 				CB78C9EA22C3C25100B5A7CB /* NotificationsTableViewController.swift in Sources */,
 				CB75475022C13B21001FDA65 /* OutlinedButton.swift in Sources */,
 				CB12C94F228DF85D000C74C3 /* TreeDetailPageViewController.swift in Sources */,

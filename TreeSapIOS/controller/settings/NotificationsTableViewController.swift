@@ -131,8 +131,8 @@ class NotificationsTableViewController: UITableViewController {
 
     /// Shows an alert saying that notifications could not be loaded.
     @objc private func failedToLoad() {
-        let alert = UIAlertController(title: "Failed to load notifications", message: "An error occurred while trying to load notifications. Please try again.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { _ in self.closeNotifications() }))
+        let alert = UIAlertController(title: StringConstants.failedToLoadNotificationsTitle, message: StringConstants.failedToLoadNotificationsMessage, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: StringConstants.ok, style: .cancel, handler: { _ in self.closeNotifications() }))
         present(alert, animated: true)
     }
     
@@ -150,7 +150,7 @@ class NotificationsTableViewController: UITableViewController {
     /// Dismisses the loading alert and then alerts the user that there was an error deleting data.
     @objc private func deleteDataFailure() {
         dismiss(animated: true) {
-            AlertManager.alertUser(title: "Failed to delete notifications", message: "An error occurred while trying to delete notifications. Please try again.")
+            AlertManager.alertUser(title: StringConstants.failedToDeleteNotificationsTitle, message: StringConstants.failedToLoadNotificationsMessage)
         }
     }
 
@@ -181,9 +181,9 @@ class NotificationsTableViewController: UITableViewController {
     
     /// Shows an "Are you sure?" alert. If the user selects "Remove", tells the database manager to remove the selected notifications.
     @IBAction func trashButtonPressed(_ sender: UIBarButtonItem) {
-        let alert = UIAlertController(title: "Remove notifications?", message: "Are you sure you want to remove these notifications permanently?", preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        alert.addAction(UIAlertAction(title: "Remove", style: .destructive) { _ in
+        let alert = UIAlertController(title: StringConstants.confirmDeleteNotificationsTitle, message: StringConstants.confirmDeleteNotificationsMessage, preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: StringConstants.cancel, style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: StringConstants.confirmDeleteNotificationsDeleteAction, style: .destructive) { _ in
             self.numPendingDeletions = 0
             for i in 0 ..< self.documents.count {
                 let indexPath = IndexPath(row: i, section: 0)

@@ -34,18 +34,18 @@ class AddMessageViewController: UIViewController {
     
     @IBAction func saveButtonPressed(_ sender: UIButton) {
         if accepting! {
-            let alert = UIAlertController(title: "Accept tree?", message: "This tree will be added to the online database for everyone to see.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-            alert.addAction(UIAlertAction(title: "Accept", style: .default) { _ in
+            let alert = UIAlertController(title: StringConstants.confirmAcceptTreeTitle, message: StringConstants.confirmAcceptTreeMessage, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: StringConstants.cancel, style: .cancel, handler: nil))
+            alert.addAction(UIAlertAction(title: StringConstants.confirmAcceptTreeAcceptAction, style: .default) { _ in
                 DatabaseManager.sendNotificationToUser(userID: self.userID!, accepted: self.accepting!, message: self.textField.text, documentID: self.documentID!)
                 DatabaseManager.acceptDocumentFromPending(documentID: self.documentID!)
                 AlertManager.showLoadingAlert()
             })
             present(alert, animated: true)
         } else {
-            let alert = UIAlertController(title: "Reject tree?", message: "This tree will be removed from the database.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-            alert.addAction(UIAlertAction(title: "Reject", style: .default) { _ in
+            let alert = UIAlertController(title: StringConstants.confirmRejectTreeTitle, message: StringConstants.confirmRejectTreeMessage, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: StringConstants.cancel, style: .cancel, handler: nil))
+            alert.addAction(UIAlertAction(title: StringConstants.confirmRejectTreeRejectAction, style: .default) { _ in
                 DatabaseManager.sendNotificationToUser(userID: self.userID!, accepted: self.accepting!, message: self.textField.text, documentID: self.documentID!)
                 DatabaseManager.rejectDocumentFromPending(documentID: self.documentID!)
                 AlertManager.showLoadingAlert()

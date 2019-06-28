@@ -124,8 +124,8 @@ class PendingTreeDetailsViewController: UIViewController {
     /// Dismisses the loading alert, and then alerts the user that the tree was successfully accepted.
     @objc private func updateDataSuccess() {
         dismiss(animated: true) {
-            let alert = UIAlertController(title: "Success!", message: "The tree has been updated.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in self.closePendingTreeDetails() }))
+            let alert = UIAlertController(title: StringConstants.treeUpdateSuccessTitle, message: StringConstants.treeUpdateSuccessMessage, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: StringConstants.ok, style: .default, handler: { _ in self.closePendingTreeDetails() }))
             self.present(alert, animated: true)
         }
     }
@@ -133,15 +133,15 @@ class PendingTreeDetailsViewController: UIViewController {
     /// Dismisses the loading alert, and then alerts the user that there was an error while trying to update the tree.
     @objc private func updateDataFailure() {
         dismiss(animated: true) {
-            AlertManager.alertUser(title: "Error updating tree", message: "An error occurred while trying to update the tree. Please try again.")
+            AlertManager.alertUser(title: StringConstants.treeUpdateFailureTitle, message: StringConstants.treeUpdateFailureMessage)
         }
     }
     
     /// Dismisses the loading alert, and then alerts the user that the tree was successfully removed.
     @objc private func deleteDataSuccess() {
         dismiss(animated: true) {
-            let alert = UIAlertController(title: "Success!", message: "The tree has been removed.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in self.closePendingTreeDetails() }))
+            let alert = UIAlertController(title: StringConstants.treeRemovalSuccessTitle, message: StringConstants.treeRemovalSuccessMessage, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: StringConstants.ok, style: .default, handler: { _ in self.closePendingTreeDetails() }))
             self.present(alert, animated: true)
         }
     }
@@ -149,7 +149,7 @@ class PendingTreeDetailsViewController: UIViewController {
     /// Dismisses the loading alert, and then alerts the user that there was an error while trying to remove the tree.
     @objc private func deleteDataFailure() {
         dismiss(animated: true) {
-            AlertManager.alertUser(title: "Error removing tree", message: "An error occurred while trying to remove the tree. Please try again.")
+            AlertManager.alertUser(title: StringConstants.treeRemovalFailureTitle, message: StringConstants.treeRemovalFailureMessage)
         }
     }
     
@@ -161,13 +161,13 @@ class PendingTreeDetailsViewController: UIViewController {
     
     /// Shows an alert asking the user whether they would like to send a message to the user.
     private func showAddMessageAlert(accepting: Bool) {
-        let addMessageAlert = UIAlertController(title: "Add message?", message: "Would you like to send a message to the user who submitted this tree?", preferredStyle: .alert)
-        addMessageAlert.addAction(UIAlertAction(title: "Add message", style: .default) { _ in self.showAddMessageScreen(accepting: accepting) })
+        let addMessageAlert = UIAlertController(title: StringConstants.addMessagePromptTitle, message: StringConstants.addMessagePromptMessage, preferredStyle: .alert)
+        addMessageAlert.addAction(UIAlertAction(title: StringConstants.addMessagePromptAddMessageAction, style: .default) { _ in self.showAddMessageScreen(accepting: accepting) })
         var withoutMessageLabel: String? = nil
         if accepting {
-            withoutMessageLabel = "Accept without message"
+            withoutMessageLabel = StringConstants.addMessagePromptAcceptWithoutMessageAction
         } else {
-            withoutMessageLabel = "Reject without message"
+            withoutMessageLabel = StringConstants.addMessagePromptRejectWithoutMessageAction
         }
         addMessageAlert.addAction(UIAlertAction(title: withoutMessageLabel!, style: .default) { _ in
             DatabaseManager.sendNotificationToUser(userID: self.displayedTree!.userID!, accepted: accepting, message: "", documentID: self.displayedTree!.documentID!)
@@ -179,7 +179,7 @@ class PendingTreeDetailsViewController: UIViewController {
                 AlertManager.showLoadingAlert()
             }
         })
-        addMessageAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        addMessageAlert.addAction(UIAlertAction(title: StringConstants.cancel, style: .cancel, handler: nil))
         self.present(addMessageAlert, animated: true)
     }
     

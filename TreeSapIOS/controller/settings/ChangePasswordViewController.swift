@@ -29,7 +29,7 @@ class ChangePasswordViewController: UIViewController {
         if newPasswordTextField.text! == newPasswordConfirmTextField.text! {
             AccountManager.updatePassword(oldPassword: oldPasswordTextField.text!, newPassword: newPasswordTextField.text!)
         } else {
-            AlertManager.alertUser(title: "Passwords do not match", message: "Please ensure that you enter the same password in both new password fields.")
+            AlertManager.alertUser(title: StringConstants.unmatchingPasswordsTitle, message: StringConstants.unmatchingPasswordsMessage)
             return
         }
     }

@@ -37,12 +37,12 @@ class AddTreeLocationViewController: AddTreeViewController, UITextFieldDelegate 
         
         // Check that latitude and longitude values exist
         if latitude == nil || longitude == nil {
-            AlertManager.alertUser(title: "Invalid coordinates", message: "Please make sure that you input valid coordinates.")
+            AlertManager.alertUser(title: StringConstants.invalidCoordinatesTitle, message: StringConstants.invalidCoordinatesMessage)
             return
         }
         // Check that the latitude and longitude values are in the correct ranges
         if latitude! < -90.0 || latitude! > 90.0 || longitude! < -180.0 || longitude! > 180.0 {
-            AlertManager.alertUser(title: "Coordinates outside of valid range", message: "The latitude must be between -90 and 90. The longitude must be between -180 and 180.")
+            AlertManager.alertUser(title: StringConstants.coordinatesOutOfRangeTitle, message: StringConstants.coordinatesOutOfRangeMessage)
             return
         }
         
@@ -59,7 +59,7 @@ class AddTreeLocationViewController: AddTreeViewController, UITextFieldDelegate 
             longitudeTextField.text = String(Double((LocationManager.getCurrentLocation()?.coordinate.longitude)!))
             nextButton.isHidden = false
         } else {
-            AlertManager.alertUser(title: "Location could not be accessed", message: "Please make sure that location services are enabled.")
+            AlertManager.alertUser(title: StringConstants.locationUnvailableTitle, message: StringConstants.locationUnvailableMessage)
         }
     }
     

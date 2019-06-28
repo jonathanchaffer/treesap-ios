@@ -85,8 +85,8 @@ class PendingTreesTableViewController: UITableViewController {
     
     /// Shows an alert saying that pending trees could not be loaded.
     @objc private func failedToLoad() {
-        let alert = UIAlertController(title: "Failed to load pending trees", message: "An error occurred while trying to load the pending trees. Please try again.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { _ in self.closePendingTrees() }))
+        let alert = UIAlertController(title: StringConstants.failedToLoadPendingTreesTitle, message: StringConstants.failedToLoadPendingTreesMessage, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: StringConstants.ok, style: .cancel, handler: { _ in self.closePendingTrees() }))
         present(alert, animated: true)
     }
     

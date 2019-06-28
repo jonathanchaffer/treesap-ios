@@ -18,7 +18,7 @@ class AlertManager {
     static func alertUser(title: String, message: String) {
         // Create an alert
         let alertController: UIAlertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+        alertController.addAction(UIAlertAction(title: StringConstants.ok, style: UIAlertAction.Style.default, handler: nil))
 
         // Present the alert from the current view controller
         if let currentViewController = getCurrentViewController() {
@@ -28,7 +28,7 @@ class AlertManager {
     
     static func showLoadingAlert() {
         // Create an alert
-        let loadingAlertController = UIAlertController(title: "Please wait...", message: nil, preferredStyle: .alert)
+        let loadingAlertController = UIAlertController(title: StringConstants.pleaseWait, message: nil, preferredStyle: .alert)
         
         // Present the alert from the current view controlelr
         if let currentViewController = getCurrentViewController() {

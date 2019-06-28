@@ -87,11 +87,11 @@ class DataManager {
                 }
                 if !loadingScreenActive {
                     DispatchQueue.main.async {
-                        AlertManager.alertUser(title: "Online tree data unavailable", message: "Some or all of the online tree data could not be loaded. The tree data stored on your device will be used instead.")
+                        AlertManager.alertUser(title: StringConstants.onlineDataUnavailableTitle, message: StringConstants.onlineDataUnavailableMessage)
                     }
                 } else {
                     DispatchQueue.main.async {
-                        AlertManager.alertUser(title: "Some tree data unavailable", message: "Some or all of the tree data could not be loaded. Please ensure that your device is connected to the Internet and then restart the app.")
+                        AlertManager.alertUser(title: StringConstants.localDataUnavailableTitle, message: StringConstants.localDataUnavailableMessage)
                     }
                 }
             }

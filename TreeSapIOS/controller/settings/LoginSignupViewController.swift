@@ -72,7 +72,7 @@ class LoginSignupViewController: UIViewController {
         if createAccountEmailTextField.text != nil && createAccountPasswordTextField.text != nil && createAccountConfirmTextField.text != nil {
             // Check for non-matching passwords
             if createAccountPasswordTextField.text! != createAccountConfirmTextField.text! {
-                AlertManager.alertUser(title: "Passwords do not match", message: "Please ensure that you enter the same password in both password fields.")
+                AlertManager.alertUser(title: StringConstants.unmatchingPasswordsTitle, message: StringConstants.unmatchingPasswordsMessage)
                 return
             }
             // Create the user

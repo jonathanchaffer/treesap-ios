@@ -156,7 +156,7 @@ class SimpleDisplayViewController: TreeDisplayViewController {
     
     // MARK: - Actions
     @IBAction func dbhInfoButtonPressed(_ sender: UIButton) {
-        AlertManager.alertUser(title: "What does DBH mean?", message: "DBH is an acronym for Diameter at Breast Height, where breast height is 4.5 feet above the ground. If multiple numbers are listed, it means that the tree branches below breast height.")
+        AlertManager.alertUser(title: StringConstants.dbhExplanationTitle, message: StringConstants.dbhExplanationWithMultipleMessage)
     }
     
     @IBAction func viewNotesButtonPressed(_ sender: UIButton) {

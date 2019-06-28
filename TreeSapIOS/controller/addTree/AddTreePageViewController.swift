@@ -45,9 +45,9 @@ class AddTreePageViewController: UIPageViewController {
     override func viewDidAppear(_ animated: Bool) {
         // Prompt the user to log in if they're not already
         if !AccountManager.isLoggedIn() {
-            let alert = UIAlertController(title: "Login required", message: "You must log into your TreeSap account to add your own trees.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in self.closeAddTree() }))
-            alert.addAction(UIAlertAction(title: "Log In", style: .default, handler: { _ in self.goToLogin() }))
+            let alert = UIAlertController(title: StringConstants.loginRequiredTitle, message: StringConstants.loginRequiredMessage, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: StringConstants.cancel, style: .cancel, handler: { _ in self.closeAddTree() }))
+            alert.addAction(UIAlertAction(title: StringConstants.loginRequiredLogInAction, style: .default, handler: { _ in self.goToLogin() }))
             present(alert, animated: true)
         }
     }
@@ -169,8 +169,8 @@ class AddTreePageViewController: UIPageViewController {
     @objc private func submitDataSuccess() {
         dismiss(animated: true) {
             DataManager.reloadFirebaseTreeData()
-            let alert = UIAlertController(title: "Success!", message: "Your tree has been submitted for approval. While you wait, your tree will be available in the \"My Pending Trees\" data set on your device.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in self.closeAddTree() }))
+            let alert = UIAlertController(title: StringConstants.submitTreeSuccessTitle, message: StringConstants.submitTreeSuccessMessage, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: StringConstants.ok, style: .default, handler: { _ in self.closeAddTree() }))
             self.present(alert, animated: true)
         }
     }
@@ -178,7 +178,7 @@ class AddTreePageViewController: UIPageViewController {
     /// Dismisses the loading alert, and then alerts the user that there was an error submitting the tree.
     @objc private func submitDataFailure() {
         dismiss(animated: true) {
-            AlertManager.alertUser(title: "Error submitting tree", message: "An error occurred while trying to submit your tree. Please try again.")
+            AlertManager.alertUser(title: StringConstants.submitTreeFailureTitle, message: StringConstants.submitTreeFailureMessage)
         }
     }
     

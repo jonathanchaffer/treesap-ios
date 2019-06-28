@@ -57,10 +57,10 @@ class IdentifyViewController: UIViewController {
                 let pages = TreeDetailPageViewController(tree: treeToDisplay!)
                 navigationController?.pushViewController(pages, animated: true)
             } else {
-                AlertManager.alertUser(title: "No trees found", message: "There were no trees found near your location. You can update the identification distance in Settings.")
+                AlertManager.alertUser(title: StringConstants.noTreesFoundByGPSTitle, message: StringConstants.noTreesFoundByGPSMessage)
             }
         } else {
-            AlertManager.alertUser(title: "Location could not be accessed", message: "Please ensure that location services are enabled.")
+            AlertManager.alertUser(title: StringConstants.locationUnvailableTitle, message: StringConstants.locationUnvailableMessage)
         }
     }
 

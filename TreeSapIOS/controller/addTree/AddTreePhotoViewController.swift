@@ -50,13 +50,13 @@ class AddTreePhotoViewController: AddTreeViewController {
     /// Presents an alert controller containing options for camera and photo library.
     private func presentAlertController() {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        if let action = self.action(for: .camera, title: "Take photo") {
+        if let action = self.action(for: .camera, title: StringConstants.addPhotoPromptCameraAction) {
             alertController.addAction(action)
         }
-        if let action = self.action(for: .photoLibrary, title: "Choose photo") {
+        if let action = self.action(for: .photoLibrary, title: StringConstants.addPhotoPromptGalleryAction) {
             alertController.addAction(action)
         }
-        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alertController.addAction(UIAlertAction(title: StringConstants.cancel, style: .cancel, handler: nil))
         present(alertController, animated: true)
     }
 
