@@ -21,12 +21,10 @@ class SimpleDisplayViewController: TreeDisplayViewController {
     @IBOutlet var dbhLabel: UILabel!
     @IBOutlet var backgroundImage: UIImageView!
     @IBOutlet weak var notesContainerStackView: UIStackView!
-    @IBOutlet weak var viewNotesButton: UIButton!
-    @IBOutlet weak var hideNotesButton: UIButton!
+    @IBOutlet weak var notesButton: UIButton!
     @IBOutlet weak var notesStackView: UIStackView!
     @IBOutlet weak var photosContainerStackView: UIStackView!
-    @IBOutlet weak var viewPhotosButton: UIButton!
-    @IBOutlet weak var hidePhotosButton: UIButton!
+    @IBOutlet weak var photosButton: UIButton!
     @IBOutlet weak var imageSlideshow: ImageSlideshow!
     
     // MARK: - Overrides
@@ -71,10 +69,9 @@ class SimpleDisplayViewController: TreeDisplayViewController {
             backgroundImage.image = UIImage(named: displayedTree!.commonName!)
         }
         // Set up notes
-        hideNotesButton.isHidden = true
         notesContainerStackView.isHidden = true
         if displayedTree!.notes.isEmpty {
-            viewNotesButton.isHidden = true
+            notesButton.isHidden = true
         }
         for note in displayedTree!.notes {
             let label = UILabel()
@@ -84,14 +81,13 @@ class SimpleDisplayViewController: TreeDisplayViewController {
             notesStackView.addArrangedSubview(label)
         }
         // Set up photos
-        hidePhotosButton.isHidden = true
         photosContainerStackView.isHidden = true
         var numPhotos = 0
         for imageCategory in displayedTree!.images.keys {
             numPhotos += displayedTree!.images[imageCategory]!.count
         }
         if numPhotos == 0 {
-            viewPhotosButton.isHidden = true
+            photosButton.isHidden = true
         }
         setupSlideshow()
     }
@@ -114,8 +110,7 @@ class SimpleDisplayViewController: TreeDisplayViewController {
     
     /// Shows notes.
     private func showNotes() {
-        viewNotesButton.isHidden = true
-        hideNotesButton.isHidden = false
+        notesButton.setTitle("Hide Notes", for: .normal)
         self.notesContainerStackView.layer.opacity = 0
         UIView.animate(withDuration: 0.3) {
             self.notesContainerStackView.isHidden = false
@@ -125,8 +120,7 @@ class SimpleDisplayViewController: TreeDisplayViewController {
     
     /// Shows photos.
     private func showPhotos() {
-        viewPhotosButton.isHidden = true
-        hidePhotosButton.isHidden = false
+        photosButton.setTitle("Hide Photos", for: .normal)
         self.photosContainerStackView.layer.opacity = 0
         UIView.animate(withDuration: 0.3) {
             self.photosContainerStackView.isHidden = false
@@ -136,8 +130,7 @@ class SimpleDisplayViewController: TreeDisplayViewController {
     
     /// Hides notes.
     private func hideNotes() {
-        viewNotesButton.isHidden = false
-        hideNotesButton.isHidden = true
+        notesButton.setTitle("View Notes", for: .normal)
         UIView.animate(withDuration: 0.3) {
             self.notesContainerStackView.isHidden = true
             self.notesContainerStackView.layer.opacity = 0
@@ -146,8 +139,7 @@ class SimpleDisplayViewController: TreeDisplayViewController {
     
     /// Hides photos.
     private func hidePhotos() {
-        viewPhotosButton.isHidden = false
-        hidePhotosButton.isHidden = true
+        photosButton.setTitle("View Photos", for: .normal)
         UIView.animate(withDuration: 0.3) {
             self.photosContainerStackView.isHidden = true
             self.photosContainerStackView.layer.opacity = 0
@@ -163,21 +155,21 @@ class SimpleDisplayViewController: TreeDisplayViewController {
         if !photosContainerStackView.isHidden {
             hidePhotos()
         }
-        showNotes()
-    }
-    
-    @IBAction func hideNotesButtonPressed(_ sender: UIButton) {
-        hideNotes()
+        if notesContainerStackView.isHidden {
+            showNotes()
+        } else {
+            hideNotes()
+        }
     }
     
     @IBAction func viewPhotosButtonPressed(_ sender: UIButton) {
         if !notesContainerStackView.isHidden {
             hideNotes()
         }
-        showPhotos()
-    }
-    
-    @IBAction func hidePhotosButtonPressed(_ sender: UIButton) {
-        hidePhotos()
+        if photosContainerStackView.isHidden {
+            showPhotos()
+        } else {
+            hidePhotos()
+        }
     }
 }

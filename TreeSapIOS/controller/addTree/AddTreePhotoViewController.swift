@@ -85,7 +85,7 @@ class AddTreePhotoViewController: AddTreeViewController {
     func updateImages() {}
 
     /// Updates the image slideshow on the current page.
-    func updateImages(imageSlideshow: ImageSlideshow, nextButton: UIButton, skipButton: UIButton, clearPhotosButton: UIButton) {
+    func updateImages(imageSlideshow: ImageSlideshow, nextButton: UIButton, skipButton: UIButton, clearPhotosButton: UIButton, addPhotoButton: UIButton) {
         var imageSources = [ImageSource]()
         for image in selectedImages {
             imageSources.append(ImageSource(image: image))
@@ -94,13 +94,16 @@ class AddTreePhotoViewController: AddTreeViewController {
             nextButton.isHidden = false
             skipButton.isHidden = true
             clearPhotosButton.isHidden = false
+            addPhotoButton.setTitle("Add Another Photo", for: .normal)
         } else {
             imageSources.append(ImageSource(image: UIImage(named: "noPhotoSelected")!))
             nextButton.isHidden = true
             skipButton.isHidden = false
             clearPhotosButton.isHidden = true
+            addPhotoButton.setTitle("Take/Choose Photo", for: .normal)
         }
         imageSlideshow.setImageInputs(imageSources)
+        imageSlideshow.setCurrentPage(selectedImages.count - 1, animated: false)
     }
 }
 
