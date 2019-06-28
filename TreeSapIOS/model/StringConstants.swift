@@ -172,4 +172,22 @@ class StringConstants {
     
     static let sendPasswordResetFailureTitle = "Error sending password reset email"
     static let sendPassowrdResetFailureMessage = "An error occurred while trying to send a password reset email. Please try again."
+    
+    // MARK: - Notification Center
+    
+    static let loggedInNotification = "loggedIn"
+    static let displayNameUpdatedNotification = "displayNameUpdated"
+    static let passwordUpdatedNotification = "passwordUpdated"
+    static let passwordResetSentNotification = "passwordResetSent"
+    static let submitDataFailureNotification = "submitDataFailure"
+    static let submitDataSuccessNotification = "submitDataSuccess"
+    static let updateDataFailureNotification = "updateDataFailure"
+    static let updateDataSuccessNotification = "updateDataSuccess"
+    static let deleteDataFailureNotification = "deleteDataFailure"
+    static let deleteDataSuccessNotification = "deleteDataSuccess"
+    static let firebaseDataRetrievalFailureNotification = "firebaseDataFailed"
+    static let firebaseDataRetrievalSuccessNotification = "firebaseDataRetrieved"
+    static let addTreeNextPageNotification = "addTreeNext"
+    static let addTreePreviousPageNotification = "addTreePrevious"
+    static let submitTreeNotification = "submitTree"
 }

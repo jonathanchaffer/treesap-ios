@@ -35,11 +35,11 @@ class AddTreePageViewController: UIPageViewController {
         setViewControllers([pages[currentPage]], direction: .forward, animated: true, completion: nil)
         
         // Create listeners for page events
-        NotificationCenter.default.addObserver(self, selector: #selector(nextPage), name: NSNotification.Name("next"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(previousPage), name: NSNotification.Name("previous"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(submitTree), name: NSNotification.Name("submitTree"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(submitDataSuccess), name: NSNotification.Name("submitDataSuccess"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(submitDataFailure), name: NSNotification.Name("submitDataFailure"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(nextPage), name: NSNotification.Name(StringConstants.addTreeNextPageNotification), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(previousPage), name: NSNotification.Name(StringConstants.addTreePreviousPageNotification), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(submitTree), name: NSNotification.Name(StringConstants.submitTreeNotification), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(submitDataSuccess), name: NSNotification.Name(StringConstants.submitDataSuccessNotification), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(submitDataFailure), name: NSNotification.Name(StringConstants.submitDataFailureNotification), object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {

@@ -143,7 +143,7 @@ class AddTreeOtherViewController: AddTreeViewController {
     
     /// Tells the AddTreePageViewController to submit the tree.
     private func broadcastSubmitTree() {
-        NotificationCenter.default.post(name: NSNotification.Name("submitTree"), object: nil)
+        NotificationCenter.default.post(name: NSNotification.Name(StringConstants.submitTreeNotification), object: nil)
     }
     
     /// Function that is called when a text field's text changes.

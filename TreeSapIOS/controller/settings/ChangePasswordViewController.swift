@@ -17,7 +17,7 @@ class ChangePasswordViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(closeChangePassword), name: NSNotification.Name("passwordUpdated"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(closeChangePassword), name: NSNotification.Name(StringConstants.passwordUpdatedNotification), object: nil)
     }
     
     @IBAction func changePasswordButtonPressed(_ sender: UIButton) {

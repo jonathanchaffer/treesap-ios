@@ -24,8 +24,8 @@ class AccountTableViewController: UITableViewController {
         super.viewDidLoad()
 		refreshTable()
 		title = "Account"
-		NotificationCenter.default.addObserver(self, selector: #selector(refreshTable), name: NSNotification.Name("loggedIn"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(refreshTable), name: NSNotification.Name("displayNameUpdated"), object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(refreshTable), name: NSNotification.Name(StringConstants.loggedInNotification), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshTable), name: NSNotification.Name(StringConstants.displayNameUpdatedNotification), object: nil)
     }
 	
 	/// Deselects a row when it is selected.

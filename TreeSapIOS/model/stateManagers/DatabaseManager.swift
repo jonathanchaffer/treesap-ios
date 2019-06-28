@@ -163,20 +163,20 @@ class DatabaseManager {
             ref = db.collection(collectionID).addDocument(data: data) { err in
                 if let err = err {
                     print("Error adding document: \(err)")
-                    NotificationCenter.default.post(name: NSNotification.Name("submitDataFailure"), object: nil)
+                    NotificationCenter.default.post(name: NSNotification.Name(StringConstants.submitDataFailureNotification), object: nil)
                 } else {
                     print("Document added with ID: \(ref!.documentID)")
-                    NotificationCenter.default.post(name: NSNotification.Name("submitDataSuccess"), object: nil)
+                    NotificationCenter.default.post(name: NSNotification.Name(StringConstants.submitDataSuccessNotification), object: nil)
                 }
             }
         } else {
             db.collection(collectionID).document(documentID!).setData(data) { err in
                 if let err = err {
                     print("Error updating document: \(err)")
-                    NotificationCenter.default.post(name: NSNotification.Name("updateDataFailure"), object: nil)
+                    NotificationCenter.default.post(name: NSNotification.Name(StringConstants.updateDataFailureNotification), object: nil)
                 } else {
                     print("Document updated with ID: \(documentID!)")
-                    NotificationCenter.default.post(name: NSNotification.Name("updateDataSuccess"), object: nil)
+                    NotificationCenter.default.post(name: NSNotification.Name(StringConstants.updateDataSuccessNotification), object: nil)
                 }
             }
         }
@@ -191,10 +191,10 @@ class DatabaseManager {
         db.collection(collectionID).document(documentID).delete() { err in
             if let err = err {
                 print("Error removing document: \(err)")
-                NotificationCenter.default.post(name: NSNotification.Name("deleteDataFailure"), object: nil)
+                NotificationCenter.default.post(name: NSNotification.Name(StringConstants.deleteDataFailureNotification), object: nil)
             } else {
                 print("Document successfully removed!")
-                NotificationCenter.default.post(name: NSNotification.Name("deleteDataSuccess"), object: nil)
+                NotificationCenter.default.post(name: NSNotification.Name(StringConstants.deleteDataSuccessNotification), object: nil)
             }
         }
     }

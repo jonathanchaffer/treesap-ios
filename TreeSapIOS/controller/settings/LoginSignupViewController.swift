@@ -30,7 +30,7 @@ class LoginSignupViewController: UIViewController {
         createAccountConfirmTextField.delegate = self
 		hideKeyboardWhenTappedAround()
 		loginStackView.isHidden = false
-		NotificationCenter.default.addObserver(self, selector: #selector(closeLoginSignup), name: NSNotification.Name("loggedIn"), object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(closeLoginSignup), name: NSNotification.Name(StringConstants.loggedInNotification), object: nil)
 	}
 	
 	// MARK: - Actions

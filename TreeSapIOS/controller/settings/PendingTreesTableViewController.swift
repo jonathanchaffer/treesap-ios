@@ -18,8 +18,8 @@ class PendingTreesTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Pending Trees"
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadTableData), name: NSNotification.Name("firebaseDataRetrieved"), object: PendingTreesDataSource)
-        NotificationCenter.default.addObserver(self, selector: #selector(failedToLoad), name: NSNotification.Name("firebaseDataFailed"), object: PendingTreesDataSource)
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadTableData), name: NSNotification.Name(StringConstants.firebaseDataRetrievalSuccessNotification), object: PendingTreesDataSource)
+        NotificationCenter.default.addObserver(self, selector: #selector(failedToLoad), name: NSNotification.Name(StringConstants.firebaseDataRetrievalFailureNotification), object: PendingTreesDataSource)
     }
     
     override func viewWillAppear(_ animated: Bool) {

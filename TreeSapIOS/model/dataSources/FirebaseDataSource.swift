@@ -41,16 +41,16 @@ class FirebaseDataSource: DataSource {
                 if let error = error {
                     print("Error retrieving documents: \(error)")
                     DataManager.reportLoadedData(dataSourceName: self.dataSourceName, success: false)
-                    NotificationCenter.default.post(name: NSNotification.Name("firebaseDataFailed"), object: self)
+                    NotificationCenter.default.post(name: NSNotification.Name(StringConstants.firebaseDataRetrievalFailureNotification), object: self)
                 } else {
                     self.loadTreesFromDocuments(documents: snapshot!.documents)
                     DataManager.reportLoadedData(dataSourceName: self.dataSourceName, success: true)
-                    NotificationCenter.default.post(name: NSNotification.Name("firebaseDataRetrieved"), object: self)
+                    NotificationCenter.default.post(name: NSNotification.Name(StringConstants.firebaseDataRetrievalSuccessNotification), object: self)
                 }
             }
         }
         DataManager.reportLoadedData(dataSourceName: self.dataSourceName, success: true)
-        NotificationCenter.default.post(name: NSNotification.Name("firebaseDataRetrieved"), object: self)
+        NotificationCenter.default.post(name: NSNotification.Name(StringConstants.firebaseDataRetrievalSuccessNotification), object: self)
     }
     
     /**

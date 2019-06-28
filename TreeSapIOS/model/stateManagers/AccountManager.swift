@@ -52,7 +52,7 @@ class AccountManager {
                 }
             } else {
                 setDisplayName(displayName: displayName)
-                NotificationCenter.default.post(name: NSNotification.Name("loggedIn"), object: nil)
+                NotificationCenter.default.post(name: NSNotification.Name(StringConstants.loggedInNotification), object: nil)
             }
         }
     }
@@ -76,7 +76,7 @@ class AccountManager {
                     AlertManager.alertUser(title: StringConstants.loginFailureTitle, message: StringConstants.loginFailureMessage)
                 }
             } else {
-                NotificationCenter.default.post(name: NSNotification.Name("loggedIn"), object: nil)
+                NotificationCenter.default.post(name: NSNotification.Name(StringConstants.loggedInNotification), object: nil)
                 DataManager.reloadFirebaseTreeData()
             }
         }
@@ -107,7 +107,7 @@ class AccountManager {
                 if error != nil {
                     AlertManager.alertUser(title: StringConstants.setDisplayNameFailureTitle, message: StringConstants.setDisplayNameFailureMessage)
                 } else {
-                    NotificationCenter.default.post(name: NSNotification.Name("displayNameUpdated"), object: nil)
+                    NotificationCenter.default.post(name: NSNotification.Name(StringConstants.displayNameUpdatedNotification), object: nil)
                 }
             }
         }
@@ -128,7 +128,7 @@ class AccountManager {
                             AlertManager.alertUser(title: StringConstants.updatePasswordFailureTitle, message: StringConstants.updatePasswordFailureMessage)
                         }
                     } else {
-                        NotificationCenter.default.post(name: NSNotification.Name("passwordUpdated"), object: nil)
+                        NotificationCenter.default.post(name: NSNotification.Name(StringConstants.passwordUpdatedNotification), object: nil)
                     }
                 }
             }
@@ -140,7 +140,7 @@ class AccountManager {
             if error != nil {
                 AlertManager.alertUser(title: StringConstants.sendPasswordResetFailureTitle, message: StringConstants.sendPassowrdResetFailureMessage)
             } else {
-                NotificationCenter.default.post(name: NSNotification.Name("passwordResetSent"), object: nil)
+                NotificationCenter.default.post(name: NSNotification.Name(StringConstants.passwordResetSentNotification), object: nil)
             }
         }
     }

@@ -29,10 +29,10 @@ class PendingTreeDetailsViewController: UIViewController {
         super.viewDidLoad()
         setupLabels()
         setupPhotos()
-        NotificationCenter.default.addObserver(self, selector: #selector(updateDataSuccess), name: NSNotification.Name("updateDataSuccess"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(updateDataFailure), name: NSNotification.Name("updateDataFailure"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(deleteDataSuccess), name: NSNotification.Name("deleteDataSuccess"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(deleteDataFailure), name: NSNotification.Name("deleteDataFailure"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateDataSuccess), name: NSNotification.Name(StringConstants.updateDataSuccessNotification), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateDataFailure), name: NSNotification.Name(StringConstants.updateDataFailureNotification), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(deleteDataSuccess), name: NSNotification.Name(StringConstants.deleteDataSuccessNotification), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(deleteDataFailure), name: NSNotification.Name(StringConstants.deleteDataFailureNotification), object: nil)
     }
     
     // MARK: - Private functions
