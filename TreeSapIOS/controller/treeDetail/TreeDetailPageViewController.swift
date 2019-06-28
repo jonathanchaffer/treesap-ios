@@ -68,22 +68,6 @@ class TreeDetailPageViewController: UIPageViewController {
         }
     }
     
-    override func viewWillAppear(_: Bool) {
-        // Hide the tab bar when the detail display will appear.
-        //tabBarController?.tabBar.isHidden = true
-    }
-    
-    override func viewWillDisappear(_: Bool) {
-        // Show the tab bar when the detail display will disappear.
-        //tabBarController?.tabBar.isHidden = false
-    }
-    
-    override func viewDidDisappear(_: Bool) {
-        // Pop the tree details
-        navigationController?.popViewController(animated: false)
-        dismiss(animated: false, completion: nil)
-    }
-    
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating _: Bool, previousViewControllers _: [UIViewController], transitionCompleted _: Bool) {
         let pageContentViewController = pageViewController.viewControllers![0]
         pageControl!.currentPage = pages.firstIndex(of: pageContentViewController as! TreeDisplayViewController)!
