@@ -128,7 +128,7 @@ class SettingsViewController: UITableViewController {
 extension SettingsViewController: UITextFieldDelegate {
     /// Ensures that text fields on this view controller only allow numbers, dashes, and dots.
     func textField(_: UITextField, shouldChangeCharactersIn _: NSRange, replacementString string: String) -> Bool {
-        let allowedCharacters = CharacterSet(charactersIn: "-.0123456789")
+        let allowedCharacters = CharacterSet(charactersIn: ".0123456789")
         let characterSet = CharacterSet(charactersIn: string)
         return allowedCharacters.isSuperset(of: characterSet)
     }

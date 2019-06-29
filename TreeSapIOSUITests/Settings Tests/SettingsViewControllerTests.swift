@@ -66,8 +66,8 @@ class SettingsViewControllerTests: XCTestCase {
         //Test that the app responds correctly when the text field is left empty
         textField.tap()
         tablesQuery.buttons["Clear text"].tap()
-        tablesQuery.children(matching: .other)["DATA SETTINGS"].children(matching: .other)["DATA SETTINGS"].tap()
-        app.alerts["Invalid number"].buttons["OK"].tap()
+        tablesQuery.firstMatch.tap() //Tap on something else to dismiss the text field
+        app.alerts["Invalid distance"].buttons["OK"].tap()
         text = textField.value as! String
         XCTAssertEqual(text, "100.0", "The max identification distance text field was not reset to the default max identification distance of \"100.0\".")
     }

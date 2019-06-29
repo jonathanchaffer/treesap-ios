@@ -70,12 +70,18 @@
                         <viewLayoutGuide key="safeArea" id="1Bp-B6-NSN"/>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="cii-Eg-aYs">
-                        <barButtonItem key="leftBarButtonItem" title="Add" image="plus" id="0eV-a4-MqC">
+                        <barButtonItem key="leftBarButtonItem" title="Add" image="plus" id="0eV-a4-MqC" userLabel="Add Tree">
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="add tree"/>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <segue destination="3fr-83-nON" kind="presentation" id="Gyh-Sj-jD4"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="settings" id="3I4-Xv-9NB">
+                        <barButtonItem key="rightBarButtonItem" image="settings" id="3I4-Xv-9NB" userLabel="Settings">
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="settings"/>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <segue destination="ROl-BY-TYM" kind="presentation" id="ZtF-HV-Gmw"/>
                             </connections>
@@ -107,14 +113,20 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T2U-ko-uFs">
+                                    <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T2U-ko-uFs" userLabel="identify tree">
                                         <rect key="frame" x="0.0" y="64.666666666666657" width="374" height="374"/>
                                         <color key="backgroundColor" red="0.45217963862880095" green="0.70991438627243042" blue="0.35023947781911907" alpha="0.14999999999999999" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="identify tree">
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="T2U-ko-uFs" secondAttribute="height" multiplier="1:1" id="6QK-DR-cel"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="26"/>
                                         <state key="normal" title="Identify Tree"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="identify tree"/>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="handleBigButtonPressed:" destination="9pv-A4-QxB" eventType="touchUpInside" id="lbb-n8-xtC"/>
                                             <action selector="touchDown:" destination="9pv-A4-QxB" eventType="touchDown" id="eDz-6d-Ea5"/>
@@ -135,12 +147,18 @@
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
                     <navigationItem key="navigationItem" title="Identify" id="VgC-2a-nIk">
-                        <barButtonItem key="leftBarButtonItem" title="Add" image="plus" id="acI-1u-hf1">
+                        <barButtonItem key="leftBarButtonItem" title="Add" image="plus" id="acI-1u-hf1" userLabel="Add Tree">
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="add tree"/>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <segue destination="3fr-83-nON" kind="presentation" id="Osm-ne-69B"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="settings" id="ix8-wC-AH8">
+                        <barButtonItem key="rightBarButtonItem" image="settings" id="ix8-wC-AH8" userLabel="Settings">
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="settings"/>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <segue destination="ROl-BY-TYM" kind="presentation" id="M3K-1N-Vy6"/>
                             </connections>
@@ -254,12 +272,18 @@
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Coordinates" id="DS0-I7-gGL">
-                        <barButtonItem key="leftBarButtonItem" title="Add" image="plus" id="xsn-9f-w7g">
+                        <barButtonItem key="leftBarButtonItem" title="Add" image="plus" id="xsn-9f-w7g" userLabel="Add Tree">
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="add tree"/>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <segue destination="3fr-83-nON" kind="presentation" id="txq-mR-ZcU"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="settings" id="UZJ-DA-jmx">
+                        <barButtonItem key="rightBarButtonItem" image="settings" id="UZJ-DA-jmx" userLabel="Settings">
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="settings"/>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <segue destination="ROl-BY-TYM" kind="presentation" id="NRC-p1-lpH"/>
                             </connections>
@@ -296,12 +320,18 @@
                         <viewLayoutGuide key="safeArea" id="3H3-jO-XTg"/>
                     </view>
                     <navigationItem key="navigationItem" title="Map" id="8hd-Zn-4Yc">
-                        <barButtonItem key="leftBarButtonItem" title="Add" image="plus" id="09G-xy-Q3b">
+                        <barButtonItem key="leftBarButtonItem" title="Add" image="plus" id="09G-xy-Q3b" userLabel="Add Tree">
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="add tree"/>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <segue destination="3fr-83-nON" kind="presentation" id="Vm4-eg-tTZ"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="settings" id="YSQ-eH-Gkg">
+                        <barButtonItem key="rightBarButtonItem" image="settings" id="YSQ-eH-Gkg" userLabel="Settings">
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="settings"/>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <segue destination="ROl-BY-TYM" kind="presentation" id="Kwz-yv-nBo"/>
                             </connections>
@@ -1491,7 +1521,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" image="QRCodeOverlay" highlightedImage="QRCodeOverlay" translatesAutoresizingMaskIntoConstraints="NO" id="tLf-oU-uzz">
-                                <rect key="frame" x="199" y="367.66666666666669" width="16" height="16"/>
+                                <rect key="frame" x="82" y="250.66666666666663" width="250" height="250"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="250" id="BuD-2o-2Ff"/>
                                     <constraint firstAttribute="width" secondItem="tLf-oU-uzz" secondAttribute="height" multiplier="1:1" id="nBa-MU-vRJ"/>
@@ -1531,12 +1561,18 @@
                         <viewLayoutGuide key="safeArea" id="xwd-N2-aq5"/>
                     </view>
                     <navigationItem key="navigationItem" title="QR Code" id="vy0-tZ-wQc">
-                        <barButtonItem key="leftBarButtonItem" title="Add" image="plus" id="cZ6-kW-QbJ">
+                        <barButtonItem key="leftBarButtonItem" title="Add" image="plus" id="cZ6-kW-QbJ" userLabel="Add Tree">
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="add tree"/>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <segue destination="3fr-83-nON" kind="presentation" id="Ynx-wO-HBK"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="settings" id="nL0-ee-Huz">
+                        <barButtonItem key="rightBarButtonItem" image="settings" id="nL0-ee-Huz" userLabel="Settings">
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="settings"/>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <segue destination="ROl-BY-TYM" kind="presentation" id="cac-nU-E74"/>
                             </connections>
@@ -1622,6 +1658,7 @@
                                                 </label>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="WHa-kj-CxB">
                                                     <rect key="frame" x="294" y="7" width="100" height="30"/>
+                                                    <accessibility key="accessibilityConfiguration" identifier="max identification distance entry"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="100" id="hme-GI-7As"/>
                                                     </constraints>
