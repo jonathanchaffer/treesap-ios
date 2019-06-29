@@ -15,6 +15,7 @@ class MultilineTextField: UITextView {
         layer.borderColor = UIColor.gray.withAlphaComponent(0.25).cgColor
         layer.borderWidth = 0.7
         layer.cornerRadius = 5
+        self.textContainerInset = UIEdgeInsets(top: 8, left: 4, bottom: 8, right: 4)
     }
 
 }

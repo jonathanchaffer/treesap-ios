@@ -74,15 +74,15 @@ class AddTreeOtherViewController: AddTreeViewController {
 
     /// Shows an "Are you sure?" alert. When the user taps OK, calls broadcastSubmitTree.
     @IBAction func handleDoneButtonPressed(_: UIButton) {
-        let alert = UIAlertController(title: "Submit tree for approval?", message: "Your tree will be added to the online tree database for everyone to see if it is approved.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in self.broadcastSubmitTree() }))
+        let alert = UIAlertController(title: StringConstants.confirmSubmitTreeTitle, message: StringConstants.confirmSubmitTreeMessage, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: StringConstants.cancel, style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: StringConstants.confirmSubmitTreeSubmitAction, style: .default, handler: { _ in self.broadcastSubmitTree() }))
         present(alert, animated: true)
     }
     
     /// Shows an alert that explains what DBH means.
     @IBAction func dbhInfoButtonPressed(_ sender: UIButton) {
-        AlertManager.alertUser(title: "What does DBH mean?", message: "DBH is an acronym for Diameter at Breast Height, where breast height is 4.5 feet above the ground. If you update this field, the circumference field will update automatically, and vice versa.")
+        AlertManager.alertUser(title: StringConstants.dbhExplanationTitle, message: StringConstants.dbhExplanationWithCircumferenceMessage)
     }
     
     /// Shows an additional measurement stack view.
@@ -96,7 +96,7 @@ class AddTreeOtherViewController: AddTreeViewController {
                 stackViewToShow.layer.opacity = 1
             })
         } else {
-            AlertManager.alertUser(title: "Maximum number of trunk measurements reached", message: "You can only input up to \(measurementStackViews.count) trunk measurements.")
+            AlertManager.alertUser(title: StringConstants.maxTrunkMeasurementsTitle, message: StringConstants.maxTrunkMeasurementsMessage0 + String(measurementStackViews.count) + StringConstants.maxTrunkMeasurementsMessage1)
         }
     }
     
@@ -112,7 +112,7 @@ class AddTreeOtherViewController: AddTreeViewController {
                 self.circumferenceTextFields[self.visibleMeasurementsCount].text = nil
             })
         } else {
-            AlertManager.alertUser(title: "Minimum number of trunk measurements reached", message: "At least one trunk measurement is needed.")
+            AlertManager.alertUser(title: StringConstants.minTrunkMeasurementsTitle, message: StringConstants.minTrunkMeasurementsMessage)
         }
     }
     
@@ -143,7 +143,7 @@ class AddTreeOtherViewController: AddTreeViewController {
     
     /// Tells the AddTreePageViewController to submit the tree.
     private func broadcastSubmitTree() {
-        NotificationCenter.default.post(name: NSNotification.Name("submitTree"), object: nil)
+        NotificationCenter.default.post(name: NSNotification.Name(StringConstants.submitTreeNotification), object: nil)
     }
     
     /// Function that is called when a text field's text changes.

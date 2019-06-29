@@ -16,6 +16,7 @@ class AddTreeLeafViewController: AddTreePhotoViewController {
     @IBOutlet var nextButton: UIButton!
     @IBOutlet var skipButton: UIButton!
     @IBOutlet var clearPhotosButton: UIButton!
+    @IBOutlet weak var addPhotoButton: UIButton!
     
     // MARK: - Overrides
     
@@ -25,7 +26,7 @@ class AddTreeLeafViewController: AddTreePhotoViewController {
     }
     
     override func updateImages() {
-        super.updateImages(imageSlideshow: imageSlideshow, nextButton: nextButton, skipButton: skipButton, clearPhotosButton: clearPhotosButton)
+        super.updateImages(imageSlideshow: imageSlideshow, nextButton: nextButton, skipButton: skipButton, clearPhotosButton: clearPhotosButton, addPhotoButton: addPhotoButton)
     }
     
     // MARK: - Actions

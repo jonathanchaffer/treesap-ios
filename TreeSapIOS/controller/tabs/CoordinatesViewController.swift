@@ -41,12 +41,12 @@ class CoordinatesViewController: UIViewController {
 
         // Check that latitude and longitude values exist
         if latitude == nil || longitude == nil {
-            AlertManager.alertUser(title: "Invalid coordinates", message: "Please ensure that you input valid coordinates.")
+            AlertManager.alertUser(title: StringConstants.invalidCoordinatesTitle, message: StringConstants.invalidCoordinatesMessage)
             return
         }
         // Check that the latitude and longitude values are in the correct ranges
         if latitude! < -90.0 || latitude! > 90.0 || longitude! < -180.0 || longitude! > 180.0 {
-            AlertManager.alertUser(title: "Coordinates outside of valid range", message: "The latitude must be between -90 and 90. The longitude must be between -180 and 180.")
+            AlertManager.alertUser(title: StringConstants.coordinatesOutOfRangeTitle, message: StringConstants.coordinatesOutOfRangeMessage)
             return
         }
         // Check for frog
@@ -58,7 +58,7 @@ class CoordinatesViewController: UIViewController {
         // If tree data was found, display it. Otherwise, alert the user.
         let treeToDisplay = getTreeDataByCoords(latitude: latitude!, longitude: longitude!)
         if treeToDisplay == nil {
-            AlertManager.alertUser(title: "No trees found", message: "There were no trees found near that location. You can update the identification distance in Settings.")
+            AlertManager.alertUser(title: StringConstants.noTreesFoundByCoordinatesTitle, message: StringConstants.noTreesFoundByCoordinatesMessage)
             return
         }
 

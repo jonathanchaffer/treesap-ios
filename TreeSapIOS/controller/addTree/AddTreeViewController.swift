@@ -16,10 +16,10 @@ class AddTreeViewController: UIViewController {
     // - MARK: Functions
 
     func nextPage() {
-        NotificationCenter.default.post(name: NSNotification.Name("next"), object: nil)
+        NotificationCenter.default.post(name: NSNotification.Name(StringConstants.addTreeNextPageNotification), object: nil)
     }
 
     func previousPage() {
-        NotificationCenter.default.post(name: NSNotification.Name("previous"), object: nil)
+        NotificationCenter.default.post(name: NSNotification.Name(StringConstants.addTreePreviousPageNotification), object: nil)
     }
 }

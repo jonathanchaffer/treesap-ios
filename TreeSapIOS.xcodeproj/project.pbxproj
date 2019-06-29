@@ -36,6 +36,10 @@
 		CB15257822A6B1DF002D483E /* AddTreePhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB15257722A6B1DF002D483E /* AddTreePhotoViewController.swift */; };
 		CB2D4DA522958548006DAC37 /* TreeAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2D4DA422958548006DAC37 /* TreeAnnotationView.swift */; };
 		CB2D4DA722959D0E006DAC37 /* DataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2D4DA622959D0E006DAC37 /* DataSourceTests.swift */; };
+		CB4707CF22C4FBE200E7908F /* AddMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4707CE22C4FBE200E7908F /* AddMessageViewController.swift */; };
+		CB4707D122C52D8900E7908F /* ImageCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4707D022C52D8900E7908F /* ImageCategory.swift */; };
+		CB4707D322C5422200E7908F /* NotificationDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4707D222C5422200E7908F /* NotificationDetailsViewController.swift */; };
+		CB55444D22C658E100DE71E7 /* StringConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB55444C22C658E100DE71E7 /* StringConstants.swift */; };
 		CB672F1B229434DA00622B59 /* TreeDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB672F1A229434DA00622B59 /* TreeDisplayViewController.swift */; };
 		CB6953B8228EE8720002024B /* Tree.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6953B7228EE8720002024B /* Tree.swift */; };
 		CB6953BA228EE9530002024B /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6953B9228EE9530002024B /* DataSource.swift */; };
@@ -44,6 +48,7 @@
 		CB75474E22C11E43001FDA65 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB75474D22C11E43001FDA65 /* ForgotPasswordViewController.swift */; };
 		CB75475022C13B21001FDA65 /* OutlinedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB75474F22C13B21001FDA65 /* OutlinedButton.swift */; };
 		CB75475222C14DD0001FDA65 /* MultilineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB75475122C14DD0001FDA65 /* MultilineTextField.swift */; };
+		CB78C9EA22C3C25100B5A7CB /* NotificationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB78C9E922C3C25100B5A7CB /* NotificationsTableViewController.swift */; };
 		CB80E3BD22AFD578001A78AE /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB80E3BC22AFD578001A78AE /* DataManager.swift */; };
 		CB80E3BF22AFD657001A78AE /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB80E3BE22AFD657001A78AE /* AlertManager.swift */; };
 		CB80E3C122AFD753001A78AE /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB80E3C022AFD753001A78AE /* LocationManager.swift */; };
@@ -143,6 +148,10 @@
 		CB15257722A6B1DF002D483E /* AddTreePhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTreePhotoViewController.swift; sourceTree = "<group>"; };
 		CB2D4DA422958548006DAC37 /* TreeAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeAnnotationView.swift; sourceTree = "<group>"; };
 		CB2D4DA622959D0E006DAC37 /* DataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourceTests.swift; sourceTree = "<group>"; };
+		CB4707CE22C4FBE200E7908F /* AddMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMessageViewController.swift; sourceTree = "<group>"; };
+		CB4707D022C52D8900E7908F /* ImageCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCategory.swift; sourceTree = "<group>"; };
+		CB4707D222C5422200E7908F /* NotificationDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationDetailsViewController.swift; sourceTree = "<group>"; };
+		CB55444C22C658E100DE71E7 /* StringConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringConstants.swift; sourceTree = "<group>"; };
 		CB672F1A229434DA00622B59 /* TreeDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeDisplayViewController.swift; sourceTree = "<group>"; };
 		CB6953B7228EE8720002024B /* Tree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tree.swift; sourceTree = "<group>"; };
 		CB6953B9228EE9530002024B /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
@@ -151,6 +160,7 @@
 		CB75474D22C11E43001FDA65 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		CB75474F22C13B21001FDA65 /* OutlinedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutlinedButton.swift; sourceTree = "<group>"; };
 		CB75475122C14DD0001FDA65 /* MultilineTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultilineTextField.swift; sourceTree = "<group>"; };
+		CB78C9E922C3C25100B5A7CB /* NotificationsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsTableViewController.swift; sourceTree = "<group>"; };
 		CB80E3BC22AFD578001A78AE /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		CB80E3BE22AFD657001A78AE /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		CB80E3C022AFD753001A78AE /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
@@ -298,8 +308,10 @@
 		CB6953B5228EE4AE0002024B /* model */ = {
 			isa = PBXGroup;
 			children = (
+				CB55444C22C658E100DE71E7 /* StringConstants.swift */,
 				CB80E3C422AFF19C001A78AE /* stateManagers */,
 				CB6953B7228EE8720002024B /* Tree.swift */,
+				CB4707D022C52D8900E7908F /* ImageCategory.swift */,
 				CBA9172122B8046200BA75B2 /* dataSources */,
 				D76D617E22931990003FFD24 /* CSVFormat.swift */,
 				D76D6182229321E7003FFD24 /* TreeFinder.swift */,
@@ -377,9 +389,12 @@
 			isa = PBXGroup;
 			children = (
 				CBBCE850228DD9B1008F7225 /* SettingsViewController.swift */,
+				CB78C9E922C3C25100B5A7CB /* NotificationsTableViewController.swift */,
+				CB4707D222C5422200E7908F /* NotificationDetailsViewController.swift */,
 				CBB264B722973C6C00C036FB /* DataSourceTableViewController.swift */,
 				CB9A1C0122BBCC1F00D1067E /* PendingTreesTableViewController.swift */,
 				CB9A1C0522BC0F5F00D1067E /* PendingTreeDetailsViewController.swift */,
+				CB4707CE22C4FBE200E7908F /* AddMessageViewController.swift */,
 				D77029E022B16BDD00671CC0 /* AccountTableViewController.swift */,
 				D77029DE22B12C7300671CC0 /* LoginSignupViewController.swift */,
 				CB75474D22C11E43001FDA65 /* ForgotPasswordViewController.swift */,
@@ -733,6 +748,8 @@
 			files = (
 				D77029DF22B12C7300671CC0 /* LoginSignupViewController.swift in Sources */,
 				CB9F425122A5B0D800C97F70 /* AddTreePageViewController.swift in Sources */,
+				CB55444D22C658E100DE71E7 /* StringConstants.swift in Sources */,
+				CB78C9EA22C3C25100B5A7CB /* NotificationsTableViewController.swift in Sources */,
 				CB75475022C13B21001FDA65 /* OutlinedButton.swift in Sources */,
 				CB12C94F228DF85D000C74C3 /* TreeDetailPageViewController.swift in Sources */,
 				CB75474A22C10953001FDA65 /* ChangePasswordViewController.swift in Sources */,
@@ -740,11 +757,13 @@
 				CB12C951228DFA12000C74C3 /* PieChartDisplayViewController.swift in Sources */,
 				CB75474C22C11186001FDA65 /* ChangeDisplayNameViewController.swift in Sources */,
 				CBBCE82F228DD76B008F7225 /* CoordinatesViewController.swift in Sources */,
+				CB4707D322C5422200E7908F /* NotificationDetailsViewController.swift in Sources */,
 				CB15256A22A69941002D483E /* FilledButton.swift in Sources */,
 				CB9A1C0222BBCC1F00D1067E /* PendingTreesTableViewController.swift in Sources */,
 				CB75475222C14DD0001FDA65 /* MultilineTextField.swift in Sources */,
 				CB80E3BF22AFD657001A78AE /* AlertManager.swift in Sources */,
 				CB80E3C122AFD753001A78AE /* LocationManager.swift in Sources */,
+				CB4707CF22C4FBE200E7908F /* AddMessageViewController.swift in Sources */,
 				CB15256E22A6A231002D483E /* AddTreeViewController.swift in Sources */,
 				CB9A1C0622BC0F5F00D1067E /* PendingTreeDetailsViewController.swift in Sources */,
 				D77029E122B16BDD00671CC0 /* AccountTableViewController.swift in Sources */,
@@ -776,6 +795,7 @@
 				CB80E3BD22AFD578001A78AE /* DataManager.swift in Sources */,
 				41AD85E622BA933E00DAB44B /* MoreInformationViewController.swift in Sources */,
 				CB672F1B229434DA00622B59 /* TreeDisplayViewController.swift in Sources */,
+				CB4707D122C52D8900E7908F /* ImageCategory.swift in Sources */,
 				CBBCE851228DD9B1008F7225 /* SettingsViewController.swift in Sources */,
 				418A360D22A83CD3002BF28C /* LoadingScreenViewController.swift in Sources */,
 				CBF89EDC22B2BBC600045670 /* CSVDataSource.swift in Sources */,

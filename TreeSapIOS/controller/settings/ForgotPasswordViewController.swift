@@ -13,7 +13,7 @@ class ForgotPasswordViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(passwordResetSent), name: NSNotification.Name("passwordResetSent"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(passwordResetSent), name: NSNotification.Name(StringConstants.passwordResetSentNotification), object: nil)
     }
     
     private func sendPasswordResetEmail() {
@@ -21,8 +21,8 @@ class ForgotPasswordViewController: UIViewController {
     }
     
     @objc private func passwordResetSent() {
-        let alert = UIAlertController(title: "Password reset email sent", message: "A password reset email was successfully sent. Please check your inbox.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in self.closeForgotPassword() }))
+        let alert = UIAlertController(title: StringConstants.passwordResetSentTitle, message: StringConstants.passwordResetSentMessage, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: StringConstants.ok, style: .default, handler: { _ in self.closeForgotPassword() }))
         self.present(alert, animated: true)
     }
     

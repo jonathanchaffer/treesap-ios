@@ -41,16 +41,16 @@ class FirebaseDataSource: DataSource {
                 if let error = error {
                     print("Error retrieving documents: \(error)")
                     DataManager.reportLoadedData(dataSourceName: self.dataSourceName, success: false)
-                    NotificationCenter.default.post(name: NSNotification.Name("firebaseDataFailed"), object: self)
+                    NotificationCenter.default.post(name: NSNotification.Name(StringConstants.firebaseDataRetrievalFailureNotification), object: self)
                 } else {
                     self.loadTreesFromDocuments(documents: snapshot!.documents)
                     DataManager.reportLoadedData(dataSourceName: self.dataSourceName, success: true)
-                    NotificationCenter.default.post(name: NSNotification.Name("firebaseDataRetrieved"), object: self)
+                    NotificationCenter.default.post(name: NSNotification.Name(StringConstants.firebaseDataRetrievalSuccessNotification), object: self)
                 }
             }
         }
         DataManager.reportLoadedData(dataSourceName: self.dataSourceName, success: true)
-        NotificationCenter.default.post(name: NSNotification.Name("firebaseDataRetrieved"), object: self)
+        NotificationCenter.default.post(name: NSNotification.Name(StringConstants.firebaseDataRetrievalSuccessNotification), object: self)
     }
     
     /**
@@ -85,12 +85,20 @@ class FirebaseDataSource: DataSource {
                     tree.addNote(note: note)
                 }
                 tree.documentID = document.documentID
-                guard let images = data["images"] as? [String] else { throw DatabaseError.invalidDocumentData }
-                for encodedImage in images {
-                    let decodedImageData: Data = Data(base64Encoded: encodedImage, options: .ignoreUnknownCharacters)!
-                    let decodedImage = UIImage(data: decodedImageData)
-                    if decodedImage != nil {
-                        tree.addImage(decodedImage!)
+                guard let imageMap = data["images"] as? [String: [String]] else { throw DatabaseError.invalidDocumentData }
+                for imageCategory in imageMap.keys {
+                    let images = imageMap[imageCategory]!
+                    for encodedImage in images {
+                        let decodedImage = DatabaseManager.convertBase64ToImage(encodedImage: encodedImage)
+                        if decodedImage != nil {
+                            if imageCategory == "bark" {
+                                tree.addImage(decodedImage!, toCategory: .bark)
+                            } else if imageCategory == "leaf" {
+                                tree.addImage(decodedImage!, toCategory: .leaf)
+                            } else if imageCategory == "full" {
+                                tree.addImage(decodedImage!, toCategory: .full)
+                            }
+                        }
                     }
                 }
                 trees.append(tree)

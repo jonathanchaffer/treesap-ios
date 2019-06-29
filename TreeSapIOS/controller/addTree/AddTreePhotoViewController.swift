@@ -50,13 +50,13 @@ class AddTreePhotoViewController: AddTreeViewController {
     /// Presents an alert controller containing options for camera and photo library.
     private func presentAlertController() {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        if let action = self.action(for: .camera, title: "Take photo") {
+        if let action = self.action(for: .camera, title: StringConstants.addPhotoPromptCameraAction) {
             alertController.addAction(action)
         }
-        if let action = self.action(for: .photoLibrary, title: "Choose photo") {
+        if let action = self.action(for: .photoLibrary, title: StringConstants.addPhotoPromptGalleryAction) {
             alertController.addAction(action)
         }
-        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alertController.addAction(UIAlertAction(title: StringConstants.cancel, style: .cancel, handler: nil))
         present(alertController, animated: true)
     }
 
@@ -85,7 +85,7 @@ class AddTreePhotoViewController: AddTreeViewController {
     func updateImages() {}
 
     /// Updates the image slideshow on the current page.
-    func updateImages(imageSlideshow: ImageSlideshow, nextButton: UIButton, skipButton: UIButton, clearPhotosButton: UIButton) {
+    func updateImages(imageSlideshow: ImageSlideshow, nextButton: UIButton, skipButton: UIButton, clearPhotosButton: UIButton, addPhotoButton: UIButton) {
         var imageSources = [ImageSource]()
         for image in selectedImages {
             imageSources.append(ImageSource(image: image))
@@ -94,13 +94,16 @@ class AddTreePhotoViewController: AddTreeViewController {
             nextButton.isHidden = false
             skipButton.isHidden = true
             clearPhotosButton.isHidden = false
+            addPhotoButton.setTitle("Add Another Photo", for: .normal)
         } else {
             imageSources.append(ImageSource(image: UIImage(named: "noPhotoSelected")!))
             nextButton.isHidden = true
             skipButton.isHidden = false
             clearPhotosButton.isHidden = true
+            addPhotoButton.setTitle("Take/Choose Photo", for: .normal)
         }
         imageSlideshow.setImageInputs(imageSources)
+        imageSlideshow.setCurrentPage(selectedImages.count - 1, animated: false)
     }
 }
 

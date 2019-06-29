@@ -13,7 +13,7 @@ class ChangeDisplayNameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(closeChangeDisplayName), name: NSNotification.Name("displayNameUpdated"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(closeChangeDisplayName), name: NSNotification.Name(StringConstants.displayNameUpdatedNotification), object: nil)
     }
     
     private func updateDisplayName() {

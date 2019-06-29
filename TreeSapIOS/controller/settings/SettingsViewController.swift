@@ -40,6 +40,7 @@ class SettingsViewController: UITableViewController {
         locationToggleSwitch.isOn = PreferencesManager.getShowingUserLocation()
         cutoffDistanceTextField.text = String(PreferencesManager.getCutoffDistance())
         tableView.reloadData()
+        navigationController?.setToolbarHidden(true, animated: false)
     }
 
 	/// Deselects a row when it is selected.
@@ -113,9 +114,7 @@ class SettingsViewController: UITableViewController {
 			let defaultCutoff: Double = PreferencesManager.getDefaultCutoffDistance()
 			PreferencesManager.setCutoffDistance(defaultCutoff)
 			cutoffDistanceTextField.text = String(defaultCutoff)
-			let alert = UIAlertController(title: "Invalid distance", message: "The max identification distance has been reset to " + String(defaultCutoff) + ".", preferredStyle: .alert)
-			alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-			present(alert, animated: true)
+            AlertManager.alertUser(title: StringConstants.invalidDistanceTitle, message: StringConstants.invalidDistanceMessage0 + String(defaultCutoff) + StringConstants.invalidDistanceMessage1)
 		}
 	}
     

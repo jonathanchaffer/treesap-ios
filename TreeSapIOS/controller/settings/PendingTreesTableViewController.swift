@@ -18,8 +18,8 @@ class PendingTreesTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Pending Trees"
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadTableData), name: NSNotification.Name("firebaseDataRetrieved"), object: PendingTreesDataSource)
-        NotificationCenter.default.addObserver(self, selector: #selector(failedToLoad), name: NSNotification.Name("firebaseDataFailed"), object: PendingTreesDataSource)
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadTableData), name: NSNotification.Name(StringConstants.firebaseDataRetrievalSuccessNotification), object: PendingTreesDataSource)
+        NotificationCenter.default.addObserver(self, selector: #selector(failedToLoad), name: NSNotification.Name(StringConstants.firebaseDataRetrievalFailureNotification), object: PendingTreesDataSource)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,10 +48,14 @@ class PendingTreesTableViewController: UITableViewController {
         } else {
             cell.detailTextLabel?.text = "N/A"
         }
-        // If there is at least one image, display it
+        // If there is at least one image, display it. Prefer full tree images
         let images = tree.images
-        if images.count >= 1 {
-            cell.imageView?.image = images.last
+        if images[.full]!.count >= 1 {
+            cell.imageView?.image = images[.full]!.first
+        } else if images[.leaf]!.count >= 1 {
+            cell.imageView?.image = images[.leaf]!.first
+        } else if images[.bark]!.count >= 1 {
+            cell.imageView?.image = images[.bark]!.first
         }
         return cell
     }
@@ -67,12 +71,22 @@ class PendingTreesTableViewController: UITableViewController {
     /// Reloads the table data.
     @objc private func reloadTableData() {
         tableView.reloadData()
+        reloadTableRows()
+    }
+    
+    /// Reloads the table data.
+    private func reloadTableRows() {
+        var rows = [IndexPath]()
+        for i in 0 ..< PendingTreesDataSource.trees.count {
+            rows.append(IndexPath(row: i, section: 0))
+        }
+        tableView.reloadRows(at: rows, with: .automatic)
     }
     
     /// Shows an alert saying that pending trees could not be loaded.
     @objc private func failedToLoad() {
-        let alert = UIAlertController(title: "Failed to load pending trees", message: "An error occurred while trying to load the pending trees. Please try again.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { _ in self.closePendingTrees() }))
+        let alert = UIAlertController(title: StringConstants.failedToLoadPendingTreesTitle, message: StringConstants.failedToLoadPendingTreesMessage, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: StringConstants.ok, style: .cancel, handler: { _ in self.closePendingTrees() }))
         present(alert, animated: true)
     }
     

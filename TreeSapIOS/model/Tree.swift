@@ -17,7 +17,9 @@ class Tree {
     var dbhArray = [Double]()
     let native: Bool?
     var otherInfo = [String: Double]()
-    var images = [UIImage]()
+    var images = [ImageCategory.bark: [UIImage](),
+                  ImageCategory.leaf: [UIImage](),
+                  ImageCategory.full: [UIImage]()]
     let userID: String?
     var documentID: String? = nil
     var notes = [String]()
@@ -40,8 +42,8 @@ class Tree {
         otherInfo[key] = value
     }
 
-    func addImage(_ image: UIImage) {
-        images.append(image)
+    func addImage(_ image: UIImage, toCategory category: ImageCategory) {
+        images[category]!.append(image)
     }
     
     func addNote(note: String) {

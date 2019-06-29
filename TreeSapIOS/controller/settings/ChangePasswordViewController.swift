@@ -17,7 +17,7 @@ class ChangePasswordViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(closeChangePassword), name: NSNotification.Name("passwordUpdated"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(closeChangePassword), name: NSNotification.Name(StringConstants.passwordUpdatedNotification), object: nil)
     }
     
     @IBAction func changePasswordButtonPressed(_ sender: UIButton) {
@@ -29,7 +29,7 @@ class ChangePasswordViewController: UIViewController {
         if newPasswordTextField.text! == newPasswordConfirmTextField.text! {
             AccountManager.updatePassword(oldPassword: oldPasswordTextField.text!, newPassword: newPasswordTextField.text!)
         } else {
-            AlertManager.alertUser(title: "Passwords do not match", message: "Please ensure that you enter the same password in both new password fields.")
+            AlertManager.alertUser(title: StringConstants.unmatchingPasswordsTitle, message: StringConstants.unmatchingPasswordsMessage)
             return
         }
     }

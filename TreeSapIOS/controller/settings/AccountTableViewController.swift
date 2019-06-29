@@ -24,14 +24,14 @@ class AccountTableViewController: UITableViewController {
         super.viewDidLoad()
 		refreshTable()
 		title = "Account"
-		NotificationCenter.default.addObserver(self, selector: #selector(refreshTable), name: NSNotification.Name("loggedIn"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(refreshTable), name: NSNotification.Name("displayNameUpdated"), object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(refreshTable), name: NSNotification.Name(StringConstants.loggedInNotification), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshTable), name: NSNotification.Name(StringConstants.displayNameUpdatedNotification), object: nil)
     }
 	
 	/// Deselects a row when it is selected.
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		tableView.deselectRow(at: indexPath, animated: true)
-		if indexPath == IndexPath(row: 3, section: 1) {
+		if indexPath == IndexPath(row: numRowsPerSection[1] - 1, section: 1) {
 			logOutPressed()
 		}
 	}
@@ -81,15 +81,15 @@ class AccountTableViewController: UITableViewController {
     // MARK: - Private functions
 	
 	private func logOutPressed() {
-		let alert = UIAlertController(title: "Are you sure?", message: "Are you sure you want to log out?", preferredStyle: .alert)
-		alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-		alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in self.logOut() }))
+		let alert = UIAlertController(title: StringConstants.confirmLogOutTitle, message: StringConstants.confirmLogOutMessage, preferredStyle: .alert)
+		alert.addAction(UIAlertAction(title: StringConstants.cancel, style: .cancel, handler: nil))
+		alert.addAction(UIAlertAction(title: StringConstants.confirmLogOutLogOutAction, style: .default, handler: { _ in self.logOut() }))
 		present(alert, animated: true)
 	}
 	
 	private func logOut() {
 		if !AccountManager.logOut() {
-			AlertManager.alertUser(title: "Error", message: "There was an error when trying to log out. Please try again.")
+			AlertManager.alertUser(title: StringConstants.failedToLogOutTitle, message: StringConstants.failedToLogOutMessage)
 		} else {
 			tableView.reloadData()
 		}

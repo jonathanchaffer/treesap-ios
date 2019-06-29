@@ -42,17 +42,17 @@ class AccountManager {
             if let error = error {
                 switch error._code {
                 case AuthErrorCode.invalidEmail.rawValue:
-                    AlertManager.alertUser(title: "Invalid email", message: "Please ensure that you have entered a valid email address.")
+                    AlertManager.alertUser(title: StringConstants.invalidEmailTitle, message: StringConstants.invalidEmailMesage)
                 case AuthErrorCode.emailAlreadyInUse.rawValue:
-                    AlertManager.alertUser(title: "Email already in use", message: "An account has already been created with that email.")
+                    AlertManager.alertUser(title: StringConstants.emailAlreadyInUseTitle, message: StringConstants.emailAlreadyInUseMessage)
                 case AuthErrorCode.weakPassword.rawValue:
-                    AlertManager.alertUser(title: "Weak password", message: "Please ensure that your password contains at least 6 characters.")
+                    AlertManager.alertUser(title: StringConstants.weakPasswordTitle, message: StringConstants.weakPasswordMessage)
                 default:
-                    AlertManager.alertUser(title: "Error", message: "There was an error creating your account. Please try again.")
+                    AlertManager.alertUser(title: StringConstants.createAccountFailureTitle, message: StringConstants.createAccountFailureMessage)
                 }
             } else {
                 setDisplayName(displayName: displayName)
-                NotificationCenter.default.post(name: NSNotification.Name("loggedIn"), object: nil)
+                NotificationCenter.default.post(name: NSNotification.Name(StringConstants.loggedInNotification), object: nil)
             }
         }
     }
@@ -67,16 +67,16 @@ class AccountManager {
             if let error = error {
                 switch error._code {
                 case AuthErrorCode.wrongPassword.rawValue:
-                    AlertManager.alertUser(title: "Incorrect password", message: "The password you entered was incorrect. Please try again.")
+                    AlertManager.alertUser(title: StringConstants.incorrectPasswordTitle, message: StringConstants.incorrectPasswordMessage)
                 case AuthErrorCode.invalidEmail.rawValue:
-                    AlertManager.alertUser(title: "Invalid email", message: "The email you entered is invalid. Please try again.")
+                    AlertManager.alertUser(title: StringConstants.invalidEmailTitle, message: StringConstants.invalidEmailMesage)
                 case AuthErrorCode.userNotFound.rawValue:
-                    AlertManager.alertUser(title: "User not found", message: "A user with the email you entered was not found in our database. Please try again.")
+                    AlertManager.alertUser(title: StringConstants.userNotFoundTitle, message: StringConstants.userNotFoundMessage)
                 default:
-                    AlertManager.alertUser(title: "Error", message: "There was an error logging into your account. Please try again.")
+                    AlertManager.alertUser(title: StringConstants.loginFailureTitle, message: StringConstants.loginFailureMessage)
                 }
             } else {
-                NotificationCenter.default.post(name: NSNotification.Name("loggedIn"), object: nil)
+                NotificationCenter.default.post(name: NSNotification.Name(StringConstants.loggedInNotification), object: nil)
                 DataManager.reloadFirebaseTreeData()
             }
         }
@@ -105,9 +105,9 @@ class AccountManager {
             changeRequest.displayName = displayName
             changeRequest.commitChanges() { error in
                 if error != nil {
-                    AlertManager.alertUser(title: "Error setting display name", message: "An error occurred while trying to set your display name. Please try again.")
+                    AlertManager.alertUser(title: StringConstants.setDisplayNameFailureTitle, message: StringConstants.setDisplayNameFailureMessage)
                 } else {
-                    NotificationCenter.default.post(name: NSNotification.Name("displayNameUpdated"), object: nil)
+                    NotificationCenter.default.post(name: NSNotification.Name(StringConstants.displayNameUpdatedNotification), object: nil)
                 }
             }
         }
@@ -117,18 +117,18 @@ class AccountManager {
         let credential = EmailAuthProvider.credential(withEmail: getEmail()!, password: oldPassword)
         getUser()?.reauthenticate(with: credential) { result, error in
             if error != nil {
-                AlertManager.alertUser(title: "Old password incorrect", message: "The old password you entered was incorrect. Please try again.")
+                AlertManager.alertUser(title: StringConstants.incorrectOldPasswordTitle, message: StringConstants.incorrectOldPasswordMessage)
             } else {
                 getUser()?.updatePassword(to: newPassword) { error in
                     if let error = error {
                         switch error._code {
                         case AuthErrorCode.weakPassword.rawValue:
-                            AlertManager.alertUser(title: "Weak password", message: "Please ensure that your password contains at least 6 characters.")
+                            AlertManager.alertUser(title: StringConstants.weakPasswordTitle, message: StringConstants.weakPasswordMessage)
                         default:
-                            AlertManager.alertUser(title: "Error updating password", message: "An error occurred while trying to update your password. Please try again.")
+                            AlertManager.alertUser(title: StringConstants.updatePasswordFailureTitle, message: StringConstants.updatePasswordFailureMessage)
                         }
                     } else {
-                        NotificationCenter.default.post(name: NSNotification.Name("passwordUpdated"), object: nil)
+                        NotificationCenter.default.post(name: NSNotification.Name(StringConstants.passwordUpdatedNotification), object: nil)
                     }
                 }
             }
@@ -138,9 +138,9 @@ class AccountManager {
     static func sendPasswordResetEmail(email: String) {
         Auth.auth().sendPasswordReset(withEmail: email) { error in
             if error != nil {
-                AlertManager.alertUser(title: "Error sending password reset email", message: "An error occurred while tyring to send a password reset email. Please try again.")
+                AlertManager.alertUser(title: StringConstants.sendPasswordResetFailureTitle, message: StringConstants.sendPassowrdResetFailureMessage)
             } else {
-                NotificationCenter.default.post(name: NSNotification.Name("passwordResetSent"), object: nil)
+                NotificationCenter.default.post(name: NSNotification.Name(StringConstants.passwordResetSentNotification), object: nil)
             }
         }
     }
