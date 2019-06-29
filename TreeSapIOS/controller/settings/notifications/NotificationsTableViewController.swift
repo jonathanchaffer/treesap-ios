@@ -117,7 +117,7 @@ class NotificationsTableViewController: UITableViewController {
         for i in 0 ..< documents.count {
             rows.append(IndexPath(row: i, section: 0))
         }
-        tableView.reloadRows(at: rows, with: .automatic)
+        tableView.reloadRows(at: rows, with: .none)
     }
     
     /// Asks the database manager for the notifications collection and reloads the notifications into documents.
@@ -130,6 +130,9 @@ class NotificationsTableViewController: UITableViewController {
                 for document in snapshot!.documents {
                     self.documents.append(document)
                 }
+                self.documents.sort(by: { doc1, doc2 in
+                    return (doc1.data()!["timestamp"] as! Timestamp).seconds > (doc2.data()!["timestamp"] as! Timestamp).seconds
+                }, stable: true)
                 self.reloadTableData()
             }
         }
