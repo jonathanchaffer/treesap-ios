@@ -95,6 +95,7 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
         }
 
         // Change the orientation of the QR scanner
+        // This should not matter, as the app should only use protrait mode
         guard let AVConnection: AVCaptureConnection = previewLayer!.connection else {
             return
         }
@@ -115,29 +116,31 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
         previewLayer!.frame = view.layer.bounds
     }
 
-    /// This function takes the String that was encoded in the QR code, finds a tree that corresponds to that code using a call to getTreeFromString, and displays the results.
+    // This function takes the String that was encoded in the QR code, finds a tree that corresponds to that code using a call to getTreeFromString, and displays the results.
     func metadataOutput(_: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from _: AVCaptureConnection) {
+        
         if let metadatObject: AVMetadataObject = metadataObjects.first {
+            
             guard let readableObject = metadatObject as? AVMetadataMachineReadableCodeObject else {
-                AlertManager.alertUser(title: StringConstants.scanErrorTitle, message: StringConstants.scanErrorMessage)
+                CheckAndAlertUser(title: StringConstants.scanErrorTitle, message: StringConstants.scanErrorMessage)
                 return
             }
 
             guard let stringOutput: String = readableObject.stringValue else {
-                AlertManager.alertUser(title: StringConstants.scanErrorTitle, message: StringConstants.scanErrorMessage)
+                CheckAndAlertUser(title: StringConstants.scanErrorTitle, message: StringConstants.scanErrorMessage)
                 return
             }
 
             guard let treeToDisplay: Tree = getTreeFromString(encodedString: stringOutput) else {
-                AlertManager.alertUser(title: StringConstants.invalidQRCodeTitle, message: StringConstants.invalidQRCodeMessage)
+                CheckAndAlertUser(title: StringConstants.invalidQRCodeTitle, message: StringConstants.invalidQRCodeMessage)
                 return
             }
 
-            captureSession.stopRunning()
-
-            // Display tree data
-            let pages = TreeDetailPageViewController(tree: treeToDisplay)
-            navigationController?.pushViewController(pages, animated: true)
+            // If this view controller is not presenting an alert, display tree data
+            if(self.presentedViewController == nil || !(self.presentedViewController is UIAlertController)){
+                let pages = TreeDetailPageViewController(tree: treeToDisplay)
+                navigationController?.pushViewController(pages, animated: true)
+            }
         }
     }
 
@@ -154,17 +157,17 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
 
         // If there are not three parts, alert the user
         if resultParts.count != 3 {
-            AlertManager.alertUser(title: StringConstants.invalidQRCodeTitle, message: StringConstants.invalidQRCodeMessage)
+            CheckAndAlertUser(title: StringConstants.invalidQRCodeTitle, message: StringConstants.invalidQRCodeMessage)
             return nil
         }
 
         // Get the latitude, longitude, and data source name from each of the three portions of the string
         guard let treeLatitude: Double = Double(String(resultParts[0])) else {
-            AlertManager.alertUser(title: StringConstants.invalidQRCodeTitle, message: StringConstants.invalidQRCodeMessage)
+            CheckAndAlertUser(title: StringConstants.invalidQRCodeTitle, message: StringConstants.invalidQRCodeMessage)
             return nil
         }
         guard let treeLongitude: Double = Double(String(resultParts[1])) else {
-            AlertManager.alertUser(title: StringConstants.invalidQRCodeTitle, message: StringConstants.invalidQRCodeMessage)
+            CheckAndAlertUser(title: StringConstants.invalidQRCodeTitle, message: StringConstants.invalidQRCodeMessage)
             return nil
         }
         let dataSourceName: String = String(resultParts[2])
@@ -172,22 +175,37 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
         // Find the data source with the data source name encoded int the QR code
         let treeCoordinates = CLLocationCoordinate2D(latitude: treeLatitude, longitude: treeLongitude)
         guard let dataSourceToSearch: DataSource = DataManager.getDataSourceWithName(name: dataSourceName) else {
-            AlertManager.alertUser(title: StringConstants.invalidQRCodeTitle, message: StringConstants.invalidQRCodeMessage)
+            CheckAndAlertUser(title: StringConstants.invalidQRCodeTitle, message: StringConstants.invalidQRCodeMessage)
             return nil
         }
 
         // Check if the data source with the given name is active
         guard PreferencesManager.isActive(dataSourceName: dataSourceName) else {
-            AlertManager.alertUser(title: StringConstants.dataSourceDisabledTitle, message: StringConstants.dataSourceDisabledMessage0 + String(dataSourceName) + StringConstants.dataSourceDisabledMessage1)
+            CheckAndAlertUser(title: StringConstants.dataSourceDisabledTitle, message: StringConstants.dataSourceDisabledMessage0 + String(dataSourceName) + StringConstants.dataSourceDisabledMessage1)
             return nil
         }
 
         guard let resultTree: Tree = TreeFinder.findTreeByLocation(location: treeCoordinates, dataSources: [dataSourceToSearch], cutoffDistance: 0.5) else {
-            AlertManager.alertUser(title: StringConstants.noTreesFoundByQRCodeTitle, message: StringConstants.noTreesFoundByQRCodeMessage)
+            CheckAndAlertUser(title: StringConstants.noTreesFoundByQRCodeTitle, message: StringConstants.noTreesFoundByQRCodeMessage)
             return nil
         }
 
         return resultTree
+    }
+    
+    /**
+     Returns without doing anything if this view controller is already presenting an alert. If not, it presents an alert with the specified title and message
+     - Parameters:
+        - title: the title of the alert
+        - message: the message of the alert
+     */
+    func CheckAndAlertUser(title: String, message: String){
+        
+        if(self.presentedViewController != nil && self.presentedViewController is UIAlertController){
+            return
+        }
+        
+        AlertManager.alertUser(title: title, message: message)
     }
 
     private func startCaptureSession() {
