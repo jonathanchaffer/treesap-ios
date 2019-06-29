@@ -68,9 +68,11 @@ class TreeDetailPageViewController: UIPageViewController {
         }
     }
     
-    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating _: Bool, previousViewControllers _: [UIViewController], transitionCompleted _: Bool) {
-        let pageContentViewController = pageViewController.viewControllers![0]
-        pageControl!.currentPage = pages.firstIndex(of: pageContentViewController as! TreeDisplayViewController)!
+    override func viewWillDisappear(_ animated: Bool) {
+        // Close tree details only if not presenting a view controller, e.g. fullscreen photos view
+        if self.presentedViewController == nil {
+            closeTreeDetails()
+        }
     }
     
     // MARK: - Private functions
@@ -119,6 +121,11 @@ class TreeDetailPageViewController: UIPageViewController {
         }
         return false
     }
+    
+    @objc private func closeTreeDetails() {
+        navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
+    }
 }
 
 extension TreeDetailPageViewController: UIPageViewControllerDataSource {
@@ -139,4 +146,9 @@ extension TreeDetailPageViewController: UIPageViewControllerDataSource {
     }
 }
 
-extension TreeDetailPageViewController: UIPageViewControllerDelegate {}
+extension TreeDetailPageViewController: UIPageViewControllerDelegate {
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating _: Bool, previousViewControllers _: [UIViewController], transitionCompleted _: Bool) {
+        let pageContentViewController = pageViewController.viewControllers![0]
+        pageControl!.currentPage = pages.firstIndex(of: pageContentViewController as! TreeDisplayViewController)!
+    }
+}
