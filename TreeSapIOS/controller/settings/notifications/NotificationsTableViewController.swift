@@ -11,25 +11,31 @@ import UIKit
 
 class NotificationsTableViewController: UITableViewController {
     // MARK: - Properties
-
+    
     var documents = [DocumentSnapshot]()
     var selecting = false
     var numPendingDeletions = 0
-
+    
     @IBOutlet var selectButton: UIBarButtonItem!
     @IBOutlet var cancelButton: UIBarButtonItem!
     @IBOutlet var barSpace: UIBarButtonItem!
     @IBOutlet var trashButton: UIBarButtonItem!
-
+    
     // MARK: - Overrides
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Notifications"
         NotificationCenter.default.addObserver(self, selector: #selector(deleteDataSuccess), name: NSNotification.Name(StringConstants.deleteDataSuccessNotification), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(deleteDataFailure), name: NSNotification.Name(StringConstants.deleteDataFailureNotification), object: nil)
+        
+        // Setup long press gesture recognizer
+        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
+        longPressGesture.minimumPressDuration = 0.5
+        longPressGesture.delegate = self
+        self.tableView.addGestureRecognizer(longPressGesture)
     }
-
+    
     override func viewWillAppear(_: Bool) {
         reloadNotifications()
         DispatchQueue.main.asyncAfter(deadline: .now()) {
@@ -37,11 +43,11 @@ class NotificationsTableViewController: UITableViewController {
         }
         navigationController?.setToolbarHidden(false, animated: false)
     }
-
+    
     override func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         return documents.count
     }
-
+    
     /// Determines the cell to be displayed at a given index path.
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "notificationCell", for: indexPath)
@@ -72,7 +78,7 @@ class NotificationsTableViewController: UITableViewController {
         }
         return cell
     }
-
+    
     /// Function that is called when a table cell is selected. If selecting items, then the cell should be checked/unchecked when tapped.
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
@@ -96,9 +102,9 @@ class NotificationsTableViewController: UITableViewController {
         }
         tableView.deselectRow(at: indexPath, animated: true)
     }
-
+    
     // MARK: - Private functions
-
+    
     /// Reloads the table data.
     @objc private func reloadTableData() {
         tableView.reloadData()
@@ -128,7 +134,7 @@ class NotificationsTableViewController: UITableViewController {
             }
         }
     }
-
+    
     /// Shows an alert saying that notifications could not be loaded.
     @objc private func failedToLoad() {
         let alert = UIAlertController(title: StringConstants.failedToLoadNotificationsTitle, message: StringConstants.failedToLoadNotificationsMessage, preferredStyle: .alert)
@@ -153,7 +159,20 @@ class NotificationsTableViewController: UITableViewController {
             AlertManager.alertUser(title: StringConstants.failedToDeleteNotificationsTitle, message: StringConstants.failedToLoadNotificationsMessage)
         }
     }
-
+    
+    /// Starts selection when a cell is long pressed.
+    @objc private func handleLongPress(longPressGesture: UILongPressGestureRecognizer) {
+        if !selecting {
+            let location = longPressGesture.location(in: self.tableView)
+            let indexPath = self.tableView.indexPathForRow(at: location)
+            if (longPressGesture.state == UIGestureRecognizer.State.began) {
+                startSelection()
+                let cell = tableView.cellForRow(at: indexPath!)
+                cell?.accessoryType = .checkmark
+            }
+        }
+    }
+    
     /// Closes the notifications screen.
     private func closeNotifications() {
         navigationController?.popViewController(animated: true)
@@ -166,13 +185,18 @@ class NotificationsTableViewController: UITableViewController {
         reloadTableRows()
         navigationController?.toolbar.items = [selectButton, barSpace]
     }
-
-    // MARK: - Actions
-
-    @IBAction func selectButtonPressed(_: UIBarButtonItem) {
+    
+    /// Starts selection, whether by hitting Select or holding down on one of the cells.
+    private func startSelection() {
         selecting = true
         reloadTableRows()
         navigationController?.toolbar.items = [cancelButton, barSpace, trashButton]
+    }
+    
+    // MARK: - Actions
+    
+    @IBAction func selectButtonPressed(_: UIBarButtonItem) {
+        startSelection()
     }
     
     @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
