@@ -68,6 +68,8 @@ class PendingTreesTableViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+    // MARK: - Private functions
+    
     /// Reloads the table data.
     @objc private func reloadTableData() {
         tableView.reloadData()
@@ -80,6 +82,9 @@ class PendingTreesTableViewController: UITableViewController {
         for i in 0 ..< PendingTreesDataSource.trees.count {
             rows.append(IndexPath(row: i, section: 0))
         }
+        PendingTreesDataSource.trees.sort(by: { tree1, tree2 in
+            return tree1.timestamp! < tree2.timestamp!
+        }, stable: false)
         tableView.reloadRows(at: rows, with: .automatic)
     }
     

@@ -21,6 +21,7 @@ class Tree {
                   ImageCategory.leaf: [UIImage](),
                   ImageCategory.full: [UIImage]()]
     let userID: String?
+    var timestamp: Double?
     var documentID: String? = nil
     var notes = [String]()
 

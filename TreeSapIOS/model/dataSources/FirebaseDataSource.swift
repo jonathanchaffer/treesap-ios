@@ -85,6 +85,7 @@ class FirebaseDataSource: DataSource {
                     tree.addNote(note: note)
                 }
                 tree.documentID = document.documentID
+                tree.timestamp = Double((data["timestamp"] as! Timestamp).seconds)
                 guard let imageMap = data["images"] as? [String: [String]] else { throw DatabaseError.invalidDocumentData }
                 for imageCategory in imageMap.keys {
                     let images = imageMap[imageCategory]!
