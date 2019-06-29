@@ -7,6 +7,7 @@ target "TreeSapIOS" do
   pod 'Firebase/Firestore'
   pod 'KeyboardAvoidingView'
   pod 'ImageSlideshow'
+  pod 'SearchTextField'
 end 
 target "TreeSapIOSTests" do
 	pod 'CSVImporter'
@@ -16,6 +17,7 @@ target "TreeSapIOSTests" do
   pod 'Firebase/Firestore'
   pod 'KeyboardAvoidingView'
   pod 'ImageSlideshow'
+  pod 'SearchTextField'
 end
 target "TreeSapIOSUITests" do
   pod 'CSVImporter'
@@ -25,4 +27,5 @@ target "TreeSapIOSUITests" do
   pod 'Firebase/Firestore'
   pod 'KeyboardAvoidingView'
   pod 'ImageSlideshow'
+  pod 'SearchTextField'
 end

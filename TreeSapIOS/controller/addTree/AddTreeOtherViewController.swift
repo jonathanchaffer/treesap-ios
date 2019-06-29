@@ -7,12 +7,13 @@
 //
 
 import UIKit
+import SearchTextField
 
 class AddTreeOtherViewController: AddTreeViewController {
     // MARK: - Properties
 
-    @IBOutlet var commonNameTextField: UITextField!
-    @IBOutlet var scientificNameTextField: UITextField!
+    @IBOutlet var commonNameTextField: SearchTextField!
+    @IBOutlet var scientificNameTextField: SearchTextField!
     
     @IBOutlet var measurementStackView: UIStackView!
     @IBOutlet var dbhTextField: UITextField!
@@ -44,7 +45,11 @@ class AddTreeOtherViewController: AddTreeViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Set up auto-suggesting text fields
         commonNameTextField.delegate = self
+        commonNameTextField.filterStrings(Array(TreeNames.nameMap.keys))
+        commonNameTextField.theme.font = .systemFont(ofSize: 14)
+        commonNameTextField.theme.bgColor = UIColor.white
         scientificNameTextField.delegate = self
         hideKeyboardWhenTappedAround()
         // Set up array of DBH text fields

@@ -15,6 +15,10 @@ class NameFormatter {
             return nil
         }
         var newCommonName = commonName!
+        // Handle special case
+        if newCommonName.lowercased() == "rose-of-sharon" {
+            return "Rose-Of-Sharon"
+        }
         // If there is a hyphen, flip the two sides and put a space in between
         if newCommonName.contains("-") {
             let hyphenSplit = newCommonName.split(separator: "-")
