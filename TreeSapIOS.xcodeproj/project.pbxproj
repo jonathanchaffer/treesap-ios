@@ -292,6 +292,37 @@
 			path = "Controller Tests";
 			sourceTree = "<group>";
 		};
+		CB1A56B422C7E30F00046396 /* notifications */ = {
+			isa = PBXGroup;
+			children = (
+				CB78C9E922C3C25100B5A7CB /* NotificationsTableViewController.swift */,
+				CB4707D222C5422200E7908F /* NotificationDetailsViewController.swift */,
+			);
+			path = notifications;
+			sourceTree = "<group>";
+		};
+		CB1A56B522C7E31D00046396 /* pendingTrees */ = {
+			isa = PBXGroup;
+			children = (
+				CB9A1C0122BBCC1F00D1067E /* PendingTreesTableViewController.swift */,
+				CB9A1C0522BC0F5F00D1067E /* PendingTreeDetailsViewController.swift */,
+				CB4707CE22C4FBE200E7908F /* AddMessageViewController.swift */,
+			);
+			path = pendingTrees;
+			sourceTree = "<group>";
+		};
+		CB1A56B622C7E33700046396 /* account */ = {
+			isa = PBXGroup;
+			children = (
+				D77029E022B16BDD00671CC0 /* AccountTableViewController.swift */,
+				D77029DE22B12C7300671CC0 /* LoginSignupViewController.swift */,
+				CB75474D22C11E43001FDA65 /* ForgotPasswordViewController.swift */,
+				CB75474922C10953001FDA65 /* ChangePasswordViewController.swift */,
+				CB75474B22C11186001FDA65 /* ChangeDisplayNameViewController.swift */,
+			);
+			path = account;
+			sourceTree = "<group>";
+		};
 		CB6953B4228EE4300002024B /* controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -389,18 +420,11 @@
 			isa = PBXGroup;
 			children = (
 				CBBCE850228DD9B1008F7225 /* SettingsViewController.swift */,
-				CB78C9E922C3C25100B5A7CB /* NotificationsTableViewController.swift */,
-				CB4707D222C5422200E7908F /* NotificationDetailsViewController.swift */,
 				CBB264B722973C6C00C036FB /* DataSourceTableViewController.swift */,
-				CB9A1C0122BBCC1F00D1067E /* PendingTreesTableViewController.swift */,
-				CB9A1C0522BC0F5F00D1067E /* PendingTreeDetailsViewController.swift */,
-				CB4707CE22C4FBE200E7908F /* AddMessageViewController.swift */,
-				D77029E022B16BDD00671CC0 /* AccountTableViewController.swift */,
-				D77029DE22B12C7300671CC0 /* LoginSignupViewController.swift */,
-				CB75474D22C11E43001FDA65 /* ForgotPasswordViewController.swift */,
-				CB75474922C10953001FDA65 /* ChangePasswordViewController.swift */,
-				CB75474B22C11186001FDA65 /* ChangeDisplayNameViewController.swift */,
 				41AD85E522BA933E00DAB44B /* MoreInformationViewController.swift */,
+				CB1A56B422C7E30F00046396 /* notifications */,
+				CB1A56B522C7E31D00046396 /* pendingTrees */,
+				CB1A56B622C7E33700046396 /* account */,
 			);
 			path = settings;
 			sourceTree = "<group>";
