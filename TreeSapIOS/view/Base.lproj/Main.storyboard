@@ -360,7 +360,7 @@
                                 <rect key="frame" x="20" y="40" width="374" height="656"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ipL-BB-jbu">
-                                        <rect key="frame" x="20" y="-16.666666666666686" width="334" height="689.33333333333348"/>
+                                        <rect key="frame" x="20" y="-35.666666666666686" width="334" height="727.33333333333348"/>
                                         <subviews>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Common Name N/A" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Ek1-bl-4CV">
                                                 <rect key="frame" x="50.333333333333329" y="0.0" width="233.33333333333337" height="31.333333333333332"/>
@@ -498,8 +498,19 @@
                                                     </stackView>
                                                 </subviews>
                                             </stackView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HZD-RG-T3O" customClass="OutlinedButton" customModule="TreeSapIOS" customModuleProvider="target">
+                                                <rect key="frame" x="102.66666666666666" y="248.66666666666663" width="129" height="30"/>
+                                                <state key="normal" title="View Nearby Trees">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="nzh-dD-yhg">
-                                                <rect key="frame" x="0.0" y="248.66666666666663" width="334" height="216.33333333333337"/>
+                                                <rect key="frame" x="0.0" y="286.66666666666669" width="334" height="216.33333333333331"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notes:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MIu-ph-v8t">
                                                         <rect key="frame" x="0.0" y="0.0" width="334" height="20.333333333333332"/>
@@ -550,7 +561,7 @@
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="kZW-XB-Imy">
-                                                <rect key="frame" x="0.0" y="472.99999999999994" width="334" height="216.33333333333331"/>
+                                                <rect key="frame" x="0.0" y="511.00000000000006" width="334" height="216.33333333333331"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photos:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zqy-Tc-oFd">
                                                         <rect key="frame" x="0.0" y="0.0" width="334" height="20.333333333333332"/>
@@ -559,7 +570,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DZG-Gd-dMx" customClass="ImageSlideshow" customModule="ImageSlideshow">
-                                                        <rect key="frame" x="0.0" y="28.333333333333314" width="334" height="188"/>
+                                                        <rect key="frame" x="0.0" y="28.333333333333258" width="334" height="188"/>
                                                         <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="DZG-Gd-dMx" secondAttribute="height" multiplier="16:9" id="Os2-xl-Bdy"/>

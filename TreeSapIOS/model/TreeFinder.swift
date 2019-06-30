@@ -11,42 +11,47 @@ import MapKit
 
 class TreeFinder {
     /**
-     Searches for the Tree object closest to the specified location within the specified cutoff distance from the location.
+     Searches for the Tree objects closest to the specified location within the specified cutoff distance from the location.
      - Parameters:
         - location: The location used in the search.
         - dataSources: An array of DataSources to be searched.
         - cutoffDistance: The cutoff distance for the search.
-     - Returns: The found Tree, or nil if none was found.
+        - maxNumTrees: The maximum number of trees to return.
+     - Returns: An array containing the trees closest to the location, ordered from closest to furthest.
      */
-    class func findTreeByLocation(location: CLLocationCoordinate2D, dataSources: [DataSource], cutoffDistance: Double) -> Tree? {
-        var closestTree: Tree?
-        var closestDistance: CLLocationDistance?
-        for dataSource in dataSources {
-            for tree in dataSource.getTreeList() {
-                let treeDistance = distanceBetween(from: location, to: tree.location)
-                if treeDistance <= cutoffDistance {
-                    if closestTree == nil || treeDistance < closestDistance! {
-                        closestTree = tree
-                        closestDistance = treeDistance
+    class func findTreesByLocation(location: CLLocationCoordinate2D, dataSources: [DataSource], cutoffDistance: Double, maxNumTrees: Int) -> [Tree] {
+        var nearbyTrees = [Tree]()
+        for _ in 0 ..< maxNumTrees {
+            var closestTree: Tree?
+            var closestDistance: CLLocationDistance?
+            for dataSource in dataSources {
+                for tree in dataSource.getTreeList() {
+                    let treeDistance = distanceBetween(from: location, to: tree.location)
+                    if treeDistance <= cutoffDistance {
+                        if closestTree == nil || treeDistance < closestDistance! {
+                            if !nearbyTrees.contains(tree) {
+                                closestTree = tree
+                                closestDistance = treeDistance
+                            }
+                        }
                     }
                 }
             }
+            if closestTree != nil {
+                nearbyTrees.append(closestTree!)
+            } else {
+                break
+            }
         }
-        return closestTree
+        return nearbyTrees
     }
-
-    /**
-     Searches for the Tree object closest to the specified location within the specified cutoff distance from the location.
-     - Parameters:
-         - latitude: The latitude of the location used in the search.
-         - longitude: The longitude of the location used in the search.
-         - dataSources: An array of DataSources to be searched.
-         - cutoffDistance: The cutoff distance for the search.
-     - Returns: The found Tree, or nil if none was found.
-     */
-    class func findTreeByLocation(latitude: Double, longitude: Double, dataSources: [DataSource], cutoffDistance: Double) -> Tree? {
-        let locationCoordinates = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-        return TreeFinder.findTreeByLocation(location: locationCoordinates, dataSources: dataSources, cutoffDistance: cutoffDistance)
+    
+    class func findTreeByLocation(location: CLLocationCoordinate2D, dataSources: [DataSource], cutoffDistance: Double) -> Tree? {
+        let nearestTreeArray = findTreesByLocation(location: location, dataSources: dataSources, cutoffDistance: cutoffDistance, maxNumTrees: 1)
+        if !nearestTreeArray.isEmpty {
+            return nearestTreeArray.first
+        }
+        return nil
     }
 
     class func distanceBetween(from: CLLocationCoordinate2D, to: CLLocationCoordinate2D) -> CLLocationDistance {
