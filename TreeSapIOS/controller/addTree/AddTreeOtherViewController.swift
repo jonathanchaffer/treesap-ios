@@ -47,10 +47,33 @@ class AddTreeOtherViewController: AddTreeViewController {
         super.viewDidLoad()
         // Set up auto-suggesting text fields
         commonNameTextField.delegate = self
-        commonNameTextField.filterStrings(Array(TreeNames.nameMap.keys))
+        let commonNames = Array(TreeNames.nameMap.keys).sorted()
+        commonNameTextField.filterStrings(commonNames)
         commonNameTextField.theme.font = .systemFont(ofSize: 14)
         commonNameTextField.theme.bgColor = UIColor.white
+        commonNameTextField.itemSelectionHandler = { items, index in
+            let item = items[index]
+            self.commonNameTextField.text = item.title
+            self.scientificNameTextField.text = TreeNames.nameMap[item.title]!
+            self.dbhTextField.becomeFirstResponder()
+        }
         scientificNameTextField.delegate = self
+        let scientificNames = Array(TreeNames.nameMap.values).sorted()
+        scientificNameTextField.filterStrings(scientificNames)
+        scientificNameTextField.theme.font = .systemFont(ofSize: 14)
+        scientificNameTextField.theme.bgColor = UIColor.white
+        scientificNameTextField.itemSelectionHandler = { items, index in
+            let item = items[index]
+            self.scientificNameTextField.text = item.title
+            for commonName in commonNames {
+                if TreeNames.nameMap[commonName] == item.title {
+                    self.commonNameTextField.text = commonName
+                    break
+                }
+            }
+            self.dbhTextField.becomeFirstResponder()
+        }
+        // Hide the keyboard when tapped outside
         hideKeyboardWhenTappedAround()
         // Set up array of DBH text fields
         dbhTextFields = [dbhTextField, dbh1TextField, dbh2TextField, dbh3TextField]
@@ -79,6 +102,7 @@ class AddTreeOtherViewController: AddTreeViewController {
 
     /// Shows an "Are you sure?" alert. When the user taps OK, calls broadcastSubmitTree.
     @IBAction func handleDoneButtonPressed(_: UIButton) {
+        view.endEditing(true)
         let alert = UIAlertController(title: StringConstants.confirmSubmitTreeTitle, message: StringConstants.confirmSubmitTreeMessage, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: StringConstants.cancel, style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: StringConstants.confirmSubmitTreeSubmitAction, style: .default, handler: { _ in self.broadcastSubmitTree() }))
@@ -203,7 +227,7 @@ extension AddTreeOtherViewController: UITextFieldDelegate {
             if !measurement1StackView.isHidden {
                 circumference1TextField.becomeFirstResponder()
             } else {
-                view.endEditing(true)
+                notesTextField.becomeFirstResponder()
             }
         case dbh1TextField:
             if !measurement2StackView.isHidden {
@@ -215,7 +239,7 @@ extension AddTreeOtherViewController: UITextFieldDelegate {
             if !measurement2StackView.isHidden {
                 circumference2TextField.becomeFirstResponder()
             } else {
-                view.endEditing(true)
+                notesTextField.becomeFirstResponder()
             }
         case dbh2TextField:
             if !measurement3StackView.isHidden {
@@ -227,12 +251,12 @@ extension AddTreeOtherViewController: UITextFieldDelegate {
             if !measurement3StackView.isHidden {
                 circumference3TextField.becomeFirstResponder()
             } else {
-                view.endEditing(true)
+                notesTextField.becomeFirstResponder()
             }
         case dbh3TextField:
             circumference3TextField.becomeFirstResponder()
         case circumference3TextField:
-            view.endEditing(true)
+            notesTextField.becomeFirstResponder()
         default:
             return true
         }
