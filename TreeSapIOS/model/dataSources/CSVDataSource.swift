@@ -121,6 +121,12 @@ class CSVDataSource: DataSource {
         if csvFormat.scientificNameIndex() >= 0 {
             scientificName = NameFormatter.formatScientificName(scientificName: record[self.csvFormat.scientificNameIndex()])
         }
+        // If no scientific name was found, try to get it from the name map
+        if scientificName == nil {
+            if commonName != nil {
+                scientificName = TreeNames.nameMap[commonName!]
+            }
+        }
         // Set latitude and longitude (required)
         let latitude = Double(record[self.csvFormat.latitudeIndex()])
         let longitude = Double(record[self.csvFormat.longitudeIndex()])
