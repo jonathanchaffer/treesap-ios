@@ -25,7 +25,6 @@ class NotificationsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Notifications"
         NotificationCenter.default.addObserver(self, selector: #selector(deleteDataSuccess), name: NSNotification.Name(StringConstants.deleteDataSuccessNotification), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(deleteDataFailure), name: NSNotification.Name(StringConstants.deleteDataFailureNotification), object: nil)
         
@@ -226,4 +225,9 @@ class NotificationsTableViewController: UITableViewController {
         })
         self.present(alert, animated: true, completion: nil)
     }
+    
+    @IBAction func closeButtonPressed(_ sender: UIBarButtonItem) {
+        closeNotifications()
+    }
+    
 }

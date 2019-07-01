@@ -17,7 +17,6 @@ class PendingTreesTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Pending Trees"
         NotificationCenter.default.addObserver(self, selector: #selector(reloadTableData), name: NSNotification.Name(StringConstants.firebaseDataRetrievalSuccessNotification), object: PendingTreesDataSource)
         NotificationCenter.default.addObserver(self, selector: #selector(failedToLoad), name: NSNotification.Name(StringConstants.firebaseDataRetrievalFailureNotification), object: PendingTreesDataSource)
     }
@@ -99,5 +98,11 @@ class PendingTreesTableViewController: UITableViewController {
     private func closePendingTrees() {
         navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)
+    }
+    
+    // MARK: - Actions
+    
+    @IBAction func closeButtonPressed(_ sender: UIBarButtonItem) {
+        closePendingTrees()
     }
 }
