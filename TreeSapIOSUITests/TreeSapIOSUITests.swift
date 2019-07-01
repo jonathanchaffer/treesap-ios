@@ -107,37 +107,34 @@ class TreeSapIOSUITests: XCTestCase {
             app.navigationBars["Add Tree"].buttons["Close"].tap()
         }
         
-        // Tap the settings button from the home screen
-        app.tabBars.buttons["Home"].tap()
-        app.navigationBars["Home"].buttons["settings"].tap()
-        
+//        // Tap the settings button from the home screen
+//        app.tabBars.buttons["Home"].tap()
+//        app.navigationBars["Home"].buttons["settings"].tap()
+//
 //        // Close settings
 //        let closeButton = app.navigationBars["settings"].buttons["Close"]
 //        closeButton.tap()
-//        button.tap()
 //
-//        // Tap the settings button from the button screen
-//        buttonNavigationBar.children(matching: .button).element(boundBy: 1).tap()
+//        // Tap the settings button from the identify screen, and then close the settings screen
+//        tabBarsQuery.buttons["Identify"].tap()
+//        app.navigationBars["Identify"].buttons["settings"].tap()
 //        closeButton.tap()
-//        coordinatesButton.tap()
 //
-//        // Tap the settings button from the settings screen
-//        coordinatesNavigationBar.children(matching: .button).element(boundBy: 1).tap()
+//        // Tap the settings button from the coordinates screen, and then close the settings screen
+//        tabBarsQuery.buttons["Coordinates"].tap()
+//        app.navigationBars["Coordinates"].buttons["settings"].tap()
 //        closeButton.tap()
-//        mapButton.tap()
 //
-//        // Tap the settings button from the map screen
-//        mapNavigationBar.children(matching: .button).element(boundBy: 1).tap()
+//        // Tap the settings button from the map screen, and then close the settings screen
+//        tabBarsQuery.buttons["Map"].tap()
+//        app.navigationBars["Map"].buttons["settings"].tap()
 //        closeButton.tap()
-//        qrCodeButton.tap()
 //
 //        // Tap the settings button from the QR code screen
-//        qrCodeNavigationBar.children(matching: .button).element(boundBy: 1).tap()
-//        closeButton.tap()
-//        homeButton.tap()
+//        tabBarsQuery.buttons["QR Code"].tap()
+//        app.navigationBars["QR code"].buttons["settings"].tap()
 //
 //        // Test the sub-settings screens
-//        button2.tap()
 //        app.tables/*@START_MENU_TOKEN@*/.staticTexts["Active data sources"]/*[[".cells.staticTexts[\"Active data sources\"]",".staticTexts[\"Active data sources\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
 //        app.navigationBars["TreeSapIOS.DataSourceTableView"].buttons["settings"].tap()
 //        app.tables/*@START_MENU_TOKEN@*/.staticTexts["More information"]/*[[".cells.staticTexts[\"More information\"]",".staticTexts[\"More information\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
