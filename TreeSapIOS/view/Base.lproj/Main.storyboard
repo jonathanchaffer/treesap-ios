@@ -341,6 +341,11 @@
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
                     <navigationItem key="navigationItem" title="Identify" id="VgC-2a-nIk">
+                        <barButtonItem key="leftBarButtonItem" title="Menu" image="menu" id="l8n-PX-Faj">
+                            <connections>
+                                <segue destination="I1p-eM-MrX" kind="presentation" id="lAM-ow-152"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Add" image="plus" id="acI-1u-hf1" userLabel="Add Tree">
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="add tree"/>
@@ -458,6 +463,11 @@
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Coordinates" id="DS0-I7-gGL">
+                        <barButtonItem key="leftBarButtonItem" title="Menu" image="menu" id="jgV-Em-O0F">
+                            <connections>
+                                <segue destination="I1p-eM-MrX" kind="presentation" id="6bc-CZ-b2p"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Add" image="plus" id="xsn-9f-w7g" userLabel="Add Tree">
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="add tree"/>
@@ -498,6 +508,11 @@
                         <viewLayoutGuide key="safeArea" id="3H3-jO-XTg"/>
                     </view>
                     <navigationItem key="navigationItem" title="Map" id="8hd-Zn-4Yc">
+                        <barButtonItem key="leftBarButtonItem" title="Menu" image="menu" id="19C-HU-eGP">
+                            <connections>
+                                <segue destination="I1p-eM-MrX" kind="presentation" id="dUv-JI-1mU"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Add" image="plus" id="09G-xy-Q3b" userLabel="Add Tree">
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="add tree"/>
@@ -1712,6 +1727,11 @@
                         <viewLayoutGuide key="safeArea" id="xwd-N2-aq5"/>
                     </view>
                     <navigationItem key="navigationItem" title="QR Code" id="vy0-tZ-wQc">
+                        <barButtonItem key="leftBarButtonItem" title="Menu" image="menu" id="v6v-1M-z7p">
+                            <connections>
+                                <segue destination="I1p-eM-MrX" kind="presentation" id="eS9-5v-h4H"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Add" image="plus" id="cZ6-kW-QbJ" userLabel="Add Tree">
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="add tree"/>
@@ -4659,7 +4679,8 @@ ZC4
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Gyh-Sj-jD4"/>
+        <segue reference="eS9-5v-h4H"/>
+        <segue reference="Ynx-wO-HBK"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" name="treesapGreen"/>
 </document>

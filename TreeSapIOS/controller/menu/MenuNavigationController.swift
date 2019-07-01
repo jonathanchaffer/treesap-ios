@@ -15,5 +15,8 @@ class MenuNavigationController: UISideMenuNavigationController {
         sideMenuManager.menuPushStyle = .popWhenPossible
         sideMenuManager.menuPresentMode = .menuSlideIn
         sideMenuManager.menuFadeStatusBar = false
+        sideMenuManager.menuAnimationFadeStrength = 0.5
+        sideMenuManager.menuAnimationBackgroundColor = UIColor.darkGray
+        sideMenuManager.menuAnimationTransformScaleFactor = 0.95
     }
 }
