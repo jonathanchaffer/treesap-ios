@@ -18,5 +18,6 @@ class MenuNavigationController: UISideMenuNavigationController {
         sideMenuManager.menuAnimationFadeStrength = 0.5
         sideMenuManager.menuAnimationBackgroundColor = UIColor.darkGray
         sideMenuManager.menuAnimationTransformScaleFactor = 0.95
+        sideMenuManager.menuParallaxStrength = 10
     }
 }
