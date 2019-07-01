@@ -97,18 +97,21 @@ class AccountManager {
     }
     
     /**
-     Tries to set the display name of the current user. Shown an alert if there is an error.
+     Tries to set the display name of the current user. Shown an alert if there is an error. Returns without doing anything if no user is logged in.
      */
     static func setDisplayName(displayName: String) {
-        if let user = Auth.auth().currentUser {
-            let changeRequest = user.createProfileChangeRequest()
-            changeRequest.displayName = displayName
-            changeRequest.commitChanges() { error in
-                if error != nil {
-                    AlertManager.alertUser(title: StringConstants.setDisplayNameFailureTitle, message: StringConstants.setDisplayNameFailureMessage)
-                } else {
-                    NotificationCenter.default.post(name: NSNotification.Name(StringConstants.displayNameUpdatedNotification), object: nil)
-                }
+        guard let user = Auth.auth().currentUser else{
+            return
+        }
+        
+        let changeRequest = user.createProfileChangeRequest()
+        changeRequest.displayName = displayName
+        
+        changeRequest.commitChanges() { error in
+            if error != nil {
+                AlertManager.alertUser(title: StringConstants.setDisplayNameFailureTitle, message: StringConstants.setDisplayNameFailureMessage)
+            } else {
+                NotificationCenter.default.post(name: NSNotification.Name(StringConstants.displayNameUpdatedNotification), object: nil)
             }
         }
     }
@@ -116,22 +119,25 @@ class AccountManager {
     static func updatePassword(oldPassword: String, newPassword: String) {
         let credential = EmailAuthProvider.credential(withEmail: getEmail()!, password: oldPassword)
         getUser()?.reauthenticate(with: credential) { result, error in
+            
             if error != nil {
                 AlertManager.alertUser(title: StringConstants.incorrectOldPasswordTitle, message: StringConstants.incorrectOldPasswordMessage)
-            } else {
-                getUser()?.updatePassword(to: newPassword) { error in
-                    if let error = error {
-                        switch error._code {
-                        case AuthErrorCode.weakPassword.rawValue:
-                            AlertManager.alertUser(title: StringConstants.weakPasswordTitle, message: StringConstants.weakPasswordMessage)
-                        default:
-                            AlertManager.alertUser(title: StringConstants.updatePasswordFailureTitle, message: StringConstants.updatePasswordFailureMessage)
-                        }
-                    } else {
-                        NotificationCenter.default.post(name: NSNotification.Name(StringConstants.passwordUpdatedNotification), object: nil)
+                return
+            }
+            
+            getUser()?.updatePassword(to: newPassword) { error in
+                if let error = error {
+                    switch error._code {
+                    case AuthErrorCode.weakPassword.rawValue:
+                        AlertManager.alertUser(title: StringConstants.weakPasswordTitle, message: StringConstants.weakPasswordMessage)
+                    default:
+                        AlertManager.alertUser(title: StringConstants.updatePasswordFailureTitle, message: StringConstants.updatePasswordFailureMessage)
                     }
+                } else {
+                    NotificationCenter.default.post(name: NSNotification.Name(StringConstants.passwordUpdatedNotification), object: nil)
                 }
             }
+            
         }
     }
     
