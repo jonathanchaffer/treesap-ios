@@ -26,6 +26,7 @@ class LoginSignupViewController: UIViewController {
         loginEmailTextField.delegate = self
         loginPasswordTextField.delegate = self
         createAccountEmailTextField.delegate = self
+        createAccountDisplayNameTextField.delegate = self
         createAccountPasswordTextField.delegate = self
         createAccountConfirmTextField.delegate = self
 		hideKeyboardWhenTappedAround()
@@ -91,6 +92,8 @@ extension LoginSignupViewController: UITextFieldDelegate {
         case loginPasswordTextField:
             logIn()
         case createAccountEmailTextField:
+            createAccountDisplayNameTextField.becomeFirstResponder()
+        case createAccountDisplayNameTextField:
             createAccountPasswordTextField.becomeFirstResponder()
         case createAccountPasswordTextField:
             createAccountConfirmTextField.becomeFirstResponder()

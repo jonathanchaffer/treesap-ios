@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddTreeLocationViewController: AddTreeViewController, UITextFieldDelegate {
+class AddTreeLocationViewController: AddTreeViewController {
     // MARK: - Properties
     
     @IBOutlet weak var latitudeTextField: UITextField!
@@ -31,6 +31,10 @@ class AddTreeLocationViewController: AddTreeViewController, UITextFieldDelegate 
     // MARK: - Actions
     
     @IBAction func broadcastNext(_: UIButton) {
+        addTreeLocation()
+    }
+    
+    func addTreeLocation(){
         // Convert the inputs to Double. If the conversion failed, alert the user.
         let latitude = Double(latitudeTextField.text!)
         let longitude = Double(longitudeTextField.text!)
@@ -62,7 +66,18 @@ class AddTreeLocationViewController: AddTreeViewController, UITextFieldDelegate 
             AlertManager.alertUser(title: StringConstants.locationUnvailableTitle, message: StringConstants.locationUnvailableMessage)
         }
     }
+}
+
+// https://stackoverflow.com/questions/30973044/how-to-restrict-uitextfield-to-take-only-numbers-in-swift
+extension AddTreeLocationViewController: UITextFieldDelegate {
+    ///Makes the text fields allow only numbers, dashes, and dots.
+    func textField(_: UITextField, shouldChangeCharactersIn _: NSRange, replacementString string: String) -> Bool {
+        let allowedCharacters = CharacterSet(charactersIn: "-.0123456789")
+        let characterSet = CharacterSet(charactersIn: string)
+        return allowedCharacters.isSuperset(of: characterSet)
+    }
     
+    ///Works such that the next button visible if both the latitude and longitude text fields have text in them
     @objc private func textFieldDidChange(_ textField: UITextField) {
         let latitude = Double(latitudeTextField.text!)
         let longitude = Double(longitudeTextField.text!)
@@ -72,14 +87,18 @@ class AddTreeLocationViewController: AddTreeViewController, UITextFieldDelegate 
             nextButton.isHidden = true
         }
     }
-}
-
-// Extension that makes the text fields allow only numbers, dashes, and dots.
-// https://stackoverflow.com/questions/30973044/how-to-restrict-uitextfield-to-take-only-numbers-in-swift
-extension AddTreeLocationViewController {
-    func textField(_: UITextField, shouldChangeCharactersIn _: NSRange, replacementString string: String) -> Bool {
-        let allowedCharacters = CharacterSet(charactersIn: "-.0123456789")
-        let characterSet = CharacterSet(charactersIn: string)
-        return allowedCharacters.isSuperset(of: characterSet)
+    
+    //This function makes pressing the return key in the latitude text field make the longitude text field start being edited and pressing the return key in the longitude text field use the current tree location
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        switch textField{
+        case latitudeTextField:
+            longitudeTextField.becomeFirstResponder()
+        case longitudeTextField:
+            addTreeLocation()
+        default:
+            return true
+        }
+        
+        return true
     }
 }
