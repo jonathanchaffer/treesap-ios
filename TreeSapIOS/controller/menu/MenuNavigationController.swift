@@ -12,7 +12,6 @@ import SideMenu
 class MenuNavigationController: UISideMenuNavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        sideMenuManager.menuPushStyle = .popWhenPossible
         sideMenuManager.menuPresentMode = .menuSlideIn
         sideMenuManager.menuFadeStatusBar = false
         sideMenuManager.menuAnimationFadeStrength = 0.5

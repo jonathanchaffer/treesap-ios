@@ -8,9 +8,12 @@
 
 import UIKit
 import Foundation
+import MessageUI
 
 class MenuTableViewController: UITableViewController {
 
+    // MARK: - Overrides
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -22,5 +25,36 @@ class MenuTableViewController: UITableViewController {
         }
         return UITableView.automaticDimension
     }
+    
+    /// Function that is called when a table cell is selected.
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        if indexPath.row == 3 {
+            sendEmail()
+        }
+    }
+    
+    // MARK: - Private Functions
+    
+    private func sendEmail() {
+        if MFMailComposeViewController.canSendMail() {
+            let mail = MFMailComposeViewController()
+            mail.mailComposeDelegate = self
+            mail.setToRecipients(["feedback@treesap.info"])
+            mail.setSubject("TreeSap Feedback")
+            present(mail, animated: true)
+        } else {
+            AlertManager.alertUser(title: StringConstants.errorComposingEmailTitle, message: StringConstants.errorComposingEmailMessage)
+        }
+    }
+}
 
+extension MenuTableViewController: MFMailComposeViewControllerDelegate {
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true)
+        // TODO: Make this work
+        if result == .sent {
+            AlertManager.alertUser(title: StringConstants.feedbackSentTitle, message: StringConstants.feedbackSentMessage)
+        }
+    }
 }

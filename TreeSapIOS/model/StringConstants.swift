@@ -173,6 +173,12 @@ class StringConstants {
     static let sendPasswordResetFailureTitle = "Error sending password reset email"
     static let sendPassowrdResetFailureMessage = "An error occurred while trying to send a password reset email. Please try again."
     
+    static let errorComposingEmailTitle = "Error composing email"
+    static let errorComposingEmailMessage = "An error occurred while trying to compose an email. Please try again."
+    
+    static let feedbackSentTitle = "Feedback sent"
+    static let feedbackSentMessage = "Thank you for your feedback!"
+    
     // MARK: - Notification Center
     
     static let loggedInNotification = "loggedIn"
