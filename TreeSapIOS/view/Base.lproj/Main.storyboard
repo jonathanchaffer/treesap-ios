@@ -70,20 +70,12 @@
                         <viewLayoutGuide key="safeArea" id="1Bp-B6-NSN"/>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="cii-Eg-aYs">
-                        <barButtonItem key="leftBarButtonItem" title="Add" image="plus" id="0eV-a4-MqC" userLabel="Add Tree">
+                        <barButtonItem key="rightBarButtonItem" title="Add" image="plus" id="0eV-a4-MqC" userLabel="Add Tree">
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="add tree"/>
                             </userDefinedRuntimeAttributes>
                             <connections>
                                 <segue destination="3fr-83-nON" kind="presentation" id="Gyh-Sj-jD4"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="settings" id="3I4-Xv-9NB" userLabel="Settings">
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="settings"/>
-                            </userDefinedRuntimeAttributes>
-                            <connections>
-                                <segue destination="ROl-BY-TYM" kind="presentation" id="ZtF-HV-Gmw"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -147,20 +139,12 @@
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
                     <navigationItem key="navigationItem" title="Identify" id="VgC-2a-nIk">
-                        <barButtonItem key="leftBarButtonItem" title="Add" image="plus" id="acI-1u-hf1" userLabel="Add Tree">
+                        <barButtonItem key="rightBarButtonItem" title="Add" image="plus" id="acI-1u-hf1" userLabel="Add Tree">
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="add tree"/>
                             </userDefinedRuntimeAttributes>
                             <connections>
                                 <segue destination="3fr-83-nON" kind="presentation" id="Osm-ne-69B"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="settings" id="ix8-wC-AH8" userLabel="Settings">
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="settings"/>
-                            </userDefinedRuntimeAttributes>
-                            <connections>
-                                <segue destination="ROl-BY-TYM" kind="presentation" id="M3K-1N-Vy6"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -272,20 +256,12 @@
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Coordinates" id="DS0-I7-gGL">
-                        <barButtonItem key="leftBarButtonItem" title="Add" image="plus" id="xsn-9f-w7g" userLabel="Add Tree">
+                        <barButtonItem key="rightBarButtonItem" title="Add" image="plus" id="xsn-9f-w7g" userLabel="Add Tree">
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="add tree"/>
                             </userDefinedRuntimeAttributes>
                             <connections>
                                 <segue destination="3fr-83-nON" kind="presentation" id="txq-mR-ZcU"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="settings" id="UZJ-DA-jmx" userLabel="Settings">
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="settings"/>
-                            </userDefinedRuntimeAttributes>
-                            <connections>
-                                <segue destination="ROl-BY-TYM" kind="presentation" id="NRC-p1-lpH"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -320,20 +296,12 @@
                         <viewLayoutGuide key="safeArea" id="3H3-jO-XTg"/>
                     </view>
                     <navigationItem key="navigationItem" title="Map" id="8hd-Zn-4Yc">
-                        <barButtonItem key="leftBarButtonItem" title="Add" image="plus" id="09G-xy-Q3b" userLabel="Add Tree">
+                        <barButtonItem key="rightBarButtonItem" title="Add" image="plus" id="09G-xy-Q3b" userLabel="Add Tree">
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="add tree"/>
                             </userDefinedRuntimeAttributes>
                             <connections>
                                 <segue destination="3fr-83-nON" kind="presentation" id="Vm4-eg-tTZ"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="settings" id="YSQ-eH-Gkg" userLabel="Settings">
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="settings"/>
-                            </userDefinedRuntimeAttributes>
-                            <connections>
-                                <segue destination="ROl-BY-TYM" kind="presentation" id="Kwz-yv-nBo"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1542,20 +1510,12 @@
                         <viewLayoutGuide key="safeArea" id="xwd-N2-aq5"/>
                     </view>
                     <navigationItem key="navigationItem" title="QR Code" id="vy0-tZ-wQc">
-                        <barButtonItem key="leftBarButtonItem" title="Add" image="plus" id="cZ6-kW-QbJ" userLabel="Add Tree">
+                        <barButtonItem key="rightBarButtonItem" title="Add" image="plus" id="cZ6-kW-QbJ" userLabel="Add Tree">
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="add tree"/>
                             </userDefinedRuntimeAttributes>
                             <connections>
                                 <segue destination="3fr-83-nON" kind="presentation" id="Ynx-wO-HBK"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="settings" id="nL0-ee-Huz" userLabel="Settings">
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="settings"/>
-                            </userDefinedRuntimeAttributes>
-                            <connections>
-                                <segue destination="ROl-BY-TYM" kind="presentation" id="cac-nU-E74"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1581,7 +1541,7 @@
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZjB-ne-rTm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2610" y="2165"/>
+            <point key="canvasLocation" x="155" y="2169"/>
         </scene>
         <!--Settings-->
         <scene sceneID="8KI-2H-SKk">
@@ -1795,7 +1755,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GJL-kL-2JR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1922" y="2165"/>
+            <point key="canvasLocation" x="-2610" y="2164"/>
         </scene>
         <!--Pending Trees Table View Controller-->
         <scene sceneID="hNZ-eQ-1mB">
@@ -1843,7 +1803,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g1g-vw-AII" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1222" y="2165"/>
+            <point key="canvasLocation" x="-1910" y="2164"/>
         </scene>
         <!--Pending Tree Details View Controller-->
         <scene sceneID="zdk-Sg-1Gr">
@@ -2075,7 +2035,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JYy-vf-zyS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-534" y="2165"/>
+            <point key="canvasLocation" x="-1222" y="2164"/>
         </scene>
         <!--Add Message-->
         <scene sceneID="QUE-qY-FgC">
@@ -2147,7 +2107,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rc9-vh-cQD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="839" y="3870"/>
+            <point key="canvasLocation" x="-535" y="3010"/>
         </scene>
         <!--Data Source Table View Controller-->
         <scene sceneID="czZ-nX-dXC">
@@ -2175,7 +2135,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oS2-Zu-pzU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2610" y="3018"/>
+            <point key="canvasLocation" x="-3983" y="3011"/>
         </scene>
         <!--Loading Screen View Controller-->
         <scene sceneID="t9i-nw-yJE">
@@ -2324,7 +2284,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OfI-a0-ZqM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1922" y="1346"/>
+            <point key="canvasLocation" x="-2610" y="1346"/>
         </scene>
         <!--Home-->
         <scene sceneID="tor-R9-cHy">
@@ -2465,7 +2425,7 @@ ZC4
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FVv-Y3-hMC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1922" y="3018"/>
+            <point key="canvasLocation" x="-3296" y="3011"/>
         </scene>
         <!--Account Table View Controller-->
         <scene sceneID="B5G-ra-XkO">
@@ -2623,7 +2583,7 @@ ZC4
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gzz-x5-jKc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1222" y="3018"/>
+            <point key="canvasLocation" x="-2596" y="3011"/>
         </scene>
         <!--Log In-->
         <scene sceneID="loc-xu-Izf">
@@ -2898,7 +2858,7 @@ ZC4
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ei9-sp-2L7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1925" y="3870"/>
+            <point key="canvasLocation" x="-3299" y="3863"/>
         </scene>
         <!--Forgot Password-->
         <scene sceneID="yOo-sT-BNA">
@@ -2987,7 +2947,7 @@ ZC4
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8ST-Nz-4AL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1926" y="4595"/>
+            <point key="canvasLocation" x="-3299" y="4588"/>
         </scene>
         <!--Change Password-->
         <scene sceneID="Mme-LG-LMc">
@@ -3111,7 +3071,7 @@ ZC4
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qcs-eD-3qU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1235" y="3870"/>
+            <point key="canvasLocation" x="-2609" y="3863"/>
         </scene>
         <!--Change Display Name-->
         <scene sceneID="GpH-oJ-fXi">
@@ -3194,7 +3154,7 @@ ZC4
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ybU-Gu-AKb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-538" y="3870"/>
+            <point key="canvasLocation" x="-1912" y="3863"/>
         </scene>
         <!--Notifications-->
         <scene sceneID="3jD-c7-SGW">
@@ -3274,7 +3234,7 @@ ZC4
                     </items>
                 </toolbar>
             </objects>
-            <point key="canvasLocation" x="-533" y="3018"/>
+            <point key="canvasLocation" x="-1906" y="3011"/>
         </scene>
         <!--Notification Details View Controller-->
         <scene sceneID="nDl-5P-Q7J">
@@ -3508,7 +3468,7 @@ ZC4
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VNt-y8-26W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="155" y="3018"/>
+            <point key="canvasLocation" x="-1219" y="3011"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="rNQ-1x-mCj">
@@ -3526,7 +3486,7 @@ ZC4
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mQ4-Uk-sPa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2610" y="1345"/>
+            <point key="canvasLocation" x="155" y="1349"/>
         </scene>
         <!--Add Tree Bark View Controller-->
         <scene sceneID="bPk-tK-WZ1">
@@ -4459,7 +4419,6 @@ ZC4
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Gyh-Sj-jD4"/>
-        <segue reference="ZtF-HV-Gmw"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" name="treesapGreen"/>
 </document>
