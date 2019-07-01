@@ -53,6 +53,11 @@ class TreeFinder {
         }
         return nil
     }
+    
+    class func findTreeByLocation(latitude: Double, longitude: Double, dataSources: [DataSource], cutoffDistance: Double) -> Tree? {
+        let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        return findTreeByLocation(location: coordinate, dataSources: dataSources, cutoffDistance: cutoffDistance)
+    }
 
     class func distanceBetween(from: CLLocationCoordinate2D, to: CLLocationCoordinate2D) -> CLLocationDistance {
         let locationFrom = CLLocation(latitude: from.latitude, longitude: from.longitude)
