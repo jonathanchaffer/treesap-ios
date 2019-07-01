@@ -9,7 +9,7 @@
 import UIKit
 import SideMenu
 
-class HamburgerMenu: UISideMenuNavigationController {
+class MenuNavigationController: UISideMenuNavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         sideMenuManager.menuPushStyle = .popWhenPossible

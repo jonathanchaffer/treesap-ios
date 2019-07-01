@@ -60,8 +60,9 @@
 		CB9F424522A55F3A00C97F70 /* TreeSapIOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9F424422A55F3A00C97F70 /* TreeSapIOSUITests.swift */; };
 		CB9F425122A5B0D800C97F70 /* AddTreePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9F425022A5B0D800C97F70 /* AddTreePageViewController.swift */; };
 		CBA9171E22B7DE8C00BA75B2 /* FirebaseDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA9171D22B7DE8C00BA75B2 /* FirebaseDataSource.swift */; };
+		CBA9CCDA22CA86760065DDE5 /* MenuNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA9CCD922CA86750065DDE5 /* MenuNavigationController.swift */; };
 		CBB264B822973C6C00C036FB /* DataSourceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB264B722973C6C00C036FB /* DataSourceTableViewController.swift */; };
-		CBB372A122CA5DAA0037E831 /* HamburgerMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB372A022CA5DAA0037E831 /* HamburgerMenu.swift */; };
+		CBB372A422CA81CD0037E831 /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB372A322CA81CD0037E831 /* MenuTableViewController.swift */; };
 		CBBCE82B228DD76B008F7225 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBCE82A228DD76B008F7225 /* AppDelegate.swift */; };
 		CBBCE82D228DD76B008F7225 /* IdentifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBCE82C228DD76B008F7225 /* IdentifyViewController.swift */; };
 		CBBCE82F228DD76B008F7225 /* CoordinatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBCE82E228DD76B008F7225 /* CoordinatesViewController.swift */; };
@@ -176,8 +177,9 @@
 		CB9F424622A55F3A00C97F70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CB9F425022A5B0D800C97F70 /* AddTreePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTreePageViewController.swift; sourceTree = "<group>"; };
 		CBA9171D22B7DE8C00BA75B2 /* FirebaseDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDataSource.swift; sourceTree = "<group>"; };
+		CBA9CCD922CA86750065DDE5 /* MenuNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuNavigationController.swift; sourceTree = "<group>"; };
 		CBB264B722973C6C00C036FB /* DataSourceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourceTableViewController.swift; sourceTree = "<group>"; };
-		CBB372A022CA5DAA0037E831 /* HamburgerMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HamburgerMenu.swift; sourceTree = "<group>"; };
+		CBB372A322CA81CD0037E831 /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		CBBCE827228DD76B008F7225 /* TreeSapIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TreeSapIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBBCE82A228DD76B008F7225 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CBBCE82C228DD76B008F7225 /* IdentifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifyViewController.swift; sourceTree = "<group>"; };
@@ -330,13 +332,13 @@
 		CB6953B4228EE4300002024B /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				CBB372A222CA81B60037E831 /* menu */,
 				418A360B22A83BEA002BF28C /* loadingScreen */,
 				CB9F424F22A5AE0B00C97F70 /* tabs */,
 				CB9F424E22A5AE0100C97F70 /* settings */,
 				CB9F424D22A5ADF800C97F70 /* addTree */,
 				CB9F424C22A5ADD200C97F70 /* treeDetail */,
 				CBC7BC9722B93AC8002D4B98 /* HideKeyboard.swift */,
-				CBB372A022CA5DAA0037E831 /* HamburgerMenu.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -455,6 +457,15 @@
 				CBA9171D22B7DE8C00BA75B2 /* FirebaseDataSource.swift */,
 			);
 			path = dataSources;
+			sourceTree = "<group>";
+		};
+		CBB372A222CA81B60037E831 /* menu */ = {
+			isa = PBXGroup;
+			children = (
+				CBA9CCD922CA86750065DDE5 /* MenuNavigationController.swift */,
+				CBB372A322CA81CD0037E831 /* MenuTableViewController.swift */,
+			);
+			path = menu;
 			sourceTree = "<group>";
 		};
 		CBBCE81E228DD76B008F7225 = {
@@ -790,6 +801,7 @@
 				CBBCE82F228DD76B008F7225 /* CoordinatesViewController.swift in Sources */,
 				CB4707D322C5422200E7908F /* NotificationDetailsViewController.swift in Sources */,
 				CB15256A22A69941002D483E /* FilledButton.swift in Sources */,
+				CBA9CCDA22CA86760065DDE5 /* MenuNavigationController.swift in Sources */,
 				CB9A1C0222BBCC1F00D1067E /* PendingTreesTableViewController.swift in Sources */,
 				CB75475222C14DD0001FDA65 /* MultilineTextField.swift in Sources */,
 				CB80E3BF22AFD657001A78AE /* AlertManager.swift in Sources */,
@@ -817,6 +829,7 @@
 				CB2D4DA522958548006DAC37 /* TreeAnnotationView.swift in Sources */,
 				CB12C94D228DF5C4000C74C3 /* SimpleDisplayViewController.swift in Sources */,
 				D76D617F22931990003FFD24 /* CSVFormat.swift in Sources */,
+				CBB372A422CA81CD0037E831 /* MenuTableViewController.swift in Sources */,
 				CB12C94B228DF508000C74C3 /* BenefitsDisplayViewController.swift in Sources */,
 				CB15257022A6A2F7002D483E /* AddTreeOtherViewController.swift in Sources */,
 				CBFD63C12295A1E800804DC4 /* NameFormatter.swift in Sources */,
@@ -824,7 +837,6 @@
 				CB15257622A6A3D5002D483E /* AddTreeEntireViewController.swift in Sources */,
 				CB091E712292EBCF00F0CB06 /* HomeViewController.swift in Sources */,
 				CB80E3BD22AFD578001A78AE /* DataManager.swift in Sources */,
-				CBB372A122CA5DAA0037E831 /* HamburgerMenu.swift in Sources */,
 				41AD85E622BA933E00DAB44B /* MoreInformationViewController.swift in Sources */,
 				CB672F1B229434DA00622B59 /* TreeDisplayViewController.swift in Sources */,
 				CB4707D122C52D8900E7908F /* ImageCategory.swift in Sources */,
