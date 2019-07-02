@@ -19,7 +19,8 @@ class LoginSignupViewController: UIViewController {
     @IBOutlet weak var createAccountDisplayNameTextField: UITextField!
     @IBOutlet weak var createAccountPasswordTextField: UITextField!
 	@IBOutlet weak var createAccountConfirmTextField: UITextField!
-	
+    @IBOutlet weak var closeButton: UIBarButtonItem!
+    
 	// MARK: - Overrides
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -31,6 +32,11 @@ class LoginSignupViewController: UIViewController {
 		hideKeyboardWhenTappedAround()
 		loginStackView.isHidden = false
 		NotificationCenter.default.addObserver(self, selector: #selector(closeLoginSignup), name: NSNotification.Name(StringConstants.loggedInNotification), object: nil)
+        if navigationController!.isBeingPresented {
+            print("in modal")
+        } else {
+            print("in settings")
+        }
 	}
 	
 	// MARK: - Actions
@@ -55,7 +61,11 @@ class LoginSignupViewController: UIViewController {
     @IBAction func logInButtonPressed(_ sender: UIButton) {
         logIn()
     }
-	
+    
+    @IBAction func closeButtonPressed(_ sender: UIBarButtonItem) {
+        closeLoginSignup()
+    }
+    
     // MARK: - Functions
 	@objc func closeLoginSignup() {
 		navigationController?.popViewController(animated: true)
