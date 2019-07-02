@@ -55,7 +55,7 @@ class AddTreeOtherViewController: AddTreeViewController {
             let item = items[index]
             self.commonNameTextField.text = item.title
             self.scientificNameTextField.text = TreeNames.nameMap[item.title]!
-            self.dbhTextField.becomeFirstResponder()
+            self.circumferenceTextField.becomeFirstResponder()
         }
         scientificNameTextField.delegate = self
         let scientificNames = Array(TreeNames.nameMap.values).sorted()
@@ -71,7 +71,7 @@ class AddTreeOtherViewController: AddTreeViewController {
                     break
                 }
             }
-            self.dbhTextField.becomeFirstResponder()
+            self.circumferenceTextField.becomeFirstResponder()
         }
         // Hide the keyboard when tapped outside
         hideKeyboardWhenTappedAround()
@@ -215,46 +215,46 @@ extension AddTreeOtherViewController: UITextFieldDelegate {
         case commonNameTextField:
             scientificNameTextField.becomeFirstResponder()
         case scientificNameTextField:
-            dbhTextField.becomeFirstResponder()
-        case dbhTextField:
-            if !measurement1StackView.isHidden {
-                dbh1TextField.becomeFirstResponder()
-            } else {
-                circumferenceTextField.becomeFirstResponder()
-            }
+            circumferenceTextField.becomeFirstResponder()
         case circumferenceTextField:
             if !measurement1StackView.isHidden {
                 circumference1TextField.becomeFirstResponder()
             } else {
-                notesTextField.becomeFirstResponder()
+                dbhTextField.becomeFirstResponder()
             }
-        case dbh1TextField:
-            if !measurement2StackView.isHidden {
-                dbh2TextField.becomeFirstResponder()
+        case dbhTextField:
+            if !measurement1StackView.isHidden {
+                dbh1TextField.becomeFirstResponder()
             } else {
-                circumference1TextField.becomeFirstResponder()
+                notesTextField.becomeFirstResponder()
             }
         case circumference1TextField:
             if !measurement2StackView.isHidden {
                 circumference2TextField.becomeFirstResponder()
             } else {
-                notesTextField.becomeFirstResponder()
+                dbh1TextField.becomeFirstResponder()
             }
-        case dbh2TextField:
-            if !measurement3StackView.isHidden {
-                dbh3TextField.becomeFirstResponder()
+        case dbh1TextField:
+            if !measurement2StackView.isHidden {
+                dbh2TextField.becomeFirstResponder()
             } else {
-                circumference2TextField.becomeFirstResponder()
+                notesTextField.becomeFirstResponder()
             }
         case circumference2TextField:
             if !measurement3StackView.isHidden {
                 circumference3TextField.becomeFirstResponder()
             } else {
+                dbh2TextField.becomeFirstResponder()
+            }
+        case dbh2TextField:
+            if !measurement3StackView.isHidden {
+                dbh3TextField.becomeFirstResponder()
+            } else {
                 notesTextField.becomeFirstResponder()
             }
-        case dbh3TextField:
-            circumference3TextField.becomeFirstResponder()
         case circumference3TextField:
+            dbh3TextField.becomeFirstResponder()
+        case dbh3TextField:
             notesTextField.becomeFirstResponder()
         default:
             return true
