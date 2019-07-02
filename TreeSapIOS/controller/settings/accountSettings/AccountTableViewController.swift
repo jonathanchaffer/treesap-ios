@@ -26,6 +26,10 @@ class AccountTableViewController: UITableViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(refreshTable), name: NSNotification.Name(StringConstants.loggedInNotification), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(refreshTable), name: NSNotification.Name(StringConstants.displayNameUpdatedNotification), object: nil)
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        refreshTable()
+    }
 
     /// Deselects a row when it is selected.
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

@@ -2878,13 +2878,13 @@ ZC4
                                                 <rect key="frame" x="0.0" y="39.333333333333371" width="374" height="30"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dhh-wY-u87">
-                                                        <rect key="frame" x="0.0" y="0.0" width="105" height="30"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="139.33333333333334" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Ay8-wJ-XRj">
-                                                        <rect key="frame" x="113" y="0.0" width="261" height="30"/>
+                                                        <rect key="frame" x="147.33333333333337" y="0.0" width="226.66666666666663" height="30"/>
                                                         <accessibility key="accessibilityConfiguration" identifier="create account email entry"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -2896,13 +2896,13 @@ ZC4
                                                 <rect key="frame" x="0.0" y="77.333333333333371" width="374" height="30"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Display Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GPS-U4-TlW">
-                                                        <rect key="frame" x="0.0" y="0.0" width="105" height="30"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="139.33333333333334" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="om6-Yf-D0c">
-                                                        <rect key="frame" x="113" y="0.0" width="261" height="30"/>
+                                                        <rect key="frame" x="147.33333333333337" y="0.0" width="226.66666666666663" height="30"/>
                                                         <accessibility key="accessibilityConfiguration" identifier="create account display name entry"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -2914,13 +2914,13 @@ ZC4
                                                 <rect key="frame" x="0.0" y="115.33333333333337" width="374" height="30"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uF4-7g-O7E">
-                                                        <rect key="frame" x="0.0" y="0.0" width="105" height="30"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="139.33333333333334" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="9Zq-dV-Jdq">
-                                                        <rect key="frame" x="113" y="0.0" width="261" height="30"/>
+                                                        <rect key="frame" x="147.33333333333337" y="0.0" width="226.66666666666663" height="30"/>
                                                         <accessibility key="accessibilityConfiguration" identifier="create account password entry"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -2931,14 +2931,14 @@ ZC4
                                             <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="rKb-KN-Vh4">
                                                 <rect key="frame" x="0.0" y="153.33333333333337" width="374" height="30"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wy3-vx-hoz">
-                                                        <rect key="frame" x="0.0" y="0.0" width="105" height="30"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wy3-vx-hoz">
+                                                        <rect key="frame" x="0.0" y="0.0" width="139.33333333333334" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="q9a-kN-5F4">
-                                                        <rect key="frame" x="113" y="0.0" width="261" height="30"/>
+                                                        <rect key="frame" x="147.33333333333337" y="0.0" width="226.66666666666663" height="30"/>
                                                         <accessibility key="accessibilityConfiguration" identifier="create account confirm password entry"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -3250,13 +3250,13 @@ ZC4
                                                 <rect key="frame" x="0.0" y="39.333333333333371" width="374" height="30"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Old Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a6t-cD-dCN">
-                                                        <rect key="frame" x="0.0" y="0.0" width="112.66666666666667" height="30"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="178" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="uZp-E6-7vT">
-                                                        <rect key="frame" x="120.66666666666664" y="0.0" width="253.33333333333337" height="30"/>
+                                                        <rect key="frame" x="186" y="0.0" width="188" height="30"/>
                                                         <accessibility key="accessibilityConfiguration" label="Create Account Email"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -3268,13 +3268,13 @@ ZC4
                                                 <rect key="frame" x="0.0" y="77.333333333333371" width="374" height="30"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nOs-qQ-EIF">
-                                                        <rect key="frame" x="0.0" y="0.0" width="112.66666666666667" height="30"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="178" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="lor-uW-mlk">
-                                                        <rect key="frame" x="120.66666666666664" y="0.0" width="253.33333333333337" height="30"/>
+                                                        <rect key="frame" x="186" y="0.0" width="188" height="30"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" returnKeyType="next" secureTextEntry="YES" textContentType="new-password"/>
@@ -3284,14 +3284,14 @@ ZC4
                                             <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="YQf-mc-1iW">
                                                 <rect key="frame" x="0.0" y="115.33333333333337" width="374" height="30"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="44R-XS-0pf">
-                                                        <rect key="frame" x="0.0" y="0.0" width="112.66666666666667" height="30"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm New Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="44R-XS-0pf">
+                                                        <rect key="frame" x="0.0" y="0.0" width="178" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="cyR-xM-1oA">
-                                                        <rect key="frame" x="120.66666666666664" y="0.0" width="253.33333333333337" height="30"/>
+                                                        <rect key="frame" x="186" y="0.0" width="188" height="30"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" returnKeyType="go" secureTextEntry="YES" textContentType="new-password"/>
@@ -4697,39 +4697,39 @@ ZC4
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="qzW-JS-smw">
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="zs8-Uv-IIe">
                                                 <rect key="frame" x="0.0" y="39.333333333333371" width="374" height="30"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WGA-Jd-pYC">
-                                                        <rect key="frame" x="0.0" y="0.0" width="73.666666666666671" height="30"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="7sD-kH-ZfM">
-                                                        <rect key="frame" x="81.666666666666657" y="0.0" width="292.33333333333337" height="30"/>
-                                                        <accessibility key="accessibilityConfiguration" label="Create Account Email"/>
-                                                        <nil key="textColor"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
-                                                    </textField>
-                                                </subviews>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="zs8-Uv-IIe">
-                                                <rect key="frame" x="0.0" y="77.333333333333371" width="374" height="30"/>
-                                                <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mkU-nG-e9l">
-                                                        <rect key="frame" x="0.0" y="0.0" width="79.666666666666671" height="30"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="139.33333333333334" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ttu-gc-qJ8">
-                                                        <rect key="frame" x="87.666666666666657" y="0.0" width="286.33333333333337" height="30"/>
+                                                        <rect key="frame" x="147.33333333333337" y="0.0" width="226.66666666666663" height="30"/>
                                                         <accessibility key="accessibilityConfiguration" label="Create Account Email"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" returnKeyType="go"/>
+                                                        <textInputTraits key="textInputTraits" returnKeyType="next" textContentType="email"/>
+                                                    </textField>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="qzW-JS-smw">
+                                                <rect key="frame" x="0.0" y="77.333333333333371" width="374" height="30"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WGA-Jd-pYC">
+                                                        <rect key="frame" x="0.0" y="0.0" width="139.33333333333334" height="30"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="7sD-kH-ZfM">
+                                                        <rect key="frame" x="147.33333333333337" y="0.0" width="226.66666666666663" height="30"/>
+                                                        <accessibility key="accessibilityConfiguration" label="Create Account Email"/>
+                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" returnKeyType="go" secureTextEntry="YES" textContentType="password"/>
                                                     </textField>
                                                 </subviews>
                                             </stackView>
@@ -4750,6 +4750,9 @@ ZC4
                                                 </subviews>
                                             </stackView>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstItem="ttu-gc-qJ8" firstAttribute="width" secondItem="7sD-kH-ZfM" secondAttribute="width" id="9Tq-Vi-gWG"/>
+                                        </constraints>
                                     </stackView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -4771,8 +4774,8 @@ ZC4
                         <viewLayoutGuide key="safeArea" id="w1h-Aj-to7"/>
                     </view>
                     <connections>
-                        <outlet property="emailEntry" destination="ttu-gc-qJ8" id="an6-tl-QaG"/>
-                        <outlet property="passwordEntry" destination="7sD-kH-ZfM" id="Obl-Ce-Vml"/>
+                        <outlet property="newEmailTextField" destination="ttu-gc-qJ8" id="an6-tl-QaG"/>
+                        <outlet property="passwordTextField" destination="7sD-kH-ZfM" id="Obl-Ce-Vml"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wgt-VN-yMM" userLabel="First Responder" sceneMemberID="firstResponder"/>

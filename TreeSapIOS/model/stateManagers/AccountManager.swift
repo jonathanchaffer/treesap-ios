@@ -147,10 +147,10 @@ class AccountManager {
         }
     }
 
-    // TODO: use the StringContstancts class
     /**
-     Changes the current user's e-mail to the specified e-mail. If there is no current user, nothing happens
-     - Parameter email: the e-mail that the user's current e-mail is to be changed to
+     Changes the current user's email to the specified email. If there is no current user, nothing happens.
+     - Parameter password: The password used to reauthenticate the user.
+     - Parameter email: The new email address to be used.
      */
     static func updateEmail(password: String, email: String) {
         let credential = EmailAuthProvider.credential(withEmail: getEmail()!, password: password)
@@ -168,8 +168,6 @@ class AccountManager {
                         AlertManager.alertUser(title: StringConstants.invalidEmailTitle, message: StringConstants.invalidEmailMesage)
                     case AuthErrorCode.emailAlreadyInUse.rawValue:
                         AlertManager.alertUser(title: StringConstants.emailAlreadyInUseTitle, message: StringConstants.emailAlreadyInUseMessage)
-                    case AuthErrorCode.requiresRecentLogin.rawValue:
-                        AlertManager.alertUser(title: StringConstants.updateEmailFailureTitle, message: StringConstants.updateEmailFailureMessage)
                     default:
                         AlertManager.alertUser(title: StringConstants.updateEmailFailureTitle, message: StringConstants.updateEmailFailureMessage)
                     }

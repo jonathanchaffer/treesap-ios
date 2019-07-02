@@ -14,6 +14,9 @@ class StringConstants {
     static let ok = "OK"
     static let cancel = "Cancel"
     static let pleaseWait = "Please wait..."
+    
+    static let generalErrorTitle = "Error"
+    static let generalErrorMessage = "Something went wrong. Please try again."
 
     static let locationUnvailableTitle = "Location could not be accessed"
     static let locationUnvailableMessage = "Please ensure that location services are enabled."
@@ -141,9 +144,6 @@ class StringConstants {
 
     static let invalidEmailTitle = "Invalid email"
     static let invalidEmailMesage = "Please ensure that you have entered a valid email address."
-
-    static let incorrectEmailTitle = "Incorrect email"
-    static let incorrectEmailMessage = "The email you entered was incorrect. Please try again."
 
     static let emailAlreadyInUseTitle = "Email already in use"
     static let emailAlreadyInUseMessage = "An account has already been created with that email."
