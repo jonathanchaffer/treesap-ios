@@ -10,62 +10,63 @@ import UIKit
 
 class BenefitsDisplayViewController: TreeDisplayViewController {
     // MARK: - Properties
-    @IBOutlet weak var estimatedBenefitsLabel: UILabel!
-    
+
+    @IBOutlet var estimatedBenefitsLabel: UILabel!
+
     @IBOutlet var benefitsContainer: UIView!
     @IBOutlet var noDataContainer: UIView!
     @IBOutlet var commonNameLabel: UILabel!
     @IBOutlet var scientificNameLabel: UILabel!
-    
+
     @IBOutlet var dbhStackView: UIStackView!
     /**/ @IBOutlet var dbhLabel: UILabel!
-    
+
     @IBOutlet var nativeStackView: UIStackView!
     /**/ @IBOutlet var nativeLabel: UILabel!
-    
+
     @IBOutlet var totalAnnualBenefitsStackView: UIStackView!
     /**/ @IBOutlet var totalAnnualBenefitsDollarsLabel: UILabel!
-    
+
     @IBOutlet var carbonSequestrationStackView: UIStackView!
     /**/ @IBOutlet var carbonSequestrationDollarsLabel: UILabel!
     /**/ @IBOutlet var carbonSequestrationPoundsStackView: UIStackView!
     /****/ @IBOutlet var carbonSequestrationPoundsLabel: UILabel!
-    
+
     @IBOutlet var stormWaterStackView: UIStackView!
     /**/ @IBOutlet var stormWaterDollarsLabel: UILabel!
-    /**/ @IBOutlet weak var avoidedRunoffStackView: UIStackView!
+    /**/ @IBOutlet var avoidedRunoffStackView: UIStackView!
     /****/ @IBOutlet var avoidedRunoffGallonsLabel: UILabel!
-    /**/ @IBOutlet weak var rainfallInterceptedGallonsStackView: UIStackView!
+    /**/ @IBOutlet var rainfallInterceptedGallonsStackView: UIStackView!
     /****/ @IBOutlet var rainfallInterceptedGallonsLabel: UILabel!
-    
+
     @IBOutlet var pollutionRemovalStackView: UIStackView!
     /**/ @IBOutlet var pollutionRemovalDollarsLabel: UILabel!
-    /**/ @IBOutlet weak var coOuncesStackView: UIStackView!
-    /****/ @IBOutlet weak var coOuncesLabel: UILabel!
-    /**/ @IBOutlet weak var o3OuncesStackView: UIStackView!
-    /****/ @IBOutlet weak var o3OuncesLabel: UILabel!
-    /**/ @IBOutlet weak var no2OuncesStackView: UIStackView!
-    /****/ @IBOutlet weak var no2OuncesLabel: UILabel!
-    /**/ @IBOutlet weak var so2OuncesStackView: UIStackView!
-    /****/ @IBOutlet weak var so2OuncesLabel: UILabel!
-    /**/ @IBOutlet weak var pm25OuncesStackView: UIStackView!
-    /****/ @IBOutlet weak var pm25OuncesLabel: UILabel!
-    
+    /**/ @IBOutlet var coOuncesStackView: UIStackView!
+    /****/ @IBOutlet var coOuncesLabel: UILabel!
+    /**/ @IBOutlet var o3OuncesStackView: UIStackView!
+    /****/ @IBOutlet var o3OuncesLabel: UILabel!
+    /**/ @IBOutlet var no2OuncesStackView: UIStackView!
+    /****/ @IBOutlet var no2OuncesLabel: UILabel!
+    /**/ @IBOutlet var so2OuncesStackView: UIStackView!
+    /****/ @IBOutlet var so2OuncesLabel: UILabel!
+    /**/ @IBOutlet var pm25OuncesStackView: UIStackView!
+    /****/ @IBOutlet var pm25OuncesLabel: UILabel!
+
     @IBOutlet var energySavingsStackView: UIStackView!
     /**/ @IBOutlet var energySavingsDollarsLabel: UILabel!
-    /**/ @IBOutlet weak var coolingKWHStackView: UIStackView!
-    /****/ @IBOutlet weak var coolingKWHLabel: UILabel!
-    /**/ @IBOutlet weak var heatingMBTUStackView: UIStackView!
-    /****/ @IBOutlet weak var heatingMBTULabel: UILabel!
-    
+    /**/ @IBOutlet var coolingKWHStackView: UIStackView!
+    /****/ @IBOutlet var coolingKWHLabel: UILabel!
+    /**/ @IBOutlet var heatingMBTUStackView: UIStackView!
+    /****/ @IBOutlet var heatingMBTULabel: UILabel!
+
     @IBOutlet var avoidedEmissionsStackView: UIStackView!
     /**/ @IBOutlet var avoidedEmissionsDollarsLabel: UILabel!
-    /**/ @IBOutlet weak var carbonAvoidedPoundsStackView: UIStackView!
+    /**/ @IBOutlet var carbonAvoidedPoundsStackView: UIStackView!
     /****/ @IBOutlet var carbonAvoidedPoundsLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // Show/hide the estimated benefits disclaimer
         if estimatedBenefitsFound! {
             estimatedBenefitsLabel.isHidden = false

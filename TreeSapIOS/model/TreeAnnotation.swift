@@ -14,20 +14,20 @@ class TreeAnnotation: NSObject, MKAnnotation {
     let title: String?
     let subtitle: String?
     let coordinate: CLLocationCoordinate2D
-    
+
     var markerTintColor: UIColor {
         let redOffset = CGFloat(Float.random(in: -0.075 ... 0.075))
         let greenOffset = CGFloat(Float.random(in: -0.075 ... 0.075))
         let blueOffset = CGFloat(Float.random(in: -0.075 ... 0.075))
-        var baseColor: UIColor? = nil
-        if tree.userID == AccountManager.getUserID() && AccountManager.getUserID() != nil {
+        var baseColor: UIColor?
+        if tree.userID == AccountManager.getUserID(), AccountManager.getUserID() != nil {
             baseColor = UIColor(named: "myTree")
         } else {
             baseColor = UIColor(named: "treesapGreen")
         }
         return UIColor(red: baseColor!.rgba.0 + redOffset, green: baseColor!.rgba.1 + greenOffset, blue: baseColor!.rgba.2 + blueOffset, alpha: 1.0)
     }
-    
+
     init(tree: Tree) {
         self.tree = tree
         coordinate = tree.location
@@ -44,7 +44,7 @@ extension UIColor {
         var blue: CGFloat = 0
         var alpha: CGFloat = 0
         getRed(&red, green: &green, blue: &blue, alpha: &alpha)
-        
+
         return (red, green, blue, alpha)
     }
 }

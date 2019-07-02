@@ -10,37 +10,37 @@ import XCTest
 
 class AccountSettingsTests: XCTestCase {
     var app: XCUIApplication!
-    
+
     override func setUp() {
         continueAfterFailure = false
         XCUIDevice.shared.orientation = UIDeviceOrientation.portrait
-        
+
         app = XCUIApplication()
         app.launchArguments.append("--uitesting")
         app.launch()
-        
+
         let settingsButton = app.navigationBars["Home"].children(matching: .button).element(boundBy: 1)
         let exists = NSPredicate(format: "exists == 1")
         let settingsExpectation = expectation(for: exists, evaluatedWith: settingsButton, handler: nil)
         wait(for: [settingsExpectation], timeout: 8)
         settingsButton.tap()
-        
+
         let tablesQuery = app.tables
         tablesQuery.staticTexts["Account settings"].tap()
     }
 
-    //This logs the user in to an account with the e-mail "example@example.com" and the password "thingyThingy". If the user is logged in at the beginning of the test, the user is logged out before the rest of the test runs.
+    // This logs the user in to an account with the e-mail "example@example.com" and the password "thingyThingy". If the user is logged in at the beginning of the test, the user is logged out before the rest of the test runs.
     func testLogInAndOut() {
-        //Logs the user out, if they are logged in
+        // Logs the user out, if they are logged in
         let logoutButton = app.tables.staticTexts["log out"]
-        if(logoutButton.exists && logoutButton.isHittable){
+        if logoutButton.exists, logoutButton.isHittable {
             logoutButton.tap()
             app.alerts["Are you sure?"].buttons["OK"].tap()
         }
-        
+
         app.tables.staticTexts["log in or sign up"].tap()
-        
-        //Type in Email
+
+        // Type in Email
         app.textFields["log in email entry"].tap()
         app.keys["e"].tap()
         app.keys["x"].tap()
@@ -61,10 +61,10 @@ class AccountSettingsTests: XCTestCase {
         app.keys["c"].tap()
         app.keys["o"].tap()
         app.keys["m"].tap()
-        
+
         app.buttons["Next"].tap()
-        
-        //Type in password
+
+        // Type in password
         app.keys["t"].tap()
         app.keys["h"].tap()
         app.keys["i"].tap()
@@ -78,28 +78,27 @@ class AccountSettingsTests: XCTestCase {
         app.keys["n"].tap()
         app.keys["g"].tap()
         app.keys["y"].tap()
-        
-        //Log in
+
+        // Log in
         app.buttons["Go"].tap()
-        
-        //Log out
+
+        // Log out
         app.tables.staticTexts["log out"].tap()
         app.alerts["Are you sure?"].buttons["OK"].tap()
     }
-    
-    func testCreateAccount(){
-        
-        //Logs the user out, if they are logged in
+
+    func testCreateAccount() {
+        // Logs the user out, if they are logged in
         let logoutButton = app.tables.staticTexts["log out"]
-        if(logoutButton.exists && logoutButton.isHittable){
+        if logoutButton.exists, logoutButton.isHittable {
             logoutButton.tap()
             app.alerts["Are you sure?"].buttons["OK"].tap()
         }
-        
+
         app.tables.staticTexts["log in or sign up"].tap()
         app.buttons["create an account"].tap()
-        
-        //Type in e-mail
+
+        // Type in e-mail
         app.textFields["create account email entry"].tap()
         app.keys["t"].tap()
         app.keys["e"].tap()
@@ -126,10 +125,10 @@ class AccountSettingsTests: XCTestCase {
         app.keys["c"].tap()
         app.keys["o"].tap()
         app.keys["m"].tap()
-        
+
         app.buttons["Next"].tap()
-        
-        //Type in password
+
+        // Type in password
         app.keys["t"].tap()
         app.keys["e"].tap()
         app.keys["s"].tap()
@@ -143,10 +142,10 @@ class AccountSettingsTests: XCTestCase {
         app.keys["o"].tap()
         app.keys["r"].tap()
         app.keys["d"].tap()
-        
+
         app.buttons["Next"].tap()
-        
-        //Type in password confirmation
+
+        // Type in password confirmation
         app.keys["t"].tap()
         app.keys["e"].tap()
         app.keys["s"].tap()
@@ -160,7 +159,7 @@ class AccountSettingsTests: XCTestCase {
         app.keys["o"].tap()
         app.keys["r"].tap()
         app.keys["d"].tap()
-        
+
         app.buttons["Go"].tap()
     }
 }

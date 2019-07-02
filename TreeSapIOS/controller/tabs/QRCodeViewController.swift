@@ -118,9 +118,7 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
 
     // This function takes the String that was encoded in the QR code, finds a tree that corresponds to that code using a call to getTreeFromString, and displays the results.
     func metadataOutput(_: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from _: AVCaptureConnection) {
-        
         if let metadatObject: AVMetadataObject = metadataObjects.first {
-            
             guard let readableObject = metadatObject as? AVMetadataMachineReadableCodeObject else {
                 CheckAndAlertUser(title: StringConstants.scanErrorTitle, message: StringConstants.scanErrorMessage)
                 return
@@ -137,7 +135,7 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
             }
 
             // If this view controller is not presenting an alert, display tree data
-            if(self.presentedViewController == nil || !(self.presentedViewController is UIAlertController)){
+            if presentedViewController == nil || !(presentedViewController is UIAlertController) {
                 let pages = TreeDetailPageViewController(tree: treeToDisplay)
                 navigationController?.pushViewController(pages, animated: true)
             }
@@ -192,19 +190,18 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
 
         return resultTree
     }
-    
+
     /**
      Returns without doing anything if this view controller is already presenting an alert. If not, it presents an alert with the specified title and message
      - Parameters:
         - title: the title of the alert
         - message: the message of the alert
      */
-    func CheckAndAlertUser(title: String, message: String){
-        
-        if(self.presentedViewController != nil && self.presentedViewController is UIAlertController){
+    func CheckAndAlertUser(title: String, message: String) {
+        if presentedViewController != nil, presentedViewController is UIAlertController {
             return
         }
-        
+
         AlertManager.alertUser(title: title, message: message)
     }
 

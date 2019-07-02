@@ -8,14 +8,14 @@
 //  Used https://theswiftdev.com/2019/01/30/picking-images-with-uiimagepickercontroller-in-swift-5/ as a reference.
 //
 
-import UIKit
 import ImageSlideshow
+import UIKit
 
 class AddTreePhotoViewController: AddTreeViewController {
     let pickerController = UIImagePickerController()
     let delegate = self
     var selectedImages = [UIImage]()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -76,7 +76,7 @@ class AddTreePhotoViewController: AddTreeViewController {
     /// Function that is called when an image has been selected.
     private func pickerController(_ controller: UIImagePickerController, didSelect image: UIImage?) {
         controller.dismiss(animated: true, completion: nil)
-        if(image != nil){
+        if image != nil {
             selectedImages.append(image!)
         }
         updateImages()

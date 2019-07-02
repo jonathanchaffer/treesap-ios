@@ -17,8 +17,8 @@ extension UIViewController: UIGestureRecognizerDelegate {
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
     }
-    
-    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+
+    public func gestureRecognizer(_: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
         let touchView = touch.view
         if touchView == nil {
             return true
@@ -29,11 +29,11 @@ extension UIViewController: UIGestureRecognizerDelegate {
         }
         return true
     }
-    
+
     /// Dismisses the keyboard.
-    @objc func dismissKeyboard(sender: UITapGestureRecognizer) {
+    @objc func dismissKeyboard(sender _: UITapGestureRecognizer) {
         // The dispatch queue is used because button presses need to be resolved before the keyboard is dismissed.
-        DispatchQueue.main.asyncAfter(deadline: .now()){
+        DispatchQueue.main.asyncAfter(deadline: .now()) {
             self.view.endEditing(true)
         }
     }

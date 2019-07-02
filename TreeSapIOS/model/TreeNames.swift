@@ -96,6 +96,6 @@ class TreeNames {
         "White Spruce": "Picea glauca",
         "Wych Elm": "Ulmus glabra",
         "Yellow poplar": "Liriodendron tulipifera",
-        "Yew": "Taxus baccata"
+        "Yew": "Taxus baccata",
     ]
 }

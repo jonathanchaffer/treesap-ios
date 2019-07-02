@@ -6,25 +6,26 @@
 //  Copyright © 2019 Hope CS. All rights reserved.
 //
 
-import UIKit
 import Firebase
-import MapKit
 import ImageSlideshow
+import MapKit
+import UIKit
 
 class PendingTreeDetailsViewController: UIViewController {
     // MARK: - Properties
+
     var displayedTree: Tree?
-    
-    @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var commonNameLabel: UILabel!
-    @IBOutlet weak var scientificNameLabel: UILabel!
-    @IBOutlet weak var latitudeLabel: UILabel!
-    @IBOutlet weak var longitudeLabel: UILabel!
-    @IBOutlet weak var dbhLabel: UILabel!
-    @IBOutlet weak var notesStackView: UIStackView!
-    @IBOutlet weak var noPhotosLabel: UILabel!
-    @IBOutlet weak var imageSlideshow: ImageSlideshow!
-    
+
+    @IBOutlet var mapView: MKMapView!
+    @IBOutlet var commonNameLabel: UILabel!
+    @IBOutlet var scientificNameLabel: UILabel!
+    @IBOutlet var latitudeLabel: UILabel!
+    @IBOutlet var longitudeLabel: UILabel!
+    @IBOutlet var dbhLabel: UILabel!
+    @IBOutlet var notesStackView: UIStackView!
+    @IBOutlet var noPhotosLabel: UILabel!
+    @IBOutlet var imageSlideshow: ImageSlideshow!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLabels()
@@ -34,9 +35,9 @@ class PendingTreeDetailsViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(deleteDataSuccess), name: NSNotification.Name(StringConstants.deleteDataSuccessNotification), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(deleteDataFailure), name: NSNotification.Name(StringConstants.deleteDataFailureNotification), object: nil)
     }
-    
+
     // MARK: - Private functions
-    
+
     private func setupLabels() {
         let commonName = displayedTree!.commonName
         let scientificName = displayedTree!.scientificName
@@ -44,23 +45,23 @@ class PendingTreeDetailsViewController: UIViewController {
         let longitude = displayedTree!.location.longitude
         let dbhArray = displayedTree!.dbhArray
         let notes = displayedTree!.notes
-        
+
         // Set common name and scientific name labels
-        if commonName != nil && commonName != "" {
+        if commonName != nil, commonName != "" {
             commonNameLabel.text = commonName!
         } else {
             commonNameLabel.text = "N/A"
         }
-        if scientificName != nil && scientificName != "" {
+        if scientificName != nil, scientificName != "" {
             scientificNameLabel.text = scientificName!
         } else {
             scientificNameLabel.text = "N/A"
         }
-        
+
         // Set latitude and longitude labels
         latitudeLabel.text = String(latitude)
         longitudeLabel.text = String(longitude)
-        
+
         // Set DBH label
         if dbhArray != [] {
             var dbhString = ""
@@ -72,7 +73,7 @@ class PendingTreeDetailsViewController: UIViewController {
         } else {
             dbhLabel.text = "N/A"
         }
-        
+
         // Set notes labels
         if !notes.isEmpty {
             for note in notes {
@@ -86,19 +87,21 @@ class PendingTreeDetailsViewController: UIViewController {
             label.text = "N/A"
             notesStackView.addArrangedSubview(label)
         }
-        
+
         // Set up map
         let coordinateRegion = MKCoordinateRegion(
             center: CLLocationCoordinate2D(
                 latitude: latitude,
-                longitude: longitude),
+                longitude: longitude
+            ),
             latitudinalMeters: 100,
-            longitudinalMeters: 100)
+            longitudinalMeters: 100
+        )
         mapView.setRegion(coordinateRegion, animated: true)
         mapView.register(TreeAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
         mapView.addAnnotation(TreeAnnotation(tree: displayedTree!))
     }
-    
+
     private func setupPhotos() {
         var imageSources = [ImageSource]()
         let imageMap = displayedTree!.images
@@ -113,14 +116,14 @@ class PendingTreeDetailsViewController: UIViewController {
         } else {
             imageSlideshow.isHidden = true
         }
-        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.didTapSlideshow))
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapSlideshow))
         imageSlideshow.addGestureRecognizer(gestureRecognizer)
     }
-    
+
     @objc private func didTapSlideshow() {
         imageSlideshow.presentFullScreenController(from: self)
     }
-    
+
     /// Dismisses the loading alert, and then alerts the user that the tree was successfully accepted.
     @objc private func updateDataSuccess() {
         dismiss(animated: true) {
@@ -129,14 +132,14 @@ class PendingTreeDetailsViewController: UIViewController {
             self.present(alert, animated: true)
         }
     }
-    
+
     /// Dismisses the loading alert, and then alerts the user that there was an error while trying to update the tree.
     @objc private func updateDataFailure() {
         dismiss(animated: true) {
             AlertManager.alertUser(title: StringConstants.treeUpdateFailureTitle, message: StringConstants.treeUpdateFailureMessage)
         }
     }
-    
+
     /// Dismisses the loading alert, and then alerts the user that the tree was successfully removed.
     @objc private func deleteDataSuccess() {
         dismiss(animated: true) {
@@ -145,25 +148,25 @@ class PendingTreeDetailsViewController: UIViewController {
             self.present(alert, animated: true)
         }
     }
-    
+
     /// Dismisses the loading alert, and then alerts the user that there was an error while trying to remove the tree.
     @objc private func deleteDataFailure() {
         dismiss(animated: true) {
             AlertManager.alertUser(title: StringConstants.treeRemovalFailureTitle, message: StringConstants.treeRemovalFailureMessage)
         }
     }
-    
+
     /// Closes the pending tree details screen.
     private func closePendingTreeDetails() {
         navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)
     }
-    
+
     /// Shows an alert asking the user whether they would like to send a message to the user.
     private func showAddMessageAlert(accepting: Bool) {
         let addMessageAlert = UIAlertController(title: StringConstants.addMessagePromptTitle, message: StringConstants.addMessagePromptMessage, preferredStyle: .alert)
         addMessageAlert.addAction(UIAlertAction(title: StringConstants.addMessagePromptAddMessageAction, style: .default) { _ in self.showAddMessageScreen(accepting: accepting) })
-        var withoutMessageLabel: String? = nil
+        var withoutMessageLabel: String?
         if accepting {
             withoutMessageLabel = StringConstants.addMessagePromptAcceptWithoutMessageAction
         } else {
@@ -180,27 +183,27 @@ class PendingTreeDetailsViewController: UIViewController {
             }
         })
         addMessageAlert.addAction(UIAlertAction(title: StringConstants.cancel, style: .cancel, handler: nil))
-        self.present(addMessageAlert, animated: true)
+        present(addMessageAlert, animated: true)
     }
-    
+
     /// Shows the add message screen.
     private func showAddMessageScreen(accepting: Bool) {
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "addMessage") as! AddMessageViewController
         vc.accepting = accepting
-        vc.documentID = self.displayedTree!.documentID
-        vc.userID = self.displayedTree!.userID
+        vc.documentID = displayedTree!.documentID
+        vc.userID = displayedTree!.userID
         let navigationController = UINavigationController(rootViewController: vc)
         navigationController.navigationBar.tintColor = UIColor(named: "treesapGreen")!
-        self.present(navigationController, animated: true)
+        present(navigationController, animated: true)
     }
-    
+
     // MARK: - Actions
-    
-    @IBAction func acceptButtonPressed(_ sender: UIButton) {
+
+    @IBAction func acceptButtonPressed(_: UIButton) {
         showAddMessageAlert(accepting: true)
     }
-    
-    @IBAction func rejectButtonPressed(_ sender: UIButton) {
+
+    @IBAction func rejectButtonPressed(_: UIButton) {
         showAddMessageAlert(accepting: false)
     }
 }

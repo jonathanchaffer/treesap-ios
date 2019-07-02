@@ -6,11 +6,12 @@
 //  Copyright © 2019 Hope CS. All rights reserved.
 //
 
-import UIKit
 import ImageSlideshow
+import UIKit
 
 class SimpleDisplayViewController: TreeDisplayViewController {
     // MARK: - Properties
+
     @IBOutlet var commonNameLabel: UILabel!
     @IBOutlet var scientificNameLabel: UILabel!
     @IBOutlet var treeIDStackView: UIStackView!
@@ -20,17 +21,18 @@ class SimpleDisplayViewController: TreeDisplayViewController {
     @IBOutlet var dbhStackView: UIStackView!
     @IBOutlet var dbhLabel: UILabel!
     @IBOutlet var backgroundImage: UIImageView!
-    @IBOutlet weak var notesContainerStackView: UIStackView!
-    @IBOutlet weak var notesButton: UIButton!
-    @IBOutlet weak var notesStackView: UIStackView!
-    @IBOutlet weak var photosContainerStackView: UIStackView!
-    @IBOutlet weak var photosButton: UIButton!
-    @IBOutlet weak var imageSlideshow: ImageSlideshow!
-    
+    @IBOutlet var notesContainerStackView: UIStackView!
+    @IBOutlet var notesButton: UIButton!
+    @IBOutlet var notesStackView: UIStackView!
+    @IBOutlet var photosContainerStackView: UIStackView!
+    @IBOutlet var photosButton: UIButton!
+    @IBOutlet var imageSlideshow: ImageSlideshow!
+
     // MARK: - Overrides
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // Set common name label
         if displayedTree!.commonName != nil {
             commonNameLabel.text = displayedTree!.commonName
@@ -91,7 +93,7 @@ class SimpleDisplayViewController: TreeDisplayViewController {
         }
         setupSlideshow()
     }
-    
+
     private func setupSlideshow() {
         var imageSources = [ImageSource]()
         for imageCategory in displayedTree!.images.keys {
@@ -100,34 +102,34 @@ class SimpleDisplayViewController: TreeDisplayViewController {
             }
         }
         imageSlideshow.setImageInputs(imageSources)
-        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.didTapSlideshow))
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapSlideshow))
         imageSlideshow.addGestureRecognizer(gestureRecognizer)
     }
-    
+
     @objc private func didTapSlideshow() {
         imageSlideshow.presentFullScreenController(from: self)
     }
-    
+
     /// Shows notes.
     private func showNotes() {
         notesButton.setTitle("Hide Notes", for: .normal)
-        self.notesContainerStackView.layer.opacity = 0
+        notesContainerStackView.layer.opacity = 0
         UIView.animate(withDuration: 0.3) {
             self.notesContainerStackView.isHidden = false
             self.notesContainerStackView.layer.opacity = 1
         }
     }
-    
+
     /// Shows photos.
     private func showPhotos() {
         photosButton.setTitle("Hide Photos", for: .normal)
-        self.photosContainerStackView.layer.opacity = 0
+        photosContainerStackView.layer.opacity = 0
         UIView.animate(withDuration: 0.3) {
             self.photosContainerStackView.isHidden = false
             self.photosContainerStackView.layer.opacity = 1
         }
     }
-    
+
     /// Hides notes.
     private func hideNotes() {
         notesButton.setTitle("View Notes", for: .normal)
@@ -136,7 +138,7 @@ class SimpleDisplayViewController: TreeDisplayViewController {
             self.notesContainerStackView.layer.opacity = 0
         }
     }
-    
+
     /// Hides photos.
     private func hidePhotos() {
         photosButton.setTitle("View Photos", for: .normal)
@@ -145,13 +147,14 @@ class SimpleDisplayViewController: TreeDisplayViewController {
             self.photosContainerStackView.layer.opacity = 0
         }
     }
-    
+
     // MARK: - Actions
-    @IBAction func dbhInfoButtonPressed(_ sender: UIButton) {
+
+    @IBAction func dbhInfoButtonPressed(_: UIButton) {
         AlertManager.alertUser(title: StringConstants.dbhExplanationTitle, message: StringConstants.dbhExplanationWithMultipleMessage)
     }
-    
-    @IBAction func viewNotesButtonPressed(_ sender: UIButton) {
+
+    @IBAction func viewNotesButtonPressed(_: UIButton) {
         if !photosContainerStackView.isHidden {
             hidePhotos()
         }
@@ -161,8 +164,8 @@ class SimpleDisplayViewController: TreeDisplayViewController {
             hideNotes()
         }
     }
-    
-    @IBAction func viewPhotosButtonPressed(_ sender: UIButton) {
+
+    @IBAction func viewPhotosButtonPressed(_: UIButton) {
         if !notesContainerStackView.isHidden {
             hideNotes()
         }

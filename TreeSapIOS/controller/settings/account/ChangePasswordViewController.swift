@@ -9,12 +9,11 @@
 import UIKit
 
 class ChangePasswordViewController: UIViewController {
+    @IBOutlet var oldPasswordTextField: UITextField!
+    @IBOutlet var newPasswordTextField: UITextField!
+    @IBOutlet var newPasswordConfirmTextField: UITextField!
+    @IBOutlet var changePasswordButton: UIStackView!
 
-    @IBOutlet weak var oldPasswordTextField: UITextField!
-    @IBOutlet weak var newPasswordTextField: UITextField!
-    @IBOutlet weak var newPasswordConfirmTextField: UITextField!
-    @IBOutlet weak var changePasswordButton: UIStackView!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(closeChangePassword), name: NSNotification.Name(StringConstants.passwordUpdatedNotification), object: nil)
@@ -22,12 +21,11 @@ class ChangePasswordViewController: UIViewController {
         newPasswordTextField.delegate = self
         newPasswordConfirmTextField.delegate = self
     }
-    
-    @IBAction func changePasswordButtonPressed(_ sender: UIButton) {
+
+    @IBAction func changePasswordButtonPressed(_: UIButton) {
         updatePassword()
     }
-    
-    
+
     private func updatePassword() {
         if newPasswordTextField.text! == newPasswordConfirmTextField.text! {
             AccountManager.updatePassword(oldPassword: oldPasswordTextField.text!, newPassword: newPasswordTextField.text!)
@@ -36,7 +34,7 @@ class ChangePasswordViewController: UIViewController {
             return
         }
     }
-    
+
     @objc private func closeChangePassword() {
         navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)

@@ -6,41 +6,41 @@
 //  Copyright © 2019 Hope CS. All rights reserved.
 //
 
-import UIKit
 import SearchTextField
+import UIKit
 
 class AddTreeOtherViewController: AddTreeViewController {
     // MARK: - Properties
 
     @IBOutlet var commonNameTextField: SearchTextField!
     @IBOutlet var scientificNameTextField: SearchTextField!
-    
+
     @IBOutlet var measurementStackView: UIStackView!
     @IBOutlet var dbhTextField: UITextField!
     @IBOutlet var circumferenceTextField: UITextField!
-    @IBOutlet weak var measurement1StackView: UIStackView!
-    @IBOutlet weak var dbh1TextField: UITextField!
-    @IBOutlet weak var circumference1TextField: UITextField!
-    @IBOutlet weak var measurement2StackView: UIStackView!
-    @IBOutlet weak var dbh2TextField: UITextField!
-    @IBOutlet weak var circumference2TextField: UITextField!
-    @IBOutlet weak var measurement3StackView: UIStackView!
-    @IBOutlet weak var dbh3TextField: UITextField!
-    @IBOutlet weak var circumference3TextField: UITextField!
-    
+    @IBOutlet var measurement1StackView: UIStackView!
+    @IBOutlet var dbh1TextField: UITextField!
+    @IBOutlet var circumference1TextField: UITextField!
+    @IBOutlet var measurement2StackView: UIStackView!
+    @IBOutlet var dbh2TextField: UITextField!
+    @IBOutlet var circumference2TextField: UITextField!
+    @IBOutlet var measurement3StackView: UIStackView!
+    @IBOutlet var dbh3TextField: UITextField!
+    @IBOutlet var circumference3TextField: UITextField!
+
     @IBOutlet var metricSwitch: UISwitch!
     @IBOutlet var dbhLabels: [UILabel]!
     @IBOutlet var circumferenceLabels: [UILabel]!
-    
-    @IBOutlet weak var notesTextField: MultilineTextField!
-    
+
+    @IBOutlet var notesTextField: MultilineTextField!
+
     /// The number of additional measurements that are currently being shown.
     var visibleMeasurementsCount = 1
-    
+
     var dbhTextFields = [UITextField]()
     var circumferenceTextFields = [UITextField]()
     var measurementStackViews = [UIStackView]()
-    
+
     // MARK: - Overrides
 
     override func viewDidLoad() {
@@ -108,14 +108,14 @@ class AddTreeOtherViewController: AddTreeViewController {
         alert.addAction(UIAlertAction(title: StringConstants.confirmSubmitTreeSubmitAction, style: .default, handler: { _ in self.broadcastSubmitTree() }))
         present(alert, animated: true)
     }
-    
+
     /// Shows an alert that explains what DBH means.
-    @IBAction func dbhInfoButtonPressed(_ sender: UIButton) {
+    @IBAction func dbhInfoButtonPressed(_: UIButton) {
         AlertManager.alertUser(title: StringConstants.dbhExplanationTitle, message: StringConstants.dbhExplanationWithCircumferenceMessage)
     }
-    
+
     /// Shows an additional measurement stack view.
-    @IBAction func addMeasurementButtonPressed(_ sender: UIButton) {
+    @IBAction func addMeasurementButtonPressed(_: UIButton) {
         if visibleMeasurementsCount < measurementStackViews.count {
             visibleMeasurementsCount += 1
             let stackViewToShow = measurementStackViews[visibleMeasurementsCount - 1]
@@ -128,9 +128,9 @@ class AddTreeOtherViewController: AddTreeViewController {
             AlertManager.alertUser(title: StringConstants.maxTrunkMeasurementsTitle, message: StringConstants.maxTrunkMeasurementsMessage0 + String(measurementStackViews.count) + StringConstants.maxTrunkMeasurementsMessage1)
         }
     }
-    
+
     /// Hides a measurement stack view and clears its text.
-    @IBAction func removeMeasurementButtonPressed(_ sender: UIButton) {
+    @IBAction func removeMeasurementButtonPressed(_: UIButton) {
         if visibleMeasurementsCount > 1 {
             visibleMeasurementsCount -= 1
             let stackViewToHide = measurementStackViews[visibleMeasurementsCount]
@@ -144,7 +144,7 @@ class AddTreeOtherViewController: AddTreeViewController {
             AlertManager.alertUser(title: StringConstants.minTrunkMeasurementsTitle, message: StringConstants.minTrunkMeasurementsMessage)
         }
     }
-    
+
     @IBAction func toggleMetric(_ sender: UISwitch) {
         if sender.isOn {
             for label in dbhLabels {
@@ -161,20 +161,19 @@ class AddTreeOtherViewController: AddTreeViewController {
                 label.text = "Circumference (in)"
             }
         }
-        
     }
-    
+
     @IBAction func broadcastBack(_: UIButton) {
         previousPage()
     }
 
     // MARK: - Private functions
-    
+
     /// Tells the AddTreePageViewController to submit the tree.
     private func broadcastSubmitTree() {
         NotificationCenter.default.post(name: NSNotification.Name(StringConstants.submitTreeNotification), object: nil)
     }
-    
+
     /// Function that is called when a text field's text changes.
     @objc private func textFieldDidChange(_ textField: UITextField) {
         let currentText = textField.text!
@@ -187,7 +186,7 @@ class AddTreeOtherViewController: AddTreeViewController {
             updateDBH(circumferenceText: currentText, dbhTextField: dbhTextFields[i])
         }
     }
-    
+
     /// Converts a DBH string to circumference and updates the specified text field.
     private func updateCircumference(dbhText: String, circumferenceTextField: UITextField) {
         let dbh = Double(dbhText)
@@ -197,7 +196,7 @@ class AddTreeOtherViewController: AddTreeViewController {
             circumferenceTextField.text = nil
         }
     }
-    
+
     /// Converts a circumference string to DBH and updates the specified text field.
     private func updateDBH(circumferenceText: String, dbhTextField: UITextField) {
         let circumference = Double(circumferenceText)
@@ -262,7 +261,7 @@ extension AddTreeOtherViewController: UITextFieldDelegate {
         }
         return true
     }
-    
+
     /// Ensures that measurement text fields only allow numbers and dots.
     func textField(_ textField: UITextField, shouldChangeCharactersIn _: NSRange, replacementString string: String) -> Bool {
         if dbhTextFields.contains(textField) || circumferenceTextFields.contains(textField) {

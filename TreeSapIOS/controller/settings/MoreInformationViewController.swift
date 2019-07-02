@@ -10,26 +10,24 @@ import Foundation
 import UIKit
 
 class MoreInformationViewController: UIViewController {
-    
     private func closeMoreInformation() {
         navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)
     }
-    
-    @IBAction func openITreeWebTools(_ sender: UIButton) {
+
+    @IBAction func openITreeWebTools(_: UIButton) {
         UIApplication.shared.open(URL(string: "https://www.itreetools.org")! as URL, options: [:], completionHandler: nil)
     }
-    
-    @IBAction func openNationalTreeBenefitCalculator(_ sender: UIButton) {
+
+    @IBAction func openNationalTreeBenefitCalculator(_: UIButton) {
         UIApplication.shared.open(URL(string: "http://www.treebenefits.com/calculator/")! as URL, options: [:], completionHandler: nil)
     }
-    
-    @IBAction func openINaturalist(_ sender: UIButton) {
+
+    @IBAction func openINaturalist(_: UIButton) {
         UIApplication.shared.open(URL(string: "https://www.inaturalist.org")! as URL, options: [:], completionHandler: nil)
     }
-    
-    @IBAction func closeButtonPressed(_ sender: UIBarButtonItem) {
+
+    @IBAction func closeButtonPressed(_: UIBarButtonItem) {
         closeMoreInformation()
     }
-    
 }

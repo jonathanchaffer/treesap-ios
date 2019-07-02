@@ -6,9 +6,9 @@
 //  Copyright © 2019 Hope CS. All rights reserved.
 //
 
+import Firebase
 import MapKit
 import UIKit
-import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

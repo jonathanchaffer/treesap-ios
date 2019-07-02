@@ -21,7 +21,7 @@ class CoordinatesViewController: UIViewController {
         super.viewDidLoad()
         latitudeTextField.delegate = self
         longitudeTextField.delegate = self
-        self.hideKeyboardWhenTappedAround()
+        hideKeyboardWhenTappedAround()
     }
 
     // MARK: - Actions
@@ -85,7 +85,7 @@ extension CoordinatesViewController: UITextFieldDelegate {
         let characterSet = CharacterSet(charactersIn: string)
         return allowedCharacters.isSuperset(of: characterSet)
     }
-    
+
     /// Function that is called when the return key is pressed on the keyboard. Sets the next text field to be first responder or handles submit events appropriately.
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField {

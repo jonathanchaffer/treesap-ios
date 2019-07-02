@@ -6,14 +6,13 @@
 //  Copyright © 2019 Hope CS. All rights reserved.
 //
 
-import XCTest
 @testable import TreeSapIOS
+import XCTest
 
 class NameFormatterTests: XCTestCase {
+    override func setUp() {}
 
-    override func setUp() { }
-
-    override func tearDown() { }
+    override func tearDown() {}
 
     func testFormatCommonName() {
         XCTAssertEqual(NameFormatter.formatCommonName(commonName: ""), "")
@@ -25,7 +24,7 @@ class NameFormatterTests: XCTestCase {
         XCTAssertEqual(NameFormatter.formatCommonName(commonName: "jonathan chaffer"), "Jonathan Chaffer")
         XCTAssertEqual(NameFormatter.formatCommonName(commonName: "jipping-mike"), "Mike Jipping")
     }
-    
+
     func testFormatScientificName() {
         XCTAssertEqual(NameFormatter.formatScientificName(scientificName: ""), "")
         XCTAssertEqual(NameFormatter.formatScientificName(scientificName: "tree"), "Tree")
@@ -35,7 +34,5 @@ class NameFormatterTests: XCTestCase {
         XCTAssertEqual(NameFormatter.formatScientificName(scientificName: "acer Saccharum"), "Acer saccharum")
         XCTAssertEqual(NameFormatter.formatScientificName(scientificName: "FRTR frog tree"), "Frog tree")
         XCTAssertEqual(NameFormatter.formatScientificName(scientificName: "This Is The Tree"), "This is the tree")
-
     }
-
 }

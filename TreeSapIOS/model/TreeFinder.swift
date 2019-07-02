@@ -45,7 +45,7 @@ class TreeFinder {
         }
         return nearbyTrees
     }
-    
+
     class func findTreeByLocation(location: CLLocationCoordinate2D, dataSources: [DataSource], cutoffDistance: Double) -> Tree? {
         let nearestTreeArray = findTreesByLocation(location: location, dataSources: dataSources, cutoffDistance: cutoffDistance, maxNumTrees: 1)
         if !nearestTreeArray.isEmpty {
@@ -53,7 +53,7 @@ class TreeFinder {
         }
         return nil
     }
-    
+
     class func findTreeByLocation(latitude: Double, longitude: Double, dataSources: [DataSource], cutoffDistance: Double) -> Tree? {
         let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         return findTreeByLocation(location: coordinate, dataSources: dataSources, cutoffDistance: cutoffDistance)

@@ -11,30 +11,30 @@ import UIKit
 
 class NotificationsTableViewController: UITableViewController {
     // MARK: - Properties
-    
+
     var documents = [DocumentSnapshot]()
     var selecting = false
     var numPendingDeletions = 0
-    
+
     @IBOutlet var selectButton: UIBarButtonItem!
     @IBOutlet var cancelButton: UIBarButtonItem!
     @IBOutlet var barSpace: UIBarButtonItem!
     @IBOutlet var trashButton: UIBarButtonItem!
-    
+
     // MARK: - Overrides
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(deleteDataSuccess), name: NSNotification.Name(StringConstants.deleteDataSuccessNotification), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(deleteDataFailure), name: NSNotification.Name(StringConstants.deleteDataFailureNotification), object: nil)
-        
+
         // Setup long press gesture recognizer
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
         longPressGesture.minimumPressDuration = 0.5
         longPressGesture.delegate = self
-        self.tableView.addGestureRecognizer(longPressGesture)
+        tableView.addGestureRecognizer(longPressGesture)
     }
-    
+
     override func viewWillAppear(_: Bool) {
         reloadNotifications()
         DispatchQueue.main.asyncAfter(deadline: .now()) {
@@ -42,8 +42,8 @@ class NotificationsTableViewController: UITableViewController {
         }
         navigationController?.setToolbarHidden(false, animated: false)
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
+
+    override func viewDidAppear(_: Bool) {
         // Prompt the user to log in if they're not already
         if !AccountManager.isLoggedIn() {
             let alert = UIAlertController(title: StringConstants.loginRequiredTitle, message: StringConstants.loginRequiredMessage, preferredStyle: .alert)
@@ -52,11 +52,11 @@ class NotificationsTableViewController: UITableViewController {
             present(alert, animated: true)
         }
     }
-    
+
     override func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         return documents.count
     }
-    
+
     /// Determines the cell to be displayed at a given index path.
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "notificationCell", for: indexPath)
@@ -87,7 +87,7 @@ class NotificationsTableViewController: UITableViewController {
         }
         return cell
     }
-    
+
     /// Function that is called when a table cell is selected. If selecting items, then the cell should be checked/unchecked when tapped.
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
@@ -107,19 +107,19 @@ class NotificationsTableViewController: UITableViewController {
             // Push notification details for the cell
             let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "notificationDetails") as! NotificationDetailsViewController
             vc.data = documents[index].data()!
-            self.navigationController?.pushViewController(vc, animated: true)
+            navigationController?.pushViewController(vc, animated: true)
         }
         tableView.deselectRow(at: indexPath, animated: true)
     }
-    
+
     // MARK: - Private functions
-    
+
     /// Reloads the table data.
     @objc private func reloadTableData() {
         tableView.reloadData()
         reloadTableRows()
     }
-    
+
     /// Reloads the table rows.
     private func reloadTableRows() {
         var rows = [IndexPath]()
@@ -128,7 +128,7 @@ class NotificationsTableViewController: UITableViewController {
         }
         tableView.reloadRows(at: rows, with: .none)
     }
-    
+
     /// Asks the database manager for the notifications collection and reloads the notifications into documents.
     private func reloadNotifications() {
         DatabaseManager.getNotificationsCollection()?.getDocuments { snapshot, error in
@@ -140,26 +140,26 @@ class NotificationsTableViewController: UITableViewController {
                     self.documents.append(document)
                 }
                 self.documents.sort(by: { doc1, doc2 in
-                    return (doc1.data()!["timestamp"] as! Timestamp).seconds > (doc2.data()!["timestamp"] as! Timestamp).seconds
+                    (doc1.data()!["timestamp"] as! Timestamp).seconds > (doc2.data()!["timestamp"] as! Timestamp).seconds
                 }, stable: true)
                 self.reloadTableData()
             }
         }
     }
-    
+
     /// Pushes the login screen onto the view hierarchy.
     @objc private func goToLogin() {
         let screen = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "loginSignupScreen")
         navigationController?.pushViewController(screen, animated: true)
     }
-    
+
     /// Shows an alert saying that notifications could not be loaded.
     @objc private func failedToLoad() {
         let alert = UIAlertController(title: StringConstants.failedToLoadNotificationsTitle, message: StringConstants.failedToLoadNotificationsMessage, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: StringConstants.ok, style: .cancel, handler: { _ in self.closeNotifications() }))
         present(alert, animated: true)
     }
-    
+
     /// Dismisses the loading alert and then reloads notifications and stops selection.
     @objc private func deleteDataSuccess() {
         numPendingDeletions -= 1
@@ -170,59 +170,59 @@ class NotificationsTableViewController: UITableViewController {
             }
         }
     }
-    
+
     /// Dismisses the loading alert and then alerts the user that there was an error deleting data.
     @objc private func deleteDataFailure() {
         dismiss(animated: true) {
             AlertManager.alertUser(title: StringConstants.failedToDeleteNotificationsTitle, message: StringConstants.failedToLoadNotificationsMessage)
         }
     }
-    
+
     /// Starts selection when a cell is long pressed.
     @objc private func handleLongPress(longPressGesture: UILongPressGestureRecognizer) {
         if !selecting {
-            let location = longPressGesture.location(in: self.tableView)
-            let indexPath = self.tableView.indexPathForRow(at: location)
-            if (longPressGesture.state == UIGestureRecognizer.State.began) {
+            let location = longPressGesture.location(in: tableView)
+            let indexPath = tableView.indexPathForRow(at: location)
+            if longPressGesture.state == UIGestureRecognizer.State.began {
                 startSelection()
                 let cell = tableView.cellForRow(at: indexPath!)
                 cell?.accessoryType = .checkmark
             }
         }
     }
-    
+
     /// Closes the notifications screen.
     private func closeNotifications() {
         navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)
     }
-    
+
     /// Stops selection, whether by hitting cancel or by hitting trash.
     private func stopSelection() {
         selecting = false
         reloadTableRows()
         navigationController?.toolbar.items = [selectButton, barSpace]
     }
-    
+
     /// Starts selection, whether by hitting Select or holding down on one of the cells.
     private func startSelection() {
         selecting = true
         reloadTableRows()
         navigationController?.toolbar.items = [cancelButton, barSpace, trashButton]
     }
-    
+
     // MARK: - Actions
-    
+
     @IBAction func selectButtonPressed(_: UIBarButtonItem) {
         startSelection()
     }
-    
-    @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
+
+    @IBAction func cancelButtonPressed(_: UIBarButtonItem) {
         stopSelection()
     }
-    
+
     /// Shows an "Are you sure?" alert. If the user selects "Remove", tells the database manager to remove the selected notifications.
-    @IBAction func trashButtonPressed(_ sender: UIBarButtonItem) {
+    @IBAction func trashButtonPressed(_: UIBarButtonItem) {
         let alert = UIAlertController(title: StringConstants.confirmDeleteNotificationsTitle, message: StringConstants.confirmDeleteNotificationsMessage, preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: StringConstants.cancel, style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: StringConstants.confirmDeleteNotificationsDeleteAction, style: .destructive) { _ in
@@ -239,11 +239,10 @@ class NotificationsTableViewController: UITableViewController {
                 AlertManager.showLoadingAlert()
             }
         })
-        self.present(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)
     }
-    
-    @IBAction func closeButtonPressed(_ sender: UIBarButtonItem) {
+
+    @IBAction func closeButtonPressed(_: UIBarButtonItem) {
         closeNotifications()
     }
-    
 }

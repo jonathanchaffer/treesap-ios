@@ -6,18 +6,18 @@
 //  Copyright © 2019 Hope CS. All rights reserved.
 //
 
-import UIKit
 import ImageSlideshow
+import UIKit
 
 class AddTreeBarkViewController: AddTreePhotoViewController {
     // MARK: - Properties
-    
-    @IBOutlet weak var imageSlideshow: ImageSlideshow!
+
+    @IBOutlet var imageSlideshow: ImageSlideshow!
     @IBOutlet var nextButton: UIButton!
     @IBOutlet var skipButton: UIButton!
     @IBOutlet var clearPhotosButton: UIButton!
-    @IBOutlet weak var addPhotoButton: UIButton!
-    
+    @IBOutlet var addPhotoButton: UIButton!
+
     // MARK: - Overrides
 
     override func viewDidLoad() {

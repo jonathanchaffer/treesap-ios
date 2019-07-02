@@ -6,13 +6,12 @@
 //  Copyright © 2019 Hope CS. All rights reserved.
 //
 
-import XCTest
 import MapKit
 @testable import TreeSapIOS
+import XCTest
 
 class TreeTests: XCTestCase {
-
-    func testTree(){
+    func testTree() {
         let treeCoordinates = CLLocationCoordinate2D(latitude: 75.3698153, longitude: -91.0243655)
         let tree: Tree = Tree(id: 29, commonName: "Tree name", scientificName: "Scientific name", location: treeCoordinates, native: true, userID: "abc")
         XCTAssertEqual(tree.id, 29)

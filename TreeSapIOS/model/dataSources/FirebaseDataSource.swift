@@ -6,38 +6,41 @@
 //  Copyright © 2019 Hope CS. All rights reserved.
 //
 
+import Firebase
 import Foundation
 import MapKit
-import Firebase
 
 class FirebaseDataSource: DataSource {
     // MARK: - Properties
-    var databaseType: DatabaseType? = nil
-    
+
+    var databaseType: DatabaseType?
+
     // MARK: - Initializers
+
     init(dataSourceName: String, databaseType: DatabaseType) {
         self.databaseType = databaseType
         super.init(dataSourceName: dataSourceName)
     }
-    
+
     // MARK: - Mutators
+
     override func importOnlineTreeData() {
         trees = [Tree]()
         retrieveFirebaseData()
     }
-    
+
     /// Retrieves online tree data from Firebase, then calls loadTreesFromDocuments. Reports to the data manager whether retrieval was successful.
     func retrieveFirebaseData() {
-        var collection: Query? = nil
-        if self.databaseType == .myPendingTrees {
+        var collection: Query?
+        if databaseType == .myPendingTrees {
             collection = DatabaseManager.getMyPendingTreesCollection()
-        } else if self.databaseType == .allPendingTrees {
+        } else if databaseType == .allPendingTrees {
             collection = DatabaseManager.getAllPendingTreesCollection()
-        } else if self.databaseType == .publicTrees {
+        } else if databaseType == .publicTrees {
             collection = DatabaseManager.getPublicTreesCollection()
         }
         if collection != nil {
-            collection!.getDocuments() { snapshot, error in
+            collection!.getDocuments { snapshot, error in
                 if let error = error {
                     print("Error retrieving documents: \(error)")
                     DataManager.reportLoadedData(dataSourceName: self.dataSourceName, success: false)
@@ -49,10 +52,10 @@ class FirebaseDataSource: DataSource {
                 }
             }
         }
-        DataManager.reportLoadedData(dataSourceName: self.dataSourceName, success: true)
+        DataManager.reportLoadedData(dataSourceName: dataSourceName, success: true)
         NotificationCenter.default.post(name: NSNotification.Name(StringConstants.firebaseDataRetrievalSuccessNotification), object: self)
     }
-    
+
     /**
      Creates Tree objects based on an array of documents, and stores them in the trees array.
      */
@@ -73,9 +76,11 @@ class FirebaseDataSource: DataSource {
                     scientificName: scientificName,
                     location: CLLocationCoordinate2D(
                         latitude: latitude,
-                        longitude: longitude),
+                        longitude: longitude
+                    ),
                     native: native,
-                    userID: userID)
+                    userID: userID
+                )
                 guard let dbhArray = data["dbhArray"] as? [Double] else { throw DatabaseError.invalidDocumentData }
                 for dbh in dbhArray {
                     tree.addDBH(dbh)

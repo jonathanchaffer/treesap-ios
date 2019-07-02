@@ -15,12 +15,12 @@ class PieChartDisplayViewController: TreeDisplayViewController, ChartViewDelegat
     // Chart views
     @IBOutlet var pieChartView: PieChartView!
     @IBOutlet var barChartView: HorizontalBarChartView!
-    
+
     // Headers
-    @IBOutlet weak var annualTreeBenefitsLabel: UILabel!
-    @IBOutlet weak var commonNameLabel: UILabel!
-    @IBOutlet weak var estimatedBenefitsLabel: UILabel!
-    
+    @IBOutlet var annualTreeBenefitsLabel: UILabel!
+    @IBOutlet var commonNameLabel: UILabel!
+    @IBOutlet var estimatedBenefitsLabel: UILabel!
+
     // Number formatter for $x.xx format
     let dollarFormatter = NumberFormatter()
 
@@ -46,10 +46,10 @@ class PieChartDisplayViewController: TreeDisplayViewController, ChartViewDelegat
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // Set the common name label
-        commonNameLabel.text = self.displayedTree!.commonName
-        
+        commonNameLabel.text = displayedTree!.commonName
+
         // Show/hide the estimated benefits disclaimer
         if estimatedBenefitsFound! {
             estimatedBenefitsLabel.isHidden = false
@@ -83,7 +83,8 @@ class PieChartDisplayViewController: TreeDisplayViewController, ChartViewDelegat
         if displayedTree!.otherInfo["totalAnnualBenefitsDollars"] != nil {
             pieChartView.centerAttributedText = NSAttributedString(
                 string: "Total: $" + String(format: "%.2f", displayedTree!.otherInfo["totalAnnualBenefitsDollars"]!),
-                attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17.0, weight: .semibold)])
+                attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17.0, weight: .semibold)]
+            )
         }
 
         // Configure the bar chart
@@ -105,7 +106,7 @@ class PieChartDisplayViewController: TreeDisplayViewController, ChartViewDelegat
         barChartView.noDataFont = .preferredFont(forTextStyle: .body)
         barChartView.noDataTextColor = .black
         barChartView.noDataTextAlignment = .center
-        
+
         // Configure special settings for small screens
         if UIScreen.main.bounds.width <= 320 {
             commonNameLabel.isHidden = true

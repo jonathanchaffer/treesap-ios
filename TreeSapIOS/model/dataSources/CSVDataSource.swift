@@ -14,6 +14,7 @@ import MapKit
 
 class CSVDataSource: DataSource {
     // MARK: - Properties
+
     /// The URL of the database where the tree data sets are stored.
     let internetFilebase: String = "https://faculty.hope.edu/jipping/treesap/"
     /// The filename (and extension) of the file that contains the online tree data.
@@ -22,21 +23,23 @@ class CSVDataSource: DataSource {
     let localFilename: String
     /// The format of CSV data contained in the data source. The CSV file will be parsed differently depending on this value.
     let csvFormat: CSVFormat
-    
+
     // MARK: - Initializers
+
     init(internetFilename: String, localFilename: String, dataSourceName: String, csvFormat: CSVFormat) {
         self.internetFilename = internetFilename
         self.localFilename = localFilename
         self.csvFormat = csvFormat
         super.init(dataSourceName: dataSourceName)
     }
-    
+
     // MARK: - Mutators
+
     override func importOnlineTreeData() {
         trees = [Tree]()
         retrieveOnlineCSVData()
     }
-    
+
     /// Retrieves online tree data from the URL specified by internetFilebase and internetFilename. Copies the online csv file to the app's documents directory, then calls loadTreesFromCSV. Reports to the data manager whether retrieval was successful.
     func retrieveOnlineCSVData() {
         // Retrieve the data from the URL
@@ -51,7 +54,7 @@ class CSVDataSource: DataSource {
                     DataManager.reportLoadedData(dataSourceName: self.dataSourceName, success: false)
                     return
                 }
-                
+
                 // Write the data to the documents directory
                 let fileManager = FileManager.default
                 do {
@@ -69,7 +72,7 @@ class CSVDataSource: DataSource {
         }
         task.resume()
     }
-    
+
     /**
      Creates Tree objects based on the file in the Documents directory with filename localFilename, and stores them in the trees array.
      - Returns: true if at least one tree was created.
@@ -81,7 +84,7 @@ class CSVDataSource: DataSource {
         let documentsURL = try! fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
         let filepath = documentsURL.appendingPathComponent(localFilename).path
         var newTreeList = [Tree]()
-        
+
         // Create an importer for the local file
         let importer = CSVImporter<[String]>(path: filepath)
         let importedRecords: [[String]] = importer.importRecords { $0 }
@@ -97,9 +100,9 @@ class CSVDataSource: DataSource {
         trees = newTreeList
         return treesCreated
     }
-    
+
     // MARK: - Helper functions
-    
+
     /**
      Takes an array of strings and converts it to a Tree based on the CSV format.
      - Parameter record: An array of strings to be parsed.
@@ -153,32 +156,32 @@ class CSVDataSource: DataSource {
             var dbh: Double?
             if csvFormat.dbhIndex() >= 0 {
                 dbh = Double(record[self.csvFormat.dbhIndex()])
-                if dbh != nil && dbh != 0 {
+                if dbh != nil, dbh != 0 {
                     tree.addDBH(dbh!)
                 }
             }
             var dbh1: Double?
             if csvFormat.dbh1Index() >= 0 {
                 dbh1 = Double(record[self.csvFormat.dbh1Index()])
-                if dbh1 != nil && dbh1 != 0 {
+                if dbh1 != nil, dbh1 != 0 {
                     tree.addDBH(dbh1!)
                 }
             }
             var dbh2: Double?
             if csvFormat.dbh2Index() >= 0 {
                 dbh2 = Double(record[self.csvFormat.dbh2Index()])
-                if dbh2 != nil && dbh2 != 0 {
+                if dbh2 != nil, dbh2 != 0 {
                     tree.addDBH(dbh2!)
                 }
             }
             var dbh3: Double?
             if csvFormat.dbh3Index() >= 0 {
                 dbh3 = Double(record[self.csvFormat.dbh3Index()])
-                if dbh3 != nil && dbh3 != 0 {
+                if dbh3 != nil, dbh3 != 0 {
                     tree.addDBH(dbh3!)
                 }
             }
-            
+
             // Set general benefit information
             if csvFormat.carbonSequestrationPoundsIndex() >= 0 {
                 tree.setOtherInfo(key: "carbonSequestrationPounds", value: Double(record[self.csvFormat.carbonSequestrationPoundsIndex()])!)

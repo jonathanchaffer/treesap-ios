@@ -25,17 +25,17 @@ class AlertManager {
             currentViewController.present(alertController, animated: true, completion: nil)
         }
     }
-    
+
     static func showLoadingAlert() {
         // Create an alert
         let loadingAlertController = UIAlertController(title: StringConstants.pleaseWait, message: nil, preferredStyle: .alert)
-        
+
         // Present the alert from the current view controlelr
         if let currentViewController = getCurrentViewController() {
             currentViewController.present(loadingAlertController, animated: true, completion: nil)
         }
     }
-    
+
     /// - Returns: The currently active view controller.
     fileprivate static func getCurrentViewController() -> UIViewController? {
         var currentViewController: UIViewController? = UIApplication.shared.keyWindow?.rootViewController

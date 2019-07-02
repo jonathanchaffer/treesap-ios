@@ -6,81 +6,85 @@
 //  Copyright © 2019 Hope CS. All rights reserved.
 //
 
-import UIKit
 import Firebase
+import UIKit
 
 class LoginSignupViewController: UIViewController {
-	// MARK: - Properties
-	@IBOutlet weak var loginStackView: UIStackView!
-	@IBOutlet weak var loginEmailTextField: UITextField!
-	@IBOutlet weak var loginPasswordTextField: UITextField!
-	@IBOutlet weak var createAccountStackView: UIStackView!
-	@IBOutlet weak var createAccountEmailTextField: UITextField!
-    @IBOutlet weak var createAccountDisplayNameTextField: UITextField!
-    @IBOutlet weak var createAccountPasswordTextField: UITextField!
-	@IBOutlet weak var createAccountConfirmTextField: UITextField!
-    @IBOutlet weak var closeButton: UIBarButtonItem!
-    
-	// MARK: - Overrides
-	override func viewDidLoad() {
-		super.viewDidLoad()
+    // MARK: - Properties
+
+    @IBOutlet var loginStackView: UIStackView!
+    @IBOutlet var loginEmailTextField: UITextField!
+    @IBOutlet var loginPasswordTextField: UITextField!
+    @IBOutlet var createAccountStackView: UIStackView!
+    @IBOutlet var createAccountEmailTextField: UITextField!
+    @IBOutlet var createAccountDisplayNameTextField: UITextField!
+    @IBOutlet var createAccountPasswordTextField: UITextField!
+    @IBOutlet var createAccountConfirmTextField: UITextField!
+    @IBOutlet var closeButton: UIBarButtonItem!
+
+    // MARK: - Overrides
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
         loginEmailTextField.delegate = self
         loginPasswordTextField.delegate = self
         createAccountEmailTextField.delegate = self
         createAccountDisplayNameTextField.delegate = self
         createAccountPasswordTextField.delegate = self
         createAccountConfirmTextField.delegate = self
-		hideKeyboardWhenTappedAround()
-		loginStackView.isHidden = false
-		NotificationCenter.default.addObserver(self, selector: #selector(closeLoginSignup), name: NSNotification.Name(StringConstants.loggedInNotification), object: nil)
+        hideKeyboardWhenTappedAround()
+        loginStackView.isHidden = false
+        NotificationCenter.default.addObserver(self, selector: #selector(closeLoginSignup), name: NSNotification.Name(StringConstants.loggedInNotification), object: nil)
         if navigationController!.isBeingPresented {
             print("in modal")
         } else {
             print("in settings")
         }
-	}
-	
-	// MARK: - Actions
-	@IBAction func showCreateAccount(_ sender: UIButton) {
+    }
+
+    // MARK: - Actions
+
+    @IBAction func showCreateAccount(_: UIButton) {
         UIView.animate(withDuration: 0.3) {
             self.loginStackView.isHidden = true
             self.createAccountStackView.isHidden = false
         }
-	}
-	
-	@IBAction func cancelCreateAccount(_ sender: UIButton) {
+    }
+
+    @IBAction func cancelCreateAccount(_: UIButton) {
         UIView.animate(withDuration: 0.3) {
             self.loginStackView.isHidden = false
             self.createAccountStackView.isHidden = true
         }
-	}
-    
-    @IBAction func signUpButtonPressed(_ sender: UIButton) {
+    }
+
+    @IBAction func signUpButtonPressed(_: UIButton) {
         signUp()
     }
-    
-    @IBAction func logInButtonPressed(_ sender: UIButton) {
+
+    @IBAction func logInButtonPressed(_: UIButton) {
         logIn()
     }
-    
-    @IBAction func closeButtonPressed(_ sender: UIBarButtonItem) {
+
+    @IBAction func closeButtonPressed(_: UIBarButtonItem) {
         closeLoginSignup()
     }
-    
+
     // MARK: - Functions
-	@objc func closeLoginSignup() {
-		navigationController?.popViewController(animated: true)
-		dismiss(animated: true, completion: nil)
-	}
-    
+
+    @objc func closeLoginSignup() {
+        navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
+    }
+
     private func logIn() {
-        if loginEmailTextField.text != nil && loginPasswordTextField.text != nil {
+        if loginEmailTextField.text != nil, loginPasswordTextField.text != nil {
             AccountManager.logIn(email: loginEmailTextField.text!, password: loginPasswordTextField.text!)
         }
     }
-    
+
     private func signUp() {
-        if createAccountEmailTextField.text != nil && createAccountPasswordTextField.text != nil && createAccountConfirmTextField.text != nil {
+        if createAccountEmailTextField.text != nil, createAccountPasswordTextField.text != nil, createAccountConfirmTextField.text != nil {
             // Check for non-matching passwords
             if createAccountPasswordTextField.text! != createAccountConfirmTextField.text! {
                 AlertManager.alertUser(title: StringConstants.unmatchingPasswordsTitle, message: StringConstants.unmatchingPasswordsMessage)
@@ -90,7 +94,6 @@ class LoginSignupViewController: UIViewController {
             AccountManager.createUser(email: createAccountEmailTextField.text!, displayName: createAccountDisplayNameTextField.text!, password: createAccountPasswordTextField.text!)
         }
     }
-    
 }
 
 extension LoginSignupViewController: UITextFieldDelegate {

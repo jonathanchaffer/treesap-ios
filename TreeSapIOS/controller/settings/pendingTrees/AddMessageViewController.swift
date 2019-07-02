@@ -9,30 +9,33 @@
 import UIKit
 
 class AddMessageViewController: UIViewController {
-    
     // MARK: - Properties
+
     var accepting: Bool?
     var documentID: String?
     var userID: String?
-    @IBOutlet weak var textField: MultilineTextField!
-    
+    @IBOutlet var textField: MultilineTextField!
+
     // MARK: - Overrides
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
+
     // MARK: - Private functions
+
     private func closeAddMessage() {
         navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)
     }
-    
+
     // MARK: - Actions
-    @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
-        self.closeAddMessage()
+
+    @IBAction func cancelButtonPressed(_: UIBarButtonItem) {
+        closeAddMessage()
     }
-    
-    @IBAction func saveButtonPressed(_ sender: UIButton) {
+
+    @IBAction func saveButtonPressed(_: UIButton) {
         if accepting! {
             let alert = UIAlertController(title: StringConstants.confirmAcceptTreeTitle, message: StringConstants.confirmAcceptTreeMessage, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: StringConstants.cancel, style: .cancel, handler: nil))
@@ -53,5 +56,4 @@ class AddMessageViewController: UIViewController {
             present(alert, animated: true)
         }
     }
-    
 }

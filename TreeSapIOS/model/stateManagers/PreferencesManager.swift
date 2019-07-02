@@ -33,39 +33,39 @@ class PreferencesManager {
     }
 
     // MARK: Getter functions
-    
-    ///- Returns: Whether or not the user's device location is shown on the map
-    class func getShowingUserLocation() -> Bool{
+
+    /// - Returns: Whether or not the user's device location is shown on the map
+    class func getShowingUserLocation() -> Bool {
         return PreferencesManager.showingUserLocation
     }
-    
-    ///- Returns: The cutoff distance to be used for tree searches
-    class func getCutoffDistance() -> Double{
+
+    /// - Returns: The cutoff distance to be used for tree searches
+    class func getCutoffDistance() -> Double {
         return PreferencesManager.cutoffDistance
     }
-    
-    ///- Returns: A dictionary of the availability of each data source
-    class func getDataSourceAvailability() -> [String:Bool]{
+
+    /// - Returns: A dictionary of the availability of each data source
+    class func getDataSourceAvailability() -> [String: Bool] {
         return PreferencesManager.dataSourceAvailability
     }
-    
-    ///- Returns: The default value for whether the user's device location is shown on the map
-    class func getDefaultShowingUserLocation() -> Bool{
+
+    /// - Returns: The default value for whether the user's device location is shown on the map
+    class func getDefaultShowingUserLocation() -> Bool {
         return PreferencesManager.defaultShowingUserLocation
     }
-    
-    ///- Returns: The default value for cutoffDistance
-    class func getDefaultCutoffDistance() -> Double{
+
+    /// - Returns: The default value for cutoffDistance
+    class func getDefaultCutoffDistance() -> Double {
         return PreferencesManager.defaultCutoffDistance
     }
-    
-    ///- Returns: A dictiionary with the default availibility of each data source
-    class func getDefaultDataSourceAvailability() -> [String:Bool]{
+
+    /// - Returns: A dictiionary with the default availibility of each data source
+    class func getDefaultDataSourceAvailability() -> [String: Bool] {
         return PreferencesManager.defaultDataSourceAvailability
     }
-    
-    //MARK: Other Functions
-    
+
+    // MARK: Other Functions
+
     /// Loads user preferences from UserDefaults.
     static func loadPreferences() {
         // Load showing user location

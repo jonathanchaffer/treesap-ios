@@ -21,7 +21,7 @@ class DataSourceTests: XCTestCase {
         hopeSource = CSVDataSource(internetFilename: "dataExport_119_HopeTrees_7may2018.csv", localFilename: "hope.csv", dataSourceName: "Hope College", csvFormat: CSVFormat.hope)
     }
 
-    override func tearDown() { }
+    override func tearDown() {}
 
     func testHollandSource() {
         guard let fileText: String = readInFile(fileName: hollandSource.localFilename) else {

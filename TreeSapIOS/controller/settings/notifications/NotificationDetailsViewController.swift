@@ -6,25 +6,27 @@
 //  Copyright © 2019 Hope CS. All rights reserved.
 //
 
-import UIKit
 import ImageSlideshow
+import UIKit
 
 class NotificationDetailsViewController: UIViewController {
     // MARK: - Properties
+
     var data: [String: Any]?
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var subtitleLabel: UILabel!
-    @IBOutlet weak var commonNameLabel: UILabel!
-    @IBOutlet weak var scientificNameLabel: UILabel!
-    @IBOutlet weak var latitudeLabel: UILabel!
-    @IBOutlet weak var longitudeLabel: UILabel!
-    @IBOutlet weak var dbhLabel: UILabel!
-    @IBOutlet weak var notesStackView: UIStackView!
-    @IBOutlet weak var imageSlideshow: ImageSlideshow!
-    @IBOutlet weak var noPhotosLabel: UILabel!
-    @IBOutlet weak var commentsLabel: UILabel!
-    
+    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var subtitleLabel: UILabel!
+    @IBOutlet var commonNameLabel: UILabel!
+    @IBOutlet var scientificNameLabel: UILabel!
+    @IBOutlet var latitudeLabel: UILabel!
+    @IBOutlet var longitudeLabel: UILabel!
+    @IBOutlet var dbhLabel: UILabel!
+    @IBOutlet var notesStackView: UIStackView!
+    @IBOutlet var imageSlideshow: ImageSlideshow!
+    @IBOutlet var noPhotosLabel: UILabel!
+    @IBOutlet var commentsLabel: UILabel!
+
     // MARK: - Overrides
+
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Notification"
@@ -32,9 +34,9 @@ class NotificationDetailsViewController: UIViewController {
         setupLabels()
         setupPhotos()
     }
-    
+
     // MARK: - Private functions
-    
+
     private func setupLabels() {
         let accepted = data!["accepted"]! as! Bool
         let comments = data!["message"]! as! String
@@ -61,9 +63,8 @@ class NotificationDetailsViewController: UIViewController {
             } else {
                 subtitleLabel.text = "Your tree was removed from the database."
             }
-            
         }
-        
+
         // Set common name and scientific name labels
         if commonName != "" {
             commonNameLabel.text = commonName
@@ -75,11 +76,11 @@ class NotificationDetailsViewController: UIViewController {
         } else {
             scientificNameLabel.text = "N/A"
         }
-        
+
         // Set latitude and longitude labels
         latitudeLabel.text = String(latitude)
         longitudeLabel.text = String(longitude)
-        
+
         // Set DBH label
         if dbhArray != [] {
             var dbhString = ""
@@ -91,7 +92,7 @@ class NotificationDetailsViewController: UIViewController {
         } else {
             dbhLabel.text = "N/A"
         }
-        
+
         // Set notes labels
         if !notes.isEmpty {
             for note in notes {
@@ -105,7 +106,7 @@ class NotificationDetailsViewController: UIViewController {
             label.text = "N/A"
             notesStackView.addArrangedSubview(label)
         }
-        
+
         // Set comments label
         if comments != "" {
             commentsLabel.text = comments
@@ -113,7 +114,7 @@ class NotificationDetailsViewController: UIViewController {
             commentsLabel.text = "N/A"
         }
     }
-    
+
     private func setupPhotos() {
         var imageSources = [ImageSource]()
         let treeData = data!["treeData"]! as! [String: Any]
@@ -131,10 +132,10 @@ class NotificationDetailsViewController: UIViewController {
         } else {
             imageSlideshow.isHidden = true
         }
-        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.didTapSlideshow))
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapSlideshow))
         imageSlideshow.addGestureRecognizer(gestureRecognizer)
     }
-    
+
     @objc private func didTapSlideshow() {
         imageSlideshow.presentFullScreenController(from: self)
     }

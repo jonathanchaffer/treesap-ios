@@ -6,20 +6,21 @@
 //  Copyright © 2019 Hope CS. All rights reserved.
 //
 
-import Foundation
 import Firebase
+import Foundation
 import MapKit
 
 class DatabaseManager {
     // MARK: - Properties
+
     /// The Firestore database.
     static var db = Firestore.firestore()
     /// Array of curator user IDs.
     static var curators = [String]()
-    
+
     /// Sets up the list of curators.
     static func setup() {
-        db.collection("curators").getDocuments() { snapshot, error in
+        db.collection("curators").getDocuments { snapshot, error in
             if let error = error {
                 print("Error retrieving curators: \(error)")
             } else {
@@ -29,15 +30,16 @@ class DatabaseManager {
             }
         }
     }
-    
+
     // MARK: - Firebase data modification
+
     /**
      Creates a data object based on the specified tree and adds it to the pending trees collection.
      - Parameter tree: The tree to submit.
      */
     static func submitTreeToPending(tree: Tree) {
         // Create the data object
-        var data = [String:Any]()
+        var data = [String: Any]()
         data["latitude"] = tree.location.latitude
         data["longitude"] = tree.location.longitude
         if tree.commonName != nil {
@@ -53,7 +55,7 @@ class DatabaseManager {
         data["otherInfo"] = tree.otherInfo
         data["notes"] = tree.notes
         data["userID"] = AccountManager.getUserID()
-        
+
         // Add the images to the data
         var encodedImageMap = [String: [String]]()
         for imageCategory in tree.images.keys {
@@ -65,20 +67,20 @@ class DatabaseManager {
             encodedImageMap[imageCategory.toString()] = encodedImages
         }
         data["images"] = encodedImageMap
-        
+
         data["timestamp"] = Timestamp()
-        
+
         // Add the data to pending
         addDataToCollection(data: data, collectionID: "pendingTrees", documentID: nil)
     }
-    
+
     /**
      Moves an existing document from pendingTrees to acceptedTrees.
      - Parameter documentID: The ID of the document to move.
      */
     static func acceptDocumentFromPending(documentID: String) {
         let ref = db.collection("pendingTrees").document(documentID)
-        ref.getDocument() { document, err in
+        ref.getDocument { document, err in
             if let err = err {
                 print("Error retrieving document: \(err)")
             } else {
@@ -89,14 +91,14 @@ class DatabaseManager {
             }
         }
     }
-    
+
     /**
      Removes an existing document from pendingTrees.
      - Parameter documentID: The ID of the document to remove.
      */
     static func rejectDocumentFromPending(documentID: String) {
         let ref = db.collection("pendingTrees").document(documentID)
-        ref.getDocument() { document, err in
+        ref.getDocument { _, err in
             if let err = err {
                 print("Error retrieving document: \(err)")
             } else {
@@ -105,7 +107,7 @@ class DatabaseManager {
             }
         }
     }
-    
+
     /**
      Removes an existing document from notifications.
      - Parameter documentID: The ID of the document to remove.
@@ -113,7 +115,7 @@ class DatabaseManager {
     static func removeDocumentFromNotifications(documentID: String) {
         removeDataFromCollection(collectionID: "notifications", documentID: documentID)
     }
-    
+
     /**
      Adds a document to the notifications collection with data about whether a given tree was accepted or rejected.
      - Parameter userID: The ID of the user to send the notification to.
@@ -121,9 +123,9 @@ class DatabaseManager {
      - Parameter message: An optional message to send to the user.
      - Parameter documentID: The document ID of the tree in question.
      */
-    static func sendNotificationToUser(userID: String, accepted: Bool, message: String, documentID: String) {
+    static func sendNotificationToUser(userID _: String, accepted: Bool, message: String, documentID: String) {
         let ref = db.collection("pendingTrees").document(documentID)
-        ref.getDocument() { document, err in
+        ref.getDocument { document, err in
             if let err = err {
                 print("Error retrieving document: \(err)")
             } else {
@@ -132,14 +134,14 @@ class DatabaseManager {
             }
         }
     }
-    
+
     /**
      Marks a notification as read.
      - Parameter documentID: The document ID of the notification.
      */
     static func markNotificationAsRead(documentID: String) {
         let ref = db.collection("notifications").document(documentID)
-        ref.getDocument() { document, err in
+        ref.getDocument { document, err in
             if let err = err {
                 print("Error retrieving document: \(err)")
             } else {
@@ -150,15 +152,15 @@ class DatabaseManager {
             }
         }
     }
-    
+
     /**
      Adds or overwrites a document to a collection in the database.
      - Parameter data: The data object to upload to the database.
      - Parameter collectionID: The ID of the collection in which the document should be stored.
      - Parameter documentID: The ID of the document to overwrite, or nil if no documents should be overwritten (i.e. a new document should be created).
      */
-    fileprivate static func addDataToCollection(data: [String:Any], collectionID: String, documentID: String?) {
-        var ref: DocumentReference? = nil
+    fileprivate static func addDataToCollection(data: [String: Any], collectionID: String, documentID: String?) {
+        var ref: DocumentReference?
         if documentID == nil {
             ref = db.collection(collectionID).addDocument(data: data) { err in
                 if let err = err {
@@ -181,14 +183,14 @@ class DatabaseManager {
             }
         }
     }
-    
+
     /**
      Removes a document from a collection in the database.
      - Parameter collectionID: The ID of the collection from which the document should be removed.
      - Parameter documentID: The ID of the document to remove.
      */
     fileprivate static func removeDataFromCollection(collectionID: String, documentID: String) {
-        db.collection(collectionID).document(documentID).delete() { err in
+        db.collection(collectionID).document(documentID).delete { err in
             if let err = err {
                 print("Error removing document: \(err)")
                 NotificationCenter.default.post(name: NSNotification.Name(StringConstants.deleteDataFailureNotification), object: nil)
@@ -198,8 +200,9 @@ class DatabaseManager {
             }
         }
     }
-    
+
     // MARK: - Firebase query accessors
+
     /// - Returns: A Query containing a collection of pending trees for the current user, or nil if there is none.
     static func getMyPendingTreesCollection() -> Query? {
         if AccountManager.getUserID() != nil {
@@ -208,17 +211,17 @@ class DatabaseManager {
             return nil
         }
     }
-    
+
     /// - Returns: A Query containing a collection of pending trees for all users, or nil if there is none.
     static func getAllPendingTreesCollection() -> Query? {
         return db.collection("pendingTrees")
     }
-    
+
     /// - Returns: A Query containing the public trees collection, or nil if there is none.
     static func getPublicTreesCollection() -> Query? {
         return db.collection("acceptedTrees")
     }
-    
+
     /// - Returns: A Query containing a collection of notifications for the current user, or nil if there is none.
     static func getNotificationsCollection() -> Query? {
         if AccountManager.getUserID() != nil {
@@ -227,13 +230,14 @@ class DatabaseManager {
             return nil
         }
     }
-    
+
     // MARK: - Helper functions
+
     static func convertBase64ToImage(encodedImage: String) -> UIImage? {
         let decodedImageData: Data = Data(base64Encoded: encodedImage, options: .ignoreUnknownCharacters)!
         return UIImage(data: decodedImageData)
     }
-    
+
     static func convertImageToBase64(image: UIImage) -> String {
         let imageData = image.jpegData(compressionQuality: 0.1)!
         return imageData.base64EncodedString(options: [])

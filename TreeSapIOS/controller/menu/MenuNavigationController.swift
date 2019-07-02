@@ -6,8 +6,8 @@
 //  Copyright © 2019 Hope CS. All rights reserved.
 //
 
-import UIKit
 import SideMenu
+import UIKit
 
 class MenuNavigationController: UISideMenuNavigationController {
     override func viewDidLoad() {

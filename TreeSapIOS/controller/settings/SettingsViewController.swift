@@ -13,7 +13,7 @@ class SettingsViewController: UITableViewController {
 
     @IBOutlet var locationToggleSwitch: UISwitch!
     @IBOutlet var cutoffDistanceTextField: UITextField!
-    
+
     // MARK: - Overrides
 
     override func viewDidLoad() {
@@ -29,11 +29,11 @@ class SettingsViewController: UITableViewController {
         navigationController?.setToolbarHidden(true, animated: false)
     }
 
-	/// Deselects a row when it is selected.
+    /// Deselects a row when it is selected.
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
-    
+
     // MARK: - Actions
 
     @IBAction func closeSettings(_: UIBarButtonItem) {
@@ -44,24 +44,25 @@ class SettingsViewController: UITableViewController {
     @IBAction func toggleLocationOnMap(_: UISwitch) {
         PreferencesManager.toggleShowingUserLocation()
     }
-	
-	/**
-	Updates the cutoff distance, which is how close a tree must be to location given by the coordinates used to find a tree in order to be found
-	
-	- Parameter sender: the UITextField that caused this function call
-	*/
-	@IBAction func updateCutoffDistance(_: UITextField) {
-		if let dist = Double(cutoffDistanceTextField.text!) {
-			PreferencesManager.setCutoffDistance(dist)
-		} else {
-			let defaultCutoff: Double = PreferencesManager.getDefaultCutoffDistance()
-			PreferencesManager.setCutoffDistance(defaultCutoff)
-			cutoffDistanceTextField.text = String(defaultCutoff)
+
+    /**
+     Updates the cutoff distance, which is how close a tree must be to location given by the coordinates used to find a tree in order to be found
+
+     - Parameter sender: the UITextField that caused this function call
+     */
+    @IBAction func updateCutoffDistance(_: UITextField) {
+        if let dist = Double(cutoffDistanceTextField.text!) {
+            PreferencesManager.setCutoffDistance(dist)
+        } else {
+            let defaultCutoff: Double = PreferencesManager.getDefaultCutoffDistance()
+            PreferencesManager.setCutoffDistance(defaultCutoff)
+            cutoffDistanceTextField.text = String(defaultCutoff)
             AlertManager.alertUser(title: StringConstants.invalidDistanceTitle, message: StringConstants.invalidDistanceMessage0 + String(defaultCutoff) + StringConstants.invalidDistanceMessage1)
-		}
-	}
-    
+        }
+    }
+
     // MARK: - Private functions
+
     private func isCurator() -> Bool {
         return AccountManager.getUserID() != nil && DatabaseManager.curators.contains(AccountManager.getUserID()!)
     }
@@ -74,7 +75,7 @@ extension SettingsViewController: UITextFieldDelegate {
         let characterSet = CharacterSet(charactersIn: string)
         return allowedCharacters.isSuperset(of: characterSet)
     }
-    
+
     /// Function that is called when the return key is pressed on the keyboard. Ends editing on the text field.
     func textFieldShouldReturn(_: UITextField) -> Bool {
         view.endEditing(true)

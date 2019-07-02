@@ -28,7 +28,7 @@ class LocationManager {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.distanceFilter = 1
     }
-    
+
     /// - Returns: The current location.
     static func getCurrentLocation() -> CLLocation? {
         return locationManager.location

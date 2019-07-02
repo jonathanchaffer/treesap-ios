@@ -10,7 +10,7 @@ import Foundation
 
 enum ImageCategory {
     case bark, leaf, full
-    
+
     func toString() -> String {
         switch self {
         case .bark:

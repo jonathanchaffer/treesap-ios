@@ -14,7 +14,7 @@ class OutlinedButton: UIButton {
             layer.borderColor = borderColor?.cgColor
         }
     }
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         contentEdgeInsets = UIEdgeInsets(top: 8.0, left: 8.0, bottom: 8.0, right: 8.0)

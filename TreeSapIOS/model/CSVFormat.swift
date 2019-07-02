@@ -96,7 +96,7 @@ enum CSVFormat {
             return 2
         }
     }
-    
+
     /// Returns the index for the DBH(1), or -1 if there is none.
     func dbh1Index() -> Int {
         switch self {
@@ -110,7 +110,7 @@ enum CSVFormat {
             return -1
         }
     }
-    
+
     /// Returns the index for the DBH(2), or -1 if there is none.
     func dbh2Index() -> Int {
         switch self {
@@ -124,7 +124,7 @@ enum CSVFormat {
             return -1
         }
     }
-    
+
     /// Returns the index for the DBH(3), or -1 if there is none.
     func dbh3Index() -> Int {
         switch self {
@@ -138,7 +138,7 @@ enum CSVFormat {
             return -1
         }
     }
-    
+
     /// Returns the index for whether the tree is native, or -1 if there is none.
     func nativeIndex() -> Int {
         switch self {
@@ -170,7 +170,7 @@ enum CSVFormat {
             return -1
         }
     }
-    
+
     /// Returns the index for water untercepted (ft^3/yr), or -1 if there is none.
     func waterInterceptedCubicFeetIndex() -> Int {
         switch self {
@@ -272,7 +272,7 @@ enum CSVFormat {
             return -1
         }
     }
-    
+
     /// Returns the index for CO (oz/yr), or -1 if there is none.
     func coOuncesIndex() -> Int {
         switch self {
@@ -292,7 +292,7 @@ enum CSVFormat {
             return -1
         }
     }
-    
+
     /// Returns the index for O3 (oz/yr), or -1 if there is none.
     func o3OuncesIndex() -> Int {
         switch self {
@@ -312,7 +312,7 @@ enum CSVFormat {
             return -1
         }
     }
-    
+
     /// Returns the index for NO2 (oz/yr), or -1 if there is none.
     func no2OuncesIndex() -> Int {
         switch self {
@@ -332,7 +332,7 @@ enum CSVFormat {
             return -1
         }
     }
-    
+
     /// Returns the index for SO2 (oz/yr), or -1 if there is none.
     func so2OuncesIndex() -> Int {
         switch self {
@@ -352,7 +352,7 @@ enum CSVFormat {
             return -1
         }
     }
-    
+
     /// Returns the index for PM2.5 (oz/yr), or -1 if there is none.
     func pm25OuncesIndex() -> Int {
         switch self {
@@ -362,7 +362,7 @@ enum CSVFormat {
             return -1
         }
     }
-    
+
     /// Returns the index for heating(1) ($/yr), or -1 if there is none.
     func heating1DollarsIndex() -> Int {
         switch self {
@@ -372,7 +372,7 @@ enum CSVFormat {
             return -1
         }
     }
-    
+
     /// Returns the index for heating(2) ($/yr), or -1 if there is none.
     func heating2DollarsIndex() -> Int {
         switch self {
@@ -382,7 +382,7 @@ enum CSVFormat {
             return -1
         }
     }
-    
+
     /// Returns the index for heating (MBTU/yr), or -1 if there is none.
     func heatingMBTUIndex() -> Int {
         switch self {
@@ -392,7 +392,7 @@ enum CSVFormat {
             return -1
         }
     }
-    
+
     /// Returns the index for cooling ($/yr), or -1 if there is none.
     func coolingDollarsIndex() -> Int {
         switch self {
@@ -402,7 +402,7 @@ enum CSVFormat {
             return -1
         }
     }
-    
+
     /// Returns the index for cooling (KWH/yr), or -1 if there is none.
     func coolingKWHIndex() -> Int {
         switch self {
