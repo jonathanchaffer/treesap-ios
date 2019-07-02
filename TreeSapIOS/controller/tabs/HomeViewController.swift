@@ -29,10 +29,10 @@ class HomeViewController: UIViewController {
         // Set settings description
         let settingsDescription = NSMutableAttributedString(string: "Use the ")
         let settingsAttachment = NSTextAttachment()
-        settingsAttachment.image = imageWithImage(image: UIImage(named: "settings")!, scaledToSize: CGSize(width: 17, height: 17))
+        settingsAttachment.image = imageWithImage(image: UIImage(named: "menu")!, scaledToSize: CGSize(width: 17, height: 17))
         settingsAttachment.bounds = CGRect(x: 0.0, y: settingsDescriptionLabel.font.descender, width: plusAttachment.image!.size.width, height: settingsAttachment.image!.size.height)
         settingsDescription.append(NSAttributedString(attachment: settingsAttachment))
-        settingsDescription.append(NSAttributedString(string: " button to adjust the app settings."))
+        settingsDescription.append(NSAttributedString(string: " button to adjust the app settings and view other options."))
         settingsDescriptionLabel.attributedText = settingsDescription
     }
 

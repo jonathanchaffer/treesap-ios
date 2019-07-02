@@ -8,6 +8,7 @@ target "TreeSapIOS" do
   pod 'KeyboardAvoidingView'
   pod 'ImageSlideshow'
   pod 'SearchTextField'
+  pod 'SideMenu'
 end 
 target "TreeSapIOSTests" do
 	pod 'CSVImporter'
@@ -18,6 +19,7 @@ target "TreeSapIOSTests" do
   pod 'KeyboardAvoidingView'
   pod 'ImageSlideshow'
   pod 'SearchTextField'
+  pod 'SideMenu'
 end
 target "TreeSapIOSUITests" do
   pod 'CSVImporter'
@@ -28,4 +30,5 @@ target "TreeSapIOSUITests" do
   pod 'KeyboardAvoidingView'
   pod 'ImageSlideshow'
   pod 'SearchTextField'
+  pod 'SideMenu'
 end

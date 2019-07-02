@@ -31,6 +31,14 @@ class AccountManager {
         return getUser()?.uid
     }
     
+    static func isCurator() -> Bool {
+        if getUserID() != nil {
+            return DatabaseManager.curators.contains(getUserID()!)
+        } else {
+            return false
+        }
+    }
+    
     /**
      Tries to create a user in Firebase with the given email and password. Alerts the user if it doesn't work.
      - Parameter email: The inputted email.

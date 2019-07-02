@@ -115,6 +115,7 @@ PODS:
   - nanopb/encode (0.3.901)
   - Protobuf (3.8.0)
   - SearchTextField (1.2.4)
+  - SideMenu (5.0.3)
 
 DEPENDENCIES:
   - Charts
@@ -125,6 +126,7 @@ DEPENDENCIES:
   - ImageSlideshow
   - KeyboardAvoidingView
   - SearchTextField
+  - SideMenu
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -151,6 +153,7 @@ SPEC REPOS:
     - nanopb
     - Protobuf
     - SearchTextField
+    - SideMenu
 
 SPEC CHECKSUMS:
   APExtensions: 9a7a7b6ff5b9785b245962de89fbbdaf4c10f10e
@@ -176,7 +179,8 @@ SPEC CHECKSUMS:
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Protobuf: 3f617b9a6e73605565086864c9bc26b2bf2dd5a3
   SearchTextField: 40dc3cc57def5a211f263cac263622c163bbc25a
+  SideMenu: 1dcaabce84538c53325c287f7fe62999379a641c
 
-PODFILE CHECKSUM: 09ac6d77a825db8aafe86c988ad8f32edcffb129
+PODFILE CHECKSUM: 683aa72df6fc29d4731690703becb92eb40340e4
 
 COCOAPODS: 1.7.2

@@ -25,7 +25,6 @@ class NotificationsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Notifications"
         NotificationCenter.default.addObserver(self, selector: #selector(deleteDataSuccess), name: NSNotification.Name(StringConstants.deleteDataSuccessNotification), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(deleteDataFailure), name: NSNotification.Name(StringConstants.deleteDataFailureNotification), object: nil)
         
@@ -42,6 +41,16 @@ class NotificationsTableViewController: UITableViewController {
             self.stopSelection()
         }
         navigationController?.setToolbarHidden(false, animated: false)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        // Prompt the user to log in if they're not already
+        if !AccountManager.isLoggedIn() {
+            let alert = UIAlertController(title: StringConstants.loginRequiredTitle, message: StringConstants.loginRequiredMessage, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: StringConstants.cancel, style: .cancel, handler: { _ in self.closeNotifications() }))
+            alert.addAction(UIAlertAction(title: StringConstants.loginRequiredLogInAction, style: .default, handler: { _ in self.goToLogin() }))
+            present(alert, animated: true)
+        }
     }
     
     override func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
@@ -138,6 +147,12 @@ class NotificationsTableViewController: UITableViewController {
         }
     }
     
+    /// Pushes the login screen onto the view hierarchy.
+    @objc private func goToLogin() {
+        let screen = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "loginSignupScreen")
+        navigationController?.pushViewController(screen, animated: true)
+    }
+    
     /// Shows an alert saying that notifications could not be loaded.
     @objc private func failedToLoad() {
         let alert = UIAlertController(title: StringConstants.failedToLoadNotificationsTitle, message: StringConstants.failedToLoadNotificationsMessage, preferredStyle: .alert)
@@ -226,4 +241,9 @@ class NotificationsTableViewController: UITableViewController {
         })
         self.present(alert, animated: true, completion: nil)
     }
+    
+    @IBAction func closeButtonPressed(_ sender: UIBarButtonItem) {
+        closeNotifications()
+    }
+    
 }
