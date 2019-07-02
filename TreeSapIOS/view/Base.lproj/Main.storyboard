@@ -4492,7 +4492,7 @@ ZC4
                                                         <accessibility key="accessibilityConfiguration" label="Create Account Email"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" returnKeyType="go"/>
+                                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                                     </textField>
                                                 </subviews>
                                             </stackView>
