@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0B85D9CFEC2032A626AC6A93 /* libPods-TreeSapIOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 04069877CBA1FE325848DCEC /* libPods-TreeSapIOSTests.a */; };
 		4101181C22A6FA5600EDE6D8 /* UserPreferenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4101181B22A6FA5600EDE6D8 /* UserPreferenceTests.swift */; };
+		4103B19322CAA676002B7D54 /* ChangeEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4103B19222CAA676002B7D54 /* ChangeEmailViewController.swift */; };
 		4107AC3522BBAC3A0024C2D2 /* TreeAddTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4107AC3422BBAC3A0024C2D2 /* TreeAddTests.swift */; };
 		418A360D22A83CD3002BF28C /* LoadingScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418A360C22A83CD3002BF28C /* LoadingScreenViewController.swift */; };
 		41AD85E622BA933E00DAB44B /* MoreInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AD85E522BA933E00DAB44B /* MoreInformationViewController.swift */; };
@@ -118,6 +119,7 @@
 		032803B715E7C1F1944B7370 /* Pods-TreeSapIOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreeSapIOSTests.release.xcconfig"; path = "Target Support Files/Pods-TreeSapIOSTests/Pods-TreeSapIOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		04069877CBA1FE325848DCEC /* libPods-TreeSapIOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TreeSapIOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4101181B22A6FA5600EDE6D8 /* UserPreferenceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPreferenceTests.swift; sourceTree = "<group>"; };
+		4103B19222CAA676002B7D54 /* ChangeEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeEmailViewController.swift; sourceTree = "<group>"; };
 		4107AC3422BBAC3A0024C2D2 /* TreeAddTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeAddTests.swift; sourceTree = "<group>"; };
 		418A360C22A83CD3002BF28C /* LoadingScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingScreenViewController.swift; sourceTree = "<group>"; };
 		41AD85E522BA933E00DAB44B /* MoreInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreInformationViewController.swift; sourceTree = "<group>"; };
@@ -321,6 +323,7 @@
 				CB75474D22C11E43001FDA65 /* ForgotPasswordViewController.swift */,
 				CB75474922C10953001FDA65 /* ChangePasswordViewController.swift */,
 				CB75474B22C11186001FDA65 /* ChangeDisplayNameViewController.swift */,
+				4103B19222CAA676002B7D54 /* ChangeEmailViewController.swift */,
 			);
 			path = account;
 			sourceTree = "<group>";
@@ -788,6 +791,7 @@
 				CB4707D322C5422200E7908F /* NotificationDetailsViewController.swift in Sources */,
 				CB15256A22A69941002D483E /* FilledButton.swift in Sources */,
 				CB9A1C0222BBCC1F00D1067E /* PendingTreesTableViewController.swift in Sources */,
+				4103B19322CAA676002B7D54 /* ChangeEmailViewController.swift in Sources */,
 				CB75475222C14DD0001FDA65 /* MultilineTextField.swift in Sources */,
 				CB80E3BF22AFD657001A78AE /* AlertManager.swift in Sources */,
 				CB80E3C122AFD753001A78AE /* LocationManager.swift in Sources */,

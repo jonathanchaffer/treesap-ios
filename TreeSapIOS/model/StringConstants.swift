@@ -143,6 +143,9 @@ class StringConstants {
     static let invalidEmailTitle = "Invalid email"
     static let invalidEmailMesage = "Please ensure that you have entered a valid email address."
     
+    static let incorrectEmailTitle = "Incorrect email"
+    static let incorrectEmailMessage = "The email you entered was incorrect. Please try again."
+    
     static let emailAlreadyInUseTitle = "Email already in use"
     static let emailAlreadyInUseMessage = "An account has already been created with that email."
     
@@ -167,6 +170,9 @@ class StringConstants {
     static let setDisplayNameFailureTitle = "Error setting display name"
     static let setDisplayNameFailureMessage = "An error occurred while trying to set your display name. Please try again."
     
+    static let updateEmailFailureTitle = "Error updating email"
+    static let updateEmailFailureMessage = "An error occurred while trying to update your email. Please try again."
+    
     static let updatePasswordFailureTitle = "Error updating password"
     static let updatePasswordFailureMessage = "An error occurred while trying to update your password. Please try again."
     
@@ -177,6 +183,7 @@ class StringConstants {
     
     static let loggedInNotification = "loggedIn"
     static let displayNameUpdatedNotification = "displayNameUpdated"
+    static let emailUpdatedNotification = "emailUpdated"
     static let passwordUpdatedNotification = "passwordUpdated"
     static let passwordResetSentNotification = "passwordResetSent"
     static let submitDataFailureNotification = "submitDataFailure"

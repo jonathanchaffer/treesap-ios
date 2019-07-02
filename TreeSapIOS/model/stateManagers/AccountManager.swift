@@ -140,6 +140,39 @@ class AccountManager {
             
         }
     }
+    //TODO: use the StringContstancts class
+    /**
+     Changes the current user's e-mail to the specified e-mail. If there is no current user, nothing happens
+     - Parameter email: the e-mail that the user's current e-mail is to be changed to
+     */
+    static func updateEmail(password: String, email: String){
+        let credential = EmailAuthProvider.credential(withEmail: getEmail()!, password: password)
+        getUser()?.reauthenticate(with: credential) { result, error in
+            
+            if error != nil {
+                AlertManager.alertUser(title: StringConstants.incorrectPasswordTitle, message: StringConstants.incorrectPasswordMessage)
+                return
+            }
+            
+            getUser()?.updateEmail(to: email) { error in
+                if let error = error{
+                    switch error._code{
+                    case AuthErrorCode.invalidEmail.rawValue:
+                        AlertManager.alertUser(title: StringConstants.invalidEmailTitle, message: StringConstants.invalidEmailMesage)
+                    case AuthErrorCode.emailAlreadyInUse.rawValue:
+                        AlertManager.alertUser(title: StringConstants.emailAlreadyInUseTitle, message: StringConstants.emailAlreadyInUseMessage)
+                    case AuthErrorCode.requiresRecentLogin.rawValue:
+                        AlertManager.alertUser(title: StringConstants.updateEmailFailureTitle, message: StringConstants.updateEmailFailureMessage)
+                    default:
+                        AlertManager.alertUser(title: StringConstants.updateEmailFailureTitle, message: StringConstants.updateEmailFailureMessage)
+                    }
+                }else{
+                    NotificationCenter.default.post(name: NSNotification.Name(StringConstants.emailUpdatedNotification), object: nil)
+                }
+            }
+            
+        }
+    }
     
     static func sendPasswordResetEmail(email: String) {
         Auth.auth().sendPasswordReset(withEmail: email) { error in
