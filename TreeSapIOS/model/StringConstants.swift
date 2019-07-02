@@ -107,7 +107,7 @@ class StringConstants {
     static let passwordResetSentMessage = "A password reset email was successfully sent. Please check your inbox."
     
     static let loginRequiredTitle = "Login required"
-    static let loginRequiredMessage = "You must log into your TreeSap account to add your own trees."
+    static let loginRequiredMessage = "You must log into your TreeSap account to use this feature."
     static let loginRequiredLogInAction = "Log in"
     
     static let submitTreeSuccessTitle = "Success!"

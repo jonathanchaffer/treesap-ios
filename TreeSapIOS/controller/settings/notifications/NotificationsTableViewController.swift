@@ -43,6 +43,16 @@ class NotificationsTableViewController: UITableViewController {
         navigationController?.setToolbarHidden(false, animated: false)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        // Prompt the user to log in if they're not already
+        if !AccountManager.isLoggedIn() {
+            let alert = UIAlertController(title: StringConstants.loginRequiredTitle, message: StringConstants.loginRequiredMessage, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: StringConstants.cancel, style: .cancel, handler: { _ in self.closeNotifications() }))
+            alert.addAction(UIAlertAction(title: StringConstants.loginRequiredLogInAction, style: .default, handler: { _ in self.goToLogin() }))
+            present(alert, animated: true)
+        }
+    }
+    
     override func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         return documents.count
     }
@@ -135,6 +145,12 @@ class NotificationsTableViewController: UITableViewController {
                 self.reloadTableData()
             }
         }
+    }
+    
+    /// Pushes the login screen onto the view hierarchy.
+    @objc private func goToLogin() {
+        let screen = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "loginSignupScreen")
+        navigationController?.pushViewController(screen, animated: true)
     }
     
     /// Shows an alert saying that notifications could not be loaded.
