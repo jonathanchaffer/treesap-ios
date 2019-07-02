@@ -27,7 +27,8 @@ class SimpleDisplayViewController: TreeDisplayViewController {
     @IBOutlet var photosContainerStackView: UIStackView!
     @IBOutlet var photosButton: UIButton!
     @IBOutlet var imageSlideshow: ImageSlideshow!
-
+    @IBOutlet weak var nearbyTreesButton: UIButton!
+    
     // MARK: - Overrides
 
     override func viewDidLoad() {
@@ -154,7 +155,7 @@ class SimpleDisplayViewController: TreeDisplayViewController {
         AlertManager.alertUser(title: StringConstants.dbhExplanationTitle, message: StringConstants.dbhExplanationWithMultipleMessage)
     }
 
-    @IBAction func viewNotesButtonPressed(_: UIButton) {
+    @IBAction func notesButtonPressed(_: UIButton) {
         if !photosContainerStackView.isHidden {
             hidePhotos()
         }
@@ -165,7 +166,7 @@ class SimpleDisplayViewController: TreeDisplayViewController {
         }
     }
 
-    @IBAction func viewPhotosButtonPressed(_: UIButton) {
+    @IBAction func photosButtonPressed(_: UIButton) {
         if !notesContainerStackView.isHidden {
             hideNotes()
         }
@@ -174,5 +175,12 @@ class SimpleDisplayViewController: TreeDisplayViewController {
         } else {
             hidePhotos()
         }
+    }
+    
+    @IBAction func nearbyTreesButtonPressed(_ sender: UIButton) {
+        let nc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "nearbyTrees") as! UINavigationController
+        let vc = nc.viewControllers[0] as! NearbyTreesTableViewController
+        vc.currentTree = displayedTree!
+        self.present(nc, animated: true, completion: nil)
     }
 }

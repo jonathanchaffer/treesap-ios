@@ -728,7 +728,7 @@
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                                 <connections>
-                                                                    <action selector="viewNotesButtonPressed:" destination="jVw-u6-kaL" eventType="touchUpInside" id="hcP-2p-pwN"/>
+                                                                    <action selector="notesButtonPressed:" destination="jVw-u6-kaL" eventType="touchUpInside" id="hcP-2p-pwN"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
@@ -747,7 +747,7 @@
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                                 <connections>
-                                                                    <action selector="viewPhotosButtonPressed:" destination="jVw-u6-kaL" eventType="touchUpInside" id="2au-mh-5X2"/>
+                                                                    <action selector="photosButtonPressed:" destination="jVw-u6-kaL" eventType="touchUpInside" id="2au-mh-5X2"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
@@ -764,6 +764,9 @@
                                                         <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="nearbyTreesButtonPressed:" destination="jVw-u6-kaL" eventType="touchUpInside" id="l5D-Pi-fbC"/>
+                                                </connections>
                                             </button>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="nzh-dD-yhg">
                                                 <rect key="frame" x="0.0" y="286.66666666666669" width="334" height="216.33333333333331"/>
@@ -876,6 +879,7 @@
                         <outlet property="imageSlideshow" destination="DZG-Gd-dMx" id="wSS-X6-wga"/>
                         <outlet property="latitudeLabel" destination="xne-yf-sAh" id="b1G-rt-14R"/>
                         <outlet property="longitudeLabel" destination="9b0-RR-iww" id="3sh-hL-j7g"/>
+                        <outlet property="nearbyTreesButton" destination="HZD-RG-T3O" id="rSw-D2-i7H"/>
                         <outlet property="notesButton" destination="BLu-6X-BFX" id="Oaf-id-dF7"/>
                         <outlet property="notesContainerStackView" destination="nzh-dD-yhg" id="3j5-Jx-2uJ"/>
                         <outlet property="notesStackView" destination="qC3-VD-fGu" id="9Bf-O6-dXi"/>
@@ -1819,6 +1823,57 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SG5-Wd-OUh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="839.13043478260875" y="498.88392857142856"/>
+        </scene>
+        <!--Nearby Trees-->
+        <scene sceneID="6b8-kV-YrC">
+            <objects>
+                <tableViewController id="vCu-8Q-YGy" customClass="NearbyTreesTableViewController" customModule="TreeSapIOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="GzP-sQ-FNA">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="nearbyTreeCell" textLabel="dLU-ZU-EXw" detailTextLabel="zAC-R8-3NT" rowHeight="72" style="IBUITableViewCellStyleSubtitle" id="raE-J5-LEr">
+                                <rect key="frame" x="0.0" y="55.333333333333343" width="414" height="72"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="raE-J5-LEr" id="6i3-dO-dZR">
+                                    <rect key="frame" x="0.0" y="0.0" width="376" height="71.666666666666671"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dLU-ZU-EXw">
+                                            <rect key="frame" x="20.000000000000004" y="15.999999999999998" width="33.333333333333336" height="20.333333333333332"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zAC-R8-3NT">
+                                            <rect key="frame" x="19.999999999999996" y="39.333333333333329" width="43.666666666666664" height="14.333333333333334"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="vCu-8Q-YGy" id="MEg-GH-NUa"/>
+                            <outlet property="delegate" destination="vCu-8Q-YGy" id="Hne-r9-mdR"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Nearby Trees" id="h2o-Ei-UdW">
+                        <barButtonItem key="leftBarButtonItem" title="Close" image="xButton" id="qzF-J6-tLK">
+                            <connections>
+                                <action selector="closeButtonPressed:" destination="vCu-8Q-YGy" id="5G7-So-ugN"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PfJ-hg-kfl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2893" y="499"/>
         </scene>
         <!--Add Tree-->
         <scene sceneID="32I-LK-Gnt">
@@ -4876,6 +4931,24 @@ ZC4
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hEz-c5-Ztd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1272.4637681159422" y="4664.6739130434789"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="btE-U3-5sP">
+            <objects>
+                <navigationController storyboardIdentifier="nearbyTrees" automaticallyAdjustsScrollViewInsets="NO" id="70a-hc-9gq" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="b03-wg-sUa">
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="vCu-8Q-YGy" kind="relationship" relationship="rootViewController" id="jvk-hH-7ac"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LVY-MY-amm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2216" y="498"/>
         </scene>
     </scenes>
     <resources>
