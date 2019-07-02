@@ -2,7 +2,7 @@
 //  NameFormatterTests.swift
 //  TreeSapIOSTests
 //
-//  Created by Summer2019 on 6/3/19.
+//  Created by Jonathan Chaffer in Summer 2019.
 //  Copyright © 2019 Hope CS. All rights reserved.
 //
 
