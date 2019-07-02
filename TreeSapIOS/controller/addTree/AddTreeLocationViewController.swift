@@ -31,25 +31,23 @@ class AddTreeLocationViewController: AddTreeViewController {
     // MARK: - Actions
     
     @IBAction func broadcastNext(_: UIButton) {
-        addTreeLocation()
+        verifyCoordinates()
     }
     
-    func addTreeLocation(){
+    func verifyCoordinates() {
         // Convert the inputs to Double. If the conversion failed, alert the user.
         let latitude = Double(latitudeTextField.text!)
         let longitude = Double(longitudeTextField.text!)
-        
-        // Check that latitude and longitude values exist
         if latitude == nil || longitude == nil {
             AlertManager.alertUser(title: StringConstants.invalidCoordinatesTitle, message: StringConstants.invalidCoordinatesMessage)
             return
         }
-        // Check that the latitude and longitude values are in the correct ranges
+        // Check that the latitude and longitude values are in the correct ranges. If they aren't, alert the user.
         if latitude! < -90.0 || latitude! > 90.0 || longitude! < -180.0 || longitude! > 180.0 {
             AlertManager.alertUser(title: StringConstants.coordinatesOutOfRangeTitle, message: StringConstants.coordinatesOutOfRangeMessage)
             return
         }
-        
+        // Go to the next page
         nextPage()
     }
     
@@ -68,16 +66,16 @@ class AddTreeLocationViewController: AddTreeViewController {
     }
 }
 
-// https://stackoverflow.com/questions/30973044/how-to-restrict-uitextfield-to-take-only-numbers-in-swift
 extension AddTreeLocationViewController: UITextFieldDelegate {
-    ///Makes the text fields allow only numbers, dashes, and dots.
+    /// Makes it so that text fields allow only numbers, dashes, and dots.
+    // https://stackoverflow.com/questions/30973044/how-to-restrict-uitextfield-to-take-only-numbers-in-swift
     func textField(_: UITextField, shouldChangeCharactersIn _: NSRange, replacementString string: String) -> Bool {
         let allowedCharacters = CharacterSet(charactersIn: "-.0123456789")
         let characterSet = CharacterSet(charactersIn: string)
         return allowedCharacters.isSuperset(of: characterSet)
     }
     
-    ///Works such that the next button visible if both the latitude and longitude text fields have text in them
+    /// Function that is called when a text field changes. Hides the next button if the latitude and longitude are not both valid Doubles.
     @objc private func textFieldDidChange(_ textField: UITextField) {
         let latitude = Double(latitudeTextField.text!)
         let longitude = Double(longitudeTextField.text!)
@@ -88,17 +86,16 @@ extension AddTreeLocationViewController: UITextFieldDelegate {
         }
     }
     
-    //This function makes pressing the return key in the latitude text field make the longitude text field start being edited and pressing the return key in the longitude text field use the current tree location
+    /// Defines the behavior of the return key in different text fields.
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField{
         case latitudeTextField:
             longitudeTextField.becomeFirstResponder()
         case longitudeTextField:
-            addTreeLocation()
+            verifyCoordinates()
         default:
             return true
         }
-        
         return true
     }
 }
