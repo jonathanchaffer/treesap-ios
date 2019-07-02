@@ -179,7 +179,7 @@ class StringConstants {
     static let sendPassowrdResetFailureMessage = "An error occurred while trying to send a password reset email. Please try again."
 
     static let errorComposingEmailTitle = "Error composing email"
-    static let errorComposingEmailMessage = "An error occurred while trying to compose an email. Please try again."
+    static let errorComposingEmailMessage = "An error occurred while trying to compose an email. Please try again or email feedback@treesap.info."
 
     static let feedbackSentTitle = "Feedback sent"
     static let feedbackSentMessage = "Thank you for your feedback!"
