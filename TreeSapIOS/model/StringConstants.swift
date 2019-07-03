@@ -189,6 +189,9 @@ class StringConstants {
     
     static let addCuratorSuccessTitle = "Curator added"
     static let addCuratorSuccessMessage = "The user can now accept and reject user-submitted trees. Note that they may need to restart the app for this change to take effect."
+    
+    static let exportDataFailureTitle = "Error exporting data"
+    static let exportDataFailureMessage = "An error occurred while trying to export user-submitted trees. Please try again."
 
     // MARK: - Notification Center
 
