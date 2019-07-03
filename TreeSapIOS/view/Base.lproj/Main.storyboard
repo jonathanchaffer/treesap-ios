@@ -1801,7 +1801,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" image="QRCodeOverlay" highlightedImage="QRCodeOverlay" translatesAutoresizingMaskIntoConstraints="NO" id="tLf-oU-uzz">
-                                <rect key="frame" x="199" y="367.66666666666669" width="16" height="16"/>
+                                <rect key="frame" x="82" y="250.66666666666663" width="250" height="250"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="250" id="BuD-2o-2Ff"/>
                                     <constraint firstAttribute="width" secondItem="tLf-oU-uzz" secondAttribute="height" multiplier="1:1" id="nBa-MU-vRJ"/>
@@ -1916,7 +1916,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PfJ-hg-kfl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2893" y="499"/>
+            <point key="canvasLocation" x="3571" y="499"/>
         </scene>
         <!--Add Tree-->
         <scene sceneID="32I-LK-Gnt">
@@ -5081,6 +5081,24 @@ ZC4
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nC5-pX-TgF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1272" y="2168"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="7iG-70-sVw">
+            <objects>
+                <navigationController storyboardIdentifier="nearbyTrees" automaticallyAdjustsScrollViewInsets="NO" id="s9F-cF-Ing" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="70c-1P-2Om">
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="vCu-8Q-YGy" kind="relationship" relationship="rootViewController" id="9rS-vh-vUT"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nJr-3f-vbx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2892.753623188406" y="498.91304347826093"/>
         </scene>
     </scenes>
     <resources>
