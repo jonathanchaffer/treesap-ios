@@ -29,6 +29,8 @@ class SimpleDisplayViewController: TreeDisplayViewController {
     @IBOutlet var imageSlideshow: ImageSlideshow!
     @IBOutlet weak var nearbyTreesButton: UIButton!
     
+    var shouldHideNearbyTrees = false
+    
     // MARK: - Overrides
 
     override func viewDidLoad() {
@@ -93,6 +95,10 @@ class SimpleDisplayViewController: TreeDisplayViewController {
             photosButton.isHidden = true
         }
         setupSlideshow()
+        // Hide nearby trees button if necessary
+        if shouldHideNearbyTrees {
+            nearbyTreesButton.isHidden = true
+        }
     }
 
     private func setupSlideshow() {
