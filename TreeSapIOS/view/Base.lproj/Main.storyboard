@@ -1878,14 +1878,87 @@
         <!--Add Curator-->
         <scene sceneID="3Q1-kg-ZtW">
             <objects>
-                <viewController id="qfj-WT-Nyg" sceneMemberID="viewController">
+                <viewController id="qfj-WT-Nyg" customClass="AddCuratorViewController" customModule="TreeSapIOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mtu-Su-oA9">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cbw-X5-YtA" customClass="KeyboardAvoidingView" customModule="KeyboardAvoidingView">
+                                <rect key="frame" x="20" y="84" width="374" height="632"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="e4o-A8-Qyp">
+                                        <rect key="frame" x="0.0" y="208.66666666666669" width="374" height="214.66666666666669"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type in an existing user's email below to allow them to accept and reject user-submitted trees." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2aB-lX-IvP">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="40.666666666666664"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="5NI-Nz-rZI">
+                                                <rect key="frame" x="0.0" y="48.666666666666629" width="374" height="30"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PuO-Ly-iK5">
+                                                        <rect key="frame" x="0.0" y="0.0" width="41" height="30"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="D5t-kP-euQ">
+                                                        <rect key="frame" x="49" y="0.0" width="325" height="30"/>
+                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" textContentType="email"/>
+                                                    </textField>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ayk-rF-flR">
+                                                <rect key="frame" x="0.0" y="86.666666666666629" width="374" height="128"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FuE-eq-Gvi">
+                                                        <rect key="frame" x="0.0" y="0.0" width="282" height="128"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </view>
+                                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZVL-wa-ToN" customClass="FilledButton" customModule="TreeSapIOS" customModuleProvider="target">
+                                                        <rect key="frame" x="290" y="0.0" width="84" height="128"/>
+                                                        <state key="normal" title="Add Curator"/>
+                                                        <connections>
+                                                            <action selector="addCuratorButtonPressed:" destination="qfj-WT-Nyg" eventType="touchUpInside" id="eF8-gr-iTt"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="e4o-A8-Qyp" firstAttribute="centerY" secondItem="Cbw-X5-YtA" secondAttribute="centerY" id="EnB-dl-OtB"/>
+                                    <constraint firstAttribute="trailing" secondItem="e4o-A8-Qyp" secondAttribute="trailing" id="R0C-87-Nc2"/>
+                                    <constraint firstItem="e4o-A8-Qyp" firstAttribute="leading" secondItem="Cbw-X5-YtA" secondAttribute="leading" id="a4f-3M-VMS"/>
+                                    <constraint firstItem="e4o-A8-Qyp" firstAttribute="centerX" secondItem="Cbw-X5-YtA" secondAttribute="centerX" id="kMa-0z-Q02"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="5jR-LP-bj3" firstAttribute="bottom" secondItem="Cbw-X5-YtA" secondAttribute="bottom" constant="20" id="0Y6-7X-IIa"/>
+                            <constraint firstItem="Cbw-X5-YtA" firstAttribute="top" secondItem="5jR-LP-bj3" secondAttribute="top" constant="20" id="BSc-0K-8hX"/>
+                            <constraint firstItem="Cbw-X5-YtA" firstAttribute="leading" secondItem="5jR-LP-bj3" secondAttribute="leading" constant="20" id="RFc-zQ-Kfd"/>
+                            <constraint firstItem="5jR-LP-bj3" firstAttribute="trailing" secondItem="Cbw-X5-YtA" secondAttribute="trailing" constant="20" id="YIb-Nb-NlE"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="5jR-LP-bj3"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Add Curator" id="XTM-ds-y72"/>
+                    <navigationItem key="navigationItem" title="Add Curator" id="XTM-ds-y72">
+                        <barButtonItem key="leftBarButtonItem" title="Close" image="xButton" id="9h8-Eg-5yd">
+                            <connections>
+                                <action selector="closeButtonPressed:" destination="qfj-WT-Nyg" id="zan-TF-ibi"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="emailTextField" destination="D5t-kP-euQ" id="pQD-ZB-cMu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XkT-6N-Yiu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2943,7 +3016,7 @@ ZC4
                                                         <accessibility key="accessibilityConfiguration" identifier="create account email entry"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next" textContentType="email"/>
                                                     </textField>
                                                 </subviews>
                                             </stackView>
@@ -2961,7 +3034,7 @@ ZC4
                                                         <accessibility key="accessibilityConfiguration" identifier="create account display name entry"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next" textContentType="name"/>
                                                     </textField>
                                                 </subviews>
                                             </stackView>
@@ -3439,7 +3512,7 @@ ZC4
                                                         <accessibility key="accessibilityConfiguration" label="Create Account Email"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" returnKeyType="go"/>
+                                                        <textInputTraits key="textInputTraits" returnKeyType="go" textContentType="name"/>
                                                     </textField>
                                                 </subviews>
                                             </stackView>

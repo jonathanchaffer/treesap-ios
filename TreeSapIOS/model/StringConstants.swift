@@ -183,6 +183,12 @@ class StringConstants {
 
     static let feedbackSentTitle = "Feedback sent"
     static let feedbackSentMessage = "Thank you for your feedback!"
+    
+    static let addCuratorFailureTitle = "Error adding curator"
+    static let addCuratorFailureMessage = "An error occurred while trying to add a curator. Please ensure that you enter a valid user's email address, or ask the user to log out and log back in."
+    
+    static let addCuratorSuccessTitle = "Curator added"
+    static let addCuratorSuccessMessage = "The user can now accept and reject user-submitted trees. Note that they may need to log out and log back in for this change to take effect."
 
     // MARK: - Notification Center
 
@@ -202,4 +208,5 @@ class StringConstants {
     static let addTreeNextPageNotification = "addTreeNext"
     static let addTreePreviousPageNotification = "addTreePrevious"
     static let submitTreeNotification = "submitTree"
+    static let addCuratorFailureNotification = "addCuratorFailed"
 }

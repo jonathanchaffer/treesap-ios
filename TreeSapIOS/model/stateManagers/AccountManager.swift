@@ -59,6 +59,7 @@ class AccountManager {
                 }
             } else {
                 setDisplayName(displayName: displayName)
+                DatabaseManager.updateUsersCollection()
                 NotificationCenter.default.post(name: NSNotification.Name(StringConstants.loggedInNotification), object: nil)
             }
         }
@@ -83,8 +84,9 @@ class AccountManager {
                     AlertManager.alertUser(title: StringConstants.loginFailureTitle, message: StringConstants.loginFailureMessage)
                 }
             } else {
-                NotificationCenter.default.post(name: NSNotification.Name(StringConstants.loggedInNotification), object: nil)
                 DataManager.reloadFirebaseTreeData()
+                DatabaseManager.updateUsersCollection()
+                NotificationCenter.default.post(name: NSNotification.Name(StringConstants.loggedInNotification), object: nil)
             }
         }
     }
@@ -174,6 +176,7 @@ class AccountManager {
                         AlertManager.alertUser(title: StringConstants.updateEmailFailureTitle, message: StringConstants.updateEmailFailureMessage)
                     }
                 } else {
+                    DatabaseManager.updateUsersCollection()
                     NotificationCenter.default.post(name: NSNotification.Name(StringConstants.emailUpdatedNotification), object: nil)
                 }
             }
