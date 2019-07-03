@@ -187,8 +187,9 @@ class StringConstants {
     // MARK: - Notification Center
 
     static let loggedInNotification = "loggedIn"
+    static let authenticationFailureNotification = "authenticationFailure"
     static let displayNameUpdatedNotification = "displayNameUpdated"
-    static let emailUpdatedNotification = "emailUpdated"
+    static let emailUpdateAttemptNotification = "emailUpdateAttempted"
     static let passwordUpdatedNotification = "passwordUpdated"
     static let passwordResetSentNotification = "passwordResetSent"
     static let submitDataFailureNotification = "submitDataFailure"

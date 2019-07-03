@@ -157,26 +157,18 @@ class AccountManager {
         getUser()?.reauthenticate(with: credential) { _, error in
 
             if error != nil {
-                AlertManager.alertUser(title: StringConstants.incorrectPasswordTitle, message: StringConstants.incorrectPasswordMessage)
+                NotificationCenter.default.post(name: NSNotification.Name(StringConstants.authenticationFailureNotification), object: nil)
                 return
             }
 
             getUser()?.updateEmail(to: email) { error in
                 if let error = error {
-                    switch error._code {
-                    case AuthErrorCode.invalidEmail.rawValue:
-                        AlertManager.alertUser(title: StringConstants.invalidEmailTitle, message: StringConstants.invalidEmailMesage)
-                    case AuthErrorCode.emailAlreadyInUse.rawValue:
-                        AlertManager.alertUser(title: StringConstants.emailAlreadyInUseTitle, message: StringConstants.emailAlreadyInUseMessage)
-                    case AuthErrorCode.requiresRecentLogin.rawValue:
-                        AlertManager.alertUser(title: StringConstants.updateEmailFailureTitle, message: StringConstants.updateEmailFailureMessage)
-                    default:
-                        AlertManager.alertUser(title: StringConstants.updateEmailFailureTitle, message: StringConstants.updateEmailFailureMessage)
-                    }
+                    NotificationCenter.default.post(name: NSNotification.Name(StringConstants.emailUpdateAttemptNotification), object: nil, userInfo: ["error": error])
                 } else {
-                    NotificationCenter.default.post(name: NSNotification.Name(StringConstants.emailUpdatedNotification), object: nil)
+                    NotificationCenter.default.post(name: NSNotification.Name(StringConstants.emailUpdateAttemptNotification), object: nil, userInfo: [:])
                 }
             }
+            
         }
     }
 

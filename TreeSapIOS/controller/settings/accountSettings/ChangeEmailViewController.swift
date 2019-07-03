@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ChangeEmailViewController: UIViewController {
     @IBOutlet var passwordEntry: UITextField!
@@ -15,9 +16,12 @@ class ChangeEmailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        //Sets up gesture recognizer so that keyboard is dismissed when the user taps outside of the keyboard and all text fields
         hideKeyboardWhenTappedAround()
 
-        NotificationCenter.default.addObserver(self, selector: #selector(closeChangeEmail), name: NSNotification.Name(StringConstants.emailUpdatedNotification), object: nil)
+        //Add observers for notifications
+        NotificationCenter.default.addObserver(self, selector: #selector(onFailedAuthentication), name: NSNotification.Name(StringConstants.authenticationFailureNotification), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(resolveEmailUpdate), name: NSNotification.Name(StringConstants.emailUpdateAttemptNotification), object: nil)
 
         passwordEntry.delegate = self
         emailEntry.delegate = self
@@ -37,13 +41,40 @@ class ChangeEmailViewController: UIViewController {
             AlertManager.alertUser(title: StringConstants.incorrectEmailTitle, message: StringConstants.incorrectEmailMessage)
             return
         }
-
+        
         AccountManager.updateEmail(password: passwordText, email: emailText)
+        
+        AlertManager.showLoadingAlert()
     }
 
-    @objc private func closeChangeEmail() {
-        navigationController?.popViewController(animated: true)
-        dismiss(animated: true, completion: nil)
+    @objc private func onFailedAuthentication(){
+        dismiss(animated: true) {
+            AlertManager.alertUser(title: StringConstants.incorrectPasswordTitle, message: StringConstants.incorrectPasswordMessage)
+        }
+    }
+    
+    @objc private func resolveEmailUpdate(_ notification: Notification) {
+        guard let errorInfo = notification.userInfo as? [String: Error] else{   //TODO: change this
+            return
+        }
+        
+        dismiss(animated: true) {
+            if(errorInfo.isEmpty){
+                self.navigationController?.popViewController(animated: true)
+            }else{
+                switch errorInfo["error"]!._code {
+                case AuthErrorCode.invalidEmail.rawValue:
+                    AlertManager.alertUser(title: StringConstants.invalidEmailTitle, message: StringConstants.invalidEmailMesage)
+                case AuthErrorCode.emailAlreadyInUse.rawValue:
+                    AlertManager.alertUser(title: StringConstants.emailAlreadyInUseTitle, message: StringConstants.emailAlreadyInUseMessage)
+                case AuthErrorCode.requiresRecentLogin.rawValue:
+                    AlertManager.alertUser(title: StringConstants.updateEmailFailureTitle, message: StringConstants.updateEmailFailureMessage)
+                default:
+                    AlertManager.alertUser(title: StringConstants.updateEmailFailureTitle, message: StringConstants.updateEmailFailureMessage)
+                }
+            }
+        }
+        
     }
 }
 
@@ -54,6 +85,7 @@ extension ChangeEmailViewController: UITextFieldDelegate {
         case passwordEntry:
             emailEntry.becomeFirstResponder()
         case emailEntry:
+            self.view.endEditing(true)
             changeEmail()
         default:
             return true
