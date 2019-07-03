@@ -188,7 +188,7 @@ class StringConstants {
     static let addCuratorFailureMessage = "An error occurred while trying to add a curator. Please ensure that you enter a valid user's email address, or ask the user to log out and log back in."
     
     static let addCuratorSuccessTitle = "Curator added"
-    static let addCuratorSuccessMessage = "The user can now accept and reject user-submitted trees. Note that they may need to log out and log back in for this change to take effect."
+    static let addCuratorSuccessMessage = "The user can now accept and reject user-submitted trees. Note that they may need to restart the app for this change to take effect."
 
     // MARK: - Notification Center
 
