@@ -2796,9 +2796,9 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jwX-Tm-gJZ">
                                                         <rect key="frame" x="6" y="167.33333333333334" width="362" height="61"/>
                                                         <string key="text" base64-UTF8="YES">
-VGhpcyBzb2Z0d2FyZSBpcyDCqSBIb3BlIENvbGxlZ2UsIDIwMTkuIANXcml0dGVuIGJ5IE1pa2UgSmlw
-cGluZywgSm9uYXRoYW4gQ2hhZmZlciwgYW5kIEpvc2lhaCBCcmV0dC4gQWxsIHJpZ2h0cyByZXNlcnZl
-ZC4
+VGhpcyBzb2Z0d2FyZSBpcyDCqSBIb3BlIENvbGxlZ2UsIDIwMTkuIANXcml0dGVuIGJ5IEpvbmF0aGFu
+IENoYWZmZXIgYW5kIEpvc2lhaCBCcmV0dC4gQWR2aXNlZCBieSBNaWtlIEppcHBpbmcuIEFsbCByaWdo
+dHMgcmVzZXJ2ZWQuA
 </string>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
