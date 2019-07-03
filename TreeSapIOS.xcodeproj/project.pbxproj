@@ -63,6 +63,7 @@
 		CB9F425122A5B0D800C97F70 /* AddTreePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9F425022A5B0D800C97F70 /* AddTreePageViewController.swift */; };
 		CBA9171E22B7DE8C00BA75B2 /* FirebaseDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA9171D22B7DE8C00BA75B2 /* FirebaseDataSource.swift */; };
 		CBA9CCDA22CA86760065DDE5 /* MenuNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA9CCD922CA86750065DDE5 /* MenuNavigationController.swift */; };
+		CBAC5BB622CCFA2E0046C275 /* AddCuratorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAC5BB522CCFA2E0046C275 /* AddCuratorViewController.swift */; };
 		CBB264B822973C6C00C036FB /* DataSourceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB264B722973C6C00C036FB /* DataSourceTableViewController.swift */; };
 		CBB372A422CA81CD0037E831 /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB372A322CA81CD0037E831 /* MenuTableViewController.swift */; };
 		CBBCE82B228DD76B008F7225 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBCE82A228DD76B008F7225 /* AppDelegate.swift */; };
@@ -182,6 +183,7 @@
 		CB9F425022A5B0D800C97F70 /* AddTreePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTreePageViewController.swift; sourceTree = "<group>"; };
 		CBA9171D22B7DE8C00BA75B2 /* FirebaseDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDataSource.swift; sourceTree = "<group>"; };
 		CBA9CCD922CA86750065DDE5 /* MenuNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuNavigationController.swift; sourceTree = "<group>"; };
+		CBAC5BB522CCFA2E0046C275 /* AddCuratorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCuratorViewController.swift; sourceTree = "<group>"; };
 		CBB264B722973C6C00C036FB /* DataSourceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourceTableViewController.swift; sourceTree = "<group>"; };
 		CBB372A322CA81CD0037E831 /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		CBBCE827228DD76B008F7225 /* TreeSapIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TreeSapIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -337,7 +339,7 @@
 				CB9F424D22A5ADF800C97F70 /* addTree */,
 				CBB372A222CA81B60037E831 /* menu */,
 				CB1A56B422C7E30F00046396 /* notifications */,
-				CB1A56B522C7E31D00046396 /* pendingTrees */,
+				CBAC5BB422CCF9C60046C275 /* curator */,
 				CB9F424E22A5AE0100C97F70 /* settings */,
 			);
 			path = controller;
@@ -455,6 +457,15 @@
 				CBA9171D22B7DE8C00BA75B2 /* FirebaseDataSource.swift */,
 			);
 			path = dataSources;
+			sourceTree = "<group>";
+		};
+		CBAC5BB422CCF9C60046C275 /* curator */ = {
+			isa = PBXGroup;
+			children = (
+				CB1A56B522C7E31D00046396 /* pendingTrees */,
+				CBAC5BB522CCFA2E0046C275 /* AddCuratorViewController.swift */,
+			);
+			path = curator;
 			sourceTree = "<group>";
 		};
 		CBB372A222CA81B60037E831 /* menu */ = {
@@ -826,6 +837,7 @@
 				CBA9171E22B7DE8C00BA75B2 /* FirebaseDataSource.swift in Sources */,
 				CB15257222A6A366002D483E /* AddTreeBarkViewController.swift in Sources */,
 				D77029DD22B1293A00671CC0 /* AccountManager.swift in Sources */,
+				CBAC5BB622CCFA2E0046C275 /* AddCuratorViewController.swift in Sources */,
 				CB2D4DA522958548006DAC37 /* TreeAnnotationView.swift in Sources */,
 				CB12C94D228DF5C4000C74C3 /* SimpleDisplayViewController.swift in Sources */,
 				D76D617F22931990003FFD24 /* CSVFormat.swift in Sources */,

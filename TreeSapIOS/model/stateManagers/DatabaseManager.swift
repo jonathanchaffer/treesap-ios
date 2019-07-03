@@ -152,6 +152,38 @@ class DatabaseManager {
             }
         }
     }
+    
+    static func updateUsersCollection() {
+        let query = db.collection("users").whereField("userID", isEqualTo: AccountManager.getUserID()!)
+        query.getDocuments() { snapshot, err in
+            if let err = err {
+                print("Error retrieving document: \(err)")
+            } else {
+                var documentID: String? = nil
+                if snapshot!.documents.count > 0 {
+                    documentID = snapshot!.documents[0].documentID
+                }
+                addDataToCollection(data: ["email": AccountManager.getEmail()!, "userID": AccountManager.getUserID()!], collectionID: "users", documentID: documentID)
+            }
+        }
+    }
+    
+    static func addCurator(email: String) {
+        let query = db.collection("users").whereField("email", isEqualTo: email)
+        query.getDocuments() { snapshot, err in
+            if let err = err {
+                print("Error retrieving document: \(err)")
+                NotificationCenter.default.post(name: NSNotification.Name(StringConstants.addCuratorFailureNotification), object: nil)
+            } else {
+                if snapshot!.documents.count > 0 {
+                    let data = snapshot!.documents[0].data()
+                    addDataToCollection(data: [:], collectionID: "curators", documentID: data["userID"] as? String)
+                } else {
+                    NotificationCenter.default.post(name: NSNotification.Name(StringConstants.addCuratorFailureNotification), object: nil)
+                }
+            }
+        }
+    }
 
     /**
      Adds or overwrites a document to a collection in the database.

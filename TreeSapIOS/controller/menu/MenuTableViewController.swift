@@ -11,6 +11,9 @@ import MessageUI
 import UIKit
 
 class MenuTableViewController: UITableViewController {
+    // MARK: - Properties
+    let sectionHeaders = ["Menu", "Curator", "Account"]
+    
     // MARK: - Overrides
 
     override func viewDidLoad() {
@@ -20,13 +23,13 @@ class MenuTableViewController: UITableViewController {
 
     /// Sets the height of each table row.
     override func tableView(_: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if !AccountManager.isCurator(), indexPath.row == 2, indexPath.section == 0 {
+        if !AccountManager.isCurator(), indexPath.section == 1 {
             return 0
         }
-        if !AccountManager.isLoggedIn(), indexPath.row == 1, indexPath.section == 1 {
+        if !AccountManager.isLoggedIn(), indexPath.row == 1, indexPath.section == 2 {
             return 0
         }
-        if AccountManager.isLoggedIn(), indexPath.row == 0, indexPath.section == 1 {
+        if AccountManager.isLoggedIn(), indexPath.row == 0, indexPath.section == 2 {
             return 0
         }
         return UITableView.automaticDimension
@@ -38,9 +41,33 @@ class MenuTableViewController: UITableViewController {
         if indexPath.row == 3, indexPath.section == 0 {
             sendEmail()
         }
-        if indexPath.row == 1, indexPath.section == 1 {
+        if indexPath.row == 1, indexPath.section == 2 {
             logOutPressed()
         }
+    }
+    
+    /// Sets the header for each section.
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if !AccountManager.isCurator(), section == 1 {
+            return nil
+        }
+        return sectionHeaders[section]
+    }
+    
+    /// Sets the height for each section's header.
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if !AccountManager.isCurator(), section == 1 {
+            return 0.01
+        }
+        return 0
+    }
+    
+    /// Sets the height for each section's footer.
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        if !AccountManager.isCurator(), section == 1 {
+            return 0.01
+        }
+        return 0
     }
 
     // MARK: - Private Functions
