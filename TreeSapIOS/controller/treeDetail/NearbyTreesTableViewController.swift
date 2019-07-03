@@ -24,6 +24,9 @@ class NearbyTreesTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let treeToDisplay = nearbyTrees[indexPath.row]
+        let pages = TreeDetailPageViewController(tree: treeToDisplay)
+        navigationController?.pushViewController(pages, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
