@@ -48,11 +48,11 @@ class PendingTreesTableViewController: UITableViewController {
         } else {
             cell.detailTextLabel?.text = "N/A"
         }
-        // If there is at least one image, display it. Prefer full tree images
+        // If there is at least one image, display it. Prefer leaf images
         let images = tree.images
-        if images[.full]!.count >= 1 {
+        if images[.leaf]!.count >= 1 {
             cell.imageView?.image = images[.full]!.first
-        } else if images[.leaf]!.count >= 1 {
+        } else if images[.full]!.count >= 1 {
             cell.imageView?.image = images[.leaf]!.first
         } else if images[.bark]!.count >= 1 {
             cell.imageView?.image = images[.bark]!.first

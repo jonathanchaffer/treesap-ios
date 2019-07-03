@@ -37,9 +37,23 @@ class NearbyTreesTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "nearbyTreeCell", for: indexPath)
-        cell.textLabel!.text = nearbyTrees[indexPath.row].commonName
-        cell.detailTextLabel!.text = nearbyTrees[indexPath.row].scientificName
+        let tree = nearbyTrees[indexPath.row]
+        cell.textLabel!.text = tree.commonName
+        cell.detailTextLabel!.text = tree.scientificName
+        // If there is at least one image, display it. Prefer leaf images
+        let images = tree.images
+        if images[.leaf]!.count >= 1 {
+            cell.imageView?.image = images[.full]!.first
+        } else if images[.full]!.count >= 1 {
+            cell.imageView?.image = images[.leaf]!.first
+        } else if images[.bark]!.count >= 1 {
+            cell.imageView?.image = images[.bark]!.first
+        }
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 72
     }
     
     // MARK: - Private functions
