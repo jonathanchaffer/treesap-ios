@@ -29,10 +29,7 @@ class NotificaionBadgeViewController: UIViewController {
         }
         // Initialize the badge
         let button = navigationController!.navigationBar.items![0].leftBarButtonItem!
-        guard let view = button.value(forKey: "view") as? UIView else {
-            print("view nil")
-            return
-        }
+        guard let view = button.value(forKey: "view") as? UIView else { return }
         badge = CAShapeLayer()
         let radius = CGFloat(4)
         let offset = CGPoint(x: 32, y: 10)
@@ -52,9 +49,7 @@ class NotificaionBadgeViewController: UIViewController {
     }
     
     @objc private func updateBadgeVisibility(_ notification: Notification) {
-        print("updateBadgeVisibility")
         let numNotifications = notification.userInfo!["count"] as! Int
-        print(numNotifications)
         if numNotifications != 0 {
             badge!.isHidden = false
         } else {
