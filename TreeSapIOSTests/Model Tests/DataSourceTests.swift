@@ -2,7 +2,7 @@
 //  DataSourceTests.swift
 //  TreeSapIOSTests
 //
-//  Created by CS Student on 5/22/19.
+//  Created by Josiah Brett on 5/22/19.
 //  Copyright © 2019 Hope CS. All rights reserved.
 //
 

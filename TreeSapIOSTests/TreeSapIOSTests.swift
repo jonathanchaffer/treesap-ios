@@ -2,7 +2,7 @@
 //  TreeSapIOSTests.swift
 //  TreeSapIOSTests
 //
-//  Created by Josiah Brett in Summer 2019.
+//  
 //  Copyright © 2019 Hope CS. All rights reserved.
 //
 
