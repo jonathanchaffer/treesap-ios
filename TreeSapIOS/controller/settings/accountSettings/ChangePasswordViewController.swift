@@ -30,10 +30,12 @@ class ChangePasswordViewController: UIViewController {
         newPasswordConfirmTextField.delegate = self
     }
 
+    ///Updates the password
     @IBAction func changePasswordButtonPressed(_: UIButton) {
         updatePassword()
     }
 
+    ///Sends a request to the account manager to change the user's password. Shows a loading notification while the database has not responded. If the text in the new password and confirm password text fields do not match, the user is alerted and no request is sent.
     private func updatePassword() {
         AlertManager.showLoadingAlert()
         
@@ -47,12 +49,17 @@ class ChangePasswordViewController: UIViewController {
         }
     }
 
+    ///Dismisses the loading notification and shows the user an incorrect password alert. Assumes that there is a loading notification and will likely have strange behavior if there is none.
     @objc private func onAuthenticationFailure(){
         dismiss(animated: true){
             AlertManager.alertUser(title: StringConstants.incorrectPasswordTitle, message: StringConstants.incorrectPasswordMessage)
         }
     }
     
+    /**
+     Dismisses the loading notification. If the notification this function takes indicates that there was an error in the password change, displays an appropriate alert. Otherwise, pops this view off of the navigation controller stack. Assumes that there is a loading notification and will likely have strange behavior if there is none.
+     - Parameter notification: the notification received by this class that caused this function to be called
+     */
     @objc private func onPasswordUpdate(_ notification: Notification) {
         let errorInfo = notification.userInfo as! [String: Error]
         
@@ -72,6 +79,7 @@ class ChangePasswordViewController: UIViewController {
 }
 
 extension ChangePasswordViewController: UITextFieldDelegate {
+    //Makes returning from any but the lowest text field cause the next lowest text field to become the first responder and returning from the lowest text field cause both the password to be updated and the keyboard to be dismmissed
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField {
         case oldPasswordTextField:
