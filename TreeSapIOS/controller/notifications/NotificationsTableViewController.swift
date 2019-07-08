@@ -15,6 +15,7 @@ class NotificationsTableViewController: UITableViewController {
     var documents = [DocumentSnapshot]()
     var selecting = false
     var numPendingDeletions = 0
+    var isDeletionError = false
 
     @IBOutlet var selectButton: UIBarButtonItem!
     @IBOutlet var cancelButton: UIBarButtonItem!
@@ -171,10 +172,19 @@ class NotificationsTableViewController: UITableViewController {
         }
     }
 
-    /// Dismisses the loading alert and then alerts the user that there was an error deleting data.
+    /// Dismisses the loading alert and then alerts the user that there was an error deleting data
     @objc private func deleteDataFailure() {
-        dismiss(animated: true) {
-            AlertManager.alertUser(title: StringConstants.failedToDeleteNotificationsTitle, message: StringConstants.failedToLoadNotificationsMessage)
+        isDeletionError = true
+        numPendingDeletions -= 1
+        if(numPendingDeletions == 0){
+            dismiss(animated: true) {
+                if(self.isDeletionError){
+                    AlertManager.alertUser(title: StringConstants.failedToDeleteNotificationsTitle, message: StringConstants.failedToLoadNotificationsMessage)
+                    self.isDeletionError = false
+                }
+                self.reloadNotifications()
+                self.stopSelection()
+            }
         }
     }
 
@@ -237,6 +247,8 @@ class NotificationsTableViewController: UITableViewController {
             }
             if self.numPendingDeletions > 0 {
                 AlertManager.showLoadingAlert()
+            }else{
+                self.stopSelection()    //for if no notifications were selected
             }
         })
         present(alert, animated: true, completion: nil)
