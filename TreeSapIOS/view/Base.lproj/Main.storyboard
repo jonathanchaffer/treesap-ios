@@ -2548,7 +2548,7 @@
                                                     </view>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9bC-a3-94x" customClass="FilledButton" customModule="TreeSapIOS" customModuleProvider="target">
                                                         <rect key="frame" x="328" y="0.0" width="46" height="50"/>
-                                                        <state key="normal" title="Save"/>
+                                                        <state key="normal" title="Send"/>
                                                         <connections>
                                                             <action selector="saveButtonPressed:" destination="jXn-HI-cYp" eventType="touchUpInside" id="hy9-rN-rCh"/>
                                                         </connections>
