@@ -10,7 +10,7 @@
 import MapKit
 import UIKit
 
-class MapViewController: UIViewController {
+class MapViewController: NotificaionBadgeViewController {
     // MARK: - Properties
 
     @IBOutlet var mapView: MKMapView!
@@ -45,7 +45,8 @@ class MapViewController: UIViewController {
         // Check authorization status.
         LocationManager.checkLocationAuthorization()
         // Update notification badge
-        updateNotificationBadge()
+        configureNotificationBadge()
+        
     }
 
     override func viewWillAppear(_: Bool) {

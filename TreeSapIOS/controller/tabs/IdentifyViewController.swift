@@ -9,7 +9,7 @@
 import MapKit
 import UIKit
 
-class IdentifyViewController: UIViewController {
+class IdentifyViewController: NotificaionBadgeViewController {
     // MARK: - Properties
 
     @IBOutlet var bigButton: UIButton!
@@ -32,7 +32,7 @@ class IdentifyViewController: UIViewController {
         // Check authorization status.
         LocationManager.checkLocationAuthorization()
         // Update notification badge
-        updateNotificationBadge()
+        configureNotificationBadge()
     }
 
     override func viewDidLayoutSubviews() {

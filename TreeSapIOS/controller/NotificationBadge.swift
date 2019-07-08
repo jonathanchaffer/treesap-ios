@@ -19,27 +19,46 @@ extension CAShapeLayer {
     }
 }
 
-extension UIViewController {
-    func updateNotificationBadge() {
-        NotificationCenter.default.addObserver(self, selector: #selector(addBadge), name: NSNotification.Name(StringConstants.unreadNotificationsCountNotification), object: nil)
-        DatabaseManager.retrieveNumberOfUnreadNotifications()
-    }
+class NotificaionBadgeViewController: UIViewController {
+    var badge: CAShapeLayer? = nil
     
-    @objc private func addBadge(_ notification: Notification) {
+    func configureNotificationBadge() {
+        if badge != nil {
+            badge!.isHidden = true
+            badge!.removeFromSuperlayer()
+        }
         // Initialize the badge
-        let button = self.navigationController?.navigationBar.items![0].leftBarButtonItem!
-        guard let view = button!.value(forKey: "view") as? UIView else { return }
-        let badge = CAShapeLayer()
+        let button = navigationController!.navigationBar.items![0].leftBarButtonItem!
+        guard let view = button.value(forKey: "view") as? UIView else {
+            print("view nil")
+            return
+        }
+        badge = CAShapeLayer()
         let radius = CGFloat(4)
         let offset = CGPoint(x: 32, y: 10)
         let location = CGPoint(x: (radius + offset.x), y: (radius + offset.y))
         let color = UIColor(named: "notificationBadge")!
-        badge.drawCircleAtLocation(location: location, withRadius: radius, andColor: color)
-        // Add the badge if there are new notifications
+        badge!.drawCircleAtLocation(location: location, withRadius: radius, andColor: color)
+        badge!.isHidden = true
+        view.layer.addSublayer(badge!)
+        
+        // Add an observer for the retrieval of number of new notifications
+        NotificationCenter.default.addObserver(self, selector: #selector(updateBadgeVisibility), name: NSNotification.Name(StringConstants.unreadNotificationsCountNotification), object: nil)
+        updateNotificationBadge()
+    }
+    
+    func updateNotificationBadge() {
+        DatabaseManager.retrieveNumberOfUnreadNotifications()
+    }
+    
+    @objc private func updateBadgeVisibility(_ notification: Notification) {
+        print("updateBadgeVisibility")
         let numNotifications = notification.userInfo!["count"] as! Int
         print(numNotifications)
         if numNotifications != 0 {
-            view.layer.addSublayer(badge)
+            badge!.isHidden = false
+        } else {
+            badge!.isHidden = true
         }
     }
 }

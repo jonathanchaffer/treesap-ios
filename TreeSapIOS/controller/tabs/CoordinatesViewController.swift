@@ -11,7 +11,7 @@
 import MapKit
 import UIKit
 
-class CoordinatesViewController: UIViewController {
+class CoordinatesViewController: NotificaionBadgeViewController {
     // MARK: - Properties
 
     @IBOutlet var latitudeTextField: UITextField!
@@ -28,7 +28,7 @@ class CoordinatesViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        updateNotificationBadge()
+        configureNotificationBadge()
     }
 
     // MARK: - Actions
