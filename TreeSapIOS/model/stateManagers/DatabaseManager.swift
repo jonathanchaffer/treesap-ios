@@ -163,13 +163,13 @@ class DatabaseManager {
                 if snapshot!.documents.count > 0 {
                     documentID = snapshot!.documents[0].documentID
                 }
-                addDataToCollection(data: ["email": AccountManager.getEmail()!, "userID": AccountManager.getUserID()!], collectionID: "users", documentID: documentID)
+                addDataToCollection(data: ["email": AccountManager.getEmail()!.lowercased(), "userID": AccountManager.getUserID()!], collectionID: "users", documentID: documentID)
             }
         }
     }
     
     static func addCurator(email: String) {
-        let query = db.collection("users").whereField("email", isEqualTo: email)
+        let query = db.collection("users").whereField("email", isEqualTo: email.lowercased())
         query.getDocuments() { snapshot, err in
             if let err = err {
                 print("Error retrieving document: \(err)")
