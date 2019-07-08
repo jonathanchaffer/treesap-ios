@@ -1,0 +1,117 @@
+###############################
+#                             #
+#   TREESAP FIREBASE MANUAL   #
+#   Written in Summer 2019    #
+#                             #
+###############################
+
+# ABOUT -----------------------
+
+TreeSap uses Google Firebase to manage user authentication and storage of online data.
+The Firebase services used in this app are Authentication and Cloud Firestore. Users
+may sign up for a TreeSap account using an email address and password, and Firebase
+Auth will automatically generate a unique UID for that user. All manipulation of tree
+data is done through Cloud Firestore.
+
+# AUTHENTICATION --------------
+
+Firebase Authentication allows several different types of user authentication, such as
+Google/Facebook/Twitter authentication, phone number authentication, anonymous
+authentication, and email link authentication. In its current state, TreeSap uses only
+email-password authentication, in which users are authenticated by providing an email
+and an associated password.
+
+Refer to the Firebase docs to view the most up-to-date information on how to have a
+user sign in, create an account, etc. https://firebase.google.com/docs/auth
+
+# CLOUD FIRESTORE -------------
+
+TreeSap utilizes Cloud Firestore to manage pending trees, accepted trees,
+notifications, and curators. There are five collections in the database, explained as
+follows:
+
+- acceptedTrees: A collection of documents representing the trees that have been
+  accepted by curators. The ID of each document is generated automatically by Firebase
+  to ensure uniqueness. Each document in this collection contains the following
+  fields:
+    - commonName: A string representation of the tree's common name, or an empty
+      string if there is none.
+    - scientificName: A string representation of the tree's scientific name, or an 
+      empty string if there is none.
+    - dbhArray: An array of numbers containing the tree's DBH measurements, or an
+      empty array if there are none.
+    - images: A dictionary mapping categories (strings) to arrays of base64 encoded 
+      images (strings). The image categories are "bark", "leaf", and "full".
+    - latitude: A number representing the latitude coordinate of the tree.
+    - longitude: A number representing the longitude coordinate of the tree.
+    - notes: An array of strings containing notes about the tree.
+    - timestamp: A timestamp representing the date and time when the tree was 
+      originally added by the user.
+    - userID: A string representing the UID of the user who created the tree.
+- pendingTrees: A collection of documents representing the trees that have been
+  created by users, but not yet accepted by curators. The ID of each document is
+  generated automatically by Firebase to ensure uniqueness. The documents follow the
+  same format as that of acceptedTrees.
+- curators: A collection of documents representing the UIDs of users who have been
+  designated as curators. The ID of each document is the UID of the curator.
+- users: A collection of documents representing the mapping of emails to UIDs. This is
+  used so that curators can appoint other curators via their email address. When a
+  user logs in, signs up, or updates their email, the document for that user should be
+  created/updated. The ID of each document is generated automatically by Firebase to
+  ensure uniqueness. Each document in this collection contains the following fields:
+    - email: The email address of the user.
+    - userID: The UID of the user.
+- notifications: A collection of documents representing notifications to users
+  indicating whether their trees have been accepted or rejected by curators. The ID of
+  each document is generated automatically by Firebase to ensure uniqueness. Each
+  document in this collection contains the following fields:
+    - accepted: A boolean representing whether the tree was accepted.
+    - message: A string representation of the curator's comments for the user, or an
+      empty string if there is none.
+    - read: A boolean representing whether the notification has been read by the user.
+    - timestamp: A timestamp representing the date and time at which the notification
+      was issued. This is so that notifications can be ordered by most recent.
+    - treeData: A map containing all of the information of the tree in question,
+      formatted in the same way as the documents in acceptedTrees and pendingTrees.
+
+The Cloud Firestore database is configured to ensure maximum security. Permissions are
+handled server-side to prevent data breaches from client vulnerabilities. The security
+rules are configured as follows:
+
+- acceptedTrees:
+    - Everyone (even unauthenticated users) can read from acceptedTrees. They are
+      public to everyone.
+    - Only curators can write to acceptedTrees. This is done when accepting a pending
+      tree.
+- pendingTrees:
+    - Authenticated users can create documents in pendingTrees. This is done when
+      adding trees.
+    - Authenticated users can read documents in pendingTrees only if their UID matches
+      that of the tree. This is so that users can view their own pending trees.
+    - Curators can read and write all documents in pendingTrees. This includes removal
+      of documents. This is so that curators can view a list of all pending trees. In
+      the future, this will also allow for curators to edit pending trees before
+      accepting/rejecting them.
+- curators:
+    - Everyone can read from the list of curators. This is so that the app can check
+      whether the current user is a curator, and show/hide curator options
+      accordingly.
+    - Only curators can write to curators. This is so that curators may appoint other
+      curators. 
+- users:
+    - Only curators can read from all users. This is so that they may match email
+      addresses to UIDs.
+    - Authenticated users can read and write documents in users only if their UID
+      matches that of the user. This is so that they can update their user entry if
+      their email address changes.
+    - Authenticated users can create documents in users. This is so that when creating
+      an account, the user can be added to users.
+- notifications:
+    - Authenticated users can only read, write, and delete documents from
+      notifications if their UID matches that of the notification. This is so that
+      users can view their notifications, mark them as read, and delete them.
+    - Curators can write to all notifications. This is so that they can send
+      notifications to any user.
+
+Refer to the Firebase docs to view the most up-to-date information on how to retrieve
+data, etc. https://firebase.google.com/docs/firestore
