@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ChangePasswordViewController: UIViewController {
     @IBOutlet var oldPasswordTextField: UITextField!
@@ -16,7 +17,14 @@ class ChangePasswordViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(closeChangePassword), name: NSNotification.Name(StringConstants.passwordUpdatedNotification), object: nil)
+        
+        //Sets up a gesture recognizer that hides the keyboard when a spot on the screen outside of the keyboard or a text field is tapped
+        hideKeyboardWhenTappedAround()
+        
+        //Add observers for detecting notifications
+        NotificationCenter.default.addObserver(self, selector: #selector(onAuthenticationFailure), name: NSNotification.Name(StringConstants.authenticationFailureNotification), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onPasswordUpdate), name: NSNotification.Name(StringConstants.passwordUpdateAttemptedNotification), object: nil)
+        
         oldPasswordTextField.delegate = self
         newPasswordTextField.delegate = self
         newPasswordConfirmTextField.delegate = self
@@ -27,17 +35,39 @@ class ChangePasswordViewController: UIViewController {
     }
 
     private func updatePassword() {
+        AlertManager.showLoadingAlert()
+        
         if newPasswordTextField.text! == newPasswordConfirmTextField.text! {
             AccountManager.updatePassword(oldPassword: oldPasswordTextField.text!, newPassword: newPasswordTextField.text!)
         } else {
-            AlertManager.alertUser(title: StringConstants.unmatchingPasswordsTitle, message: StringConstants.unmatchingPasswordsMessage)
+            dismiss(animated: true) {
+                AlertManager.alertUser(title: StringConstants.incorrectPasswordTitle, message: StringConstants.incorrectPasswordMessage)
+            }
             return
         }
     }
 
-    @objc private func closeChangePassword() {
-        navigationController?.popViewController(animated: true)
-        dismiss(animated: true, completion: nil)
+    @objc private func onAuthenticationFailure(){
+        dismiss(animated: true){
+            AlertManager.alertUser(title: StringConstants.incorrectPasswordTitle, message: StringConstants.incorrectPasswordMessage)
+        }
+    }
+    
+    @objc private func onPasswordUpdate(_ notification: Notification) {
+        let errorInfo = notification.userInfo as! [String: Error]
+        
+        dismiss(animated: true){
+            if(errorInfo.isEmpty){
+                self.navigationController?.popViewController(animated: true)
+            }else{
+                switch errorInfo["error"]!._code {
+                case AuthErrorCode.weakPassword.rawValue:
+                    AlertManager.alertUser(title: StringConstants.weakPasswordTitle, message: StringConstants.weakPasswordMessage)
+                default:
+                    AlertManager.alertUser(title: StringConstants.updatePasswordFailureTitle, message: StringConstants.updatePasswordFailureMessage)
+                }
+            }
+        }
     }
 }
 
@@ -49,6 +79,7 @@ extension ChangePasswordViewController: UITextFieldDelegate {
         case newPasswordTextField:
             newPasswordConfirmTextField.becomeFirstResponder()
         case newPasswordConfirmTextField:
+            self.view.endEditing(true)
             updatePassword()
         default:
             return true

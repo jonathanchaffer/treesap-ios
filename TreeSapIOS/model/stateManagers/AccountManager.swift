@@ -118,9 +118,9 @@ class AccountManager {
 
         changeRequest.commitChanges { error in
             if error != nil {
-                AlertManager.alertUser(title: StringConstants.setDisplayNameFailureTitle, message: StringConstants.setDisplayNameFailureMessage)
+                NotificationCenter.default.post(name: NSNotification.Name(StringConstants.displayNameUpdateAttemptNotification), object: nil, userInfo: ["error": error!])
             } else {
-                NotificationCenter.default.post(name: NSNotification.Name(StringConstants.displayNameUpdatedNotification), object: nil)
+                NotificationCenter.default.post(name: NSNotification.Name(StringConstants.displayNameUpdateAttemptNotification), object: nil, userInfo: [:])
             }
         }
     }
@@ -130,20 +130,15 @@ class AccountManager {
         getUser()?.reauthenticate(with: credential) { _, error in
 
             if error != nil {
-                AlertManager.alertUser(title: StringConstants.incorrectOldPasswordTitle, message: StringConstants.incorrectOldPasswordMessage)
+                NotificationCenter.default.post(name: NSNotification.Name(StringConstants.authenticationFailureNotification), object: nil)
                 return
             }
 
             getUser()?.updatePassword(to: newPassword) { error in
                 if let error = error {
-                    switch error._code {
-                    case AuthErrorCode.weakPassword.rawValue:
-                        AlertManager.alertUser(title: StringConstants.weakPasswordTitle, message: StringConstants.weakPasswordMessage)
-                    default:
-                        AlertManager.alertUser(title: StringConstants.updatePasswordFailureTitle, message: StringConstants.updatePasswordFailureMessage)
-                    }
+                    NotificationCenter.default.post(name: NSNotification.Name(StringConstants.passwordUpdateAttemptedNotification), object: nil, userInfo: ["error": error])
                 } else {
-                    NotificationCenter.default.post(name: NSNotification.Name(StringConstants.passwordUpdatedNotification), object: nil)
+                    NotificationCenter.default.post(name: NSNotification.Name(StringConstants.passwordUpdateAttemptedNotification), object: nil, userInfo: [:])
                 }
             }
         }

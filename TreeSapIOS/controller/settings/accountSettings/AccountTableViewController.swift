@@ -24,7 +24,7 @@ class AccountTableViewController: UITableViewController {
         refreshTable()
         title = "Account"
         NotificationCenter.default.addObserver(self, selector: #selector(refreshTable), name: NSNotification.Name(StringConstants.loggedInNotification), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(refreshTable), name: NSNotification.Name(StringConstants.displayNameUpdatedNotification), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshTable), name: NSNotification.Name(StringConstants.displayNameUpdateAttemptNotification), object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {

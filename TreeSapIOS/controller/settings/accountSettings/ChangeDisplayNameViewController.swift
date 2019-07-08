@@ -13,17 +13,30 @@ class ChangeDisplayNameViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(closeChangeDisplayName), name: NSNotification.Name(StringConstants.displayNameUpdatedNotification), object: nil)
+        
+        //Sets up a gesture recognizer that hides the keyboard when a spot on the screen outside of the keyboard or a text field is tapped
+        hideKeyboardWhenTappedAround()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(onDisplayNameChangeAttempt), name: NSNotification.Name(StringConstants.displayNameUpdateAttemptNotification), object: nil)
+        
         newDisplayNameTextField.delegate = self
     }
 
     private func updateDisplayName() {
+        AlertManager.showLoadingAlert()
         AccountManager.setDisplayName(displayName: newDisplayNameTextField.text!)
     }
 
-    @objc private func closeChangeDisplayName() {
-        navigationController?.popViewController(animated: true)
-        dismiss(animated: true, completion: nil)
+    @objc private func onDisplayNameChangeAttempt(_ notification: Notification) {
+        let errorInfo = notification.userInfo as! [String: Error]
+        
+        dismiss(animated: true) {
+            if(errorInfo.isEmpty){
+                self.navigationController?.popViewController(animated: true)
+            }else{
+                AlertManager.alertUser(title: StringConstants.setDisplayNameFailureTitle, message: StringConstants.setDisplayNameFailureMessage)
+            }
+        }
     }
 
     @IBAction func changeDisplayNameButtonPressed(_: UIButton) {
@@ -34,6 +47,7 @@ class ChangeDisplayNameViewController: UIViewController {
 extension ChangeDisplayNameViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == newDisplayNameTextField {
+            self.view.endEditing(true)
             updateDisplayName()
         }
         return true

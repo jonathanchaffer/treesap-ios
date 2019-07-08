@@ -54,9 +54,7 @@ class ChangeEmailViewController: UIViewController {
     }
     
     @objc private func resolveEmailUpdate(_ notification: Notification) {
-        guard let errorInfo = notification.userInfo as? [String: Error] else{   //TODO: change this
-            return
-        }
+        let errorInfo = notification.userInfo as! [String: Error]
         
         dismiss(animated: true) {
             if(errorInfo.isEmpty){

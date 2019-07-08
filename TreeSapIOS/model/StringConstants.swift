@@ -194,9 +194,9 @@ class StringConstants {
 
     static let loggedInNotification = "loggedIn"
     static let authenticationFailureNotification = "authenticationFailure"
-    static let displayNameUpdatedNotification = "displayNameUpdated"
+    static let displayNameUpdateAttemptNotification = "displayNameUpdateAttempted"
     static let emailUpdateAttemptNotification = "emailUpdateAttempted"
-    static let passwordUpdatedNotification = "passwordUpdated"
+    static let passwordUpdateAttemptedNotification = "passwordUpdateAttempted"
     static let passwordResetSentNotification = "passwordResetSent"
     static let submitDataFailureNotification = "submitDataFailure"
     static let submitDataSuccessNotification = "submitDataSuccess"
