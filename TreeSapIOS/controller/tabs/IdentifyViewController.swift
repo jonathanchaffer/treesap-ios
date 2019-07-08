@@ -31,6 +31,8 @@ class IdentifyViewController: UIViewController {
     override func viewDidAppear(_: Bool) {
         // Check authorization status.
         LocationManager.checkLocationAuthorization()
+        // Update notification badge
+        updateNotificationBadge()
     }
 
     override func viewDidLayoutSubviews() {

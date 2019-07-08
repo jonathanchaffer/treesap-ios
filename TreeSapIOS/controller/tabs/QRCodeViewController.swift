@@ -74,6 +74,8 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
         default:
             break
         }
+        // Update notification badge
+        updateNotificationBadge()
     }
 
     override func viewWillDisappear(_: Bool) {

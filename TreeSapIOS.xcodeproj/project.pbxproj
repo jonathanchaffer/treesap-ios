@@ -43,6 +43,7 @@
 		CB4707D122C52D8900E7908F /* ImageCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4707D022C52D8900E7908F /* ImageCategory.swift */; };
 		CB4707D322C5422200E7908F /* NotificationDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4707D222C5422200E7908F /* NotificationDetailsViewController.swift */; };
 		CB55444D22C658E100DE71E7 /* StringConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB55444C22C658E100DE71E7 /* StringConstants.swift */; };
+		CB62E1E422D36D350043F16E /* NotificationBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB62E1E322D36D350043F16E /* NotificationBadge.swift */; };
 		CB672F1B229434DA00622B59 /* TreeDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB672F1A229434DA00622B59 /* TreeDisplayViewController.swift */; };
 		CB6953B8228EE8720002024B /* Tree.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6953B7228EE8720002024B /* Tree.swift */; };
 		CB6953BA228EE9530002024B /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6953B9228EE9530002024B /* DataSource.swift */; };
@@ -161,6 +162,7 @@
 		CB4707D022C52D8900E7908F /* ImageCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCategory.swift; sourceTree = "<group>"; };
 		CB4707D222C5422200E7908F /* NotificationDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationDetailsViewController.swift; sourceTree = "<group>"; };
 		CB55444C22C658E100DE71E7 /* StringConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringConstants.swift; sourceTree = "<group>"; };
+		CB62E1E322D36D350043F16E /* NotificationBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationBadge.swift; sourceTree = "<group>"; };
 		CB672F1A229434DA00622B59 /* TreeDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeDisplayViewController.swift; sourceTree = "<group>"; };
 		CB6953B7228EE8720002024B /* Tree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tree.swift; sourceTree = "<group>"; };
 		CB6953B9228EE9530002024B /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
@@ -334,6 +336,7 @@
 				418A360C22A83CD3002BF28C /* LoadingScreenViewController.swift */,
 				41AD85E522BA933E00DAB44B /* MoreInformationViewController.swift */,
 				CBC7BC9722B93AC8002D4B98 /* HideKeyboard.swift */,
+				CB62E1E322D36D350043F16E /* NotificationBadge.swift */,
 				CB9F424F22A5AE0B00C97F70 /* tabs */,
 				CB9F424C22A5ADD200C97F70 /* treeDetail */,
 				CB9F424D22A5ADF800C97F70 /* addTree */,
@@ -804,6 +807,7 @@
 				CB12C94F228DF85D000C74C3 /* TreeDetailPageViewController.swift in Sources */,
 				CB75474A22C10953001FDA65 /* ChangePasswordViewController.swift in Sources */,
 				D76D6183229321E7003FFD24 /* TreeFinder.swift in Sources */,
+				CB62E1E422D36D350043F16E /* NotificationBadge.swift in Sources */,
 				CB1A56B822C8042F00046396 /* TreeNames.swift in Sources */,
 				CB12C951228DFA12000C74C3 /* PieChartDisplayViewController.swift in Sources */,
 				CB75474C22C11186001FDA65 /* ChangeDisplayNameViewController.swift in Sources */,

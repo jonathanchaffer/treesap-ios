@@ -17,11 +17,18 @@ class CoordinatesViewController: UIViewController {
     @IBOutlet var latitudeTextField: UITextField!
     @IBOutlet var longitudeTextField: UITextField!
 
+    
+    // MARK: - Overrides
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         latitudeTextField.delegate = self
         longitudeTextField.delegate = self
         hideKeyboardWhenTappedAround()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        updateNotificationBadge()
     }
 
     // MARK: - Actions

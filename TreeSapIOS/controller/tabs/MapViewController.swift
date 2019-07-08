@@ -44,6 +44,8 @@ class MapViewController: UIViewController {
     override func viewDidAppear(_: Bool) {
         // Check authorization status.
         LocationManager.checkLocationAuthorization()
+        // Update notification badge
+        updateNotificationBadge()
     }
 
     override func viewWillAppear(_: Bool) {
