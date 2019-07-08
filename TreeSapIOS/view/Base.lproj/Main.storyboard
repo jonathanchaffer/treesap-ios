@@ -31,7 +31,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="cCp-WI-zsX">
-                                                    <rect key="frame" x="20" y="7" width="162.66666666666666" height="30"/>
+                                                    <rect key="frame" x="20" y="7" width="192.66666666666666" height="30"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bell" translatesAutoresizingMaskIntoConstraints="NO" id="YBF-mu-3WB">
                                                             <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
@@ -47,21 +47,23 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PCJ-rh-c1M">
-                                                            <rect key="frame" x="142.66666666666666" y="5" width="20" height="20"/>
+                                                            <rect key="frame" x="142.66666666666666" y="5" width="50" height="20"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i7t-4p-PWi">
-                                                                    <rect key="frame" x="5.3333333333333437" y="1.3333333333333339" width="9.3333333333333357" height="17"/>
-                                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                                                    <rect key="frame" x="5" y="2.6666666666666652" width="40" height="14.333333333333336"/>
+                                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
                                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
                                                             <color key="backgroundColor" name="notificationBadge"/>
                                                             <constraints>
+                                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="20" id="6rh-W8-XCF"/>
+                                                                <constraint firstAttribute="trailing" secondItem="i7t-4p-PWi" secondAttribute="trailing" constant="5" id="K1b-Kh-K7g"/>
+                                                                <constraint firstItem="i7t-4p-PWi" firstAttribute="leading" secondItem="PCJ-rh-c1M" secondAttribute="leading" constant="5" id="OlM-pM-fRf"/>
                                                                 <constraint firstItem="i7t-4p-PWi" firstAttribute="centerX" secondItem="PCJ-rh-c1M" secondAttribute="centerX" id="PQy-T0-GLP"/>
                                                                 <constraint firstAttribute="height" constant="20" id="RlH-lU-ue0"/>
                                                                 <constraint firstItem="i7t-4p-PWi" firstAttribute="centerY" secondItem="PCJ-rh-c1M" secondAttribute="centerY" id="bAo-0e-RM2"/>
-                                                                <constraint firstAttribute="width" constant="20" id="d8H-TM-YHf"/>
                                                             </constraints>
                                                         </view>
                                                     </subviews>
