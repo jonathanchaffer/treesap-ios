@@ -71,7 +71,7 @@ class NotificationsTableViewController: UITableViewController {
             cell.detailTextLabel!.text = "Your \(commonName!) has been added to the database."
         } else {
             cell.textLabel!.text = "Tree Rejected"
-            cell.detailTextLabel!.text = "Your \(commonName!) was removed from the database."
+            cell.detailTextLabel!.text = "Your \(commonName!) was not added to the database."
         }
         if read {
             cell.textLabel!.font = UIFont.systemFont(ofSize: 17, weight: .regular)

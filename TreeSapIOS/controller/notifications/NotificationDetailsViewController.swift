@@ -59,9 +59,9 @@ class NotificationDetailsViewController: UIViewController {
         } else {
             titleLabel.text = "Tree Rejected"
             if commonName != "" {
-                subtitleLabel.text = "Your \(commonName) was removed from the database."
+                subtitleLabel.text = "Your \(commonName) was not added to the database."
             } else {
-                subtitleLabel.text = "Your tree was removed from the database."
+                subtitleLabel.text = "Your tree was not added to the database."
             }
         }
 
