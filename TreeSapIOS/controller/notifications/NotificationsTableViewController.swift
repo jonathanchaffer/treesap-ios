@@ -12,9 +12,15 @@ import UIKit
 class NotificationsTableViewController: UITableViewController {
     // MARK: - Properties
 
+    ///An array of Firebase document snapshots that contain the notification data
     var documents = [DocumentSnapshot]()
+    ///Stores whether or not a notification is selected and is organized based on a notification index in the table
+    var selectedDictionary = [Bool]()
+    ///If the user is selecting a set of notifications for potential deletion
     var selecting = false
+    ///The number of pending notification deletions
     var numPendingDeletions = 0
+    ///If there was an error in one of the notification deletions in a selection of notification deletions
     var isDeletionError = false
 
     @IBOutlet var selectButton: UIBarButtonItem!
@@ -26,6 +32,8 @@ class NotificationsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Add observers for notifications
         NotificationCenter.default.addObserver(self, selector: #selector(deleteDataSuccess), name: NSNotification.Name(StringConstants.deleteDataSuccessNotification), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(deleteDataFailure), name: NSNotification.Name(StringConstants.deleteDataFailureNotification), object: nil)
 
