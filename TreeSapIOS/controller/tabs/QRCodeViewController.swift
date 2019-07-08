@@ -11,7 +11,7 @@ import AVKit
 import CoreLocation
 import UIKit
 
-class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
+class QRCodeViewController: NotificaionBadgeViewController, AVCaptureMetadataOutputObjectsDelegate {
     // MARK: - Properties
 
     var captureSession: AVCaptureSession!
@@ -56,6 +56,7 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
 
         // Set up the QR code overlay
         qrCodeOverlay.alpha = 0.5
+        
     }
 
     override func viewDidAppear(_: Bool) {
@@ -74,6 +75,9 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
         default:
             break
         }
+        // Update notification badge
+        configureNotificationBadge()
+        
     }
 
     override func viewWillDisappear(_: Bool) {

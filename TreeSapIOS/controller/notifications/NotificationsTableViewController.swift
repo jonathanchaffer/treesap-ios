@@ -230,7 +230,7 @@ class NotificationsTableViewController: UITableViewController {
             for i in 0 ..< self.documents.count {
                 let indexPath = IndexPath(row: i, section: 0)
                 let cell = self.tableView.cellForRow(at: indexPath)
-                if cell!.accessoryType == .checkmark {
+                if cell?.accessoryType == .checkmark {
                     self.numPendingDeletions += 1
                     DatabaseManager.removeDocumentFromNotifications(documentID: self.documents[i].documentID)
                 }

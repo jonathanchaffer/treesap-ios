@@ -11,17 +11,24 @@
 import MapKit
 import UIKit
 
-class CoordinatesViewController: UIViewController {
+class CoordinatesViewController: NotificaionBadgeViewController {
     // MARK: - Properties
 
     @IBOutlet var latitudeTextField: UITextField!
     @IBOutlet var longitudeTextField: UITextField!
 
+    
+    // MARK: - Overrides
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         latitudeTextField.delegate = self
         longitudeTextField.delegate = self
         hideKeyboardWhenTappedAround()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        configureNotificationBadge()
     }
 
     // MARK: - Actions

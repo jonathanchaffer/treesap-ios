@@ -13,12 +13,18 @@ import UIKit
 class MenuTableViewController: UITableViewController {
     // MARK: - Properties
     let sectionHeaders = ["Menu", "Curator", "Account"]
+    @IBOutlet weak var notificationBadgeView: UIView!
+    @IBOutlet weak var notificationBadgeLabel: UILabel!
     
     // MARK: - Overrides
 
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
+        notificationBadgeView.layer.cornerRadius = notificationBadgeView.frame.height / 2
+        notificationBadgeView.isHidden = true
+        NotificationCenter.default.addObserver(self, selector: #selector(updateNotificationBadge), name: NSNotification.Name(StringConstants.unreadNotificationsCountNotification), object: nil)
+        DatabaseManager.retrieveNumberOfUnreadNotifications()
     }
 
     /// Sets the height of each table row.
@@ -74,6 +80,14 @@ class MenuTableViewController: UITableViewController {
     }
 
     // MARK: - Private Functions
+    
+    @objc private func updateNotificationBadge(_ notification: Notification) {
+        let num = notification.userInfo!["count"] as! Int
+        if num > 0 {
+            notificationBadgeView.isHidden = false
+            notificationBadgeLabel.text = String(num)
+        }
+    }
 
     private func logOutPressed() {
         let alert = UIAlertController(title: StringConstants.confirmLogOutTitle, message: StringConstants.confirmLogOutMessage, preferredStyle: .alert)

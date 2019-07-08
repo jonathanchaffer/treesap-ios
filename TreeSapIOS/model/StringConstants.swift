@@ -213,4 +213,5 @@ class StringConstants {
     static let addTreePreviousPageNotification = "addTreePrevious"
     static let submitTreeNotification = "submitTree"
     static let addCuratorFailureNotification = "addCuratorFailed"
+    static let unreadNotificationsCountNotification = "unreadNotificationsCount"
 }
