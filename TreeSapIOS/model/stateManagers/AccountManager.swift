@@ -107,6 +107,7 @@ class AccountManager {
 
     /**
      Tries to set the display name of the current user. Shown an alert if there is an error. Returns without doing anything if no user is logged in.
+     - Parameter displayName: the string to which the user's display name is to be set
      */
     static func setDisplayName(displayName: String) {
         guard let user = Auth.auth().currentUser else {
@@ -125,6 +126,12 @@ class AccountManager {
         }
     }
 
+    /**
+     Attempts to change the current user's password to the specified password. Sends a notification to the user that differs based on the result of the attempt. If there is no current user, nothing happens.
+     - Parameters:
+        - oldPassword: the password used to reauthenticate the user
+        - newPassword: the string to which the user's password is to be changed
+     */
     static func updatePassword(oldPassword: String, newPassword: String) {
         let credential = EmailAuthProvider.credential(withEmail: getEmail()!, password: oldPassword)
         getUser()?.reauthenticate(with: credential) { _, error in
@@ -145,7 +152,7 @@ class AccountManager {
     }
 
     /**
-     Changes the current user's email to the specified email. If there is no current user, nothing happens.
+     Attemptes to change the current user's email to the specified email. Sends a notification to the user that differs based on the result of the attempt. If there is no current user, nothing happens.
      - Parameter password: The password used to reauthenticate the user.
      - Parameter email: The new email address to be used.
      */
@@ -170,6 +177,10 @@ class AccountManager {
         }
     }
 
+    /**
+     Sends a password reset email. If there is an error, the user is shown a password reset failure alert. Otherwise, the sends a password reset sent notification
+     - Parameter email: the email to which the password reset is to be sent.
+     */
     static func sendPasswordResetEmail(email: String) {
         Auth.auth().sendPasswordReset(withEmail: email) { error in
             if error != nil {

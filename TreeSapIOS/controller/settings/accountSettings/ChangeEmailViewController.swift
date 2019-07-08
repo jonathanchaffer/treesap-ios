@@ -47,12 +47,17 @@ class ChangeEmailViewController: UIViewController {
         AlertManager.showLoadingAlert()
     }
 
+    ///Dismisses the notification alert and shows the user an incorrect password alert. Has undefined behavior if the loading alert is not the most recently pushed alert.
     @objc private func onFailedAuthentication(){
         dismiss(animated: true) {
             AlertManager.alertUser(title: StringConstants.incorrectPasswordTitle, message: StringConstants.incorrectPasswordMessage)
         }
     }
     
+    /**
+     Dismissed the loading notification. If the notification this function takes indicates that there was an error in the email change, displays an appropriate alert. Otherwise, pops this view off of the navigation controller stack. Has undefined behavrion if the loading alert is not the most recently pushed alert.
+     - Parameter notification: the notification received by this class that caused this function to be called
+     */
     @objc private func resolveEmailUpdate(_ notification: Notification) {
         let errorInfo = notification.userInfo as! [String: Error]
         

@@ -22,11 +22,16 @@ class ChangeDisplayNameViewController: UIViewController {
         newDisplayNameTextField.delegate = self
     }
 
+    ///Shows a loading alert and makes a request to the AccountManager class to set the display name to the name in the new display name text field
     private func updateDisplayName() {
         AlertManager.showLoadingAlert()
         AccountManager.setDisplayName(displayName: newDisplayNameTextField.text!)
     }
 
+    /**
+     Dismisses the loading notification. If the notification this function takes indicates that there was an error in the display name change, displays an appropriate alert. Othersiwse, pops this view off of the navigation controller stack. Has undefined behavior if the loading alert is not the most recently pushed alert.
+     - Parameter notification: the notification received by this class that caused this function to be called
+     */
     @objc private func onDisplayNameChangeAttempt(_ notification: Notification) {
         let errorInfo = notification.userInfo as! [String: Error]
         
@@ -39,12 +44,14 @@ class ChangeDisplayNameViewController: UIViewController {
         }
     }
 
+    ///Calls the updateDisplayName function. does not use the UIButton it takes as a parameter
     @IBAction func changeDisplayNameButtonPressed(_: UIButton) {
         updateDisplayName()
     }
 }
 
 extension ChangeDisplayNameViewController: UITextFieldDelegate {
+    //Makes it so that returning from the new display name text field causes the keyboard to be dismissed and the updateDisplayName function called
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == newDisplayNameTextField {
             self.view.endEditing(true)

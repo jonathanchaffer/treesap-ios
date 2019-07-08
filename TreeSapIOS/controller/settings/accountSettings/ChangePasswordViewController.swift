@@ -30,7 +30,7 @@ class ChangePasswordViewController: UIViewController {
         newPasswordConfirmTextField.delegate = self
     }
 
-    ///Updates the password
+    ///Calls the updatePassword function. Ignores the UIButton it takes as a parameter.
     @IBAction func changePasswordButtonPressed(_: UIButton) {
         updatePassword()
     }
@@ -57,7 +57,7 @@ class ChangePasswordViewController: UIViewController {
     }
     
     /**
-     Dismisses the loading notification. If the notification this function takes indicates that there was an error in the password change, displays an appropriate alert. Otherwise, pops this view off of the navigation controller stack. Assumes that there is a loading notification and will likely have strange behavior if there is none.
+     Dismisses the loading notification. If the notification this function takes indicates that there was an error in the password change, displays an appropriate alert. Otherwise, pops this view off of the navigation controller stack. Has undefined behavior if the loading alert is not the most recently pushed alert.
      - Parameter notification: the notification received by this class that caused this function to be called
      */
     @objc private func onPasswordUpdate(_ notification: Notification) {
