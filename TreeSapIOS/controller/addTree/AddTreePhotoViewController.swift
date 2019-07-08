@@ -2,7 +2,7 @@
 //  AddTreePhotoViewController.swift
 //  TreeSapIOS
 //
-//  Created by Jonathan Chaffer and Josiah Brett in Summer 2019.
+//  Created by Jonathan Chaffer and modified by Josiah Brett in Summer 2019.
 //  Copyright © 2019 Hope CS. All rights reserved.
 //
 //  Used https://theswiftdev.com/2019/01/30/picking-images-with-uiimagepickercontroller-in-swift-5/ as a reference.

@@ -2,7 +2,7 @@
 //  TreeDetailPageViewController.swift
 //  TreeSapIOS
 //
-//  Created by Jonathan Chaffer and Josiah Brett in Summer 2019.
+//  Created by Jonathan Chaffer in Summer 2019.
 //  Copyright © 2019 Hope CS. All rights reserved.
 //
 //  Used https://spin.atomicobject.com/2015/12/23/swift-uipageviewcontroller-tutorial/ as a reference.
