@@ -52,7 +52,6 @@ class DatabaseManager {
             data["treeID"] = tree.id!
         }
         data["dbhArray"] = tree.dbhArray
-        data["otherInfo"] = tree.otherInfo
         data["notes"] = tree.notes
         data["userID"] = AccountManager.getUserID()
 
