@@ -21,6 +21,7 @@ class NetworkManager {
         
         reachability.whenUnreachable = { _ in
             print("Not reachable")
+            AlertManager.alertUser(title: StringConstants.noConnectionListenerTitle, message: StringConstants.noConnectionListenerMessage)
             isConnected = false
         }
         
