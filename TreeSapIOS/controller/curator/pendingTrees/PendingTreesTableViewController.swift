@@ -61,6 +61,8 @@ class PendingTreesTableViewController: UITableViewController {
             cell.imageView?.image = images[.full]!.first
         } else if images[.bark]!.count >= 1 {
             cell.imageView?.image = images[.bark]!.first
+        } else {
+            cell.imageView?.image = UIImage(named: "tree")
         }
         return cell
     }
@@ -78,11 +80,6 @@ class PendingTreesTableViewController: UITableViewController {
     /// Reloads the table data.
     @objc private func reloadTableData() {
         tableView.reloadData()
-        reloadTableRows()
-    }
-
-    /// Reloads the table data.
-    private func reloadTableRows() {
         var rows = [IndexPath]()
         for i in 0 ..< PendingTreesDataSource.trees.count {
             rows.append(IndexPath(row: i, section: 0))
@@ -90,7 +87,7 @@ class PendingTreesTableViewController: UITableViewController {
         PendingTreesDataSource.trees.sort(by: { tree1, tree2 in
             tree1.timestamp! < tree2.timestamp!
         }, stable: false)
-        tableView.reloadRows(at: rows, with: .automatic)
+        tableView.reloadRows(at: rows, with: .none)
     }
 
     /// Shows an alert saying that pending trees could not be loaded.
