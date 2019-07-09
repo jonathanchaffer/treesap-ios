@@ -56,7 +56,6 @@ class QRCodeViewController: NotificaionBadgeViewController, AVCaptureMetadataOut
 
         // Set up the QR code overlay
         qrCodeOverlay.alpha = 0.5
-        
     }
 
     override func viewDidAppear(_: Bool) {
@@ -77,7 +76,6 @@ class QRCodeViewController: NotificaionBadgeViewController, AVCaptureMetadataOut
         }
         // Update notification badge
         configureNotificationBadge()
-        
     }
 
     override func viewWillDisappear(_: Bool) {

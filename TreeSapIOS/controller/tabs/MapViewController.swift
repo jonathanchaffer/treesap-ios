@@ -46,7 +46,6 @@ class MapViewController: NotificaionBadgeViewController {
         LocationManager.checkLocationAuthorization()
         // Update notification badge
         configureNotificationBadge()
-        
     }
 
     override func viewWillAppear(_: Bool) {

@@ -26,7 +26,7 @@ class TreeDetailPageViewController: UIPageViewController {
             self.getViewController(withIdentifier: "benefitsDisplay"),
         ]
     }()
-    
+
     var shouldHideNearbyTrees = false
 
     // MARK: - Constructors
@@ -61,7 +61,7 @@ class TreeDetailPageViewController: UIPageViewController {
 
         // Set the displayed tree for each of the tree detail views.
         for page in pages {
-            if page is SimpleDisplayViewController && shouldHideNearbyTrees {
+            if page is SimpleDisplayViewController, shouldHideNearbyTrees {
                 (page as! SimpleDisplayViewController).shouldHideNearbyTrees = true
             }
             page.displayedTree = displayedTree

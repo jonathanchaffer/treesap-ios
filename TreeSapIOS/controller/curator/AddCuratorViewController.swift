@@ -10,9 +10,11 @@ import UIKit
 
 class AddCuratorViewController: UIViewController {
     // MARK: - Properties
-    @IBOutlet weak var emailTextField: UITextField!
-    
+
+    @IBOutlet var emailTextField: UITextField!
+
     // MARK: - Overrides
+
     override func viewDidLoad() {
         super.viewDidLoad()
         hideKeyboardWhenTappedAround()
@@ -22,8 +24,9 @@ class AddCuratorViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(addCuratorSuccess), name: NSNotification.Name(StringConstants.updateDataSuccessNotification), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(addCuratorSuccess), name: NSNotification.Name(StringConstants.submitDataSuccessNotification), object: nil)
     }
-    
+
     // MARK: - Private functions
+
     private func addCurator() {
         // Ensure connection
         if !NetworkManager.isConnected {
@@ -33,30 +36,31 @@ class AddCuratorViewController: UIViewController {
         DatabaseManager.addCurator(email: emailTextField.text!)
         AlertManager.showLoadingAlert()
     }
-    
+
     @objc func addCuratorFailed() {
         dismiss(animated: true) {
             AlertManager.alertUser(title: StringConstants.addCuratorFailureTitle, message: StringConstants.addCuratorFailureMessage)
         }
     }
-    
+
     @objc func addCuratorSuccess() {
         dismiss(animated: true) {
             AlertManager.alertUser(title: StringConstants.addCuratorSuccessTitle, message: StringConstants.addCuratorSuccessMessage)
         }
     }
-    
+
     private func closeAddCurator() {
         navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)
     }
-    
+
     // MARK: - Actions
-    @IBAction func addCuratorButtonPressed(_ sender: UIButton) {
+
+    @IBAction func addCuratorButtonPressed(_: UIButton) {
         addCurator()
     }
-    
-    @IBAction func closeButtonPressed(_ sender: UIBarButtonItem) {
+
+    @IBAction func closeButtonPressed(_: UIBarButtonItem) {
         closeAddCurator()
     }
 }

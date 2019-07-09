@@ -20,8 +20,8 @@ extension CAShapeLayer {
 }
 
 class NotificaionBadgeViewController: UIViewController {
-    var badge: CAShapeLayer? = nil
-    
+    var badge: CAShapeLayer?
+
     func configureNotificationBadge() {
         if badge != nil {
             badge!.isHidden = true
@@ -33,22 +33,22 @@ class NotificaionBadgeViewController: UIViewController {
         badge = CAShapeLayer()
         let radius = CGFloat(4)
         let offset = CGPoint(x: 32, y: 10)
-        let location = CGPoint(x: (radius + offset.x), y: (radius + offset.y))
+        let location = CGPoint(x: radius + offset.x, y: radius + offset.y)
         let color = UIColor(named: "notificationBadge")!
         badge!.drawCircleAtLocation(location: location, withRadius: radius, andColor: color)
         view.layer.addSublayer(badge!)
-        
+
         updateBadgeVisibility()
-        
+
         // Add an observer for the retrieval of number of new notifications
         NotificationCenter.default.addObserver(self, selector: #selector(updateBadgeVisibility), name: NSNotification.Name(StringConstants.unreadNotificationsCountNotification), object: nil)
         updateNotificationBadge()
     }
-    
+
     func updateNotificationBadge() {
         UnreadManager.retrieveNumberOfUnreadNotifications()
     }
-    
+
     @objc private func updateBadgeVisibility() {
         if UnreadManager.numUnreadNotifications != 0 {
             badge!.isHidden = false

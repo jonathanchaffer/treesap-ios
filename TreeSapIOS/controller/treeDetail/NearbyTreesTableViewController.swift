@@ -10,10 +10,12 @@ import UIKit
 
 class NearbyTreesTableViewController: UITableViewController {
     // MARK: - Properties
-    var currentTree: Tree? = nil
+
+    var currentTree: Tree?
     var nearbyTrees = [Tree]()
-    
+
     // MARK: - Overrides
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Get the nearby trees
@@ -22,7 +24,7 @@ class NearbyTreesTableViewController: UITableViewController {
         nearbyTrees.remove(at: 0)
         tableView.reloadData()
     }
-    
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let treeToDisplay = nearbyTrees[indexPath.row]
         let pages = TreeDetailPageViewController(tree: treeToDisplay)
@@ -30,11 +32,11 @@ class NearbyTreesTableViewController: UITableViewController {
         navigationController?.pushViewController(pages, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
     }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+
+    override func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         return nearbyTrees.count
     }
-    
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "nearbyTreeCell", for: indexPath)
         let tree = nearbyTrees[indexPath.row]
@@ -51,21 +53,21 @@ class NearbyTreesTableViewController: UITableViewController {
         }
         return cell
     }
-    
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+
+    override func tableView(_: UITableView, heightForRowAt _: IndexPath) -> CGFloat {
         return 72
     }
-    
+
     // MARK: - Private functions
+
     private func closeNearbyTrees() {
         navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)
     }
-    
+
     // MARK: - Actions
-    @IBAction func closeButtonPressed(_ sender: UIBarButtonItem) {
+
+    @IBAction func closeButtonPressed(_: UIBarButtonItem) {
         closeNearbyTrees()
     }
-    
-
 }

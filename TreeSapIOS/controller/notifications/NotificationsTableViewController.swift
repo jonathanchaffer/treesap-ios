@@ -12,15 +12,15 @@ import UIKit
 class NotificationsTableViewController: UITableViewController {
     // MARK: - Properties
 
-    ///An array of Firebase document snapshots that contain the notification data
+    /// An array of Firebase document snapshots that contain the notification data
     var documents = [DocumentSnapshot]()
-    ///Stores whether or not a notification at a given index is selected for every index.
+    /// Stores whether or not a notification at a given index is selected for every index.
     var selectedArray = [Bool]()
-    ///If the user is selecting a set of notifications for potential deletion
+    /// If the user is selecting a set of notifications for potential deletion
     var selecting = false
-    ///The number of pending notification deletions
+    /// The number of pending notification deletions
     var numPendingDeletions = 0
-    ///If there was an error in one of the notification deletions in a selection of notification deletions
+    /// If there was an error in one of the notification deletions in a selection of notification deletions
     var isDeletionError = false
 
     @IBOutlet var selectButton: UIBarButtonItem!
@@ -32,8 +32,8 @@ class NotificationsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //Add observers for notifications
+
+        // Add observers for notifications
         NotificationCenter.default.addObserver(self, selector: #selector(deleteDataSuccess), name: NSNotification.Name(StringConstants.deleteDataSuccessNotification), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(deleteDataFailure), name: NSNotification.Name(StringConstants.deleteDataFailureNotification), object: nil)
 
@@ -75,7 +75,7 @@ class NotificationsTableViewController: UITableViewController {
         let treeData = data["treeData"] as! [String: Any]
         let commonName = NameFormatter.formatCommonName(commonName: treeData["commonName"] as? String)
         let read = data["read"] as! Bool
-        
+
         if accepted {
             cell.textLabel!.text = "Tree Accepted"
             cell.detailTextLabel!.text = "Your \(commonName!) has been added to the database."
@@ -90,14 +90,14 @@ class NotificationsTableViewController: UITableViewController {
             cell.textLabel!.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
             cell.detailTextLabel!.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
         }
-            
+
         if selecting {
-            if(selectedArray[indexPath.row]){
+            if selectedArray[indexPath.row] {
                 cell.accessoryType = UITableViewCell.AccessoryType.checkmark
-            }else{
+            } else {
                 cell.accessoryType = UITableViewCell.AccessoryType.none
             }
-        }else {
+        } else {
             cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
         }
         return cell
@@ -159,9 +159,9 @@ class NotificationsTableViewController: UITableViewController {
                 }, stable: true)
                 self.reloadTableData()
             }
-            
-            //Set up the array that stores which cells are selected
-            for _ in self.documents{
+
+            // Set up the array that stores which cells are selected
+            for _ in self.documents {
                 self.selectedArray.append(false)
             }
         }
@@ -196,9 +196,9 @@ class NotificationsTableViewController: UITableViewController {
     @objc private func deleteDataFailure() {
         isDeletionError = true
         numPendingDeletions -= 1
-        if(numPendingDeletions == 0){
+        if numPendingDeletions == 0 {
             dismiss(animated: true) {
-                if(self.isDeletionError){
+                if self.isDeletionError {
                     AlertManager.alertUser(title: StringConstants.failedToDeleteNotificationsTitle, message: StringConstants.failedToLoadNotificationsMessage)
                     self.isDeletionError = false
                 }
@@ -214,10 +214,10 @@ class NotificationsTableViewController: UITableViewController {
         if selecting {
             return
         }
-        
+
         let location = longPressGesture.location(in: tableView)
         let indexPath = tableView.indexPathForRow(at: location)
-        
+
         if longPressGesture.state == UIGestureRecognizer.State.began {
             startSelection()
             let cell = tableView.cellForRow(at: indexPath!)
@@ -234,12 +234,12 @@ class NotificationsTableViewController: UITableViewController {
     /// Stops selection, whether by hitting cancel or by hitting trash.
     private func stopSelection() {
         selecting = false
-        
-        //Set the array that stores whether cells are selected so that it stores all cells as being currently unselected
-        for index in 0 ..< selectedArray.count{
+
+        // Set the array that stores whether cells are selected so that it stores all cells as being currently unselected
+        for index in 0 ..< selectedArray.count {
             selectedArray[index] = false
         }
-        
+
         reloadTableRows()
         navigationController?.toolbar.items = [selectButton, barSpace]
     }
@@ -250,28 +250,28 @@ class NotificationsTableViewController: UITableViewController {
         reloadTableRows()
         navigationController?.toolbar.items = [cancelButton, barSpace, trashButton]
     }
-    
-    ///Accounts for the deletion of a selection of notifications by removing from the array that keeps track of which notifications are selected all booleans that indicate that a notification was selected.
-    private func removeDeletedFromArray(){
-        for index in stride(from: selectedArray.count - 1, through: 0, by: -1){
-            if(selectedArray[index]){
+
+    /// Accounts for the deletion of a selection of notifications by removing from the array that keeps track of which notifications are selected all booleans that indicate that a notification was selected.
+    private func removeDeletedFromArray() {
+        for index in stride(from: selectedArray.count - 1, through: 0, by: -1) {
+            if selectedArray[index] {
                 selectedArray.remove(at: index)
             }
         }
     }
-    
-    //TODO: Document this
-    private func selectCell(indexPath: IndexPath){
+
+    // TODO: Document this
+    private func selectCell(indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
         let willBeSelected = !selectedArray[indexPath.row]
-        
-        //Flip whether cell is selected
+
+        // Flip whether cell is selected
         selectedArray[indexPath.row] = willBeSelected
-        
-        //Cell should have a checkmark if selected and no accessory type otherwise
-        if(willBeSelected){
+
+        // Cell should have a checkmark if selected and no accessory type otherwise
+        if willBeSelected {
             cell?.accessoryType = UITableViewCell.AccessoryType.checkmark
-        }else{
+        } else {
             cell?.accessoryType = UITableViewCell.AccessoryType.none
         }
     }
@@ -292,22 +292,22 @@ class NotificationsTableViewController: UITableViewController {
         alert.addAction(UIAlertAction(title: StringConstants.cancel, style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: StringConstants.confirmDeleteNotificationsDeleteAction, style: .destructive) { _ in
             self.numPendingDeletions = 0
-            
+
             for i in 0 ..< self.selectedArray.count {
-                if(self.selectedArray[i]){
+                if self.selectedArray[i] {
                     self.numPendingDeletions += 1
                     DatabaseManager.removeDocumentFromNotifications(documentID: self.documents[i].documentID)
                 }
             }
-            
+
             if self.numPendingDeletions > 0 {
                 AlertManager.showLoadingAlert()
-            }else{
-                self.stopSelection()    //for if no notifications were selected
+            } else {
+                self.stopSelection() // for if no notifications were selected
             }
-            
+
         })
-        
+
         present(alert, animated: true, completion: nil)
     }
 

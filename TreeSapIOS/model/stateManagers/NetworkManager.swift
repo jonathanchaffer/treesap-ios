@@ -12,19 +12,19 @@ import Reachability
 class NetworkManager {
     static var reachability = Reachability()!
     static var isConnected = false
-    
+
     static func setup() {
         reachability.whenReachable = { _ in
             print("Reachable")
             isConnected = true
         }
-        
+
         reachability.whenUnreachable = { _ in
             print("Not reachable")
             AlertManager.alertUser(title: StringConstants.noConnectionListenerTitle, message: StringConstants.noConnectionListenerMessage)
             isConnected = false
         }
-        
+
         do {
             try reachability.startNotifier()
         } catch {

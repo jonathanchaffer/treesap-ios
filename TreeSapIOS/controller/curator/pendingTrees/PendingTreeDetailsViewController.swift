@@ -219,15 +219,15 @@ class PendingTreeDetailsViewController: UIViewController {
 extension PendingTreeDetailsViewController: MKMapViewDelegate {
     func mapItem(annotation: TreeAnnotation) -> MKMapItem {
         let addressDict = [CNPostalAddressStreetKey: annotation.tree.scientificName]
-        let placemark = MKPlacemark(coordinate: annotation.tree.location, addressDictionary: addressDict as [String : Any])
+        let placemark = MKPlacemark(coordinate: annotation.tree.location, addressDictionary: addressDict as [String: Any])
         let mapItem = MKMapItem(placemark: placemark)
         mapItem.name = annotation.tree.commonName
         return mapItem
     }
-    
+
     // Opens item in Maps when callout accessory is tapped
-    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView,
-                 calloutAccessoryControlTapped control: UIControl) {
+    func mapView(_: MKMapView, annotationView view: MKAnnotationView,
+                 calloutAccessoryControlTapped _: UIControl) {
         let annotation = view.annotation as! TreeAnnotation
         let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
         mapItem(annotation: annotation).openInMaps(launchOptions: launchOptions)

@@ -27,10 +27,10 @@ class SimpleDisplayViewController: TreeDisplayViewController {
     @IBOutlet var photosContainerStackView: UIStackView!
     @IBOutlet var photosButton: UIButton!
     @IBOutlet var imageSlideshow: ImageSlideshow!
-    @IBOutlet weak var nearbyTreesButton: UIButton!
-    
+    @IBOutlet var nearbyTreesButton: UIButton!
+
     var shouldHideNearbyTrees = false
-    
+
     // MARK: - Overrides
 
     override func viewDidLoad() {
@@ -182,11 +182,11 @@ class SimpleDisplayViewController: TreeDisplayViewController {
             hidePhotos()
         }
     }
-    
-    @IBAction func nearbyTreesButtonPressed(_ sender: UIButton) {
+
+    @IBAction func nearbyTreesButtonPressed(_: UIButton) {
         let nc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "nearbyTrees") as! UINavigationController
         let vc = nc.viewControllers[0] as! NearbyTreesTableViewController
         vc.currentTree = displayedTree!
-        self.present(nc, animated: true, completion: nil)
+        present(nc, animated: true, completion: nil)
     }
 }

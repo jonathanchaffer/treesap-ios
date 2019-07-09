@@ -13,7 +13,7 @@ class HomeViewController: NotificaionBadgeViewController {
 
     @IBOutlet var addTreeDescriptionLabel: UILabel!
     @IBOutlet var settingsDescriptionLabel: UILabel!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -34,11 +34,9 @@ class HomeViewController: NotificaionBadgeViewController {
         settingsDescription.append(NSAttributedString(attachment: settingsAttachment))
         settingsDescription.append(NSAttributedString(string: " button to adjust the app settings and view other options."))
         settingsDescriptionLabel.attributedText = settingsDescription
-        
-        
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
+
+    override func viewDidAppear(_: Bool) {
         configureNotificationBadge()
     }
 

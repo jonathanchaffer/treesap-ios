@@ -151,14 +151,14 @@ class DatabaseManager {
             }
         }
     }
-    
+
     static func updateUsersCollection() {
         let query = db.collection("users").whereField("userID", isEqualTo: AccountManager.getUserID()!)
-        query.getDocuments() { snapshot, err in
+        query.getDocuments { snapshot, err in
             if let err = err {
                 print("Error retrieving document: \(err)")
             } else {
-                var documentID: String? = nil
+                var documentID: String?
                 if snapshot!.documents.count > 0 {
                     documentID = snapshot!.documents[0].documentID
                 }
@@ -166,10 +166,10 @@ class DatabaseManager {
             }
         }
     }
-    
+
     static func addCurator(email: String) {
         let query = db.collection("users").whereField("email", isEqualTo: email.lowercased())
-        query.getDocuments() { snapshot, err in
+        query.getDocuments { snapshot, err in
             if let err = err {
                 print("Error retrieving document: \(err)")
                 NotificationCenter.default.post(name: NSNotification.Name(StringConstants.addCuratorFailureNotification), object: nil)

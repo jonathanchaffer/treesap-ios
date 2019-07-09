@@ -13,16 +13,16 @@ class ChangeDisplayNameViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //Sets up a gesture recognizer that hides the keyboard when a spot on the screen outside of the keyboard or a text field is tapped
+
+        // Sets up a gesture recognizer that hides the keyboard when a spot on the screen outside of the keyboard or a text field is tapped
         hideKeyboardWhenTappedAround()
-        
+
         NotificationCenter.default.addObserver(self, selector: #selector(onDisplayNameChangeAttempt), name: NSNotification.Name(StringConstants.displayNameUpdateAttemptNotification), object: nil)
-        
+
         newDisplayNameTextField.delegate = self
     }
 
-    ///Shows a loading alert and makes a request to the AccountManager class to set the display name to the name in the new display name text field
+    /// Shows a loading alert and makes a request to the AccountManager class to set the display name to the name in the new display name text field
     private func updateDisplayName() {
         // Ensure connection
         if !NetworkManager.isConnected {
@@ -39,27 +39,27 @@ class ChangeDisplayNameViewController: UIViewController {
      */
     @objc private func onDisplayNameChangeAttempt(_ notification: Notification) {
         let errorInfo = notification.userInfo as! [String: Error]
-        
+
         dismiss(animated: true) {
-            if(errorInfo.isEmpty){
+            if errorInfo.isEmpty {
                 self.navigationController?.popViewController(animated: true)
-            }else{
+            } else {
                 AlertManager.alertUser(title: StringConstants.setDisplayNameFailureTitle, message: StringConstants.setDisplayNameFailureMessage)
             }
         }
     }
 
-    ///Calls the updateDisplayName function. does not use the UIButton it takes as a parameter
+    /// Calls the updateDisplayName function. does not use the UIButton it takes as a parameter
     @IBAction func changeDisplayNameButtonPressed(_: UIButton) {
         updateDisplayName()
     }
 }
 
 extension ChangeDisplayNameViewController: UITextFieldDelegate {
-    //Makes it so that returning from the new display name text field causes the keyboard to be dismissed and the updateDisplayName function called
+    // Makes it so that returning from the new display name text field causes the keyboard to be dismissed and the updateDisplayName function called
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == newDisplayNameTextField {
-            self.view.endEditing(true)
+            view.endEditing(true)
             updateDisplayName()
         }
         return true

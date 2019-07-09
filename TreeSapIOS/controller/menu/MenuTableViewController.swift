@@ -12,10 +12,11 @@ import UIKit
 
 class MenuTableViewController: UITableViewController {
     // MARK: - Properties
+
     let sectionHeaders = ["Menu", "Curator", "Account"]
-    @IBOutlet weak var notificationBadgeView: UIView!
-    @IBOutlet weak var notificationBadgeLabel: UILabel!
-    
+    @IBOutlet var notificationBadgeView: UIView!
+    @IBOutlet var notificationBadgeLabel: UILabel!
+
     // MARK: - Overrides
 
     override func viewDidLoad() {
@@ -55,25 +56,25 @@ class MenuTableViewController: UITableViewController {
             logOutPressed()
         }
     }
-    
+
     /// Sets the header for each section.
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(_: UITableView, titleForHeaderInSection section: Int) -> String? {
         if !AccountManager.isCurator(), section == 1 {
             return nil
         }
         return sectionHeaders[section]
     }
-    
+
     /// Sets the height for each section's header.
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    override func tableView(_: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if !AccountManager.isCurator(), section == 1 {
             return 0.01
         }
         return 0
     }
-    
+
     /// Sets the height for each section's footer.
-    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    override func tableView(_: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         if !AccountManager.isCurator(), section == 1 {
             return 0.01
         }
@@ -81,7 +82,7 @@ class MenuTableViewController: UITableViewController {
     }
 
     // MARK: - Private Functions
-    
+
     @objc private func updateNotificationBadge() {
         if UnreadManager.numUnreadNotifications > 0 {
             notificationBadgeView.isHidden = false
@@ -115,7 +116,7 @@ class MenuTableViewController: UITableViewController {
             AlertManager.alertUser(title: StringConstants.errorComposingEmailTitle, message: StringConstants.errorComposingEmailMessage)
         }
     }
-    
+
     private func exportUserTrees() {
         if let userTreesDataSource = DataManager.getDataSourceWithName(name: "User Trees") {
             let trees = userTreesDataSource.getTreeList()

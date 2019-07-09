@@ -6,8 +6,8 @@
 //  Copyright © 2019 Hope CS. All rights reserved.
 //
 
-import UIKit
 import Firebase
+import UIKit
 
 class ChangeEmailViewController: UIViewController {
     @IBOutlet var passwordTextField: UITextField!
@@ -16,10 +16,10 @@ class ChangeEmailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //Sets up gesture recognizer so that keyboard is dismissed when the user taps outside of the keyboard and all text fields
+        // Sets up gesture recognizer so that keyboard is dismissed when the user taps outside of the keyboard and all text fields
         hideKeyboardWhenTappedAround()
 
-        //Add observers for notifications
+        // Add observers for notifications
         NotificationCenter.default.addObserver(self, selector: #selector(onFailedAuthentication), name: NSNotification.Name(StringConstants.authenticationFailureNotification), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(resolveEmailUpdate), name: NSNotification.Name(StringConstants.emailUpdateAttemptNotification), object: nil)
 
@@ -46,30 +46,30 @@ class ChangeEmailViewController: UIViewController {
             AlertManager.alertUser(title: StringConstants.generalErrorTitle, message: StringConstants.generalErrorMessage)
             return
         }
-        
+
         AccountManager.updateEmail(password: passwordText, email: emailText)
-        
+
         AlertManager.showLoadingAlert()
     }
 
-    ///Dismisses the notification alert and shows the user an incorrect password alert. Has undefined behavior if the loading alert is not the most recently pushed alert.
-    @objc private func onFailedAuthentication(){
+    /// Dismisses the notification alert and shows the user an incorrect password alert. Has undefined behavior if the loading alert is not the most recently pushed alert.
+    @objc private func onFailedAuthentication() {
         dismiss(animated: true) {
             AlertManager.alertUser(title: StringConstants.incorrectPasswordTitle, message: StringConstants.incorrectPasswordMessage)
         }
     }
-    
+
     /**
      Dismissed the loading notification. If the notification this function takes indicates that there was an error in the email change, displays an appropriate alert. Otherwise, pops this view off of the navigation controller stack. Has undefined behavrion if the loading alert is not the most recently pushed alert.
      - Parameter notification: the notification received by this class that caused this function to be called
      */
     @objc private func resolveEmailUpdate(_ notification: Notification) {
         let errorInfo = notification.userInfo as! [String: Error]
-        
+
         dismiss(animated: true) {
-            if(errorInfo.isEmpty){
+            if errorInfo.isEmpty {
                 self.navigationController?.popViewController(animated: true)
-            }else{
+            } else {
                 switch errorInfo["error"]!._code {
                 case AuthErrorCode.invalidEmail.rawValue:
                     AlertManager.alertUser(title: StringConstants.invalidEmailTitle, message: StringConstants.invalidEmailMesage)
@@ -82,7 +82,6 @@ class ChangeEmailViewController: UIViewController {
                 }
             }
         }
-        
     }
 }
 

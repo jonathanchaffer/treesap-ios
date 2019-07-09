@@ -173,7 +173,6 @@ class AccountManager {
                     DatabaseManager.updateUsersCollection()
                 }
             }
-            
         }
     }
 

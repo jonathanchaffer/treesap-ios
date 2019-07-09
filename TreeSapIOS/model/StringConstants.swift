@@ -14,7 +14,7 @@ class StringConstants {
     static let ok = "OK"
     static let cancel = "Cancel"
     static let pleaseWait = "Please wait..."
-    
+
     static let generalErrorTitle = "Error"
     static let generalErrorMessage = "Something went wrong. Please try again."
 
@@ -183,19 +183,19 @@ class StringConstants {
 
     static let feedbackSentTitle = "Feedback sent"
     static let feedbackSentMessage = "Thank you for your feedback!"
-    
+
     static let addCuratorFailureTitle = "Error adding curator"
     static let addCuratorFailureMessage = "An error occurred while trying to add a curator. Please ensure that you enter a valid user's email address, or ask the user to log out and log back in."
-    
+
     static let addCuratorSuccessTitle = "Curator added"
     static let addCuratorSuccessMessage = "The user can now accept and reject user-submitted trees. Note that they may need to restart the app for this change to take effect."
-    
+
     static let exportDataFailureTitle = "Error exporting data"
     static let exportDataFailureMessage = "An error occurred while trying to export user-submitted trees. Please try again."
-    
+
     static let noConnectionTitle = "No internet connection"
     static let noConnectionMessage = "Please ensure that your device is connected to the internet."
-    
+
     static let noConnectionListenerTitle = "No internet connection"
     static let noConnectionListenerMessage = "Some functionality will be limited."
 
