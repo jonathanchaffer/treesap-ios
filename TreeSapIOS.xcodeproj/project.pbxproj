@@ -79,7 +79,7 @@
 		CBBCE851228DD9B1008F7225 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBCE850228DD9B1008F7225 /* SettingsViewController.swift */; };
 		CBC7BC9822B93AC8002D4B98 /* HideKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC7BC9722B93AC8002D4B98 /* HideKeyboard.swift */; };
 		CBCCEA7522D4BB0E00FEC596 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCCEA7422D4BB0E00FEC596 /* NetworkManager.swift */; };
-		CBCCEA7722D4CF8400FEC596 /* UnreadNotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCCEA7622D4CF8400FEC596 /* UnreadNotificationsManager.swift */; };
+		CBCCEA7722D4CF8400FEC596 /* UnreadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCCEA7622D4CF8400FEC596 /* UnreadManager.swift */; };
 		CBE8789022957A1300C06E69 /* TreeAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE8788F22957A1300C06E69 /* TreeAnnotation.swift */; };
 		CBF89EDC22B2BBC600045670 /* CSVDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF89EDB22B2BBC600045670 /* CSVDataSource.swift */; };
 		CBF89EE222B3F40600045670 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF89EE122B3F40600045670 /* DatabaseManager.swift */; };
@@ -206,7 +206,7 @@
 		CBBCE850228DD9B1008F7225 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		CBC7BC9722B93AC8002D4B98 /* HideKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideKeyboard.swift; sourceTree = "<group>"; };
 		CBCCEA7422D4BB0E00FEC596 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		CBCCEA7622D4CF8400FEC596 /* UnreadNotificationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnreadNotificationsManager.swift; sourceTree = "<group>"; };
+		CBCCEA7622D4CF8400FEC596 /* UnreadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnreadManager.swift; sourceTree = "<group>"; };
 		CBE8788F22957A1300C06E69 /* TreeAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeAnnotation.swift; sourceTree = "<group>"; };
 		CBF89EDB22B2BBC600045670 /* CSVDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVDataSource.swift; sourceTree = "<group>"; };
 		CBF89EE122B3F40600045670 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
@@ -392,7 +392,7 @@
 				D77029DC22B1293A00671CC0 /* AccountManager.swift */,
 				CBF89EE122B3F40600045670 /* DatabaseManager.swift */,
 				CBCCEA7422D4BB0E00FEC596 /* NetworkManager.swift */,
-				CBCCEA7622D4CF8400FEC596 /* UnreadNotificationsManager.swift */,
+				CBCCEA7622D4CF8400FEC596 /* UnreadManager.swift */,
 			);
 			path = stateManagers;
 			sourceTree = "<group>";
@@ -806,7 +806,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D77029DF22B12C7300671CC0 /* LoginSignupViewController.swift in Sources */,
-				CBCCEA7722D4CF8400FEC596 /* UnreadNotificationsManager.swift in Sources */,
+				CBCCEA7722D4CF8400FEC596 /* UnreadManager.swift in Sources */,
 				CB9F425122A5B0D800C97F70 /* AddTreePageViewController.swift in Sources */,
 				CB55444D22C658E100DE71E7 /* StringConstants.swift in Sources */,
 				CB78C9EA22C3C25100B5A7CB /* NotificationsTableViewController.swift in Sources */,
