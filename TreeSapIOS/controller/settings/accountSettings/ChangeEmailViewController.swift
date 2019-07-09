@@ -33,6 +33,11 @@ class ChangeEmailViewController: UIViewController {
 
     /// If the password entered in the password entry text field is correct, this function requests that Firebase change the current user's email to the email specified in the text field or, if there is no current user, does nothing. Otherwise, the user is informed that the entered password was not correct.
     func changeEmail() {
+        // Ensure connection
+        if !NetworkManager.isConnected {
+            AlertManager.alertUser(title: StringConstants.noConnectionTitle, message: StringConstants.noConnectionMessage)
+            return
+        }
         guard let passwordText = passwordTextField.text else {
             AlertManager.alertUser(title: StringConstants.generalErrorTitle, message: StringConstants.generalErrorMessage)
             return

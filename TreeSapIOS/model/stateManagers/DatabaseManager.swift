@@ -261,23 +261,6 @@ class DatabaseManager {
             return nil
         }
     }
-    
-    /// - Returns: The number of unread notifications for the current user.
-    static func retrieveNumberOfUnreadNotifications() {
-        if AccountManager.getUserID() != nil {
-            let query = db.collection("notifications").whereField(FieldPath(["treeData", "userID"]), isEqualTo: AccountManager.getUserID()!).whereField("read", isEqualTo: false)
-            query.getDocuments() { snapshot, error in
-                if let error = error {
-                    print(error)
-                } else {
-                    let num = snapshot!.count
-                    NotificationCenter.default.post(name: NSNotification.Name(StringConstants.unreadNotificationsCountNotification), object: nil, userInfo: ["count": num])
-                }
-            }
-        } else {
-            return
-        }
-    }
 
     // MARK: - Helper functions
 

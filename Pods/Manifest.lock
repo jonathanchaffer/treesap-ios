@@ -114,6 +114,7 @@ PODS:
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
   - Protobuf (3.8.0)
+  - ReachabilitySwift (4.3.1)
   - SearchTextField (1.2.4)
   - SideMenu (5.0.3)
 
@@ -125,6 +126,7 @@ DEPENDENCIES:
   - Firebase/Firestore
   - ImageSlideshow
   - KeyboardAvoidingView
+  - ReachabilitySwift
   - SearchTextField
   - SideMenu
 
@@ -152,6 +154,7 @@ SPEC REPOS:
     - leveldb-library
     - nanopb
     - Protobuf
+    - ReachabilitySwift
     - SearchTextField
     - SideMenu
 
@@ -178,9 +181,10 @@ SPEC CHECKSUMS:
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Protobuf: 3f617b9a6e73605565086864c9bc26b2bf2dd5a3
+  ReachabilitySwift: 4032e2f59586e11e3b0ebe15b167abdd587a388b
   SearchTextField: 40dc3cc57def5a211f263cac263622c163bbc25a
   SideMenu: 1dcaabce84538c53325c287f7fe62999379a641c
 
-PODFILE CHECKSUM: 683aa72df6fc29d4731690703becb92eb40340e4
+PODFILE CHECKSUM: 0abcdca5c3b4682eeba1ad6cbf04ef0be248f372
 
 COCOAPODS: 1.7.2

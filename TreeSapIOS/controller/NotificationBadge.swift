@@ -36,8 +36,9 @@ class NotificaionBadgeViewController: UIViewController {
         let location = CGPoint(x: (radius + offset.x), y: (radius + offset.y))
         let color = UIColor(named: "notificationBadge")!
         badge!.drawCircleAtLocation(location: location, withRadius: radius, andColor: color)
-        badge!.isHidden = true
         view.layer.addSublayer(badge!)
+        
+        updateBadgeVisibility()
         
         // Add an observer for the retrieval of number of new notifications
         NotificationCenter.default.addObserver(self, selector: #selector(updateBadgeVisibility), name: NSNotification.Name(StringConstants.unreadNotificationsCountNotification), object: nil)
@@ -45,12 +46,11 @@ class NotificaionBadgeViewController: UIViewController {
     }
     
     func updateNotificationBadge() {
-        DatabaseManager.retrieveNumberOfUnreadNotifications()
+        UnreadManager.retrieveNumberOfUnreadNotifications()
     }
     
-    @objc private func updateBadgeVisibility(_ notification: Notification) {
-        let numNotifications = notification.userInfo!["count"] as! Int
-        if numNotifications != 0 {
+    @objc private func updateBadgeVisibility() {
+        if UnreadManager.numUnreadNotifications != 0 {
             badge!.isHidden = false
         } else {
             badge!.isHidden = true

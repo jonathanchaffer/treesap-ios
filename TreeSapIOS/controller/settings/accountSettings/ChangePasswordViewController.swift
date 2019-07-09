@@ -37,6 +37,11 @@ class ChangePasswordViewController: UIViewController {
 
     ///Sends a request to the account manager to change the user's password. Shows a loading notification while the database has not responded. If the text in the new password and confirm password text fields do not match, the user is alerted and no request is sent.
     private func updatePassword() {
+        // Ensure connection
+        if !NetworkManager.isConnected {
+            AlertManager.alertUser(title: StringConstants.noConnectionTitle, message: StringConstants.noConnectionMessage)
+            return
+        }
         AlertManager.showLoadingAlert()
         
         if newPasswordTextField.text! == newPasswordConfirmTextField.text! {

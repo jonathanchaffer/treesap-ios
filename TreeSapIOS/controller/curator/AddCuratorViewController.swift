@@ -25,6 +25,11 @@ class AddCuratorViewController: UIViewController {
     
     // MARK: - Private functions
     private func addCurator() {
+        // Ensure connection
+        if !NetworkManager.isConnected {
+            AlertManager.alertUser(title: StringConstants.noConnectionTitle, message: StringConstants.noConnectionMessage)
+            return
+        }
         DatabaseManager.addCurator(email: emailTextField.text!)
         AlertManager.showLoadingAlert()
     }

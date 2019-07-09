@@ -159,6 +159,11 @@ class AddTreePageViewController: UIPageViewController {
                 createdTree.addImage(image, toCategory: .full)
             }
         }
+        // Ensure connection
+        if !NetworkManager.isConnected {
+            AlertManager.alertUser(title: StringConstants.noConnectionTitle, message: StringConstants.noConnectionMessage)
+            return
+        }
         // Add the tree to the pending trees database
         DatabaseManager.submitTreeToPending(tree: createdTree)
         // Display a loading alert while it's trying to upload

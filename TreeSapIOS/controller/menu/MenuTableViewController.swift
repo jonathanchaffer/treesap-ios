@@ -24,7 +24,8 @@ class MenuTableViewController: UITableViewController {
         notificationBadgeView.layer.cornerRadius = notificationBadgeView.frame.height / 2
         notificationBadgeView.isHidden = true
         NotificationCenter.default.addObserver(self, selector: #selector(updateNotificationBadge), name: NSNotification.Name(StringConstants.unreadNotificationsCountNotification), object: nil)
-        DatabaseManager.retrieveNumberOfUnreadNotifications()
+        updateNotificationBadge()
+        UnreadManager.retrieveNumberOfUnreadNotifications()
     }
 
     /// Sets the height of each table row.
@@ -81,11 +82,10 @@ class MenuTableViewController: UITableViewController {
 
     // MARK: - Private Functions
     
-    @objc private func updateNotificationBadge(_ notification: Notification) {
-        let num = notification.userInfo!["count"] as! Int
-        if num > 0 {
+    @objc private func updateNotificationBadge() {
+        if UnreadManager.numUnreadNotifications > 0 {
             notificationBadgeView.isHidden = false
-            notificationBadgeLabel.text = String(num)
+            notificationBadgeLabel.text = String(UnreadManager.numUnreadNotifications)
         }
     }
 

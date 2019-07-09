@@ -176,6 +176,11 @@ class PendingTreeDetailsViewController: UIViewController {
             withoutMessageLabel = StringConstants.addMessagePromptRejectWithoutMessageAction
         }
         addMessageAlert.addAction(UIAlertAction(title: withoutMessageLabel!, style: .default) { _ in
+            // Ensure connection
+            if !NetworkManager.isConnected {
+                AlertManager.alertUser(title: StringConstants.noConnectionTitle, message: StringConstants.noConnectionMessage)
+                return
+            }
             DatabaseManager.sendNotificationToUser(userID: self.displayedTree!.userID!, accepted: accepting, message: "", documentID: self.displayedTree!.documentID!)
             if accepting {
                 DatabaseManager.acceptDocumentFromPending(documentID: self.displayedTree!.documentID!)

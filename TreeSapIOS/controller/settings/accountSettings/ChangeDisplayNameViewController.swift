@@ -24,6 +24,11 @@ class ChangeDisplayNameViewController: UIViewController {
 
     ///Shows a loading alert and makes a request to the AccountManager class to set the display name to the name in the new display name text field
     private func updateDisplayName() {
+        // Ensure connection
+        if !NetworkManager.isConnected {
+            AlertManager.alertUser(title: StringConstants.noConnectionTitle, message: StringConstants.noConnectionMessage)
+            return
+        }
         AlertManager.showLoadingAlert()
         AccountManager.setDisplayName(displayName: newDisplayNameTextField.text!)
     }

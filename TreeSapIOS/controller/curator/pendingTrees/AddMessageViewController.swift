@@ -36,6 +36,11 @@ class AddMessageViewController: UIViewController {
     }
 
     @IBAction func saveButtonPressed(_: UIButton) {
+        // Ensure connection
+        if !NetworkManager.isConnected {
+            AlertManager.alertUser(title: StringConstants.noConnectionTitle, message: StringConstants.noConnectionMessage)
+            return
+        }
         if accepting! {
             let alert = UIAlertController(title: StringConstants.confirmAcceptTreeTitle, message: StringConstants.confirmAcceptTreeMessage, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: StringConstants.cancel, style: .cancel, handler: nil))
