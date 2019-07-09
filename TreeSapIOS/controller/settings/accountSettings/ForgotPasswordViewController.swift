@@ -18,6 +18,11 @@ class ForgotPasswordViewController: UIViewController {
     }
 
     private func sendPasswordResetEmail() {
+        // Ensure connection
+        if !NetworkManager.isConnected {
+            AlertManager.alertUser(title: StringConstants.noConnectionTitle, message: StringConstants.noConnectionMessage)
+            return
+        }
         AccountManager.sendPasswordResetEmail(email: forgotPasswordEmailTextField.text!)
     }
 

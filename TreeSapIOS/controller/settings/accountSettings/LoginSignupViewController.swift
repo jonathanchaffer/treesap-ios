@@ -35,11 +35,6 @@ class LoginSignupViewController: UIViewController {
         hideKeyboardWhenTappedAround()
         loginStackView.isHidden = false
         NotificationCenter.default.addObserver(self, selector: #selector(closeLoginSignup), name: NSNotification.Name(StringConstants.loggedInNotification), object: nil)
-        if navigationController!.isBeingPresented {
-            print("in modal")
-        } else {
-            print("in settings")
-        }
     }
 
     // MARK: - Actions
@@ -78,12 +73,22 @@ class LoginSignupViewController: UIViewController {
     }
 
     private func logIn() {
+        // Ensure connection
+        if !NetworkManager.isConnected {
+            AlertManager.alertUser(title: StringConstants.noConnectionTitle, message: StringConstants.noConnectionMessage)
+            return
+        }
         if loginEmailTextField.text != nil, loginPasswordTextField.text != nil {
             AccountManager.logIn(email: loginEmailTextField.text!, password: loginPasswordTextField.text!)
         }
     }
 
     private func signUp() {
+        // Ensure connection
+        if !NetworkManager.isConnected {
+            AlertManager.alertUser(title: StringConstants.noConnectionTitle, message: StringConstants.noConnectionMessage)
+            return
+        }
         if createAccountEmailTextField.text != nil, createAccountPasswordTextField.text != nil, createAccountConfirmTextField.text != nil {
             // Check for non-matching passwords
             if createAccountPasswordTextField.text! != createAccountConfirmTextField.text! {

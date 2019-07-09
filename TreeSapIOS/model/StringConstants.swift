@@ -192,6 +192,9 @@ class StringConstants {
     
     static let exportDataFailureTitle = "Error exporting data"
     static let exportDataFailureMessage = "An error occurred while trying to export user-submitted trees. Please try again."
+    
+    static let noConnectionTitle = "No internet connection"
+    static let noConnectionMessage = "Please ensure that your device is connected to the internet."
 
     // MARK: - Notification Center
 

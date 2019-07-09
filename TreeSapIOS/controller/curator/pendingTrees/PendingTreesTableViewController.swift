@@ -23,6 +23,11 @@ class PendingTreesTableViewController: UITableViewController {
     }
 
     override func viewWillAppear(_: Bool) {
+        // Ensure connection
+        if !NetworkManager.isConnected {
+            AlertManager.alertUser(title: StringConstants.noConnectionTitle, message: StringConstants.noConnectionMessage)
+            return
+        }
         PendingTreesDataSource.importOnlineTreeData()
     }
 

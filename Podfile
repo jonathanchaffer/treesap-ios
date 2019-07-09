@@ -9,6 +9,7 @@ target "TreeSapIOS" do
   pod 'ImageSlideshow'
   pod 'SearchTextField'
   pod 'SideMenu'
+  pod 'ReachabilitySwift'
 end 
 target "TreeSapIOSTests" do
 	pod 'CSVImporter'
@@ -20,6 +21,7 @@ target "TreeSapIOSTests" do
   pod 'ImageSlideshow'
   pod 'SearchTextField'
   pod 'SideMenu'
+  pod 'ReachabilitySwift'
 end
 target "TreeSapIOSUITests" do
   pod 'CSVImporter'
@@ -31,4 +33,5 @@ target "TreeSapIOSUITests" do
   pod 'ImageSlideshow'
   pod 'SearchTextField'
   pod 'SideMenu'
+  pod 'ReachabilitySwift'
 end

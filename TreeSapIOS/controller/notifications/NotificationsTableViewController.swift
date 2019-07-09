@@ -131,6 +131,11 @@ class NotificationsTableViewController: UITableViewController {
 
     /// Asks the database manager for the notifications collection and reloads the notifications into documents.
     private func reloadNotifications() {
+        // Ensure connection
+        if !NetworkManager.isConnected {
+            AlertManager.alertUser(title: StringConstants.noConnectionTitle, message: StringConstants.noConnectionMessage)
+            return
+        }
         DatabaseManager.getNotificationsCollection()?.getDocuments { snapshot, error in
             if error != nil {
                 self.failedToLoad()
