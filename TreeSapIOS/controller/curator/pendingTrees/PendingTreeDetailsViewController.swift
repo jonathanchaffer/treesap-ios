@@ -6,6 +6,7 @@
 //  Copyright © 2019 Hope CS. All rights reserved.
 //
 
+import Contacts
 import Firebase
 import ImageSlideshow
 import MapKit
@@ -98,8 +99,10 @@ class PendingTreeDetailsViewController: UIViewController {
             longitudinalMeters: 100
         )
         mapView.setRegion(coordinateRegion, animated: true)
+        mapView.tintColor = UIColor(named: "myTree")!
         mapView.register(TreeAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
         mapView.addAnnotation(TreeAnnotation(tree: displayedTree!))
+        mapView.delegate = self
     }
 
     private func setupPhotos() {
@@ -205,5 +208,23 @@ class PendingTreeDetailsViewController: UIViewController {
 
     @IBAction func rejectButtonPressed(_: UIButton) {
         showAddMessageAlert(accepting: false)
+    }
+}
+
+extension PendingTreeDetailsViewController: MKMapViewDelegate {
+    func mapItem(annotation: TreeAnnotation) -> MKMapItem {
+        let addressDict = [CNPostalAddressStreetKey: annotation.tree.scientificName]
+        let placemark = MKPlacemark(coordinate: annotation.tree.location, addressDictionary: addressDict as [String : Any])
+        let mapItem = MKMapItem(placemark: placemark)
+        mapItem.name = annotation.tree.commonName
+        return mapItem
+    }
+    
+    // Opens item in Maps when callout accessory is tapped
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView,
+                 calloutAccessoryControlTapped control: UIControl) {
+        let annotation = view.annotation as! TreeAnnotation
+        let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
+        mapItem(annotation: annotation).openInMaps(launchOptions: launchOptions)
     }
 }
