@@ -23,7 +23,7 @@ class PreferencesManager {
 
     // Default preferences
     private static let defaultShowingUserLocation = true
-    private static let defaultCutoffDistance = 100.0
+    private static let defaultCutoffDistance = 20.0
     private static var defaultDataSourceAvailability: [String: Bool] {
         var dict: [String: Bool] = [:]
         for dataSource in DataManager.dataSources {
