@@ -73,7 +73,7 @@ class TreeDetailPageViewController: UIPageViewController {
         }
     }
 
-    override func viewWillDisappear(_: Bool) {
+    override func viewDidDisappear(_: Bool) {
         // Close tree details only if not presenting a view controller, e.g. fullscreen photos view
         if presentedViewController == nil {
             closeTreeDetails()

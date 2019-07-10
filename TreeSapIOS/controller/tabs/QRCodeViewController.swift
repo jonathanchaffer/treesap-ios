@@ -113,13 +113,14 @@ class QRCodeViewController: NotificaionBadgeViewController, AVCaptureMetadataOut
         default:
             AVConnection.videoOrientation = AVCaptureVideoOrientation.portrait
         }
-
+        
         // Change the space the QR scanner occupies
         previewLayer!.frame = view.layer.bounds
     }
 
     // This function takes the String that was encoded in the QR code, finds a tree that corresponds to that code using a call to getTreeFromString, and displays the results.
     func metadataOutput(_: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from _: AVCaptureConnection) {
+        
         if let metadatObject: AVMetadataObject = metadataObjects.first {
             guard let readableObject = metadatObject as? AVMetadataMachineReadableCodeObject else {
                 CheckAndAlertUser(title: StringConstants.scanErrorTitle, message: StringConstants.scanErrorMessage)
@@ -136,11 +137,12 @@ class QRCodeViewController: NotificaionBadgeViewController, AVCaptureMetadataOut
                 return
             }
 
-            // If this view controller is not presenting an alert, display tree data
-            if presentedViewController == nil || !(presentedViewController is UIAlertController) {
+            //If this view controller is not presenting a view controller, present the tree data display
+            if(presentedViewController == nil){
                 let pages = TreeDetailPageViewController(tree: treeToDisplay)
                 navigationController?.pushViewController(pages, animated: true)
             }
+            
         }
     }
 
@@ -172,19 +174,14 @@ class QRCodeViewController: NotificaionBadgeViewController, AVCaptureMetadataOut
         }
         let dataSourceName: String = String(resultParts[2])
 
-        // Find the data source with the data source name encoded int the QR code
+        // Find the data source with the data source name encoded in the QR code
         let treeCoordinates = CLLocationCoordinate2D(latitude: treeLatitude, longitude: treeLongitude)
         guard let dataSourceToSearch: DataSource = DataManager.getDataSourceWithName(name: dataSourceName) else {
             CheckAndAlertUser(title: StringConstants.invalidQRCodeTitle, message: StringConstants.invalidQRCodeMessage)
             return nil
         }
 
-        // Check if the data source with the given name is active
-        guard PreferencesManager.isActive(dataSourceName: dataSourceName) else {
-            CheckAndAlertUser(title: StringConstants.dataSourceDisabledTitle, message: StringConstants.dataSourceDisabledMessage0 + String(dataSourceName) + StringConstants.dataSourceDisabledMessage1)
-            return nil
-        }
-
+        //Search the data source given by the QR code for the tree with the location specified in the QR code
         guard let resultTree: Tree = TreeFinder.findTreeByLocation(location: treeCoordinates, dataSources: [dataSourceToSearch], cutoffDistance: 0.5) else {
             CheckAndAlertUser(title: StringConstants.noTreesFoundByQRCodeTitle, message: StringConstants.noTreesFoundByQRCodeMessage)
             return nil
@@ -200,7 +197,7 @@ class QRCodeViewController: NotificaionBadgeViewController, AVCaptureMetadataOut
         - message: the message of the alert
      */
     func CheckAndAlertUser(title: String, message: String) {
-        if presentedViewController != nil, presentedViewController is UIAlertController {
+        if (presentedViewController != nil && presentedViewController is UIAlertController) {
             return
         }
 
