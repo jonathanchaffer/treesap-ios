@@ -397,7 +397,7 @@
 			path = stateManagers;
 			sourceTree = "<group>";
 		};
-		CB9F424322A55F3A00C97F70 /* TreeSapIOSUITests */ = {
+		CB9F424322A55F3A00C97F70 /* TreeSapIOSUITests (do not work because of app changes) */ = {
 			isa = PBXGroup;
 			children = (
 				41FE11EB22B18C5600919026 /* Settings Tests */,
@@ -405,7 +405,7 @@
 				4107AC3422BBAC3A0024C2D2 /* TreeAddTests.swift */,
 				CB9F424622A55F3A00C97F70 /* Info.plist */,
 			);
-			path = TreeSapIOSUITests;
+			path = "TreeSapIOSUITests (do not work because of app changes)";
 			sourceTree = "<group>";
 		};
 		CB9F424C22A5ADD200C97F70 /* treeDetail */ = {
@@ -491,7 +491,7 @@
 			children = (
 				CBBCE829228DD76B008F7225 /* TreeSapIOS */,
 				CBBCE840228DD777008F7225 /* TreeSapIOSTests */,
-				CB9F424322A55F3A00C97F70 /* TreeSapIOSUITests */,
+				CB9F424322A55F3A00C97F70 /* TreeSapIOSUITests (do not work because of app changes) */,
 				CBBCE828228DD76B008F7225 /* Products */,
 				9C9A1EE661337DC862C941EA /* Pods */,
 				6513C0878CC415B2C584B34B /* Frameworks */,
