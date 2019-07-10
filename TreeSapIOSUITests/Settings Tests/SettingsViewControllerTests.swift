@@ -9,6 +9,7 @@
 import UIKit
 import XCTest
 
+//This test class is outdated and may not work because of changes to the app
 class SettingsViewControllerTests: XCTestCase {
     var app: XCUIApplication!
 

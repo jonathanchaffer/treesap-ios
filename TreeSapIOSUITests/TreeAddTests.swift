@@ -8,6 +8,7 @@
 
 import XCTest
 
+//This test class is outdated and may not work because of changes to the app
 class TreeAddTest: XCTestCase {
     var app: XCUIApplication!
 
