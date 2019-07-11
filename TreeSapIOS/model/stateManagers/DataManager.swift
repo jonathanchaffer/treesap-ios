@@ -81,7 +81,7 @@ class DataManager {
             if !treesLoaded {
                 DispatchQueue.main.async {
                     if loadingScreen != nil {
-                        loadingScreen!.showHomeScreen()
+                        loadingScreen!.transitionToHomeScreen()
                     }
                 }
                 if !loadingScreenActive {
@@ -99,7 +99,7 @@ class DataManager {
         // If there were no issues with loading the online data, go to the home screen
         DispatchQueue.main.async {
             if loadingScreen != nil {
-                loadingScreen!.showHomeScreen()
+                loadingScreen!.transitionToHomeScreen()
             }
         }
     }

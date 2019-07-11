@@ -24,7 +24,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UserDefaults.standard.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
         }
         FirebaseApp.configure()
-        NetworkManager.setup()
         PreferencesManager.loadPreferences()
         LocationManager.setup()
         DatabaseManager.setup()
