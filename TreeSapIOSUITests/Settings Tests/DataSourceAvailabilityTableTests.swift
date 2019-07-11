@@ -8,7 +8,7 @@
 
 import XCTest
 
-//This test class is outdated and may not work because of changes to the app
+// This test class is outdated and may not work because of changes to the app
 class DataSourceAvailabilityTableTests: XCTestCase {
     var app: XCUIApplication!
 

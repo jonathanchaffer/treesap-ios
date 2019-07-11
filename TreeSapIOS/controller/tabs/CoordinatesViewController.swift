@@ -26,7 +26,8 @@ class CoordinatesViewController: NotificaionBadgeViewController {
         hideKeyboardWhenTappedAround()
     }
 
-    override func viewDidAppear(_: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         configureNotificationBadge()
     }
 

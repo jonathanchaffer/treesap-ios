@@ -216,8 +216,8 @@ class NotificationsTableViewController: UITableViewController {
         }
 
         let location = longPressGesture.location(in: tableView)
-        guard let indexPath = tableView.indexPathForRow(at: location) else{
-            return  //If no cell can be determined to have been pressed, nothing should happen
+        guard let indexPath = tableView.indexPathForRow(at: location) else {
+            return // If no cell can be determined to have been pressed, nothing should happen
         }
 
         if longPressGesture.state == UIGestureRecognizer.State.began {
