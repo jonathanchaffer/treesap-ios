@@ -13,7 +13,7 @@ import XCTest
 class TreeFinderTests: XCTestCase {
     let distanceBetweenMarginOfError: Double = 0.00001
 
-    //This function does not adequately set up the app by setting all of the data sources to be active
+    // This function does not adequately set up the app by setting all of the data sources to be active
     override func setUp() {
         for dataSource in DataManager.dataSources {
             dataSource.importOnlineTreeData()
