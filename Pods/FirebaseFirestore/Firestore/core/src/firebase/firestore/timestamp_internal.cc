@@ -14,18 +14,21 @@
  * limitations under the License.
  */
 
-#include "Firestore/core/src/firebase/firestore/model/field_value.h"
+#include "Firestore/core/src/firebase/firestore/timestamp_internal.h"
 
-#import "Firestore/Source/Model/FSTFieldValue.h"
+#include "Firestore/core/src/firebase/firestore/util/hashing.h"
+
+namespace util = firebase::firestore::util;
 
 namespace firebase {
-namespace firestore {
-namespace model {
 
-FSTFieldValue* FieldValue::Wrap() && {
-  return [FSTDelegateValue delegateWithValue:std::move(*this)];
+size_t TimestampInternal::Hash(const Timestamp& timestamp) {
+  return util::Hash(timestamp.seconds(), timestamp.nanoseconds());
 }
 
-}  // namespace model
-}  // namespace firestore
+Timestamp TimestampInternal::Truncate(const Timestamp& timestamp) {
+  int32_t truncated_nanos = timestamp.nanoseconds() / 1000 * 1000;
+  return Timestamp(timestamp.seconds(), truncated_nanos);
+}
+
 }  // namespace firebase
