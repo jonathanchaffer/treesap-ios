@@ -14,6 +14,8 @@ import UIKit
 class QRCodeViewController: NotificaionBadgeViewController, AVCaptureMetadataOutputObjectsDelegate {
     // MARK: - Properties
 
+    ///Records whether or not the QR scanner is active
+    var isScanning = true
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer?
     @IBOutlet var qrCodeOverlay: UIImageView!
@@ -58,6 +60,13 @@ class QRCodeViewController: NotificaionBadgeViewController, AVCaptureMetadataOut
         qrCodeOverlay.alpha = 0.5
     }
 
+    override func viewWillAppear(_: Bool) {
+        isScanning = true
+        if !captureSession.isRunning {
+            captureSession.startRunning()
+        }
+    }
+    
     override func viewDidAppear(_: Bool) {
         let authStatus = AVCaptureDevice.authorizationStatus(for: .video)
         switch authStatus {
@@ -81,12 +90,6 @@ class QRCodeViewController: NotificaionBadgeViewController, AVCaptureMetadataOut
     override func viewWillDisappear(_: Bool) {
         if captureSession.isRunning {
             captureSession.stopRunning()
-        }
-    }
-
-    override func viewWillAppear(_: Bool) {
-        if !captureSession.isRunning {
-            captureSession.startRunning()
         }
     }
 
@@ -120,6 +123,10 @@ class QRCodeViewController: NotificaionBadgeViewController, AVCaptureMetadataOut
 
     // This function takes the String that was encoded in the QR code, finds a tree that corresponds to that code using a call to getTreeFromString, and displays the results.
     func metadataOutput(_: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from _: AVCaptureConnection) {
+        //Don't do anything with QR code if scanning has been stopped
+        if(!isScanning){
+            return
+        }
         
         if let metadatObject: AVMetadataObject = metadataObjects.first {
             guard let readableObject = metadatObject as? AVMetadataMachineReadableCodeObject else {
@@ -136,11 +143,14 @@ class QRCodeViewController: NotificaionBadgeViewController, AVCaptureMetadataOut
                 CheckAndAlertUser(title: StringConstants.invalidQRCodeTitle, message: StringConstants.invalidQRCodeMessage)
                 return
             }
-
+            
             //If this view controller is not presenting a view controller, present the tree data display
             if(presentedViewController == nil){
                 let pages = TreeDetailPageViewController(tree: treeToDisplay)
                 navigationController?.pushViewController(pages, animated: true)
+                
+                //Stop scanning
+                isScanning = false
             }
             
         }
