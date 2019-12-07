@@ -184,83 +184,83 @@ class CSVDataSource: DataSource {
 
             // Set general benefit information
             if csvFormat.carbonSequestrationPoundsIndex() >= 0 {
-                tree.setOtherInfo(key: "carbonSequestrationPounds", value: Double(record[self.csvFormat.carbonSequestrationPoundsIndex()])!)
+                tree.setOtherInfo(key: "carbonSequestrationPounds", value: Double(record[self.csvFormat.carbonSequestrationPoundsIndex()]))
             }
             if csvFormat.carbonSequestrationDollarsIndex() >= 0 {
-                tree.setOtherInfo(key: "carbonSequestrationDollars", value: Double(record[self.csvFormat.carbonSequestrationDollarsIndex()])!)
+                tree.setOtherInfo(key: "carbonSequestrationDollars", value: Double(record[self.csvFormat.carbonSequestrationDollarsIndex()]))
             }
             if csvFormat.avoidedRunoffCubicFeetIndex() >= 0 {
-                tree.setOtherInfo(key: "avoidedRunoffCubicFeet", value: Double(record[self.csvFormat.avoidedRunoffCubicFeetIndex()])!)
+                tree.setOtherInfo(key: "avoidedRunoffCubicFeet", value: Double(record[self.csvFormat.avoidedRunoffCubicFeetIndex()]))
             }
             if csvFormat.avoidedRunoffDollarsIndex() >= 0 {
-                tree.setOtherInfo(key: "avoidedRunoffDollars", value: Double(record[self.csvFormat.avoidedRunoffDollarsIndex()])!)
+                tree.setOtherInfo(key: "avoidedRunoffDollars", value: Double(record[self.csvFormat.avoidedRunoffDollarsIndex()]))
             }
             if csvFormat.waterInterceptedCubicFeetIndex() >= 0 {
-                tree.setOtherInfo(key: "waterInterceptedCubicFeet", value: Double(record[self.csvFormat.waterInterceptedCubicFeetIndex()])!)
+                tree.setOtherInfo(key: "waterInterceptedCubicFeet", value: Double(record[self.csvFormat.waterInterceptedCubicFeetIndex()]))
             }
             if csvFormat.carbonAvoidedPoundsIndex() >= 0 {
-                tree.setOtherInfo(key: "carbonAvoidedPounds", value: Double(record[self.csvFormat.carbonAvoidedPoundsIndex()])!)
+                tree.setOtherInfo(key: "carbonAvoidedPounds", value: Double(record[self.csvFormat.carbonAvoidedPoundsIndex()]))
             }
             if csvFormat.carbonAvoidedDollarsIndex() >= 0 {
-                tree.setOtherInfo(key: "carbonAvoidedDollars", value: Double(record[self.csvFormat.carbonAvoidedDollarsIndex()])!)
+                tree.setOtherInfo(key: "carbonAvoidedDollars", value: Double(record[self.csvFormat.carbonAvoidedDollarsIndex()]))
             }
             if csvFormat.pollutionRemovalOuncesIndex() >= 0 {
-                tree.setOtherInfo(key: "pollutionRemovalOunces", value: Double(record[self.csvFormat.pollutionRemovalOuncesIndex()])!)
+                tree.setOtherInfo(key: "pollutionRemovalOunces", value: Double(record[self.csvFormat.pollutionRemovalOuncesIndex()]))
             }
             if csvFormat.pollutionRemovalDollarsIndex() >= 0 {
-                tree.setOtherInfo(key: "pollutionRemovalDollars", value: Double(record[self.csvFormat.pollutionRemovalDollarsIndex()])!)
+                tree.setOtherInfo(key: "pollutionRemovalDollars", value: Double(record[self.csvFormat.pollutionRemovalDollarsIndex()]))
             }
             if csvFormat.energySavingsDollarsIndex() >= 0 {
-                tree.setOtherInfo(key: "energySavingsDollars", value: Double(record[self.csvFormat.energySavingsDollarsIndex()])!)
+                tree.setOtherInfo(key: "energySavingsDollars", value: Double(record[self.csvFormat.energySavingsDollarsIndex()]))
             }
             if csvFormat.totalAnnualBenefitsDollarsIndex() >= 0 {
-                tree.setOtherInfo(key: "totalAnnualBenefitsDollars", value: Double(record[self.csvFormat.totalAnnualBenefitsDollarsIndex()])!)
+                tree.setOtherInfo(key: "totalAnnualBenefitsDollars", value: Double(record[self.csvFormat.totalAnnualBenefitsDollarsIndex()]))
             }
             // Set breakdown benefit information
             if csvFormat.coDollarsIndex() >= 0 {
-                tree.setOtherInfo(key: "coDollars", value: Double(record[self.csvFormat.coDollarsIndex()])!)
+                tree.setOtherInfo(key: "coDollars", value: Double(record[self.csvFormat.coDollarsIndex()]))
             }
             if csvFormat.coOuncesIndex() >= 0 {
-                tree.setOtherInfo(key: "coOunces", value: Double(record[self.csvFormat.coOuncesIndex()])!)
+                tree.setOtherInfo(key: "coOunces", value: Double(record[self.csvFormat.coOuncesIndex()]))
             }
             if csvFormat.o3DollarsIndex() >= 0 {
-                tree.setOtherInfo(key: "o3Dollars", value: Double(record[self.csvFormat.o3DollarsIndex()])!)
+                tree.setOtherInfo(key: "o3Dollars", value: Double(record[self.csvFormat.o3DollarsIndex()]))
             }
             if csvFormat.o3OuncesIndex() >= 0 {
-                tree.setOtherInfo(key: "o3Ounces", value: Double(record[self.csvFormat.o3OuncesIndex()])!)
+                tree.setOtherInfo(key: "o3Ounces", value: Double(record[self.csvFormat.o3OuncesIndex()]))
             }
             if csvFormat.no2DollarsIndex() >= 0 {
-                tree.setOtherInfo(key: "no2Dollars", value: Double(record[self.csvFormat.no2DollarsIndex()])!)
+                tree.setOtherInfo(key: "no2Dollars", value: Double(record[self.csvFormat.no2DollarsIndex()]))
             }
             if csvFormat.no2OuncesIndex() >= 0 {
-                tree.setOtherInfo(key: "no2Ounces", value: Double(record[self.csvFormat.no2OuncesIndex()])!)
+                tree.setOtherInfo(key: "no2Ounces", value: Double(record[self.csvFormat.no2OuncesIndex()]))
             }
             if csvFormat.so2DollarsIndex() >= 0 {
-                tree.setOtherInfo(key: "so2Dollars", value: Double(record[self.csvFormat.so2DollarsIndex()])!)
+                tree.setOtherInfo(key: "so2Dollars", value: Double(record[self.csvFormat.so2DollarsIndex()]))
             }
             if csvFormat.so2OuncesIndex() >= 0 {
-                tree.setOtherInfo(key: "so2Ounces", value: Double(record[self.csvFormat.so2OuncesIndex()])!)
+                tree.setOtherInfo(key: "so2Ounces", value: Double(record[self.csvFormat.so2OuncesIndex()]))
             }
             if csvFormat.pm25DollarsIndex() >= 0 {
-                tree.setOtherInfo(key: "pm25Dollars", value: Double(record[self.csvFormat.pm25DollarsIndex()])!)
+                tree.setOtherInfo(key: "pm25Dollars", value: Double(record[self.csvFormat.pm25DollarsIndex()]))
             }
             if csvFormat.pm25OuncesIndex() >= 0 {
-                tree.setOtherInfo(key: "pm25Ounces", value: Double(record[self.csvFormat.pm25OuncesIndex()])!)
+                tree.setOtherInfo(key: "pm25Ounces", value: Double(record[self.csvFormat.pm25OuncesIndex()]))
             }
             if csvFormat.heating1DollarsIndex() >= 0 {
-                tree.setOtherInfo(key: "heating1Dollars", value: Double(record[self.csvFormat.heating1DollarsIndex()])!)
+                tree.setOtherInfo(key: "heating1Dollars", value: Double(record[self.csvFormat.heating1DollarsIndex()]))
             }
             if csvFormat.heating2DollarsIndex() >= 0 {
-                tree.setOtherInfo(key: "heating2Dollars", value: Double(record[self.csvFormat.heating2DollarsIndex()])!)
+                tree.setOtherInfo(key: "heating2Dollars", value: Double(record[self.csvFormat.heating2DollarsIndex()]))
             }
             if csvFormat.heatingMBTUIndex() >= 0 {
-                tree.setOtherInfo(key: "heatingMBTU", value: Double(record[self.csvFormat.heatingMBTUIndex()])!)
+                tree.setOtherInfo(key: "heatingMBTU", value: Double(record[self.csvFormat.heatingMBTUIndex()]))
             }
             if csvFormat.coolingDollarsIndex() >= 0 {
-                tree.setOtherInfo(key: "coolingDollars", value: Double(record[self.csvFormat.coolingDollarsIndex()])!)
+                tree.setOtherInfo(key: "coolingDollars", value: Double(record[self.csvFormat.coolingDollarsIndex()]))
             }
             if csvFormat.coolingKWHIndex() >= 0 {
-                tree.setOtherInfo(key: "coolingKWH", value: Double(record[self.csvFormat.coolingKWHIndex()])!)
+                tree.setOtherInfo(key: "coolingKWH", value: Double(record[self.csvFormat.coolingKWHIndex()]))
             }
             return tree
         }

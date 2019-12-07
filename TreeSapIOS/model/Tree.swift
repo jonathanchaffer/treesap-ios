@@ -39,7 +39,7 @@ class Tree: Equatable {
         dbhArray.append(newDBH)
     }
 
-    func setOtherInfo(key: String, value: Double) {
+    func setOtherInfo(key: String, value: Double?) {
         otherInfo[key] = value
     }
 

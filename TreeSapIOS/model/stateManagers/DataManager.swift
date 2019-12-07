@@ -15,7 +15,8 @@ class DataManager {
     static var dataSources: [DataSource] = [
         CSVDataSource(internetFilename: "CoH_Tree_Inventory_6_12_18.csv", localFilename: "holland.csv", dataSourceName: "City of Holland Tree Inventory", csvFormat: .holland),
         CSVDataSource(internetFilename: "dataExport_119_HopeTrees_7may2018.csv", localFilename: "hope.csv", dataSourceName: "Hope College Trees", csvFormat: .hope),
-        CSVDataSource(internetFilename: "katelyn.csv", localFilename: "benefits.csv", dataSourceName: "Tree Benefit Data", csvFormat: .benefits),
+        //CSVDataSource(internetFilename: "katelyn.csv", localFilename: "benefits.csv", dataSourceName: "Tree Benefit Data", csvFormat: .benefits),
+		CSVDataSource(internetFilename: "itree-august2019.csv", localFilename: "itree_aug2019.csv", dataSourceName: "iTree Benefit Data", csvFormat: .benefits),
         FirebaseDataSource(dataSourceName: "My Pending Trees", databaseType: .myPendingTrees),
         FirebaseDataSource(dataSourceName: "User Trees", databaseType: .publicTrees),
     ]
