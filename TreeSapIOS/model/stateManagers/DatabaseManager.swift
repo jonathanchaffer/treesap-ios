@@ -261,6 +261,49 @@ class DatabaseManager {
             return nil
         }
     }
+    
+    static func getTreeAlertsCollection() -> Query? {
+        if AccountManager.getUserID() != nil {
+//            return db.collection("treeAlerts").whereField(FieldPath(["userID"]), isEqualTo: AccountManager.getUserID()!)
+            return db.collection("treeAlerts")//.whereField("userID", isEqualTo: AccountManager.getUserID()!)
+
+        } else {
+            return nil
+        }
+    }
+    
+    /**
+     Creates a data object based on the specified tree and adds it to the pending trees collection.
+     - Parameter tree: The tree to submit.
+     */
+    static func submitAlertstoTreeAlerts(tree: Tree, reason: String) {
+        // Create the data object
+        var data = [String: Any]()
+        data["latitude"] = tree.location.latitude
+        data["longitude"] = tree.location.longitude
+        if tree.commonName != nil {
+            data["commonName"] = tree.commonName!
+        }
+        if tree.scientificName != nil {
+            data["scientificName"] = tree.scientificName!
+        }
+        if tree.id != nil {
+            data["treeID"] = tree.id!
+        }
+        data["userID"] = AccountManager.getUserID()
+
+
+        data["timestamp"] = Timestamp()
+        
+        data["reason"] = reason
+
+        // Add the data to pending
+        addDataToCollection(data: data, collectionID: "treeAlerts", documentID: nil)
+    }
+    
+    static func removeDocumentFromAlerts(documentID: String) {
+        removeDataFromCollection(collectionID: "treeAlerts", documentID: documentID)
+    }
 
     // MARK: - Helper functions
 

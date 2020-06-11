@@ -52,6 +52,10 @@ class TreeDetailPageViewController: UIPageViewController {
 
         // Set the background color to white so it is not noticed when flipping quickly between the different tree displays
         view.backgroundColor = UIColor.white
+        
+        // Add a flag for user questions on a tree
+        navigationItem.rightBarButtonItem =
+            UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(questionTreeEntry))
 
         // Estimate benefit information for trees that don't have benefit information
         var estimatedBenefitsFound = false
@@ -131,6 +135,87 @@ class TreeDetailPageViewController: UIPageViewController {
         navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)
     }
+    
+    private func setupNotificationListeners() {
+        // Create listeners for page events
+        NotificationCenter.default.addObserver(self, selector: #selector(submitDataSuccess), name: NSNotification.Name(StringConstants.submitDataSuccessNotification), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(submitDataFailure), name: NSNotification.Name(StringConstants.submitDataFailureNotification), object: nil)
+    }
+    
+    /// Closes the notifications screen.
+    private func closeNotifications() {
+        navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @objc private func questionTreeEntry() {
+        let alert = UIAlertController(title: "Send an Alert About a Tree", message: "You may add an alert about a tree.  This will be researched by a curator.", preferredStyle: .actionSheet)
+        alert.setValue(NSAttributedString(string: "Send an Alert About a Tree", attributes: [
+               NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 22),
+               NSAttributedString.Key.foregroundColor : UIColor.red
+            ]
+        ), forKey: "attributedTitle")
+        alert.setValue(NSAttributedString(string: "You may add an alert about a tree.  This will be researched by a curator.",
+            attributes: [
+               NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16),
+               NSAttributedString.Key.foregroundColor : UIColor.red
+            ]
+        ), forKey: "attributedMessage")
+        alert.addAction(UIAlertAction(title: "Wrong identification", style: UIAlertAction.Style.default, handler: {
+            (act: UIAlertAction!) -> Void in
+                // Add the tree to the WRONG trees database
+                //DatabaseManager.submitTreeToAlert(tree: self.displayedTree!, alert: Databasemanager.WrongTree)
+                DatabaseManager.submitAlertstoTreeAlerts(tree: self.displayedTree!, reason: "wrongIdentification")
+                self.setupNotificationListeners()
+                // Display a loading alert while it's trying to upload
+                AlertManager.showLoadingAlert()
+        }))
+        alert.addAction(UIAlertAction(title: "Tree has been replaced", style: UIAlertAction.Style.default, handler: {
+            (act: UIAlertAction!) -> Void in
+               // Add the tree to the WRONG trees database
+               //DatabaseManager.submitTreeToAlert(tree: self.displayedTree!, alert: Databasemanager.WrongTree)
+               DatabaseManager.submitAlertstoTreeAlerts(tree: self.displayedTree!, reason: "treeReplaced")
+               self.setupNotificationListeners()
+               // Display a loading alert while it's trying to upload
+               AlertManager.showLoadingAlert()
+        }))
+        alert.addAction(UIAlertAction(title: "Tree has been removed", style: UIAlertAction.Style.default, handler: {
+            (act: UIAlertAction!) -> Void in
+               // Add the tree to the WRONG trees database
+               //DatabaseManager.submitTreeToAlert(tree: self.displayedTree!, alert: Databasemanager.WrongTree)
+               DatabaseManager.submitAlertstoTreeAlerts(tree: self.displayedTree!, reason: "treeRemoved")
+               self.setupNotificationListeners()
+               // Display a loading alert while it's trying to upload
+               AlertManager.showLoadingAlert()
+        }))
+        
+        // Ensure connection
+        if !NetworkManager.isConnected {
+            AlertManager.alertUser(title: StringConstants.noConnectionTitle, message: StringConstants.noConnectionMessage)
+            return
+        }
+
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil ))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    /// Dismisses the loading alert, and then alerts the user that the tree was successfully submitted.
+    @objc private func submitDataSuccess() {
+        dismiss(animated: true) {
+            DataManager.reloadFirebaseTreeData()
+            let alert = UIAlertController(title: StringConstants.submitTreeSuccessTitle, message: "Alert submitted!", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: StringConstants.ok, style: .default, handler: nil))
+            self.present(alert, animated: true)
+        }
+    }
+
+    /// Dismisses the loading alert, and then alerts the user that there was an error submitting the tree.
+    @objc private func submitDataFailure() {
+        dismiss(animated: true) {
+            AlertManager.alertUser(title: StringConstants.submitTreeFailureTitle, message: StringConstants.submitTreeFailureMessage)
+        }
+    }
+    
 }
 
 extension TreeDetailPageViewController: UIPageViewControllerDataSource {
@@ -149,6 +234,7 @@ extension TreeDetailPageViewController: UIPageViewControllerDataSource {
         guard pages.count > nextIndex else { return nil }
         return pages[nextIndex]
     }
+    
 }
 
 extension TreeDetailPageViewController: UIPageViewControllerDelegate {

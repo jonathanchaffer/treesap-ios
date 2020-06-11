@@ -17,6 +17,7 @@ class BenefitsDisplayViewController: TreeDisplayViewController {
     @IBOutlet var noDataContainer: UIView!
     @IBOutlet var commonNameLabel: UILabel!
     @IBOutlet var scientificNameLabel: UILabel!
+    @IBOutlet var treeIDLabel: UILabel!
 
     @IBOutlet var dbhStackView: UIStackView!
     /**/ @IBOutlet var dbhLabel: UILabel!
@@ -103,6 +104,8 @@ class BenefitsDisplayViewController: TreeDisplayViewController {
         } else {
             scientificNameLabel.isHidden = true
         }
+        // Tree ID
+        treeIDLabel.text = "Tree ID: \(displayedTree!.id ?? 0)"
         // DBH
         if displayedTree!.dbhArray != [] {
             var dbhString = ""

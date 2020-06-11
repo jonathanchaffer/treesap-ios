@@ -19,6 +19,7 @@ class PieChartDisplayViewController: TreeDisplayViewController, ChartViewDelegat
     // Headers
     @IBOutlet var annualTreeBenefitsLabel: UILabel!
     @IBOutlet var commonNameLabel: UILabel!
+    @IBOutlet var scientificNamePlusID: UILabel!
     @IBOutlet var estimatedBenefitsLabel: UILabel!
 
     // Number formatter for $x.xx format
@@ -49,6 +50,16 @@ class PieChartDisplayViewController: TreeDisplayViewController, ChartViewDelegat
 
         // Set the common name label
         commonNameLabel.text = displayedTree!.commonName
+        
+        // Set scientific name plus tree ID
+        var name = ""
+        if displayedTree!.scientificName == nil || displayedTree!.scientificName?.count == 0 {
+            name = "Tree ID: \(displayedTree!.id ?? 0)"
+        } else {
+            let sname = displayedTree!.scientificName ?? "NIL"
+            name = "\(sname) / Tree ID: \(displayedTree!.id ?? 0)"
+        }
+        scientificNamePlusID.text = name
 
         // Show/hide the estimated benefits disclaimer
         if estimatedBenefitsFound! {
@@ -186,6 +197,7 @@ class PieChartDisplayViewController: TreeDisplayViewController, ChartViewDelegat
             barChartView.isHidden = true
             annualTreeBenefitsLabel.isHidden = true
             commonNameLabel.isHidden = true
+            scientificNamePlusID.isHidden = true
         }
         pieChartView.data = data
         pieChartView.highlightValues(nil)

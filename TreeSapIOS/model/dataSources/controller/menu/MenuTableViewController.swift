@@ -25,6 +25,7 @@ class MenuTableViewController: UITableViewController {
         notificationBadgeView.layer.cornerRadius = notificationBadgeView.frame.height / 2
         notificationBadgeView.isHidden = true
         NotificationCenter.default.addObserver(self, selector: #selector(updateNotificationBadge), name: NSNotification.Name(StringConstants.unreadNotificationsCountNotification), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(userLoggedIn), name: NSNotification.Name(StringConstants.loggedInNotification), object: nil)
         updateNotificationBadge()
         UnreadManager.retrieveNumberOfUnreadNotifications()
     }
@@ -46,13 +47,23 @@ class MenuTableViewController: UITableViewController {
     /// Function that is called when a table cell is selected.
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        if indexPath.row == 2, indexPath.section == 0 {
+
+        // "Send Feedback"
+        if indexPath.section == 0, indexPath.row == 2 {
             sendEmail()
         }
-        if indexPath.row == 2, indexPath.section == 1 {
+        
+        // Export User Trees
+        else if indexPath.section == 1, indexPath.row == 2 {
             exportUserTrees()
         }
-        if indexPath.row == 1, indexPath.section == 2 {
+            
+        // Log in
+        else if indexPath.section == 2, indexPath.row == 0 {
+        }
+        
+        // Log out
+        else if indexPath.section == 2, indexPath.row == 1 {
             logOutPressed()
         }
     }
@@ -80,7 +91,7 @@ class MenuTableViewController: UITableViewController {
         }
         return 0
     }
-
+    
     // MARK: - Private Functions
 
     @objc private func updateNotificationBadge() {
@@ -88,6 +99,10 @@ class MenuTableViewController: UITableViewController {
             notificationBadgeView.isHidden = false
             notificationBadgeLabel.text = String(UnreadManager.numUnreadNotifications)
         }
+    }
+    
+    @objc private func userLoggedIn() {
+        tableView.reloadData()
     }
 
     private func logOutPressed() {

@@ -13,10 +13,19 @@ class HomeViewController: NotificaionBadgeViewController {
 
     @IBOutlet var addTreeDescriptionLabel: UILabel!
     @IBOutlet var settingsDescriptionLabel: UILabel!
+    
+    var initialized: Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        if !initialized {
+            DataManager.importAllLocalTreeData()
+            DataManager.importAllOnlineTreeData()
+            NetworkManager.setup()
+            initialized = true
+        }
+        
         // Set add tree description
         let addTreeDescription = NSMutableAttributedString(string: "Use the ")
         let plusAttachment = NSTextAttachment()

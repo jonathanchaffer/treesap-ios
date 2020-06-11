@@ -38,7 +38,7 @@ class FirebaseDataSource: DataSource {
             collection = DatabaseManager.getAllPendingTreesCollection()
         } else if databaseType == .publicTrees {
             collection = DatabaseManager.getPublicTreesCollection()
-        }
+        } 
         if collection != nil {
             collection!.getDocuments { snapshot, error in
                 if let error = error {
@@ -116,7 +116,7 @@ class FirebaseDataSource: DataSource {
 }
 
 enum DatabaseType {
-    case myPendingTrees, allPendingTrees, publicTrees
+    case myPendingTrees, allPendingTrees, publicTrees, allTreeAlerts
 }
 
 enum DatabaseError: Error {

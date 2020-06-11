@@ -3,10 +3,12 @@
 //  TreeSapIOS
 //
 //  Created by Jonathan Chaffer in Summer 2019.
-//  Copyright © 2019 Hope CS. All rights reserved.
+//  Modified by Mike Jipping, Summer 2020.
+//  Copyright © 2019-2020 Hope CS. All rights reserved.
 //
 
 import ImageSlideshow
+import Charts
 import UIKit
 
 class SimpleDisplayViewController: TreeDisplayViewController {
@@ -23,6 +25,7 @@ class SimpleDisplayViewController: TreeDisplayViewController {
     @IBOutlet var backgroundImage: UIImageView!
     @IBOutlet var notesContainerStackView: UIStackView!
     @IBOutlet var notesButton: UIButton!
+    @IBOutlet var benefitsInfoLabel: UILabel!
     @IBOutlet var notesStackView: UIStackView!
     @IBOutlet var photosContainerStackView: UIStackView!
     @IBOutlet var photosButton: UIButton!
@@ -35,7 +38,7 @@ class SimpleDisplayViewController: TreeDisplayViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Set common name label
         if displayedTree!.commonName != nil {
             commonNameLabel.text = displayedTree!.commonName
@@ -99,6 +102,21 @@ class SimpleDisplayViewController: TreeDisplayViewController {
         if shouldHideNearbyTrees {
             nearbyTreesButton.isHidden = true
         }
+        // Set up proper message for "swipe for benefits" label
+        let carbonSequestrationDollars = displayedTree!.otherInfo["carbonSequestrationDollars"]
+        let avoidedRunoffDollars = displayedTree!.otherInfo["avoidedRunoffDollars"]
+        let carbonAvoidedDollars = displayedTree!.otherInfo["carbonAvoidedDollars"]
+        let pollutionRemovalDollars = displayedTree!.otherInfo["pollutionRemovalDollars"]
+        let energySavingsDollars = displayedTree!.otherInfo["energySavingsDollars"]
+        if carbonSequestrationDollars == nil,
+           avoidedRunoffDollars == nil,
+           carbonAvoidedDollars == nil,
+           pollutionRemovalDollars == nil,
+            energySavingsDollars == nil {
+            benefitsInfoLabel.text = "No benefits available for this tree"
+        }
+
+        
     }
 
     private func setupSlideshow() {

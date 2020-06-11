@@ -21,6 +21,8 @@
 		41FE11ED22B18C8F00919026 /* DataSourceAvailabilityTableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FE11EC22B18C8F00919026 /* DataSourceAvailabilityTableTests.swift */; };
 		61E1EFDD5187EC1C7241B025 /* libPods-TreeSapIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B77358D36DBDDED4196CADD2 /* libPods-TreeSapIOS.a */; };
 		9325BCC7D7C18D578601373C /* libPods-TreeSapIOSUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84439420E68F648C297A16CA /* libPods-TreeSapIOSUITests.a */; };
+		A870BB94248E66BD00AA3226 /* TreeAlertsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A870BB93248E66BD00AA3226 /* TreeAlertsTableViewController.swift */; };
+		A870BB98248FBF8C00AA3226 /* TreeAlertDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A870BB97248FBF8C00AA3226 /* TreeAlertDetailsViewController.swift */; };
 		BCECB2CD22A1598A0045C548 /* TreeFinderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCECB2CC22A1598A0045C548 /* TreeFinderTests.swift */; };
 		CB091E712292EBCF00F0CB06 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB091E702292EBCF00F0CB06 /* HomeViewController.swift */; };
 		CB10F33222CBDD0700081146 /* NearbyTreesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB10F33122CBDD0700081146 /* NearbyTreesTableViewController.swift */; };
@@ -141,6 +143,8 @@
 		668AAD7604AA46A0D823F819 /* Pods-TreeSapIOSUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreeSapIOSUITests.debug.xcconfig"; path = "Target Support Files/Pods-TreeSapIOSUITests/Pods-TreeSapIOSUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		69FCB8763D3803D7045729DF /* Pods-TreeSapIOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreeSapIOSTests.debug.xcconfig"; path = "Target Support Files/Pods-TreeSapIOSTests/Pods-TreeSapIOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		84439420E68F648C297A16CA /* libPods-TreeSapIOSUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TreeSapIOSUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A870BB93248E66BD00AA3226 /* TreeAlertsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeAlertsTableViewController.swift; sourceTree = "<group>"; };
+		A870BB97248FBF8C00AA3226 /* TreeAlertDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeAlertDetailsViewController.swift; sourceTree = "<group>"; };
 		B77358D36DBDDED4196CADD2 /* libPods-TreeSapIOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TreeSapIOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCECB2CC22A1598A0045C548 /* TreeFinderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeFinderTests.swift; sourceTree = "<group>"; };
 		CB091E702292EBCF00F0CB06 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -282,6 +286,15 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		A870BB92248E65EC00AA3226 /* treeAlerts */ = {
+			isa = PBXGroup;
+			children = (
+				A870BB93248E66BD00AA3226 /* TreeAlertsTableViewController.swift */,
+				A870BB97248FBF8C00AA3226 /* TreeAlertDetailsViewController.swift */,
+			);
+			path = treeAlerts;
+			sourceTree = "<group>";
+		};
 		BCECB2C922A159080045C548 /* Model Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -338,7 +351,6 @@
 			isa = PBXGroup;
 			children = (
 				418A360C22A83CD3002BF28C /* LoadingScreenViewController.swift */,
-				41AD85E522BA933E00DAB44B /* MoreInformationViewController.swift */,
 				CBC7BC9722B93AC8002D4B98 /* HideKeyboard.swift */,
 				CB62E1E322D36D350043F16E /* NotificationBadge.swift */,
 				CB9F424F22A5AE0B00C97F70 /* tabs */,
@@ -356,7 +368,6 @@
 			isa = PBXGroup;
 			children = (
 				CB55444C22C658E100DE71E7 /* StringConstants.swift */,
-				CB1A56B722C8042F00046396 /* TreeNames.swift */,
 				CB6953B7228EE8720002024B /* Tree.swift */,
 				CB4707D022C52D8900E7908F /* ImageCategory.swift */,
 				D76D617E22931990003FFD24 /* CSVFormat.swift */,
@@ -449,6 +460,7 @@
 		CB9F424F22A5AE0B00C97F70 /* tabs */ = {
 			isa = PBXGroup;
 			children = (
+				41AD85E522BA933E00DAB44B /* MoreInformationViewController.swift */,
 				CB091E702292EBCF00F0CB06 /* HomeViewController.swift */,
 				CBBCE82C228DD76B008F7225 /* IdentifyViewController.swift */,
 				CBBCE82E228DD76B008F7225 /* CoordinatesViewController.swift */,
@@ -463,6 +475,7 @@
 			children = (
 				CB6953B9228EE9530002024B /* DataSource.swift */,
 				CBF89EDB22B2BBC600045670 /* CSVDataSource.swift */,
+				CB6953B4228EE4300002024B /* controller */,
 				CBA9171D22B7DE8C00BA75B2 /* FirebaseDataSource.swift */,
 			);
 			path = dataSources;
@@ -471,6 +484,7 @@
 		CBAC5BB422CCF9C60046C275 /* curator */ = {
 			isa = PBXGroup;
 			children = (
+				A870BB92248E65EC00AA3226 /* treeAlerts */,
 				CB1A56B522C7E31D00046396 /* pendingTrees */,
 				CBAC5BB522CCFA2E0046C275 /* AddCuratorViewController.swift */,
 			);
@@ -511,10 +525,10 @@
 		CBBCE829228DD76B008F7225 /* TreeSapIOS */ = {
 			isa = PBXGroup;
 			children = (
+				CB1A56B722C8042F00046396 /* TreeNames.swift */,
 				CBBCE82A228DD76B008F7225 /* AppDelegate.swift */,
 				CB6953B5228EE4AE0002024B /* model */,
 				CB6953B6228EE4C30002024B /* view */,
-				CB6953B4228EE4300002024B /* controller */,
 				CBBCE833228DD777008F7225 /* Assets.xcassets */,
 				CBBCE838228DD777008F7225 /* Info.plist */,
 				D77029D522B0449E00671CC0 /* GoogleService-Info.plist */,
@@ -837,11 +851,13 @@
 				CB75474E22C11E43001FDA65 /* ForgotPasswordViewController.swift in Sources */,
 				CBBCE82B228DD76B008F7225 /* AppDelegate.swift in Sources */,
 				CBBCE82D228DD76B008F7225 /* IdentifyViewController.swift in Sources */,
+				A870BB94248E66BD00AA3226 /* TreeAlertsTableViewController.swift in Sources */,
 				CBB264B822973C6C00C036FB /* DataSourceTableViewController.swift in Sources */,
 				CBBCE84D228DD847008F7225 /* MapViewController.swift in Sources */,
 				CBE8789022957A1300C06E69 /* TreeAnnotation.swift in Sources */,
 				CB15257422A6A388002D483E /* AddTreeLeafViewController.swift in Sources */,
 				CB80E3C322AFD909001A78AE /* PreferencesManager.swift in Sources */,
+				A870BB98248FBF8C00AA3226 /* TreeAlertDetailsViewController.swift in Sources */,
 				CB6953BA228EE9530002024B /* DataSource.swift in Sources */,
 				CB6953B8228EE8720002024B /* Tree.swift in Sources */,
 				CB15257822A6B1DF002D483E /* AddTreePhotoViewController.swift in Sources */,
@@ -1085,6 +1101,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = appIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 292;
 				DEVELOPMENT_TEAM = WX97JD2WLV;
 				INFOPLIST_FILE = TreeSapIOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -1092,6 +1109,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = "3.0 beta 1";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.hope.cs.ios.TreeSap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1106,6 +1124,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = appIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 292;
 				DEVELOPMENT_TEAM = WX97JD2WLV;
 				INFOPLIST_FILE = TreeSapIOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -1113,6 +1132,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = "3.0 beta 1";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.hope.cs.ios.TreeSap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

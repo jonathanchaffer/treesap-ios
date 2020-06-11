@@ -3,7 +3,8 @@
 //  TreeSapIOS
 //
 //  Created by Jonathan Chaffer and Josiah Brett in Summer 2019.
-//  Copyright © 2019 Hope CS. All rights reserved.
+//  Updated by Mike Jipping Summer 2020.
+//  Copyright © 2019-2020 Hope CS. All rights reserved.
 //
 //  Used https://www.raywenderlich.com/548-mapkit-tutorial-getting-started as a reference.
 
@@ -17,7 +18,13 @@ class MapViewController: NotificaionBadgeViewController {
     let regionRadius: CLLocationDistance = 200
     /// The location on which the map will be centered if the user's location is not provided
     let defaultLocation = CLLocationCoordinate2D(latitude: 42.78758, longitude: -86.108110) // These are the coordinates of Centennial Park (in Holland, Michigan)
-
+    var recenterButton: UIButton
+    
+    required init?(coder aDecoder: NSCoder) {
+        recenterButton = UIButton()
+        super.init(coder: aDecoder)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -32,6 +39,29 @@ class MapViewController: NotificaionBadgeViewController {
         }
 
         // If location use is authorized, set starting location to current location. Otherwise, use the default location.
+        if LocationManager.locationFeaturesEnabled, LocationManager.getCurrentLocation() != nil {
+            centerMapOnLocation(location: LocationManager.getCurrentLocation()!.coordinate)
+        } else {
+            centerMapOnLocation(location: defaultLocation)
+        }
+        
+        addRecenterButton()
+        //recenterButton.isHidden = true
+        
+    }
+    
+    func addRecenterButton(){
+        recenterButton = UIButton(frame: CGRect(x: mapView.bounds.size.width-55, y: mapView.bounds.size.height+10, width: 50, height: 50))
+        recenterButton.backgroundColor = .clear
+        //button.setTitle("Recenter", for: .normal)
+        let image = UIImage(named: "user") as UIImage?
+        recenterButton.setImage(image, for: .normal)
+        recenterButton.addTarget(self,
+                         action: #selector(MapViewController.centerMapOnUserButtonClicked), for:.touchUpInside)
+        mapView.addSubview(recenterButton)
+    }
+    
+    @objc func centerMapOnUserButtonClicked() {
         if LocationManager.locationFeaturesEnabled, LocationManager.getCurrentLocation() != nil {
             centerMapOnLocation(location: LocationManager.getCurrentLocation()!.coordinate)
         } else {

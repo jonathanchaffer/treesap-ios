@@ -66,8 +66,15 @@ class StringConstants {
     static let confirmDeleteNotificationsMessage = "The selected notifications will be permanently removed."
     static let confirmDeleteNotificationsDeleteAction = "Remove"
 
+    static let confirmDeleteAlertsTitle = "Remove alerts?"
+    static let confirmDeleteAlertsMessage = "The selected alerts will be permanently removed."
+    static let confirmDeleteAlertsDeleteAction = "Remove"
+
     static let failedToLoadPendingTreesTitle = "Failed to load pending trees"
     static let failedToLoadPendingTreesMessage = "An error occurred while trying to load pending trees. Please try again."
+    
+    static let failedToLoadTreeAlertsTitle = "Failed to load tree alerts"
+    static let failedToLoadTreeAlertsMessage = "An error occurred while trying to load tree alerts. Please try again."
 
     static let treeUpdateSuccessTitle = "Success!"
     static let treeUpdateSuccessMessage = "The tree has been updated."
