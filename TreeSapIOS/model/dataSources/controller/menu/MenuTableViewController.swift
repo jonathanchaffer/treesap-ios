@@ -32,14 +32,24 @@ class MenuTableViewController: UITableViewController {
 
     /// Sets the height of each table row.
     override func tableView(_: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if !AccountManager.isCurator(), indexPath.section == 1 {
-            return 0
+        // Curator section
+        if indexPath.section == 1 {
+            if !AccountManager.isCurator() { return 0 }
+            else if indexPath.row == 2, !AccountManager.isSuperCurator() {
+                return 0  // no "add curator"
+            }
+            else if indexPath.row == 3, !AccountManager.isSuperCurator() {
+                return 0  // no "delete curator"
+            }
         }
-        if !AccountManager.isLoggedIn(), indexPath.row == 1, indexPath.section == 2 {
-            return 0
-        }
-        if AccountManager.isLoggedIn(), indexPath.row == 0, indexPath.section == 2 {
-            return 0
+        
+        // Log in or out
+        if indexPath.section == 2 {
+            if indexPath.row == 0, AccountManager.isLoggedIn() {
+                return 0     // turn off "Log in"
+            } else if indexPath.row == 1, !AccountManager.isLoggedIn() {
+                return 0     // turn off "Log out"
+            }
         }
         return UITableView.automaticDimension
     }

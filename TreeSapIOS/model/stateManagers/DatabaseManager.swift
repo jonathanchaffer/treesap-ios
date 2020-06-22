@@ -17,6 +17,7 @@ class DatabaseManager {
     static var db = Firestore.firestore()
     /// Array of curator user IDs.
     static var curators = [String]()
+    static var superCurators = [String]()
 
     /// Sets up the list of curators.
     static func setup() {
@@ -26,6 +27,12 @@ class DatabaseManager {
             } else {
                 for document in snapshot!.documents {
                     curators.append(document.documentID)
+                    let data = document.data()
+                    if data["isSuper"] != nil, data["isSuper"]! as! Bool {
+                        superCurators.append(document.documentID)
+                        print("adding a super curator")
+                    }
+                        
                 }
             }
         }
@@ -176,12 +183,13 @@ class DatabaseManager {
             } else {
                 if snapshot!.documents.count > 0 {
                     let data = snapshot!.documents[0].data()
-                    addDataToCollection(data: [:], collectionID: "curators", documentID: data["userID"] as? String)
+                    addDataToCollection(data: ["isSuper": false], collectionID: "curators", documentID: data["userID"] as? String)
                 } else {
                     NotificationCenter.default.post(name: NSNotification.Name(StringConstants.addCuratorFailureNotification), object: nil)
                 }
             }
         }
+        //reloadCurators()
     }
 
     /**
@@ -231,6 +239,23 @@ class DatabaseManager {
             }
         }
     }
+    
+    /// - Returns: a user record with from curator ID
+    static func getUserfromID(userID: String) -> Query? {
+        let q = db.collection("users").whereField("userID", isEqualTo: userID)
+        return q
+    }
+    
+    static func removeCurator(documentID: String) {
+        removeDataFromCollection(collectionID: "curators", documentID: documentID)
+        reloadCurators()
+    }
+    
+    static func reloadCurators() {
+        curators = []
+        superCurators = []
+        setup()
+    }
 
     // MARK: - Firebase query accessors
 
@@ -253,6 +278,11 @@ class DatabaseManager {
         return db.collection("acceptedTrees")
     }
 
+    /// - Returns: A Query containing the public trees collection, or nil if there is none.
+    static func getCuratorsCollection() -> Query? {
+        return db.collection("curators")
+    }
+    
     /// - Returns: A Query containing a collection of notifications for the current user, or nil if there is none.
     static func getNotificationsCollection() -> Query? {
         if AccountManager.getUserID() != nil {

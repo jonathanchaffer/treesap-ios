@@ -21,6 +21,7 @@
 		41FE11ED22B18C8F00919026 /* DataSourceAvailabilityTableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FE11EC22B18C8F00919026 /* DataSourceAvailabilityTableTests.swift */; };
 		61E1EFDD5187EC1C7241B025 /* libPods-TreeSapIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B77358D36DBDDED4196CADD2 /* libPods-TreeSapIOS.a */; };
 		9325BCC7D7C18D578601373C /* libPods-TreeSapIOSUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84439420E68F648C297A16CA /* libPods-TreeSapIOSUITests.a */; };
+		A82A6AAA2497AA2600FF4861 /* RemoveCuratorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82A6AA92497AA2600FF4861 /* RemoveCuratorViewController.swift */; };
 		A870BB94248E66BD00AA3226 /* TreeAlertsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A870BB93248E66BD00AA3226 /* TreeAlertsTableViewController.swift */; };
 		A870BB98248FBF8C00AA3226 /* TreeAlertDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A870BB97248FBF8C00AA3226 /* TreeAlertDetailsViewController.swift */; };
 		BCECB2CD22A1598A0045C548 /* TreeFinderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCECB2CC22A1598A0045C548 /* TreeFinderTests.swift */; };
@@ -143,6 +144,7 @@
 		668AAD7604AA46A0D823F819 /* Pods-TreeSapIOSUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreeSapIOSUITests.debug.xcconfig"; path = "Target Support Files/Pods-TreeSapIOSUITests/Pods-TreeSapIOSUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		69FCB8763D3803D7045729DF /* Pods-TreeSapIOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreeSapIOSTests.debug.xcconfig"; path = "Target Support Files/Pods-TreeSapIOSTests/Pods-TreeSapIOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		84439420E68F648C297A16CA /* libPods-TreeSapIOSUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TreeSapIOSUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A82A6AA92497AA2600FF4861 /* RemoveCuratorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveCuratorViewController.swift; sourceTree = "<group>"; };
 		A870BB93248E66BD00AA3226 /* TreeAlertsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeAlertsTableViewController.swift; sourceTree = "<group>"; };
 		A870BB97248FBF8C00AA3226 /* TreeAlertDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeAlertDetailsViewController.swift; sourceTree = "<group>"; };
 		B77358D36DBDDED4196CADD2 /* libPods-TreeSapIOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TreeSapIOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -487,6 +489,7 @@
 				A870BB92248E65EC00AA3226 /* treeAlerts */,
 				CB1A56B522C7E31D00046396 /* pendingTrees */,
 				CBAC5BB522CCFA2E0046C275 /* AddCuratorViewController.swift */,
+				A82A6AA92497AA2600FF4861 /* RemoveCuratorViewController.swift */,
 			);
 			path = curator;
 			sourceTree = "<group>";
@@ -872,6 +875,7 @@
 				CBB372A422CA81CD0037E831 /* MenuTableViewController.swift in Sources */,
 				CB12C94B228DF508000C74C3 /* BenefitsDisplayViewController.swift in Sources */,
 				CB15257022A6A2F7002D483E /* AddTreeOtherViewController.swift in Sources */,
+				A82A6AAA2497AA2600FF4861 /* RemoveCuratorViewController.swift in Sources */,
 				CBFD63C12295A1E800804DC4 /* NameFormatter.swift in Sources */,
 				CBF89EE222B3F40600045670 /* DatabaseManager.swift in Sources */,
 				CB15257622A6A3D5002D483E /* AddTreeEntireViewController.swift in Sources */,
@@ -1101,7 +1105,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = appIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 292;
+				CURRENT_PROJECT_VERSION = 293;
 				DEVELOPMENT_TEAM = WX97JD2WLV;
 				INFOPLIST_FILE = TreeSapIOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -1109,7 +1113,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = "3.0 beta 1";
+				MARKETING_VERSION = 2.9.1;
 				PRODUCT_BUNDLE_IDENTIFIER = edu.hope.cs.ios.TreeSap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1124,7 +1128,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = appIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 292;
+				CURRENT_PROJECT_VERSION = 293;
 				DEVELOPMENT_TEAM = WX97JD2WLV;
 				INFOPLIST_FILE = TreeSapIOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -1132,7 +1136,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = "3.0 beta 1";
+				MARKETING_VERSION = 2.9.1;
 				PRODUCT_BUNDLE_IDENTIFIER = edu.hope.cs.ios.TreeSap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

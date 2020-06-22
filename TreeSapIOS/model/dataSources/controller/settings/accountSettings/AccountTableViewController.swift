@@ -62,10 +62,16 @@ class AccountTableViewController: UITableViewController {
     }
 
     /// Sets the height of each section's header.
-    override func tableView(_: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if AccountManager.isLoggedIn(), section == 0 {
-            return 0.01
-        } else if !AccountManager.isLoggedIn(), section == 1 {
+//    override func tableView(_: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    override func tableView(_: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+
+        if AccountManager.isLoggedIn() {
+            if indexPath.section == 0 {
+                return 0.01
+            } else if indexPath.row == 2, !AccountManager.isCurator() {
+                return 0
+            }
+        } else if !AccountManager.isLoggedIn(), indexPath.section == 1 {
             return 0.01
         }
         return UITableView.automaticDimension

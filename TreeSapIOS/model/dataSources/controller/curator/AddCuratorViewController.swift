@@ -34,6 +34,7 @@ class AddCuratorViewController: UIViewController {
             return
         }
         DatabaseManager.addCurator(email: emailTextField.text!)
+        DatabaseManager.reloadCurators()
         AlertManager.showLoadingAlert()
     }
 

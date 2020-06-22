@@ -37,6 +37,14 @@ class AccountManager {
             return false
         }
     }
+    
+    static func isSuperCurator() -> Bool {
+        if getUserID() != nil {
+            return DatabaseManager.superCurators.contains(getUserID()!)
+        } else {
+            return false
+        }
+    }
 
     /**
      Tries to create a user in Firebase with the given email and password. Alerts the user if it doesn't work.

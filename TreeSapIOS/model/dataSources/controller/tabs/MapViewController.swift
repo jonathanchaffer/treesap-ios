@@ -51,7 +51,16 @@ class MapViewController: NotificaionBadgeViewController {
     }
     
     func addRecenterButton(){
-        recenterButton = UIButton(frame: CGRect(x: mapView.bounds.size.width-55, y: mapView.bounds.size.height+10, width: 50, height: 50))
+        let width = Int(UIScreen.main.bounds.width)
+        var statusBarHeight : Int
+//        if #available(iOS 13.0, *) {
+//            statusBarHeight = Int(view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0)
+//        } else {
+            statusBarHeight = Int(UIApplication.shared.statusBarFrame.height)
+//        }
+        let height = Int(UIScreen.main.bounds.height) - 2*statusBarHeight
+        print("Dims: \(width) by \(height)-\(statusBarHeight)")
+        recenterButton = UIButton(frame: CGRect(x: width-55, y: height-55, width: 50, height: 50))
         recenterButton.backgroundColor = .clear
         //button.setTitle("Recenter", for: .normal)
         let image = UIImage(named: "user") as UIImage?
